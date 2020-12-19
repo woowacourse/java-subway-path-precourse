@@ -3,12 +3,17 @@ package subway.controller;
 import subway.domain.entity.Section;
 import subway.domain.entity.Station;
 import subway.domain.entity.Stations;
+import subway.domain.path.SubwayMapGraph;
 import subway.dto.LineDto;
+import subway.dto.PathRequestDto;
+import subway.dto.PathResponseDto;
 import subway.dto.SectionDto;
 import subway.service.LineService;
 import subway.service.StationService;
+import subway.type.FunctionType;
 
 public class PathController {
+    private static final SubwayMapGraph SUBWAY_MAP_GRAPH = SubwayMapGraph.getInstance();
 
     public void addLine(LineDto lineDto, SectionDto sectionDto) {
         String upwardLastStationName = lineDto.getUpwardLastStationName();
@@ -25,5 +30,13 @@ public class PathController {
         Section section = sectionDto.toEntity();
         Station station = StationService.findStationByName(stationName);
         LineService.addStationAtLine(lineName, station, section);
+    }
+
+    public PathResponseDto findShortestPath(FunctionType functionType, PathRequestDto pathRequestDto) {
+        String firstStationName = pathRequestDto.getFirstStationName();
+        String lastStationName = pathRequestDto.getLastStationName();
+        Station firstStation = StationService.findStationByName(firstStationName);
+        Station lastStation = StationService.findStationByName(lastStationName);
+        return SUBWAY_MAP_GRAPH.findShortestPath(firstStation, lastStation, functionType);
     }
 }
