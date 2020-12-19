@@ -18,6 +18,7 @@ public class LineRepository {
     private static final WeightedMultigraph<String, DefaultWeightedEdge> lengthWeight
             = new WeightedMultigraph(DefaultWeightedEdge.class);
     private static final int ROUTE_NOT_EXIST = 0;
+    private static final String NOT_EXIST_ROUTE = "[ERROR] 경로가 존재하지 않습니다.";
     private static int INDEX = 0;
 
     public static WeightedMultigraph<String, DefaultWeightedEdge> getTimeWeight() {
@@ -82,6 +83,7 @@ public class LineRepository {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(timeWeight);
         List<String> shortestPath = dijkstraShortestPath.getPath(startStation, endStation).getVertexList();
         if(shortestPath.size() == 0){
+            System.out.println(NOT_EXIST_ROUTE);
             return false;
         }
         showStatusTime(dijkstraShortestPath,shortestPath,startStation,endStation);
@@ -105,6 +107,7 @@ public class LineRepository {
         DijkstraShortestPath path = new DijkstraShortestPath(lengthWeight);
         List<String> shortestPath = path.getPath(startStation, endStation).getVertexList();
         if(shortestPath.size() == ROUTE_NOT_EXIST){
+            System.out.println(NOT_EXIST_ROUTE);
             return false;
         }
         showStatusLength(path,shortestPath,startStation,endStation);
