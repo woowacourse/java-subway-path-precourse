@@ -1,18 +1,27 @@
 package subway.domain.function;
 
 import java.util.Arrays;
+import java.util.Scanner;
+import subway.view.InputView;
 import subway.view.OutputView;
 
 public enum MainFunction {
     FIND_ROUTE("1") {
         @Override
-        public void operate() {
-            OutputView.printFindRouteMenu();
+        public void operate(Scanner scanner) {
+            try {
+                OutputView.printFindRouteMenu();
+                FindRouteFunction function = getInputFunction(scanner);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+                OutputView.printEmptyLine();
+                operate(scanner);
+            }
         }
     },
     QUIT("Q") {
         @Override
-        public void operate() {
+        public void operate(Scanner scanner) {
         }
     };
 
@@ -29,5 +38,10 @@ public enum MainFunction {
             .orElseThrow(() -> new IllegalArgumentException("[ERROR] 선택할 수 없는 기능입니다."));
     }
 
-    public abstract void operate();
+    private static FindRouteFunction getInputFunction(Scanner scanner) {
+        String functionNumber = InputView.inputFunctionNumber(scanner);
+        return FindRouteFunction.getFindRouteFunctionByNumber(functionNumber);
+    }
+
+    public abstract void operate(Scanner scanner);
 }
