@@ -23,6 +23,24 @@ public class JGraphtTest {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
         List<String> shortestPath = dijkstraShortestPath.getPath("v3", "v1").getVertexList();
 
-        assertThat(shortestPath.size()).isEqualTo(3);
+        double weight;
+        try{
+            weight = dijkstraShortestPath.getPathWeight("v4", "v1");
+            System.out.println(weight);
+        } catch (Exception e){
+            System.out.println("갈수 없는 경로 입니다.");
+        }
+
+        for(String string : shortestPath){
+            System.out.println(string);
+        }
+
+
+        //assertThat(shortestPath.size()).isEqualTo(3);
+    }
+
+    public static void main(String[] args) {
+        JGraphtTest jGraphtTest = new JGraphtTest();
+        jGraphtTest.getDijkstraShortestPath();
     }
 }
