@@ -35,18 +35,28 @@ public class SearchingPathController {
 
     private void runSystemByInput(String inputKey) {
         if (inputKey.equals(MenuKeys.ONE.getKey())) {
-            searchShortestPath();
+            searchShortestDistance();
         }
         if (inputKey.equals(MenuKeys.TWO.getKey())) {
-            System.out.println("최소시간");
+            searchShortestTime();
         }
     }
 
-    private void searchShortestPath() {
+    private void searchShortestTime() {
         try {
             String[] stations = pathInputManager.inputStations();
-            List<String> path = PathRepository.getListByShortestDistance(stations[0],stations[1]);
-            PathOutputManager.printResultByShortestDistance(path);
+            List<String> path = PathRepository.getListByShortestTime(stations[0], stations[1]);
+            PathOutputManager.printResult(path);
+        } catch (ErrorCustomException errorCustomException) {
+            ErrorMessage.print(errorCustomException);
+        }
+    }
+
+    private void searchShortestDistance() {
+        try {
+            String[] stations = pathInputManager.inputStations();
+            List<String> path = PathRepository.getListByShortestDistance(stations[0], stations[1]);
+            PathOutputManager.printResult(path);
         } catch (ErrorCustomException errorCustomException) {
             ErrorMessage.print(errorCustomException);
         }

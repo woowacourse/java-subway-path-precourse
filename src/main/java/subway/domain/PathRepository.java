@@ -48,27 +48,26 @@ public class PathRepository {
         return dijkstraShortestDistance.getPath(source, sink).getVertexList();
     }
 
+    public static List<String> getListByShortestTime(String source, String sink) {
+        return dijkstraShortestTime.getPath(source, sink).getVertexList();
+    }
+
     public static int getDistanceByList(List<String> path) {
-        double totalTime = 0 ;
+        double totalTime = 0;
         for (int i = 0; i < path.size() - 1; i++) {
             totalTime += graphByDistance
                 .getEdgeWeight(graphByDistance.getEdge(path.get(i), path.get(i + 1)));
         }
-        return (int)totalTime;
+        return (int) totalTime;
     }
 
     public static int getTimeByList(List<String> path) {
-        double totalTime = 0 ;
+        double totalTime = 0;
         for (int i = 0; i < path.size() - 1; i++) {
             totalTime += graphByTime
                 .getEdgeWeight(graphByTime.getEdge(path.get(i), path.get(i + 1)));
         }
-        return (int)totalTime;
-    }
-
-    public static GraphPath<String, String> getListByShortestTime(String source, String sink) {
-        GraphPath<String, String> path = dijkstraShortestTime.getPath(source, sink);
-        return path;
+        return (int) totalTime;
     }
 
 
