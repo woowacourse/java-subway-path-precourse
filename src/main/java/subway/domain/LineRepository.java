@@ -23,4 +23,9 @@ public class LineRepository {
     public static void deleteAll() {
         lines.clear();
     }
+    
+    public static Line findLineByName(String name) {
+        return lines.stream().filter(line ->
+            line.getName().equals(name)).findAny().orElse(null);
+    }
 }

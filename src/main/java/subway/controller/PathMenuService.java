@@ -1,0 +1,77 @@
+package subway.controller;
+
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
+import subway.domain.Menu;
+import subway.domain.Station;
+import subway.domain.SubwayMap;
+import subway.view.ErrorMessage;
+import subway.view.pathview.PathMenu;
+
+import java.util.List;
+import java.util.Scanner;
+
+public class PathMenuService {
+	
+	public static void selectMenu(String menuKey,
+	                              Scanner scanner) throws IllegalArgumentException {
+		runSelectMenu(PathMenu.pathMenus.get(menuKey), scanner);
+	}
+	
+	private static void runSelectMenu(Menu selectedMenu, Scanner scanner) throws IllegalArgumentException {
+		selectedMenu.run(scanner);
+	}
+	
+	public static List<Station> findShortestDistancePath(Station from, Station to) {
+		DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(SubwayMap.getDistanceMap());
+		List<Station> shortestDistancePath = dijkstraShortestPath.getPath(from, to).getVertexList();
+		return shortestDistancePath;
+	}
+	
+	public static List<Station> findShortestTimePath(Station from, Station to) {
+		DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(SubwayMap.getTimeMap());
+		List<Station> shortestTimePath = dijkstraShortestPath.getPath(from, to).getVertexList();
+		return shortestTimePath;
+	}
+	
+	public static double getShortestDistancePathWeight(Station from, Station to) {
+		DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(SubwayMap.getDistanceMap());
+		return dijkstraShortestPath.getPathWeight(from, to);
+	}
+	
+	public static double getShortestTimePathWeight(Station from, Station to) {
+		DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(SubwayMap.getTimeMap());
+		return dijkstraShortestPath.getPathWeight(from, to);
+	}
+	
+	public static void validateFromToDifference(Station from, Station to) throws
+		IllegalArgumentException {
+		if(from == to) {
+			throw new IllegalArgumentException(ErrorMessage.SAME_FROM_TO.getMessage());
+		}
+	}
+	
+	public static void validateIfPathExist(List<Station> path) throws
+		IllegalArgumentException {
+		if(path == null) {
+			throw new IllegalArgumentException(ErrorMessage.NO_PATH.getMessage());
+		}
+	}
+	
+	public static double getTotalTime(List<Station> path) {
+		double totalTime = 0;
+		for (int from = 0; from < path.size() - 1; from++) {
+			totalTime += SubwayMap.getTimeMap().getEdgeWeight(
+				SubwayMap.getTimeMap().getEdge(path.get(from), path.get(from + 1)));
+		}
+		return totalTime;
+	}
+	
+	public static double getTotalDistance(List<Station> path) {
+		double totalDistance = 0;
+		for (int from = 0; from < path.size() - 1; from++) {
+			totalDistance += SubwayMap.getDistanceMap().getEdgeWeight(
+				SubwayMap.getDistanceMap().getEdge(path.get(from), path.get(from + 1)));
+		}
+		return totalDistance;
+	}
+}
