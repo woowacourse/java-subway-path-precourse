@@ -21,12 +21,14 @@ public class LineStationRepository {
     }
 
     public static GraphPath findShortestPath(String start, String end) {
+        SubwayPathFactory.init();
         creatPathFirstGraph();
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(lineStation);
         return dijkstraShortestPath.getPath(start, end);
     }
 
     public static GraphPath findShortestTime(String start, String end) {
+        SubwayPathFactory.init();
         creatTimeFirstGraph();
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(lineStation);
         return dijkstraShortestPath.getPath(start, end);

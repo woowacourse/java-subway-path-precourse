@@ -11,7 +11,7 @@ import static subway.domain.MenuType.MAIN_MENU_RANGE;
 
 public class SubwayController extends InputService {
     private final SubwayService subwayService = new SubwayService();
-
+    
     public void start(Scanner scanner) {
         String menu = "";
         try {
