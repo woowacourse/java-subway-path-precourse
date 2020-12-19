@@ -7,6 +7,8 @@ import subway.ConnectData;
 
 public class Station {
 
+    public static final int ERROR_NUMBER = -1;
+
     private String name;
     private List<ConnectData> ConnectDataList = new ArrayList<>();
 
@@ -30,4 +32,14 @@ public class Station {
         ConnectData connectData = new ConnectData(station, distance, time);
         ConnectDataList.add(connectData);
     }
+
+    public int getDistance(Station station) {
+        for (ConnectData connectData : ConnectDataList) {
+            if (connectData.getStation().equals(station)) {
+                return connectData.getDistance();
+            }
+        }
+        return ERROR_NUMBER;
+    }
+
 }
