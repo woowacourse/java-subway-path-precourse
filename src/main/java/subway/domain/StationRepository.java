@@ -23,7 +23,7 @@ public class StationRepository {
 
     public static Station getStationByName(String name) {
         Optional<Station> optional =
-                stations.stream().filter(it -> it.getName() == name).findFirst();
+                stations.stream().filter(it -> it.getName().equals(name)).findFirst();
         if (optional.isPresent()) {
             return optional.get();
         }

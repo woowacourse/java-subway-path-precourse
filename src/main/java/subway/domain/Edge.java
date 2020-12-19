@@ -11,6 +11,10 @@ public class Edge {
         this.time = time;
     }
 
+    public Station getDestination() {
+        return destination;
+    }
+
     public String toString() {
         return destination.getName() + " " + distance + "km, " + time + "분";
     }

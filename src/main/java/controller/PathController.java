@@ -1,6 +1,8 @@
 package controller;
 
 import java.util.Arrays;
+import subway.domain.Path;
+import subway.domain.StationRepository;
 import view.InputView;
 import view.OutputView;
 
@@ -30,7 +32,12 @@ public class PathController {
     private void processInput(String input) {
         String from = InputView.inputWithHintMessage(INPUT_START_STATION);
         String to = InputView.inputWithHintMessage(INPUT_DESTINATION_STATION);
+        Path path = new Path(StationRepository.getStationByName(from),
+                StationRepository.getStationByName(to));
 
+        if (!path.validatePath()) {
+            return;
+        }
         if (input.equals(PathMenu.PIVOT_SHORTEST_DISTANCE)) {
 
         }
