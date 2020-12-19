@@ -1,9 +1,10 @@
 package subway;
 
 import subway.view.InputView;
-import subway.view.MainSelection;
+import subway.view.screen.SearchView;
+import subway.view.selection.MainSelection;
 import subway.view.OutputView;
-import subway.view.SearchSelection;
+import subway.view.selection.SearchSelection;
 import subway.view.screen.MainView;
 
 public class SubwayManageApp {
@@ -34,6 +35,8 @@ public class SubwayManageApp {
     }
 
     private void manageSearch() {
+        SearchView searchView = new SearchView(outputView);
+        searchView.showOptions();
         SearchSelection searchSelection = new SearchSelection(inputView.inputNextLine());
 
     }

@@ -1,4 +1,4 @@
-package subway.view;
+package subway.view.selection;
 
 import subway.exception.ErrorCode;
 import subway.exception.SelectionException;

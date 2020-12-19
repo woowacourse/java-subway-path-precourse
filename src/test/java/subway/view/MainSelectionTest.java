@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import subway.exception.ErrorCode;
 import subway.exception.SelectionException;
+import subway.view.selection.MainSelection;
 
 import static org.assertj.core.api.Assertions.*;
 
