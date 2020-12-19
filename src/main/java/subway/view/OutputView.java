@@ -41,11 +41,11 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printMinTimeAndDistance(List<String> stations, double distance ) {
+    public static void printMinTimeAndDistance(List<String> stations, double time ) {
         System.out.println(RESULT);
         printInfoLine();
-        System.out.println(INFO + TOTAL_DISTANCE + (int) distance + DISTANCE_UNIT);
-        System.out.println(INFO + TOTAL_TIME  + TIME_UNIT);
+        System.out.println(INFO + TOTAL_DISTANCE + DISTANCE_UNIT);
+        System.out.println(INFO + TOTAL_TIME + (int) time + TIME_UNIT);
         printInfoLine();
         stations.stream().forEach(station -> System.out.println(INFO + station));
         System.out.println();
