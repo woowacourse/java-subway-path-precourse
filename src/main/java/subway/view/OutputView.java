@@ -28,6 +28,10 @@ public class OutputView {
         System.out.println(INFO + "총 소요 시간: " + time);
         System.out.println(INFO_LINE);
 
-        // printStations(stations);
+        printStations(stations);
+    }
+
+    private static void printStations(List<Station> stations) {
+        stations.forEach(station -> System.out.println(INFO + station.getName()));
     }
 }
