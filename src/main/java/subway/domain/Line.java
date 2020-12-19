@@ -24,11 +24,13 @@ public class Line {
         return Collections.unmodifiableList(stationList);
     }
 
-    public void addStation(Station station) {
+    public void addStation(String stationName) {
+        Station station = StationRepository.findStationByName(stationName);
+        station.addLine(this.name);
         stationList.add(station);
     }
 
     public boolean deleteStation(String name) {
-        return stationList.removeIf(station -> Objects.equals(station.getName(), name));
+        return stationList.removeIf(station -> station.getName().equals(name));
     }
 }

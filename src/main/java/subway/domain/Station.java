@@ -1,6 +1,7 @@
 package subway.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Station {
@@ -27,7 +28,12 @@ public class Station {
 
     private List<Section> sectionList = new ArrayList<>();
 
-    public void addSection(String linkedStationName, int distance, int time) {
+    public Station addSection(String linkedStationName, int distance, int time) {
         sectionList.add(new Section(linkedStationName, distance, time));
+        return this;
+    }
+
+    public List<Section> sections() {
+        return Collections.unmodifiableList(sectionList);
     }
 }
