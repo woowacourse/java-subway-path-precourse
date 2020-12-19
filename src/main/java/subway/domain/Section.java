@@ -3,9 +3,9 @@ package subway.domain;
 import java.util.List;
 
 public class Section {
-    private String departureStation;
-    private String arrivalStation;
-    private Cost cost;
+    private final String departureStation;
+    private final String arrivalStation;
+    private final Cost cost;
 
     public Section(String departureStation, String arrivalStation, Cost cost) {
         this.departureStation = departureStation;
@@ -16,5 +16,17 @@ public class Section {
     @Override
     public String toString(){
         return this.departureStation + this.arrivalStation;
+    }
+
+    public String getDepartureStation() {
+        return this.departureStation;
+    }
+
+    public String getArrivalStation() {
+        return this.arrivalStation;
+    }
+
+    public Cost getCost() {
+        return this.cost;
     }
 }

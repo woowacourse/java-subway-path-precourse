@@ -6,21 +6,13 @@ import subway.domain.DefaultStations;
 import subway.domain.Line;
 import subway.domain.Station;
 import subway.view.InputView;
-//import org.jgrapht.graph.
 
 public class MinCostCalculator {
 
     private static final String SAME_STATION_ERROR = "출발역과 도착역은 달라야합니다";
     private static final String ERROR_PREFIX = "[ERROR]: ";
-    private final List<Line> lines;
-    private final List<Station> stations;
     private String departureStation;
     private String arrivalStation;
-
-    public MinCostCalculator() {
-        lines = DefaultLines.getDefaultLines();
-        stations = DefaultStations.getDefaultStations();
-    }
 
     public void runToGetMinDistance() {
         getStationNames();
@@ -36,8 +28,8 @@ public class MinCostCalculator {
 
     private void getStationNames() {
         try {
-            String departureStation = InputView.inputStation();
-            String arrivalStation = InputView.inputStation();
+            departureStation = InputView.inputDepartureStation();
+            arrivalStation = InputView.inputArrivalStation();
             if (departureStation.equals(arrivalStation)) {
                 throw new IllegalArgumentException(SAME_STATION_ERROR);
             }
@@ -48,6 +40,7 @@ public class MinCostCalculator {
     }
 
     public void calculateMinDistance() {
+
     }
 
     public void calculateMinTime() {

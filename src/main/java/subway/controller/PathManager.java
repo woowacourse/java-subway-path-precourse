@@ -1,5 +1,6 @@
 package subway.controller;
 
+import subway.domain.DefaultSubwayGraph;
 import subway.view.InputView;
 import subway.view.OutputView;
 
@@ -18,6 +19,7 @@ public class PathManager {
 
     public void run() {
         while (!userWantGoBack()) {
+//            new DefaultSubwayGraph().addDefaultEdges();
             OutputView.printPathManagerScreen();
             userOption = InputView.inputPathUserOption();
             runUserOption(userOption);

@@ -6,21 +6,25 @@ import org.jgrapht.graph.DefaultWeightedEdge;
 public class DefaultSubwayGraph {
 
     private static DefaultDirectedWeightedGraph subwayMap;
+    private static DefaultSections defaultSections;
 
-    public DefaultSubwayGraph() {
+    public static void DefaultSubwayGraph() {
         subwayMap = new DefaultDirectedWeightedGraph<Station, DefaultWeightedEdge>(
             DefaultWeightedEdge.class);
+        defaultSections = new DefaultSections();
         addDefaultStations();
         addDefaultEdges();
     }
 
-    private void addDefaultStations() {
+    public static void addDefaultStations() {
         for (Station station : DefaultStations.getDefaultStations()) {
             subwayMap.addVertex(station.getName());
         }
     }
 
-    private void addDefaultEdges() {
-        for (Section section : DefaultSections.getSections());
+    public static void addDefaultEdges() {
+        for (Section section : DefaultSections.getSections()) {
+            DefaultWeightedEdge e = subwayMap.addEdge(section.)
+        }
     }
 }

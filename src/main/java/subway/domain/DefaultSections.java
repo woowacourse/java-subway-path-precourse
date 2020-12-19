@@ -15,7 +15,7 @@ public class DefaultSections {
 
     private static List<Section> sections;
 
-    public static void DefaultSections() {
+    public DefaultSections() {
         sections = new ArrayList<>();
         initializeDefaultSections();
     }
