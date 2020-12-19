@@ -3,6 +3,7 @@ package subway.domain;
 import subway.domain.repositories.DijkstraGraphRepository;
 import subway.utils.Validator;
 import subway.view.InputView;
+import subway.view.OutputView;
 
 import java.util.List;
 import java.util.Scanner;
@@ -28,6 +29,7 @@ public class PathFinder {
             startAndEndStationInput(scanner);
             int totalDist = DijkstraGraphRepository.getShortestDist(startStationName, endStationName);
             List<String> path = DijkstraGraphRepository.getShortestDistPath(startStationName, endStationName);
+            OutputView.printResult(totalDist, path);
         } catch (IllegalArgumentException e) {
             System.out.println("\n[ERROR]" + e.getMessage());
         }
