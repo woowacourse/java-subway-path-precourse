@@ -12,5 +12,6 @@ public class SubwayController {
     }
 
     public void run() {
+        subwayView.printMessage(SubwayMessage.MAIN_SCREEN);
     }
 }
