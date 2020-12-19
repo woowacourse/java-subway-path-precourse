@@ -8,7 +8,7 @@ public class InputView {
 
     private static String ENTER_FUNCTION_INPUT = "## 원하는 기능을 선택하세요.";
     private static String ENTER_START_STATION = "## 출발역을 입력하세요.";
-    private static String ENTER_END_STATION = "## 출발역을 입력하세요.";
+    private static String ENTER_END_STATION = "## 도착역을 입력하세요.";
 
     public InputView(Scanner scanner) {
         this.scanner = scanner;
