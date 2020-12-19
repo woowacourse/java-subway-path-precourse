@@ -10,4 +10,10 @@ public class LineUtils {
         + "1. 최단 거리\n"
         + "2. 최소 시간\n"
         + "B. 돌아가기\n";
+    public static final String ASK_SELECTION = "\n## 원하는 기능을 선택하세요.";
+    public static final String ASK_DEPARTURE = "\n## 출발역을 입력하세요.";
+    public static final String ASK_ARRIVAL = "\n## 도착역을 입력하세요.";
+    public static final String ERROR_NOT_EXIST = "\n[ERROR] 없는 역 이름입니다.";
+    public static final String ERROR_BAD_ARRIVAL = "\n[ERROR] 출발역과 도착역이 동일합니다.";
+    public static final String ERROR_NOT_CONNECT = "\n[ERROR] 연결되어 있지 않은 경로입니다.";
 }

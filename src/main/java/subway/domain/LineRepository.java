@@ -1,18 +1,14 @@
 package subway.domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class LineRepository {
     private static final List<Line> lines = new ArrayList<>();
-
-    static {
-        lines.add(new Line("2호선"));
-        lines.add(new Line("3호선"));
-        lines.add(new Line("신분당선"));
-    }
 
     public static List<Line> lines() {
         return Collections.unmodifiableList(lines);
@@ -28,5 +24,17 @@ public class LineRepository {
 
     public static void deleteAll() {
         lines.clear();
+    }
+
+    public static List<Line> findLinesContainStation(Station station) {
+        return lines.stream().filter(line -> line.haveStation(station)).collect(Collectors.toList());
+    }
+//TODO 하나만 찾는 라인
+    public static Line findLineContainStation(Station station) {
+        return lines.stream().filter(line -> line.haveStation(station)).findAny().get();
+    }
+
+    public static boolean isNotTerminal(Station station) {
+        return lines.stream().noneMatch(line -> line.getTerminals().contains(station));
     }
 }
