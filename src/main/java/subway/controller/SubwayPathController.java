@@ -1,12 +1,20 @@
 package subway.controller;
 
-import subway.view.OutputView;
+import java.util.Scanner;
+
+import subway.menu.MainMenu;
+import subway.view.InputView;
 
 public class SubwayPathController {
-    public SubwayPathController() {
+    private InputView inputView;
+    private MainMenu mainMenu;
+
+    public SubwayPathController(Scanner scanner) {
+        inputView = new InputView(scanner);
+        mainMenu = new MainMenu(inputView);
     }
 
     public void run() {
-        OutputView.printMainDisplay();
+        mainMenu.runMainMenu();
     }
 }
