@@ -38,7 +38,7 @@ public class OutputView {
         showMenuMessage(INPUT_END_MESSAGE);
     }
 
-    public static void printResult(int distance, int time){
+    public static void printResult(int distance, int time) {
         showMenuMessage(RESULT_MESSAGE);
         showInfoMessage(DIVIDER);
         showInfoMessage(TOTAL_DISTANCE + distance + KILOMETER);
@@ -50,11 +50,11 @@ public class OutputView {
         showMenuMessage(PATH_SCREEN_MESSAGE);
     }
 
-    public static void showInfoMessage(String message){
+    public static void showInfoMessage(String message) {
         System.out.println(INFO_PREFIX + message);
     }
 
-    public static void showMenuMessage(String message){
+    public static void showMenuMessage(String message) {
         System.out.println(System.lineSeparator() + MENU_PREFIX + message);
     }
 

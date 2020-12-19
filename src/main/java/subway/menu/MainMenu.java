@@ -1,8 +1,6 @@
 package subway.menu;
 
 import java.util.Arrays;
-import subway.controller.SubwayController;
-import subway.exception.SubwayException;
 import subway.view.OutputView;
 
 public enum MainMenu {

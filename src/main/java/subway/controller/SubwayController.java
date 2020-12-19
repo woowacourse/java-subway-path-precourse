@@ -18,14 +18,13 @@ import subway.view.OutputView;
 
 public class SubwayController {
 
-    private static final String[] initialStations = {"교대역", "강남역", "역삼역", "남부터미널역", "양재역",
-        "양재시민의숲역", "매봉역"};
     public static final String INVALID_CATEGORY_EXCEPTION_MESSAGE = "잘못된 값을 입력했습니다.";
     public static final String NO_ROUTE_EXCEPTION_MESSAGE = "경로가 존재하지 않습니다.";
-
-    private final InputView inputView;
-    private static DijkstraManyToManyShortestPaths<String, org.jgrapht.graph.DefaultWeightedEdge> distanceGraphPath;
+    private static final String[] initialStations = {"교대역", "강남역", "역삼역", "남부터미널역", "양재역",
+        "양재시민의숲역", "매봉역"};
     public static DijkstraManyToManyShortestPaths<String, org.jgrapht.graph.DefaultWeightedEdge> timeGraphPath;
+    private static DijkstraManyToManyShortestPaths<String, org.jgrapht.graph.DefaultWeightedEdge> distanceGraphPath;
+    private final InputView inputView;
 
     public SubwayController(InputView inputView) {
         this.inputView = inputView;
@@ -33,6 +32,18 @@ public class SubwayController {
         distanceGraphPath = new DijkstraManyToManyShortestPaths<>(
             sectionRepository.getDistanceGraph());
         timeGraphPath = new DijkstraManyToManyShortestPaths<>(sectionRepository.getTimeGraph());
+    }
+
+    private static void exitMain() {
+        System.exit(0);
+    }
+
+    private static String findPathCategory(String inputCategory) {
+        return Arrays.stream(PathMenu.values())
+            .filter(value -> value.category.equals(inputCategory.toUpperCase()))
+            .findFirst()
+            .orElseThrow(() -> new SubwayException(INVALID_CATEGORY_EXCEPTION_MESSAGE))
+            .category;
     }
 
     public void run() {
@@ -75,10 +86,6 @@ public class SubwayController {
             .category;
     }
 
-    private static void exitMain() {
-        System.exit(0);
-    }
-
     private void printPathCategory() {
         PathMenu.startManage();
         OutputView.chooseCategory();
@@ -92,11 +99,11 @@ public class SubwayController {
 
     public void executePathCategory(String inputCategory) {
         String category = findPathCategory(inputCategory);
-        try{
+        try {
             executePathCategoryImmediately(category);
             MainMenu.startManage();
             printMainCategory();
-        } catch (SubwayException exception){
+        } catch (SubwayException exception) {
             OutputView.showErrorMessage(exception);
             printPathCategory();
         }
@@ -112,27 +119,15 @@ public class SubwayController {
         }
     }
 
-    private static String findPathCategory(String inputCategory) {
-        return Arrays.stream(PathMenu.values())
-            .filter(value -> value.category.equals(inputCategory.toUpperCase()))
-            .findFirst()
-            .orElseThrow(() -> new SubwayException(INVALID_CATEGORY_EXCEPTION_MESSAGE))
-            .category;
-    }
-
     public void findMinimumDistance() {
-        String startStation = inputStartStation();
-        String endStation = inputEndStation();
-        ValidateUtils.isSame(startStation, endStation);
-        try {
-            List<String> shortestPath = findPath(startStation, endStation, distanceGraphPath);
-            printRoutes(shortestPath);
-        } catch (NullPointerException exception) {
-            throw new SubwayException(NO_ROUTE_EXCEPTION_MESSAGE);
-        }
+        findMinimum(distanceGraphPath);
     }
 
     public void findMinimumTime() {
+        findMinimum(timeGraphPath);
+    }
+
+    private void findMinimum(DijkstraManyToManyShortestPaths<String, DefaultWeightedEdge> timeGraphPath) {
         String startStation = inputStartStation();
         String endStation = inputEndStation();
         ValidateUtils.isSame(startStation, endStation);
@@ -185,8 +180,8 @@ public class SubwayController {
         return timeSum;
     }
 
-    private ArrayList<String> listToArray(List<String> list) {
-        ArrayList<String> array = new ArrayList(list);
+    private ArrayList listToArray(List<String> list) {
+        ArrayList array = new ArrayList(list);
         return array;
     }
 
