@@ -9,6 +9,7 @@ public class Line {
 
     public static Line from(String name) {
         Line line = new Line(name);
+        LineRepository.addLine(line);
         return line;
     }
 
