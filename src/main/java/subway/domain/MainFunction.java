@@ -1,11 +1,13 @@
 package subway.domain;
 
 import java.util.Arrays;
+import subway.view.OutputView;
 
 public enum MainFunction {
     FIND_ROUTE("1") {
         @Override
         public void operate() {
+            OutputView.printFindRouteMenu();
         }
     },
     QUIT("Q") {
