@@ -22,6 +22,5 @@ public class InitialData {
         );
 
         Line line1 = Line.makeList("2호선", station1);
-        line1.
     }
 }

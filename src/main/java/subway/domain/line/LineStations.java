@@ -29,4 +29,10 @@ public class LineStations {
         }
         lineStations.add(newLineStation);
     }
+
+    public void addRouteInfo(String info) {
+        LineStation newRouteInfo = LineStation.ofRouteInfo(info);
+
+        lineStations.add(newRouteInfo);
+    }
 }
