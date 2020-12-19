@@ -261,7 +261,7 @@ public void getDijkstraShortestPath() {
   - (), km, 분 포함여부
   - line에 저장하는 기능
 - **Line 설정 및 저장 초기 값 저장**
-  - line이름 중복 확인  `[ERROR] '%s'은 이미 존재합니다.`
+  - line이름 중복 확인  `[ERROR] '%s'은 이미 존재합니다.` (o)
   - line + station + routeinfo(거리,시간) 저장
 - **경로기준**
   - 최단거리

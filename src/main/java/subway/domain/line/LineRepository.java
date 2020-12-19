@@ -1,5 +1,7 @@
 package subway.domain.line;
 
+import subway.exception.line.DuplicateLineNameException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -13,6 +15,14 @@ public class LineRepository {
     }
 
     public static void addLine(Line line) {
+        lines.add(line);
+    }
+
+    public static void save(Line line) {
+        if (lines.contains(line)) {
+            throw new DuplicateLineNameException(line.getName());
+        }
+
         lines.add(line);
     }
 
