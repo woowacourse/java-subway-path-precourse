@@ -3,6 +3,9 @@ package views;
 import subway.Category.Category;
 
 public class OutputView {
+    private static final String NEW_LINE = "\n";
+    private static final String PRINT_INFO = "[INFO] ";
+    private static final String SEPARATOR = "[INFO] --- \n";
 
     public static void mainView() {
         System.out.println(Category.MAIN.getName());

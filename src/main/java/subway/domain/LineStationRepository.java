@@ -31,7 +31,7 @@ public class LineStationRepository {
     }
 
     @Override
-    public String toString() {
+    public String toString() { // 노선도에 담긴 역, 노선, 연결된 구간 출력
         StringBuilder sb = new StringBuilder();
         for (LineStation lineStation : subwayMap) {
             sb.append(PRINT_INFO + lineStation.getLine().getName() + NEW_LINE);

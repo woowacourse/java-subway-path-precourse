@@ -19,6 +19,7 @@ public class ShortestDistanceService {
     private void shortestRoute(List<LineStation> routeList, Station startStation, Station arriveStation) {
         int totalDistance = Integer.MAX_VALUE;
         int lineDistance;
+
         String findLine = "";
         for (LineStation lineStation : routeList) {
             List<Section> sections = lineStation.getSectionInfos();
@@ -32,6 +33,6 @@ public class ShortestDistanceService {
             }
         }
 
-        System.out.println("호선:" + findLine + "\n" + "총 길이: " +  totalDistance);
+        System.out.println("\n호선:" + findLine + "\n" + "총 길이: " +  totalDistance); // 최단길이 출력로그
     }
 }
