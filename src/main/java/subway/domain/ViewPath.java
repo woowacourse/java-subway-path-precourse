@@ -75,6 +75,7 @@ public class ViewPath {
                 System.out.println(INFO + station);
             }
         }
+        System.out.println();
     }
 
     public void printTimeResult(List<String> stationList, String function) {
@@ -85,6 +86,7 @@ public class ViewPath {
                 System.out.println(INFO + station);
             }
         }
+        System.out.println();
     }
 
     public void printSameStationError(String startStation, String endStation) {
