@@ -17,4 +17,17 @@ public class InputUtils {
             return inputFunctionSelect(scanner, bound, quit);
         }
     }
+
+    public static String inputStationName(Scanner scanner){
+        try{
+            String stationName = scanner.nextLine();
+            if(!ValidateUtils.isValidStationName(stationName))
+                throw new IllegalArgumentException();
+            OutputUtils.newline();
+            return stationName;
+        }catch(IllegalArgumentException e){
+            OutputUtils.invalidStationNameError();
+            return inputStationName(scanner);
+        }
+    }
 }

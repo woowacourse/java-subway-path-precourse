@@ -25,8 +25,8 @@ public class Application {
     }
 
     public static void initializeProgram(){
-        LineService.initialize();
         StationService.initialize();
+        LineService.initialize();
         RouteService.initialize();
     }
 
@@ -37,26 +37,41 @@ public class Application {
             return false;
         }
         if(MainMenu.ROUTE_INQUIRY.matchMenu(mainMenu)){
-            routeInquiryMenu(scanner);
+            while(routeInquiryMenu(scanner));
             return true;
         }
         return false;
     }
     
-    public static void routeInquiryMenu(Scanner scanner){
+    public static boolean routeInquiryMenu(Scanner scanner){
         OutputUtils.routeInquiryMenu();
         char inquiryMenu = InputUtils.inputFunctionSelect(scanner, INQUIRY_MENU_BOUND,
             RouteInquiryMenu.BACK.getMenu());
         if(RouteInquiryMenu.BACK.matchMenu(inquiryMenu)){
-            return;
+            return false;
         }
         if(RouteInquiryMenu.SHORTEST_DISTANCE.matchMenu(inquiryMenu)){
-            //최단 경로 조회
-            return;
+            return shortestPathMenu(scanner);
         }
         if(RouteInquiryMenu.MINIMUM_TIME.matchMenu(inquiryMenu)){
             //최소 시간 조회
-            return;
+            return false;
         }
+        return false;
+    }
+
+    public static boolean shortestPathMenu(Scanner scanner){
+        OutputUtils.inputStartStationGuide();
+        String startStation = InputUtils.inputStationName(scanner);
+        OutputUtils.inputEndStationGuide();
+        String endStation = InputUtils.inputStationName(scanner);
+
+        if(startStation.equals(endStation)) {
+            OutputUtils.sameStationNameError();
+            return true;
+        }
+
+        //최단 경로 계산
+        return false;
     }
 }

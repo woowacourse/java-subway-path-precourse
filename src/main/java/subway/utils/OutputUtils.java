@@ -23,8 +23,20 @@ public class OutputUtils {
         System.out.println("## 원하는 기능을 선택하세요.");
     }
 
+    public static void inputStartStationGuide(){ System.out.println("## 출발역을 입력하세요."); }
+
+    public static void inputEndStationGuide(){ System.out.println("## 도착역을 입력하세요."); }
+
     public static void invalidMenuError() {
         System.out.println(NEW_LINE+ERROR+"올바른 메뉴 입력이 아닙니다."+NEW_LINE);
+    }
+
+    public static void invalidStationNameError(){
+        System.out.println(NEW_LINE+ERROR+"존재하는 역 이름을 입력해주세요."+NEW_LINE);
+    }
+
+    public static void sameStationNameError(){
+        System.out.println(NEW_LINE+ERROR+"출발역과 도착역이 동일합니다."+NEW_LINE);
     }
 
     public static void newline() { System.out.printf(NEW_LINE); }
