@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class StationRepository {
+    public static int FIRST_STATION_INDEX = 0;
+    public static int LAST_STATION_INDEX = 1;
     private static final List<Station> stations = new ArrayList<>();
 
     public static List<Station> stations() {
