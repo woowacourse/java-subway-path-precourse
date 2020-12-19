@@ -14,11 +14,21 @@ public class RouteFinder {
         Station start = StationRepository.getStationByName(startStation);
         Station end = StationRepository.getStationByName(endStation);
         Line line = LineRepository.getLineByStation(start);
-        List<Station> route = new ArrayList<>();
         int startPosition = line.stations().indexOf(start);
         int endPosition = line.stations().indexOf(end);
-        for (int i = startPosition; i < endPosition + 1; i++) {
-            route.add(line.stations().get(i));
+        if (startPosition > endPosition) {
+            return addStartToEnd(line, endPosition, startPosition);
+        }
+        return addStartToEnd(line, startPosition, endPosition);
+    }
+
+    // 시작 역 부터 끝 역까지 포함하는 역을 리스트에 담는 메소드
+    public static List<Station> addStartToEnd(Line line, int startPosition, int endPosition) {
+        List<Station> route = new ArrayList<>();
+        if (startPosition < endPosition) {
+            for (int i = startPosition; i < endPosition + 1; i++) {
+                route.add(line.stations().get(i));
+            }
         }
         return route;
     }
