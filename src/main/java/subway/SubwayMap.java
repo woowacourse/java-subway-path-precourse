@@ -8,21 +8,27 @@ import subway.domain.LineRepository;
 import subway.domain.Station;
 import subway.domain.StationRepository;
 import subway.router.MainRouter;
-
+import subway.view.InputView;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class SubwayMap {
 
-    private SubwayMap() {}
+    private SubwayMap() { }
 
-    public void run() {
-        init();
+    public void run(Scanner scanner) {
+        init(scanner);
         MainRouter.run();
     }
 
-    private void init() {
+    private void init(Scanner scanner) {
+        initInputView(scanner);
         initStations();
         initLines();
+    }
+
+    private void initInputView(Scanner scanner) {
+        InputView.init(scanner);
     }
 
     private void initStations() {

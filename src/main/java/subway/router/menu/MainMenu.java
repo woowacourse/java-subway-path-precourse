@@ -1,5 +1,6 @@
 package subway.router.menu;
 
+import subway.exception.MenuNotSupportedException;
 import subway.router.PathRouter;
 import subway.view.OutputView;
 import java.util.Arrays;
@@ -24,6 +25,21 @@ public enum MainMenu {
         OutputView.print(name);
         Arrays.stream(MainMenu.values())
                 .forEach(mainMenu -> OutputView.print(mainMenu.getMenu()));
+    }
+
+    public static MainMenu getMainMenuType(String selectMenu) {
+        return Arrays.stream(MainMenu.values())
+                .filter(mainMenu -> mainMenu.number.equals(selectMenu))
+                .findFirst()
+                .orElseThrow(MenuNotSupportedException::new);
+    }
+
+    public void execute() {
+        nextAction.run();
+    }
+
+    public static boolean isRestart() {
+        return restart;
     }
 
     private static void exit() {
