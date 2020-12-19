@@ -35,6 +35,7 @@ public class RoutePage {
     private boolean isSuccessShortestDistance(String button) {
         if (button.equals(SHORTEST_DISTANCE)) {
             String startStation = InputView.inputStartStation();
+            String finishStation = InputView.inputFinishStation();
         }
         return true;
     }
@@ -42,6 +43,7 @@ public class RoutePage {
     private boolean isSuccessMinimumTime(String button) {
         if (button.equals(MINIMUM_TIME)) {
             String startStation = InputView.inputStartStation();
+            String finishStation = InputView.inputFinishStation();
         }
         return true;
     }
