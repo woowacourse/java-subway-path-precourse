@@ -12,17 +12,13 @@ public class LineRepository {
         return Collections.unmodifiableList(lines);
     }
 
-//    public static void addLine(Line line) {
-//        lines.add(line);
-//    }
-
-    public static void addLine(Line line, List<String> names, List<Integer> distances, List<Integer> times) {
+    public static void addLine(Line line, List<String> names) {
         for (int i = 1; i <= names.size(); i++)
             line.addStation(i, names.get(i-1));
-        for (int i = 0; i < distances.size(); i++) {
-            line.addDistances(i, distances.get(i));
-            line.addTimes(i, times.get(i));
-        }
+//        for (int i = 0; i < distances.size(); i++) {
+//            line.addDistances(i, distances.get(i));
+//            line.addTimes(i, times.get(i));
+//        }
         lines.add(line);
     }
 

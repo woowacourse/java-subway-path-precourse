@@ -4,15 +4,15 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Constants {
-    public static final List<String> line2Stations = Arrays.asList("교대역", "강남역", "역삼역");
-    public static final List<Integer> line2Distances = Arrays.asList(2, 2);
-    public static final List<Integer> line2Times = Arrays.asList(3, 3);
-    public static final List<String> line3Stations = Arrays.asList("교대역", "남부터미널역", "양재역", "매봉역");
-    public static final List<Integer> line3Distances = Arrays.asList(3, 6, 1);
-    public static final List<Integer> line3Times = Arrays.asList(2, 5, 1);
-    public static final List<String> lineSinbundangStations = Arrays.asList("강남역", "양재역", "양재시민의숲역");
-    public static final List<Integer> lineSinbundangDistances = Arrays.asList(2, 10);
-    public static final List<Integer> lineSinbundangTimes = Arrays.asList(8, 3);
+    public static final List<String> STATIONS = Arrays.asList("교대역", "강남역", "역삼역", "남부터미널역", "양재역", "양재시민의숲역", "매봉역");
+    public static final String LINE_2 = "2호선";
+    public static final List<String> LINE_2_STATIONS = Arrays.asList("교대역", "강남역", "역삼역");
+    public static final String LINE_3 = "3호선";
+    public static final List<String> LINE_3_STATIONS = Arrays.asList("교대역", "남부터미널역", "양재역", "매봉역");
+    public static final String LINE_SINBUNDANG = "신분당선";
+    public static final List<String> LINE_SINBUNDANG_STATIONS = Arrays.asList("강남역", "양재역", "양재시민의숲역");
+    public static final String PATH_DISTANCE = "DISTANCE";
+    public static final String PATH_TIME = "TIME";
 
     public static final int FUNCTION_INPUT_ERROR = 0;
     public static final int NO_SUCH_NAME_ERROR = 1;
