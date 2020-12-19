@@ -18,6 +18,7 @@ public class StationValidator {
             return true;
         }
         System.out.println(ERROR + NONEEXIST_STATION);
+        System.out.println();
         return false;
     }
 
@@ -26,12 +27,14 @@ public class StationValidator {
             return true;
         }
         System.out.println(ERROR + AVAILABLE_STATION_MESSAGE);
+        System.out.println();
         return false;
     }
 
     public static boolean duplicateStation(String startStation, String arrivalStation) {
         if (startStation.equals(arrivalStation)) {
             System.out.println(ERROR + DUPLICATE_MESSAGE);
+            System.out.println();
             return true;
         }
         return false;
