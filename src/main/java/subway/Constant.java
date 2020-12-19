@@ -11,4 +11,8 @@ public class Constant {
 
     public static final String VIEW_ASKING_FUNCTION = "원하는 기능을 선택하세요.";
 
+    public static final String EXCEPTION_HEADER = "[ERROR]";
+    public static final String EXCEPTION_FORMAT = "\n" + EXCEPTION_HEADER + " %s\n";
+    public static final String ILLEGAL_ARGUMENT_EXCEPTION_INVALID_ORDER = "선택할 수 없는 기능입니다.";
+
 }

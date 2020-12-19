@@ -1,20 +1,28 @@
 package subway.view;
 
+import subway.utils.Validator;
+
+import java.util.Scanner;
+
 public class InputView {
 
-    public static void getMainMenu(){
-        
-    }
+    public static String getMainMenu(Scanner scanner) {
 
-    public static void getPathRuleMenu(){
-
-    }
-
-    public static void getStartingStation(){
+        String inputOrder = scanner.nextLine();
+        Validator.checkMainInputOrder(inputOrder);
+        return inputOrder;
 
     }
 
-    public static void getEndingStation(){
+    public static void getPathRuleMenu() {
+
+    }
+
+    public static void getStartingStation() {
+
+    }
+
+    public static void getEndingStation() {
 
     }
 
