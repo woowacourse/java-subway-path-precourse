@@ -7,6 +7,8 @@ import subway.domain.Line;
 import subway.domain.LineRepository;
 import subway.domain.Station;
 import subway.domain.StationRepository;
+import subway.router.MainRouter;
+
 import java.util.Arrays;
 
 public class SubwayMap {
@@ -15,6 +17,7 @@ public class SubwayMap {
 
     public void run() {
         init();
+        MainRouter.run();
     }
 
     private void init() {
@@ -35,7 +38,7 @@ public class SubwayMap {
                                         SectionInitialization.getSectionInitialization(line).sections()))
                 );
     }
-    
+
     public static SubwayMap getInstance() {
         return SubwayMap.LazyHolder.INSTANCE;
     }
