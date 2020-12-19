@@ -1,5 +1,7 @@
 package subway.view;
 
+import java.util.List;
+
 public class OutputView {
     OutputMessages outputMessages;
 
@@ -33,5 +35,27 @@ public class OutputView {
 
     public void getUserArrive() {
         System.out.println(outputMessages.INPUT_ARRIVE);
+    }
+
+    public void printResult() {
+        System.out.println(outputMessages.RESULT);
+    }
+
+    public void printDivide() {
+        System.out.println(outputMessages.INFO + outputMessages.DIVIDE);
+    }
+
+    public void printShortestPath(List<String> shortestPath) {
+        for (String path : shortestPath) {
+            System.out.println(outputMessages.INFO + path);
+        }
+    }
+
+    public void printTotalDistance(int distance) {
+        System.out.println(outputMessages.INFO + outputMessages.RESULT_DISTANCE + distance + outputMessages.RESULT_KM);
+    }
+
+    public void printTotalTime(int time) {
+        System.out.println(outputMessages.INFO + outputMessages.RESULT_TIME + time + outputMessages.RESULT_MIN);
     }
 }
