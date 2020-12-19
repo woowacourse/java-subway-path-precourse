@@ -4,13 +4,23 @@ import java.util.Arrays;
 import java.util.function.Function;
 
 import subway.view.InputView;
+import subway.view.OutputView;
 
 public enum PathSearchScreen {
     SEARCH_BY_SHORTEST_DISTANCE("1", inputView -> {
-        System.out.println("abdc");
+        String departureStationName = inputView
+            .getStationName(OutputView.ORDER_TO_INPUT_DEPARTURE_STATION);
+        String arrivalStationName = inputView
+            .getStationName(OutputView.ORDER_TO_INPUT_ARRIVAL_STATION);
         return true;
     }),
-    SEARCH_BY_MINIMUM_TIME("2", inputView ->  true),
+    SEARCH_BY_MINIMUM_TIME("2", inputView -> {
+        String departureStationName = inputView
+            .getStationName(OutputView.ORDER_TO_INPUT_DEPARTURE_STATION);
+        String arrivalStationName = inputView
+            .getStationName(OutputView.ORDER_TO_INPUT_ARRIVAL_STATION);
+        return true;
+    }),
     BACK("B", inputView -> false);
 
     private String command;

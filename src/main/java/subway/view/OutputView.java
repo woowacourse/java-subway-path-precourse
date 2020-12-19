@@ -5,6 +5,8 @@ public class OutputView {
         + "\n## 원하는 기능을 선택하세요.";
     public static final String PATH_SEARCH_SCREEN = "## 경로 기준\n1. 최단 거리\n2. 최소 시간 \n"
         + "B. 돌아가기\n\n## 원하는 기능을 선택하세요.";
+    public static final String ORDER_TO_INPUT_DEPARTURE_STATION = "## 출발역을 입력하세요.";
+    public static final String ORDER_TO_INPUT_ARRIVAL_STATION = "## 출발역을 입력하세요.";
 
     public static void print(String message) {
         System.out.println(message);
