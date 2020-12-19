@@ -8,6 +8,7 @@ import subway.view.OutputView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class LineRepository {
     private static final String[] LINES = {"2호선", "3호선", "신분당선"};
@@ -81,10 +82,18 @@ public class LineRepository {
         lines.add(line);
     }
 
+    public static boolean deleteLineByName(String name) {
+        return lines.removeIf(line -> Objects.equals(line.getName(), name));
+    }
+
+    public static void deleteAll() {
+        lines.clear();
+    }
+
     public static boolean findShortestTime(String startStation, String endStation) {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(timeWeight);
         List<String> shortestPath = dijkstraShortestPath.getPath(startStation, endStation).getVertexList();
-        if (shortestPath.size() == 0) {
+        if (shortestPath.size() == ROUTE_NOT_EXIST) {
             System.out.println(NOT_EXIST_ROUTE);
             return false;
         }

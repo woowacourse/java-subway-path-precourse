@@ -12,7 +12,7 @@ public class StationRepository {
 
     static{
         for(String stationName : STATIONS){
-            stations.add(new Station(stationName));
+            addStation(new Station(stationName));
         }
     }
 
