@@ -1,12 +1,14 @@
 package subway.domain;
 
 import java.util.Arrays;
+import java.util.HashSet;
 
 public class DataInitializer {
 
     public static void initialize() {
         initializeStations();
         initializeLines();
+        initializeSections();
     }
 
     private static void initializeStations() {
@@ -36,5 +38,62 @@ public class DataInitializer {
                 StationRepository.searchByName("양재역"),
                 StationRepository.searchByName("양재시민의숲역")
         )));
+    }
+
+    public static void initializeSections() {
+        initializeLine2Sections();
+        initializeLine3Sections();
+        initilizeShinbundangLine();
+    }
+
+    private static void initializeLine2Sections() {
+        Section section;
+        section = new Section(new HashSet<Station>(Arrays.asList(
+                StationRepository.searchByName("교대역"),
+                StationRepository.searchByName("강남역")
+        )), 3, 2);
+        SectionRepository.addSection(section);
+
+        section = new Section(new HashSet<Station>(Arrays.asList(
+                StationRepository.searchByName("강남역"),
+                StationRepository.searchByName("역삼역")
+        )), 3, 2);
+        SectionRepository.addSection(section);
+    }
+
+    private static void initializeLine3Sections() {
+        Section section;
+        section = new Section(new HashSet<Station>(Arrays.asList(
+                StationRepository.searchByName("교대역"),
+                StationRepository.searchByName("남부터미널역")
+        )), 3, 2);
+        SectionRepository.addSection(section);
+
+        section = new Section(new HashSet<Station>(Arrays.asList(
+                StationRepository.searchByName("남부터미널역"),
+                StationRepository.searchByName("양재역")
+        )), 6, 5);
+        SectionRepository.addSection(section);
+
+        section = new Section(new HashSet<Station>(Arrays.asList(
+                StationRepository.searchByName("양재역"),
+                StationRepository.searchByName("매봉역")
+        )), 1, 1);
+        SectionRepository.addSection(section);
+    }
+
+    private static void initilizeShinbundangLine() {
+        Section section;
+        section = new Section(new HashSet<Station>(Arrays.asList(
+                StationRepository.searchByName("강남역"),
+                StationRepository.searchByName("양재역")
+        )), 3, 2);
+        SectionRepository.addSection(section);
+
+        section = new Section(new HashSet<Station>(Arrays.asList(
+                StationRepository.searchByName("양재역"),
+                StationRepository.searchByName("양재시민의숲역")
+        )), 3, 2);
+        SectionRepository.addSection(section);
     }
 }
