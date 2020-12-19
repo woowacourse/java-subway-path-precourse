@@ -15,18 +15,13 @@ public class LineRepository {
     private static final String[][] LINE_STATIONS = {{"교대역", "강남역", "역삼역"}, {"교대역", "남부터미널역", "양재역", "매봉역"},
             {"강남역", "양재역", "양재시민의숲역"}};
     private static final String NOT_EXIST_ROUTE = "[ERROR] 경로가 존재하지 않습니다.";
+    private static final int ROUTE_NOT_EXIST = 0;
     private static int INDEX = 0;
 
     private static final WeightedMultigraph<String, DefaultWeightedEdge> timeWeight
             = new WeightedMultigraph(DefaultWeightedEdge.class);
     private static final WeightedMultigraph<String, DefaultWeightedEdge> lengthWeight
             = new WeightedMultigraph(DefaultWeightedEdge.class);
-    private static final int ROUTE_NOT_EXIST = 0;
-
-
-    public static WeightedMultigraph<String, DefaultWeightedEdge> getTimeWeight() {
-        return timeWeight;
-    }
 
     private static final List<Line> lines = new ArrayList<>();
 
@@ -69,7 +64,6 @@ public class LineRepository {
         }
     }
 
-
     public static List<Line> lines() {
         return Collections.unmodifiableList(lines);
     }
@@ -84,6 +78,10 @@ public class LineRepository {
 
     public static void deleteAll() {
         lines.clear();
+    }
+
+    public static WeightedMultigraph<String, DefaultWeightedEdge> getTimeWeight() {
+        return timeWeight;
     }
 
     public static boolean findShortestTime(String startStation, String endStation) {
