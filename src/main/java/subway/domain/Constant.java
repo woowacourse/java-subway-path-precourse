@@ -34,6 +34,8 @@ public class Constant {
     public static final String ROUTE_SELECT_MENU_TITLE = "경로 기준";
 
     static final String IS_IN_MENU = "존재하지 않는 항목입니다.";
+    static final String STATION_NOT_EXIST = "존재하지 않는 역입니다.";
+    static final String STATION_NOT_EXIST_IN_LINE = "해당 노선에 존재하지 않는 역입니다.";
 
     static final String[] defaultStations = {"교대역", "강남역", "역삼역", "남부터미널역", "양재역", "양재시민의숲역", "매봉역"};
     static final String[] defaultLines = {"2호선", "3호선", "신분당선"};
