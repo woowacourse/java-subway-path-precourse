@@ -26,7 +26,7 @@ public class Station {
     public NearbyStation findNearbyStationByName(String name) {
         Station station = StationRepository.findStationByName(name);
         return nearbyStations.stream()
-                .filter(nearbyStation -> nearbyStation.equals(station))
+                .filter(nearbyStation -> nearbyStation.getStation().equals(station))
                 .findFirst().orElseThrow(() -> new IllegalArgumentException(NEARBY_STATION_NOT_FOUND));
     }
 
