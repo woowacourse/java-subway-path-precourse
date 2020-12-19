@@ -26,7 +26,11 @@ public class Path {
         return dest;
     }
 
-    public Line getLine() {
-        return line;
+    public int getTime() {
+        return time;
+    }
+
+    public int getDistance() {
+        return distance;
     }
 }
