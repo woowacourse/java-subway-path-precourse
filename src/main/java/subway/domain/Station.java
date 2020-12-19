@@ -12,4 +12,12 @@ public class Station {
     }
 
     // 추가 기능 구현
+    public boolean isSameName(String comparedName) {
+        return name.equals(comparedName);
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

@@ -23,4 +23,13 @@ public class StationRepository {
     public static void deleteAll() {
         stations.clear();
     }
+
+    public static Station findStationByName(String comparedName) {
+        for (Station station : stations()) {
+            if (station.isSameName(comparedName)) {
+                return station;
+            }
+        }
+        throw new IllegalArgumentException("존재하지 않는 역입니다.");
+    }
 }
