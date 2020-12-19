@@ -4,6 +4,7 @@ import org.jgrapht.GraphPath;
 import subway.common.SelectOption;
 import subway.line.Line;
 import subway.line.LineService;
+import subway.path.validation.ConnectStation;
 import subway.station.Station;
 import subway.station.StationService;
 import subway.station.validation.NotRegisterStation;
@@ -35,7 +36,6 @@ public class PathController {
             String method = SelectOption.askOptionChoice(inputView, optionList);
             Station startStation = getStartStation();
             Station endStation = getEndStation(startStation);
-
             running = searchPath(method, startStation, endStation);
         }
     }
@@ -90,6 +90,7 @@ public class PathController {
         List<Line> lines = lineService.findAllLine();
 
         GraphPath path = pathService.getDijkstraShortestPath(stations, lines, startStation, endStation, SearchMethod.DISTANCE.getValue());
+        ConnectStation.validate(path);
 
         List<Station> shortestPath = pathService.getMinimumPath(path);
         int shortestDistance = Integer.parseInt(String.valueOf(Math.round(pathService.getMinimumWeight(path))));
@@ -103,6 +104,7 @@ public class PathController {
         List<Line> lines = lineService.findAllLine();
 
         GraphPath path = pathService.getDijkstraShortestPath(stations, lines, startStation, endStation, SearchMethod.TIME.getValue());
+        ConnectStation.validate(path);
 
         List<Station> shortestPath = pathService.getMinimumPath(path);
         int shortestDistance = pathService.getPathDistance(shortestPath);
