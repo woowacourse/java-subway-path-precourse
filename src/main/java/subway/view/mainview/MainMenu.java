@@ -2,10 +2,7 @@ package subway.view.mainview;
 
 import subway.controller.OutputController;
 import subway.domain.Menu;
-import subway.view.Return;
-
 import java.util.LinkedHashMap;
-import java.util.Scanner;
 
 public class MainMenu {
 	private static MainMenu mainMenu;
@@ -17,15 +14,11 @@ public class MainMenu {
 	
 	static void setMenu() {
 		mainMenus.put(FindPath.getInstance().getMenuKey(), FindPath.getInstance());
-		mainMenus.put(Return.getInstance().getMenuKey(), Return.getInstance());
+		mainMenus.put(Exit.getInstance().getMenuKey(), Exit.getInstance());
 	}
 	
 	public void printMenu() {
-		OutputController.printMainMenu(mainMenus, "## 메인 화면"); //TODO enum으로 관리하기
-	}
-	
-	public String getUserInput(Scanner scanner) {
-		return null;
+		OutputController.printMainMenu(mainMenus, "\n## 메인 화면"); //TODO enum으로 관리하기
 	}
 	
 	public static MainMenu getInstance() {
