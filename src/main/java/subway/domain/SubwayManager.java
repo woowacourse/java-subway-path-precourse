@@ -11,6 +11,7 @@ public class SubwayManager {
 
         while (sceneState != SceneState.QUIT) {
             sceneState = viewMainScene(scanner, sceneState);
+            sceneState = viewPathScene(scanner, sceneState);
         }
     }
 
@@ -19,6 +20,16 @@ public class SubwayManager {
             OutputView.printMainScene();
 
             return InputView.inputMainSceneChoice(scanner);
+        }
+
+        return sceneState;
+    }
+
+    private SceneState viewPathScene(Scanner scanner, SceneState sceneState) {
+        if (sceneState == SceneState.PATH_SCENE) {
+            OutputView.printPathScene();
+
+            return InputView.inputPathSceneChoice(scanner);
         }
 
         return sceneState;
