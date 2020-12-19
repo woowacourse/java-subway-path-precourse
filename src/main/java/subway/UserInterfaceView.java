@@ -32,9 +32,13 @@ public class UserInterfaceView {
         if (userInput == Q) {
             return true;
         }
-        // TODO - 다음 실행할 함수 호출하기
+        mainToNextFunction(userInput);
         return false;
     }
 
-
+    private void mainToNextFunction(String userInput) {
+        if (ONE.equals(userInput)) {
+            //routeSearch();
+        }
+    }
 }
