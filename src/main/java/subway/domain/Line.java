@@ -6,14 +6,31 @@ import java.util.List;
 
 public class Line {
     private String name;
-    private List<Station> stationInLine = new ArrayList<>();
+    private final List<Station> stationInLine = new ArrayList<>();
+    private final List<Integer> distanceInterval = new ArrayList<>();
+    private final List<Integer> timeInterval = new ArrayList<>();
 
-    public Line(String name) {
+    public Line(String name, String[] stations, int[] distance, int[] time) {
         this.name = name;
+        for (String station : stations) {
+            addStationInLine(StationRepository.findStationByName(station));
+        }
+        for (int i=0; i<distance.length; i++) {
+            addDistanceInterval(distance[i]);
+            addTimeInterval(time[i]);
+        }
     }
 
-    public void addStationInLine(Station station) {
+    private void addStationInLine(Station station) {
         stationInLine.add(station);
+    }
+
+    private void addDistanceInterval(int distance) {
+        distanceInterval.add(distance);
+    }
+
+    private void addTimeInterval(int time) {
+        timeInterval.add(time);
     }
 
     public String getName() {

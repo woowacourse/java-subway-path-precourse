@@ -16,6 +16,13 @@ public class StationRepository {
         stations.add(station);
     }
 
+    public static Station findStationByName(String name) {
+        return stations.stream()
+                .filter(station -> station.getName().equals(name))
+                .findFirst()
+                .get();
+    }
+
     public static boolean deleteStation(String name) {
         return stations.removeIf(station -> Objects.equals(station.getName(), name));
     }
