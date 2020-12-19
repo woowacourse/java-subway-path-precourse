@@ -41,11 +41,15 @@ public class SubwayGraph {
     }
 
     public List<String> getShortestPath(Station startStation, Station endStation) {
+        try {
+            DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(subwayGraph);
+            List<String> shortestPath = dijkstraShortestPath.getPath(startStation.getName(), endStation.getName()).getVertexList();
 
-        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(subwayGraph);
-        List<String> shortestPath = dijkstraShortestPath.getPath(startStation.getName(), endStation.getName()).getVertexList();
+            return shortestPath;
+        } catch (Exception e) {
+            throw new IllegalArgumentException("[ERROR] 두 역이 연결되어있지 않습니다.");
+        }
 
-        return shortestPath;
     }
 
 }

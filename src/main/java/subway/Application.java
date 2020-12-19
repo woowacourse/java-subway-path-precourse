@@ -12,8 +12,6 @@ public class Application {
 
         LineRepository.lineInitialization();
 
-
-
         selectUtils(scanner);
     }
 
