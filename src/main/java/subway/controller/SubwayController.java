@@ -1,13 +1,12 @@
-package subway;
+package subway.controller;
 
 import subway.domain.*;
 import subway.exception.GraphNotExistException;
 
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Subway {
+public class SubwayController {
 
     private static final List<String> INIT_LINES = List.of("2호선:교대역-강남역-역삼역", "3호선:교대역-남부터미널역-양재역-매봉역", "신분당선:강남역-양재역-양재시민의숲역");
     private static final List<String> INIT_WEIGHTS =
@@ -18,7 +17,7 @@ public class Subway {
     private static final String DISTANCE_GRAPH = "distanceGraph";
 
 
-    public Subway() {
+    public SubwayController() {
         for (String line : INIT_LINES) {
             String[] split = line.split(":");
 
