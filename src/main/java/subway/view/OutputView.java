@@ -1,9 +1,11 @@
 package subway.view;
 
 import subway.MainOption;
+import subway.path.SearchMethod;
 
 public class OutputView {
     private static final String MAIN_TITLE = "## 메인 화면";
+    private static final String PATH_TITLE = "## 경로 기준";
     private static final String DOT = ". ";
     private static final String SELECT_OPTION = "## 원하는 기능을 선택하세요.";
 
@@ -18,5 +20,14 @@ public class OutputView {
 
     public static void askMainOptionChoice() {
         System.out.println(SELECT_OPTION);
+    }
+
+    public static void showSearchPathMethod() {
+        System.out.println(PATH_TITLE);
+        for (SearchMethod method : SearchMethod.values()) {
+            System.out.print(method.getValue() + DOT);
+            System.out.println(method.getDescription());
+        }
+        System.out.println();
     }
 }

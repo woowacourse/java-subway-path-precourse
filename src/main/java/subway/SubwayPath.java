@@ -1,5 +1,6 @@
 package subway;
 
+import subway.path.PathController;
 import subway.view.InputView;
 import subway.view.OutputView;
 
@@ -19,7 +20,8 @@ public class SubwayPath {
             String option = askOptionChoice();
 
             if (option.equals(MainOption.PATH.getValue())) {
-                // TODO 경로조회
+                PathController pathController = new PathController(inputView);
+                pathController.run();
             }
             if (option.equals(MainOption.EXIT.getValue())) {
                 return false;
