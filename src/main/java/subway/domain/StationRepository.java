@@ -13,14 +13,14 @@ public class StationRepository {
     private static final List<Station> stations = new ArrayList<>();
 
     public static void initStationRepository() {
-        stations.add(Station.newStationWithName("교대역"));
-        stations.add(Station.newStationWithName("강남역"));
-        stations.add(Station.newStationWithName("역삼역"));
-        stations.add(Station.newStationWithName("남부터미널역"));
-        stations.add(Station.newStationWithName("양재역"));
-        stations.add(Station.newStationWithName("양재시민의숲역"));
-        stations.add(Station.newStationWithName("매봉역"));
-        stations.add(Station.newStationWithName("현구역"));
+        addStation(Station.newStationWithName("교대역"));
+        addStation(Station.newStationWithName("강남역"));
+        addStation(Station.newStationWithName("역삼역"));
+        addStation(Station.newStationWithName("남부터미널역"));
+        addStation(Station.newStationWithName("양재역"));
+        addStation(Station.newStationWithName("양재시민의숲역"));
+        addStation(Station.newStationWithName("매봉역"));
+        addStation(Station.newStationWithName("현구역"));
     }
 
     public static List<Station> stations() {

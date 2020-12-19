@@ -13,9 +13,9 @@ public class LineRepository {
     }
 
     public static void initLineRepository() {
-        lines.add(Line.newLineWithName("2호선"));
-        lines.add(Line.newLineWithName("3호선"));
-        lines.add(Line.newLineWithName("신분당선"));
+        addLine(Line.newLineWithName("2호선"));
+        addLine(Line.newLineWithName("3호선"));
+        addLine(Line.newLineWithName("신분당선"));
     }
 
     public static List<Line> lines() {
