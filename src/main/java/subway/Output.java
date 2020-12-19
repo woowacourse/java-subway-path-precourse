@@ -14,8 +14,8 @@ public class Output {
     private static final String BACK = "B. 돌아가기";
     private static final String[] ROUTE_LIST = {ROUTE_VIEW, MIN_DISTANCE, SHORT_TIME, BACK};
 
-    private static void printView(String[] arrays) {
-        for (String str : arrays) {
+    private static void printView(String[] strArray) {
+        for (String str : strArray) {
             System.out.println(str);
         }
         System.out.println();
