@@ -1,7 +1,7 @@
 package subway.util;
 
-import subway.Lines;
-import subway.Stations;
+import subway.legacy.Lines;
+import subway.legacy.Stations;
 import subway.domain.*;
 
 public class Initialization {
