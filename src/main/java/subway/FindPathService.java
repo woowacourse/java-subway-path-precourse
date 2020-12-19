@@ -11,6 +11,7 @@ import subway.domain.StartStation;
 import java.util.List;
 
 public class FindPathService {
+    private final static String[] BUTTONS = {"1", "2", "B"};
     private final InputView inputView;
 
     public FindPathService(InputView inputView) {
@@ -19,16 +20,16 @@ public class FindPathService {
 
     public void runService() {
         String select = inputView.selectFunction();
-        if (select.equals("1")) {
+        if (select.equals(BUTTONS[0])) {
             shortestWay();
         }
-        if (select.equals("2")) {
+        if (select.equals(BUTTONS[1])) {
             shortestTime();
         }
-        if (select.equals("B")) {
+        if (select.equals(BUTTONS[2])) {
 
         }
-        if (!select.equals("B") && !select.equals("2") && !select.equals("1")) {
+        if (!select.equals(BUTTONS[2]) && !select.equals(BUTTONS[1]) && !select.equals(BUTTONS[0])) {
             throw new NoneFunctionException();
         }
     }

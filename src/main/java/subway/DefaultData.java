@@ -43,7 +43,7 @@ public class DefaultData {
     }
 
     private void setDefaultLineTwo() {
-        Line line = LineRepository.getLine("2호선");
+        Line line = LineRepository.getLine(LINES[0]);
         for (String name : LINE_TWO) {
             line.addLineStation(name);
         }
@@ -53,7 +53,7 @@ public class DefaultData {
     }
 
     private void setDefaultLineThree() {
-        Line line = LineRepository.getLine("3호선");
+        Line line = LineRepository.getLine(LINES[1]);
         for (String name : LINE_THREE) {
             line.addLineStation(name);
         }
@@ -63,7 +63,7 @@ public class DefaultData {
     }
 
     private void setDefaultLineShin() {
-        Line line = LineRepository.getLine("신분당선");
+        Line line = LineRepository.getLine(LINES[2]);
         for (String name : LINE_SHIN) {
             line.addLineStation(name);
         }

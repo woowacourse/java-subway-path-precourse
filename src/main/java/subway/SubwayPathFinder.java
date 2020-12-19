@@ -9,6 +9,7 @@ import outputview.MainView;
 import java.util.Scanner;
 
 public class SubwayPathFinder {
+    private final static String[] BUTTONS = {"1", "Q"};
     private InputView inputView;
     private boolean reTry = true;
 
@@ -39,13 +40,13 @@ public class SubwayPathFinder {
     }
 
     private void selectFunction(String selection) {
-        if (selection.equals("1")) {
+        if (selection.equals(BUTTONS[0])) {
             runFindPath();
         }
-        if (selection.equals("Q")) {
+        if (selection.equals(BUTTONS[1])) {
             reTry = false;
         }
-        if (!selection.equals("1") && !selection.equals("Q")) {
+        if (!selection.equals(BUTTONS[0]) && !selection.equals(BUTTONS[1])) {
             throw new NoneFunctionException();
         }
     }

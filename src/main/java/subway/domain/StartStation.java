@@ -16,7 +16,7 @@ public class StartStation {
                 return;
             }
         }
-        throw new NoExistStationException();// 존재 x
+        throw new NoExistStationException();
     }
 
     public String getStationName() {
