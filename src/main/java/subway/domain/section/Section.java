@@ -6,9 +6,9 @@ public class Section {
     private final Station startStation;
     private final Station arrivalStation;
     private final RunTime runTime;
-    private final int distance;
+    private final Distance distance;
 
-    public Section(Station startStation, Station arrivalStation, RunTime runTime, int distance) {
+    public Section(Station startStation, Station arrivalStation, RunTime runTime, Distance distance) {
         this.startStation = startStation;
         this.arrivalStation = arrivalStation;
         this.runTime = runTime;
@@ -16,6 +16,6 @@ public class Section {
     }
 
     public Section(Station startStation, Station arrivalStation, int runTime, int distance) {
-        this(startStation,arrivalStation, new RunTime(runTime), distance);
+        this(startStation,arrivalStation, new RunTime(runTime), new Distance(distance));
     }
 }
