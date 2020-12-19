@@ -7,4 +7,8 @@ public class Distance {
     public Distance(int distance) {
         this.distance = distance;
     }
+
+    public int getValue() {
+        return distance;
+    }
 }
