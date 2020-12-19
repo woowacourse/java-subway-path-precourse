@@ -11,7 +11,7 @@ public class Distances {
 		LineRepository.getLine(lineName)
 				.getDistances()
 				.distances
-				.add(location, distance); // index = user's input location - 1
+				.add(location, distance);
 	}
 
 	public List<Integer> distances() {

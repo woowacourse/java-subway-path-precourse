@@ -17,7 +17,8 @@ public class PathController {
 	static {
 		options.put(Options.OPTION_1.getOption(), PathController::findLeastDistance);
 		options.put(Options.OPTION_2.getOption(), PathController::findLeastTimeConsumed);
-		options.put(Options.BACK.getOption(), (scanner) -> {});
+		options.put(Options.BACK.getOption(), (scanner) -> {
+		});
 	}
 
 	private static void findLeastDistance(Scanner scanner) throws IllegalArgumentException {

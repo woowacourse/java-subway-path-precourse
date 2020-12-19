@@ -12,7 +12,6 @@ public enum GeneralMessages {
 
 	CHOICE(BASIC.getMessage() + "원하시는 기능을 입력하세요."),
 	NOT_AVAILABLE_OPTION_ERROR(GeneralMessages.ERROR.getMessage() + "선택할 수 없는 기능입니다."),
-	MAP(BASIC.getMessage() + "지하철 노선도"),
 	DIVISION_LINE(INFO.getMessage() + "---");
 
 	final private String message;
