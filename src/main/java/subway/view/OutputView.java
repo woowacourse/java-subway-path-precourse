@@ -1,5 +1,6 @@
 package subway.view;
 
+import subway.type.ExceptionType;
 import subway.type.ScreenType;
 import subway.type.TextType;
 
@@ -25,5 +26,13 @@ public class OutputView {
 
     public static void printDestinationText() {
         System.out.println(TextType.DESTINATION_TEXT.getText());
+    }
+
+    public static void printInvalidSameStationsException() {
+        System.out.println(ExceptionType.INVALID_SAME_STATIONS.getException());
+    }
+
+    public static void printInvalidExistingStationsException() {
+        System.out.println(ExceptionType.INVALID_EXISTING_STATIONS.getException());
     }
 }

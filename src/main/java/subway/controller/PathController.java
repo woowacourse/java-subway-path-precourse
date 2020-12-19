@@ -1,5 +1,6 @@
 package subway.controller;
 
+import subway.controller.validation.PathValidation;
 import subway.type.ExceptionType;
 import subway.type.InputType;
 import subway.view.InputView;
@@ -43,6 +44,8 @@ public class PathController implements OptionInterface {
         System.out.println();
         String destinationInput = InputView.scanDestinationInput(scanner);
         System.out.println();
+
+        PathValidation.isValidStations(originInput, destinationInput);
     }
 
     public static void getPathByShortestTime(Scanner scanner) {
@@ -50,5 +53,7 @@ public class PathController implements OptionInterface {
         System.out.println();
         String destinationInput = InputView.scanDestinationInput(scanner);
         System.out.println();
+
+        PathValidation.isValidStations(originInput, destinationInput);
     }
 }

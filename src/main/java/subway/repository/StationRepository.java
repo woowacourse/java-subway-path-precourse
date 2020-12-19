@@ -25,13 +25,4 @@ public class StationRepository {
     public static void deleteAll() {
         stations.clear();
     }
-
-    public static List<String> stationNames() {
-        List<String> stationNames = new ArrayList<>();
-
-        for (Station station : stations) {
-            stationNames.add(station.getName());
-        }
-        return stationNames;
-    }
 }

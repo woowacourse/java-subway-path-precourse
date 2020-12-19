@@ -4,6 +4,7 @@ import subway.domain.Stations;
 import subway.repository.DistanceMapRepository;
 import subway.repository.StationRepository;
 import subway.repository.StationsRepository;
+import subway.service.StationService;
 import subway.type.DistanceType;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class DistanceMapInitialization {
     }
 
     public static void initializeDistanceMapStations() {
-        List<String> stationNames = StationRepository.stationNames();
+        List<String> stationNames = StationService.stationNames();
 
         for (String stationName : stationNames) {
             DistanceMapRepository.addStationForDistanceMap(stationName);

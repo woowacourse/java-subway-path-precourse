@@ -4,6 +4,7 @@ import subway.domain.Stations;
 import subway.repository.StationRepository;
 import subway.repository.StationsRepository;
 import subway.repository.TimeMapRepository;
+import subway.service.StationService;
 import subway.type.TimeType;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class TimeMapInitialization {
     }
 
     public static void initializeTimeMapStations() {
-        List<String> stationsNames = StationRepository.stationNames();
+        List<String> stationsNames = StationService.stationNames();
 
         for (String stationName : stationsNames) {
             TimeMapRepository.addStationForTimeMap(stationName);
