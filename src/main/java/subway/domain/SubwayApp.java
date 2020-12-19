@@ -2,31 +2,26 @@ package subway.domain;
 
 import subway.menu.MainMenu;
 import subway.menu.PathMenu;
-import subway.view.InputView;
-import subway.view.OutputView;
 
-import java.util.Scanner;
-
-import static subway.menu.MainMenu.*;
-import static subway.menu.PathMenu.*;
-import static subway.view.OutputView.*;
+import static subway.menu.MainMenu.EXIT;
+import static subway.menu.MainMenu.findMainMenuByOption;
+import static subway.menu.PathMenu.findPathMenuByOption;
+import static subway.view.InputView.inputMainMenuOption;
+import static subway.view.InputView.inputPathMenuOption;
+import static subway.view.OutputView.printMainMenu;
+import static subway.view.OutputView.printPathMenu;
 
 public class SubwayApp {
-    private final InputView inputView;
-
-    public SubwayApp(Scanner scanner) {
-        inputView = new InputView(scanner);
-    }
 
     public void run() {
         try {
             printMainMenu();
-            MainMenu selectedMainMenu = findMainMenuByOption(inputView.inputMainMenuOption());
+            MainMenu selectedMainMenu = findMainMenuByOption(inputMainMenuOption());
             if (selectedMainMenu == EXIT) {
                 return;
             }
             printPathMenu();
-            PathMenu findPathMenu = findPathMenuByOption(inputView.inputPathMenuOption());
+            PathMenu findPathMenu = findPathMenuByOption(inputPathMenuOption());
             findPathMenu.request();
         } catch (Exception e) {
             System.out.println(e.getMessage());
