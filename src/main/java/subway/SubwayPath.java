@@ -21,17 +21,21 @@ public class SubwayPath {
             List<String> optionList = getMainOptionList();
             String option = SelectOption.askOptionChoice(inputView, optionList);
 
-            if (option.equals(MainOption.PATH.getValue())) {
-                PathController pathController = new PathController(inputView);
-                pathController.run();
-            }
-            if (option.equals(MainOption.EXIT.getValue())) {
+            if (doProcess(option)) {
                 return false;
             }
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
         return true;
+    }
+
+    private boolean doProcess(String option) {
+        if (option.equals(MainOption.PATH.getValue())) {
+            PathController pathController = new PathController(inputView);
+            pathController.run();
+        }
+        return option.equals(MainOption.EXIT.getValue());
     }
 
     private List<String> getMainOptionList() {
