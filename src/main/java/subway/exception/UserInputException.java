@@ -1,4 +1,4 @@
 package subway.exception;
 
-public class UserInputException {
+public class UserInputException extends Exception {
 }
