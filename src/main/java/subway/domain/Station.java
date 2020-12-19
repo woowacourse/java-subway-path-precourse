@@ -10,7 +10,7 @@ public class Station {
     private String name;
 
     public Station(String name) {
-        if(name.length() < NAME_MIN_LENGTH) {
+        if (name.length() < NAME_MIN_LENGTH) {
             throw new SubwayException(SubwayErrorMessage.STATION_NAME_SHORT);
         }
         this.name = name;

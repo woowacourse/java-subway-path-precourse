@@ -1,6 +1,7 @@
 package subway.view;
 
 import subway.domain.StationManager;
+import subway.error.SubwayErrorMessage;
 
 import java.util.Arrays;
 import java.util.function.Consumer;
@@ -32,10 +33,10 @@ public enum FunctionView {
         return Arrays.stream(values())
                 .filter(value -> value.key.equals(key))
                 .findFirst()
-                .orElseThrow(() -> new IllegalStateException("올바르지 않는 보기를 입력하셨습니다."));
+                .orElseThrow(() -> new IllegalStateException(SubwayErrorMessage.NOT_EXIST_FUNC.getMessage()));
     }
 
-    public void execute(StationManager stationManager){
+    public void execute(StationManager stationManager) {
         consumer.accept(stationManager);
     }
 }

@@ -1,10 +1,12 @@
 package subway.view;
 
+import subway.error.SubwayErrorMessage;
+
 import java.util.Arrays;
 
 public enum MainView {
     FIND("1", "경로 조회"),
-    QUIT("Q" , "종료");
+    QUIT("Q", "종료");
 
     private static final String VIEW_FORM = "%s. %s \n";
     private final String key;
@@ -26,6 +28,6 @@ public enum MainView {
         return Arrays.stream(values())
                 .filter(value -> value.key.equals(key))
                 .findFirst()
-                .orElseThrow(() -> new IllegalStateException("올바르지 않는 보기를 선택하셨습니다."));
+                .orElseThrow(() -> new IllegalStateException(SubwayErrorMessage.NOT_EXIST_FUNC.getMessage()));
     }
 }

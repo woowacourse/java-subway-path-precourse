@@ -11,12 +11,11 @@ public class StationManager {
 
     public static void start() {
         MainView main = main();
-        if(main == MainView.FIND) {
+        if (main == MainView.FIND) {
             function();
             start();
         }
     }
-
 
     public static MainView main() {
         OutputView.printMainView();
