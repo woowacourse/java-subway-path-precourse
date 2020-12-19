@@ -22,7 +22,7 @@ public class Initiator {
     private static final String THIRD_LINE = "3호선";
     private static final String NEW_BOONDANG_LINE = "신분당선";
 
-    public static void intiateSet() {
+    public static void initiateSet() {
         initiateStation();
         initiateLine();
         initiatePath();

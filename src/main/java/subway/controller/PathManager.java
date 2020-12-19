@@ -1,7 +1,6 @@
 package subway.controller;
 
 import java.util.Scanner;
-import subway.controller.constants.QuestionNumber;
 import subway.controller.constants.SelectOptionConstants;
 import subway.view.PathInputView;
 

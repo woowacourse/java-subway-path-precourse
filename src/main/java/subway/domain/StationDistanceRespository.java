@@ -32,6 +32,7 @@ public class StationDistanceRespository {
 
     public static int getShortestDistance(String initialStation, String lastStation) {
         isSameInitialLastStation(initialStation, lastStation);
+
         try {
             int shortestDistance = (int) dijkstraShortestPath.getPath(initialStation, lastStation)
                     .getWeight();

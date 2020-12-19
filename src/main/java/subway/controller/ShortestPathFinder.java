@@ -23,10 +23,12 @@ abstract public class ShortestPathFinder {
 
     public String validTerminal() {
         String candidate = scanner.nextLine();
+
         if (!StationRepository.isExistedStation(candidate)) {
             System.out.println(ControllerError.NO_EXISTED_STATION);
             throw new IllegalArgumentException(ControllerError.NO_EXISTED_STATION);
         }
+
         return candidate;
     }
 

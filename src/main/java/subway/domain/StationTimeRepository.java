@@ -7,7 +7,6 @@ import org.jgrapht.graph.WeightedMultigraph;
 import subway.domain.constants.DomainErrorMessage;
 
 public class StationTimeRepository {
-
     private static WeightedMultigraph<String, DefaultWeightedEdge> timeGraph =
             new WeightedMultigraph(DefaultWeightedEdge.class);
     private static DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(timeGraph);

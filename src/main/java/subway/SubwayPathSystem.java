@@ -8,7 +8,7 @@ public class SubwayPathSystem {
     private final Scanner scanner;
 
     SubwayPathSystem(Scanner scanner) {
-        Initiator.intiateSet();
+        Initiator.initiateSet();
         this.scanner = scanner;
     }
 

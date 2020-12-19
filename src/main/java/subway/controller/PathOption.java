@@ -26,11 +26,11 @@ public enum PathOption {
 
     private String option;
 
+    abstract public void processUnit(Scanner scanner);
+
     private PathOption(String option) {
         this.option = option;
     }
-
-    abstract public void processUnit(Scanner scanner);
 
     public String getOption() {
         return option;
