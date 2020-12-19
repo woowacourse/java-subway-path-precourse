@@ -6,7 +6,7 @@ import subway.domain.DefaultStations;
 import subway.domain.Line;
 import subway.domain.Station;
 import subway.view.InputView;
-import org.jgrapht.traverse.
+//import org.jgrapht.graph.
 
 public class MinCostCalculator {
 
@@ -24,11 +24,14 @@ public class MinCostCalculator {
 
     public void runToGetMinDistance() {
         getStationNames();
-
-
+        calculateMinDistance();
+//        printResult();
     }
 
     public void runToGetMinTime() {
+        getStationNames();
+        calculateMinTime();
+//        printResult();
     }
 
     private void getStationNames() {
