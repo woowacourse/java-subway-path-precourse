@@ -3,6 +3,7 @@ package subway.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import subway.service.LineService;
 import subway.service.StationService;
 
 public class SectionRepository {
@@ -11,42 +12,49 @@ public class SectionRepository {
 
     static {
         sections.add(Section.newSection(
+            LineService.findLineByName("2호선"),
             StationService.findStationByName("교대역"),
             StationService.findStationByName("강남역"),
             Distance.newDistance(2),
             Time.newTime(3)));
 
         sections.add(Section.newSection(
+            LineService.findLineByName("2호선"),
             StationService.findStationByName("강남역"),
             StationService.findStationByName("역삼역"),
             Distance.newDistance(2),
             Time.newTime(3)));
 
         sections.add(Section.newSection(
+            LineService.findLineByName("3호선"),
             StationService.findStationByName("교대역"),
             StationService.findStationByName("남부터미널역"),
             Distance.newDistance(3),
             Time.newTime(2)));
 
         sections.add(Section.newSection(
+            LineService.findLineByName("3호선"),
             StationService.findStationByName("남부터미널역"),
             StationService.findStationByName("양재역"),
             Distance.newDistance(6),
             Time.newTime(5)));
 
         sections.add(Section.newSection(
+            LineService.findLineByName("3호선"),
             StationService.findStationByName("양재역"),
             StationService.findStationByName("매봉역"),
             Distance.newDistance(1),
             Time.newTime(1)));
 
         sections.add(Section.newSection(
+            LineService.findLineByName("신분당선"),
             StationService.findStationByName("강남역"),
             StationService.findStationByName("양재역"),
             Distance.newDistance(2),
             Time.newTime(8)));
 
         sections.add(Section.newSection(
+            LineService.findLineByName("신분당선"),
             StationService.findStationByName("양재역"),
             StationService.findStationByName("양재시민의숲역"),
             Distance.newDistance(10),
