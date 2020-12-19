@@ -1,15 +1,20 @@
 package subway.domain;
 
+import java.util.LinkedList;
+
 public class Line {
-    private String name;
+	private String name;
+	private LinkedList<Path> paths;
 
-    public Line(String name) {
-        this.name = name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public LinkedList<Path> getPaths() {
+		return paths;
+	}
 
-    // 추가 기능 구현
+	public void addPath(Path path) {
+		paths.add(path);
+	}
 }
