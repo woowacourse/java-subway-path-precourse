@@ -29,7 +29,7 @@ public class InputView {
         }
         catch (NoSuchChoiceException e) {
             System.out.println(CHOICE_ERROR_MESSAGE);
-            return inputMainSceneChoice(scanner);
+            return inputPathSceneChoice(scanner);
         }
     }
 
