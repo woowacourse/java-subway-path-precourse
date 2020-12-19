@@ -1,5 +1,6 @@
 package subway;
 
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import subway.domain.MainMenuType;
 import subway.domain.RouteCheckType;
 import subway.view.InputView;
@@ -9,9 +10,11 @@ import java.util.Scanner;
 public class SubwayProgram {
     private final Scanner scanner;
     private final RouteCheckController routeCheckController;
+    private final DijkstraShortestPath dijkstraShortestPath;
 
-    public SubwayProgram(Scanner scanner) {
+    public SubwayProgram(Scanner scanner, DijkstraShortestPath dijkstraShortestPath) {
         this.scanner = scanner;
+        this.dijkstraShortestPath = dijkstraShortestPath;
         routeCheckController = new RouteCheckController(scanner);
     }
 
@@ -40,7 +43,7 @@ public class SubwayProgram {
 
     private void selectRouteCheck(RouteCheckType routeCheckType) {
         if (RouteCheckType.SHORTEST_DISTANCE.equals(routeCheckType)) {
-            routeCheckController.selectShortestDistance();
+            routeCheckController.selectShortestDistance(dijkstraShortestPath);
             return;
         }
         if (RouteCheckType.MINIMUM_TIME.equals(routeCheckType)) {
