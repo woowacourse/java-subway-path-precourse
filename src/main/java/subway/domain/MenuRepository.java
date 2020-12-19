@@ -8,6 +8,7 @@ import java.util.*;
 
 public class MenuRepository {
     public static final List<String> mainMenuButtons = new ArrayList<>(Arrays.asList(SearchPathMenu.MENU_BUTTON, QuitMenu.MENU_BUTTON));
+    public static final List<String> mainMenuNames = new ArrayList<>(Arrays.asList(SearchPathMenu.MENU_NAME, QuitMenu.MENU_NAME));
 //    public static final List<String> searchMenuButtons;
 
     public static final Map<String, MainMenu> mainMenu = new HashMap<>();
