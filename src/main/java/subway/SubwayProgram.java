@@ -8,9 +8,11 @@ import java.util.Scanner;
 
 public class SubwayProgram {
     private final Scanner scanner;
+    private final RouteCheckController routeCheckController;
 
     public SubwayProgram(Scanner scanner) {
         this.scanner = scanner;
+        routeCheckController = new RouteCheckController(scanner);
     }
 
     public void run() {
@@ -38,10 +40,10 @@ public class SubwayProgram {
 
     private void selectRouteCheck(RouteCheckType routeCheckType) {
         if (RouteCheckType.SHORTEST_DISTANCE.equals(routeCheckType)) {
+            routeCheckController.selectShortestDistance();
             return;
         }
         if (RouteCheckType.MINIMUM_TIME.equals(routeCheckType)) {
-
         }
     }
 }

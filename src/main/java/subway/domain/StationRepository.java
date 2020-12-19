@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class StationRepository {
+    private static final String STATION_NOT_EXIST_ERROR = "[ERROR] 등록되어 있지 않은 역입니다.";
     private static final List<Station> stations = new ArrayList<>();
 
     public static List<Station> stations() {
@@ -22,5 +23,12 @@ public class StationRepository {
 
     public static void deleteAll() {
         stations.clear();
+    }
+
+    public static Station findByStationName(String name) {
+        return stations.stream()
+                .filter(station -> station.isSame(name))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(STATION_NOT_EXIST_ERROR));
     }
 }
