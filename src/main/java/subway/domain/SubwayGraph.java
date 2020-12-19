@@ -10,14 +10,6 @@ public class SubwayGraph {
     public static final WeightedMultigraph<Station, DefaultWeightedEdge> distanceWeightGraph = new WeightedMultigraph<>(DefaultWeightedEdge.class);
     public static final WeightedMultigraph<Station, DefaultWeightedEdge> timeWeightGraph = new WeightedMultigraph<>(DefaultWeightedEdge.class);
 
-    public static WeightedMultigraph<Station, DefaultWeightedEdge> getDistanceWeightGraph() {
-        return distanceWeightGraph;
-    }
-
-    public static WeightedMultigraph<Station, DefaultWeightedEdge> getTimeWeightGraph() {
-        return timeWeightGraph;
-    }
-
     public static void addVertices(List<Station> stations) {
         for (Station station : stations) {
             distanceWeightGraph.addVertex(station);
