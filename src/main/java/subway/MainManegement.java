@@ -25,7 +25,7 @@ public class MainManegement {
 			LineRepository lineRepositiory) {
 		String select = scanner.nextLine();
 		if (select.equals("1")) {
-			SectionSearch.selectSerchMenu(scanner, stationRepositiory, lineRepositiory);
+			SectionSearch.sectionSearchMenu(scanner, stationRepositiory, lineRepositiory);
 			return false;
 		}
 		if (select.equals("Q") || select.equals("q")) {

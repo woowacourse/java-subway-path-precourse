@@ -31,4 +31,13 @@ public class StationRepository {
 		}
 		System.out.println("\n");
 	}
+	
+	public static boolean findStation(String name) {
+		for (int stationCount = 0; stationCount < stations.size(); stationCount++) {
+			if (stations.get(stationCount).getName().equals(name)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
