@@ -42,11 +42,8 @@ public class RouteController {
 
     private void shortestTime() {
         String[] stations = stationInfo();
-        if(stations[START_STATION].isEmpty() || stations[END_STATION].isEmpty()){
-            new RouteController(scanner);
-            return;
-        }
-        if (!LineRepository.findShortestTime(stations[START_STATION], stations[END_STATION])) {
+        if (stations[START_STATION].isEmpty() || stations[END_STATION].isEmpty() ||
+                !LineRepository.findShortestTime(stations[START_STATION], stations[END_STATION])) {
             new RouteController(scanner);
             return;
         }
@@ -67,14 +64,9 @@ public class RouteController {
         String[] stations = new String[STATIONS_SIZE];
         stations[START_STATION] = InputView.writeStartStation(scanner);
         if (stations[START_STATION].equals(ERROR_MESSAGE)) {
-            new RouteController(scanner);
             return stations;
         }
         stations[END_STATION] = InputView.writeEndStation(scanner, stations[START_STATION]);
-        if (stations[END_STATION].equals(ERROR_MESSAGE)) {
-            new RouteController(scanner);
-            return stations;
-        }
         return stations;
     }
 }
