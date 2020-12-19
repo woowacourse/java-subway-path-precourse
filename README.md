@@ -17,8 +17,7 @@
 ### ⚙️ Line
 - Path 정보 소지
 - 호선 이름 소지
-- 두 역 입력시 사이에 있는 모든 Path 가져오기
-- 두 역 중 하나라도 없을 시 예외처리
+- WeightedMultigraph에 path 정보를 담을 수 있는 메서드 생성
 
 ### ⚙️ StationRepository
 - Station 상태 관리
