@@ -1,4 +1,4 @@
-package subway.controller;
+package subway.controller.input;
 
 import java.util.Scanner;
 
