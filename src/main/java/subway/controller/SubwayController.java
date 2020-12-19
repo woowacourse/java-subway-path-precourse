@@ -1,8 +1,6 @@
 package subway.controller;
 
-import subway.repository.DistanceMapRepository;
-import subway.service.InitializationService;
-import subway.service.initialization.DistanceMapInitialization;
+import subway.service.initialization.SubwayInitialization;
 import subway.type.ExceptionType;
 import subway.type.InputType;
 import subway.view.InputView;
@@ -17,10 +15,10 @@ public class SubwayController {
     }
 
     public static void initializeSubway() {
-        InitializationService.initializeStation();
-        InitializationService.initializeLine();
-        InitializationService.initializeStations();
-        InitializationService.initializeMaps();
+        SubwayInitialization.initializeStation();
+        SubwayInitialization.initializeLine();
+        SubwayInitialization.initializeStations();
+        SubwayInitialization.initializeMaps();
     }
 
     public static void startSubway(Scanner scanner) {

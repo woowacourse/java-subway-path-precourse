@@ -1,15 +1,13 @@
-package subway.service;
+package subway.service.initialization;
 
 import subway.domain.Line;
 import subway.domain.Station;
 import subway.domain.Stations;
 import subway.repository.*;
-import subway.service.initialization.DistanceMapInitialization;
-import subway.service.initialization.TimeMapInitialization;
 import subway.type.LineType;
 import subway.type.StationType;
 
-public class InitializationService {
+public class SubwayInitialization {
     public static void initializeStation() {
         StationRepository.addStation(new Station(StationType.EDUCATION_UNIVERSITY.getStation()));
         StationRepository.addStation(new Station(StationType.GANGNAM.getStation()));
