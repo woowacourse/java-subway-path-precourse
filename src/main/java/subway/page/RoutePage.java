@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import subway.input.InputView;
 import subway.output.OutputView;
+import subway.repository.SectionRepository;
 
 /**
  * @author yhh1056
@@ -40,6 +41,7 @@ public class RoutePage {
             if (validateInputEqualsStation(startStation, finishStation)) {
                 return false;
             }
+            SectionRepository.CalculateShortestDistance(startStation, finishStation);
         }
         return true;
     }

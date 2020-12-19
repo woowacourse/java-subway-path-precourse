@@ -18,4 +18,16 @@ public class Section {
         this.street = street;
         this.time = time;
     }
+
+    public String getStationName() {
+        return station.getName();
+    }
+
+    public String getNextStationName() {
+        return nextStation.getName();
+    }
+
+    public int getStreet() {
+        return street.getStreet();
+    }
 }

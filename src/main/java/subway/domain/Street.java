@@ -10,4 +10,8 @@ public class Street {
     public Street(int street) {
         this.street = street;
     }
+
+    public int getStreet() {
+        return street;
+    }
 }
