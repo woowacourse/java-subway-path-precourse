@@ -1,7 +1,7 @@
 package subway.domain.line.domain;
 
 import org.jgrapht.graph.DefaultWeightedEdge;
-import subway.domain.Path.PathRepository;
+import subway.domain.Path.domain.PathRepository;
 import subway.domain.station.domain.Station;
 
 public class LineStation {

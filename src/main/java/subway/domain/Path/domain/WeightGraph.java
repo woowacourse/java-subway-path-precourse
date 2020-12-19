@@ -1,5 +1,6 @@
-package subway.domain.Path;
+package subway.domain.Path.domain;
 
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 import subway.domain.station.domain.Station;
@@ -26,5 +27,9 @@ public class WeightGraph {
 
     public void setEdgeWeight(DefaultWeightedEdge edge, double weight) {
         graph.setEdgeWeight(edge, weight);
+    }
+
+    public DijkstraShortestPath getDijkstraShortestPath() {
+        return new DijkstraShortestPath(graph);
     }
 }
