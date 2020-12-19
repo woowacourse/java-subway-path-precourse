@@ -38,5 +38,13 @@ public class InputView {
     }
 
     public static String inputStation() {
+        String stationName = scanner.nextLine().trim();
+        try {
+            InputValidator.validateStationName(stationName);
+            return stationName;
+        } catch (Exception e) {
+            System.out.println(ERROR_PREFIX + e.getMessage());
+            return inputStation();
+        }
     }
 }

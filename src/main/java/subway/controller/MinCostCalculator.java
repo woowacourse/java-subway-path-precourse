@@ -7,7 +7,7 @@ import subway.domain.Line;
 import subway.domain.Station;
 import subway.view.InputView;
 import org.jgrapht.traverse.
-    
+
 public class MinCostCalculator {
 
     private final List<Line> lines;
