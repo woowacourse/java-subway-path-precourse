@@ -18,7 +18,9 @@ public class Distances {
                 .collect(Collectors.toList());
     }
 
-    public List<Distance> getDistances() {
-        return distances;
+    public List<Integer> getDistances() {
+        return distances.stream()
+                .map(Distance::getDistance)
+                .collect(Collectors.toList());
     }
 }

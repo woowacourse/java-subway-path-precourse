@@ -15,7 +15,6 @@ public class ElapsedTimesTest {
         ElapsedTimes elapsedTimes = new ElapsedTimes(1, 2, 3);
 
         //then
-        assertThat(elapsedTimes.getTimes()).extracting(ElapsedTime::getTime)
-                .containsExactly(1, 2, 3);
+        assertThat(elapsedTimes.getTimes()).containsExactly(1, 2, 3);
     }
 }

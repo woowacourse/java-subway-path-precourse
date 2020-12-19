@@ -15,7 +15,6 @@ public class DistancesTest {
         Distances distances = new Distances(1, 2, 3);
 
         //then
-        assertThat(distances.getDistances()).extracting(Distance::getDistance)
-                .containsExactly(1, 2, 3);
+        assertThat(distances.getDistances()).containsExactly(1, 2, 3);
     }
 }

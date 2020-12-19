@@ -1,5 +1,7 @@
 package subway.domain;
 
+import java.util.List;
+
 public class LineDirection {
 
     private static final int DIFFERENCE_WITH_REPOSITORY = 1;
@@ -19,6 +21,22 @@ public class LineDirection {
         this.elapsedTimes = elapsedTimes;
 
         checkSize();
+    }
+
+    public StationRepository getStationRepository() {
+        return stationRepository;
+    }
+
+    public List<String> getStationNames() {
+        return stationRepository.getStationNames();
+    }
+
+    public List<Integer> getDistances() {
+        return distances.getDistances();
+    }
+
+    public List<Integer> getElapsedTimes() {
+        return elapsedTimes.getTimes();
     }
 
     private void checkSize() {

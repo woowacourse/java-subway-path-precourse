@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class StationRepository {
 
@@ -58,5 +59,11 @@ public class StationRepository {
         stations.clear();
 
         return new StationRepository();
+    }
+
+    public List<String> getStationNames() {
+        return stations.stream()
+                .map(Station::getName)
+                .collect(Collectors.toList());
     }
 }

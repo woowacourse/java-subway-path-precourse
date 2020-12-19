@@ -18,7 +18,9 @@ public class ElapsedTimes {
                 .collect(Collectors.toList());
     }
 
-    public List<ElapsedTime> getTimes() {
-        return times;
+    public List<Integer> getTimes() {
+        return times.stream()
+                .map(ElapsedTime::getTime)
+                .collect(Collectors.toList());
     }
 }
