@@ -1,11 +1,13 @@
 package subway.controller;
 
+import subway.Exception.CustomException;
 import subway.view.InputView;
 import subway.view.OutputView;
 
 import java.util.Scanner;
 
 public class PathFinder {
+    public static final String REGEX_VALID_PATH_FINDER_MENU = "[1-2Bb]";
     private final Scanner scanner;
 
     public PathFinder(Scanner scanner) {
@@ -18,6 +20,11 @@ public class PathFinder {
 
     private String askValidMenuNumber() {
         OutputView.pathfiner();
-        return InputView.askMenu(scanner, "[1-2Bb]");
+        try {
+            return InputView.askMenu(scanner, REGEX_VALID_PATH_FINDER_MENU);
+        } catch (CustomException exception) {
+            System.out.println(exception.getMessage());
+            return askValidMenuNumber();
+        }
     }
 }

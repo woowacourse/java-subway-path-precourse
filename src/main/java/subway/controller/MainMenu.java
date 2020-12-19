@@ -7,7 +7,7 @@ import subway.view.OutputView;
 import java.util.Scanner;
 
 public class MainMenu {
-    public static final String REGEX_VALID_MENU_CHARACTER = "[1-2Qq]";
+    public static final String REGEX_VALID_MAIN_MENU = "[1-2Qq]";
     private final Scanner scanner;
     private boolean doNext;
 
@@ -28,7 +28,7 @@ public class MainMenu {
     private String askValidMenuNumber() {
         OutputView.mainMenu();
         try {
-            return InputView.askMenu(scanner, REGEX_VALID_MENU_CHARACTER);
+            return InputView.askMenu(scanner, REGEX_VALID_MAIN_MENU);
         } catch (CustomException exception) {
             System.out.println(exception.getMessage());
             return askValidMenuNumber();
