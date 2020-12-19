@@ -12,7 +12,7 @@ import subway.domain.Station;
 import subway.domain.StationRepository;
 
 public class Path_function {
-	static WeightedMultigraph<Station, Integer> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
+	static WeightedMultigraph<Station, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
 	
 	static void station2Vertex() {
 		for (Station station : StationRepository.stations()) {
@@ -40,8 +40,15 @@ public class Path_function {
 		station2Vertex();
 		setEdge2distanceGragh();
 		DijkstraShortestPath<Station, Integer> dijkstraShortestPath = new DijkstraShortestPath(graph);
-		List<Station> shortestPath = dijkstraShortestPath.getPath(StationRepository.getStationByName("교대역"), StationRepository.getStationByName("역삼역")).getVertexList();
+		List<Station> shortestPath = dijkstraShortestPath.getPath(StationRepository.getStationByName("양재시민의숲역"), StationRepository.getStationByName("역삼역")).getVertexList();	
 		
-		System.out.println(shortestPath.toArray().toString());
+	}
+	
+	public static void shortestPathByDistance(String from, String to) {
+		
+	}
+	
+	public static void shortestPathByTime(String from, String to) {
+		
 	}
 }
