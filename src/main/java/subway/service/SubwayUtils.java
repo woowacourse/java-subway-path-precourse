@@ -1,5 +1,11 @@
 package subway.service;
 
+import java.util.List;
+
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
+import org.jgrapht.graph.DefaultWeightedEdge;
+import org.jgrapht.graph.WeightedMultigraph;
+
 import subway.domain.Distances;
 import subway.domain.ElapsedTimes;
 import subway.domain.Line;
@@ -7,7 +13,7 @@ import subway.domain.LineDirection;
 import subway.domain.LineRepository;
 import subway.domain.StationRepository;
 
-public class SubwayInitializer {
+public class SubwayUtils {
 
     public static final String SECOND_LINE = "2호선";
     public static final String THIRD_LINE = "3호선";
@@ -20,7 +26,30 @@ public class SubwayInitializer {
     public static final String MAEBONG_STATION = "매봉역";
     public static final String YANGJAE_CITIZEN_STATION = "양재시민의숲역";
 
-    private SubwayInitializer() {}
+    private static WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
+
+    private SubwayUtils() {}
+
+    public static void initGraph() {
+        graph.addVertex(KYODAE_STATION);
+        graph.addVertex(KANGNAME_STATION);
+        graph.addVertex(YEOKSAM_STATION);
+        graph.addVertex(NAMBU_TERMINAL_STATION);
+        graph.addVertex(YANGJAE_STATION);
+        graph.addVertex(MAEBONG_STATION);
+        graph.addVertex(YANGJAE_CITIZEN_STATION);
+
+        graph.setEdgeWeight(graph.addEdge(KYODAE_STATION, KANGNAME_STATION), 2);
+        graph.setEdgeWeight(graph.addEdge(KANGNAME_STATION, YEOKSAM_STATION), 2);
+
+        graph.setEdgeWeight(graph.addEdge(KYODAE_STATION, NAMBU_TERMINAL_STATION), 3);
+        graph.setEdgeWeight(graph.addEdge(NAMBU_TERMINAL_STATION, YANGJAE_STATION), 6);
+        graph.setEdgeWeight(graph.addEdge(YANGJAE_STATION, MAEBONG_STATION), 1);
+
+
+        graph.setEdgeWeight(graph.addEdge(KANGNAME_STATION, YANGJAE_STATION), 2);
+        graph.setEdgeWeight(graph.addEdge(YANGJAE_STATION, YANGJAE_CITIZEN_STATION), 10);
+    }
 
     public static SubwayService initialize() {
         StationRepository secondLineRepository = new StationRepository().addStations(KYODAE_STATION,
@@ -54,5 +83,10 @@ public class SubwayInitializer {
         LineRepository lineRepository = new LineRepository().addLines(secondLine, thirdLine, sinbundangLine);
 
         return new SubwayService(lineRepository);
+    }
+
+    public static List<String> findShortenPath(String startStation, String endStation) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
+        return dijkstraShortestPath.getPath(startStation, endStation).getVertexList();
     }
 }
