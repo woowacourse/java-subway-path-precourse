@@ -12,7 +12,7 @@ public class FlowChart {
         while (true) {
             try {
                 routeSelect(scanner, mainInput);
-
+                quit(mainInput);
             } catch (IllegalArgumentException e) {
                 System.out.printf(e.getMessage() + "%n%n");
             }
@@ -40,6 +40,12 @@ public class FlowChart {
     public static void back(Scanner scanner, String input) {
         if (input.equals(Constant.B)) {
             flowChart(scanner);
+        }
+    }
+
+    public static void quit(String mainInput) {
+        if (mainInput.equals(Constant.Q)) {
+            System.exit(0);
         }
     }
 }
