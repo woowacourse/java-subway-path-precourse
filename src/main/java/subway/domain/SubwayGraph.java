@@ -30,7 +30,6 @@ public class SubwayGraph {
 
     public static List<Station> getTimeShortestPath(Station from, Station to) {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(timeWeightGraph);
-        System.out.println(dijkstraShortestPath.getPath(from, to));
         return dijkstraShortestPath.getPath(from, to).getVertexList();
     }
 
