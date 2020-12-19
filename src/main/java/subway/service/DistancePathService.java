@@ -12,10 +12,18 @@ import static subway.view.OutputView.printPathResult;
 public class DistancePathService extends BaseService{
 
     public static void serviceStart() {
+        List<String> passByStations = getPassByStations();
+        DistanceAndTimeDto distanceAndTimeDto = getTotalTimeAndDistance(passByStations);
+        printPathResult(passByStations, distanceAndTimeDto.getDistance(), distanceAndTimeDto.getTime());
+    }
+
+    private static List<String> getPassByStations() {
         String startStationName = inputStartStation();
         String endStationName = inputEndStation(startStationName);
-        List<String> passByStations = calculateShortestDistancePath(startStationName, endStationName);
-        DistanceAndTimeDto distanceAndTimeDto = calculateTotalTimeAndDistance(passByStations);
-        printPathResult(passByStations, distanceAndTimeDto.getDistance(), distanceAndTimeDto.getTime());
+        return calculateShortestDistancePath(startStationName, endStationName);
+    }
+
+    private static DistanceAndTimeDto getTotalTimeAndDistance(List<String> passByStations) {
+        return calculateTotalTimeAndDistance(passByStations);
     }
 }
