@@ -39,4 +39,8 @@ public class Output {
     public static void printInputBefore(String str) {
         System.out.println(str);
     }
+
+    public static void printLine() {
+        System.out.println();
+    }
 }
