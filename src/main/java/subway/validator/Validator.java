@@ -13,8 +13,6 @@ public class Validator {
     private static final int BACK_NUMBER = 0;
     private static final int QUIT_NUMBER = 0;
 
-
-
     public Validator() {
     }
 

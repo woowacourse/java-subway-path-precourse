@@ -10,7 +10,6 @@ public class SubwayGraph {
     private static final int NEXT_STATION_NUMBER = 1;
     private WeightedMultigraph<String, DefaultWeightedEdge> subwayGraph = new WeightedMultigraph(DefaultWeightedEdge.class);
 
-
     public SubwayGraph() {
     }
 

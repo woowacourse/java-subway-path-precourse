@@ -25,12 +25,7 @@ public class Route {
         String number;
         int chosenNumber;
 
-        System.out.println("\n## 경로 기준\n" +
-                "1. 최단 거리\n" +
-                "2. 최소 시간\n" +
-                "B. 돌아가기\n" +
-                "\n" +
-                "## 원하는 기능을 선택하세요.");
+        System.out.println("\n## 경로 기준\n1. 최단 거리\n2. 최소 시간\nB. 돌아가기\n\n## 원하는 기능을 선택하세요.");
         number = scanner.next();
         if (!number.equals("B")) {
             chosenNumber = Validator.isInputRight(number);
