@@ -38,11 +38,11 @@ public class OutputView {
     }
 
     public static void totalLength(int length) {
-        print(TOTAL_LENGTH + length + KM);
+        print(INFO + TOTAL_LENGTH + length + KM);
     }
 
     public static void totalTime(int time) {
-        print(TOTAL_TIME + time + MINUTE);
+        print(INFO + TOTAL_TIME + time + MINUTE);
     }
 
     public static void space() {
