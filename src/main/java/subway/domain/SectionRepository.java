@@ -9,17 +9,11 @@ import java.util.ListIterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
-import org.jgrapht.graph.DefaultWeightedEdge;
-import org.jgrapht.graph.WeightedMultigraph;
 import subway.util.Constants;
 
 public class SectionRepository {
 
     private final Map<Line, List<Station>> sections = new HashMap<>();
-    WeightedMultigraph<String, DefaultWeightedEdge> timeBetweenStation = new WeightedMultigraph(
-        DefaultWeightedEdge.class);
-    WeightedMultigraph<String, DefaultWeightedEdge> distanceBetweenStation = new WeightedMultigraph(
-        DefaultWeightedEdge.class);
 
 
     public SectionRepository() {
@@ -27,15 +21,6 @@ public class SectionRepository {
 
     public void addStationList(Line line, List<Station> stations) {
         sections.put(line, new LinkedList<>(stations)); // mutable
-    }
-
-    public void addWeightedMultigraph(Line line, Station startStation, Station endStation,
-        int distance, int time) {
-        distanceBetweenStation.setEdgeWeight(
-            distanceBetweenStation.addEdge(startStation.getName(), endStation.getName()), distance);
-        timeBetweenStation
-            .setEdgeWeight(timeBetweenStation.addEdge(startStation.getName(), endStation.getName()),
-                time);
     }
 
 
