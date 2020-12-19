@@ -14,10 +14,25 @@ public class DataInitService {
     private static final String LINE_TOW = "2호선";
     private static final String LINE_THREE = "3호선";
     private static final String LINE_SINBUNDANG = "신분당선";
+    private static int GYODAE_GANGNAM_DISTANCE = 2;
+    private static int GYODAE_GANGNAM_TIME = 3;
+    private static int GANGNAM_YEOKSAM_DISTANCE = 2;
+    private static int GANGNAM_YEOKSAM_TIME = 3;
+    private static int GYODAE_SOUTH_TERMINAL_DISTANCE = 3;
+    private static int GYODAE_SOUTH_TERMINAL_TIME = 2;
+    private static int SOUTH_TERMINAL_YANGJAE_DISTANCE = 6;
+    private static int SOUTH_TERMINAL_YANGJAE_TIME = 5;
+    private static int YANGJAE_MAEBONG_DISTANCE = 1;
+    private static int YANGJAE_MAEBONG_TIME = 1;
+    private static int GANGNAM_YANGJAE_DISTANCE = 2;
+    private static int GANGNAM_YANGJAE_TIME = 8;
+    private static int YANGJAE_YANGJAE_CITIZEN_FORESET_DISTANCE = 10;
+    private static int YANGJAE_YANGJAE_CITIZEN_FORESET_TIME = 3;
 
     public static void init() {
         addStation();
         addLine();
+        addConnectData();
     }
 
     private static void addStation() {
@@ -46,5 +61,15 @@ public class DataInitService {
         for (String stationName: stationNames) {
             LineService.lineInAddStation(lineName, stationName);
         }
+    }
+
+    private static void addConnectData() {
+        StationService.stationAddConnectData(GYODAE_STATION, GANGNAM_STATION, GYODAE_GANGNAM_DISTANCE, GYODAE_GANGNAM_TIME);
+        StationService.stationAddConnectData(GANGNAM_STATION, YEOKSAM_STATION, GANGNAM_YEOKSAM_DISTANCE, GANGNAM_YEOKSAM_TIME);
+        StationService.stationAddConnectData(GYODAE_STATION, SOUTH_TERMIANL_STATION, GYODAE_SOUTH_TERMINAL_DISTANCE, GYODAE_SOUTH_TERMINAL_TIME);
+        StationService.stationAddConnectData(SOUTH_TERMIANL_STATION, YANGJAE_STATION, SOUTH_TERMINAL_YANGJAE_DISTANCE, SOUTH_TERMINAL_YANGJAE_TIME);
+        StationService.stationAddConnectData(YANGJAE_STATION, MAEBONG_STATION, YANGJAE_MAEBONG_DISTANCE, YANGJAE_MAEBONG_TIME);
+        StationService.stationAddConnectData(GANGNAM_STATION, YANGJAE_STATION, GANGNAM_YANGJAE_DISTANCE, GANGNAM_YANGJAE_TIME);
+        StationService.stationAddConnectData(YANGJAE_STATION, YANGJAE_CITIZEN_FOREST_STATION, YANGJAE_YANGJAE_CITIZEN_FORESET_DISTANCE, YANGJAE_YANGJAE_CITIZEN_FORESET_TIME);
     }
 }
