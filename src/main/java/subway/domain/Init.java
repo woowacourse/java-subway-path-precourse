@@ -43,7 +43,7 @@ public class Init {
             graph.setEdgeWeight(graph.addEdge("남부터미널역", "양재역"), 6);
             graph.setEdgeWeight(graph.addEdge("양재역", "매봉역"), 1);
             graph.setEdgeWeight(graph.addEdge("강남역", "양재역"), 2);
-            graph.setEdgeWeight(graph.addEdge("양재역", "양재시민의숲역"), 8);
+            graph.setEdgeWeight(graph.addEdge("양재역", "양재시민의숲역"), 10);
         }
         DijkstraShortestPath dijkstraDistance = new DijkstraShortestPath(graph);
         return dijkstraDistance;
@@ -60,7 +60,7 @@ public class Init {
             graph.setEdgeWeight(graph.addEdge("교대역", "남부터미널역"), 2);
             graph.setEdgeWeight(graph.addEdge("남부터미널역", "양재역"), 5);
             graph.setEdgeWeight(graph.addEdge("양재역", "매봉역"), 1);
-            graph.setEdgeWeight(graph.addEdge("강남역", "양재역"), 10);
+            graph.setEdgeWeight(graph.addEdge("강남역", "양재역"), 8);
             graph.setEdgeWeight(graph.addEdge("양재역", "양재시민의숲역"), 3);
         }
         DijkstraShortestPath dijkstraTime = new DijkstraShortestPath(graph);
