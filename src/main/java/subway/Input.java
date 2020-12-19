@@ -11,6 +11,8 @@ public class Input {
 
     public static String getUserInput(String str) {
         Output.printInputBefore(str);
-        return scanner.next();
+        String userInput = scanner.next();
+        Output.printLine();
+        return userInput;
     }
 }
