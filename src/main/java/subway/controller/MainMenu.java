@@ -7,7 +7,7 @@ import subway.view.OutputView;
 import java.util.Scanner;
 
 public class MainMenu {
-    public static final String REGEX_VALID_MAIN_MENU = "[1-2Qq]";
+    public static final String REGEX_VALID_MAIN_MENU = "[1Qq]";
     public static final String REGEX_QUIT_MENU = "[Qq]";
     private final Scanner scanner;
     private boolean doNext;
