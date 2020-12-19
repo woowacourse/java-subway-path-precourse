@@ -14,4 +14,12 @@ public class Stations {
     public List<Station> getStations() {
         return Collections.unmodifiableList(stations);
     }
+
+    public void addStation(Station station, int sequence) {
+        stations.add(sequence, station);
+    }
+
+    public int size() {
+        return stations.size();
+    }
 }
