@@ -2,6 +2,7 @@ package subway.controller;
 
 import subway.controller.validation.PathValidation;
 import subway.service.DistanceMapService;
+import subway.service.TimeMapService;
 import subway.type.ExceptionType;
 import subway.type.InformationType;
 import subway.type.InputType;
@@ -82,6 +83,30 @@ public class PathController implements OptionInterface {
         String destinationInput = InputView.scanDestinationInput(scanner);
         System.out.println();
 
-        PathValidation.isValidStations(originInput, destinationInput);
+        if (PathValidation.isValidStations(originInput, destinationInput)) {
+            double timeMap = TimeMapService.getShortestTime(originInput, destinationInput);
+            List<String> shortestTimeStations
+                    = TimeMapService.getShortestTimeStations(originInput, destinationInput);
+
+            System.out.println(showPathByShortestTime(timeMap, shortestTimeStations));
+        }
+    }
+
+    public static String showPathByShortestTime(double timeMap, List<String> shortestTimeStations) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append(InformationType.INFORMATION_WITH_LINES.getInformation())
+                .append(InformationType.INFORMATION.getInformation())
+                .append(TextType.TOTAL_TIME.getText())
+                .append((int) timeMap)
+                .append(TextType.MINUTE.getText())
+                .append(InformationType.INFORMATION_WITH_LINES.getInformation());
+
+        for (String shortestTimeStation : shortestTimeStations) {
+            stringBuilder.append(InformationType.INFORMATION.getInformation())
+                    .append(shortestTimeStation)
+                    .append(TextType.NEW_LINE.getText());
+        }
+        return stringBuilder.toString();
     }
 }
