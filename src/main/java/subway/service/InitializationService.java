@@ -8,7 +8,7 @@ import subway.type.LineType;
 import subway.type.StationType;
 
 public class InitializationService {
-    public static void initializeStations() {
+    public static void initializeStation() {
         StationRepository.addStation(new Station(StationType.EDUCATION_UNIVERSITY.getStation()));
         StationRepository.addStation(new Station(StationType.GANGNAM.getStation()));
         StationRepository.addStation(new Station(StationType.YEOKSAM.getStation()));
@@ -18,7 +18,7 @@ public class InitializationService {
         StationRepository.addStation(new Station(StationType.MAEBONG.getStation()));
     }
 
-    public static void initializeLines() {
+    public static void initializeLine() {
         LineRepository.addLine(new Line(LineType.TWO.getLine()));
         LineRepository.addLine(new Line(LineType.THREE.getLine()));
         LineRepository.addLine(new Line(LineType.SHINBUNDANG.getLine()));

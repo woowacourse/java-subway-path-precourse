@@ -15,8 +15,8 @@ public class SubwayController {
     }
 
     public static void initializeSubway() {
-        InitializationService.initializeStations();
-        InitializationService.initializeLines();
+        InitializationService.initializeStation();
+        InitializationService.initializeLine();
     }
 
     public static void startSubway(Scanner scanner) {
