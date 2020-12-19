@@ -7,7 +7,6 @@ public class OutputView {
     public static void printMainScreen(String commandTypeInfos) {
         printTitle(MAIN_SCREEN_TITLE);
         System.out.println(commandTypeInfos);
-        lineFeed();
     }
 
     private static void printTitle(String title) {
