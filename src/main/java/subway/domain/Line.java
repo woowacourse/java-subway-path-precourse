@@ -14,6 +14,7 @@ public class Line {
     public Line(String name) {
         this.name = name;
     }
+    // 추가 기능 구현
 
     public String getName() {
         return name;
@@ -33,5 +34,14 @@ public class Line {
             distance.add(tmpSaveDistance.get(i));
         }
     }
-    // 추가 기능 구현
+    public List<Station> getLineStation(){
+        return stations;
+    }
+    public List<Integer> getLineDistance(){
+        return distance;
+    }
+    public List<Integer> getLineTime(){
+        return time;
+    }
+
 }
