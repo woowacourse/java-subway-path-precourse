@@ -2,7 +2,9 @@ package subway.view;
 
 import subway.SubwayPath;
 import subway.domain.Station;
+import subway.dto.MinimumDistanceResultDto;
 import subway.exception.StateNotInitializedException;
+import subway.service.DistanceService;
 import subway.service.StationService;
 import subway.util.MainViewUtil;
 import subway.util.RouteLookupViewUtil;
@@ -56,6 +58,8 @@ public class RouteLookupViewState implements ViewState {
         }
         Station stationBegin = getStationBegin();
         Station stationEnd = getStationEnd();
+        MinimumDistanceResultDto resultDto = DistanceService
+                .getShortestPhysicalDistanceResult(stationBegin, stationEnd);
         changeStateToMainView(subwayPath);
     }
 
@@ -65,6 +69,8 @@ public class RouteLookupViewState implements ViewState {
         }
         Station stationBegin = getStationBegin();
         Station stationEnd = getStationEnd();
+        MinimumDistanceResultDto resultDto = DistanceService
+                .getShortestTimeDistanceResult(stationBegin, stationEnd);
         changeStateToMainView(subwayPath);
     }
 

@@ -12,6 +12,7 @@ public class SubwayPath {
     public SubwayPath(Scanner scanner) {
         MainViewState.initializeMainView(scanner);
         RouteLookupViewState.initializeRouteLookupView(scanner);
+        InitializeSubwayPath.initialize();
         viewState = MainViewState.getMainView();
     }
 
