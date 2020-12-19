@@ -4,9 +4,6 @@ import org.jgrapht.GraphPath;
 import subway.view.OutputView;
 import subway.view.Prefix;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class SearchView {
     private static final String MAIN = Prefix.SHARP.getPrefix() + "경로 기준";
     private static final String DISTANCE = Prefix.ONE.getPrefix() + "최단 거리";
@@ -38,16 +35,37 @@ public class SearchView {
         outputView.printSharp(PRINT_ADD_SECOND);
     }
 
-    public void printList(GraphPath path, double pathWeight) {
+    public void printDistanceList(GraphPath path, double pathWeight) {
         outputView.printInfos(Prefix.CONTOUR.getPrefix());
-        outputView.printInfos("총 거리: " + pathWeight + "km");
+        outputView.printInfos("총 거리: " + (int)pathWeight + "km");
         outputView.printInfos(Prefix.CONTOUR.getPrefix());
+        path.getEdgeList().stream()
+                .forEach(edge -> {
+                    String tmp = edge.toString();
+                    int index = tmp.indexOf(":");
+                    String substring = tmp.substring(1, index);
+                    outputView.printInfos(substring);
+                });
+        String lastText = path.getEdgeList().get(path.getEdgeList().size() - 1).toString();
+        int index = lastText.indexOf(":");
+        String substring = lastText.substring(index + 2, lastText.length() -1);
+        outputView.printInfos(substring);
+    }
 
-        String paths = path.getEdgeList().toString();
-        String[] split = paths.split(" : ");
-
-        for (String singlePath : split) {
-            outputView.printInfos(singlePath);
-        }
+    public void printTimeList(GraphPath path, double pathWeight) {
+        outputView.printInfos(Prefix.CONTOUR.getPrefix());
+        outputView.printInfos("총 시간: " + (int)pathWeight + "분");
+        outputView.printInfos(Prefix.CONTOUR.getPrefix());
+        path.getEdgeList().stream()
+                .forEach(edge -> {
+                    String tmp = edge.toString();
+                    int index = tmp.indexOf(":");
+                    String substring = tmp.substring(1, index);
+                    outputView.printInfos(substring);
+                });
+        String lastText = path.getEdgeList().get(path.getEdgeList().size() - 1).toString();
+        int index = lastText.indexOf(":");
+        String substring = lastText.substring(index + 2, lastText.length() -1);
+        outputView.printInfos(substring);
     }
 }

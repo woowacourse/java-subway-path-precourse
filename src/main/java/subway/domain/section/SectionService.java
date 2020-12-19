@@ -4,7 +4,6 @@ import subway.domain.line.Line;
 import subway.domain.line.LineRepository;
 import subway.domain.section.dto.SectionSaveReqDto;
 import subway.domain.section.dto.SectionStationAddReqDto;
-import subway.domain.section.dto.SectionStationDeleteReqDto;
 import subway.domain.station.Station;
 import subway.domain.station.StationRepository;
 import subway.domain.station.Stations;
@@ -14,8 +13,6 @@ import subway.exception.SectionException;
 import subway.exception.StationException;
 
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 public class SectionService {
     public static final int CONVERT_SEQUENCE = 1;

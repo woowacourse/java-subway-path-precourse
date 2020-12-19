@@ -14,8 +14,8 @@ import java.util.List;
 
 public class SearchService {
     private static final List<DijkstraShortestPath> dijkstraShortestPaths = new ArrayList<>();
-    private static final int DISTANCE_INDEX = 1;
-    private static final int TIME_INDEX = 0;
+    private static final int DISTANCE_INDEX = 0;
+    private static final int TIME_INDEX = 1;
 
     private final InputView inputView;
     private final SearchView searchView;
@@ -58,17 +58,17 @@ public class SearchService {
     }
 
     private void printTime(Station firstStation, Station secondStation) {
-        DijkstraShortestPath dijkstraShortestPathDistance = dijkstraShortestPaths.get(DISTANCE_INDEX);
-        double pathWeight = dijkstraShortestPathDistance.getPathWeight(firstStation.getName(), secondStation.getName());
-        GraphPath path = dijkstraShortestPathDistance.getPath(firstStation.getName(), secondStation.getName());
-        searchView.printList(path, pathWeight);
-    }
-
-    private void printDistance(Station firstStation, Station secondStation) {
         DijkstraShortestPath dijkstraShortestPathDistance = dijkstraShortestPaths.get(TIME_INDEX);
         double pathWeight = dijkstraShortestPathDistance.getPathWeight(firstStation.getName(), secondStation.getName());
         GraphPath path = dijkstraShortestPathDistance.getPath(firstStation.getName(), secondStation.getName());
-        searchView.printList(path, pathWeight);
+        searchView.printTimeList(path, pathWeight);
+    }
+
+    private void printDistance(Station firstStation, Station secondStation) {
+        DijkstraShortestPath dijkstraShortestPathDistance = dijkstraShortestPaths.get(DISTANCE_INDEX);
+        double pathWeight = dijkstraShortestPathDistance.getPathWeight(firstStation.getName(), secondStation.getName());
+        GraphPath path = dijkstraShortestPathDistance.getPath(firstStation.getName(), secondStation.getName());
+        searchView.printDistanceList(path, pathWeight);
     }
 
     private void checkSameName(String firstStationName, String secondStationName) {
@@ -76,5 +76,4 @@ public class SearchService {
             throw new StationException(ErrorCode.STATION_SAME_NAME);
         }
     }
-
 }
