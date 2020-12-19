@@ -1,5 +1,6 @@
 package subway.domain;
 
+import java.util.List;
 import org.jgrapht.Graph;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
@@ -31,5 +32,17 @@ public class TimeGraphRepository {
     private static void addTime(String firstStation, String secondStation, int time) {
         final DefaultWeightedEdge newEdge = timeGraph.addEdge(firstStation, secondStation);
         timeGraph.setEdgeWeight(newEdge, time);
+    }
+
+    public static int totalTime(List<String> chosenPath) {
+        int totalTime = 0;
+        for (int i = 0; i < chosenPath.size() - 1; ++i) {
+            final DefaultWeightedEdge individualEdge = timeGraph
+                    .getEdge(chosenPath.get(i), chosenPath.get(i + 1));
+            final int edgeWeight = (int)timeGraph.getEdgeWeight(individualEdge);
+
+            totalTime += edgeWeight;
+        }
+        return totalTime;
     }
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import subway.domain.TimeGraphRepository;
 import subway.view.InputView;
+import subway.view.OutputView;
 
 public class QuickestPathController extends PathController {
 
@@ -16,6 +17,6 @@ public class QuickestPathController extends PathController {
         DijkstraShortestPath quickestPath = TimeGraphRepository.getQuickestPath();
         List<String> pathInformation = quickestPath.getPath(startingStationName, finishingStationName).getVertexList();
 
-        pathInformation.forEach(System.out::println);
+        OutputView.printResult(pathInformation);
     }
 }

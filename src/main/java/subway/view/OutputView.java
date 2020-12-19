@@ -3,6 +3,7 @@ package subway.view;
 import static subway.view.InfoMessage.*;
 
 import java.util.List;
+import subway.domain.TimeGraphRepository;
 
 public class OutputView {
 
@@ -22,6 +23,9 @@ public class OutputView {
     public static void printResult(List<String> chosenPath) {
         System.out.println();
         System.out.println(RESULT_LABEL);
+        System.out.println(INFO_LABEL + DIVIDER);
+        System.out.printf(TOTAL_DISTANCE, 0);
+        System.out.printf(TOTAL_TIME, TimeGraphRepository.totalTime(chosenPath));
         System.out.println(INFO_LABEL + DIVIDER);
         chosenPath.forEach(
                 station -> System.out.println(INFO_LABEL + station)

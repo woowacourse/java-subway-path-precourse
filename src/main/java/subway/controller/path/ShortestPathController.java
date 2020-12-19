@@ -4,6 +4,7 @@ import java.util.List;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import subway.domain.DistanceGraphRepository;
 import subway.view.InputView;
+import subway.view.OutputView;
 
 public class ShortestPathController extends PathController {
 
@@ -16,6 +17,6 @@ public class ShortestPathController extends PathController {
         DijkstraShortestPath shortestPath = DistanceGraphRepository.getShortestPath();
         List<String> pathInformation = shortestPath.getPath(startingStationName, finishingStationName).getVertexList();
 
-        pathInformation.forEach(System.out::println);
+        OutputView.printResult(pathInformation);
     }
 }
