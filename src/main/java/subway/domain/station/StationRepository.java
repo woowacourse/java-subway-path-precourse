@@ -7,6 +7,7 @@ import java.util.Objects;
 import subway.view.message.ErrorMessage;
 
 public class StationRepository {
+
     private static final List<Station> stations = new ArrayList<>();
 
     public static List<Station> stations() {

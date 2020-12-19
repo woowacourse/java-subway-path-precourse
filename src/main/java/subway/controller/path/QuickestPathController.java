@@ -17,7 +17,8 @@ public class QuickestPathController extends PathController {
     protected void calculatePath(String startingStationName, String finishingStationName) {
         try {
             DijkstraShortestPath quickestPath = TimeGraphRepository.getQuickestPath();
-            List<String> pathInformation = quickestPath.getPath(startingStationName, finishingStationName).getVertexList();
+            List<String> pathInformation = quickestPath
+                    .getPath(startingStationName, finishingStationName).getVertexList();
 
             OutputView.printResult(pathInformation);
         } catch (NullPointerException e) {

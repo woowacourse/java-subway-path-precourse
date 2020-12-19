@@ -45,6 +45,6 @@ public class TimeGraphRepository {
     }
 
     private static int getTime(DefaultWeightedEdge individualEdge) {
-        return (int)timeGraph.getEdgeWeight(individualEdge);
+        return (int) timeGraph.getEdgeWeight(individualEdge);
     }
 }

@@ -6,6 +6,7 @@ import subway.controller.menu.MainMenuController;
 import subway.view.InputView;
 
 public class Application {
+
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         final InputView inputView = new InputView(scanner);
@@ -15,6 +16,6 @@ public class Application {
 
         do {
             mainMenuController.run();
-        } while(MainMenuController.isRunning);
+        } while (MainMenuController.isRunning);
     }
 }

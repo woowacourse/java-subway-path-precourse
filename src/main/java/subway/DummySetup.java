@@ -91,7 +91,7 @@ public class DummySetup {
         addDistanceAndTimeNewBundangLine();
     }
 
-    private  static void addDistanceAndTimeWooHyungLine() {
+    private static void addDistanceAndTimeWooHyungLine() {
         DistanceGraphRepository.addStationsWithDistance("건대입구역", "군자역", 9);
         TimeGraphRepository.addStationsWithTime("건대입구역", "군자역", 5);
     }

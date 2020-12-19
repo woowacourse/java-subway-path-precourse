@@ -17,7 +17,8 @@ public class ShortestPathController extends PathController {
     protected void calculatePath(String startingStationName, String finishingStationName) {
         try {
             DijkstraShortestPath shortestPath = DistanceGraphRepository.getShortestPath();
-            List<String> pathInformation = shortestPath.getPath(startingStationName, finishingStationName).getVertexList();
+            List<String> pathInformation = shortestPath
+                    .getPath(startingStationName, finishingStationName).getVertexList();
 
             OutputView.printResult(pathInformation);
         } catch (NullPointerException e) {

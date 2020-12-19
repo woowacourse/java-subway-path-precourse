@@ -46,6 +46,6 @@ public class DistanceGraphRepository {
     }
 
     private static int getDistance(DefaultWeightedEdge individualEdge) {
-        return (int)distanceGraph.getEdgeWeight(individualEdge);
+        return (int) distanceGraph.getEdgeWeight(individualEdge);
     }
 }
