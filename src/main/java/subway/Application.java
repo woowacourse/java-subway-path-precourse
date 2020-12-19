@@ -15,7 +15,6 @@ public class Application {
         while(!ScreenManager.isEmpty()) {
             ScreenModel nextScreen = ScreenManager.pop();
             ScreenManager.show(nextScreen);
-            nextScreen.apply();
         }
     }
 }

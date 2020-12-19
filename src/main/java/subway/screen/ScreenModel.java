@@ -1,7 +1,6 @@
 package subway.screen;
 
 public interface ScreenModel {
-    public default String showMenu() {return null;}
-    public default ScreenModel getNextMenuScreen(String input) {return null;}
-    public default void apply() {}
+    public default String showScreen() {return "-1";}
+    public default ScreenModel getNextScreen(String input) {return null;}
 }

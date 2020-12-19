@@ -16,13 +16,13 @@ public class ScreenManager {
     }
 
     public static void show(ScreenModel screen) {
-        String result = screen.showMenu();
+        String result = screen.showScreen();
         if (result == DONE) {
             return;
         }
         // todo 유효한 입력인지 검증한다.
 
-        addNextMenuScreen(screen.getNextMenuScreen(result));
+        addNextMenuScreen(screen.getNextScreen(result));
 
     }
 

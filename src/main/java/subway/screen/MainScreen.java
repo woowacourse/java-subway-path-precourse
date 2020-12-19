@@ -15,7 +15,7 @@ public class MainScreen implements ScreenModel {
     }
 
     @Override
-    public String showMenu() {
+    public String showScreen() {
         InputView inputView = new InputView(scanner);
 
         OutputView.printMainMenu();
@@ -23,7 +23,7 @@ public class MainScreen implements ScreenModel {
     }
 
     @Override
-    public ScreenModel getNextMenuScreen(String input) {
+    public ScreenModel getNextScreen(String input) {
         if (input.equals( Menu.Main.ROUTE_INQUIRY.getCode())) {
             return new SelectCriteriaScreen(scanner);
         }

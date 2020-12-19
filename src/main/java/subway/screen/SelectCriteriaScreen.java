@@ -16,7 +16,7 @@ public class SelectCriteriaScreen implements ScreenModel {
     }
 
     @Override
-    public String showMenu() {
+    public String showScreen() {
         InputView inputView = new InputView(scanner);
 
         OutputView.printCriteriaMenu();
@@ -25,6 +25,11 @@ public class SelectCriteriaScreen implements ScreenModel {
             return DONE;
         }
         return input;
+    }
+
+    @Override
+    public ScreenModel getNextScreen(String input) {
+        return new FeatureScreen(scanner, input);
     }
 
 }
