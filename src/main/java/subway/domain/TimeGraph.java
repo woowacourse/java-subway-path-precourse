@@ -4,6 +4,7 @@ import org.jgrapht.GraphPath;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
+import subway.domain.exception.NoConnectionPathException;
 import subway.dto.PathDTO;
 
 import java.util.Iterator;
@@ -14,7 +15,7 @@ public class TimeGraph {
     public static WeightedMultigraph<Station, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
     public static DijkstraShortestPath dijkstraShortestPath;
 
-    private static void addVertex(Station station) {
+    public static void addVertex(Station station) {
         graph.addVertex(station);
     }
 
@@ -40,6 +41,10 @@ public class TimeGraph {
 
     public static PathDTO getShortestPath(Station from, Station to) {
         GraphPath<Station, DefaultWeightedEdge> graphPath = dijkstraShortestPath.getPath(from, to);
+        if (graphPath == null) {
+            throw new NoConnectionPathException();
+        }
+
         List<String> stationsName = graphPath.getVertexList().stream()
                 .map(Station::getName)
                 .collect(Collectors.toList());

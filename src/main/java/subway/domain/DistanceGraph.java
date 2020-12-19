@@ -4,6 +4,7 @@ import org.jgrapht.GraphPath;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
+import subway.domain.exception.NoConnectionPathException;
 import subway.dto.PathDTO;
 
 import java.util.Iterator;
@@ -40,6 +41,10 @@ public class DistanceGraph {
 
     public static PathDTO getShortestPath(Station from, Station to) {
         GraphPath<Station, DefaultWeightedEdge> graphPath = dijkstraShortestPath.getPath(from, to);
+        if (graphPath == null) {
+            throw new NoConnectionPathException();
+        }
+
         List<String> stationsName = graphPath.getVertexList().stream()
                 .map(Station::getName)
                 .collect(Collectors.toList());

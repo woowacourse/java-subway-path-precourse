@@ -14,5 +14,6 @@ public class Application {
         DataInitializer.initialize();
 
         MainController.run();
+
     }
 }
