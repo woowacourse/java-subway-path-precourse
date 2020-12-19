@@ -31,4 +31,22 @@ public class RouteFinder {
         }
         return route;
     }
+
+    public static List<Line> connectedLines(Line line) {
+        List<Line> connectedLines = new ArrayList<>();
+        for (Station station : line.stations()) {
+            for (Line lineIn : LineRepository.getLineByStation(station)){
+                connectedLines = addIfNotHas(lineIn);
+            }
+        }
+        return connectedLines;
+    }
+
+    public static List<Line> addIfNotHas(Line lineIn){
+        List<Line> connectedLines = new ArrayList<>();
+        if(!connectedLines.contains(lineIn)){
+            connectedLines.add(lineIn);
+        }
+        return connectedLines;
+    }
 }
