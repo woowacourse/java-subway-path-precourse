@@ -1,18 +1,18 @@
 package subway.domain;
 
 public class PathBuilder {
-	private Station firstStation;
-	private Station lastStation;
+	private String firstStation;
+	private String lastStation;
 	private int distance;
 	private int minute;
 
 	public PathBuilder firstStation(String stationName) {
-		this.firstStation = StationRepository.getStationByName(stationName);
+		this.firstStation = stationName;
 		return this;
 	}
 
 	public PathBuilder lastStation(String stationName) {
-		this.lastStation = StationRepository.getStationByName(stationName);
+		this.lastStation = stationName;
 		return this;
 	}
 

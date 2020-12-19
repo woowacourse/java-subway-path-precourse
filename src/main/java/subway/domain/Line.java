@@ -1,6 +1,8 @@
 package subway.domain;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Line {
 	private String name;
@@ -16,5 +18,15 @@ public class Line {
 
 	public void addPath(Path path) {
 		paths.add(path);
+	}
+
+	public List<String> getAllStationNames() {
+		List<String> stations = new ArrayList<String>();
+		for (Path path : paths) {
+			for (String stationName : path.getStationNames()) {
+				stations.add(stationName);
+			}
+		}
+		return stations;
 	}
 }
