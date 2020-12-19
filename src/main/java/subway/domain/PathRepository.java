@@ -6,13 +6,13 @@ import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 
 public class PathRepository {
-    private static WeightedMultigraph<String, DefaultWeightedEdge> graphByDistance
+    private static final WeightedMultigraph<String, DefaultWeightedEdge> graphByDistance
         = new WeightedMultigraph<>(DefaultWeightedEdge.class);
-    private static WeightedMultigraph<String, DefaultWeightedEdge> graphByTime
+    private static final WeightedMultigraph<String, DefaultWeightedEdge> graphByTime
         = new WeightedMultigraph<>(DefaultWeightedEdge.class);
-    private static DijkstraShortestPath dijkstraShortestDistance
+    private static final DijkstraShortestPath<String, String> dijkstraShortestDistance
         = new DijkstraShortestPath(graphByDistance);
-    private static DijkstraShortestPath dijkstraShortestTime
+    private static final DijkstraShortestPath<String, String> dijkstraShortestTime
         = new DijkstraShortestPath(graphByTime);
 
     private PathRepository() {
