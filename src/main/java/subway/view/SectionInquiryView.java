@@ -1,6 +1,9 @@
 package subway.view;
 
-import subway.domain.*;
+import subway.domain.Sections;
+import subway.domain.Station;
+import subway.domain.StationRepository;
+import subway.domain.SubwayGraph;
 import subway.exception.InvalidCommandException;
 
 import java.util.Objects;
@@ -48,11 +51,11 @@ public class SectionInquiryView extends View {
     @Override
     void doCommand(String command) {
         if (command.equals(MINIMUM_DISTANCE)) {
-            doMinimumDistanceCommand();
+            doMinimumCommand(true);
             return;
         }
         if (command.equals(MINIMUM_DURATION)) {
-            doMinimumDurationCommand();
+            doMinimumCommand(false);
             return;
         }
         if (command.equals(GO_MAIN_VIEW)) {
@@ -60,22 +63,13 @@ public class SectionInquiryView extends View {
         }
     }
 
-    private void doMinimumDistanceCommand() {
+    private void doMinimumCommand(boolean isDinstance) {
         Station departue = getDepartureStation();
         Station arrival = getArrivalStation();
 
         validateDepartueAndArrival(departue, arrival);
 
-        printSections(SubwayDistanceGraph.getMinimumSections(departue, arrival));
-    }
-
-    private void doMinimumDurationCommand() {
-        Station departue = getDepartureStation();
-        Station arrival = getArrivalStation();
-
-        validateDepartueAndArrival(departue, arrival);
-
-        printSections(SubwayDurationGraph.getMinimumSections(departue, arrival));
+        printSections(SubwayGraph.getMinimumSections(isDinstance, departue, arrival));
     }
 
     private Station getDepartureStation() {
