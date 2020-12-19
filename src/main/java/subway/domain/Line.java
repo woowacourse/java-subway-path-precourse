@@ -8,6 +8,11 @@ public class Line {
 	private String name;
 	private LinkedList<Path> paths;
 
+	public Line(String name) {
+		paths = new LinkedList<Path>();
+		this.name = name;
+	}
+
 	public String getName() {
 		return name;
 	}
