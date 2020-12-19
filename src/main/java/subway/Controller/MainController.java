@@ -16,6 +16,16 @@ public class MainController {
 		options.put(Options.QUIT.getOption(), (scanner) -> System.out.println(MainMessages.QUIT.getMessage()));
 	}
 
+	private static void controlByOption(String option, Scanner scanner) {
+		options.get(option).accept(scanner);
+		if (option.equals(Options.QUIT.getOption())) {
+			return;
+		}
+		run(scanner);
+	}
 
+	public static void run(Scanner scanner) {
+		//TODO
+	}
 
 }

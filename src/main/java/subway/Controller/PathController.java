@@ -17,9 +17,12 @@ public class PathController {
 		options.put(Options.QUIT.getOption(), (scanner) -> {});
 	}
 
-	public static void run(Scanner scanner) {
-		// TODO
-
+	private static void controlByOption(String option, Scanner scanner) {
+		options.get(option).accept(scanner);
+		if (option.equals(Options.BACK.getOption())) {
+			return;
+		}
+		run(scanner);
 	}
 
 	private static void findLeastDistance(Scanner scanner) {
@@ -28,5 +31,10 @@ public class PathController {
 
 	private static void findLeastTimeConsumed(Scanner scanner) {
 		// TODO
+	}
+
+	public static void run(Scanner scanner) {
+		// TODO
+
 	}
 }
