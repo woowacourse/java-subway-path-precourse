@@ -1,5 +1,7 @@
 package subway;
 
+import java.util.Stack;
+
 public class PrintScreen {
 
     public static void printMain() {
@@ -11,7 +13,7 @@ public class PrintScreen {
     }
 
     public static void selectFunction() {
-        System.out.println("## 원하는 기능을 선택하세요.");
+        System.out.println("\n## 원하는 기능을 선택하세요.");
     }
 
     public static void selectStandard() {
@@ -29,5 +31,22 @@ public class PrintScreen {
 
     public static void printInputArriveStation() {
         System.out.println("## 도착역을 입력하세요.");
+    }
+
+    public static void printMinPathStationToArrive(String kind, Stack<String> stack, int firstMinCost, int secondMinCost) {
+        System.out.println("[INFO] ---");
+        if (kind.equals(Constants.DISTANCE_COST)) {
+            System.out.println("[INFO] 총 거리 : " + firstMinCost);
+            System.out.println("[INFO] 총 소요시간 : " + secondMinCost);
+        }
+        if (kind.equals(Constants.TIME_COST)) {
+            System.out.println("[INFO] 총 소요시간 : " + firstMinCost);
+            System.out.println("[INFO] 총 거리 : " + secondMinCost);
+        }
+        System.out.println("[INFO] ---");
+        while (!stack.isEmpty()) {
+            System.out.println("[INFO] " + stack.pop());
+        }
+        System.out.println();
     }
 }
