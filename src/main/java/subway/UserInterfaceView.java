@@ -12,14 +12,16 @@ public class UserInterfaceView {
 
     public void start() {
         while (true) {
-            if (printViewAndReturnIsEnd()) {
+            if (printMainViewAndReturnIsEnd()) {
                 break;
             }
         }
     }
 
-    private boolean printViewAndReturnIsEnd() {
-        // TODO - 기능구현
+    private boolean printMainViewAndReturnIsEnd() {
+        OutPut.printMainView();
         return false;
     }
+
+
 }
