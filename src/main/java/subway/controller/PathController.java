@@ -16,7 +16,7 @@ public class PathController {
             if (isBack(pathInput)) {
                 return;
             }
-            chooseOption(pathInput);
+            chooseOption(pathInput, scanner);
         }
     }
 
@@ -29,13 +29,29 @@ public class PathController {
         return pathInput.equals(InputType.BACK.getInput());
     }
 
-    public static void chooseOption(String input) {
+    public static void chooseOption(String input, Scanner scanner) {
         if (input.equals(InputType.ONE.getInput())) {
+            getPathByShortestDistance(scanner);
             return;
         }
         if (input.equals(InputType.TWO.getInput())) {
+            getPathByShortestTime(scanner);
             return;
         }
         System.out.println(ExceptionType.INVALID_OPTION_CHOICE.getException());
+    }
+
+    public static void getPathByShortestDistance(Scanner scanner) {
+        String originInput = InputView.scanOriginInput(scanner);
+        System.out.println();
+        String destinationInput = InputView.scanDestinationInput(scanner);
+        System.out.println();
+    }
+
+    public static void getPathByShortestTime(Scanner scanner) {
+        String originInput = InputView.scanOriginInput(scanner);
+        System.out.println();
+        String destinationInput = InputView.scanDestinationInput(scanner);
+        System.out.println();
     }
 }

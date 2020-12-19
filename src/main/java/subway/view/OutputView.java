@@ -1,6 +1,7 @@
 package subway.view;
 
 import subway.type.ScreenType;
+import subway.type.TextType;
 
 public class OutputView {
     public static void printMainScreen() {
@@ -16,5 +17,13 @@ public class OutputView {
                 + ScreenType.SHORTEST_TIME.getScreen()
                 + ScreenType.BACK.getScreen()
                 + ScreenType.OPTION_CHOICE.getScreen());
+    }
+
+    public static void printOriginText() {
+        System.out.println(TextType.ORIGIN_TEXT.getText());
+    }
+
+    public static void printDestinationText() {
+        System.out.println(TextType.DESTINATION_TEXT.getText());
     }
 }
