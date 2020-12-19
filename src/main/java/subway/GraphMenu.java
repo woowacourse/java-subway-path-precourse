@@ -1,6 +1,5 @@
-package subway.view;
+package subway;
 
-import subway.controller.SubwayController;
 import subway.domain.*;
 
 import java.util.List;
@@ -40,7 +39,6 @@ public class GraphMenu {
     private static final List<String> SELECTIONS = List.of(DISTANCE_SELECTION, TIME_SELECTION, BACK_SELECTION);
 
     private final Scanner scanner;
-    private final SubwayController subwayController = new SubwayController();
 
     public GraphMenu(Scanner scanner) {
         this.scanner = scanner;
@@ -122,13 +120,13 @@ public class GraphMenu {
     private List<Station> getPath(String startStationName, String endStationName, GraphType graphType) {
         Station startStation = StationRepository.findStationByName(startStationName);
         Station endStation = StationRepository.findStationByName(endStationName);
-        return subwayController.getShortestPath(startStation, endStation, graphType);
+        return GraphRepository.findGraphByType(graphType).shortestPath(startStation, endStation);
     }
 
     private int getWeight(String startStationName, String endStationName, GraphType graphType) {
         Station startStation = StationRepository.findStationByName(startStationName);
         Station endStation = StationRepository.findStationByName(endStationName);
-        return (int) subwayController.getShortestPathWeight(startStation, endStation, graphType);
+        return (int) GraphRepository.findGraphByType(graphType).shortestPathWeight(startStation, endStation);
     }
 
     private boolean checkValid(String startStationName, String endStationName) {
