@@ -22,5 +22,11 @@ public class Path {
         }
     }
 
+    public PathDistanceWeight getPathDistanceWeight() {
+        return pathDistanceWeight;
+    }
 
+    public PathTimeWeight getPathTimeWeight() {
+        return pathTimeWeight;
+    }
 }
