@@ -23,17 +23,74 @@ public class InitSubway {
         lineMap.put("신분당선", Arrays.asList("강남역", "양재역", "양재시민의숲역"));
 
         for (String lineName : lineMap.keySet()) {
-            List<String> stationNames = lineMap.get(lineName);
-            List<Station> stationsList = getLineStations(stationNames);
-            LineRepository.addLine(new Line(lineName, stationsList));
+            if (lineName.equals("2호선")) {
+                List<String> stationNames = lineMap.get(lineName);
+                List<Station> stationsList = initTwoLineStations(stationNames);
+                LineRepository.addLine(new Line(lineName, stationsList));
+                break;
+            }
+            if (lineName.equals("3호선")) {
+                List<String> stationNames = lineMap.get(lineName);
+                List<Station> stationsList = initThreeLineStations(stationNames);
+                LineRepository.addLine(new Line(lineName, stationsList));
+                break;
+            }
+            if (lineName.equals("신분당선")) {
+                List<String> stationNames = lineMap.get(lineName);
+                List<Station> stationsList = initSinbundangLineStations(stationNames);
+                LineRepository.addLine(new Line(lineName, stationsList));
+                break;
+            }
         }
     }
 
-    private static List<Station> getLineStations(List<String> stationNames) {
+    private static List<Station> initTwoLineStations(List<String> stationNames) {
         List<Station> stations = new ArrayList<>();
+        List<Integer> stationDistanceInfo = new ArrayList<>(Arrays.asList(2, 2));
+        List<Integer> stationTimeInfo = new ArrayList<>(Arrays.asList(3, 3));
         for (String stationName : stationNames) {
-            stations.add(new Station(stationName));
+            stationLengthTwoTimeAndDistanceInit(stationNames, stations, stationDistanceInfo, stationTimeInfo, stationName);
         }
         return stations;
+    }
+
+    private static List<Station> initSinbundangLineStations(List<String> stationNames) {
+        List<Station> stations = new ArrayList<>();
+        List<Integer> stationDistanceInfo = new ArrayList<>(Arrays.asList(2, 10));
+        List<Integer> stationTimeInfo = new ArrayList<>(Arrays.asList(8, 3));
+        for (String stationName : stationNames) {
+            stationLengthTwoTimeAndDistanceInit(stationNames, stations, stationDistanceInfo, stationTimeInfo, stationName);
+        }
+        return stations;
+    }
+
+    private static void stationLengthTwoTimeAndDistanceInit(List<String> stationNames, List<Station> stations, List<Integer> stationDistanceInfo, List<Integer> stationTimeInfo, String stationName) {
+        for (int i = 0; i < stationNames.size(); i++) {
+            if (stationNames.size() == 2) {
+                stations.add(new Station(stationName));
+                break;
+            }
+            stations.add(new Station(stationName, stationDistanceInfo.get(i), stationTimeInfo.get(i)));
+        }
+    }
+
+    private static List<Station> initThreeLineStations(List<String> stationNames) {
+        List<Station> stations = new ArrayList<>();
+        List<Integer> stationDistanceInfo = new ArrayList<>(Arrays.asList(3, 6, 1));
+        List<Integer> stationTimeInfo = new ArrayList<>(Arrays.asList(2, 5, 1));
+        for (String stationName : stationNames) {
+            stationLengthThreeTimeAndDistanceInit(stationNames, stations, stationDistanceInfo, stationTimeInfo, stationName);
+        }
+        return stations;
+    }
+
+    private static void stationLengthThreeTimeAndDistanceInit(List<String> stationNames, List<Station> stations, List<Integer> stationDistanceInfo, List<Integer> stationTimeInfo, String stationName) {
+        for (int i = 0; i < stationNames.size(); i++) {
+            if (stationNames.size() == 3) {
+                stations.add(new Station(stationName));
+                break;
+            }
+            stations.add(new Station(stationName, stationDistanceInfo.get(i), stationTimeInfo.get(i)));
+        }
     }
 }

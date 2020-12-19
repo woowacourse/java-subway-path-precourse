@@ -23,4 +23,8 @@ public class LineRepository {
     public static void deleteAll() {
         lines.clear();
     }
+
+    public static List<Line> getLines() {
+        return lines;
+    }
 }

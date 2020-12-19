@@ -14,6 +14,8 @@ public class Line {
     public String getName() {
         return name;
     }
-
     // 추가 기능 구현
+    public List<Station> getStation() {
+        return stations;
+    }
 }

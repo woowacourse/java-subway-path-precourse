@@ -23,4 +23,9 @@ public class StationRepository {
     public static void deleteAll() {
         stations.clear();
     }
+
+    public static String getNameByIndex(int Index) {
+        return stations.get(Index).getName();
+    }
+
 }
