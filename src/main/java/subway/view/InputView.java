@@ -14,8 +14,10 @@ public class InputView {
 
     }
 
-    public static void getPathRuleMenu() {
-
+    public static String getPathRuleMenu(Scanner scanner) {
+        String inputOrder = scanner.nextLine();
+        Validator.checkPathRuleInputOrder(inputOrder);
+        return inputOrder;
     }
 
     public static void getStartingStation() {

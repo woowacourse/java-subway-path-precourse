@@ -29,7 +29,15 @@ public class SubwayPath {
     }
 
     private void selectPathRuleMenu(String order) {
-        OutputView.printPathRuleView();
+        try {
+            OutputView.printPathRuleView();
+            OutputView.printAskingFunction();
+            InputView.getPathRuleMenu(scanner);
+            return;
+        } catch (IllegalArgumentException e) {
+            OutputView.printError(e.getMessage());
+            selectPathRuleMenu(order);
+        }
     }
 
     private String selectMenu() {
