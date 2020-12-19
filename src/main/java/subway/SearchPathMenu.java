@@ -1,5 +1,6 @@
 package subway;
 
+import subway.controller.SearchController;
 import subway.view.InputView;
 import subway.view.OutputView;
 
@@ -10,16 +11,16 @@ import java.util.stream.Collectors;
 
 public class SearchPathMenu {
     private final Scanner scanner;
-    private boolean isAppEnd = false;
+    private final SearchController searchController;
 
     public SearchPathMenu(Scanner scanner) {
         this.scanner = scanner;
+        searchController = new SearchController(scanner);
     }
 
     public void run() {
         printMenu();
-        selectMenu();
-        // TODO :: 기능 수행
+        execute(selectMenu());
     }
 
     private void printMenu() {
@@ -33,10 +34,20 @@ public class SearchPathMenu {
         return SEARCH_MENU.of(InputView.selectMenu(scanner));
     }
 
+    private void execute(SEARCH_MENU selected) {
+        if (selected == SEARCH_MENU.SEARCH_BY_DISTANCE) {
+            searchController.searchByDistance();
+        }
+
+        if (selected == SEARCH_MENU.SEARCH_BY_TIME) {
+            searchController.searchByTime();
+        }
+    }
+
     private enum SEARCH_MENU {
         SEARCH_BY_DISTANCE("1", "1. 최단 거리 조회"),
         SEARCH_BY_TIME("2", "2. 최단 시간 조회"),
-        EXIT("B", "B. 돌아가기");
+        BACK("B", "B. 돌아가기");
 
         private String code;
         private String menuName;

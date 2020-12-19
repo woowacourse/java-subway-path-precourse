@@ -10,16 +10,19 @@ import java.util.List;
 
 public class SubwayPathApp {
     private final Scanner scanner;
+    private final SearchPathMenu searchPathMenu;
     private boolean isAppEnd = false;
 
     public SubwayPathApp(Scanner scanner) {
         this.scanner = scanner;
+        searchPathMenu = new SearchPathMenu(scanner);
+        DummyData.initialize();
     }
 
     public void run() {
         do {
             printMenu();
-            selectMenu();
+            doSelectedMenu(selectMenu());
         } while (!isAppEnd);
     }
 
@@ -32,6 +35,20 @@ public class SubwayPathApp {
 
     private MAIN_MENU selectMenu() {
         return MAIN_MENU.of(InputView.selectMenu(scanner));
+    }
+
+    private void doSelectedMenu(MAIN_MENU selected) {
+        if (selected == MAIN_MENU.SEARCH_PATH) {
+            searchPathMenu.run();
+        }
+
+        if (selected == MAIN_MENU.EXIT) {
+            setAppEnd();
+        }
+    }
+
+    private void setAppEnd() {
+        isAppEnd = true;
     }
 
     private enum MAIN_MENU {
