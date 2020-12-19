@@ -6,10 +6,16 @@ import java.util.List;
 import java.util.Objects;
 
 public class StationRepository {
+
     private static final List<Station> stations = new ArrayList<>();
 
     public static List<Station> stations() {
         return Collections.unmodifiableList(stations);
+    }
+
+    public static Station findByName(String name) {
+        return stations.stream().filter(station -> station.getName().equals(name)).findFirst()
+            .get();
     }
 
     public static void addStation(Station station) {
@@ -22,5 +28,9 @@ public class StationRepository {
 
     public static void deleteAll() {
         stations.clear();
+    }
+
+    public static boolean isDuplicatedStation(Station station) {
+        return stations.contains(station);
     }
 }
