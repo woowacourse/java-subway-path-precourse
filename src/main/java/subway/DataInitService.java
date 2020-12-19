@@ -11,6 +11,9 @@ public class DataInitService {
     private static final String YANGJAE_STATION = "양재역";
     private static final String YANGJAE_CITIZEN_FOREST_STATION = "양재시민의숲역";
     private static final String MAEBONG_STATION = "매봉역";
+    public static final String[] stationNames = {GYODAE_STATION, GANGNAM_STATION, YEOKSAM_STATION,
+        SOUTH_TERMIANL_STATION, YANGJAE_STATION, YANGJAE_CITIZEN_FOREST_STATION,
+        MAEBONG_STATION};
     private static final String LINE_TOW = "2호선";
     private static final String LINE_THREE = "3호선";
     private static final String LINE_SINBUNDANG = "신분당선";
@@ -36,9 +39,6 @@ public class DataInitService {
     }
 
     private static void addStation() {
-        String[] stationNames = {GYODAE_STATION, GANGNAM_STATION, YEOKSAM_STATION,
-            SOUTH_TERMIANL_STATION, YANGJAE_STATION, YANGJAE_CITIZEN_FOREST_STATION,
-            MAEBONG_STATION};
         for (String stationName : stationNames) {
             StationService.addStation(stationName);
         }
