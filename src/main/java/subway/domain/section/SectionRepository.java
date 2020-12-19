@@ -14,4 +14,8 @@ public class SectionRepository {
     public static void addSection(Section section) {
         sections.add(section);
     }
+
+    public static void deleteAll() {
+        sections.clear();
+    }
 }
