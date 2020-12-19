@@ -23,4 +23,13 @@ public class LineRepository {
     public static void deleteAll() {
         lines.clear();
     }
+
+    public static Line findByName(String name) {
+        return lines().stream()
+                .filter(line -> line.getName().equals(name))
+                .findAny()
+                .orElseThrow(IllegalArgumentException::new);
+    }
+
+
 }
