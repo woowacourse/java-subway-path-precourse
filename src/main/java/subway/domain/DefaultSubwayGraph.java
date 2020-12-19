@@ -11,11 +11,16 @@ public class DefaultSubwayGraph {
         subwayMap = new DefaultDirectedWeightedGraph<Station, DefaultWeightedEdge>(
             DefaultWeightedEdge.class);
         addDefaultStations();
+        addDefaultEdges();
     }
 
     private void addDefaultStations() {
         for (Station station : DefaultStations.getDefaultStations()) {
             subwayMap.addVertex(station.getName());
         }
+    }
+
+    private void addDefaultEdges() {
+        for (Section section : DefaultSections.getSections());
     }
 }

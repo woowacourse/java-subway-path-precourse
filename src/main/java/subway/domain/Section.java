@@ -12,4 +12,9 @@ public class Section {
         this.arrivalStation = arrivalStation;
         this.cost = cost;
     }
+
+    @Override
+    public String toString(){
+        return this.departureStation + this.arrivalStation;
+    }
 }
