@@ -81,18 +81,26 @@ public class SubwayRouteController {
 
     private static final void calculatePathOfShortestDistance(String arrival, String departure) {
         final DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(distanceGraph);
-        List<String> shortestPath = dijkstraShortestPath.getPath(arrival, departure).getVertexList();
-        double distance = dijkstraShortestPath.getPathWeight(arrival, departure);
-        double time = summation(shortestPath, TIME);
-        OutputView.printResults(shortestPath, distance, time);
+        try {
+            List<String> shortestPath = dijkstraShortestPath.getPath(arrival, departure).getVertexList();
+            double distance = dijkstraShortestPath.getPathWeight(arrival, departure);
+            double time = summation(shortestPath, TIME);
+            OutputView.printResults(shortestPath, distance, time);
+        } catch (Exception e) {
+            System.out.println(ERROR + "출발역과 도착역이 연결되어 있지 않습니다.");
+        }
     }
 
     private static final void calculatePathOfShortestTime(String arrival, String departure) {
         final DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(timeGraph);
-        List<String> shortestPath = dijkstraShortestPath.getPath(arrival, departure).getVertexList();
-        double distance = summation(shortestPath, DISTANCE);
-        double time = dijkstraShortestPath.getPathWeight(arrival, departure);
-        OutputView.printResults(shortestPath, distance, time);
+        try {
+            List<String> shortestPath = dijkstraShortestPath.getPath(arrival, departure).getVertexList();
+            double distance = summation(shortestPath, DISTANCE);
+            double time = dijkstraShortestPath.getPathWeight(arrival, departure);
+            OutputView.printResults(shortestPath, distance, time);
+        } catch (Exception e) {
+            System.out.println(ERROR + "출발역과 도착역이 연결되어 있지 않습니다.");
+        }
     }
 
     /**
