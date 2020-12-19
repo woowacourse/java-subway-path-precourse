@@ -1,11 +1,8 @@
 package subway.control;
 
-import subway.domain.Line;
-import subway.domain.LineRepository;
-import subway.domain.Station;
-import subway.domain.StationRepository;
-import subway.enums.Lines;
-import subway.enums.Stations;
+import subway.enums.InitialLines;
+import subway.enums.InitialRoutes;
+import subway.enums.InitialStations;
 import subway.enums.menu.MainMenu;
 import subway.view.MainView;
 
@@ -17,8 +14,9 @@ public class MainControlCenter {
 
     public MainControlCenter() {
         woowahanMap = new RouteControlCenter();
-        Stations.initializeStations();
-        Lines.initializeLines();
+        InitialStations.initializeStations();
+        InitialLines.initializeLines();
+        InitialRoutes.initializeRoutes();
     }
 
     public static String inputCommand(Scanner scanner) {

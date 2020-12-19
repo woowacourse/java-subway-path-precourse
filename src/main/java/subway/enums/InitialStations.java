@@ -5,7 +5,7 @@ import subway.domain.StationRepository;
 
 import java.util.Arrays;
 
-public enum Stations {
+public enum InitialStations {
     KYODAE("교대역"),
     GANGNAM("강남역"),
     YEOKSAM("역삼역"),
@@ -16,7 +16,7 @@ public enum Stations {
 
     private String name;
 
-    Stations(String name) {
+    InitialStations(String name) {
         this.name = name;
     }
 
@@ -25,8 +25,8 @@ public enum Stations {
     }
 
     public static void initializeStations() {
-        Arrays.stream(Stations.values())
-                .map(Stations::getName)
+        Arrays.stream(InitialStations.values())
+                .map(InitialStations::getName)
                 .map(Station::new)
                 .forEach(StationRepository::addStation);
     }
