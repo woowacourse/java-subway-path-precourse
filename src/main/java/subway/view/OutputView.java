@@ -43,7 +43,6 @@ public class OutputView {
     }
 
     public static void printAskingFunction(){
-        System.out.println();
         printHeader();
         System.out.println(Constant.VIEW_ASKING_FUNCTION);
     }
