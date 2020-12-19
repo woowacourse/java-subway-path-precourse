@@ -20,16 +20,6 @@ public class LineRepository {
                 new Station("교대역"),
                 new Station("강남역"),
                 new Station("역삼역"))
-            ),
-            new ArrayList<Section>(Arrays.asList(
-                new Section(2, 3, Arrays.asList(
-                    new Station("교대역"),
-                    new Station("강남역")
-                )),
-                new Section(2, 3, Arrays.asList(
-                    new Station("강남역"),
-                    new Station("역삼역")
-                )))
             )));
         lines.add(new Line("3호선",
             new ArrayList<Station>(Arrays.asList(
@@ -37,36 +27,12 @@ public class LineRepository {
                 new Station("남부터미널역"),
                 new Station("양재역"),
                 new Station("매봉역"))
-            ),
-            new ArrayList<Section>(Arrays.asList(
-                new Section(3, 2, Arrays.asList(
-                    new Station("교대역"),
-                    new Station("남부터미널역")
-                )),
-                new Section(6, 5, Arrays.asList(
-                    new Station("남부터미널역"),
-                    new Station("양재역")
-                )),
-                new Section(1, 1, Arrays.asList(
-                    new Station("양재역"),
-                    new Station("매봉역")
-                )))
             )));
         lines.add(new Line("신분당선",
             new ArrayList<Station>(Arrays.asList(
                 new Station("강남역"),
                 new Station("양재역"),
                 new Station("양재시민의숲역"))
-            ),
-            new ArrayList<Section>(Arrays.asList(
-                new Section(2, 8, Arrays.asList(
-                    new Station("강남역"),
-                    new Station("양재역")
-                )),
-                new Section(10, 3, Arrays.asList(
-                    new Station("양재역"),
-                    new Station("양재시민의숲역")
-                )))
             )));
     }
 

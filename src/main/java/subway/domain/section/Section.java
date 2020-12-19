@@ -2,6 +2,7 @@ package subway.domain.section;
 
 import java.util.ArrayList;
 import java.util.List;
+import subway.domain.line.Line;
 import subway.domain.station.Station;
 
 public class Section {
@@ -21,5 +22,9 @@ public class Section {
 
     public int getTime() {
         return time;
+    }
+    
+    public boolean contains(Station station, Station otherStation) {
+        return stations.contains(station) && stations.contains(otherStation);
     }
 }
