@@ -1,5 +1,7 @@
 package subway.view;
 
+import java.util.List;
+
 public class OutputView {
     public static final String INFO = "[INFO] ";
     public static final String INFO_LINE = INFO + "---";
@@ -11,6 +13,7 @@ public class OutputView {
     public static final String SAME_DEPARTURE_AND_ARRIVAL = "출발역과 도착역이 동일합니다.";
     public static final String CANNOT_SELECT_MENU = "선택할 수 없는 기능입니다.";
     public static final String NOT_EXIST_STATION = "등록되지 않은 역이름 입니다.";
+    public static final String RESULT = "\n## 조회 결과";
 
     public static void sameStationError() {
         System.out.println(ERROR + SAME_DEPARTURE_AND_ARRIVAL);
@@ -26,6 +29,26 @@ public class OutputView {
 
     public static void printInfoLine() {
         System.out.println(INFO_LINE);
+    }
+
+    public static void printMinDistanceAndTime(List<String> stations, double distance ) {
+        System.out.println(RESULT);
+        printInfoLine();
+        System.out.println(INFO + TOTAL_DISTANCE + (int) distance + DISTANCE_UNIT);
+        System.out.println(INFO + TOTAL_TIME + TIME_UNIT);
+        printInfoLine();
+        stations.stream().forEach(station -> System.out.println(INFO + station));
+        System.out.println();
+    }
+
+    public static void printMinTimeAndDistance(List<String> stations, double distance ) {
+        System.out.println(RESULT);
+        printInfoLine();
+        System.out.println(INFO + TOTAL_DISTANCE + (int) distance + DISTANCE_UNIT);
+        System.out.println(INFO + TOTAL_TIME  + TIME_UNIT);
+        printInfoLine();
+        stations.stream().forEach(station -> System.out.println(INFO + station));
+        System.out.println();
     }
 
 }

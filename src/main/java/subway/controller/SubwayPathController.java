@@ -33,8 +33,8 @@ public class SubwayPathController {
             return false;
         }
         List<String> stations = graphControllerByDistance.getMinDistance(departureStation, arrivalStation);
-        double totalTime = graphControllerByDistance.getTotalDistance(departureStation, arrivalStation);
-        OutputView.printMinDistanceAndTime(stations, totalTime);
+        double totalDistance = graphControllerByDistance.getTotalDistance(departureStation, arrivalStation);
+        OutputView.printMinDistanceAndTime(stations, totalDistance);
         return true;
     }
 
@@ -45,11 +45,9 @@ public class SubwayPathController {
         if (!isValidArrivalStation(arrivalStation = InputView.getArrivalStation())) {
             return false;
         }
-        List<String> stations = graphControllerByTime.getMinDistance(departureStation, arrivalStation);
-
-        System.out.println("CHEKCHCECKHEKC");
-        double totalDistance = graphControllerByTime.getTotalDistance(departureStation, arrivalStation);
-        System.out.println(totalDistance);
+        List<String> stations = graphControllerByTime.getMinTime(departureStation, arrivalStation);
+        double totalTime = graphControllerByTime.getTotalTime(departureStation, arrivalStation);
+        OutputView.printMinTimeAndDistance(stations, totalTime);
         return true;
     }
 

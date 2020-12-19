@@ -20,10 +20,10 @@ public class GraphControllerByDistance {
     private WeightedMultigraph<String, DefaultWeightedEdge> graph;
 
     public GraphControllerByDistance() {
-        initByDistance();
+        initDistance();
     }
 
-    private void initByDistance() {
+    private void initDistance() {
         graph = new WeightedMultigraph(DefaultWeightedEdge.class);
         stations.forEach(station -> graph.addVertex(station));
         initLineTwoByDistance(graph);
@@ -47,6 +47,7 @@ public class GraphControllerByDistance {
         graph.setEdgeWeight(graph.addEdge(YANGJAE, YANGJAEFOREST),10);
     }
 
+
     public List<String> getMinDistance(String departure, String arrival) {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
         List<String> minDistance = dijkstraShortestPath.getPath(departure, arrival).getVertexList();
@@ -58,4 +59,6 @@ public class GraphControllerByDistance {
         double totalDistance = dijkstraShortestPath.getPath(departure, arrival).getWeight();
         return totalDistance;
     }
+
+
 }

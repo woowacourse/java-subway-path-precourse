@@ -1,7 +1,5 @@
 package subway.controller;
 
-import org.jgrapht.graph.DefaultWeightedEdge;
-import org.jgrapht.graph.WeightedMultigraph;
 import subway.domain.Line;
 import subway.domain.LineRepository;
 import subway.domain.Station;
@@ -29,6 +27,7 @@ public class MainController {
                                                     YANGJAE, YANGJAEFOREST, MAEBONG);
     private java.util.List<String> lines = Arrays.asList(LINE_TWO, LINE_THREE, LINE_SHIN);
     private MainConsole mainConsole;
+
     private final Scanner scanner;
 
     public MainController(Scanner scanner) {

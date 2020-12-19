@@ -18,18 +18,15 @@ public class GraphControllerByTime {
 
     private List<String> stations = Arrays.asList(KYODAE, GANGNAM, YUKSAM, NAMBU, YANGJAE, YANGJAEFOREST, MAEBONG);
     private WeightedMultigraph<String, DefaultWeightedEdge> graph;
+    private GraphControllerByDistance graphControllerByDistance;
 
     public GraphControllerByTime() {
-        init();
+        initTime();
+        graphControllerByDistance = new GraphControllerByDistance();
     }
 
-    public void init() {
-        initByTime();
-    }
-
-    private void initByTime() {
-        WeightedMultigraph<String, DefaultWeightedEdge> graph
-                = new WeightedMultigraph(DefaultWeightedEdge.class);
+    private void initTime() {
+        graph = new WeightedMultigraph(DefaultWeightedEdge.class);
         stations.forEach(station -> graph.addVertex(station));
         initLineTwoByTime(graph);
         initLineThreeByTime(graph);
@@ -52,23 +49,14 @@ public class GraphControllerByTime {
         graph.setEdgeWeight(graph.addEdge(YANGJAE, YANGJAEFOREST),3);
     }
 
-    public List<String> getMinDistance(String departure, String arrival) {
-        graph = new WeightedMultigraph(DefaultWeightedEdge.class);
-        stations.forEach(station -> graph.addVertex(station));
-        initLineTwoByTime(graph);
-        initLineThreeByTime(graph);
-        initLineShinByTime(graph);
+
+    public List<String> getMinTime(String departure, String arrival) {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
-        List<String> minDistance = dijkstraShortestPath.getPath(departure, arrival).getVertexList();
-        return minDistance;
+        List<String> minTime = dijkstraShortestPath.getPath(departure, arrival).getVertexList();
+        return minTime;
     }
 
-    public double getTotalDistance(String departure, String arrival) {
-        graph = new WeightedMultigraph(DefaultWeightedEdge.class);
-        stations.forEach(station -> graph.addVertex(station));
-        initLineTwoByTime(graph);
-        initLineThreeByTime(graph);
-        initLineShinByTime(graph);
+    public double getTotalTime(String departure, String arrival) {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
         double totalDistance = dijkstraShortestPath.getPath(departure, arrival).getWeight();
         return totalDistance;
