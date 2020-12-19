@@ -16,13 +16,21 @@ public class MainController {
                 break;
             }
             OutputView.printNewLine();
+            processInput(input);
         }
     }
 
-    public void showMenu() {
+    private void showMenu() {
         OutputView.print(MainMenu.MENU_NAME);
         Arrays.stream(MainMenu.values()).forEach(
                 mainMenu -> OutputView.print(mainMenu.getValue() + DOT + mainMenu.getAction()));
         OutputView.printNewLine();
+    }
+
+    private void processInput(String input) {
+        if (input.equals(MainMenu.INQUIRY_PATH.getValue())) {
+            PathController pathController = new PathController();
+            pathController.run();
+        }
     }
 }
