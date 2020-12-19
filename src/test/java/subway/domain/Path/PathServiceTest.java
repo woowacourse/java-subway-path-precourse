@@ -10,7 +10,6 @@ import subway.domain.Path.dto.PathResponseDto;
 import subway.domain.Path.exception.NotConnectedException;
 import subway.domain.Path.exception.SameStartAndEndStationException;
 import subway.domain.Path.service.PathService;
-import subway.domain.station.domain.StationRepository;
 import subway.domain.station.dto.StationRequestDto;
 import subway.domain.station.exception.CannotFindStationByNameException;
 import subway.domain.station.service.StationService;

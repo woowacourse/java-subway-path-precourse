@@ -50,15 +50,6 @@ class StationRepositoryTest {
         assertEquals(StationRepository.findAll().size(), EXPECT);
     }
 
-    @DisplayName("지하철 역 저장소에서 지하철 역을 삭제할 수 있다.")
-    @Test
-    void deleteStation() {
-        StationRepository.delete(station1);
-
-        final int EXPECT = SIZE - 1;
-        assertEquals(StationRepository.findAll().size(), EXPECT);
-    }
-
     @DisplayName("등록되지 않은 지하철 역은 조회할 수 없다.")
     @Test
     void cannotFindStationByNameException() {
