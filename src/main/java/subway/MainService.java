@@ -8,7 +8,7 @@ public class MainService {
             RouteSearchService.view();
             view();
         }
-        if (answer.equals("B")) {
+        if (answer.equals("Q")) {
             return;
         }
         throw new IllegalArgumentException("잘못된 옵션의 입력입니다.");
