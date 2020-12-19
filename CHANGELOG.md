@@ -3,8 +3,28 @@
 
 # CHANGELOG
 
-[0.0.1] docs(README.md): add feature plan
-    Upload: -README.md
-            -CHANGELOG.md
+## [0.1.0] feat(Edge.java): add Edge class
+Upload files:
+    - Edge.java
+        : A class having information between Stations
+            - from : Starting point Station's name
+            - to : Destination Station's name
+            - distance : Distance between from and to
+            - time : taken time between from and to
 
-    Add project's main feature plan and ChangeLog file
+    - EdgeRepository.java
+        : Repository of Edge
+
+Add Edge class and Edge Repository
+
+---
+
+## [0.0.1] docs(README.md): add feature plan
+Upload files:
+    - README.md
+        : Add project's main feature plan
+
+    - CHANGELOG.md
+        : Log file for logging project changes
+
+Add project's main feature plan and ChangeLog file
