@@ -12,7 +12,7 @@ public class InputView {
 
     public static void printPathMenuInput() {
         System.out.println();
-        System.out.println("## 경로기준 화면");
+        System.out.println("## 경로 기준");
         System.out.println("1. 최단 거리");
         System.out.println("2. 최소 시간");
         System.out.println("B. 돌아가기");

@@ -7,12 +7,12 @@ public class OutputView {
     static final String INFO_HEADER = "[INFO] ";
     static final String SEPARATOR = "---";
 
-    public static void printResult(int totalDist, List<String> path) {
+    public static void printResult(int totalDist, List<String> path, int totalTime) {
         System.out.println("## 조회 결과");
         System.out.println();
         System.out.println(INFO_HEADER + SEPARATOR);
         System.out.println(INFO_HEADER + "총 거리: " + totalDist + "km");
-        //System.out.println(INFO_HEADER + "총 소요 시간: " + totalDist + "km");
+        System.out.println(INFO_HEADER + "총 소요 시간: " + totalTime + "km");
         System.out.println(INFO_HEADER + SEPARATOR);
         printPath(path);
     }

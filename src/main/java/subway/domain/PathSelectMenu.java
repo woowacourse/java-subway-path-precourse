@@ -44,7 +44,6 @@ public class PathSelectMenu {
         // 시간 여유가 있으면 enums로 리팩토링
         // 1이면 최단 거리
         if (inputMsg.equals("1")) {
-            System.out.println("최단경로 선택");
             PathFinder.findShortestDistPath(scanner);
         }
         // 2이면 최소 거리
