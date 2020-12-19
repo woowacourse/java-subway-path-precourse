@@ -1,7 +1,5 @@
 package subway.view;
 
-import java.util.Scanner;
-
 public class InputView {
     public static void printMainInput() {
         System.out.println();

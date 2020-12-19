@@ -2,6 +2,7 @@ package subway.domain;
 
 import subway.utils.Validator;
 import subway.view.InputView;
+
 import java.util.Scanner;
 
 public class PathSelectMenu {
@@ -34,12 +35,21 @@ public class PathSelectMenu {
         }
         pathMenuController(inputMsg, scanner);
     }
+
     private static void pathMenuController(String inputMsg, Scanner scanner) {
         if (inputMsg.equals("B")) {
             pathMenuStop();
             return;
         }
+        // 시간 여유가 있으면 enums로 리팩토링
         // 1이면 최단 거리
+        if (inputMsg.equals("1")) {
+            System.out.println("최단경로 선택");
+            PathFinder.findShortestDistPath(scanner);
+        }
         // 2이면 최소 거리
+        if (inputMsg.equals("2")) {
+            PathFinder.findShortestTimePath(scanner);
+        }
     }
 }
