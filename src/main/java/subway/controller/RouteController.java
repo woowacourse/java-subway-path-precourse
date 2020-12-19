@@ -27,18 +27,22 @@ public class RouteController {
     private void operation(int operationNumber) {
         if (operationNumber == ERROR) {
             operation(InputView.inputOperationNumber(scanner, START, END));
+            return;
         }
         if (operationNumber == SHORTEST_LENGTH) {
             shortestLength();
+            return;
         }
         if (operationNumber == SHORTEST_TIME) {
             shortestTime();
+            return;
         }
+        new Controller(scanner);
     }
 
     private void shortestTime() {
         String[] stations = stationInfo();
-        if(stations[START_STATION] == null || stations[END_STATION] == null){
+        if(stations[START_STATION].isEmpty() || stations[END_STATION].isEmpty()){
             new RouteController(scanner);
             return;
         }
