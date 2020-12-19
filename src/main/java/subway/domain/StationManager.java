@@ -7,7 +7,7 @@ import subway.view.MainView;
 import subway.view.OutputView;
 
 public class StationManager {
-    private static final SubwayAgency subwayAgency = new SubwayAgency(new SubwayMap(LineRepository.lines()));
+    private static final SubwayAgency AGENCY = new SubwayAgency(new SubwayMap(LineRepository.lines()));
 
     public static void start() {
         MainView main = main();
@@ -40,13 +40,13 @@ public class StationManager {
 
     public void byDistance() {
         StationBetween stationBetween = InputView.getStationBetween();
-        GraphResult resultByDistance = subwayAgency.getResultByDistance(stationBetween);
+        GraphResult resultByDistance = AGENCY.getResultByDistance(stationBetween);
         OutputView.printResult(resultByDistance);
     }
 
     public void byTime() {
         StationBetween stationBetween = InputView.getStationBetween();
-        GraphResult resultByTime = subwayAgency.getResultByTime(stationBetween);
+        GraphResult resultByTime = AGENCY.getResultByTime(stationBetween);
         OutputView.printResult(resultByTime);
     }
 }
