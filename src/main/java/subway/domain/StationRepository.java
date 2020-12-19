@@ -1,5 +1,8 @@
 package subway.domain;
 
+import org.jgrapht.graph.DefaultWeightedEdge;
+import org.jgrapht.graph.WeightedMultigraph;
+
 import java.util.*;
 
 public class StationRepository {
@@ -17,6 +20,45 @@ public class StationRepository {
     public static List<Station> stations() {
         return Collections.unmodifiableList(stations);
     }
+
+    public void getShortestDistancePath() {
+        WeightedMultigraph<String, DefaultWeightedEdge> graph
+                = new WeightedMultigraph(DefaultWeightedEdge.class);
+        graph.addVertex(stationKyoDae.getName());
+        graph.addVertex(stationGangNam.getName());
+        graph.addVertex(stationYeokSam.getName());
+        graph.addVertex(stationNamBu.getName());
+        graph.addVertex(stationYangJae.getName());
+        graph.addVertex(stationYangJaeForest.getName());
+        graph.addVertex(stationMaeBong.getName());
+        graph.setEdgeWeight(graph.addEdge(stationKyoDae.getName(), stationGangNam.getName()), 2);
+        graph.setEdgeWeight(graph.addEdge(stationGangNam.getName(), stationYeokSam.getName()), 2);
+        graph.setEdgeWeight(graph.addEdge(stationKyoDae.getName(), stationNamBu.getName()), 3);
+        graph.setEdgeWeight(graph.addEdge(stationNamBu.getName(), stationYangJae.getName()), 6);
+        graph.setEdgeWeight(graph.addEdge(stationYangJae.getName(), stationMaeBong.getName()), 1);
+        graph.setEdgeWeight(graph.addEdge(stationGangNam.getName(), stationYangJae.getName()), 2);
+        graph.setEdgeWeight(graph.addEdge(stationYangJae.getName(), stationYangJaeForest.getName()), 10);
+    }
+
+    public void getShortestTimePath() {
+        WeightedMultigraph<String, DefaultWeightedEdge> graph
+                = new WeightedMultigraph(DefaultWeightedEdge.class);
+        graph.addVertex(stationKyoDae.getName());
+        graph.addVertex(stationGangNam.getName());
+        graph.addVertex(stationYeokSam.getName());
+        graph.addVertex(stationNamBu.getName());
+        graph.addVertex(stationYangJae.getName());
+        graph.addVertex(stationYangJaeForest.getName());
+        graph.addVertex(stationMaeBong.getName());
+        graph.setEdgeWeight(graph.addEdge(stationKyoDae.getName(), stationGangNam.getName()), 3);
+        graph.setEdgeWeight(graph.addEdge(stationGangNam.getName(), stationYeokSam.getName()), 3);
+        graph.setEdgeWeight(graph.addEdge(stationKyoDae.getName(), stationNamBu.getName()), 2);
+        graph.setEdgeWeight(graph.addEdge(stationNamBu.getName(), stationYangJae.getName()), 5);
+        graph.setEdgeWeight(graph.addEdge(stationYangJae.getName(), stationMaeBong.getName()), 1);
+        graph.setEdgeWeight(graph.addEdge(stationGangNam.getName(), stationYangJae.getName()), 8);
+        graph.setEdgeWeight(graph.addEdge(stationYangJae.getName(), stationYangJaeForest.getName()), 3);
+    }
+
 
     public static void addStation(Station station) {
         stations.add(station);
