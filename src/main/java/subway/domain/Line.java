@@ -20,18 +20,4 @@ public class Line {
     }
 
     // 추가 기능 구현
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("\n[INFO] ");
-        sb.append(name);
-        sb.append("\n[INFO] ");
-        sb.append("---");
-        for (Station station : section) {
-            sb.append("\n[INFO] ");
-            sb.append(station.getName());
-        }
-        return sb.toString();
-    }
 }

@@ -31,17 +31,6 @@ public class StationRepository {
                 .orElse(null);
     }
 
-
-    public static void printAllStations() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("\n## 역 목록");
-        for (Station station : stations) {
-            sb.append("\n[INFO] ");
-            sb.append(station.getName());
-        }
-        System.out.println(sb);
-    }
-
     public static boolean existStation(String name) {
         for (Station station : stations) {
             if (station.getName().equals(name)) {
