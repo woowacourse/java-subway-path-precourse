@@ -1,5 +1,6 @@
 package subway.controller;
 
+import subway.view.InputView;
 import subway.view.OutputView;
 
 import java.util.Scanner;
@@ -16,11 +17,11 @@ public class MainMenu {
 
     public void run() {
         askValidMenuNumber();
-        this.doNext = false;
     }
 
-    private void askValidMenuNumber() {
+    private String askValidMenuNumber() {
         OutputView.mainMenu();
+        return InputView.askMenu(scanner, REGEX_VALID_MENU_CHARACTER);
     }
 
     public boolean doNext() {
