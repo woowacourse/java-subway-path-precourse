@@ -1,6 +1,8 @@
 package subway.view.mainview;
 
 import subway.domain.Menu;
+import subway.view.pathview.PathMenu;
+
 import java.util.Scanner;
 
 public class FindPath implements Menu {
@@ -20,7 +22,12 @@ public class FindPath implements Menu {
 	
 	@Override
 	public void run(Scanner scanner) {
-	
+		try {
+			PathMenu.getInstance().printMenu();
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+			this.run(scanner);
+		}
 	}
 	
 	public static Menu getInstance() {

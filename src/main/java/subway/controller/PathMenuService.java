@@ -1,14 +1,14 @@
 package subway.controller;
 
 import subway.domain.Menu;
-import subway.view.mainview.MainMenu;
+import subway.view.pathview.PathMenu;
+
 import java.util.Scanner;
 
-public class MainMenuService {
-	
+public class PathMenuService {
 	public static void selectMenu(String menuKey,
 	                              Scanner scanner) throws IllegalArgumentException {
-		runSelectMenu(MainMenu.mainMenus.get(menuKey), scanner);
+		runSelectMenu(PathMenu.pathMenus.get(menuKey), scanner);
 	}
 	
 	private static void runSelectMenu(Menu selectedMenu, Scanner scanner) throws IllegalArgumentException {
