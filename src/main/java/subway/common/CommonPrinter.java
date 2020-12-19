@@ -1,7 +1,6 @@
 package subway.common;
 
 public class CommonPrinter {
-
     public static final String ERROR_PREFIX = "[ERROR] ";
     private static final String USER_SELECTION_MESSAGE
         = "\n## 원하는 기능을 선택하세요.";

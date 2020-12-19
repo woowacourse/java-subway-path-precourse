@@ -16,7 +16,11 @@ public class PathCriteriaSelector {
             if (criteriaType == PathCriteriaSelectionType.GO_BACK) {
                 return;
             }
-            PathCalculator.start(scanner, criteriaType);
+            try {
+                PathCalculator.start(scanner, criteriaType);
+            } catch (IllegalArgumentException e) {
+                continue;
+            }
             return;
         }
     }
