@@ -1,8 +1,7 @@
 package subway.view;
 
-import javafx.scene.Scene;
 import subway.domain.SceneState;
-import subway.domain.Station;
+import subway.domain.station.Station;
 
 import java.util.List;
 

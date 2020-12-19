@@ -1,4 +1,4 @@
-package subway.domain;
+package subway.domain.section;
 
 public class SectionInformation {
     private int distance;
