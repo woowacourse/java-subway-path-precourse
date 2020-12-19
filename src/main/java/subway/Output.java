@@ -14,11 +14,15 @@ public class Output {
     private static final String BACK = "B. 돌아가기";
     private static final String[] ROUTE_LIST = {ROUTE_VIEW, MIN_DISTANCE, SHORT_TIME, BACK};
 
-    public static void printMainView() {
-        for (String str : MAIN_LIST) {
+    private static void printView(String[] arrays) {
+        for (String str : arrays) {
             System.out.println(str);
         }
         System.out.println();
+    }
+
+    public static void printMainView() {
+        printView(MAIN_LIST);
     }
 
     public static void printChoiceErrorMessage() {
@@ -26,9 +30,6 @@ public class Output {
     }
 
     public static void printRouteSearchView() {
-        for (String str : ROUTE_LIST) {
-            System.out.println(str);
-        }
-        System.out.println();
+        printView(ROUTE_LIST);
     }
 }
