@@ -22,9 +22,15 @@ public class TimeGraphRepository {
 
     public static List<Station> findShortestPath(Station source, Station destination) {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(timeGraph);
-        List<Station> shortestPath = dijkstraShortestPath.getPath(source, destination).getVertexList();
+        List<Station> shortestPath = null;
+        try {
+            shortestPath = dijkstraShortestPath.getPath(source, destination).getVertexList();
+        } catch (NullPointerException e) {
+            return null;
+        }
         return Collections.unmodifiableList(shortestPath);
     }
+
 
     public static int getEdgeTime(Station source, Station destination) {
         return (int) timeGraph.getEdgeWeight(timeGraph.getEdge(source, destination));

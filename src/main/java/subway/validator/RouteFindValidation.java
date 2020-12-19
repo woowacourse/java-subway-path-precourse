@@ -67,7 +67,7 @@ public class RouteFindValidation extends Validation {
 
     public static boolean checkValidPath(List<Station> shortestPath) {
         try {
-            if (shortestPath.size() == NO_STATIONS_IN_THE_PATH) {
+            if (shortestPath == null) {
                 throw new UserInputException();
             }
         } catch (UserInputException e) {

@@ -21,7 +21,12 @@ public class DistanceGraphRepository {
 
     public static List<Station> findShortestPath(Station source, Station destination) {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(distanceGraph);
-        List<Station> shortestPath = dijkstraShortestPath.getPath(source, destination).getVertexList();
+        List<Station> shortestPath = null;
+        try {
+            shortestPath = dijkstraShortestPath.getPath(source, destination).getVertexList();
+        } catch (NullPointerException e) {
+            return null;
+        }
         return Collections.unmodifiableList(shortestPath);
     }
 

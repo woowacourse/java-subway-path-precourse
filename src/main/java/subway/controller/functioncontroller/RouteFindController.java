@@ -111,11 +111,11 @@ public class RouteFindController extends FunctionController {
     private static boolean findShortestDistancePath(String userInputStartStation, String userInputEndStation) {
         Station source = StationRepository.getStationByName(userInputStartStation);
         Station destination = StationRepository.getStationByName(userInputEndStation);
-        RouteFindOutputView.printPathResult();
         List<Station> shortestPath = DistanceGraphRepository.findShortestPath(source, destination);
         if (!RouteFindValidation.checkValidPath(shortestPath)) {
             return false;
         }
+        RouteFindOutputView.printPathResult();
         String totalDistance = Integer.toString(findTotalDistance(shortestPath));
         String totalTime = Integer.toString(findTotalTime(shortestPath));
         RouteFindInformationView.printRouteInformation(totalDistance, totalTime, shortestPath);
@@ -125,11 +125,11 @@ public class RouteFindController extends FunctionController {
     private static boolean findShortestTimePath(String userInputStartStation, String userInputEndStation) {
         Station source = StationRepository.getStationByName(userInputStartStation);
         Station destination = StationRepository.getStationByName(userInputEndStation);
-        RouteFindOutputView.printPathResult();
         List<Station> shortestPath = TimeGraphRepository.findShortestPath(source, destination);
         if (!RouteFindValidation.checkValidPath(shortestPath)) {
             return false;
         }
+        RouteFindOutputView.printPathResult();
         String totalDistance = Integer.toString(findTotalDistance(shortestPath));
         String totalTime = Integer.toString(findTotalTime(shortestPath));
         RouteFindInformationView.printRouteInformation(totalDistance, totalTime, shortestPath);
