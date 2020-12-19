@@ -1,7 +1,8 @@
-package subway.controller;
+package subway.controller.menu;
 
 import java.util.ArrayList;
 import java.util.List;
+import subway.controller.Controller;
 import subway.utils.MenuControllerValidator;
 import subway.view.InputView;
 import subway.view.OutputView;
