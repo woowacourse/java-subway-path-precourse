@@ -1,6 +1,8 @@
 package subway.controller;
 
+import subway.domain.SearchPathQuery;
 import subway.domain.weight.WeightType;
+import subway.view.InputView;
 import subway.view.OutputView;
 
 public class SearchShortestPathController {
@@ -21,7 +23,17 @@ public class SearchShortestPathController {
     }
 
     private static void tryToSearchShortestPath(WeightType type) {
+        SearchPathQuery query = new SearchPathQuery(type, inputStartStation(), inputEndStation());
+    }
 
+    private static String inputStartStation() {
+        OutputView.requestStartStation();
+        return InputView.getInput();
+    }
+    
+    private static String inputEndStation() {
+        OutputView.requestEndStation();
+        return InputView.getInput();
     }
     
     private static void catchError(Exception exception) {
