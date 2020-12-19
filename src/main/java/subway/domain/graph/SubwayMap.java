@@ -15,6 +15,7 @@ public class SubwayMap {
     private static WeightedMultigraph<String, DefaultWeightedEdge> timeGraph = new WeightedMultigraph(DefaultWeightedEdge.class);
     private static Map<List<String>, Integer> timeEdge = new HashMap<>();
     private static Map<List<String>, Integer> distanceEdge = new HashMap<>();
+    private static int INIT_ZERO = 0;
 
     public static void setStations(List<String> stations) {
         stations.stream()
@@ -52,8 +53,8 @@ public class SubwayMap {
     }
 
     public static int findShortestDistanceOfTime(List<String> paths) {
-        int time = 0;
-        for (int i = 0; i < paths.size() - 1; i++) {
+        int time = INIT_ZERO;
+        for (int i = INIT_ZERO; i < paths.size() - 1; i++) {
             String firstStation = paths.get(i);
             String lastStation = paths.get(i + 1);
             time += timeEdge.get(Arrays.asList(firstStation, lastStation));
@@ -80,8 +81,8 @@ public class SubwayMap {
     }
 
     public static int findShortestTimeOfDistance(List<String> paths) {
-        int distance = 0;
-        for (int i = 0; i < paths.size() - 1; i++) {
+        int distance = INIT_ZERO;
+        for (int i = INIT_ZERO; i < paths.size() - 1; i++) {
             String firstStation = paths.get(i);
             String lastStation = paths.get(i + 1);
             distance += timeEdge.get(Arrays.asList(firstStation, lastStation));
