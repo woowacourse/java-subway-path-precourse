@@ -2,7 +2,6 @@ package subway.view;
 
 import subway.controller.SubwayController;
 import subway.domain.*;
-import subway.exception.SameStationException;
 
 import java.util.List;
 import java.util.Scanner;
