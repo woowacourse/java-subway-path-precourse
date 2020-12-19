@@ -3,6 +3,23 @@
 
 <br>
 
+## 👾 기능 목록
+- 메인 화면
+    - 기능 선택
+- 경로 조회 화면
+    - 경로 기준 선택
+        - 최단 거리
+        - 최소 시간
+    - 출발역
+    - 도착역
+        - 출발역과 같을 시 에러
+       
+    - 조회 결과
+        - 소요시간
+        - 거리
+        - 경유역
+        
+
 ## 🚀 기능 요구사항
 
 > 프리코스 3주차 미션에서 사용한 코드를 참고해도 무관하다. 
@@ -232,7 +249,7 @@ public void getDijkstraShortestPath() {
 
 #### 테스트 설명
 
-<img src="image/dijkstra-sample.png" width=400>
+<img src="dev/java-subway-path-precourse/image/dijkstra-sample.png" width=400>
 
 - 역 사이의 거리를 고려하지 않는 경우 V1->V3 경로가 최단 경로
 - 역 사이의 거리를 고려할 경우 V1->V3 경로의 거리는 100km, V1->V2->V3 경로의 거리는 4km이므로 최단 경로는 V1->V2->V3
