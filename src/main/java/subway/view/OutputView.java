@@ -27,27 +27,27 @@ public class OutputView {
     }
 
     public static void printMainView() {
-        System.out.println(MAIN_HEADER);
-        System.out.println(MAIN_OPTIONS);
-        System.out.println(CHOOSE_OPTIONS);
+        println(MAIN_HEADER);
+        println(MAIN_OPTIONS);
+        println(CHOOSE_OPTIONS);
     }
 
     public static void printRouteSearchView() {
-        System.out.println(ROUTE_SEARCH_HEADER);
-        System.out.println(ROUTE_SEARCH_OPTIONS);
-        System.out.println(CHOOSE_OPTIONS);
+        println(ROUTE_SEARCH_HEADER);
+        println(ROUTE_SEARCH_OPTIONS);
+        println(CHOOSE_OPTIONS);
     }
 
     public static void printFromStationMessage() {
-        System.out.println(INPUT_START_STATION);
+        println(INPUT_START_STATION);
     }
 
     public static void printToStationMessage() {
-        System.out.println(INPUT_END_STATION);
+        println(INPUT_END_STATION);
     }
 
     public static void printSearchResult(int routeLength, int elapsedTime, List<Station> stations) {
-        System.out.println(SEARCH_RESULT_HEADER);
+        println(SEARCH_RESULT_HEADER);
         printInfo(DOTS);
         printRouteLength(routeLength);
         printElapsedTime(elapsedTime);
@@ -80,5 +80,9 @@ public class OutputView {
 
     private static void printEnter() {
         System.out.println();
+    }
+
+    private static void println(String message) {
+        System.out.println(message);
     }
 }

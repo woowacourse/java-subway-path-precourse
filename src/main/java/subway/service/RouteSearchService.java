@@ -29,7 +29,6 @@ public class RouteSearchService {
         OutputView.printRouteSearchView();
         String code = InputView.getAnswer();
         if (code.equals(SHORTEST_DISTANCE_CODE)) {
-
             getShortestDistanceRoute();
             return;
         }

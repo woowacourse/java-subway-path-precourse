@@ -14,7 +14,4 @@ public class InputView {
     public static String getStation() {
         return scanner.nextLine().strip();
     }
-
-
-
 }

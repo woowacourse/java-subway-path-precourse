@@ -1,5 +1,7 @@
 package subway;
 
+import subway.domain.Edge;
+import subway.domain.EdgeRepository;
 import subway.service.MainService;
 
 public class Application {
