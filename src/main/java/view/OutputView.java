@@ -11,7 +11,7 @@ public class OutputView {
 	
 	public static final String DEPARTURE_STATION = "## 출발역을 입력하세요.";
 	public static final String ARRIVAL_STATION = "## 도착역을 입력하세요.";
-	public static final String SElECT_FUNCTION = "## 원하는 기능을 선택하세요.";
+	public static final String SElECT_FUNCTION = "\n## 원하는 기능을 선택하세요.";
 	
 	private static final String INFOMATION_MESSAGE = "[INFO] ";
 	private static final String ERROR_MESSAGE = "[ERROR] ";
