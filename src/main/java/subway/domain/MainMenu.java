@@ -9,7 +9,9 @@ import java.util.function.Supplier;
 
 public enum MainMenu {
     ROUTE_LOOKUP("1", "경로 조회", RouteController::getInstance),
-    EXIT_PROGRAM("Q", "종료", () -> {return null;});
+    EXIT_PROGRAM("Q", "종료", () -> {
+        return null;
+    });
 
     private final String option;
     private final String description;
@@ -28,7 +30,7 @@ public enum MainMenu {
             .orElseThrow(() -> new IllegalArgumentException(OutputConstant.NOT_EXIST_OPTION_ERROR))
             .routeController
             .get()
-            .mappingMenu(scanner);
+            .mappingRouteMenu(scanner);
     }
 
     @Override

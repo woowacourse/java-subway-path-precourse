@@ -21,7 +21,7 @@ public class MainController {
         String selectedOption;
         do {
             selectedOption = mappingMainMenu(scanner);
-        } while(!selectedOption.equals(END_CODE));
+        } while (!selectedOption.equals(END_CODE));
     }
 
     private String mappingMainMenu(Scanner scanner) {
