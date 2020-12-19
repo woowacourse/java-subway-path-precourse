@@ -13,7 +13,7 @@ public class RouteMap {
         graph.addVertex(station);
     }
 
-    public void addEdge(Station source, Station destination, int weight) {
+    public void addInterval(Station source, Station destination, int weight) {
         graph.setEdgeWeight(graph.addEdge(source, destination), weight);
     }
 

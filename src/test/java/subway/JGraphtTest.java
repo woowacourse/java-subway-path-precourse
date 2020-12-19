@@ -6,6 +6,8 @@ import org.jgrapht.graph.WeightedMultigraph;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import subway.domain.Dijkstra.DijkstraPath;
+import subway.domain.Dijkstra.RouteMap;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -32,5 +34,8 @@ public class JGraphtTest {
         myGraph.setEdgeWeight(myGraph.addEdge(v1, v2), 5); */
 
         assertThat(shortestPath.size()).isEqualTo(3);
+        RouteMap routeMap = new RouteMap();
+
+        DijkstraPath dijkstraPath = new DijkstraPath(routeMap);
     }
 }
