@@ -1,0 +1,22 @@
+package subway.domain.line;
+
+import java.util.LinkedList;
+import java.util.List;
+
+public class Line {
+    private String name;
+    private List<String> stations = new LinkedList<>();
+
+    public Line(String name, List<String> dummyStations) {
+        this.name = name;
+        stations.addAll(dummyStations);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public static Line from(String name, List<String> stations) {
+        return new Line(name, stations);
+    }
+}
