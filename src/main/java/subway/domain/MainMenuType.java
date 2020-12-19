@@ -1,5 +1,7 @@
 package subway.domain;
 
+import subway.exception.SubwayProgramException;
+
 import java.util.Arrays;
 
 public enum MainMenuType {
@@ -8,7 +10,7 @@ public enum MainMenuType {
     END_PROGRAM("Q");
 
 
-    private static final String MENU_ERROR = "[ERROR] 선택할 수 없습니다.";
+    private static final String MENU_ERROR = "선택할 수 없습니다.";
 
     private String text;
 
@@ -20,6 +22,6 @@ public enum MainMenuType {
         return Arrays.stream(MainMenuType.values())
                 .filter(menu -> menu.text.equals(input.toUpperCase()))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException(MENU_ERROR));
+                .orElseThrow(() -> new SubwayProgramException(MENU_ERROR));
     }
 }

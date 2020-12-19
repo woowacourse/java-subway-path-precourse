@@ -1,11 +1,13 @@
 package subway.domain;
 
+import subway.exception.SubwayProgramException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class Station {
-    private static final String NEXT_STATION_NOT_EXIST_ERROR = "[ERROR] 역이 연결되어 있지 않습니다.";
+    private static final String NEXT_STATION_NOT_EXIST_ERROR = "역이 연결되어 있지 않습니다.";
     private List<Edge> edges = new ArrayList<>();
     private String name;
 
@@ -17,6 +19,8 @@ public class Station {
         return name;
     }
 
+    // 추가 기능 구현
+
     public boolean isSame(String name) {
         return this.name.equals(name);
     }
@@ -26,32 +30,22 @@ public class Station {
     }
 
     public int getNextStationDistance(Station station) {
-        System.out.println(name+"담역: " + station.getName());
-        for (Edge edge : edges) {
-            System.out.println(edge.getStationName());
-        }
         for (Edge edge : edges) {
             if (edge.isNextStation(station)) {
-                System.out.println(edge.getTime() +"/"+ edge.getDistance());
-                System.out.println(edge.getStationName());
                 return edge.getDistance();
             }
         }
-        throw new IllegalArgumentException(NEXT_STATION_NOT_EXIST_ERROR);
+        throw new SubwayProgramException(NEXT_STATION_NOT_EXIST_ERROR);
     }
 
     public int getNextStationTime(Station station) {
         for (Edge edge : edges) {
             if (edge.isNextStation(station)) {
-                System.out.println(edge.getTime() +"/"+ edge.getDistance());
                 return edge.getTime();
             }
         }
-        throw new IllegalArgumentException(NEXT_STATION_NOT_EXIST_ERROR);
+        throw new SubwayProgramException(NEXT_STATION_NOT_EXIST_ERROR);
     }
-
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -65,6 +59,4 @@ public class Station {
     public int hashCode() {
         return Objects.hash(name);
     }
-
-    // 추가 기능 구현
 }

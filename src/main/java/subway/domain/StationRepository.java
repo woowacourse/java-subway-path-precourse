@@ -1,13 +1,16 @@
 package subway.domain;
 
+import subway.exception.SubwayProgramException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 public class StationRepository {
-    private static final String STATION_NOT_EXIST_ERROR = "[ERROR] 등록되어 있지 않은 역입니다.";
-    private static final String SAME_STATION_ERROR = "[ERROR] 출발역과 도착역이 동일합니다.";
+    private static final String STATION_NOT_EXIST_ERROR = "등록되어 있지 않은 역입니다.";
+    private static final String SAME_STATION_ERROR = "출발역과 도착역이 동일합니다.";
+
     private static final List<Station> stations = new ArrayList<>();
 
     public static List<Station> stations() {
@@ -30,12 +33,12 @@ public class StationRepository {
         return stations.stream()
                 .filter(station -> station.isSame(name))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException(STATION_NOT_EXIST_ERROR));
+                .orElseThrow(() -> new SubwayProgramException(STATION_NOT_EXIST_ERROR));
     }
 
     public static void validateSameStation(Station startStation, Station arrivalStation) {
         if (startStation.equals(arrivalStation)) {
-            throw new IllegalArgumentException(SAME_STATION_ERROR);
+            throw new SubwayProgramException(SAME_STATION_ERROR);
         }
     }
 }
