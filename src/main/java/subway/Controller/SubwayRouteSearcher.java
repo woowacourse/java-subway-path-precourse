@@ -6,7 +6,7 @@ import subway.Views.MainView;
 public class SubwayRouteSearcher {
 
     public static void startProgram(Scanner scanner) {
-        Initializer.initializeBaseSetting();
+        Initializer.setInitializeBaseSetting();
         MainView.printMainScreen(scanner);
     }
 
@@ -21,8 +21,10 @@ public class SubwayRouteSearcher {
             MinDistanceCalculator.calculateMinDistance(scanner);
         }
         if (userRouteSelection.equals("2")) {
-            MinTimeCalculator.calculateMinTimeDistance(scanner);
+            MinTimeCalculator.calculateMinTime(scanner);
         }
-        MainView.printMainScreen(scanner);
+        if (userRouteSelection.equals("B")) {
+            MainView.printMainScreen(scanner);
+        }
     }
 }
