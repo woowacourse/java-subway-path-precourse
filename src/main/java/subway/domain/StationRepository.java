@@ -1,11 +1,15 @@
 package subway.domain;
 
+import subway.exception.SubwayProgramException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 public class StationRepository {
+    private static final String STATION_NOT_EXIST_ERROR = "등록되어 있지 않은 역입니다.";
+
     private static final List<Station> stations = new ArrayList<>();
 
     public static List<Station> stations() {
@@ -22,5 +26,12 @@ public class StationRepository {
 
     public static void deleteAll() {
         stations.clear();
+    }
+
+    public static Station findByStationName(String name) {
+        return stations.stream()
+                .filter(station -> station.isSame(name))
+                .findFirst()
+                .orElseThrow(() -> new SubwayProgramException(STATION_NOT_EXIST_ERROR));
     }
 }
