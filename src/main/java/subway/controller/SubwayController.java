@@ -149,8 +149,8 @@ public class SubwayController {
         int timeSum = calculateTime(path);
         int distanceSum = calculateDistance(path);
         System.out.println(timeSum);
-        shortestPath.forEach(System.out::println);
-        OutputView.printResult();
+        OutputView.printResult(distanceSum, timeSum);
+        shortestPath.forEach(OutputView::showInfoMessage);
 
     }
 
@@ -163,7 +163,7 @@ public class SubwayController {
         int distanceSum = calculateDistance(path);
         System.out.println(timeSum);
         shortestPath.forEach(System.out::println);
-        OutputView.printResult();
+        OutputView.printResult(timeSum, distanceSum);
     }
 
     private int calculateTime(ArrayList<String> path) {
