@@ -1,7 +1,6 @@
 package subway.domain;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
@@ -35,5 +34,21 @@ public class PathRepository {
 			}
 		}
 		throw new IllegalArgumentException();
+	}
+
+	public static int findMinuteByStationNames(List<String> stationNames) {
+		int totalMinute = 0;
+		for (int i = 0; i < stationNames.size() - 1; i++) {
+			totalMinute += findMinuteByStationName(stationNames.get(i), stationNames.get(i + 1));
+		}
+		return totalMinute;
+	}
+
+	public static int findDistanceByStationNames(List<String> stationNames) {
+		int totalDistance = 0;
+		for (int i = 0; i < stationNames.size() - 1; i++) {
+			totalDistance += findDistanceByStationName(stationNames.get(i), stationNames.get(i + 1));
+		}
+		return totalDistance;
 	}
 }
