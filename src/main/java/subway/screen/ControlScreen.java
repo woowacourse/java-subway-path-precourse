@@ -8,7 +8,7 @@ import subway.functionList.RouteFunction;
 
 public enum ControlScreen implements Screen {
     MAIN("메인 화면", Arrays.asList(MainFunction.values())),
-    STATION_MANAGEMENT("역 관리 화면", Arrays.asList(RouteFunction.values())),
+    ROUTE_MANAGEMENT("경로 화면", Arrays.asList(RouteFunction.values())),
     ;
     private String title;
     private List<Function> functions;

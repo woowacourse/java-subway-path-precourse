@@ -16,7 +16,7 @@ public class MainController {
     public static void run() {
         while (true) {
             UserView.displayScreen(ControlScreen.MAIN);
-            UserView.guideMessagePrint(CommonMessage.SELECT_FUNCTION); // 원하는 기능을 선택하세요 문구 출력
+            UserView.guideMessagePrint(CommonMessage.SELECT_FUNCTION);
 
             try {
                 String menuNumber = MainValidator.validMainMenu(UserView.scanUserInput());
@@ -33,5 +33,6 @@ public class MainController {
     public static void back() {
         // done
     }
+
 
 }

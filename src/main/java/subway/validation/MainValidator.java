@@ -4,7 +4,6 @@ import subway.message.CommonMessage;
 import subway.view.UserView;
 
 public class MainValidator {
-
     private static final String MAIN_FUNCTION_BOUNDARY_CHECK = "[1Q]{1}";
 
     private static boolean isValidMenu(String menuNumber) {
