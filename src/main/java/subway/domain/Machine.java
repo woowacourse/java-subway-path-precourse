@@ -9,7 +9,10 @@ public class Machine {
         while (true) {
             OutputView.printMain();
             MainFunction mainFunction = getInputFunction(scanner);
-            mainFunction.operate();    
+            if (mainFunction == MainFunction.QUIT) {
+                break;
+            }
+            mainFunction.operate();
         }
     }
 
