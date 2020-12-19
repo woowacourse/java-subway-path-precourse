@@ -17,5 +17,6 @@ public class RouteController {
     public void goToRouteMenu() {
         OutputView.printRouteMenu();
         String selection = inputView.receiveMenuSelection(ROUTE_MENU);
+        OutputView.println();
     }
 }

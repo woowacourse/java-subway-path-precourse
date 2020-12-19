@@ -20,6 +20,11 @@ public class OutputView {
     public static void printMenuSelectionGuide() {
         System.out.println("## 원하는 기능을 선택하세요.");
     }
+    
+    public static void printQuit() {
+        println();
+        System.out.println("## 종료합니다. 이용해 주셔서 감사합니다.");
+    }
 
     public static void printError(String error) {
         System.out.println(error);

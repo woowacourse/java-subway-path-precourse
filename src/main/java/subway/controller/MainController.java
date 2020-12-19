@@ -7,6 +7,7 @@ import subway.view.OutputView;
 public class MainController {
     private static final String MAIN_MENU = "Main";
     private static final String ROUTE_MENU = "1";
+    private static final String QUIT = "Q";
 
     private InputView inputView;
     private String selection;
@@ -22,9 +23,12 @@ public class MainController {
     }
 
     private void goToMainMenu() {
-        OutputView.printMainMenu();
-        selection = inputView.receiveMenuSelection(MAIN_MENU);
-        goToRouteMenu();
+        do {
+            OutputView.printMainMenu();
+            selection = inputView.receiveMenuSelection(MAIN_MENU);
+            goToRouteMenu();
+        } while (!isSelect(QUIT));
+        OutputView.printQuit();
     }
 
     private void goToRouteMenu() {
