@@ -7,6 +7,8 @@ import java.util.List;
 public class OutputView {
     private static final String INFO_MARK = "[INFO] ";
     private static final String SEPARATER = "---";
+    private static final String TOTAL_DISTANCE = "총 거리: %dkm";
+    private static final String TOTAL_TIME = "총 소요 시간: %d분";
 
     public static void printMainMenu() {
         System.out.println("## 메인 화면");
@@ -23,24 +25,24 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printResults(){
+    public static void printResults(List<String> stations, double weight){
         System.out.println("## 조회 결과");
-
-        /*
-        ## 조회 결과
-[INFO] ---
-[INFO] 총 거리: 6km
-[INFO] 총 소요 시간: 14분
-[INFO] ---
-[INFO] 교대역
-[INFO] 강남역
-[INFO] 양재역
-         */
+        printWeights()
+        printResultsByStationList(stations);
     }
 
-    private static void printResultsByStationList(List<Station> stations){
-        for(Station station: stations){
-            System.out.println(INFO_MARK + station.getName());
+    private static void printWeights(double distance, double time){
+        System.out.println(INFO_MARK + SEPARATER);
+        System.out.printf(INFO_MARK + TOTAL_DISTANCE, distance);
+        System.out.println();
+        System.out.printf(INFO_MARK + TOTAL_TIME , time);
+        System.out.println();
+        System.out.println(INFO_MARK + SEPARATER);
+    }
+
+    private static void printResultsByStationList(List<String> stations){
+        for(String station: stations){
+            System.out.println(INFO_MARK + station);
         }
     }
 }

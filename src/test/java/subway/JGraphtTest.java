@@ -16,6 +16,8 @@ public class JGraphtTest {
         graph.addVertex("v1");
         graph.addVertex("v2");
         graph.addVertex("v3");
+
+        System.out.println(graph.toString());
         graph.setEdgeWeight(graph.addEdge("v1", "v2"), 2);
         graph.setEdgeWeight(graph.addEdge("v2", "v3"), 2);
         graph.setEdgeWeight(graph.addEdge("v1", "v3"), 100);

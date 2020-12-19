@@ -14,7 +14,8 @@ public class InputView {
     }
 
     private static String inputStationByType(Scanner scanner, String type){
-        System.out.printf("## %s역을 입력하세요", type);
+        System.out.printf("## %s역을 입력하세요.", type);
+        System.out.println();
         return scanner.next();
     }
 }
