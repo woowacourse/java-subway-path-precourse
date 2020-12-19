@@ -20,7 +20,7 @@ public class SubwayPathChecker {
     public SubwayPathChecker() {
         registerLine();
         registerStation();
-//        insertStationToLine();
+        insertStationToLine();
     }
 
     public void run() {
@@ -41,5 +41,39 @@ public class SubwayPathChecker {
         StationRepository.addStation(new Station(YANGJAE_STATION));
         StationRepository.addStation(new Station(YANGJAE_CITIZEN_FOREST_STATION));
         StationRepository.addStation(new Station(MAEBONG_STATION));
+    }
+
+    private void insertStationToLine() {
+        for (Line line : LineRepository.lines()) {
+            if (line.getName().equals(LINE_NUMBER_TWO)) {
+                setLineNumberTwo(line);
+            }
+            if (line.getName().equals(LINE_NUMBER_THREE)) {
+                setLineNumberThree(line);
+            }
+            if (line.getName().equals(LINE_NEW_BOONDANG)) {
+                setLineNewBoondang(line);
+            }
+
+        }
+    }
+
+    private void setLineNumberTwo(Line line) {
+        line.addStationOnLine(new Station(GYODAE_STATION));
+        line.addStationOnLine(new Station(GANGNAM_STATION));
+        line.addStationOnLine(new Station(YEOKSAM_STATION));
+    }
+
+    private void setLineNumberThree(Line line) {
+        line.addStationOnLine(new Station(GYODAE_STATION));
+        line.addStationOnLine(new Station(NAMBU_TERMINAL_STATION));
+        line.addStationOnLine(new Station(YANGJAE_STATION));
+        line.addStationOnLine(new Station(MAEBONG_STATION));
+    }
+
+    private void setLineNewBoondang(Line line) {
+        line.addStationOnLine(new Station(GANGNAM_STATION));
+        line.addStationOnLine(new Station(YANGJAE_STATION));
+        line.addStationOnLine(new Station(YANGJAE_CITIZEN_FOREST_STATION));
     }
 }
