@@ -27,10 +27,13 @@ public class FindPath {
         if (minCost == MAX_VALUE) {
             throw new IllegalArgumentException("[ERROR] 서로 연결되어 있지 않은 역입니다.");
         }
-
+        String kind = Constants.DISTANCE_COST;
+        if (select.equals(Constants.FUNCTION_TWO)) {
+            kind = Constants.TIME_COST;
+        }
         int anotherMinCost = traceMinCost(findNumberByName(startStation), findNumberByName(arriveStation), select);
         Stack<String> stack = tracePath(findNumberByName(startStation), findNumberByName(arriveStation));
-
+        PrintScreen.printMinPathStationToArrive(kind, stack, minCost, anotherMinCost);
     }
 
     private static int traceMinCost(int startNumber, int endNumber, String kind) {
