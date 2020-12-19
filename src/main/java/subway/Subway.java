@@ -2,18 +2,33 @@ package subway;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 import subway.domain.Line;
 import subway.domain.LineRepository;
+import subway.domain.Route;
 import subway.domain.Section;
 import subway.domain.Station;
 import subway.domain.StationRepository;
+import subway.screen.MainScreen;
+import subway.screen.RouteCriterionScreen;
+import subway.view.Input;
+import subway.view.Output;
 
 public class Subway {
-    public Subway() {
+    public static boolean progress = true;
+	
+    public Subway(Scanner scanner) {
         initialization();
+        Input.scanner = scanner;
     }
     
+    public void run() {
+        while (progress) {
+            Output.printMenu(new MainScreen());
+        }
+    }
+
     public void initialization() {
         initializeStation();
         initializeLine();
