@@ -12,4 +12,16 @@ public class Section {
         this.distance = distance;
         this.time = time;
     }
+    
+    public Station getUpStation() {
+        return upStation;
+    }
+    
+    public Station getDownStation() {
+        return downStation;
+    }
+    
+    public int getDistance() {
+        return distance;
+    }
 }
