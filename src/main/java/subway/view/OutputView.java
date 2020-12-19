@@ -25,10 +25,11 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printResults(List<String> stations, double weight){
+    public static void printResults(List<String> stations, double distance, double time){
         System.out.println("## 조회 결과");
-        printWeights(weight, 0);
+        printWeights(distance, time);
         printResultsByStationList(stations);
+        System.out.println();
     }
 
     private static void printWeights(double distance, double time){
