@@ -1,6 +1,8 @@
 package subway.view;
 
 import subway.domain.FindPathType;
+import subway.domain.SectionRepository;
+import subway.domain.Station;
 import subway.menu.MainMenu;
 
 import java.util.List;
@@ -10,6 +12,7 @@ public class OutputView {
     private static final String DOT_AND_BLANK = ". ";
     private static final String REQUEST_INPUT_START_STATION_MSG = "## 출발역을 입력하세요";
     private static final String REQUEST_INPUT_END_STATION_MSG = "## 도착역을 입력하세요";
+    public static final String THREE_DASH = "---";
     private static String MAIN_MENU_HEADER = "## 메인메뉴";
     private static final String CALCUALTE_PATH_MENU_HEADER = "## 경로기준";
 
@@ -55,5 +58,15 @@ public class OutputView {
 
     public static void showRequestEndStationInput() {
         println(REQUEST_INPUT_END_STATION_MSG);
+    }
+
+    public static void showShortestPathResult(List<Station> stations) {
+        println(THREE_DASH);
+        println("총 시간 : " + SectionRepository.calculateTakenTime(stations));
+        println("총 거리 : " + SectionRepository.calculateTotalDistance(stations));
+        println(THREE_DASH);
+        for (Station station : stations) {
+            println(station.toString());
+        }
     }
 }

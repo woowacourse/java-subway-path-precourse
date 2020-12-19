@@ -10,6 +10,8 @@ import subway.menu.MainMenu;
 import subway.view.InputView;
 import subway.view.OutputView;
 
+import java.util.List;
+
 public class SubwayController {
     private static ShortestPathFinder shortestPathFinder;
     public static void run(InputView inputView){
@@ -37,12 +39,18 @@ public class SubwayController {
 
     private static void selectPathTypeAndCalculate(InputView inputView) {
         FindPathType findPathType = FindPathType.findByCommand(inputView.nextLine());
+
         OutputView.showRequestStartStationInput();
         Station from = StationRepository.findByName(inputView.nextLine());
+        OutputView.showRequestEndStationInput();
         Station to = StationRepository.findByName(inputView.nextLine());
-        calculateAndPrint();
+
+        shortestPathFinder.setType(findPathType);
+        List<Station> stationsOnPath = shortestPathFinder.getStationsOnPath(from, to);
+        printResult(stationsOnPath);
     }
 
-    private static void calculateAndPrint() {
+    private static void printResult(List<Station> stations) {
+        OutputView.showShortestPathResult(stations);
     }
 }
