@@ -12,6 +12,9 @@ public class RouteController {
     private static final int ERROR = -1;
     private final int START = 1;
     private final int END = 2;
+    private final int START_STATION = 0;
+    private final int END_STATION = 1;
+    private final int STATIONS_SIZE = 2;
     private static final String ERROR_MESSAGE = "ERROR";
     private final Scanner scanner;
 
@@ -34,17 +37,12 @@ public class RouteController {
     }
 
     private void shortestTime() {
-        String startStation = InputView.writeStartStation(scanner);
-        if (startStation.equals(ERROR_MESSAGE)) {
+        String[] stations = stationInfo();
+        if(stations[START_STATION] == null || stations[END_STATION] == null){
             new RouteController(scanner);
             return;
         }
-        String endStation = InputView.writeEndStation(scanner, startStation);
-        if (endStation.equals(ERROR_MESSAGE)) {
-            new RouteController(scanner);
-            return;
-        }
-        if (!LineRepository.findShortestTime(startStation, endStation)) {
+        if (!LineRepository.findShortestTime(stations[START_STATION], stations[END_STATION])) {
             new RouteController(scanner);
             return;
         }
@@ -52,20 +50,32 @@ public class RouteController {
     }
 
     private void shortestLength() {
-        String startStation = InputView.writeStartStation(scanner);
-        if (startStation.equals(ERROR_MESSAGE)) {
+        String[] stations = stationInfo();
+        if(stations[START_STATION] == null || stations[END_STATION] == null){
             new RouteController(scanner);
             return;
         }
-        String endStation = InputView.writeEndStation(scanner, startStation);
-        if (endStation.equals(ERROR_MESSAGE)) {
-            new RouteController(scanner);
-            return;
-        }
-        if (!LineRepository.findShortestLength(startStation, endStation)) {
+        if (!LineRepository.findShortestLength(stations[START_STATION], stations[END_STATION])) {
             new RouteController(scanner);
             return;
         }
         new Controller(scanner);
+    }
+
+    private String[] stationInfo(){
+        String[] stations = new String[STATIONS_SIZE];
+        String startStation = InputView.writeStartStation(scanner);
+        if (startStation.equals(ERROR_MESSAGE)) {
+            new RouteController(scanner);
+            return stations;
+        }
+        String endStation = InputView.writeEndStation(scanner, startStation);
+        if (endStation.equals(ERROR_MESSAGE)) {
+            new RouteController(scanner);
+            return stations;
+        }
+        stations[START_STATION] = startStation;
+        stations[END_STATION] = endStation;
+        return stations;
     }
 }

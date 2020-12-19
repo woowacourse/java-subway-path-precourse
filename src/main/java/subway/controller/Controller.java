@@ -8,7 +8,10 @@ import java.util.Scanner;
 public class Controller {
     private final int START = 1;
     private final int END = 1;
+    private final int ERROR = -1;
+    private final int FIND_ROUTE = 1;
     private final Scanner scanner;
+
     public Controller(Scanner scanner){
         this.scanner = scanner;
         mainPage();
@@ -20,11 +23,11 @@ public class Controller {
     }
 
     private void operation(int operationNumber){
-        if(operationNumber == -1){
+        if(operationNumber == ERROR){
             operation(InputView.inputOperationNumber(scanner,START,END));
             return;
         }
-        if(operationNumber == 1){
+        if(operationNumber == FIND_ROUTE){
             new RouteController(scanner);
             return;
         }
