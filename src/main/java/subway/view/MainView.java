@@ -9,9 +9,6 @@ import static resource.TextResource.*;
 public class MainView extends View {
 
     private static final String KEY_STATION_MANAGEMENT = "1";
-    private static final String KEY_LINE_MANAGEMENT = "2";
-    private static final String KEY_SECTION_MANAGEMENT = "3";
-    private static final String KEY_ROUTE_MAP_PRINT = "4";
 
     private List<View> subViewList = new ArrayList<>();
 
@@ -57,10 +54,5 @@ public class MainView extends View {
         menu.put(KEY_QUIT, FUNCTION_QUIT);
     }
 
-    private OnBackListener onBackListener = new OnBackListener() {
-        @Override
-        public void onBack() {
-            startView();
-        }
-    };
+    private OnBackListener onBackListener = () -> startView();
 }

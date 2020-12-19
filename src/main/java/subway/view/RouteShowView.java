@@ -49,12 +49,15 @@ public class RouteShowView extends View{
     private void doSectionManageFunction(String selection) {
         if (KEY_MIN_DISTANCE.equals(selection)) {
             printRouteMinDistance();
+            onBackListener.onBack();
             return;
         }
 
         if (KEY_MIN_TIME.equals(selection)) {
             printRouteMinTime();
+            onBackListener.onBack();
         }
+
     }
 
     private void printRouteMinDistance() {
@@ -78,7 +81,6 @@ public class RouteShowView extends View{
         System.out.println(PREFIX_INFO + " " + DIVISION_LINE);
         System.out.println(ASK_START_STATION);
         String startStation = scanner.nextLine();
-        System.out.println(ASK_END_STATION);
         String endStation = scanner.nextLine();
         System.out.println(PREFIX_INFO + " " + HEADER_ROUTE_RESULT);
         System.out.println(PREFIX_INFO + " " + DIVISION_LINE);
