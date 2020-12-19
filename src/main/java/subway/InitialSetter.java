@@ -17,8 +17,27 @@ public class InitialSetter {
     }
 
     public static void setupInitialInfo() {
-
+        setupStation();
+        setupLine();
+        setUpPath();
     }
 
+    private static void setupStation() {
+        for (String stationName : STATION_NAME_LIST) {
+            Station station = new Station(stationName);
+            StationRepository.addStation(station);
+        }
+    }
+
+    private static void setupLine() {
+        for (String lineName : LINE_NAME_LIST) {
+            Line line = new Line(lineName);
+            LineRepository.addLine(line);
+        }
+    }
+
+    private static void setUpPath(){
+
+    }
 
 }
