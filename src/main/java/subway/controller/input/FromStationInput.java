@@ -1,12 +1,13 @@
 package subway.controller.input;
 
 import subway.controller.util.InputValidator;
+import subway.view.IntroMessage;
 
 public class FromStationInput extends InputController {
 	private static FromStationInput fromStationInput;
 	
 	public FromStationInput() {
-		this.INPUT_INTRO = "\n## 출발역을 입력하세요.";
+		this.INPUT_INTRO = IntroMessage.FROM_STATION.getMessage();
 	}
 	
 	@Override
