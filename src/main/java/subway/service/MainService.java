@@ -1,4 +1,7 @@
-package subway;
+package subway.service;
+
+import subway.view.InputView;
+import subway.view.OutputView;
 
 public class MainService {
     public static final String TO_ROUTE_SEARCH_SERVICE_CODE = "1";

@@ -1,9 +1,11 @@
-package subway;
+package subway.service;
 
 import subway.domain.EdgeRepository;
 import subway.domain.Station;
 import subway.domain.StationRepository;
 import subway.domain.SubwayGraph;
+import subway.view.InputView;
+import subway.view.OutputView;
 
 import java.util.List;
 
