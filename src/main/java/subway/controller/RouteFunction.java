@@ -1,6 +1,7 @@
 package subway.controller;
 
 import java.util.Arrays;
+import subway.exception.GoBackException;
 import subway.exception.InputException;
 import subway.service.RouteService;
 import subway.view.OutputView;
@@ -10,7 +11,7 @@ public enum RouteFunction {
     SHORTEST_TIME("2", "최소 시간", RouteFunction::retrieveByShortestTime),
     GO_BACK("B", "돌아가기", RouteFunction::goBack);
 
-    private static RouteService routeService = new RouteService();
+    private static final RouteService routeService = new RouteService();
 
     private final String button;
     private final String detail;
@@ -43,6 +44,7 @@ public enum RouteFunction {
     }
 
     private static void goBack() {
+        throw new GoBackException();
     }
 
     @Override

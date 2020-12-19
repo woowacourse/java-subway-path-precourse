@@ -1,18 +1,18 @@
 package subway.controller;
 
+import subway.exception.GoBackException;
 import subway.exception.InputException;
-import subway.exception.SystemExitException;
 import subway.view.InputView;
 import subway.view.OutputView;
 
-public class MainController implements Controller{
+public class RouteController implements Controller{
 
     @Override
     public void run() {
         while (true) {
             try {
                 chooseFunction();
-            } catch (SystemExitException e) {
+            } catch (GoBackException e) {
                 return;
             } catch (InputException e) {
                 OutputView.printError(e);
@@ -21,7 +21,7 @@ public class MainController implements Controller{
     }
 
     private void chooseFunction() {
-        MainFunction.printFunctions();
-        MainFunction.runFunction(InputView.getInputString());
+        RouteFunction.printFunctions();
+        RouteFunction.runFunction(InputView.getInputString());
     }
 }
