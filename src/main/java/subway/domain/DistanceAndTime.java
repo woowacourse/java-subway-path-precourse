@@ -1,10 +1,10 @@
 package subway.domain;
 
-public class Distance {
+public class DistanceAndTime {
     private int distance;
     private int time;
 
-    public Distance(int distance, int time) {
+    public DistanceAndTime(int distance, int time) {
         this.distance = distance;
         this.time = time;
     }

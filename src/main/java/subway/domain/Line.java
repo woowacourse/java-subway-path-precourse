@@ -7,7 +7,7 @@ import java.util.Objects;
 public class Line {
     private String name;
     private ArrayList<Station> lineStations = new ArrayList<>();
-    private ArrayList<Distance> lineDistances = new ArrayList<>();
+    private ArrayList<DistanceAndTime> lineDistanceAndTimes = new ArrayList<>();
 
     public Line(String name) {
         this.name = name;
@@ -39,12 +39,12 @@ public class Line {
         return lineStations;
     }
 
-    public void setLineDistances(ArrayList<Distance> lineDistances) {
-        this.lineDistances = lineDistances;
+    public void setLineDistances(ArrayList<DistanceAndTime> lineDistanceAndTimes) {
+        this.lineDistanceAndTimes = lineDistanceAndTimes;
     }
 
-    public ArrayList<Distance> getLineDistances() {
-        return lineDistances;
+    public ArrayList<DistanceAndTime> getLineDistances() {
+        return lineDistanceAndTimes;
     }
 
     public ArrayList<Station> getLineStations() {
