@@ -21,7 +21,8 @@ public class Output {
     private static final String TOTAL_DISTANCE = "총 거리: ";
     private static final String KM = "km";
     private static final String TOTAL_TIME = "총 소요 시간: ";
-    private static final String MIMUTE = "분";
+    private static final String MINUTE = "분";
+    private static final String STATION_EQUALS_ERROR = "출발역과 도착역이 동일합니다.\n";
     public static final String YOU_CHOICE = "## 원하는 기능을 선택하세요";
     public static final String START_STATION = "## 출발역을 입력하세요.";
     public static final String END_STATION = "## 도착역을 입력하세요.";
@@ -58,11 +59,15 @@ public class Output {
         System.out.println(INFO + SEARCH_RESULT);
         System.out.println(INFO + THREE_MANUS);
         System.out.println(INFO + TOTAL_DISTANCE + distance + KM);
-        System.out.println(INFO + TOTAL_TIME + time + MIMUTE);
+        System.out.println(INFO + TOTAL_TIME + time + MINUTE);
         System.out.println(INFO + THREE_MANUS);
         for (String station : path) {
             System.out.println(INFO + station);
         }
         System.out.println();
+    }
+
+    public static void printStationEqualsError() {
+        System.out.println(STATION_EQUALS_ERROR);
     }
 }
