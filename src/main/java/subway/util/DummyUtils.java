@@ -25,7 +25,6 @@ public class DummyUtils {
         StationService.addStation("양재역");
         StationService.addStation("양재시민의숲역");
         StationService.addStation("매봉역");
-        StationService.addStation("매봉역");
 
         Line line1 = new Line("2호선");
         Line line2 = new Line("3호선");
