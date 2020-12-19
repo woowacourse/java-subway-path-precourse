@@ -27,8 +27,8 @@ class SectionTest {
         assertAll(
                 () -> assertThat(section).extracting("startStation").isEqualTo(startStation),
                 () -> assertThat(section).extracting("arrivalStation").isEqualTo(arrivalStation),
-                () -> assertThat(section).extracting("runTime").extracting("runTime").isEqualTo(runTime),
-                () -> assertThat(section).extracting("distance").extracting("distance").isEqualTo(distance)
+                () -> assertThat(section.getRunTime()).isEqualTo(runTime),
+                () -> assertThat(section.getDistance()).isEqualTo(distance)
         );
     }
 }
