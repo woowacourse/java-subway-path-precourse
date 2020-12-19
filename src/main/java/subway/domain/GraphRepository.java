@@ -8,29 +8,19 @@ public class GraphRepository {
 
     private final static Map<String, Graph> graphMap = new HashMap<>();
 
-    public Map<String, Graph> graphMaps() {
+    public static Map<String, Graph> graphMaps() {
         return Collections.unmodifiableMap(graphMap);
     }
 
-    public void addGraph(String graphName) {
-
-        if (checkDuplication(graphName)) {
-            //error
-            return;
-        }
-
-        graphMap.put(graphName, new Graph());
+    public static void addGraph(String graphName) {
+        graphMap.putIfAbsent(graphName, new Graph());
     }
 
-    public Graph getGraph(String graphName) {
-
-        if (graphMaps().containsKey(graphName)) {
-            return graphMap.get(graphName);
-        }
-        return null;
+    public static Graph findGraphByName(String graphName) {
+        return graphMap.getOrDefault(graphName, null);
     }
 
-    private boolean checkDuplication(String graphName) {
+    private static boolean checkDuplication(String graphName) {
         return graphMaps().containsKey(graphName);
     }
 
