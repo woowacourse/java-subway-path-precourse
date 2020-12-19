@@ -1,11 +1,5 @@
 package subway.controller;
 
-import java.util.List;
-import subway.domain.DefaultLines;
-import subway.domain.DefaultStations;
-import subway.domain.Line;
-import subway.domain.Station;
-import org.jgrapht.traverse.
 import subway.view.InputView;
 import subway.view.OutputView;;
 

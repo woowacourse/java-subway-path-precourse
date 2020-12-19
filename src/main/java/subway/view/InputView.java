@@ -36,4 +36,7 @@ public class InputView {
             return inputPathUserOption();
         }
     }
+
+    public static String inputStation() {
+    }
 }

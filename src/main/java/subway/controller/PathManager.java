@@ -1,24 +1,18 @@
 package subway.controller;
 
-import java.util.List;
-import org.jgrapht.traverse.
-import subway.domain.DefaultLines;
-import subway.domain.DefaultStations;
-import subway.domain.Line;
-import subway.domain.Station;
 import subway.view.InputView;
 import subway.view.OutputView;
 
 public class PathManager {
 
     private static final String GO_BACK_CODE = "B";
-    private final List<Line> defaultLines;
-    private final List<Station> defaultStations;
+    private static final String OPTION_ONE = "1";
+    private static final String OPTION_TWO = "2";
     private String userOption;
+    private MinCostCalculator minCostCalculator;
 
     public PathManager() {
-        defaultLines = DefaultLines.getDefaultLines();
-        defaultStations = DefaultStations.getDefaultStations();
+        minCostCalculator = new MinCostCalculator();
         userOption = "";
     }
 
@@ -26,6 +20,16 @@ public class PathManager {
         while (!userWantGoBack()) {
             OutputView.printPathManagerScreen();
             userOption = InputView.inputPathUserOption();
+            runUserOption(userOption);
+        }
+    }
+
+    private void runUserOption(String userOption) {
+        if (userOption.equals(OPTION_ONE)) {
+            minCostCalculator.runToGetMinDistance();
+        }
+        if (userOption.equals(OPTION_TWO)) {
+            minCostCalculator.runToGetMinTime();
         }
     }
 
