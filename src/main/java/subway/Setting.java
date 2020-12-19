@@ -1,6 +1,8 @@
 package subway;
 
-import static subway.domain.Graph.*;
+import static subway.domain.Graph.addDistanceEdge;
+import static subway.domain.Graph.addTimeEdge;
+import static subway.domain.Graph.addVertex;
 import static subway.domain.LineRepository.addLine;
 import static subway.domain.StationRepository.addStation;
 
