@@ -1,5 +1,7 @@
 package subway.domain;
 
+import subway.Exception.CanNotConnectStationException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +14,20 @@ public class LineStationRepository {
 
     public static void addLineStation(LineStation lineStation) {
         subwayMap.add(lineStation);
+    }
+
+    public static List<LineStation> findLineWithStation(Station startStation, Station arriveStation) {
+        List<LineStation> findLineStation = new ArrayList<>();
+        for (LineStation lineStation : subwayMap) {
+            List<Station> checkStations = lineStation.getStations();
+            if (checkStations.contains(startStation) && checkStations.contains(arriveStation)){
+                findLineStation.add(lineStation);
+            }
+        }
+        if (findLineStation.isEmpty()) {
+            throw new CanNotConnectStationException();
+        }
+        return findLineStation;
     }
 
     @Override

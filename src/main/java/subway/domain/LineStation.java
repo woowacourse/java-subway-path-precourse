@@ -30,4 +30,13 @@ public class LineStation {
     public  List<Section> getSectionInfos() {
         return sectionInfos;
     }
+
+    @Override
+    public String toString() {
+        return "LineStation{" +
+                "line=" + line +
+                ", stations=" + stations +
+                ", sectionInfos=" + sectionInfos +
+                '}';
+    }
 }
