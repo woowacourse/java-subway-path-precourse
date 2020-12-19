@@ -34,5 +34,17 @@ public class DataInitService {
         for (String lineName : lineNames) {
             LineService.addLine(lineName);
         }
+        String[] lineTwoStations = {GYODAE_STATION, GANGNAM_STATION, YEOKSAM_STATION};
+        String[] lineThreeStations = {GYODAE_STATION, SOUTH_TERMIANL_STATION, YANGJAE_STATION, MAEBONG_STATION};
+        String[] lineSinbundangStations = {GANGNAM_STATION, YANGJAE_STATION, YANGJAE_CITIZEN_FOREST_STATION};
+        addLineInStation(LINE_TOW, lineTwoStations);
+        addLineInStation(LINE_THREE, lineThreeStations);
+        addLineInStation(LINE_SINBUNDANG, lineSinbundangStations);
+    }
+
+    private static void addLineInStation(String lineName, String[] stationNames) {
+        for (String stationName: stationNames) {
+            LineService.lineInAddStation(lineName, stationName);
+        }
     }
 }
