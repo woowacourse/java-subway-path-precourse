@@ -1,7 +1,6 @@
 package subway;
 
 import subway.view.OutputView;
-
 import java.util.Scanner;
 
 public class SubwayPath {
@@ -16,7 +15,7 @@ public class SubwayPath {
 
     private void run(){
         OutputView.printMainView();
-        
+
     }
 
 }
