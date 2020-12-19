@@ -60,4 +60,12 @@ public class PathRepository {
         String endStationName = endStation.getName();
         timeGraph.setEdgeWeight(timeGraph.addEdge(startStationName, endStationName), minute);
     }
+
+    public static WeightedMultigraph<String, DefaultWeightedEdge> getDistanceGraph() {
+        return distanceGraph;
+    }
+
+    public static WeightedMultigraph<String, DefaultWeightedEdge> getTimeGraph() {
+        return timeGraph;
+    }
 }
