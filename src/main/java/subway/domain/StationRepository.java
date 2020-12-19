@@ -23,4 +23,17 @@ public class StationRepository {
     public static void deleteAll() {
         stations.clear();
     }
+
+    public static boolean isExistStationName(String name) {
+        return stations.stream().noneMatch(station -> Objects.equals(station.getName(), name));
+    }
+
+    public static Station selectStation(String name){
+        for(Station station: stations()){
+            if(name.equals(station.getName())){
+                return station;
+            }
+        }
+        return null;
+    }
 }
