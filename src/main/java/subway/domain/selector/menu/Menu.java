@@ -13,7 +13,6 @@ public class Menu extends Selector {
         this.name = name;
     }
 
-
     public void addMenus(String key, Menu menu) {
         subMenus.put(key, menu);
     }
@@ -31,11 +30,7 @@ public class Menu extends Selector {
     }
 
     public boolean isIdContain(String id) {
-        if (subMenus.keySet().contains(id)) {
-            return true;
-        }
-
-        if (items.keySet().contains(id)) {
+        if (subMenus.keySet().contains(id) || items.keySet().contains(id)) {
             return true;
         }
         return false;
