@@ -1,4 +1,4 @@
-package subway;
+package subway.pathfind;
 
 public class PathCriteriaSelectionScreenPrinter {
     private static final String SCREEN_MENU

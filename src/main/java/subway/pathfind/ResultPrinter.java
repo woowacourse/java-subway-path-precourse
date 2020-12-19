@@ -1,4 +1,4 @@
-package subway;
+package subway.pathfind;
 
 import java.util.List;
 import subway.domain.Station;

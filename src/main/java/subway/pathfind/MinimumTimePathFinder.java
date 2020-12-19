@@ -1,4 +1,4 @@
-package subway;
+package subway.pathfind;
 
 import java.util.ArrayList;
 import java.util.List;

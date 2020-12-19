@@ -1,4 +1,4 @@
-package subway;
+package subway.pathfind;
 
 public enum PathCriteriaSelectionType {
     SHORTEST_DISTANCE("1"),

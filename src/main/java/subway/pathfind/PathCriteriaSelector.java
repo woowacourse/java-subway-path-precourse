@@ -1,6 +1,7 @@
-package subway;
+package subway.pathfind;
 
 import java.util.Scanner;
+import subway.common.CommonPrinter;
 
 public class PathCriteriaSelector {
     public static void start(Scanner scanner) {

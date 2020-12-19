@@ -1,4 +1,4 @@
-package subway;
+package subway.pathfind;
 
 public class PathCalculatorPrinter {
     private static final String START_STATION_USER_INPUT_MESSAGE

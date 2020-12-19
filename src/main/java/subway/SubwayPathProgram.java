@@ -1,6 +1,11 @@
 package subway;
 
 import java.util.Scanner;
+import subway.common.CommonPrinter;
+import subway.mainscreen.MainScreenErrorChecker;
+import subway.mainscreen.MainScreenPrinter;
+import subway.mainscreen.MainSelectionType;
+import subway.pathfind.PathCriteriaSelector;
 
 public class SubwayPathProgram {
     public static void start(Scanner scanner) {
@@ -23,11 +28,11 @@ public class SubwayPathProgram {
         while (true) {
             CommonPrinter.printUserSelectionMessage();
             String userSelectionInput = scanner.nextLine();
-//            try {
-//                validateMainUserSelectionInput(userSelectionInput);
-//            } catch (IllegalArgumentException e) {
-//                continue;
-//            }
+            try {
+                MainScreenErrorChecker.validateMainUserSelectionInput(userSelectionInput);
+            } catch (IllegalArgumentException e) {
+                continue;
+            }
             if (userSelectionInput.equals(MainSelectionType.QUIT.getStrValue())){
                 return MainSelectionType.QUIT;
             }

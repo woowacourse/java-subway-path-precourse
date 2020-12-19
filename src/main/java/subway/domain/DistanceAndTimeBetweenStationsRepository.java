@@ -2,7 +2,7 @@ package subway.domain;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-import subway.TimeAndDistance;
+import subway.pathfind.TimeAndDistance;
 
 public class DistanceAndTimeBetweenStationsRepository {
     private static final Map<ConnectedStation, DistanceAndTimeBetweenStations> connectedStationMap

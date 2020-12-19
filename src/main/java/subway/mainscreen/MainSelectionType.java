@@ -1,4 +1,4 @@
-package subway;
+package subway.mainscreen;
 
 public enum MainSelectionType {
     FIND_PATH("1"),

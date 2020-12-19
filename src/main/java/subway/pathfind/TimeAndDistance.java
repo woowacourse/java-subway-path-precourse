@@ -1,4 +1,4 @@
-package subway;
+package subway.pathfind;
 
 public class TimeAndDistance {
     private int time;
