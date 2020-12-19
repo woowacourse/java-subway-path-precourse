@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class StationRepository {
 
@@ -32,5 +33,14 @@ public class StationRepository {
             .filter(station -> station.getName().equals(stationName))
             .findAny()
             .orElseThrow();
+    }
+
+    public static boolean contains(String stationName) {
+        return StationRepository
+            .stations()
+            .stream()
+            .map(Station::getName)
+            .collect(Collectors.toList())
+            .contains(stationName);
     }
 }
