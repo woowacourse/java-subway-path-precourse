@@ -24,6 +24,15 @@ public class StationRepository {
         stations.clear();
     }
 
+    public static Station getStationByName(String name){
+        for (Station station : stations) {
+            if (station.matchName(name)) {
+                return station;
+            }
+        }
+        return null;
+    }
+
     public static boolean contains(String name) {
         return stations.contains(new Station(name));
     }

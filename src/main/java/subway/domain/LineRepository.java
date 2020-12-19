@@ -25,6 +25,15 @@ public class LineRepository {
         lines.clear();
     }
 
+    public static Line getLineByName(String name){
+        for (Line line : lines) {
+            if (line.matchName(name)) {
+                return line;
+            }
+        }
+        return null;
+    }
+
     public static boolean contains(String name) {
         return lines.contains(new Line(name));
     }
