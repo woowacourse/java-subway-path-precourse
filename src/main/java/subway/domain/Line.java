@@ -15,4 +15,8 @@ public class Line {
     public void addSection(Section section){
         sections.addSection(section);
     }
+
+    public Sections getSections(){
+        return sections;
+    }
 }

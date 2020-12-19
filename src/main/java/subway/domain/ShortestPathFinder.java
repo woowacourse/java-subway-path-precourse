@@ -1,8 +1,10 @@
 package subway.domain;
 
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
+import org.jgrapht.graph.DefaultWeightedEdge;
+import org.jgrapht.graph.WeightedMultigraph;
 import subway.exception.SubwayException;
 
-import java.util.Collections;
 import java.util.List;
 
 public class ShortestPathFinder {
@@ -10,24 +12,68 @@ public class ShortestPathFinder {
 
     List<Station> stations;
     Sections sections;
-    FindPathType findPathType;
+    WeightedMultigraph<Station, DefaultWeightedEdge> graph;
 
     public ShortestPathFinder(List<Station> stations, Sections sections) {
         this.stations = stations;
         this.sections = sections;
+        graphVertexAndEdgeSetting();
     }
 
-    public int calculateShortest(FindPathType type) {
-        if (FindPathType.DISTANCE == type) {
-            return 0;
+    public void setType(FindPathType type) {
+        graphEdgeWeightSetting(type);
+    }
+
+    public int calculateShortest(Station from, Station to) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
+        List<Station> shortestPath = dijkstraShortestPath.getPath(from, to).getVertexList();
+        return shortestPath.size();
+    }
+
+    public List<Station> getStationsOnPath(Station from, Station to) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
+        return dijkstraShortestPath.getPath(from, to).getVertexList();
+    }
+
+    private void graphVertexAndEdgeSetting() {
+        addVertex();
+        Sections allSections = SectionRepository.allSections();
+        addEdge(allSections);
+    }
+
+    private void addVertex() {
+        for (Station station : stations) {
+            graph.addVertex(station);
         }
+    }
+
+    private void addEdge(Sections allSections) {
+        for (Section section : sections.getUnmodifiableList()) {
+            graph.addEdge(section.from, section.to);
+        }
+    }
+
+    private void graphEdgeWeightSetting(FindPathType type) {
         if (FindPathType.DISTANCE == type) {
-            return 0;
+            edgeWeightSettingForDistance(sections);
+            return;
+        }
+        if (FindPathType.TIME == type) {
+            edgeWeightSettingForTime(sections);
+            return;
         }
         throw new SubwayException(ERR_WRONG_TYPE_MSG);
     }
 
-    public List<Station> getStationsOnPath(){
-        return Collections.emptyList();
+    private void edgeWeightSettingForDistance(Sections sections) {
+        for (Section section : sections.getUnmodifiableList()) {
+            graph.setEdgeWeight(graph.getEdge(section.from, section.to), section.getDistance());
+        }
+    }
+
+    private void edgeWeightSettingForTime(Sections sections) {
+        for (Section section : sections.getUnmodifiableList()) {
+            graph.setEdgeWeight(graph.getEdge(section.from, section.to), section.getTakenTime());
+        }
     }
 }
