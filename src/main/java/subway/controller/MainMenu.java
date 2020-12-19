@@ -1,5 +1,6 @@
 package subway.controller;
 
+import subway.Exception.CustomException;
 import subway.view.InputView;
 import subway.view.OutputView;
 
@@ -21,7 +22,12 @@ public class MainMenu {
 
     private String askValidMenuNumber() {
         OutputView.mainMenu();
-        return InputView.askMenu(scanner, REGEX_VALID_MENU_CHARACTER);
+        try {
+            return InputView.askMenu(scanner, REGEX_VALID_MENU_CHARACTER);
+        } catch (CustomException exception) {
+            System.out.println(exception.getMessage());
+            return askValidMenuNumber();
+        }
     }
 
     public boolean doNext() {
