@@ -11,6 +11,7 @@ public class SubwayInit {
         Station yangjae = new Station("양재역");
         Station yangjaeForest = new Station("양재시민의숲역");
         Station maebong = new Station("매봉역");
+        Station gwangmyeong = new Station("광명역");
         StationRepository.addStation(snue);
         StationRepository.addStation(gangnam);
         StationRepository.addStation(yeoksam);
@@ -18,6 +19,7 @@ public class SubwayInit {
         StationRepository.addStation(yangjae);
         StationRepository.addStation(yangjaeForest);
         StationRepository.addStation(maebong);
+        StationRepository.addStation(gwangmyeong);
 
         Line second = new Line("2호선");
         Line third = new Line("3호선");

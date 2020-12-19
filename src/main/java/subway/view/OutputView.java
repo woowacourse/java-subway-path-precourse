@@ -58,4 +58,8 @@ public class OutputView {
     public void printTotalTime(int time) {
         System.out.println(outputMessages.INFO + outputMessages.RESULT_TIME + time + outputMessages.RESULT_MIN);
     }
+
+    public void printError() {
+        System.out.println(outputMessages.UNLINKED_STATION_ERROR);
+    }
 }

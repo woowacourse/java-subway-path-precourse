@@ -70,10 +70,14 @@ public class SubwayController {
         if (stationInput != null) {
             String start = stationInput[0];
             String arrive = stationInput[1];
-            List<String> result = PathFinder.getShortestPathByDistance(start, arrive);
-            int totalDistance = PathFinder.getTotalDistance(result);
-            int totalTime = PathFinder.getTotalTime(result);
-            showResult(result, totalDistance, totalTime);
+            try {
+                List<String> result = PathFinder.getShortestPathByDistance(start, arrive);
+                int totalDistance = PathFinder.getTotalDistance(result);
+                int totalTime = PathFinder.getTotalTime(result);
+                showResult(result, totalDistance, totalTime);
+            } catch (IllegalArgumentException e) {
+                outputView.printError();
+            }
         }
     }
 
@@ -82,10 +86,14 @@ public class SubwayController {
         if (stationInput != null) {
             String start = stationInput[0];
             String arrive = stationInput[1];
-            List<String> result = PathFinder.getShortestPathByTime(start, arrive);
-            int totalDistance = PathFinder.getTotalDistance(result);
-            int totalTime = PathFinder.getTotalTime(result);
-            showResult(result, totalDistance, totalTime);
+            try {
+                List<String> result = PathFinder.getShortestPathByTime(start, arrive);
+                int totalDistance = PathFinder.getTotalDistance(result);
+                int totalTime = PathFinder.getTotalTime(result);
+                showResult(result, totalDistance, totalTime);
+            } catch (IllegalArgumentException e) {
+                outputView.printError();
+            }
         }
     }
 
