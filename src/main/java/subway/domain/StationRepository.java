@@ -23,4 +23,12 @@ public class StationRepository {
     public static void deleteAll() {
         stations.clear();
     }
+
+    public static void saveAll(List<Station> stationList){
+        stations.addAll(stationList);
+    }
+
+    public static boolean isExistByName(String name){
+        return stations().stream().anyMatch(station -> station.getName().equals(name));
+    }
 }
