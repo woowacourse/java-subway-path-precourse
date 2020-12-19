@@ -6,8 +6,8 @@ public class OutputView {
     private OutputView() {
     }
 
-    public static void printMainMenu() {
-        System.out.println(LineUtils.MAIN_MENU);
+    public static void printMenu(String line) {
+        System.out.println(line);
         return;
     }
 }
