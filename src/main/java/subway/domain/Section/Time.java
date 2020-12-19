@@ -6,9 +6,9 @@ import subway.exception.InvalidTimeException;
 
 public class Time {
 
+    public static final Time ZERO = new Time(Duration.ZERO);
     private static final long MINUTE_PER = 60;
     private static final String TIME_UNIT = "분";
-    private static final long MIN_TIME_MINUTE = 1;
 
     private Duration time;
 
@@ -17,10 +17,6 @@ public class Time {
     }
 
     public static Time of(long minute) {
-
-        if (minute < MIN_TIME_MINUTE) {
-            throw new InvalidTimeException(minute);
-        }
         return new Time(Duration.ofMinutes(minute));
     }
 

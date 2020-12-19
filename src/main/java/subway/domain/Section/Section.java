@@ -25,12 +25,12 @@ public class Section {
         return new Section(line, preStation, nextStation, time, distance);
     }
 
-    public Time getTime() {
-        return time;
+    public double getTime() {
+        return time.getMinute();
     }
 
-    public Distance getDistance() {
-        return distance;
+    public double getDistance() {
+        return distance.getDistance();
     }
 
     public Station getPreStation() {

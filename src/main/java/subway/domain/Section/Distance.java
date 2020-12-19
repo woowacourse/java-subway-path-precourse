@@ -14,6 +14,10 @@ public class Distance {
         this.distance = distance;
     }
 
+    public long getDistance() {
+        return distance;
+    }
+
     public static Distance of(long distance) {
 
         if (distance <= DISTANCE_MIN_LENGTH) {
