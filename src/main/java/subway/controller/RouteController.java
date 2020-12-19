@@ -23,12 +23,16 @@ public class RouteController {
     }
 
     private void goToFindMenuBySelection(String selection) {
-        if (selection.equals(FINDING_MIN_DISTANCE)) {
+        if (isEqual(selection, FINDING_MIN_DISTANCE)) {
             findMinDistance();
         }
-        if (selection.equals(FINDING_MIN_TIME)) {
+        if (isEqual(selection, FINDING_MIN_TIME)) {
             findMinTime();
         }
+    }
+
+    private boolean isEqual(String selection, String menu) {
+        return selection.equals(menu);
     }
 
     private void findMinDistance() {
