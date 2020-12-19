@@ -19,17 +19,27 @@ public class SubwayPathChecker {
 
     public SubwayPathChecker() {
         registerLine();
-//        registerStation();
+        registerStation();
 //        insertStationToLine();
     }
 
     public void run() {
 
     }
-    
+
     private void registerLine() {
         LineRepository.addLine(new Line(LINE_NUMBER_TWO));
         LineRepository.addLine(new Line(LINE_NUMBER_THREE));
         LineRepository.addLine(new Line(LINE_NEW_BOONDANG));
+    }
+
+    private void registerStation() {
+        StationRepository.addStation(new Station(GYODAE_STATION));
+        StationRepository.addStation(new Station(GANGNAM_STATION));
+        StationRepository.addStation(new Station(YEOKSAM_STATION));
+        StationRepository.addStation(new Station(NAMBU_TERMINAL_STATION));
+        StationRepository.addStation(new Station(YANGJAE_STATION));
+        StationRepository.addStation(new Station(YANGJAE_CITIZEN_FOREST_STATION));
+        StationRepository.addStation(new Station(MAEBONG_STATION));
     }
 }
