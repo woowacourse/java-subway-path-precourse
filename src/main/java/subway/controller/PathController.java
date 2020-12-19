@@ -1,10 +1,14 @@
 package subway.controller;
 
 import subway.controller.validation.PathValidation;
+import subway.service.DistanceMapService;
 import subway.type.ExceptionType;
+import subway.type.InformationType;
 import subway.type.InputType;
+import subway.type.TextType;
 import subway.view.InputView;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class PathController implements OptionInterface {
@@ -45,7 +49,31 @@ public class PathController implements OptionInterface {
         String destinationInput = InputView.scanDestinationInput(scanner);
         System.out.println();
 
-        PathValidation.isValidStations(originInput, destinationInput);
+        if (PathValidation.isValidStations(originInput, destinationInput)) {
+            double shortestDistance = DistanceMapService.getShortestDistance(originInput, destinationInput);
+            List<String> shortestDistanceStations
+                    = DistanceMapService.getShortestDistanceStations(originInput, destinationInput);
+
+            System.out.println(showPathByShortestDistance(shortestDistance, shortestDistanceStations));
+        }
+    }
+
+    public static String showPathByShortestDistance(double shortestDistance, List<String> shortestDistanceStations) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append(InformationType.INFORMATION_WITH_LINES.getInformation())
+                .append(InformationType.INFORMATION.getInformation())
+                .append(TextType.TOTAL_DISTANCE.getText())
+                .append((int) shortestDistance)
+                .append(TextType.KILOMETER.getText())
+                .append(InformationType.INFORMATION_WITH_LINES.getInformation());
+
+        for (String shortestDistanceStation : shortestDistanceStations) {
+            stringBuilder.append(InformationType.INFORMATION.getInformation())
+                    .append(shortestDistanceStation)
+                    .append(TextType.NEW_LINE.getText());
+        }
+        return stringBuilder.toString();
     }
 
     public static void getPathByShortestTime(Scanner scanner) {
