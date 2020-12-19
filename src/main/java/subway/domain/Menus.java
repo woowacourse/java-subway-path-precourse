@@ -1,10 +1,12 @@
 package subway.domain;
 
+import subway.domain.exception.NonExistentMenuException;
+import subway.controller.MenuController;
+
 import java.util.Arrays;
 import java.util.List;
-import subway.domain.exception.NonExistentMenuException;
 
-public class Menus {
+public class Menus extends MenuController {
 
     private static final String searchSign = "1";
     private static final String quitSign = "Q";
