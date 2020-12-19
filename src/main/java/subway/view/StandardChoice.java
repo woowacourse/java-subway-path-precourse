@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public enum StandardChoice {
     DISTANCE("1"),
-    TIME("e"),
+    TIME("2"),
     BACK("B"),
     ;
 

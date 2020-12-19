@@ -5,7 +5,7 @@ import subway.domain.section.SectionsAndTime;
 
 public class OutputView {
     private static final String MAIN_MENU = "\n## 메인 화면\n1. 경로 조회\nQ. 종료";
-    private static final String STANDARD_MENU = "\n## 경로 기준\n1. 최단 거리\n2 최소 시간\nB. 돌아가기";
+    private static final String STANDARD_MENU = "\n## 경로 기준\n1. 최단 거리\n2. 최소 시간\nB. 돌아가기";
     private static final String SELECT_FUNCTION = "\n##원하는 기능을 선택하세요.";
     private static final String INPUT_START_STATION = "\n## 출발역을 입력하세요.";
     private static final String INPUT_END_STATION = "\n## 도착역을 입력하세요.";
