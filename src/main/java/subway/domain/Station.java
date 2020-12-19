@@ -1,11 +1,18 @@
 package subway.domain;
 
+import subway.error.SubwayErrorMessage;
+import subway.error.SubwayException;
+
 import java.util.Objects;
 
 public class Station {
+    private static final int NAME_MIN_LENGTH = 2;
     private String name;
 
     public Station(String name) {
+        if(name.length() < NAME_MIN_LENGTH) {
+            throw new SubwayException(SubwayErrorMessage.STATION_NAME_SHORT);
+        }
         this.name = name;
     }
 
