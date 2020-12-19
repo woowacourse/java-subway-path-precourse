@@ -9,6 +9,7 @@ import java.util.List;
 public class SubwayGraph {
     public static final WeightedMultigraph<Station, DefaultWeightedEdge> distanceWeightGraph = new WeightedMultigraph<>(DefaultWeightedEdge.class);
     public static final WeightedMultigraph<Station, DefaultWeightedEdge> timeWeightGraph = new WeightedMultigraph<>(DefaultWeightedEdge.class);
+    public static final String ERR_NOT_CONNECTED = "연결되지 않은 역입니다";
 
     public static void addVertices(List<Station> stations) {
         for (Station station : stations) {
@@ -30,11 +31,19 @@ public class SubwayGraph {
 
     public static List<Station> getTimeShortestPath(Station from, Station to) {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(timeWeightGraph);
-        return dijkstraShortestPath.getPath(from, to).getVertexList();
+        List<Station> stations = dijkstraShortestPath.getPath(from, to).getVertexList();
+        if (stations.isEmpty()) {
+            throw new IllegalArgumentException(ERR_NOT_CONNECTED);
+        }
+        return stations;
     }
 
     public static List<Station> getDistanceShortestPath(Station from, Station to) {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(distanceWeightGraph);
-        return dijkstraShortestPath.getPath(from, to).getVertexList();
+        List<Station> stations = dijkstraShortestPath.getPath(from, to).getVertexList();
+        if (stations.isEmpty()) {
+            throw new IllegalArgumentException(ERR_NOT_CONNECTED);
+        }
+        return stations;
     }
 }
