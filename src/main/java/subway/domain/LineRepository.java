@@ -1,26 +1,34 @@
 package subway.domain;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 public class LineRepository {
-    private static final List<Line> lines = new ArrayList<>();
 
-    public static List<Line> lines() {
-        return Collections.unmodifiableList(lines);
-    }
+    private final Set<Line> lines = new HashSet<>();
 
-    public static void addLine(Line line) {
+    public void addLine(Line line) {
         lines.add(line);
     }
 
-    public static boolean deleteLineByName(String name) {
-        return lines.removeIf(line -> Objects.equals(line.getName(), name));
+    public Set<Line> findAll() {
+        return Collections.unmodifiableSet(lines);
     }
 
-    public static void deleteAll() {
-        lines.clear();
+    public Line findByName(String name) {
+        return lines.stream()
+            .filter(line -> line.getName().equals(name))
+            .findFirst()
+            .orElse(null);
+    }
+
+    public boolean isExistByName(String name) {
+        return findByName(name) != null;
+    }
+
+    public boolean deleteLineByName(String name) {
+        return lines.removeIf(line -> Objects.equals(line.getName(), name));
     }
 }
