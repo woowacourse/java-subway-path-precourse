@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import subway.controller.MenuController;
+import subway.controller.SearchShortestPathController;
 
 public class MenuRepository {
     private static final Map<MenuType, Menu> menus = new HashMap<>();
@@ -44,9 +45,11 @@ public class MenuRepository {
     private static void setSelectWeightMenu() {
         Menu menu = Menu.createWithMenuItems(
             PATH,
-            new MenuItem(KEY_ONE, SHORTEST_DISTANCE, null),
-            new MenuItem(KEY_TWO, SHORTEST_TIME, null),
-            new MenuItem(KEY_BACK, BACK, null));
+            new MenuItem(KEY_ONE, SHORTEST_DISTANCE,
+                    SearchShortestPathController::SearchShortestDistancePath),
+            new MenuItem(KEY_TWO, SHORTEST_TIME, 
+                    SearchShortestPathController::SearchShortestTimePath),
+            new MenuItem(KEY_BACK, BACK, MenuController::callMainMenu));
 
         menus.put(MenuType.SEARCH_PATH, menu);
     }
