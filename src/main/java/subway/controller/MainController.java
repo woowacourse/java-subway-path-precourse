@@ -11,8 +11,8 @@ public class MainController {
             OutputView.showRouteMenu();
             RouteMenu.findByCommand(InputView.getInput()).run();
         }
-        catch (TransitRouteException error){
-            System.out.println(error.getMessage());
+        catch (TransitRouteException errorMessage){
+            System.out.println(errorMessage.getMessage());
             viewRoute();
         }
     }

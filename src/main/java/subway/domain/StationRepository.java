@@ -1,5 +1,7 @@
 package subway.domain;
 
+import subway.exception.TransitRouteException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -22,5 +24,12 @@ public class StationRepository {
 
     public static void deleteAll() {
         stations.clear();
+    }
+
+    public static Station findStationByName(String name) {
+        return stations.stream()
+                .filter(station -> station.getName().equals(name))
+                .findAny()
+                .orElseThrow(() -> new TransitRouteException("해당 역이 존재하지 않습니다"));
     }
 }

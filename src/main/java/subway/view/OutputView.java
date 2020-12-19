@@ -32,4 +32,14 @@ public class OutputView {
         }
         return menu.toString();
     }
+
+    public static void showPrompt(String departOrArriveStation) {
+        System.out.println(String.format("\n" + "%s을 입력하세요.", departOrArriveStation));
+    }
+
+    public static void lookUpResult(){
+        StringBuilder lookUpResult = new StringBuilder("\n## 조회 결과");
+        lookUpResult.append("\n---");
+        lookUpResult.append("\n---");
+    }
 }
