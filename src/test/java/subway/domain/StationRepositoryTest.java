@@ -1,5 +1,6 @@
 package subway.domain;
 
+import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,6 +28,22 @@ public class StationRepositoryTest {
 
         //then
         assertThat(stationRepository.stations()).containsExactly(station);
+    }
+
+    @Test
+    @DisplayName("중복된 역 추가 시 예외 발생")
+    public void addStation_DuplicateStation_ExceptionThrown() {
+
+        // given
+        Station station = new Station("봉천역");
+        stationRepository = stationRepository.addStation(station);
+
+        // when
+        ThrowableAssert.ThrowingCallable callable = () -> stationRepository.addStation(station);
+
+        //then
+        assertThatThrownBy(callable).isExactlyInstanceOf(IllegalArgumentException.class)
+                .hasMessage(StationRepository.DUPLICATE_STATION_ERROR);
     }
 
     @Test

@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Objects;
 
 public class StationRepository {
+
+    public static final String DUPLICATE_STATION_ERROR = "해당 역은 이미 등록되어 있습니다.";
+
     private final List<Station> stations;
 
     public StationRepository() {
@@ -31,6 +34,10 @@ public class StationRepository {
     }
 
     public StationRepository addStation(Station station) {
+        if (stations().contains(station)) {
+            throw new IllegalArgumentException(DUPLICATE_STATION_ERROR);
+        }
+
         stations.add(station);
 
         return new StationRepository(stations);
