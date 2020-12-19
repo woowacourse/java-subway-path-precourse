@@ -36,15 +36,15 @@ public class DummyData {
 
     private static void distanceGraphLoad() {
         DistanceGraph lineTwo = DistanceGraph.valueOf("2호선", Arrays.asList("교대역", "강남역", "역삼역"));
-        lineTwo.setEge("교대역", "강남역", 3);
-        lineTwo.setEge("강남역", "역삼역", 3);
+        lineTwo.setEge("교대역", "강남역", 2);
+        lineTwo.setEge("강남역", "역삼역", 2);
         DistanceGraph lineThree = DistanceGraph.valueOf("3호선", Arrays.asList("교대역", "남부터미널역", "양재역", "매봉역"));
-        lineThree.setEge("교대역", "남부터미널역", 2);
-        lineThree.setEge("남부터미널역", "양재역", 5);
+        lineThree.setEge("교대역", "남부터미널역", 3);
+        lineThree.setEge("남부터미널역", "양재역", 6);
         lineThree.setEge("양재역", "매봉역", 1);
         DistanceGraph BunDangLine = DistanceGraph.valueOf("신분당선", Arrays.asList("강남역", "양재역", "양재시민의숲역"));
-        BunDangLine.setEge("강남역", "양재역", 8);
-        BunDangLine.setEge("양재역", "양재시민의숲역", 3);
+        BunDangLine.setEge("강남역", "양재역", 2);
+        BunDangLine.setEge("양재역", "양재시민의숲역", 10);
         DistanceGraphRepository.add(lineTwo);
         DistanceGraphRepository.add(lineThree);
         DistanceGraphRepository.add(BunDangLine);
