@@ -8,9 +8,9 @@ public class OutputView {
     public static final String TOTAL_TIME = "총 소요 시간: ";
     public static final String TIME_UNIT = "분";
     public static final String ERROR = "\n[ERROR] ";
-    public static final String SAME_DEPARTURE_AND_ARRIVAL = "출발역과 도착역이 동일합니다.\n";
-    public static final String CANNOT_SELECT_MENU = "선택할 수 없는 기능입니다.\n";
-    public static final String NOT_EXIST_STATION = "등록되지 않은 역이름 입니다.\n";
+    public static final String SAME_DEPARTURE_AND_ARRIVAL = "출발역과 도착역이 동일합니다.";
+    public static final String CANNOT_SELECT_MENU = "선택할 수 없는 기능입니다.";
+    public static final String NOT_EXIST_STATION = "등록되지 않은 역이름 입니다.";
 
     public static void sameStationError() {
         System.out.println(ERROR + SAME_DEPARTURE_AND_ARRIVAL);
