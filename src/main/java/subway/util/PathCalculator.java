@@ -17,19 +17,19 @@ public class PathCalculator {
         distanceGraph.addVertex(name);
     }
 
-    public static void addWeightInfo(String startStation, String arrivedStation, int distance, int time) {
-        timeGraph.setEdgeWeight(timeGraph.addEdge(startStation, arrivedStation), time);
-        distanceGraph.setEdgeWeight(distanceGraph.addEdge(startStation, arrivedStation), distance);
+    public static void addWeightInfo(String startStation, String endStation, int distance, int time) {
+        timeGraph.setEdgeWeight(timeGraph.addEdge(startStation, endStation), time);
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(startStation, endStation), distance);
     }
 
-    public static List<String> calculateShortestDistancePath(String startStation, String arrivedStation) {
+    public static List<String> calculateShortestDistancePath(String startStation, String endStation) {
         DijkstraShortestPath shortestDistancePath = new DijkstraShortestPath(distanceGraph);
-        return shortestDistancePath.getPath(startStation, arrivedStation).getVertexList();
+        return shortestDistancePath.getPath(startStation, endStation).getVertexList();
     }
 
-    public static List<String> calculateShortestTimePath(String startStation, String arrivedStation) {
+    public static List<String> calculateShortestTimePath(String startStation, String endStation) {
         DijkstraShortestPath shortestDistancePath = new DijkstraShortestPath(timeGraph);
-        return shortestDistancePath.getPath(startStation, arrivedStation).getVertexList();
+        return shortestDistancePath.getPath(startStation, endStation).getVertexList();
     }
 
 }

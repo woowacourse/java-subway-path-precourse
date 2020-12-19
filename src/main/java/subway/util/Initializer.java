@@ -61,9 +61,9 @@ public class Initializer {
         mappingNearbyStation(yangjae, forest, 10, 3);
     }
 
-    private void mappingNearbyStation(Station startStation, Station arrivedStation, int distance, int time) {
-        startStation.addNearbyStation(new NearbyStation(arrivedStation, distance, time));
-        arrivedStation.addNearbyStation(new NearbyStation(startStation, distance, time));
-        PathCalculator.addWeightInfo(startStation.getName(), arrivedStation.getName(), distance, time);
+    private void mappingNearbyStation(Station startStation, Station endStation, int distance, int time) {
+        startStation.addNearbyStation(new NearbyStation(endStation, distance, time));
+        endStation.addNearbyStation(new NearbyStation(startStation, distance, time));
+        PathCalculator.addWeightInfo(startStation.getName(), endStation.getName(), distance, time);
     }
 }
