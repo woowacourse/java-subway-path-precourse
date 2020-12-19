@@ -1,9 +1,9 @@
 package subway.domain;
 
 public class Edge {
-    private Station nextStation;
-    private int distance;
-    private int time;
+    private final Station nextStation;
+    private final int distance;
+    private final int time;
 
     public Edge(Station nextStation, int distance, int time) {
         this.nextStation = nextStation;

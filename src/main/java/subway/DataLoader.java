@@ -1,7 +1,6 @@
 package subway;
 
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
-import org.jgrapht.graph.DefaultDirectedGraph;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 import subway.domain.*;
@@ -23,11 +22,40 @@ public class DataLoader {
         LineRepository.addLine(new Line(LINE_DATA[2], new LinkedList<>(Arrays.asList(stations.get(1), stations.get(4), stations.get(5)))));
     }
 
+    public static DijkstraShortestPath getDijkstraShortestPathByDistance() {
+        List<Station> stations = getStationsWithEdge();
+        WeightedMultigraph<Station, DefaultWeightedEdge> graph = new WeightedMultigraph<>(DefaultWeightedEdge.class);
+        for (Station station : stations) {
+            graph.addVertex(station);
+        }
+        graph.setEdgeWeight(graph.addEdge(stations.get(0), stations.get(1)), 2);
+        graph.setEdgeWeight(graph.addEdge(stations.get(1), stations.get(2)), 2);
+        graph.setEdgeWeight(graph.addEdge(stations.get(0), stations.get(3)), 3);
+        graph.setEdgeWeight(graph.addEdge(stations.get(3), stations.get(4)), 6);
+        graph.setEdgeWeight(graph.addEdge(stations.get(4), stations.get(6)), 1);
+        graph.setEdgeWeight(graph.addEdge(stations.get(1), stations.get(4)), 2);
+        graph.setEdgeWeight(graph.addEdge(stations.get(4), stations.get(5)), 10);
+        return new DijkstraShortestPath(graph);
+    }
+
+    public static DijkstraShortestPath getDijkstraShortestPathByTime() {
+        List<Station> stations = getStationsWithEdge();
+        WeightedMultigraph<Station, DefaultWeightedEdge> graph = new WeightedMultigraph<>(DefaultWeightedEdge.class);
+        for (Station station : stations) {
+            graph.addVertex(station);
+        }
+        graph.setEdgeWeight(graph.addEdge(stations.get(0), stations.get(1)), 3);
+        graph.setEdgeWeight(graph.addEdge(stations.get(1), stations.get(2)), 3);
+        graph.setEdgeWeight(graph.addEdge(stations.get(0), stations.get(3)), 2);
+        graph.setEdgeWeight(graph.addEdge(stations.get(3), stations.get(4)), 5);
+        graph.setEdgeWeight(graph.addEdge(stations.get(4), stations.get(6)), 1);
+        graph.setEdgeWeight(graph.addEdge(stations.get(1), stations.get(4)), 8);
+        graph.setEdgeWeight(graph.addEdge(stations.get(4), stations.get(5)), 3);
+        return new DijkstraShortestPath(graph);
+    }
 
     private static List<Station> getStationsWithEdge() {
-        List<Station> stations = Arrays.stream(STATION_DATA)
-                .map(Station::new)
-                .collect(Collectors.toList());
+        List<Station> stations = getStations();
         stations.get(0).addEdge(new Edge(stations.get(1), 2, 3));
         stations.get(0).addEdge(new Edge(stations.get(3), 3, 2));
         stations.get(1).addEdge(new Edge(stations.get(0), 2, 3));
@@ -45,45 +73,9 @@ public class DataLoader {
         return stations;
     }
 
-    public static DijkstraShortestPath getDijkstraShortestPathByDistance() {
-        List<Station> stations = getStationsWithEdge();
-        WeightedMultigraph<Station, DefaultWeightedEdge> graph = new WeightedMultigraph<>(DefaultWeightedEdge.class);
-        graph.addVertex(stations.get(0));
-        graph.addVertex(stations.get(1));
-        graph.addVertex(stations.get(2));
-        graph.addVertex(stations.get(3));
-        graph.addVertex(stations.get(4));
-        graph.addVertex(stations.get(5));
-        graph.addVertex(stations.get(6));
-        graph.setEdgeWeight(graph.addEdge(stations.get(0), stations.get(1)), 2);
-        graph.setEdgeWeight(graph.addEdge(stations.get(1), stations.get(2)), 2);
-        graph.setEdgeWeight(graph.addEdge(stations.get(0), stations.get(3)), 3);
-        graph.setEdgeWeight(graph.addEdge(stations.get(3), stations.get(4)), 6);
-        graph.setEdgeWeight(graph.addEdge(stations.get(4), stations.get(6)), 1);
-        graph.setEdgeWeight(graph.addEdge(stations.get(1), stations.get(4)), 2);
-        graph.setEdgeWeight(graph.addEdge(stations.get(4), stations.get(5)), 10);
-        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
-        return dijkstraShortestPath;
-    }
-
-    public static DijkstraShortestPath getDijkstraShortestPathByTime() {
-        List<Station> stations = getStationsWithEdge();
-        WeightedMultigraph<Station, DefaultWeightedEdge> graph = new WeightedMultigraph<>(DefaultWeightedEdge.class);
-        graph.addVertex(stations.get(0));
-        graph.addVertex(stations.get(1));
-        graph.addVertex(stations.get(2));
-        graph.addVertex(stations.get(3));
-        graph.addVertex(stations.get(4));
-        graph.addVertex(stations.get(5));
-        graph.addVertex(stations.get(6));
-        graph.setEdgeWeight(graph.addEdge(stations.get(0), stations.get(1)), 3);
-        graph.setEdgeWeight(graph.addEdge(stations.get(1), stations.get(2)), 3);
-        graph.setEdgeWeight(graph.addEdge(stations.get(0), stations.get(3)), 2);
-        graph.setEdgeWeight(graph.addEdge(stations.get(3), stations.get(4)), 5);
-        graph.setEdgeWeight(graph.addEdge(stations.get(4), stations.get(6)), 1);
-        graph.setEdgeWeight(graph.addEdge(stations.get(1), stations.get(4)), 8);
-        graph.setEdgeWeight(graph.addEdge(stations.get(4), stations.get(5)), 3);
-        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
-        return dijkstraShortestPath;
+    private static List<Station> getStations() {
+        return Arrays.stream(STATION_DATA)
+                .map(Station::new)
+                .collect(Collectors.toList());
     }
 }

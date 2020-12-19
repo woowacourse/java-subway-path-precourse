@@ -34,9 +34,4 @@ public class RouteCheckController {
             routeCheckService.getShortestDistance(DataLoader.getDijkstraShortestPathByTime());
         }
     }
-
-
-
-
-
 }
