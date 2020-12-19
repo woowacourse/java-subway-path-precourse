@@ -8,7 +8,7 @@ public class OutputView {
         printEmptyLine();
     }
     
-    private static void printEmptyLine() {
+    public static void printEmptyLine() {
         System.out.println();
     }
 }

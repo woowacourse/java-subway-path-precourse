@@ -1,7 +1,6 @@
 package subway.domain;
 
 import java.util.Scanner;
-import subway.utils.StringUtils;
 import subway.view.InputView;
 import subway.view.OutputView;
 
@@ -17,6 +16,7 @@ public class Machine {
             return MainFunction.getMainFunctionByNumber(functionNumber);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
+            OutputView.printEmptyLine();
             return getInputFunction(scanner);
         }
     }
