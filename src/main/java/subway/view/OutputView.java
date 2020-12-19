@@ -34,6 +34,20 @@ public class OutputView {
         printEmptyLine();
     }
 
+    public static void printShortestTimeResult(int time, List<String> namesOfStations) {
+        System.out.println("## 조회 결과");
+        System.out.println("[INFO] ---");
+        System.out.println(
+            "[INFO] 총 거리: " + SectionRepository.calculateDistanceSum(namesOfStations) + "km");
+        System.out.println(
+            "[INFO] 총 소요 시간: " + time + "분");
+        System.out.println("[INFO] ---");
+        for (String name : namesOfStations) {
+            System.out.println("[INFO] " + name);
+        }
+        printEmptyLine();
+    }
+
     public static void printEmptyLine() {
         System.out.println();
     }

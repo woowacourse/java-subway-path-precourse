@@ -20,7 +20,6 @@ public enum FindRouteFunction {
             Station startStation = getInputStartStation(scanner);
             Station endStation = getInputEndStation(scanner);
             validateOverlappedStation(startStation, endStation);
-            ShortestPath.getShortestPath(startStation.getName(), endStation.getName());
             int shortestDistance
                 = ShortestPath.getShortestDistance(startStation.getName(), endStation.getName());
             List<String> shortestDistancePath
@@ -31,6 +30,14 @@ public enum FindRouteFunction {
     FIND_MINIMUM_TIME_ROUTE("2") {
         @Override
         public void operate(Scanner scanner) {
+            Station startStation = getInputStartStation(scanner);
+            Station endStation = getInputEndStation(scanner);
+            validateOverlappedStation(startStation, endStation);
+            int shortestTime
+                = ShortestPath.getShortestTime(startStation.getName(), endStation.getName());
+            List<String> shortestTimePath
+                = ShortestPath.getShortestTimePath(startStation.getName(), endStation.getName());
+            OutputView.printShortestTimeResult(shortestTime, shortestTimePath);
         }
     },
     BACK("B") {
