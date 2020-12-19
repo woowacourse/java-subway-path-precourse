@@ -10,7 +10,7 @@ public class MainOutputView extends OutputView {
     }
 
     public void selectMenu() {
-        menuSymbol();
+        addMenuSymbol();
         stringBuilder.append(SELECT_MENU);
         print();
     }

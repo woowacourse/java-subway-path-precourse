@@ -19,13 +19,13 @@ public class RouteOutputView extends OutputView {
     }
 
     public void printFirstStation() {
-        menuSymbol();
+        addMenuSymbol();
         stringBuilder.append(INPUT_FIRST_STATION);
         print();
     }
 
     public void printLastStation() {
-        menuSymbol();
+        addMenuSymbol();
         stringBuilder.append(INPUT_LAST_STATION);
         print();
     }
@@ -33,14 +33,14 @@ public class RouteOutputView extends OutputView {
     public void printRoute(int distance, int time, List<String> paths) {
         printResult();
         printLine();
-        infoSymbol();
+        addInfoSymbol();
         stringBuilder.append(WHOLE_DISTANCE + distance + KILOMETER);
-        infoSymbol();
+        addInfoSymbol();
         stringBuilder.append(WHOLE_TIME + time + MINUTE);
         printLine();
         paths.stream()
                 .forEach(path -> {
-                    infoSymbol();
+                    addInfoSymbol();
                     stringBuilder.append(path);
                 });
         stringBuilder.append(NEXT_LINE);
@@ -48,12 +48,12 @@ public class RouteOutputView extends OutputView {
     }
 
     private void printResult() {
-        menuSymbol();
+        addMenuSymbol();
         stringBuilder.append(RESULT);
     }
 
     private void printLine() {
-        infoSymbol();
+        addInfoSymbol();
         stringBuilder.append(LINE);
     }
 }

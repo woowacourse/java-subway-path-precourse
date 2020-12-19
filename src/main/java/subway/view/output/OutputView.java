@@ -8,7 +8,7 @@ public class OutputView {
     protected static String INFO_SYMBOL = "\n[INFO] ";
     protected static String SELECT_MENU = "원하는 기능을 선택하세요.\n";
 
-    protected static void menuSymbol() {
+    protected static void addMenuSymbol() {
         stringBuilder.append(MENU_SYMBOL);
     }
 
@@ -22,19 +22,19 @@ public class OutputView {
     }
 
     protected static void printMenu(String VIEW_NAME, List<String> menuList) {
-        menuSymbol();
+        addMenuSymbol();
         stringBuilder.append(VIEW_NAME);
         menuList.forEach(menu -> stringBuilder.append(menu));
         print();
     }
 
     public void selectMenu() {
-        menuSymbol();
+        addMenuSymbol();
         stringBuilder.append(SELECT_MENU);
         print();
     }
 
-    protected void infoSymbol() {
+    protected void addInfoSymbol() {
         stringBuilder.append(INFO_SYMBOL);
     }
 }
