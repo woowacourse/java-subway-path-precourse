@@ -31,11 +31,19 @@ public class ShortestPathFinder {
     }
 
     public int calculateShortestStationNumber(Station from, Station to) {
+        isSame(from, to);
         List<Station> shortestPath = dijkstraShortestPath.getPath(from, to).getVertexList();
         return shortestPath.size();
     }
 
+    private void isSame(Station from, Station to) {
+        if (from.equals(to)) {
+            throw new SubwayException("출발역과 도착역이 같을 수 없습니다.");
+        }
+    }
+
     public List<Station> getStationsOnPath(Station from, Station to) {
+        isSame(from, to);
         return dijkstraShortestPath.getPath(from, to).getVertexList();
     }
 
