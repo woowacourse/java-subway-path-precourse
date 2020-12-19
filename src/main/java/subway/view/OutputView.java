@@ -3,15 +3,27 @@ package subway.view;
 import java.util.Arrays;
 import subway.controller.MainFunction;
 import subway.controller.RouteFunction;
+import subway.domain.RouteResultDTO;
 
 public class OutputView {
 
     public static final String ERROR_PREFIX = "[ERROR] ";
     public static final String INFO_PREFIX = "[INFO] ";
     public static final String NOTICE_PREFIX = "## ";
+    public static final String BORDER_LINE = "---";
     public static final String MAIN_TITLE = "메인 화면";
     public static final String CHOOSE_FUNCTION = "원하는 기능을 선택하세요.";
-    private static final String ROUTE_TITLE = "경로 기준";
+    public static final String ROUTE_TITLE = "경로 기준";
+    public static final String RETRIEVE_RESULT = "조회 결과";
+
+    public static void printRoute(RouteResultDTO routeResultDTO) {
+        printNotice(RETRIEVE_RESULT);
+        System.out.println(BORDER_LINE);
+        printInfo("총 거리: " + routeResultDTO.getDistanceWeight() + "km");
+        printInfo("총 소요 시간: " + routeResultDTO.getTimeWeight() + "분");
+        System.out.println(BORDER_LINE);
+        routeResultDTO.getPath().forEach(OutputView::printInfo);
+    }
 
     public static void printError(Exception e) {
         System.out.println(ERROR_PREFIX + e.getMessage());
