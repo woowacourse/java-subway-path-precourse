@@ -7,7 +7,7 @@ import org.jgrapht.graph.WeightedMultigraph;
 import java.util.Arrays;
 import java.util.List;
 
-public class GraphControllerByDistance {
+public class GraphControllerByTime {
     private static final String KYODAE = "교대역";
     private static final String GANGNAM = "강남역";
     private static final String YUKSAM = "역삼역";
@@ -19,41 +19,56 @@ public class GraphControllerByDistance {
     private List<String> stations = Arrays.asList(KYODAE, GANGNAM, YUKSAM, NAMBU, YANGJAE, YANGJAEFOREST, MAEBONG);
     private WeightedMultigraph<String, DefaultWeightedEdge> graph;
 
-    public GraphControllerByDistance() {
-        initByDistance();
+    public GraphControllerByTime() {
+        init();
     }
 
-    private void initByDistance() {
-        graph = new WeightedMultigraph(DefaultWeightedEdge.class);
+    public void init() {
+        initByTime();
+    }
+
+    private void initByTime() {
+        WeightedMultigraph<String, DefaultWeightedEdge> graph
+                = new WeightedMultigraph(DefaultWeightedEdge.class);
         stations.forEach(station -> graph.addVertex(station));
-        initLineTwoByDistance(graph);
-        initLineThreeByDistance(graph);
-        initLineShinByDistance(graph);
+        initLineTwoByTime(graph);
+        initLineThreeByTime(graph);
+        initLineShinByTime(graph);
     }
 
-    private void initLineTwoByDistance(WeightedMultigraph<String, DefaultWeightedEdge> graph) {
-        graph.setEdgeWeight(graph.addEdge(KYODAE, GANGNAM),2);
-        graph.setEdgeWeight(graph.addEdge(GANGNAM, YUKSAM),2);
+    private void initLineTwoByTime(WeightedMultigraph<String, DefaultWeightedEdge> graph) {
+        graph.setEdgeWeight(graph.addEdge(KYODAE, GANGNAM),3);
+        graph.setEdgeWeight(graph.addEdge(GANGNAM, YUKSAM),3);
     }
 
-    private void initLineThreeByDistance(WeightedMultigraph<String, DefaultWeightedEdge> graph) {
-        graph.setEdgeWeight(graph.addEdge(KYODAE, NAMBU), 3);
-        graph.setEdgeWeight(graph.addEdge(NAMBU, YANGJAE),6);
+    private void initLineThreeByTime(WeightedMultigraph<String, DefaultWeightedEdge> graph) {
+        graph.setEdgeWeight(graph.addEdge(KYODAE, NAMBU), 2);
+        graph.setEdgeWeight(graph.addEdge(NAMBU, YANGJAE),5);
         graph.setEdgeWeight(graph.addEdge(YANGJAE, MAEBONG),1);
     }
 
-    private void initLineShinByDistance(WeightedMultigraph<String, DefaultWeightedEdge> graph) {
-        graph.setEdgeWeight(graph.addEdge(GANGNAM, YANGJAE),2);
-        graph.setEdgeWeight(graph.addEdge(YANGJAE, YANGJAEFOREST),10);
+    private void initLineShinByTime(WeightedMultigraph<String, DefaultWeightedEdge> graph) {
+        graph.setEdgeWeight(graph.addEdge(GANGNAM, YANGJAE),8);
+        graph.setEdgeWeight(graph.addEdge(YANGJAE, YANGJAEFOREST),3);
     }
 
     public List<String> getMinDistance(String departure, String arrival) {
+        graph = new WeightedMultigraph(DefaultWeightedEdge.class);
+        stations.forEach(station -> graph.addVertex(station));
+        initLineTwoByTime(graph);
+        initLineThreeByTime(graph);
+        initLineShinByTime(graph);
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
         List<String> minDistance = dijkstraShortestPath.getPath(departure, arrival).getVertexList();
         return minDistance;
     }
 
     public double getTotalDistance(String departure, String arrival) {
+        graph = new WeightedMultigraph(DefaultWeightedEdge.class);
+        stations.forEach(station -> graph.addVertex(station));
+        initLineTwoByTime(graph);
+        initLineThreeByTime(graph);
+        initLineShinByTime(graph);
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
         double totalDistance = dijkstraShortestPath.getPath(departure, arrival).getWeight();
         return totalDistance;
