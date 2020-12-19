@@ -8,16 +8,18 @@ import java.util.Scanner;
 
 public class MainController {
     private final InputView inputView;
+    private final PathController pathController;
 
     public MainController(Scanner scanner) {
         this.inputView = new InputView(scanner);
+        this.pathController = new PathController(inputView);
     }
 
     public void run() {
         OutputView.printMainScreen(CommandType.getInfos());
         CommandType commandType = requestCommandNumber();
         while (isRunning(commandType)) {
-            runDetailAction(commandType);
+            runDetailAction();
             commandType = requestCommandNumber();
         }
     }
@@ -41,8 +43,8 @@ public class MainController {
     private boolean isRunning(CommandType commandType) {
         return !commandType.isExit();
     }
-    
-    private void runDetailAction(CommandType commandType) {
 
+    private void runDetailAction() {
+        pathController.run();
     }
 }
