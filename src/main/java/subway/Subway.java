@@ -3,6 +3,7 @@ package subway;
 import subway.domain.*;
 import subway.exception.GraphNotExistException;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ public class Subway {
 
     private static final List<String> INIT_LINES = List.of("2호선:교대역-강남역-역삼역", "3호선:교대역-남부터미널역-양재역-매봉역", "신분당선:강남역-양재역-양재시민의숲역");
     private static final List<String> INIT_WEIGHTS =
-            List.of("교대역:남부터미널역=2/3", "강남역:역삼역=2/3", "교대역:남부터미널역=3/2", "남부터미널역:양재역=6/5", "양재역:매봉역=1/1",
+            List.of("교대역:강남역=2/3", "강남역:역삼역=2/3", "교대역:남부터미널역=3/2", "남부터미널역:양재역=6/5", "양재역:매봉역=1/1",
                     "강남역:양재역=2/8", "양재역:양재시민의숲역=10/3");
 
     private static final String TIME_GRAPH = "timeGraph";
@@ -34,7 +35,19 @@ public class Subway {
     }
 
     public double getShortestTime(Station v1, Station v2) {
+        return GraphRepository.findGraphByName(TIME_GRAPH).shortestPathWeight(v1, v2);
+    }
+
+    public List<Station> getShortestTimePath(Station v1, Station v2) {
         return GraphRepository.findGraphByName(TIME_GRAPH).shortestPath(v1, v2);
+    }
+
+    public double getShortestDistance(Station v1, Station v2) {
+        return GraphRepository.findGraphByName(DISTANCE_GRAPH).shortestPathWeight(v1, v2);
+    }
+
+    public List<Station> getShortestDistancePath(Station v1, Station v2) {
+        return GraphRepository.findGraphByName(DISTANCE_GRAPH).shortestPath(v1, v2);
     }
 
     private void saveStationWeight() {
