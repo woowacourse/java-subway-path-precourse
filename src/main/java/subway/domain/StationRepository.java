@@ -23,4 +23,15 @@ public class StationRepository {
     public static void deleteAll() {
         stations.clear();
     }
+
+    public static void setCost(String prevStationName, String nextStationName, int timeCost, int distanceCost) {
+        for (int i = 0; i < stations.size(); i++) {
+            if (stations.get(i).getName().equals(prevStationName)) {
+                stations().get(i).addNodeData(nextStationName, timeCost, distanceCost);
+            }
+            if (stations.get(i).getName().equals(nextStationName)) {
+                stations.get(i).addNodeData(prevStationName, timeCost, distanceCost);
+            }
+        }
+    }
 }
