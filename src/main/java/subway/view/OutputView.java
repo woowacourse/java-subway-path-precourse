@@ -14,14 +14,19 @@ public class OutputView {
         + "B. 돌아가기\n";
 
     public static void printTraverseScreen() {
+
+        System.out.println();
         System.out.println(TRAVERSE_SCREEN);
     }
 
     public static void printMainScreen() {
+        System.out.println();
         System.out.println(MAIN_SCREEN);
     }
 
     public static void printError(SubwayCustomException e) {
+        System.out.println();
         System.out.println(e.getMessage());
+        System.out.println();
     }
 }

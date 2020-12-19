@@ -20,11 +20,13 @@ public class InputView {
     }
 
     public String inputStartStation() {
+        System.out.println();
         System.out.println(ENTER_START_STATION);
         return scanner.nextLine();
     }
 
     public String inputEndStation() {
+        System.out.println();
         System.out.println(ENTER_END_STATION);
         return scanner.nextLine();
     }
