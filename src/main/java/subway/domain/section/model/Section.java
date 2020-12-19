@@ -31,4 +31,10 @@ public class Section {
         graph.addVertex(arrivalStation);
         graph.setEdgeWeight(graph.addEdge(startStation, arrivalStation), distance.getValue());
     }
+
+    public void updateRunTimeGraph(WeightedMultigraph<Station, DefaultWeightedEdge> graph) {
+        graph.addVertex(startStation);
+        graph.addVertex(arrivalStation);
+        graph.setEdgeWeight(graph.addEdge(startStation, arrivalStation), runTime.getValue());
+    }
 }

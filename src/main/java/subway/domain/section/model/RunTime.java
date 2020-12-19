@@ -15,4 +15,8 @@ public class RunTime {
             throw new IllegalArgumentException("[ERROR] 소요 시간은 양의 정수만 가능합니다.");
         }
     }
+
+    public int getValue() {
+        return runTime;
+    }
 }

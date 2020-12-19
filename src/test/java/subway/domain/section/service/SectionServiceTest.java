@@ -19,7 +19,7 @@ class SectionServiceTest {
     static void beforeAll() {
         SectionRepository.addSection(new Section("교대역", "강남역", 2, 3));
         SectionRepository.addSection(new Section("강남역", "역삼역", 2, 3));
-        SectionRepository.addSection(new Section("강남역", "역삼역", 5, 3));
+        SectionRepository.addSection(new Section("교대역", "역삼역", 5, 3));
     }
 
     @AfterAll
@@ -27,11 +27,11 @@ class SectionServiceTest {
         SectionRepository.deleteAll();
     }
 
-    @DisplayName("최단거리를 찾는 기능을 테스트한다")
+    @DisplayName("최단거리를 경로를 찾는 기능을 테스트한다")
     @Test
-    void testFindShortestPath() {
+    void testFindDistanceShortestPath() {
         //given
-        Station startStation = new Station("강남역");
+        Station startStation = new Station("교대역");
         Station arrivalStation = new Station("역삼역");
 
         //when
@@ -39,5 +39,22 @@ class SectionServiceTest {
 
         //then
         assertThat(shortestPath).hasSize(2);
+    }
+
+    @DisplayName("최소시간 경로를 찾는 기능을 테스트한다")
+    @Test
+    void testFindRunTimeShortestPath() {
+        //given
+        Station startStation = new Station("교대역");
+        Station arrivalStation = new Station("역삼역");
+
+        //when
+        List<Station> shortestPath = SectionService.findRunTimeShortestPath(startStation, arrivalStation);
+
+        //then
+        assertThat(shortestPath).hasSize(3);
+        assertThat(shortestPath)
+                .usingElementComparatorOnFields("name")
+                .containsExactlyInAnyOrder(startStation, new Station("강남역"), arrivalStation);
     }
 }
