@@ -10,4 +10,11 @@ public class Print {
         }
     }
 
+    public static void hashMessage(String text) {
+        System.out.println(Constant.HEAD_HASH + text);
+    }
+
+    public static void infoMessage(String text) {
+        System.out.println(Constant.HEAD_INFO + text);
+    }
 }
