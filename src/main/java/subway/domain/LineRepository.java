@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class LineRepository {
+
     private static final List<Line> lines = new ArrayList<>();
 
     public static List<Line> lines() {
@@ -22,5 +23,9 @@ public class LineRepository {
 
     public static void deleteAll() {
         lines.clear();
+    }
+
+    public static void addAll(List<Line> newLines) {
+        lines.addAll(newLines);
     }
 }
