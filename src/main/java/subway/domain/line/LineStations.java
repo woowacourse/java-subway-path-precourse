@@ -24,8 +24,10 @@ public class LineStations {
 
     public void addStation(LineStation lineStation) {
         if (contains(lineStation.getStation())) {
-            throw new StationAlreadyInLineException(lineStation.getName());
+            throw new StationAlreadyInLineException(lineStation.getStationName());
         }
         lineStations.add(lineStation);
     }
+
+    public void addRouteInto() {}
 }

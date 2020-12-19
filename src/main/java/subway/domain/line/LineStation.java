@@ -10,7 +10,7 @@ public class LineStation {
         this.station = station;
     }
 
-    public String getName() {
+    public String getStationName() {
         return station.getName();
     }
 
