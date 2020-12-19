@@ -14,8 +14,8 @@ public class DistancePathService extends BaseService{
     public static void serviceStart() {
         String startStationName = inputStartStation();
         String endStationName = inputEndStation(startStationName);
-        List<String> acrossStations = calculateShortestDistancePath(startStationName, endStationName);
-        DistanceAndTimeDto distanceAndTimeDto = calculateTotalTimeAndDistance(acrossStations);
-        printPathResult(acrossStations, distanceAndTimeDto.getDistance(), distanceAndTimeDto.getTime());
+        List<String> passByStations = calculateShortestDistancePath(startStationName, endStationName);
+        DistanceAndTimeDto distanceAndTimeDto = calculateTotalTimeAndDistance(passByStations);
+        printPathResult(passByStations, distanceAndTimeDto.getDistance(), distanceAndTimeDto.getTime());
     }
 }

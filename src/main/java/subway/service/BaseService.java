@@ -10,13 +10,13 @@ import static subway.domain.StationRepository.findStationByName;
 
 public class BaseService {
 
-    protected static DistanceAndTimeDto calculateTotalTimeAndDistance(List<String> acrossStations) {
-        int size = acrossStations.size();
+    protected static DistanceAndTimeDto calculateTotalTimeAndDistance(List<String> passByStations) {
+        int size = passByStations.size();
         int timeSum = 0;
         int distanceSum = 0;
         for (int i = 0; i < size - 1; i++) {
-            Station startStation = findStationByName(acrossStations.get(i));
-            NearbyStation nearbyStation = startStation.findNearbyStationByName(acrossStations.get(i + 1));
+            Station startStation = findStationByName(passByStations.get(i));
+            NearbyStation nearbyStation = startStation.findNearbyStationByName(passByStations.get(i + 1));
             timeSum += nearbyStation.getTime();
             distanceSum += nearbyStation.getDistance();
         }
