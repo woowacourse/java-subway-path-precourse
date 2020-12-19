@@ -248,6 +248,17 @@ public void getDijkstraShortestPath() {
   - [프리코스 과제 FAQ](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse/faq) 문서를 참고하여 진행할 수 있다.
 <br>
 
+## 기능 목록
+- ()역, 노선, 구간 정보 초기 설정한다
+- ()출발역과 도착역을 입력받는다
+- ()출발역과 도착역이 같으면 에러 출력한다
+- ()출발역과 도착역의 경로를 조회한다
+- ()출발역과 도착역의 경로가 연결되어 있지 않으면 에러 출력한다
+- ()경로 조회 시 총 거리, 총 소요 시간도 함께 출력한다
+- ()최단 거리로 가는 조회 기능을 구현한다
+- ()최소 시간으로 가는 조회 기능을 구현한다
+
+
 ## 📝 License
 
 This project is [MIT](https://github.com/woowacourse/java-subway-path-precourse/blob/master/LICENSE.md) licensed.
