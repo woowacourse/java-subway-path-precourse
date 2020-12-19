@@ -28,14 +28,16 @@ public class FastestPathFinder {
     }
 
     private void printFastestPath(String startStation, String endStation) {
-        int length = DistanceRepository.getFastestPathLength(startStation, endStation);
+        int fastestLength = DistanceRepository.getFastestPathLength(startStation, endStation);
         List<String> pathList = DistanceRepository.getFastestPath(startStation, endStation);
+        int distanceLength = DistanceRepository.getLengthByDistance(pathList);
 
 
         StringBuilder sb = new StringBuilder();
         sb.append("\n## 조회 결과");
         sb.append("\n[INFO] ---");
-        sb.append("\n[INFO] 총 거리: " + length + "분");
+        sb.append("\n[INFO] 총 소요시간: " + fastestLength + "분");
+        sb.append("\n[INFO] 총 거리 : " + distanceLength + "km");
         sb.append("\n[INFO] ---");
         for (String station : pathList) {
             sb.append("\n[INFO]");

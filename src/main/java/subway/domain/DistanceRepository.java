@@ -36,6 +36,13 @@ public class DistanceRepository {
         return (int)dijkstraShortestPath.getPathWeight(startStation, endStation);
     }
 
+    public static int getLengthByDistance(List<String> pathList) {
+        int totalTime = 0;
+        for (int i = 0; i < pathList.size() - 1; i++) {
+            totalTime += dijkstraShortestPath.getPathWeight(pathList.get(i), pathList.get(i + 1));
+        }
+        return totalTime;
+    }
 
     public static void initializePathByTime() {
         timeGraph = new WeightedMultigraph(DefaultWeightedEdge.class);
@@ -67,4 +74,5 @@ public class DistanceRepository {
         }
         return totalTime;
     }
+
 }
