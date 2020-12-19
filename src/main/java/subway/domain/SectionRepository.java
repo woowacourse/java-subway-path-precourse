@@ -8,4 +8,11 @@ public class SectionRepository {
             = new WeightedMultigraph<>(DefaultWeightedEdge.class);
     private static final  WeightedMultigraph<Station, DefaultWeightedEdge> timeGraph
             = new WeightedMultigraph<>(DefaultWeightedEdge.class);
+
+    public static void addStation(Station station) {
+        distanceGraph.addVertex(station);
+        timeGraph.addVertex(station);
+    }
+
+
 }
