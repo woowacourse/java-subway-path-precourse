@@ -42,6 +42,7 @@ public class RouteLookupViewState implements ViewState {
             routeLookupOutputView.printMenu();
             String menuFeature = routeLookupInputView.getMenuTargetFeature();
             checkAndPrintMinimumDistance(menuFeature, subwayPath);
+            checkAndPrintMinimumTime(menuFeature, subwayPath);
             checkAndGoBackToMainView(menuFeature, subwayPath);
         } catch (IllegalArgumentException illegalArgumentException) {
             commonOutputView.printExceptionMessage(illegalArgumentException);
@@ -53,7 +54,8 @@ public class RouteLookupViewState implements ViewState {
         if (!menuFeature.equals(RouteLookupViewUtil.getBtnMinimumDistance())) {
             return;
         }
-
+        String stationBeginName = routeLookupInputView.getStationBegin();
+        Station stationBegin = StationService.getStationByName(stationBeginName);
         changeStateToMainView(subwayPath);
     }
 
@@ -61,7 +63,7 @@ public class RouteLookupViewState implements ViewState {
         if (!menuFeature.equals(RouteLookupViewUtil.getBtnMinimumTime())) {
             return;
         }
-        String stationBeginName = "";
+        String stationBeginName = routeLookupInputView.getStationBegin();
         Station stationBegin = StationService.getStationByName(stationBeginName);
         changeStateToMainView(subwayPath);
     }
