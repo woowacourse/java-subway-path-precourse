@@ -13,7 +13,7 @@ public class SubwayNavigation {
 
     private List<Line> lines;
     private List<Station> stations;
-    private String wantQuit = "";
+    private String userOption = "";
     private static final String QUIT_CODE = "Q";
 
     public SubwayNavigation() {
@@ -24,10 +24,12 @@ public class SubwayNavigation {
     public void run() {
         while (!userWantQuit()) {
             OutputView.printMainScreen();
+            userOption = InputView.inputMainUserOption();
+            runUserOption(userOption);
         }
     }
 
     private boolean userWantQuit() {
-        return wantQuit.equals(QUIT_CODE);
+        return userOption.equals(QUIT_CODE);
     }
 }
