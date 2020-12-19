@@ -62,6 +62,23 @@ public class Line {
         System.out.println("sddsss");
         return totalDistance;
     }
+    public int getTime(Station startStation,Station endStation) {
 
+        int startIndex=stations.indexOf(startStation);
+        int endIndex=stations.indexOf(endStation);
+        if(startIndex>endIndex) {
+            return computeTime(endIndex,startIndex);
+        }
+        return computeTime(startIndex,endIndex);
+    }
+    public int computeTime(int startIndex,int endIndex) {
+        int totaltime=0;
+        for(int i=startIndex;i<endIndex-1;i++) {
+            System.out.println("ds");
+            totaltime+=time.get(i);
+        }
+        System.out.println("sddsss");
+        return totaltime;
+    }
 
 }
