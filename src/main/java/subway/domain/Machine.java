@@ -1,6 +1,7 @@
 package subway.domain;
 
 import java.util.Scanner;
+import subway.domain.function.MainFunction;
 import subway.view.InputView;
 import subway.view.OutputView;
 

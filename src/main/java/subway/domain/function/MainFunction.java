@@ -1,4 +1,4 @@
-package subway.domain;
+package subway.domain.function;
 
 import java.util.Arrays;
 import subway.view.OutputView;
