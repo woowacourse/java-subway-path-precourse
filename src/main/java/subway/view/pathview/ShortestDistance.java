@@ -1,5 +1,6 @@
 package subway.view.pathview;
 
+import subway.controller.OutputController;
 import subway.controller.PathMenuService;
 import subway.controller.input.FromStationInput;
 import subway.controller.input.ToStationInput;
@@ -28,12 +29,16 @@ public class ShortestDistance implements Menu {
 	@Override
 	public void run(Scanner scanner) throws IllegalArgumentException {
 		Station from  = StationRepository.findStationByName(
-			ToStationInput.getInstance().getUserInput(scanner));
-		Station to = StationRepository.findStationByName(
 			FromStationInput.getInstance().getUserInput(scanner));
-		List<Station> pathFound = PathMenuService.findShortestDistancePath(from, to);
-		double totalDistance = PathMenuService.getShortestDistancePathWeight(from, to);
+		Station to = StationRepository.findStationByName(
+			ToStationInput.getInstance().getUserInput(scanner));
+		PathMenuService.validateFromToDifference(from, to);
 		
+		List<Station> pathFound = PathMenuService.findShortestDistancePath(from, to);
+		PathMenuService.validateIfPathExist(pathFound);
+		
+		double totalDistance = PathMenuService.getShortestDistancePathWeight(from, to);
+		OutputController.printDistancePath(pathFound, totalDistance);
 	}
 	
 	public static Menu getInstance() {
