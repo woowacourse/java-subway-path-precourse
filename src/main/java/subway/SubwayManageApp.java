@@ -47,7 +47,7 @@ public class SubwayManageApp {
             searchService.findShortestDistance();
         }
         if (searchSelection.isOptionTwo()) {
-
+            searchService.findShortestTime();
         }
         if (searchSelection.isBack()) {
             return;
