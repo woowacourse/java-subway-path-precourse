@@ -1,7 +1,10 @@
 package subway.domain;
 
+import java.util.List;
+
 public class Line {
     private String name;
+    private List<String[]> edgesAndWeights;
 
     public Line(String name) {
         this.name = name;
@@ -11,5 +14,11 @@ public class Line {
         return name;
     }
 
-    // 추가 기능 구현
+    public void addEdgesAndWeights(List<String[]> edgesAndWeights) {
+        this.edgesAndWeights = edgesAndWeights;
+    }
+
+    public List<String[]> getEdgesAndWeights() {
+        return edgesAndWeights;
+    }
 }
