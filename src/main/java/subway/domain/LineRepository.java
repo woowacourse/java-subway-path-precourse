@@ -15,7 +15,6 @@ public class LineRepository {
     }
 
     public static void addLine(Line line) {
-        checkOverlappedLine(line.getName());
         lines.add(line);
     }
 
