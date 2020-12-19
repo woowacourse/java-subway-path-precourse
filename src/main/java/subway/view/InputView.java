@@ -6,7 +6,7 @@ public class InputView {
     private InputView() {
     }
 
-    public static String selectMainMenu(Scanner scanner) {
+    public static String selectMenu(Scanner scanner) {
         OutputView.println("## 원하는 기능을 선택하세요.");
         return getInput(scanner);
     }
