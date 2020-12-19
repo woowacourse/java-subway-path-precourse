@@ -18,12 +18,20 @@ public class Section {
         return this.station;
     }
 
+    public String getStationName() {
+        return this.station.getName();
+    }
+
     public Station getNextStation() {
         return this.nextStation;
     }
 
     public int getDistance() {
         return distance;
+    }
+
+    public boolean isEnd() {
+        return this.nextStation == null;
     }
 
     public int getTime() {

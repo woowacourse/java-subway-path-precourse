@@ -25,4 +25,13 @@ public class Line {
     public List<Section> getSections() {
         return this.sections;
     }
+
+    public boolean hasStation(String stationName) {
+        for (Section section : sections) {
+            if (section.getStationName().equals(stationName)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
