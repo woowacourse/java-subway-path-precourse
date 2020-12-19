@@ -20,7 +20,7 @@ public class PathCheckView extends SubwayPathManagerView {
 			return;
 		}
 		if (menuSelected.equals(SECOND_MENU)) {
-			new MinimumTimePathCheckView(scanner);
+			new MinimumMinutePathCheckView(scanner);
 			return;
 		}
 		if (menuSelected.equals(BACK_MENU)) {
