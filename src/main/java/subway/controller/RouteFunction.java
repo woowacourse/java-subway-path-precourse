@@ -31,9 +31,16 @@ public class RouteFunction {
         }
     }
 
-    private String findLine(List<String> inputStations) {
-        return LineRepository.findSelectLine(
-                inputStations.get(StationRepository.FIRST_STATION_INDEX), inputStations.get(StationRepository.LAST_STATION_INDEX));
+    public void shortestTime() {
+        try {
+            List<String> inputStations = inputStation();
+            int time = SubwayMap.findShortestTime(inputStations);
+            List<String> paths = SubwayMap.findShortestTimePath(inputStations);
+            int distance = SubwayMap.findShortestTimeDistance(paths);
+            routeOutputView.printRoute(distance, time, paths);
+        } catch (NullPointerException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private List<String> inputStation() {
@@ -82,18 +89,6 @@ public class RouteFunction {
             return lastStation;
         } catch (InvalidStationNameException | NotExistStationException e) {
             throw new NullPointerException();
-        }
-    }
-
-    public void shortestTime() {
-        try {
-            List<String> inputStations = inputStation();
-            int time = SubwayMap.findShortestTime(inputStations);
-            List<String> paths = SubwayMap.findShortestTimePath(inputStations);
-            int distance = SubwayMap.findShortestTimeDistance(paths);
-            routeOutputView.printRoute(distance, time, paths);
-        } catch (NullPointerException e) {
-            System.out.println(e.getMessage());
         }
     }
 }
