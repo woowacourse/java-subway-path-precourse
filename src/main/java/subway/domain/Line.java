@@ -43,4 +43,11 @@ public class Line {
         this.lineDistances = lineDistances;
     }
 
+    public ArrayList<Distance> getLineDistances() {
+        return lineDistances;
+    }
+
+    public ArrayList<Station> getLineStations() {
+        return lineStations;
+    }
 }
