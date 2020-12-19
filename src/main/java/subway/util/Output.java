@@ -8,6 +8,14 @@ public class Output {
 		Output.title(Message.FUNCTION_CHOICE);
 	}
 	
+	public static void pathView() {
+		Output.title(Message.PATH_CRITERION_VIEW);
+		Output.print(Message.MIN_DISTANCE);
+		Output.print(Message.MIN_TIME);
+		Output.print(Message.BACK);
+		Output.title(Message.FUNCTION_CHOICE);
+	}
+	
 	public static void title(String message) {
  		System.out.println("\n## " + message);
  	}

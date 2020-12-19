@@ -26,7 +26,7 @@ public class View {
 	
 	private void moveViewBySelector(String selector) {
 		if (selector.equals(FIRST)) {
-//			stationManagement();
+			ViewManager.showPathView();
 			return;
 		} else if (selector.equals(QUITE)) {
 //			lineManagement();

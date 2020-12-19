@@ -1,5 +1,9 @@
 package subway;
 
-public class ViewManager {
+import subway.util.Output;
 
+public class ViewManager {
+	public static void showPathView() {
+		Output.pathView();
+	}
 }

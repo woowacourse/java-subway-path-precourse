@@ -24,7 +24,7 @@ public class Message {
 	
 	// path criterion
 	public static final String MIN_DISTANCE = "최단 거리";
-	public static final String MIM_TIME = "최소 시간";
+	public static final String MIN_TIME = "최소 시간";
 	
 	public static final String BACK = "B. 돌아가기";
 }
