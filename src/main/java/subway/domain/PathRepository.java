@@ -68,4 +68,19 @@ public class PathRepository {
     public static WeightedMultigraph<String, DefaultWeightedEdge> getTimeGraph() {
         return timeGraph;
     }
+
+    public static int getDistanceWeight(Station startStation, Station endStation) {
+        Weight weight = getWeightByStations(startStation, endStation);
+        return weight.getKm();
+    }
+
+    public static int getTimeWeight(Station startStation, Station endStation) {
+        Weight weight = getWeightByStations(startStation, endStation);
+        return weight.getMinute();
+    }
+
+    private static Weight getWeightByStations(Station startStation, Station endStation) {
+        Edge edge = new Edge(startStation, endStation);
+        return paths.get(edge);
+    }
 }

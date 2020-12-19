@@ -11,6 +11,14 @@ public class Weight {
         this.minute = minute;
     }
 
+    public int getKm() {
+        return km;
+    }
+
+    public int getMinute() {
+        return minute;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
