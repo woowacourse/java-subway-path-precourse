@@ -1,8 +1,9 @@
-package subway.domain.menu;
+package subway.view.menu;
 
 import java.util.Scanner;
 import subway.common.ErrorCustomException;
 import subway.common.ErrorMessage;
+import subway.domain.menu.Menu;
 
 public class MenuInputManager {
     private static final String INPUT_NEEDED = " 중에서 입력해 주세요.";

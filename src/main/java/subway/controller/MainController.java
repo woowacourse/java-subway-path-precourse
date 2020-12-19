@@ -3,16 +3,16 @@ package subway.controller;
 import java.util.Scanner;
 import subway.domain.InitialInfo;
 import subway.domain.menu.Menu;
-import subway.domain.menu.MenuInputManager;
+import subway.view.menu.MenuInputManager;
 import subway.domain.menu.MenuKeys;
-import subway.domain.menu.MenuOutputManager;
+import subway.view.menu.MenuOutputManager;
 
 public class MainController {
     private final MenuInputManager menuInputManager;
     private final SearchingPathController searchingPathController;
     public MainController(Scanner scanner){
         menuInputManager = new MenuInputManager(scanner);
-        searchingPathController = new SearchingPathController(menuInputManager);
+        searchingPathController = new SearchingPathController(scanner, menuInputManager);
         initInfo();
     }
     //todo : 정보 초기화

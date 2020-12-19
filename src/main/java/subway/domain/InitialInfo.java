@@ -14,19 +14,21 @@ public class InitialInfo {
         setLines();
         setShortestPath();
     }
-    //todo: 라인에 맞게 역 설정하는 것
-    private void setShortestPath() {
-        ShortestPathRepository.addGraphVertex("교대역");
-        ShortestPathRepository.addGraphVertex("강남역");
-        ShortestPathRepository.addGraphVertex("역삼역");
-        ShortestPathRepository.setGraphEdgeWeight("교대역", "강남역", 2);
-        ShortestPathRepository.setGraphEdgeWeight("강남역", "역삼역", 2);
-    }
 
+    private void setShortestPath() {
+        PathRepository.setGraphEdgeWeight("교대역", "강남역", 2,3);
+        PathRepository.setGraphEdgeWeight("강남역", "역삼역", 2,3);
+        PathRepository.setGraphEdgeWeight("교대역", "남부터미널역", 3,2);
+        PathRepository.setGraphEdgeWeight("남부터미널역", "양재역", 6,5);
+        PathRepository.setGraphEdgeWeight("양재역", "매봉역", 1,1);
+        PathRepository.setGraphEdgeWeight("강남역", "양재역", 2,8);
+        PathRepository.setGraphEdgeWeight("양재역", "양재시민의숲역", 10,3);
+    }
 
     private void setStations() {
         for (String station : initialStations) {
             StationRepository.addStation(new Station(station));
+            PathRepository.addGraphVertex(station);
         }
     }
 
@@ -35,6 +37,5 @@ public class InitialInfo {
             LineRepository.addLine(new Line(line));
         }
     }
-
 
 }

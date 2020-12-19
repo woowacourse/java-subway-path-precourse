@@ -1,18 +1,24 @@
 package subway.controller;
 
 import java.util.Scanner;
-import subway.domain.ShortestPathRepository;
+import org.jgrapht.GraphPath;
+import subway.common.ErrorCustomException;
+import subway.common.ErrorMessage;
+import subway.domain.PathRepository;
 import subway.domain.menu.Menu;
-import subway.domain.menu.MenuInputManager;
+import subway.view.menu.MenuInputManager;
 import subway.domain.menu.MenuKeys;
-import subway.domain.menu.MenuOutputManager;
+import subway.view.menu.MenuOutputManager;
+import subway.view.path.PathInputManager;
 
 public class SearchingPathController {
 
     private final MenuInputManager menuInputManager;
+    private PathInputManager pathInputManager;
 
-    SearchingPathController(MenuInputManager menuInputManager) {
+    SearchingPathController(Scanner scanner, MenuInputManager menuInputManager) {
         this.menuInputManager = menuInputManager;
+        pathInputManager = new PathInputManager(scanner);
     }
 
     public void run() {
@@ -37,10 +43,12 @@ public class SearchingPathController {
 
     private void searchShortestPath() {
         try {
-            System.out.println(ShortestPathRepository.getShortestDistance("교대역", "역삼역"));
+            String[] stations = pathInputManager.inputStations();
+            GraphPath<String, String> targetPath = PathRepository.getShortestDistance(stations[0], stations[1]);
+            System.out.println(PathRepository.getShortestDistance(targetPath));
             System.out.println("최단거리");
-        } catch (Exception e) {
-            System.out.println(e.getCause());
+        } catch (ErrorCustomException errorCustomException) {
+            ErrorMessage.print(errorCustomException);
         }
     }
 }

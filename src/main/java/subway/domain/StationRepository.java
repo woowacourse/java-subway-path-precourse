@@ -23,4 +23,8 @@ public class StationRepository {
     public static void deleteAll() {
         stations.clear();
     }
+
+    public static boolean containsStation(String stationName){
+        return stations.stream().anyMatch(station -> Objects.equals(station.getName(), stationName));
+    }
 }
