@@ -8,6 +8,7 @@ import java.util.List;
 
 public class DistanceRepository {
     private static WeightedMultigraph<String, DefaultWeightedEdge> graph;
+    private static DijkstraShortestPath dijkstraShortestPath;
 
     public static void initializePathByDistance() {
         graph = new WeightedMultigraph(DefaultWeightedEdge.class);
@@ -21,17 +22,18 @@ public class DistanceRepository {
         graph.setEdgeWeight(graph.addEdge("양재역", "매봉역"), 1);
         graph.setEdgeWeight(graph.addEdge("강남역", "양재역"), 2);
         graph.setEdgeWeight(graph.addEdge("양재역", "양재시민의숲역"), 10);
+
+        dijkstraShortestPath = new DijkstraShortestPath(graph);
     }
 
 
-    public static void getShortestPath() {
-        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
-        List<String> shortestPath = dijkstraShortestPath.getPath("교대역", "양재역").getVertexList();
-        System.out.println("거리" + dijkstraShortestPath.getPathWeight("교대역", "양재역"));
-
-        for (String s : shortestPath) {
-            System.out.println(s);
-        }
-        System.out.println("테스트 결과 " + shortestPath.size());
+    public static List<String> getShortestPath(String startStation, String endStation) {
+        return dijkstraShortestPath.getPath(startStation, endStation).getVertexList();
     }
+
+    public static int getShortestPathLength(String startStation, String endStation) {
+        dijkstraShortestPath = new DijkstraShortestPath(graph);
+        return (int)dijkstraShortestPath.getPathWeight(startStation, endStation);
+    }
+
 }

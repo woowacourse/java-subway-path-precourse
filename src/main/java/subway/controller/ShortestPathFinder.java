@@ -1,9 +1,12 @@
 package subway.controller;
 
 import subway.Exception.CustomException;
+import subway.domain.DistanceRepository;
 import subway.view.InputView;
 
+import java.util.List;
 import java.util.Scanner;
+
 
 public class ShortestPathFinder {
     private final Scanner scanner;
@@ -21,9 +24,25 @@ public class ShortestPathFinder {
             System.out.println(exception.getMessage());
             run();
         }
-        System.out.println("입력하신 역은 " + startStation);
-        System.out.println("입력하신 역은 " + endStation);
+        printShortestPath(startStation, endStation);
     }
+
+    private void printShortestPath(String startStation, String endStation) {
+        int length = DistanceRepository.getShortestPathLength(startStation, endStation);
+        List<String> pathList = DistanceRepository.getShortestPath(startStation, endStation);
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n## 조회 결과");
+        sb.append("\n[INFO] ---");
+        sb.append("\n[INFO] 총 거리: " + length + "km");
+        sb.append("\n[INFO] ---");
+        for (String station : pathList) {
+            sb.append("\n[INFO]");
+            sb.append(station);
+        }
+        System.out.println(sb);
+    }
+
 
     private String askValidStation(String stationPrefix) {
         try {
@@ -33,4 +52,6 @@ public class ShortestPathFinder {
             return askValidStation(stationPrefix);
         }
     }
+
+
 }

@@ -21,10 +21,6 @@ public class SubwayProgram {
         do {
             mainMenu.run();
         } while (mainMenu.doNext());
-
-        //아래는 테스트용 출력 코드 제출전 지우기
-//        StationRepository.printAllStations();
-//        LineRepository.printAllLinesAndStation();
     }
 
     private void initializeData() {
