@@ -1,5 +1,7 @@
 package subway.view;
 
+import java.util.List;
+
 public class OutputView {
     public static void printMainMenu() {
         System.out.println("## 메인 화면");
@@ -33,6 +35,14 @@ public class OutputView {
     public static void printEndStationGuide() {
         println();
         System.out.println("## 도착역을 입력하세요.");
+    }
+    
+    public static void printResult(List<String> results) {
+        println();
+        System.out.println("## 조회 결과");
+        for (String result : results) {
+            System.out.println("[INFO] " + result);
+        }
     }
 
     public static void printError(String error) {
