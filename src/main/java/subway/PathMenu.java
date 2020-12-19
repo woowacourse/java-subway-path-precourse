@@ -5,17 +5,18 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class MainMenu {
-    private static final String SEARCH_PATH = "1";
-    private static final String QUIT = "Q";
-    private static final String MAIN_MENU = "MAIN MENU";
+public class PathMenu {
+    private static final String SHORTEST_DISTANCE = "1";
+    private static final String SHORTEST_TIME = "2";
+    private static final String BACK = "B";
+    private static final String PATH_MENU = "PATH MENU";
 
     public static void initialize(Scanner scanner) {
-        List<String> authorizedCommands = new ArrayList<>(Arrays.asList(SEARCH_PATH, QUIT));
+        List<String> authorizedCommands = new ArrayList<>(Arrays.asList(SHORTEST_DISTANCE, SHORTEST_TIME, BACK));
         while (true) {
             showOptions();
             String result = start(scanner, authorizedCommands);
-            if (result.equals(QUIT)) {
+            if (result.equals(BACK)) {
                 break;
             }
         }
@@ -24,20 +25,18 @@ public class MainMenu {
     private static String start(Scanner scanner, List<String> authorizedCommands) {
         try {
             String command = getCommand(scanner, authorizedCommands);
-            if (command.equals(QUIT)) {
+            if (command.equals(BACK)) {
                 return command;
             }
             execute(command, scanner);
         } catch (Exception exception) {
             System.out.println("[ERROR] " + exception.getMessage() + "\n");
         }
-        return MAIN_MENU;
+        return PATH_MENU;
     }
 
     private static void execute(String command, Scanner scanner) {
-        if (command.equals(SEARCH_PATH)) {
-            PathMenu.initialize(scanner);
-        }
+
     }
 
     private static String getCommand(Scanner scanner, List<String> authorizedCommands) {
@@ -51,8 +50,9 @@ public class MainMenu {
     }
 
     private static void showOptions() {
-        System.out.println("## 메인 화면");
-        System.out.println("1. 경로 조회");
-        System.out.println("Q. 종료\n");
+        System.out.println("## 경로 기준");
+        System.out.println("1. 최단 거리");
+        System.out.println("2. 최소 시간");
+        System.out.println("B. 돌아가기\n");
     }
 }
