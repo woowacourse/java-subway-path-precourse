@@ -53,11 +53,11 @@ public class SubwayPathChecker {
         pathStandardType = InputView.inputPathStandardFunctionNumber(scanner);
 
         if (pathStandardType == PathStandardType.SHORTEST_DISTANCE) {
-            searchShortestDistance();
+            searchShortestDistancePath();
         }
     }
 
-    private void searchShortestDistance() {
+    private void searchShortestDistancePath() {
         Station departureStation = null;
         Station arrivalStation = null;
 
@@ -69,11 +69,11 @@ public class SubwayPathChecker {
             System.out.println(e.getMessage());
             pathCheck();
         }
-        getDijkstraShortestPath(departureStation.getName(), arrivalStation.getName());
+        getDijkstraShortestDistancePath(departureStation.getName(), arrivalStation.getName());
     }
 
-    private void getDijkstraShortestPath(String departureStationName, String arrivalStationName) {
-        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(SectionRepository.graphs());
+    private void getDijkstraShortestDistancePath(String departureStationName, String arrivalStationName) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(SectionRepository.distanceWeightedGraph());
         double shortestDistance = dijkstraShortestPath.getPath(departureStationName, arrivalStationName).getWeight();
         List shortestPath = dijkstraShortestPath.getPath(departureStationName, arrivalStationName).getVertexList();
         OutputView.printShortestPathResult(shortestDistance, shortestPath);
