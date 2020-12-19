@@ -19,8 +19,8 @@
    - 2호선: 교대역 - ( 2km / 3분 ) - 강남역 - ( 2km / 3분 ) - 역삼역
    - 3호선: 교대역 - ( 3km / 2분 ) - 남부터미널역 - ( 6km / 5분 ) - 양재역 - ( 1km / 1분 ) - 매봉역
    - 신분당선: 강남역 - ( 2km / 8분 ) - 양재역 - ( 10km / 3분 ) - 양재시민의숲역
- ```
-  
+```
+
 ### 경로 조회 기능
 - 출발역과 도착역을 입력받아 경로를 조회한다.
 - 경로 조회 시 총 거리, 총 소요 시간도 함께 출력한다.
@@ -151,7 +151,7 @@ public class Application {
 - 제공하는 각 클래스의 기본 생성자를 추가할 수 없다.
 - 필드(인스턴스 변수)인 name의 접근 제어자 private을 변경할 수 없다.
 - 가능하면 setter 메소드(ex. setXXX)를 추가하지 않고 구현한다.
- 
+
 ```java
 public class Station {
     private String name;
@@ -175,7 +175,7 @@ public class Station {
 - 추가로 생성되는 객체에 대해서 XXXRepository 네이밍으로 저장 클래스를 추가한다.
 - 객체들의 상태를 관리하기 위해서 XXXRepository 클래스를 활용해 저장 로직을 구현해야 한다.
 - 작성된 메서드는 수정할 수 없고, 필요에 따라 메서드를 자유롭게 추가할 수 있다.
- 
+
 ```java
 public class StationRepository {
     private static final List<Station> stations = new ArrayList<>();
@@ -232,7 +232,7 @@ public void getDijkstraShortestPath() {
 
 #### 테스트 설명
 
-<img src="image/dijkstra-sample.png" width=400>
+<img src="../image/dijkstra-sample.png" width=400>
 
 - 역 사이의 거리를 고려하지 않는 경우 V1->V3 경로가 최단 경로
 - 역 사이의 거리를 고려할 경우 V1->V3 경로의 거리는 100km, V1->V2->V3 경로의 거리는 4km이므로 최단 경로는 V1->V2->V3
@@ -248,6 +248,23 @@ public void getDijkstraShortestPath() {
   - [프리코스 과제 FAQ](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse/faq) 문서를 참고하여 진행할 수 있다.
 <br>
 
-## 📝 License
+## 📝기능구현
 
-This project is [MIT](https://github.com/woowacourse/java-subway-path-precourse/blob/master/LICENSE.md) licensed.
+- **메인 화면** 
+  - 메인화면
+  - 경로기준 화면
+  - 메뉴에 있는 번호가 아니면 `[ERROR] 선택할 수 없는 기능입니다.`
+- **Station 설정 및 초기 값 저장**
+- **Line 설정 및 저장 초기 값 저장**
+- **경로기준**
+  - 최단거리
+    - 출발역, 도착역 입력
+      - 출발역 = 도착역 `[ERROR] 출발역과 도착역이 동일합니다.`
+    - 출발역 - 도착역 연결
+      - 출발역 - 도착역 연결되어있지 않으면 `[ERROR] (출발역)과 (도착역)이 연결되어있지 않습니다.`
+  - 최소 시간
+    - 출발역, 도착역 입력
+      - 출발역 = 도착역 `[ERROR] 출발역과 도착역이 동일합니다.`
+    - 출발역 - 도착역 연결
+      - 출발역 - 도착역 연결되어있지 않으면 `[ERROR] (출발역)과 (도착역)이 연결되어있지 않습니다.`
+
