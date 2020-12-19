@@ -36,4 +36,12 @@ public class Order {
         }
         return first;
     }
+
+    public int calculateLength(){
+        int shortest = 100;
+        for(Line line : LineRepository.lines()){
+            shortest = Math.min(shortest, line.calculateKm(startStation.getStationName(), endStation.getStationName()));
+        }
+        return shortest;
+    }
 }

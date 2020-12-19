@@ -59,7 +59,6 @@ public class Line {
             DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(time);
             if(!dijkstraShortestPath.getPath(start, end).getVertexList().isEmpty()) {
                 result = dijkstraShortestPath.getPath(start, end).getVertexList();
-                System.out.println(result);
             }
         }
         return result;
@@ -68,14 +67,9 @@ public class Line {
     public int calculateKm(String start, String end) {
         if (length.containsVertex(start) && length.containsVertex(end)) {
             DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(length);
+            System.out.println((int) dijkstraShortestPath.getPath(start, end).getWeight());
             return (int) dijkstraShortestPath.getPath(start, end).getWeight();
         }
-        return 0;
-    }
-
-    private void checkStation(String name) {
-        if (length.containsVertex(name)) {
-            System.out.println("맞아");
-        }
+        return 100;
     }
 }
