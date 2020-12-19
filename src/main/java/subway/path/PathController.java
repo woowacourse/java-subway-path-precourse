@@ -31,12 +31,21 @@ public class PathController {
     public void run() {
         boolean running = true;
         while (running) {
-            OutputView.showSearchPathMethod();
-            List<String> optionList = getSearchOptionList();
-            String method = SelectOption.askOptionChoice(inputView, optionList);
-            Station startStation = getStartStation();
-            Station endStation = getEndStation(startStation);
-            running = searchPath(method, startStation, endStation);
+            try {
+                OutputView.showSearchPathMethod();
+                List<String> optionList = getSearchOptionList();
+                String method = SelectOption.askOptionChoice(inputView, optionList);
+
+                if (method.equals(SearchMethod.BACK.getValue())) {
+                    break;
+                }
+
+                Station startStation = getStartStation();
+                Station endStation = getEndStation(startStation);
+                running = searchPath(method, startStation, endStation);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 
@@ -60,18 +69,13 @@ public class PathController {
     }
 
     private boolean searchPath(String method, Station startStation, Station endStation) {
-        try {
-            if (method.equals(SearchMethod.DISTANCE.getValue())) {
-                searchMinimumDistance(startStation, endStation);
-            }
-            if (method.equals(SearchMethod.TIME.getValue())) {
-                searchMinimumTime(startStation, endStation);
-            }
-            return false;
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+        if (method.equals(SearchMethod.DISTANCE.getValue())) {
+            searchMinimumDistance(startStation, endStation);
         }
-        return true;
+        if (method.equals(SearchMethod.TIME.getValue())) {
+            searchMinimumTime(startStation, endStation);
+        }
+        return false;
     }
 
     private List<String> getSearchOptionList() {
