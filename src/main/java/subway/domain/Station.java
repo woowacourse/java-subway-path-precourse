@@ -1,10 +1,18 @@
 package subway.domain;
 
+import subway.util.PathCalculator;
+
 public class Station {
     private String name;
 
-    public Station(String name) {
+    private Station(String name) {
         this.name = name;
+    }
+
+    public static Station from(String name) {
+        Station station = new Station(name);
+        PathCalculator.addStation(station.getName());
+        return station;
     }
 
     public String getName() {

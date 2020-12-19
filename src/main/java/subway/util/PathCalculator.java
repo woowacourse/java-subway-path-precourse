@@ -8,6 +8,10 @@ public class PathCalculator {
             = new WeightedMultigraph(DefaultWeightedEdge.class);
     private static final WeightedMultigraph<String, DefaultWeightedEdge> distanceGraph
             = new WeightedMultigraph(DefaultWeightedEdge.class);
-    
+
+    public static void addStation(String name) {
+        timeGraph.addVertex(name);
+        distanceGraph.addVertex(name);
+    }
 
 }
