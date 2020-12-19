@@ -1,5 +1,6 @@
 package subway.controller;
 
+import subway.util.Validator;
 import subway.view.InputView;
 import subway.view.OutputView;
 
@@ -8,21 +9,44 @@ import java.util.List;
 
 public class PathController {
 
+    private final InputView inputView;
+
+    public PathController(InputView inputView) {
+        this.inputView = inputView;
+    }
+
     private final List<String> buttons = Arrays.asList(
             PathButton.SHORTEST_PATH.getSymbol(),
             PathButton.LEAST_TIME.getSymbol(),
             PathButton.BACK.getSymbol()
     );
 
-    public void run(InputView inputView) {
+    public void run() {
         OutputView.printInquiry();
         String selectedButton = inputView.getFunctionSelect(buttons);
         nextProcedure(selectedButton);
     }
 
     private void nextProcedure(String button) {
-        System.out.println("선택한 버튼 " + button + " <- 이거 맞지??");
-        System.out.println("경로 선택 해보자구 짜라랑 ~");
+        if (button.equals(PathButton.BACK.getSymbol())) {
+            return;
+        }
+        String source = inputView.getSourceStation();
+        String destination = inputView.getDestinationStation();
+        if (Validator.sameStation(source, destination)) {
+            nextProcedure(button);
+            return;
+        }
+
+        if (button.equals(PathButton.SHORTEST_PATH.getSymbol())) {
+            System.out.println("최단거리로 계산");
+            OutputView.printEmptyLine();
+        } else if (button.equals(PathButton.LEAST_TIME.getSymbol())) {
+            System.out.println("최소시간으로 계산");
+            OutputView.printEmptyLine();
+        }
     }
+
+
 
 }
