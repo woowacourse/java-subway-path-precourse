@@ -27,6 +27,9 @@ public class SubwayApp {
             }
             printPathMenu();
             PathMenu findPathMenu = findPathMenuByOption(inputPathMenuOption());
+            if (findPathMenu == PathMenu.BACK) {
+                run();
+            }
             findPathMenu.request();
         } catch (Exception e) {
             System.out.println(e.getMessage());
