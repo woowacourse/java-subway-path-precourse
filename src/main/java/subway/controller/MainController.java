@@ -13,7 +13,7 @@ public class MainController {
 
     public MainController(InputView inputView) {
         this.inputView = inputView;
-        pathController = new PathController();
+        pathController = new PathController(inputView);
     }
 
     private final List<String> buttons = Arrays.asList(
@@ -29,7 +29,7 @@ public class MainController {
 
     private void nextProcedure(String button) {
         if (button.equals(MainButton.INQUIRY.getSymbol())) {
-            pathController.run(inputView);
+            pathController.run();
             run();
         }
     }
