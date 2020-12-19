@@ -2,12 +2,16 @@ package subway.domain.function;
 
 import java.util.Arrays;
 import java.util.Scanner;
-import subway.view.OutputView;
+import subway.domain.station.Station;
+import subway.domain.station.StationRepository;
+import subway.view.InputView;
 
 public enum FindRouteFunction {
     FIND_SHORTEST_ROUTE("1") {
         @Override
         public void operate(Scanner scanner) {
+            Station startStation = getInputStartStation(scanner);
+            Station endStation = getInputEndStation(scanner);
         }
     },
     FIND_MINIMUM_TIME_ROUTE("2") {
@@ -18,7 +22,7 @@ public enum FindRouteFunction {
     BACK("B") {
         @Override
         public void operate(Scanner scanner) {
-        }    
+        }
     };
 
     private String number;
@@ -32,6 +36,26 @@ public enum FindRouteFunction {
             .filter(function -> function.number.equals(inputNumber))
             .findFirst()
             .orElseThrow(() -> new IllegalArgumentException("[ERROR] 선택할 수 없는 기능입니다."));
+    }
+
+    private static Station getInputStartStation(Scanner scanner) {
+        String input = InputView.inputStartStation(scanner);
+        Station station = new Station(input);
+        validateIfStationExists(station);
+        return station;
+    }
+
+    private static Station getInputEndStation(Scanner scanner) {
+        String input = InputView.inputEndStation(scanner);
+        Station station = new Station(input);
+        validateIfStationExists(station);
+        return station;
+    }
+
+    private static void validateIfStationExists(Station station) {
+        if (!StationRepository.contains(station)) {
+            throw new IllegalArgumentException("[ERROR] 존재하지 않는 역입니다.");
+        }
     }
 
     public abstract void operate(Scanner scanner);

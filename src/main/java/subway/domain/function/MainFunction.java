@@ -12,6 +12,7 @@ public enum MainFunction {
             try {
                 OutputView.printFindRouteMenu();
                 FindRouteFunction function = getInputFunction(scanner);
+                function.operate(scanner);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
                 OutputView.printEmptyLine();
