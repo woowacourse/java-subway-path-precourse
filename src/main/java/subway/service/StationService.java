@@ -13,7 +13,7 @@ public class StationService {
         return Stations.of(upwardLastStation, nextStation, section);
     }
 
-    private Station findStationByName(String name) {
+    public Station findStationByName(String name) {
         return StationRepository.findByName(name)
                 .orElseThrow(IllegalArgumentException::new);
     }
