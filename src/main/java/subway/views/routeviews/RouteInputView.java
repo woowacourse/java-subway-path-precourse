@@ -1,7 +1,12 @@
 package subway.views.routeviews;
 
-import subway.views.InputView;
+import subway.views.OutputView;
 
-public class RouteInputView implements InputView {
+import java.util.Scanner;
 
+public class RouteInputView {
+    public static String inputRouteOption(Scanner scanner) {
+        OutputView.printSelectOptionMessage();
+        return scanner.nextLine();
+    }
 }
