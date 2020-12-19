@@ -25,12 +25,12 @@ public class OutputView {
         System.out.println(SUB_DISPLAY);
     }
 
-    public static void printSuccessDisplay() {
+    public static void printSuccessDisplay(int distance, int time) {
         System.out.print(VIEW_RESULT);
         System.out.printf(SUCCESS_MESSAGE_FORMAT, CONTOUR);
-        String total_distance = String.format(TOTAL_DISTANCE, 0);
+        String total_distance = String.format(TOTAL_DISTANCE, distance);
         System.out.printf(SUCCESS_MESSAGE_FORMAT, total_distance);
-        String total_time = String.format(TOTAL_TIME, 0);
+        String total_time = String.format(TOTAL_TIME, time);
         System.out.printf(SUCCESS_MESSAGE_FORMAT, total_time);
         System.out.printf(SUCCESS_MESSAGE_FORMAT, CONTOUR);
         // 경로

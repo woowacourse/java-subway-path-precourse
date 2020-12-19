@@ -5,6 +5,11 @@ public class Section {
     private int distance;
     private int time;
 
+    public Section(int end, int distance) {
+        this.end = end;
+        this.distance = distance;
+    }
+
     public Section(int end, int distance, int time) {
         this.end = end;
         this.distance = distance;

@@ -23,7 +23,11 @@ public enum Init {
         return stationName;
     }
 
-    public String findStationName(int stationNumber) {
+    public static int findStationNumber(String stationName) {
+        return initList.stream().filter(item -> item.getStationName().equals(stationName)).findFirst().get().getStaionNumber();
+    }
+
+    public static String findStationName(int stationNumber) {
         return initList.stream().filter(item -> item.getStaionNumber() == stationNumber).findFirst().get().getStationName();
     }
 }

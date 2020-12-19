@@ -1,5 +1,9 @@
 package subway.menu;
 
+import java.util.List;
+
+import subway.controller.Init;
+import subway.domain.StationGraph;
 import subway.view.InputView;
 import subway.view.OutputView;
 
@@ -39,7 +43,6 @@ public class SubMenu implements Menu {
         if (selMenu.equals(MINIMUM_TIME)) {
             getMinimumTime();
         }
-        OutputView.printSuccessDisplay();
     }
 
     private String inputStation() {
@@ -53,10 +56,14 @@ public class SubMenu implements Menu {
     private void getMinimumDistance() {
         String depatureStation = inputStation();
         String arrivalStation = inputStation(depatureStation);
+        List<Integer> res = StationGraph.dijkstra(Init.findStationNumber(depatureStation), Init.findStationNumber(arrivalStation));
+        OutputView.printSuccessDisplay(res.get(0), res.get(1));
     }
 
     private void getMinimumTime() {
         String depatureStation = inputStation();
         String arrivalStation = inputStation(depatureStation);
+        List<Integer> res = StationGraph.dijkstraTime(Init.findStationNumber(depatureStation), Init.findStationNumber(arrivalStation));
+        OutputView.printSuccessDisplay(res.get(0), res.get(1));
     }
 }
