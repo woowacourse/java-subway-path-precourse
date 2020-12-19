@@ -9,6 +9,8 @@ public enum SubwayMessage {
             + "2. 최소 시간\n"
             + "B. 돌아가기\n\n"),
     SELECT_FUNCTION("## 원하는 기능을 선택하세요.\n"),
+    ENTER_DEPARTURE_STATION("## 출발역을 입력하세요.\n"),
+    ENTER_ARRIVAL_STATION("## 도착역을 입력하세요.\n"),
     ERROR_SELECT_FUNCTION("[ERROR] 선택할 수 없는 기능입니다.\n\n");
 
     private String content;

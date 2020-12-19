@@ -101,25 +101,25 @@ public class SubwayController {
 //        return userInput;
 //    }
 
-//    private String inputDepartureStation() {
-//        subwayView.printMessage(SubwayMessage.ENTER_DEPARTURE_STATION);
-//        String userInput = subwayView.userInput();
-//        return userInput;
-//    }
-//
-//    private String inputArrivalStation() {
-//        subwayView.printMessage(SubwayMessage.ENTER_ARRIVAL_STATION);
-//        String userInput = subwayView.userInput();
-//        return userInput;
-//    }
+    private String inputDepartureStation() {
+        subwayView.printMessage(SubwayMessage.ENTER_DEPARTURE_STATION);
+        String userInput = subwayView.userInput();
+        return userInput;
+    }
+
+    private String inputArrivalStation() {
+        subwayView.printMessage(SubwayMessage.ENTER_ARRIVAL_STATION);
+        String userInput = subwayView.userInput();
+        return userInput;
+    }
 
     private void searchByShortestPath() {
-//        String userInput = inputDepartureStation();
-//        userInput = inputArrivalStation();
+        String userInput = inputDepartureStation();
+        userInput = inputArrivalStation();
     }
 
     private void searchByMinimumTime() {
-//        String userInput = inputDepartureStation();
-//        userInput = inputArrivalStation();
+        String userInput = inputDepartureStation();
+        userInput = inputArrivalStation();
     }
 }
