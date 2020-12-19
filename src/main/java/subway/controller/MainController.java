@@ -27,7 +27,7 @@ public class MainController {
         nextProcedure(selectedButton);
     }
 
-    private void nextProcedure(String button) {
+    private void nextProcedure(final String button) {
         if (button.equals(MainButton.INQUIRY.getSymbol())) {
             pathController.run();
             run();

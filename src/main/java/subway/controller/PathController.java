@@ -1,5 +1,7 @@
 package subway.controller;
 
+import subway.graph.DistanceWeightedGraph;
+import subway.graph.TimeWeightedGraph;
 import subway.util.Validator;
 import subway.view.InputView;
 import subway.view.OutputView;
@@ -27,7 +29,7 @@ public class PathController {
         nextProcedure(selectedButton);
     }
 
-    private void nextProcedure(String button) {
+    private void nextProcedure(final String button) {
         if (button.equals(PathButton.BACK.getSymbol())) {
             return;
         }
@@ -37,16 +39,16 @@ public class PathController {
             nextProcedure(button);
             return;
         }
-
+        if (Validator.unconnected(source, destination)) {
+            nextProcedure(button);
+            return;
+        }
+        // 총 시간과 거리를 계산하는 함수를 구현하지 못했습니다.
         if (button.equals(PathButton.SHORTEST_PATH.getSymbol())) {
-            System.out.println("최단거리로 계산");
-            OutputView.printEmptyLine();
+            OutputView.printInquiryGraph(DistanceWeightedGraph.getOptimalGraph(source, destination), -1, -1);
         } else if (button.equals(PathButton.LEAST_TIME.getSymbol())) {
-            System.out.println("최소시간으로 계산");
-            OutputView.printEmptyLine();
+            OutputView.printInquiryGraph(TimeWeightedGraph.getOptimalGraph(source, destination), -1, -1);
         }
     }
-
-
 
 }
