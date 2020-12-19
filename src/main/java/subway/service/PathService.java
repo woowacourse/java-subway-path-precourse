@@ -2,6 +2,7 @@ package subway.service;
 
 import org.jgrapht.GraphPath;
 import subway.domain.*;
+import subway.exception.InvalidInputException;
 import subway.repository.PathRepository;
 import subway.util.PathCalculator;
 
@@ -25,11 +26,17 @@ public class PathService {
     }
 
     private PathResult buildPathResult(GraphPath result) {
+        validatePathAvailable(result);
         if (basis.getBasis().equals(BasisChoice.DISTANCE.getCode()))
             return new PathResult(result.getWeight(), calcTotalTime(result), result.getVertexList());
         if (basis.getBasis().equals(BasisChoice.TIME.getCode()))
             return new PathResult(calcTotalDistance(result), result.getWeight(), result.getVertexList());
-        return null;    // TODO: 예외처리
+        throw new InvalidInputException(InvalidInputException.ExceptionCode.INVALID_BASIS_CODE);
+    }
+
+    private void validatePathAvailable(GraphPath result) {
+        if (result == null)
+            throw new InvalidInputException(InvalidInputException.ExceptionCode.NO_PATH_AVAILABLE);
     }
 
     private double calcTotalDistance(GraphPath result) {
