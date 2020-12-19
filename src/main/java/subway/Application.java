@@ -7,6 +7,7 @@ public class Application {
         final Scanner scanner = new Scanner(System.in);
         Input.init(scanner);
         DataInitService.init();
+        GraphService.init();
         UserInterfaceView userInterfaceView = new UserInterfaceView();
         userInterfaceView.start();
     }
