@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class LineRepository {
     private static final List<Line> lines = new ArrayList<>();
@@ -23,4 +24,6 @@ public class LineRepository {
     public static void deleteAll() {
         lines.clear();
     }
+
+
 }
