@@ -10,6 +10,8 @@ import subway.domain.section.Section;
 import subway.domain.station.Station;
 
 public class ShortestPath {
+    private static final String STATIONS_NOT_CONNECTED_ERROR 
+        = "[ERROR] 출발역과 도착역이 연결되어 있지 않아서 경로 조회가 불가능합니다.";
 
     public static List<String> getShortestDistancePath(
         String startStationName,
@@ -22,7 +24,7 @@ public class ShortestPath {
             DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
             return dijkstraShortestPath.getPath(startStationName, endStationName).getVertexList();
         } catch (NullPointerException e) {
-            throw new IllegalArgumentException("[ERROR] 출발역과 도착역이 연결되어 있지 않아서 경로 조회가 불가능합니다.");
+            throw new IllegalArgumentException(STATIONS_NOT_CONNECTED_ERROR);
         }
     }
 
@@ -34,7 +36,7 @@ public class ShortestPath {
             DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
             return (int) dijkstraShortestPath.getPath(startStationName, endStationName).getWeight();
         } catch (NullPointerException e) {
-            throw new IllegalArgumentException("[ERROR] 출발역과 도착역이 연결되어 있지 않아서 경로 조회가 불가능합니다.");
+            throw new IllegalArgumentException(STATIONS_NOT_CONNECTED_ERROR);
         }
 
     }
@@ -81,7 +83,7 @@ public class ShortestPath {
             DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
             return dijkstraShortestPath.getPath(startStationName, endStationName).getVertexList();
         } catch (NullPointerException e) {
-            throw new IllegalArgumentException("[ERROR] 출발역과 도착역이 연결되어 있지 않아서 경로 조회가 불가능합니다.");
+            throw new IllegalArgumentException(STATIONS_NOT_CONNECTED_ERROR);
         }
     }
 
@@ -93,7 +95,7 @@ public class ShortestPath {
             DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
             return (int) dijkstraShortestPath.getPath(startStationName, endStationName).getWeight();
         } catch (NullPointerException e) {
-            throw new IllegalArgumentException("[ERROR] 출발역과 도착역이 연결되어 있지 않아서 경로 조회가 불가능합니다.");
+            throw new IllegalArgumentException(STATIONS_NOT_CONNECTED_ERROR);
         }
     }
 
