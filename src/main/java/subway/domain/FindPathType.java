@@ -1,7 +1,6 @@
 package subway.domain;
 
 import subway.exception.SubwayException;
-import subway.menu.MainMenu;
 
 import java.util.Arrays;
 import java.util.List;
@@ -22,9 +21,9 @@ public enum FindPathType {
     private String command;
     private String title;
 
-    public static FindPathType findByCommand(String command){
+    public static FindPathType findByCommand(String command) {
         return Arrays.stream(FindPathType.values())
-                .filter(findPathType -> Objects.equals(findPathType.command,command))
+                .filter(findPathType -> Objects.equals(findPathType.command, command))
                 .findAny()
                 .orElseThrow(() -> new SubwayException(ERR_WRONG_INPUT_COMMAND_MSG));
     }

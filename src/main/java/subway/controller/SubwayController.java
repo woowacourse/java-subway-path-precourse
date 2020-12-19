@@ -14,7 +14,8 @@ import java.util.List;
 
 public class SubwayController {
     private static ShortestPathFinder shortestPathFinder;
-    public static void run(InputView inputView){
+
+    public static void run(InputView inputView) {
         shortestPathFinder = new ShortestPathFinder(StationRepository.stations(), SectionRepository.allSections());
         while (true) {
             try {

@@ -2,7 +2,6 @@ package subway;
 
 import subway.controller.SubwayController;
 import subway.view.InputView;
-import subway.view.OutputView;
 
 import java.util.Scanner;
 

@@ -12,11 +12,11 @@ public class Line {
         return name;
     }
 
-    public void addSection(Section section){
+    public void addSection(Section section) {
         sections.addSection(section);
     }
 
-    public Sections getSections(){
+    public Sections getSections() {
         return sections;
     }
 }

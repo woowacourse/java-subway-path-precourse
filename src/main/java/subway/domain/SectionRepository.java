@@ -3,7 +3,6 @@ package subway.domain;
 import java.util.List;
 
 public class SectionRepository {
-
     private static final int ONE = 1;
 
     public static void addSection(Line line, Section section) {
@@ -35,12 +34,12 @@ public class SectionRepository {
     }
 
     public static int calculateTakenTime(List<Station> stations) {
-        int totaltime = 0;
+        int totalTime = 0;
         for (int i = ONE; i < stations.size(); i++) {
             String from = stations.get(i - ONE).getName();
             String to = stations.get(i).getName();
-            totaltime += SectionRepository.findByName(from, to).getTakenTime();
+            totalTime += SectionRepository.findByName(from, to).getTakenTime();
         }
-        return totaltime;
+        return totalTime;
     }
 }

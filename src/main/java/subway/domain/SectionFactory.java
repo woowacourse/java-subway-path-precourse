@@ -17,5 +17,4 @@ public class SectionFactory {
             throw new SubwayException(ERROR_NOT_POSITIVE_MSG);
         }
     }
-
 }

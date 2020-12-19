@@ -12,10 +12,10 @@ import java.util.Objects;
 public class ShortestPathFinder {
     public static final String ERR_WRONG_TYPE_MSG = "해당 타입이 없습니다.";
 
-    List<Station> stations;
-    Sections sections;
-    WeightedMultigraph<Station, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
-    DijkstraShortestPath dijkstraShortestPath;
+    private List<Station> stations;
+    private Sections sections;
+    private WeightedMultigraph<Station, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
+    private DijkstraShortestPath dijkstraShortestPath;
 
     public ShortestPathFinder(List<Station> stations, Sections sections) {
         this.stations = stations;
@@ -33,7 +33,7 @@ public class ShortestPathFinder {
     }
 
     public int calculateShortestStationNumber(Station from, Station to) {
-        return getStationsOnPath(from,to).size();
+        return getStationsOnPath(from, to).size();
     }
 
     public List<Station> getStationsOnPath(Station from, Station to) {
