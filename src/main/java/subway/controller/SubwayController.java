@@ -2,7 +2,7 @@ package subway.controller;
 
 import subway.domain.MenuType;
 import subway.service.InputService;
-import subway.service.OutputView;
+import subway.view.OutputView;
 import subway.service.SubwayService;
 
 import java.util.Scanner;

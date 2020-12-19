@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import static subway.domain.MenuType.MAIN_SEARCH_PATH;
 import static subway.domain.MenuType.SEARCH_PATH_MENU_RANGE;
-import static subway.service.OutputView.printSearchPathMenu;
+import static subway.view.OutputView.printSearchPathMenu;
 
 public class SubwayService extends InputService {
     private final SearchPathService searchPathService = new SearchPathService();

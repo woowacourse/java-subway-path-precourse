@@ -1,4 +1,6 @@
-package subway.service;
+package subway.view;
+
+import org.jgrapht.GraphPath;
 
 public class OutputView {
     private static final char NEW_LINE = '\n';
@@ -14,5 +16,13 @@ public class OutputView {
         System.out.println("1. 최단 거리");
         System.out.println("2. 최소 시간");
         System.out.println("B. 돌아가기");
+    }
+
+    public static void printResult(GraphPath graphPath) {
+        System.out.println("\n## 조회 결과");
+        System.out.println("[INFO] 총 거리: " + graphPath.getWeight());
+        System.out.println("[INFO] 총 소요 시간: " + graphPath.getWeight());
+        System.out.println("[INFO] ---");
+        System.out.println(graphPath.getEdgeList());
     }
 }
