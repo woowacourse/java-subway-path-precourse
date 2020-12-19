@@ -11,8 +11,13 @@ import subway.domain.StationRepository;
 
 public class ShortestPathRouteService {
     private WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
+    private DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
+    private String startStation;
+    private String endStation;
 
-    public void getDijkstraShortestPath(String startStation, String endStation) {
+    public ShortestPathRouteService(String startStation, String endStation) {
+        this.startStation = startStation;
+        this.endStation = endStation;
         addVertex();
         setEdgeWeight();
     }

@@ -74,9 +74,7 @@ public class Application {
             return true;
         }
 
-        ShortestPathRouteService shortestPathRouteService = new ShortestPathRouteService();
-        shortestPathRouteService.getDijkstraShortestPath(startStation,endStation);
-        //최단 경로 계산
+        ShortestPathRouteService shortestPathRouteService = new ShortestPathRouteService(startStation, endStation);
         return false;
     }
 }
