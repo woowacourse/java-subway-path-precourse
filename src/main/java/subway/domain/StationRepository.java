@@ -1,5 +1,7 @@
 package subway.domain;
 
+import org.jgrapht.Graph;
+import org.jgrapht.Graphs;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 
@@ -21,7 +23,7 @@ public class StationRepository {
         return Collections.unmodifiableList(stations);
     }
 
-    public void getShortestDistancePath() {
+    public static Graph<String, DefaultWeightedEdge> getShortestDistancePath() {
         WeightedMultigraph<String, DefaultWeightedEdge> graph
                 = new WeightedMultigraph(DefaultWeightedEdge.class);
         graph.addVertex(stationKyoDae.getName());
@@ -38,9 +40,10 @@ public class StationRepository {
         graph.setEdgeWeight(graph.addEdge(stationYangJae.getName(), stationMaeBong.getName()), 1);
         graph.setEdgeWeight(graph.addEdge(stationGangNam.getName(), stationYangJae.getName()), 2);
         graph.setEdgeWeight(graph.addEdge(stationYangJae.getName(), stationYangJaeForest.getName()), 10);
+        return graph;
     }
 
-    public void getShortestTimePath() {
+    public static Graph<String, DefaultWeightedEdge> getShortestTimePath() {
         WeightedMultigraph<String, DefaultWeightedEdge> graph
                 = new WeightedMultigraph(DefaultWeightedEdge.class);
         graph.addVertex(stationKyoDae.getName());
@@ -57,6 +60,7 @@ public class StationRepository {
         graph.setEdgeWeight(graph.addEdge(stationYangJae.getName(), stationMaeBong.getName()), 1);
         graph.setEdgeWeight(graph.addEdge(stationGangNam.getName(), stationYangJae.getName()), 8);
         graph.setEdgeWeight(graph.addEdge(stationYangJae.getName(), stationYangJaeForest.getName()), 3);
+        return graph;
     }
 
 

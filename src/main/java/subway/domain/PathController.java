@@ -1,5 +1,9 @@
 package subway.domain;
 
+import org.jgrapht.Graph;
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
+import org.jgrapht.graph.DefaultWeightedEdge;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +50,6 @@ public class PathController {
     }
 
 
-
     public List<Station> findPath(Station startStation, Station endStation) {
         List<Station> path = new ArrayList<>();
         if (isExistCrossLine(startStation, endStation)) {
@@ -63,6 +66,18 @@ public class PathController {
             }
         }
         return path;
+    }
+
+    public List getShortestDistancePath(String startStation, String endStation) {
+        Graph<String, DefaultWeightedEdge> graph = StationRepository.getShortestDistancePath();
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
+        return dijkstraShortestPath.getPath(startStation, endStation).getVertexList();
+    }
+
+    public List getShortestTimePath(String startStation, String endStation) {
+        Graph<String, DefaultWeightedEdge> graph = StationRepository.getShortestTimePath();
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
+        return dijkstraShortestPath.getPath(startStation, endStation).getVertexList();
     }
 
 
