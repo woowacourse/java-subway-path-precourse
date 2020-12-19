@@ -19,6 +19,11 @@
 - 호선 이름 소지
 - WeightedMultigraph에 path 정보를 담을 수 있는 메서드 생성
 
+### ⚙️ Map
+- 전체 역을 잇는 도메인
+- 가장 효율적인 노선을 리턴한다.
+
+
 ### ⚙️ StationRepository
 - Station 상태 관리
 
