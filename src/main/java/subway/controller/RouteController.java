@@ -53,6 +53,21 @@ public class RouteController {
     }
 
     private void shortestLength() {
+        String startStation = InputView.writeStartStation(scanner);
+        if(startStation.equals("ERROR")){
+            new RouteController(scanner);
+            return;
+        }
+        String endStation = InputView.writeEndStation(scanner, startStation);
+        if(endStation.equals("ERROR")){
+            new RouteController(scanner);
+            return;
+        }
+        if(!LineRepository.findShortestLength(startStation, endStation)){
+            new RouteController(scanner);
+            return;
+        }
+        new Controller(scanner);
     }
 
 

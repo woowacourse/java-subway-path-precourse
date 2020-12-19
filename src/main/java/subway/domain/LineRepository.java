@@ -1,12 +1,13 @@
 package subway.domain;
 
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
+import subway.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 public class LineRepository {
     private static final String[] LINES = {"2호선", "3호선", "신분당선"};
@@ -16,7 +17,12 @@ public class LineRepository {
             = new WeightedMultigraph(DefaultWeightedEdge.class);
     private static final WeightedMultigraph<String, DefaultWeightedEdge> lengthWeight
             = new WeightedMultigraph(DefaultWeightedEdge.class);
+    private static final int ROUTE_NOT_EXIST = 0;
     private static int INDEX = 0;
+
+    public static WeightedMultigraph<String, DefaultWeightedEdge> getTimeWeight() {
+        return timeWeight;
+    }
 
     private static final List<Line> lines = new ArrayList<>();
 
@@ -26,12 +32,10 @@ public class LineRepository {
             for(String stationName : LINE_STATIONS[INDEX]){
                 line.addStation(new Station(stationName));
             }
-            lines.add(line);
+            addLine(line);
             INDEX++;
         }
-    }
 
-    static{
         lengthWeight.addVertex("교대역");
         lengthWeight.addVertex("강남역");
         lengthWeight.addVertex("역삼역");
@@ -40,15 +44,14 @@ public class LineRepository {
         lengthWeight.addVertex("매봉역");
         lengthWeight.addVertex("양재시민의숲역");
 
-        lengthWeight.setEdgeWeight(timeWeight.addEdge("교대역","강남역"), 2);
-        lengthWeight.setEdgeWeight(timeWeight.addEdge("강남역","역삼역"), 2);
-        lengthWeight.setEdgeWeight(timeWeight.addEdge("교대역","남부터미널역"), 3);
-        lengthWeight.setEdgeWeight(timeWeight.addEdge("남부터미널역","양재역"), 6);
-        lengthWeight.setEdgeWeight(timeWeight.addEdge("양재역","매봉역"), 1);
-        lengthWeight.setEdgeWeight(timeWeight.addEdge("강남역","양재역"), 2);
-        lengthWeight.setEdgeWeight(timeWeight.addEdge("양재역","양재시민의숲역"), 10);
-    }
-    static{
+        lengthWeight.setEdgeWeight(lengthWeight.addEdge("교대역","강남역"), 2);
+        lengthWeight.setEdgeWeight(lengthWeight.addEdge("강남역","역삼역"), 2);
+        lengthWeight.setEdgeWeight(lengthWeight.addEdge("교대역","남부터미널역"), 3);
+        lengthWeight.setEdgeWeight(lengthWeight.addEdge("남부터미널역","양재역"), 6);
+        lengthWeight.setEdgeWeight(lengthWeight.addEdge("양재역","매봉역"), 1);
+        lengthWeight.setEdgeWeight(lengthWeight.addEdge("강남역","양재역"), 2);
+        lengthWeight.setEdgeWeight(lengthWeight.addEdge("양재역","양재시민의숲역"), 10);
+
         timeWeight.addVertex("교대역");
         timeWeight.addVertex("강남역");
         timeWeight.addVertex("역삼역");
@@ -75,11 +78,70 @@ public class LineRepository {
         lines.add(line);
     }
 
-    public static boolean deleteLineByName(String name) {
-        return lines.removeIf(line -> Objects.equals(line.getName(), name));
+    public static boolean findShortestTime(String startStation, String endStation) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(timeWeight);
+        List<String> shortestPath = dijkstraShortestPath.getPath(startStation, endStation).getVertexList();
+        if(shortestPath.size() == 0){
+            return false;
+        }
+        showStatusTime(dijkstraShortestPath,shortestPath,startStation,endStation);
+        return true;
     }
 
-    public static void deleteAll() {
-        lines.clear();
+    private static void showStatusTime(DijkstraShortestPath path, List<String> shortestPath,
+                                       String startStation, String endStation) {
+        int length = findTotalLength(shortestPath);
+        OutputView.totalLength(length);
+        int time = (int)path.getPathWeight(startStation,endStation);
+        OutputView.totalTime(time);
+        OutputView.bar();
+        for(String stationName : shortestPath){
+            OutputView.status(stationName);
+        }
+        OutputView.space();
+    }
+
+    public static boolean findShortestLength(String startStation, String endStation) {
+        DijkstraShortestPath path = new DijkstraShortestPath(lengthWeight);
+        List<String> shortestPath = path.getPath(startStation, endStation).getVertexList();
+        if(shortestPath.size() == ROUTE_NOT_EXIST){
+            return false;
+        }
+        showStatusLength(path,shortestPath,startStation,endStation);
+        return true;
+    }
+
+    private static void showStatusLength(DijkstraShortestPath path, List<String> shortestPath,
+                                         String startStation, String endStation) {
+        OutputView.bar();
+        int length = (int)path.getPathWeight(startStation, endStation);
+        OutputView.totalLength(length);
+        int time = findTotalTime(shortestPath);
+        OutputView.totalTime(time);
+        OutputView.bar();
+        for(String stationName : shortestPath){
+            OutputView.status(stationName);
+        }
+        OutputView.space();
+    }
+
+    private static int findTotalTime(List<String> shortestPath) {
+        int length = shortestPath.size();
+        int total = 0;
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(timeWeight);
+        for(int i=0;i<length-1;i++){
+            total += (int)dijkstraShortestPath.getPathWeight(shortestPath.get(i), shortestPath.get(i+1));
+        }
+        return total;
+    }
+
+    private static int findTotalLength(List<String> shortestPath) {
+        int length = shortestPath.size();
+        int total = 0;
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(lengthWeight);
+        for(int i=0;i<length-1;i++){
+            total += (int)dijkstraShortestPath.getPathWeight(shortestPath.get(i), shortestPath.get(i+1));
+        }
+        return total;
     }
 }
