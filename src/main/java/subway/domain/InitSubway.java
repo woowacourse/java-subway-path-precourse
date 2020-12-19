@@ -2,6 +2,9 @@ package subway.domain;
 
 import java.util.*;
 
+import static subway.utils.Constant.*;
+
+
 public class InitSubway {
 
     public static void initSubway() {
@@ -26,13 +29,13 @@ public class InitSubway {
 
     private static void initAllLine(Map<String, List<String>> lineMap) {
         for (String lineName : lineMap.keySet()) {
-            if (lineName.equals("2호선")) {
+            if (lineName.equals(STRING_TWO_LINE)) {
                 initLineByTwo(lineMap, lineName);
             }
-            if (lineName.equals("3호선")) {
+            if (lineName.equals(STRING_THREE_LINE)) {
                 initLineByThree(lineMap, lineName);
             }
-            if (lineName.equals("신분당선")) {
+            if (lineName.equals(STRING_SINBUNDANG_LINE)) {
                 initLineBySinbundang(lineMap, lineName);
             }
         }
@@ -46,11 +49,10 @@ public class InitSubway {
 
     private static List<Station> initTwoLineStations(List<String> stationNames) {
         List<Station> stations = new ArrayList<>();
-        List<Integer> stationDistanceInfo = new ArrayList<>(Arrays.asList(2, 2));
-        List<Integer> stationTimeInfo = new ArrayList<>(Arrays.asList(3, 3));
-        for (String stationName : stationNames) {
-            stationLengthTwoTimeAndDistanceInit(stationNames, stations, stationDistanceInfo, stationTimeInfo, stationName);
-        }
+        List<Integer> stationDistanceInfo = new ArrayList<>(Arrays.asList(DEFAULT_TWO_DISTANCE, DEFAULT_TWO_DISTANCE));
+        List<Integer> stationTimeInfo = new ArrayList<>(Arrays.asList(DEFAULT_THREE_TIME, DEFAULT_THREE_TIME));
+        initLineStations(stationNames, stations, stationDistanceInfo, stationTimeInfo);
+
         return stations;
     }
 
@@ -62,11 +64,10 @@ public class InitSubway {
 
     private static List<Station> initThreeLineStations(List<String> stationNames) {
         List<Station> stations = new ArrayList<>();
-        List<Integer> stationDistanceInfo = new ArrayList<>(Arrays.asList(3, 6, 1));
-        List<Integer> stationTimeInfo = new ArrayList<>(Arrays.asList(2, 5, 1));
-        for (String stationName : stationNames) {
-            stationLengthThreeTimeAndDistanceInit(stationNames, stations, stationDistanceInfo, stationTimeInfo, stationName);
-        }
+        List<Integer> stationDistanceInfo = new ArrayList<>(Arrays.asList(DEFAULT_THREE_DISTANCE, DEFAULT_SIX_DISTANCE, DEFAULT_ONE_DISTANCE));
+        List<Integer> stationTimeInfo = new ArrayList<>(Arrays.asList(DEFAULT_TWO_TIME, DEFAULT_FIVE_TIME, DEFAULT_ONE_TIME));
+        initLineStations(stationNames, stations, stationDistanceInfo, stationTimeInfo);
+
         return stations;
     }
 
@@ -78,31 +79,20 @@ public class InitSubway {
 
     private static List<Station> initSinbundangLineStations(List<String> stationNames) {
         List<Station> stations = new ArrayList<>();
-        List<Integer> stationDistanceInfo = new ArrayList<>(Arrays.asList(2, 10));
-        List<Integer> stationTimeInfo = new ArrayList<>(Arrays.asList(8, 3));
-        for (String stationName : stationNames) {
-            stationLengthTwoTimeAndDistanceInit(stationNames, stations, stationDistanceInfo, stationTimeInfo, stationName);
-        }
+        List<Integer> stationDistanceInfo = new ArrayList<>(Arrays.asList(DEFAULT_TWO_DISTANCE, DEFAULT_TEN_DISTANCE));
+        List<Integer> stationTimeInfo = new ArrayList<>(Arrays.asList(DEFAULT_EIGHT_TIME, DEFAULT_THREE_TIME));
+        initLineStations(stationNames, stations, stationDistanceInfo, stationTimeInfo);
+
         return stations;
     }
 
-    private static void stationLengthTwoTimeAndDistanceInit(List<String> stationNames, List<Station> stations, List<Integer> stationDistanceInfo, List<Integer> stationTimeInfo, String stationName) {
+    private static void initLineStations(List<String> stationNames, List<Station> stations, List<Integer> stationDistanceInfo, List<Integer> stationTimeInfo) {
         for (int i = 0; i < stationNames.size(); i++) {
-            if (stationNames.size() == 2) {
-                stations.add(new Station(stationName));
-                break;
+            if (i == 0) {
+                stations.add(new Station(stationNames.get(i)));
+                continue;
             }
-            stations.add(new Station(stationName, stationDistanceInfo.get(i), stationTimeInfo.get(i)));
-        }
-    }
-
-    private static void stationLengthThreeTimeAndDistanceInit(List<String> stationNames, List<Station> stations, List<Integer> stationDistanceInfo, List<Integer> stationTimeInfo, String stationName) {
-        for (int i = 0; i < stationNames.size(); i++) {
-            if (stationNames.size() == 3) {
-                stations.add(new Station(stationName));
-                break;
-            }
-            stations.add(new Station(stationName, stationDistanceInfo.get(i), stationTimeInfo.get(i)));
+            stations.add(new Station(stationNames.get(i), stationDistanceInfo.get(i - DISTANCE_INFO_LIST_INDEX), stationTimeInfo.get(i - TIME_INFO_LIST_INDEX)));
         }
     }
 }
