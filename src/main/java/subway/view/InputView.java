@@ -22,4 +22,10 @@ public class InputView {
             throw new NullPointerException();
         }
     }
+
+    public static String inputStation() {
+        String station = scanner.nextLine();
+        inputValidator.invalidStationName(station);
+        return station;
+    }
 }
