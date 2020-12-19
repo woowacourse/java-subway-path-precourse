@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class InputView extends Validator {
     private static final String OPTION_SELECT_MESSAGE = "## 원하는 기능을 선택하세요.";
     private static final String START_STATION_MESSAGE = "## 출발역을 입력하세요.";
+    private static final String ARRIVED_STATION_MESSAGE = "## 도착역을 입력하세요.";
     private Scanner scanner;
 
     public InputView(Scanner scanner) {
@@ -31,6 +32,13 @@ public class InputView extends Validator {
         System.out.println(START_STATION_MESSAGE);
         String station = scanner.nextLine();
         //validate exist station
+        return station;
+    }
+
+    public String inputEndStation() {
+        System.out.println(ARRIVED_STATION_MESSAGE);
+        String station = scanner.nextLine();
+        //validate exist station & not duplicate with start station
         return station;
     }
 }
