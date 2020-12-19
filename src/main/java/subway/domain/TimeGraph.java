@@ -1,10 +1,12 @@
 package subway.domain;
 
+import org.jgrapht.GraphPath;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 
 import java.util.Iterator;
+import java.util.List;
 
 public class TimeGraph {
     public static WeightedMultigraph<Station, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
@@ -32,5 +34,10 @@ public class TimeGraph {
 
         setEdgeWeitght(from, to, section.getTime());
         updateShortestPath();
+    }
+
+    public static GraphPath<Station, DefaultWeightedEdge> getShortestPath(Station from, Station to) {
+        GraphPath<Station, DefaultWeightedEdge> graphPath = dijkstraShortestPath.getPath(from, to);
+        return graphPath;
     }
 }

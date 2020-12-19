@@ -89,13 +89,13 @@ public class DataInitializer {
         section = new Section(new HashSet<Station>(Arrays.asList(
                 StationRepository.searchByName("강남역"),
                 StationRepository.searchByName("양재역")
-        )), 3, 2);
+        )), 2, 8);
         SectionRepository.addSection(section);
 
         section = new Section(new HashSet<Station>(Arrays.asList(
                 StationRepository.searchByName("양재역"),
                 StationRepository.searchByName("양재시민의숲역")
-        )), 3, 2);
+        )), 10, 3);
         SectionRepository.addSection(section);
     }
 
