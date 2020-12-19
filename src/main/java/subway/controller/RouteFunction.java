@@ -3,10 +3,7 @@ package subway.controller;
 import subway.domain.graph.DistanceGraphRepository;
 import subway.domain.line.LineRepository;
 import subway.domain.station.StationRepository;
-import subway.utils.exception.DuplicateStationException;
-import subway.utils.exception.InvalidStationNameException;
-import subway.utils.exception.NotExistStationException;
-import subway.utils.exception.NotSameLineException;
+import subway.utils.exception.*;
 import subway.view.InputView;
 import subway.view.output.RouteOutputView;
 
@@ -24,7 +21,7 @@ public class RouteFunction {
     public void shortestDistance() {
         try {
             List<String> inputStations = inputStation();
-
+            System.out.println("출발 도착 입력 완료");
         } catch (NullPointerException e) {
             return;
         }
@@ -45,8 +42,8 @@ public class RouteFunction {
     private void isValidLine(String firstStation, String lastStation) {
         try {
             LineRepository.sameLine(firstStation, lastStation);
-//        LineRepository.invalidSequence(firstStation, lastStation);
-        } catch (NotSameLineException e) {
+            LineRepository.invalidSequence(firstStation, lastStation);
+        } catch (NotSameLineException | InvalidSequnceLineException e) {
             throw new NullPointerException();
         }
     }

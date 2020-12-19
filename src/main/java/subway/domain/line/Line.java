@@ -23,4 +23,8 @@ public class Line {
     public boolean contains(String station) {
         return stations.contains(station);
     }
+
+    public boolean validSequence(String firstStation, String lastStation) {
+        return stations.indexOf(firstStation) < stations.indexOf(lastStation);
+    }
 }

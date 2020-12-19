@@ -1,5 +1,6 @@
 package subway.domain.line;
 
+import subway.utils.exception.InvalidSequnceLineException;
 import subway.utils.exception.NotSameLineException;
 
 import java.util.ArrayList;
@@ -31,5 +32,12 @@ public class LineRepository {
                 .filter(line -> line.contains(firstStation) && line.contains(lastStation))
                 .findAny()
                 .orElseThrow(() -> new NotSameLineException());
+    }
+
+    public static void invalidSequence(String firstStation, String lastStation) {
+        lines.stream()
+                .filter(line -> line.contains(firstStation) && line.contains(lastStation) && line.validSequence(firstStation, lastStation))
+                .findAny()
+                .orElseThrow(() -> new InvalidSequnceLineException());
     }
 }

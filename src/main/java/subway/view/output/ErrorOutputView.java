@@ -7,6 +7,7 @@ public class ErrorOutputView extends OutputView {
     private static String NOT_EXIST_STATION = "등록되지 않은 역입니다.\n";
     private static String DUPLICATE_STATION = "출발역과 도착역이 동일합니다.\n";
     private static String NOT_SAME_LINE = "두 역이 같은 노선이 아닙니다.\n";
+    private static String INVALID_SEQUENCE_LINE = "도착역이 출발역보다 앞서 있습니다.\n";
 
     private static void errorSymbol() {
         stringBuilder.append(ERROR_SYMBOL);
@@ -36,5 +37,9 @@ public class ErrorOutputView extends OutputView {
 
     public static void notSameLine() {
         printError(NOT_SAME_LINE);
+    }
+
+    public static void invalidSequenceLine() {
+        printError(INVALID_SEQUENCE_LINE);
     }
 }
