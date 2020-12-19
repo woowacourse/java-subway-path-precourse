@@ -8,5 +8,7 @@ public class EdgeRepository {
     
     public static void addEdge(Edge edge) {
         edges.add(edge);
+        TimeGraph.setEdge(edge.getLeftEndStation(), edge.getRightEndStation(), edge.getTime());
+        DistanceGraph.setEdge(edge.getLeftEndStation(), edge.getRightEndStation(), edge.getDistance());
     }
 }

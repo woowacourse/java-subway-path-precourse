@@ -13,6 +13,14 @@ public class Edge {
         this.time = time;
     }
 
+    public Station getLeftEndStation() {
+        return leftEndStation;
+    }
+
+    public Station getRightEndStation() {
+        return rightEndStation;
+    }
+
     public int getDistance() {
         return distance;
     }

@@ -14,6 +14,8 @@ public class StationRepository {
 
     public static void addStation(Station station) {
         stations.add(station);
+        TimeGraph.addVertex(station);
+        DistanceGraph.addVertex(station);
     }
 
     public static boolean deleteStation(String name) {
