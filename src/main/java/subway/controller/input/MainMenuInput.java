@@ -1,12 +1,13 @@
 package subway.controller.input;
 
 import subway.controller.util.InputValidator;
+import subway.view.IntroMessage;
 
 public class MainMenuInput extends InputController {
 	private static MainMenuInput mainMenuInput;
 	
 	public MainMenuInput() {
-		this.INPUT_INTRO = "\n## 원하는 기능을 선택하세요."; //TODO enum 으로 관리
+		this.INPUT_INTRO = IntroMessage.SELECT_MENU.getMessage();
 	}
 	
 	@Override

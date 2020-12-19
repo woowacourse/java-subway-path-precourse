@@ -6,7 +6,7 @@ public class ToStationInput extends InputController {
 	private static ToStationInput toStationInput;
 	
 	public ToStationInput() {
-		this.INPUT_INTRO = "\n## 도착역을 입력하세요."; //TODO ENUM
+		this.INPUT_INTRO = "\n## 도착역을 입력하세요.";
 	}
 	
 	@Override

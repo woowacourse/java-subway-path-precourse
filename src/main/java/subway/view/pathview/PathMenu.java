@@ -2,6 +2,7 @@ package subway.view.pathview;
 
 import subway.controller.OutputController;
 import subway.domain.Menu;
+import subway.view.IntroMessage;
 import subway.view.Return;
 import java.util.LinkedHashMap;
 
@@ -20,7 +21,7 @@ public class PathMenu {
 	}
 	
 	public void printMenu() {
-		OutputController.printMainMenu(pathMenus, "\n## 경로 기준"); //TODO enum으로 관리하기
+		OutputController.printMainMenu(pathMenus, IntroMessage.PATH_MENU.getMessage());
 	}
 	
 	public static PathMenu getInstance() {

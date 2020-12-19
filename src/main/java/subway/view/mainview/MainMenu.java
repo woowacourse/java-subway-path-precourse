@@ -2,6 +2,8 @@ package subway.view.mainview;
 
 import subway.controller.OutputController;
 import subway.domain.Menu;
+import subway.view.IntroMessage;
+
 import java.util.LinkedHashMap;
 
 public class MainMenu {
@@ -18,7 +20,7 @@ public class MainMenu {
 	}
 	
 	public void printMenu() {
-		OutputController.printMainMenu(mainMenus, "\n## 메인 화면"); //TODO enum으로 관리하기
+		OutputController.printMainMenu(mainMenus, IntroMessage.MAIN_MENU.getMessage());
 	}
 	
 	public static MainMenu getInstance() {
