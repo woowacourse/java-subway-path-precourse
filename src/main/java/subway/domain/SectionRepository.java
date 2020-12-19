@@ -61,6 +61,12 @@ public class SectionRepository {
         }
     }
 
+    public static int getSectionDistance(Station departureStation, Station arrivalStation) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(distanceGraph);
+
+        return (int) dijkstraShortestPath.getPath(departureStation, arrivalStation).getWeight();
+    }
+
     public static List<Station> getSectionTimeStations(Station departureStation, Station arrivalStation) {
         try {
             DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(timeGraph);
@@ -72,5 +78,11 @@ public class SectionRepository {
 
             return null;
         }
+    }
+
+    public static int getSectionTime(Station departureStation, Station arrivalStation) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(timeGraph);
+
+        return (int) dijkstraShortestPath.getPath(departureStation, arrivalStation).getWeight();
     }
 }
