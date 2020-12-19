@@ -267,6 +267,15 @@ public void getDijkstraShortestPath() {
   - 진행과정
     - 출발역과 도착역을 입력받는다.
     - 출발역과 도착역의 index를 잦는다.
+    - 정점: 지하철역 -> line에서 찾은 station의 index가 아니라
+    - 간선: 지하철역 연결정보
+    - 가중치: 거리 or 소요 시간
+      - [2호선, 교대역, (), 강남역, (), 역삼역] 
+        - 교대역~역삼역 
+          - firstStationIndex=1, secondStationIndex=5
+          - 간선 -> start, end = fistStaitonIndex, fistStaitonIndex+2
+          - 가중치 -> fistStaitonIndex+1
+          - 간선바꾸기 -> start = end, end = start + 2(if end == list.length()->이게 마지막)
     - jgrapht 라이브러리를 활용해 최단거리를 조회한다. + 그에따른 시간도 저장한다.
     - jgrapht 라이브러리를 활용해 최단시간을 조회한다. + 그에따른 거리도 저장한다.
   - 최단거리
