@@ -7,7 +7,7 @@ public class SubwayDurationGraph {
     private static final WeightedMultigraph<Station, Section> durationGraph = new WeightedMultigraph<>(Section.class);
 
     static {
-        SectionRepository.getAllSections().stream().forEach(section -> {
+        SectionRepository.getAllSections().forEach(section -> {
             durationGraph.addVertex(section.getDepartureStation());
             durationGraph.addVertex(section.getArrivalStation());
             durationGraph.addEdge(section.getDepartureStation(), section.getArrivalStation(), section);

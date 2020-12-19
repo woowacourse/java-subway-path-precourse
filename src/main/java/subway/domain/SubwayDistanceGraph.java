@@ -7,7 +7,7 @@ public class SubwayDistanceGraph {
     private static final WeightedMultigraph<Station, Section> distanceGraph = new WeightedMultigraph<>(Section.class);
 
     static {
-        SectionRepository.getAllSections().stream().forEach(section -> {
+        SectionRepository.getAllSections().forEach(section -> {
             distanceGraph.addVertex(section.getDepartureStation());
             distanceGraph.addVertex(section.getArrivalStation());
             distanceGraph.addEdge(section.getDepartureStation(), section.getArrivalStation(), section);
