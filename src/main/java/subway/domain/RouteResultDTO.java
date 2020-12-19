@@ -18,11 +18,11 @@ public class RouteResultDTO {
         return path;
     }
 
-    public Double getTimeWeight() {
-        return timeWeight;
+    public Integer getTimeWeight() {
+        return timeWeight.intValue();
     }
 
-    public Double getDistanceWeight() {
-        return DistanceWeight;
+    public Integer getDistanceWeight() {
+        return DistanceWeight.intValue();
     }
 }
