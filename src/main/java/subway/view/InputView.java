@@ -11,7 +11,7 @@ public class InputView {
     }
 
     public String enterFeature() {
-        System.out.println("원하는 기능을 선택하세요.");
+        System.out.println("## 원하는 기능을 선택하세요.");
         return scanner.nextLine();
     }
 
@@ -25,5 +25,15 @@ public class InputView {
 
     public void enterArrivalStation() {
 
+    }
+
+    public String enterDeparture() {
+        System.out.println("## 출발역을 입력하세요.");
+        return scanner.nextLine();
+    }
+
+    public String enterArrival() {
+        System.out.println("## 도착역을 입력하세요.");
+        return scanner.nextLine();
     }
 }

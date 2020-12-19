@@ -3,8 +3,8 @@ package subway.domain;
 import java.util.LinkedList;
 
 public class Line {
+    private static LinkedList<Station> line = new LinkedList<>();
     private String name;
-    private LinkedList<Station> line = new LinkedList<>();
 
     public Line(String name) {
         this.name = name;
@@ -12,6 +12,10 @@ public class Line {
 
     public String getName() {
         return name;
+    }
+
+    public void addSection(int sequence, Station station) {
+        line.add(sequence, station);
     }
 
     public Line addTerminus(String upBoundTerminus, String downBoundTerminus) {

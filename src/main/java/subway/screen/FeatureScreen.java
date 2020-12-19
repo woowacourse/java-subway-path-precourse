@@ -1,5 +1,8 @@
 package subway.screen;
 
+import subway.domain.SectionRepository;
+import subway.view.InputView;
+
 import java.util.Scanner;
 
 public class FeatureScreen implements ScreenModel {
@@ -14,7 +17,12 @@ public class FeatureScreen implements ScreenModel {
 
     @Override
     public String showScreen() {
-        System.out.println("최단거리나 최소시간 실행");
+        InputView inputView = new InputView(scanner);
+
+        String departure = inputView.enterDeparture();
+        String arrival = inputView.enterArrival();
+        SectionRepository.findShortestPath(departure, arrival);
+
         return "-1";
     }
 

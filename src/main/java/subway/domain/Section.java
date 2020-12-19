@@ -1,9 +1,11 @@
 package subway.domain;
 
 public class Section {
+
     private Line line;
-    private Station departureStation;
-    private Station arriavalStation;
+
+    private Station departure;
+    private Station arrival;
     private int distance;
     private int costTime;
 
@@ -13,10 +15,21 @@ public class Section {
         Station arrival = StationRepository.findStation(arrivalName);
 
         this.line = line;
-        this.departureStation = departure;
-        this.arriavalStation = arrival;
+        this.departure = departure;
+        this.arrival = arrival;
         this.distance = distance;
         this.costTime = costTime;
     }
 
+    public Station getDeparture() {
+        return departure;
+    }
+
+    public Station getArrival() {
+        return arrival;
+    }
+
+    public int getCostTime() {
+        return costTime;
+    }
 }
