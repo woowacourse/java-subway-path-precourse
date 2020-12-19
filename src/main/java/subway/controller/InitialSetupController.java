@@ -6,7 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class InitialSetupController {
-    private static final List<String> preregisterStations = Arrays.asList("교대역", "강남역", "역삼역", "남부터미널역", "양재역", "양재시민의숲역", "매봉역");
+    private static final List<String> preregisterStations =
+            Arrays.asList("교대역", "강남역", "역삼역", "남부터미널역", "양재역", "양재시민의숲역", "매봉역");
 
     private static final String SECOND_LINE = "2호선";
     private static final List<String> secondLineStations = Arrays.asList("교대역", "강남역", "역삼역");

@@ -13,7 +13,8 @@ public class RouteFindValidation extends Validation {
 
     public static boolean checkControllerInput(String userInput) {
         try {
-            if (!((userInput.equals(OPTION_ONE)) || (userInput.equals(OPTION_TWO)) || (userInput.equals(OPTION_BACK)))) {
+            if (!((userInput.equals(OPTION_ONE)) || (userInput.equals(OPTION_TWO))
+                    || (userInput.equals(OPTION_BACK)))) {
                 throw new UserInputException();
             }
         } catch (UserInputException e) {
@@ -34,7 +35,7 @@ public class RouteFindValidation extends Validation {
         if(!checkIsInStationRepository(userInputEndStation)) {
             return false;
         }
-        if(checkSameStation(userInputStartStation, userInputEndStation)) {
+        if(!checkNotSameStation(userInputStartStation, userInputEndStation)) {
             return false;
         }
         return true;
@@ -52,16 +53,16 @@ public class RouteFindValidation extends Validation {
         return true;
     }
 
-    private static boolean checkSameStation(String userInputStartStation, String userInputEndStation) {
+    private static boolean checkNotSameStation(String userInputStartStation, String userInputEndStation) {
         try {
             if (userInputStartStation.equals(userInputEndStation)) {
                 throw new UserInputException();
             }
         } catch (UserInputException e) {
             RouteFindErrorView.printSameStationInputError();
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
     public static boolean checkValidPath(List<Station> shortestPath) {

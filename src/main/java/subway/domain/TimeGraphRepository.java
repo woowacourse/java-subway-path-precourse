@@ -9,7 +9,8 @@ import java.util.List;
 
 
 public class TimeGraphRepository {
-    private static final WeightedMultigraph<Station, DefaultWeightedEdge> timeGraph = new WeightedMultigraph(DefaultWeightedEdge.class);
+    private static final WeightedMultigraph<Station, DefaultWeightedEdge> timeGraph =
+            new WeightedMultigraph(DefaultWeightedEdge.class);
 
     public static void addStation(Station station) {
         timeGraph.addVertex(station);

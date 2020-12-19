@@ -8,7 +8,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class DistanceGraphRepository {
-    private static final WeightedMultigraph<Station, DefaultWeightedEdge> distanceGraph = new WeightedMultigraph(DefaultWeightedEdge.class);
+    private static final WeightedMultigraph<Station, DefaultWeightedEdge> distanceGraph =
+            new WeightedMultigraph(DefaultWeightedEdge.class);
 
     public static void addStation(Station station) {
         distanceGraph.addVertex(station);
