@@ -1,5 +1,7 @@
 package subway.view;
 
+import subway.domain.SubwayMap;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,10 +23,11 @@ public class OutputView {
 		System.out.println();
 	}
 
-	public static void printPathInformation(List<String> shortestPath) {
+	public static void printPathInformation(List<String> shortestPath, String start, String end) {
 		System.out.println(GeneralMessages.DIVISION_LINE.getMessage());
-		System.out.println(PathMessages.TOTAL_DISTANCE.getMessage());
-		System.out.println(PathMessages.TOTAL_TIME.getMessage());
+		System.out.printf((PathMessages.TOTAL_DISTANCE.getMessage()) + "%n", SubwayMap.getDistanceSum(start, end));
+		System.out.printf((PathMessages.TOTAL_TIME.getMessage()) + "%n", SubwayMap.getTimeSum(start, end));
+		System.out.println(GeneralMessages.DIVISION_LINE.getMessage());
 		for (String station : shortestPath) {
 			System.out.println(GeneralMessages.INFO.getMessage() + station);
 		}

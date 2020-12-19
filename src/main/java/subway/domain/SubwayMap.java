@@ -50,4 +50,14 @@ public class SubwayMap {
 		DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(subwayMapTime);
 		return dijkstraShortestPath.getPath(start, end).getVertexList();
 	}
+
+	public static String getDistanceSum(String start, String end) {
+		DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(subwayMapDistance);
+		return String.valueOf(Math.round(dijkstraShortestPath.getPath(start, end).getWeight()));
+	}
+
+	public static String getTimeSum(String start, String end) {
+		DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(subwayMapTime);
+		return String.valueOf(Math.round(dijkstraShortestPath.getPath(start, end).getWeight()));
+	}
 }

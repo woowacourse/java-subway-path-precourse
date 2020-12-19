@@ -8,8 +8,8 @@ public enum PathMessages {
 
 	START(GeneralMessages.BASIC.getMessage() + "출발역을 입력하세요."),
 	END(GeneralMessages.BASIC.getMessage() + "도착역을 입력하세요."),
-	TOTAL_DISTANCE(GeneralMessages.INFO.getMessage() + "총 거리: " + "" + "km"),
-	TOTAL_TIME(GeneralMessages.INFO.getMessage() + "총 소요 시간: " + "" + "분"),
+	TOTAL_DISTANCE(GeneralMessages.INFO.getMessage() + "총 거리: %s km"),
+	TOTAL_TIME(GeneralMessages.INFO.getMessage() + "총 소요 시간: %s 분"),
 
 	SAME_START_END_ERROR(GeneralMessages.ERROR.getMessage() + "출발역과 도착역이 동일합니다."),
 	STATION_NOT_IN_USE_ERROR(GeneralMessages.ERROR.getMessage() + "노선에 존재하지 않는 역입니다.");

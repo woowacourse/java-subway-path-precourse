@@ -31,7 +31,7 @@ public class InputView {
 	}
 
 	public static String inputEndStation(Scanner scanner, String start) throws IllegalArgumentException {
-		System.out.println(PathMessages.START.getMessage());
+		System.out.println(PathMessages.END.getMessage());
 		String end = scanner.nextLine().replaceAll("\\s+", "");
 		System.out.println();
 		LineRepository.validateStationInUse(end);

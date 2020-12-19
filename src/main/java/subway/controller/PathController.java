@@ -25,7 +25,7 @@ public class PathController {
 		String start = InputView.inputStartStation(scanner);
 		String end = InputView.inputEndStation(scanner, start);
 		List<String> shortestPath = SubwayMap.getLeastDistancePath(start, end);
-		OutputView.printPathInformation(shortestPath);
+		OutputView.printPathInformation(shortestPath, start, end);
 	}
 
 	public static void findLeastTimeConsumed(Scanner scanner) throws IllegalArgumentException {
@@ -33,15 +33,11 @@ public class PathController {
 		String start = InputView.inputStartStation(scanner);
 		String end = InputView.inputEndStation(scanner, start);
 		List<String> shortestPath = SubwayMap.getLeastTimePath(start, end);
-		OutputView.printPathInformation(shortestPath);
+		OutputView.printPathInformation(shortestPath, start, end);
 	}
 
 	private static void controlByOption(String option, Scanner scanner) throws IllegalArgumentException {
 		options.get(option).accept(scanner);
-		if (option.equals(Options.BACK.getOption())) {
-			return;
-		}
-		run(scanner);
 	}
 
 	public static void run(Scanner scanner) {
