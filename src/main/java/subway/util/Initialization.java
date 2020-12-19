@@ -1,5 +1,7 @@
 package subway.util;
 
+import subway.graph.DistanceWeightedGraph;
+import subway.graph.TimeWeightedGraph;
 import subway.legacy.Lines;
 import subway.legacy.Stations;
 import subway.domain.*;
@@ -10,6 +12,7 @@ public class Initialization {
         registerStations();
         registerLines();
         registerConnections();
+        setGraph();
     }
 
     private static void registerStations() {
@@ -29,13 +32,24 @@ public class Initialization {
     }
 
     private static void registerConnections() {
-        Connections.addConnection(new Connection(Stations.GYODAE.getName(), Stations.GANGNAM.getName(), 2, 3));
-        Connections.addConnection(new Connection(Stations.GANGNAM.getName(), Stations.YEOKSAM.getName(), 2, 3));
-        Connections.addConnection(new Connection(Stations.GYODAE.getName(), Stations.NAMBU_BUS_TERMINAL.getName(), 3,2));
-        Connections.addConnection(new Connection(Stations.NAMBU_BUS_TERMINAL.getName(), Stations.YANGJAE.getName(), 6,5));
-        Connections.addConnection(new Connection(Stations.YANGJAE.getName(), Stations.MAEBONG.getName(), 1,1));
-        Connections.addConnection(new Connection(Stations.GANGNAM.getName(), Stations.YANGJAE.getName(), 2,8));
-        Connections.addConnection(new Connection(Stations.YANGJAE.getName(), Stations.YANGJAE_CITIZEN_FOREST.getName(), 10,3));
+        ConnectionRepository.addConnection(new Connection(Stations.GYODAE.getName(), Stations.GANGNAM.getName(), 2, 3));
+        ConnectionRepository.addConnection(new Connection(Stations.GANGNAM.getName(), Stations.YEOKSAM.getName(), 2, 3));
+        ConnectionRepository.addConnection(new Connection(Stations.GYODAE.getName(), Stations.NAMBU_BUS_TERMINAL.getName(), 3,2));
+        ConnectionRepository.addConnection(new Connection(Stations.NAMBU_BUS_TERMINAL.getName(), Stations.YANGJAE.getName(), 6,5));
+        ConnectionRepository.addConnection(new Connection(Stations.YANGJAE.getName(), Stations.MAEBONG.getName(), 1,1));
+        ConnectionRepository.addConnection(new Connection(Stations.GANGNAM.getName(), Stations.YANGJAE.getName(), 2,8));
+        ConnectionRepository.addConnection(new Connection(Stations.YANGJAE.getName(), Stations.YANGJAE_CITIZEN_FOREST.getName(), 10,3));
+    }
+
+    private static void setGraph() {
+        for (Station station : StationRepository.stations()) {
+            DistanceWeightedGraph.addVertex(station.getName());
+            TimeWeightedGraph.addVertex(station.getName());
+        }
+        for (Connection connection : ConnectionRepository.connections()) {
+            DistanceWeightedGraph.setEdgeWeight(DistanceWeightedGraph.addEdge(connection.getSource(), connection.getDestination()), connection.getDistance());
+            TimeWeightedGraph.setEdgeWeight(TimeWeightedGraph.addEdge(connection.getSource(), connection.getDestination()), connection.getTime());
+        }
     }
 
 }
