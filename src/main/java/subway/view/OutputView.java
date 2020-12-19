@@ -1,6 +1,6 @@
 package subway.view;
 
-import subway.MainOption;
+import subway.common.MainOption;
 import subway.path.SearchMethod;
 import subway.station.Station;
 

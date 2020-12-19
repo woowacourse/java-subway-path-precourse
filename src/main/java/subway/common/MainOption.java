@@ -1,4 +1,4 @@
-package subway;
+package subway.common;
 
 public enum MainOption {
     PATH("1", "경로 조회"),
