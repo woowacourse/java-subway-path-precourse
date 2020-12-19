@@ -27,7 +27,7 @@ public class PathController {
     private SearchType requestSearchNumber() {
         SearchType searchType = SearchType.BACK;
 
-        while(true) {
+        while (true) {
             try {
                 searchType = inputView.inputSearchNumber();
                 break;
@@ -45,5 +45,15 @@ public class PathController {
             return;
         }
         String startStationName = inputView.inputStationName(START);
+        String endStationName = inputView.inputStationName(END);
+        while (true) {
+            try {
+                ShortestPathDto shortestPathDto = pathService.calcShortestPath(startStationName, endStationName, searchType);
+                OutputView.printResult(shortestPathDto);
+                break;
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 }
