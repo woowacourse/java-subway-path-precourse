@@ -38,7 +38,6 @@ public class MainMenu {
             mainStop();
             return;
         }
-        // 경로 조회 창으로 넘어가는 기능 구현
         PathSelectMenu.pathMenuRun(scanner);
     }
 }
