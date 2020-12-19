@@ -21,6 +21,7 @@ public class RouteLookupView {
         while (true) {
             try {
                 routeLookupOutputView.printMenu();
+                String menuFeature = routeLookupInputView.getMenuTargetFeature();
             } catch (IllegalArgumentException illegalArgumentException) {
                 commonOutputView.printExceptionMessage(illegalArgumentException);
             }
