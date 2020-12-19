@@ -8,9 +8,8 @@ public enum MainScreen implements Screen {
         @Override
         public Screen run() {
             /*
-             * 아무것도 안하고 Route로 이동
+             * 아무것도 안하고 RouteScreen을 반환한다.
              * */
-            System.out.println("로직 실행 : 메인화면에서 이동");
             return RouteScreen.DISTANCE;
         }
     },

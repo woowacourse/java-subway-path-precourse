@@ -1,25 +1,21 @@
 package subway.screen;
 
 import java.util.Arrays;
+import subway.controller.SubwayPathController;
 
 public enum RouteScreen implements Screen {
 
     DISTANCE("1", "최단 거리") {
         @Override
         public Screen run() {
-            /*
-             * 로직 실행 후, 메인화면으로 이동
-             * */
-            System.out.println("최단 거리 실행 미구현");
+            controller.findByDistance();
             return MainScreen.ROUTE;
         }
     },
     TIME("2", "최소 시간") {
         @Override
         public Screen run() {
-            /*
-             * 로직 실행 후, 메인화면으로 이동
-             * */
+            controller.findByTime();
             System.out.println("최소 시간 실행 미구현");
             return MainScreen.ROUTE;
         }
@@ -33,6 +29,7 @@ public enum RouteScreen implements Screen {
     };
 
     private static final String SCREEN_TITLE = "경로 기준";
+    private static SubwayPathController controller = new SubwayPathController();
 
     private final String code;
     private final String command;
