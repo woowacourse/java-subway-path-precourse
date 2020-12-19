@@ -20,8 +20,32 @@ public class InputView {
             System.out.println();
             Validator.functionSelect(buttons, input);
             return input;
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException IAE) {
             return getFunctionSelect(buttons);
+        }
+    }
+
+    public String getSourceStation() {
+        OutputView.printSourceStationQuery();
+        try {
+            String input = scanner.nextLine();
+            OutputView.printEmptyLine();
+            Validator.existStation(input);
+            return input;
+        } catch (IllegalArgumentException IAE) {
+            return getSourceStation();
+        }
+    }
+
+    public String getDestinationStation() {
+        OutputView.printDestinationStationQuery();
+        try {
+            String input = scanner.nextLine();
+            OutputView.printEmptyLine();
+            Validator.existStation(input);
+            return input;
+        } catch (IllegalArgumentException IAE) {
+            return getDestinationStation();
         }
     }
 }
