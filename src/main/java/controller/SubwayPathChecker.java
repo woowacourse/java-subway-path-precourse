@@ -76,8 +76,7 @@ public class SubwayPathChecker {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(SectionRepository.graphs());
         double shortestDistance = dijkstraShortestPath.getPath(departureStationName, arrivalStationName).getWeight();
         List shortestPath = dijkstraShortestPath.getPath(departureStationName, arrivalStationName).getVertexList();
-        System.out.println(shortestDistance);
-        System.out.println(shortestPath);
+        OutputView.printShortestPathResult(shortestDistance, shortestPath);
     }
 
     private void hasStationNameDuplication(Station departureStation, Station arrivalStation) {
