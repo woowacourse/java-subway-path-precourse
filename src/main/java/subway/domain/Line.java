@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class Line {
-    private String name;
-    private List<Station> stations = new ArrayList<>();
+    private final String name;
+    private final List<Station> stations = new ArrayList<>();
 
     private Line(String name) {
         this.name = name;
