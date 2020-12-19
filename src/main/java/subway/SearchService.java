@@ -47,7 +47,6 @@ public class SearchService {
         DijkstraShortestPath dijkstraShortestPathDistance = dijkstraShortestPaths.get(DISTANCE_INDEX);
         double pathWeight = dijkstraShortestPathDistance.getPathWeight(firstStation.getName(), secondStation.getName());
         GraphPath path = dijkstraShortestPathDistance.getPath(firstStation.getName(), secondStation.getName());
-
         searchView.printList(path, pathWeight);
     }
 

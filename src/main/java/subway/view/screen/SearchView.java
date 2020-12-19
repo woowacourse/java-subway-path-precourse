@@ -4,6 +4,7 @@ import org.jgrapht.GraphPath;
 import subway.view.OutputView;
 import subway.view.Prefix;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class SearchView {
@@ -42,6 +43,11 @@ public class SearchView {
         outputView.printInfos("총 거리: " + pathWeight + "km");
         outputView.printInfos(Prefix.CONTOUR.getPrefix());
 
+        String paths = path.getEdgeList().toString();
+        String[] split = paths.split(" : ");
 
+        for (String singlePath : split) {
+            outputView.printInfos(singlePath);
+        }
     }
 }
