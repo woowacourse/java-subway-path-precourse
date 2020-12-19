@@ -9,23 +9,73 @@ import subway.domain.SectionRepository;
 
 public class GetPath {
 
-    public static List<String> getDijkstraShortestPath(String upStationName, String downStationName) {
+    private static void addStationName(WeightedMultigraph<String, DefaultWeightedEdge> graph) {
         List<Section> sections = SectionRepository.sections();
-        WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph(
-            DefaultWeightedEdge.class);
-
         for (Section section : sections) {
             graph.addVertex(section.getUpStation().getName());
             graph.addVertex(section.getDownStation().getName());
         }
+    }
+
+    private static void addWeight(WeightedMultigraph<String, DefaultWeightedEdge> graph) {
+        List<Section> sections = SectionRepository.sections();
         for (Section section : sections) {
             graph.setEdgeWeight(
                 graph.addEdge(section.getUpStation().getName(), section.getDownStation().getName()),
                 section.getDistance());
         }
-            DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
-            List shortestPath = dijkstraShortestPath
-                .getPath(upStationName, downStationName).getVertexList();
-            return shortestPath;
     }
+
+    public static List<String> getShortestDistance(String upStationName,
+        String downStationName) {
+        WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph(
+            DefaultWeightedEdge.class);
+        addStationName(graph);
+        addWeight(graph);
+
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
+        List shortestPath = dijkstraShortestPath
+            .getPath(upStationName, downStationName).getVertexList();
+        return shortestPath;
+    }
+
+    public static int getShortestDistanceWeight(String upStationName,
+        String downStationName) {
+        WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph(
+            DefaultWeightedEdge.class);
+        addStationName(graph);
+        addWeight(graph);
+
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
+        double shortestWeight = dijkstraShortestPath
+            .getPath(upStationName, downStationName).getWeight();
+        return (int) shortestWeight;
+    }
+
+    public static List<String> getShortestTime(String upStationName,
+        String downStationName) {
+        WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph(
+            DefaultWeightedEdge.class);
+        addStationName(graph);
+        addWeight(graph);
+
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
+        List shortestPath = dijkstraShortestPath
+            .getPath(upStationName, downStationName).getVertexList();
+        return shortestPath;
+    }
+
+    public static int getShortestTimeWeight(String upStationName,
+        String downStationName) {
+        WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph(
+            DefaultWeightedEdge.class);
+        addStationName(graph);
+        addWeight(graph);
+
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
+        double shortestWeight = dijkstraShortestPath
+            .getPath(upStationName, downStationName).getWeight();
+        return (int) shortestWeight;
+    }
+
 }
