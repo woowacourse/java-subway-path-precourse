@@ -9,26 +9,42 @@ import subway.dto.ShortestPathDto;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class PathService {
+    private static final String DUPLICATION_STATION_NAME_ERROR = "역의 이름이 같으면 안 됩니다.";
+    private static final String NON_EXISTENT_STATION__ERROR = "역이 존재하지 않습니다.";
+    private static final String NON_EXISTENT_PATH_ERROR = "경로가 존재하지 않습니다.";
     private static final int ZERO = 0;
     private static final int BEFORE_STATION_MINUS_NUMBER = 0;
     private static final int TOTAL_DISTANCE_INDEX = 0;
     private static final int TOTAL_TIME_INDEX = 1;
 
-    public void registerPath(String startStationName, String endStationName, int km, int minute) {
+    public void addPath(String startStationName, String endStationName, int km, int minute) {
         Station startStation = StationRepository.selectByName(startStationName);
         Station endStation = StationRepository.selectByName(endStationName);
         PathRepository.addPath(startStation, endStation, km, minute);
     }
 
     public ShortestPathDto calcShortestPath(String startStationName, String endStationName, SearchType searchType) {
-        // TODO : 존재하는 역인지, 같은 역인지, 경로가 없는지
+        validate(startStationName, endStationName);
         List<String> shortestPath = getShortestPath(startStationName, endStationName, searchType);
+        if (shortestPath == null || shortestPath.isEmpty()) {
+            throw new IllegalArgumentException(NON_EXISTENT_PATH_ERROR);
+        }
         List<Integer> weights = calcTotalWeight(shortestPath);
         int totalDistance = weights.get(TOTAL_DISTANCE_INDEX);
         int totalTime = weights.get(TOTAL_TIME_INDEX);
         return new ShortestPathDto(totalDistance, totalTime, shortestPath);
+    }
+
+    private void validate(String startStationName, String endStationName) {
+        if (Objects.equals(startStationName, endStationName)) {
+            throw new IllegalArgumentException(DUPLICATION_STATION_NAME_ERROR);
+        }
+        if (!StationRepository.isExistent(startStationName) || !StationRepository.isExistent(endStationName)) {
+            throw new IllegalArgumentException(NON_EXISTENT_STATION__ERROR);
+        }
     }
 
     private List<String> getShortestPath(String startStationName, String endStationName, SearchType searchType) {
