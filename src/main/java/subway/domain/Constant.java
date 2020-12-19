@@ -31,7 +31,7 @@ public class Constant {
 
     static final String CHOOSE_FUNCTION = "원하는 기능을 선택하세요.";
     public static final String MAIN_MENU_TITLE = "메인 화면";
-    public static final String STATION_MENU_TITLE = "경로 기준";
+    public static final String ROUTE_SELECT_MENU_TITLE = "경로 기준";
 
     static final String IS_IN_MENU = "존재하지 않는 항목입니다.";
 }
