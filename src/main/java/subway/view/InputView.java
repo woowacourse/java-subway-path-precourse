@@ -20,11 +20,11 @@ public class InputView {
         this.scanner = scanner;
     }
 
-    public void initScanner(Scanner scanner) {
+    public static void initScanner(Scanner scanner) {
         instance = new InputView(scanner);
     }
 
-    public InputView getInstance() {
+    public static InputView getInstance() {
         if (instance == null) {
             throw new NotInitScannerException();
         }
