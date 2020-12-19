@@ -1,5 +1,6 @@
 package subway;
 
+import subway.domain.Edge;
 import subway.domain.Station;
 
 import java.util.ArrayList;
@@ -8,19 +9,19 @@ import java.util.Map;
 
 public class ApplicationInitializer {
 
-    public static class Edge {
-        private int endStation;
-        private int distance;
-        private int time;
-        //        Set<Line> includedLine = new HashSet<>();
-        public Edge(int endStation, int distance, int time) {
-            if (distance <= 0) { throw new IllegalArgumentException("[ERROR] 거리는 양의 정수입니다.");}
-            if (time <= 0) { throw new IllegalArgumentException("[ERROR] 시간은 양의 정수입니다.");}
-            this.endStation = endStation;
-            this.distance = distance;
-            this.time = time;
-        }
-    }
+//    public static class Edge {
+//        private int endStation;
+//        private int distance;
+//        private int time;
+//        //        Set<Line> includedLine = new HashSet<>();
+//        public Edge(int endStation, int distance, int time) {
+//            if (distance <= 0) { throw new IllegalArgumentException("[ERROR] 거리는 양의 정수입니다.");}
+//            if (time <= 0) { throw new IllegalArgumentException("[ERROR] 시간은 양의 정수입니다.");}
+//            this.endStation = endStation;
+//            this.distance = distance;
+//            this.time = time;
+//        }
+//    }
 
     public static ApplicationContext injectDependencies() {
         Map<Station, Integer> stationMapper = new HashMap<>();

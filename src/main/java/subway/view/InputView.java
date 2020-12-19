@@ -30,4 +30,14 @@ public class InputView {
         return scanner.nextLine();
     }
 
+    public String inputStartStationToShortestDistance() {
+        System.out.println("## 출발역을 입력하세요.");
+        return scanner.nextLine();
+    }
+
+    public String inputEndStationToShortestDistance() {
+        System.out.println("## 도착역을 입력하세요.");
+        return scanner.nextLine();
+    }
+
 }

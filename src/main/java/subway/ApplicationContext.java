@@ -55,7 +55,7 @@ public class ApplicationContext {
             return;
         }
         if (functionType == FunctionType.SHORTEST_DISTANCE) {
-            shortestDistance.
+            shortestDistance.calculateShortestDistance();
         }
         if (functionType == FunctionType.MINIMUM_TIME) {
 
