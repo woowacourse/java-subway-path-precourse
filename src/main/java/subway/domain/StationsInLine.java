@@ -3,7 +3,7 @@ package subway.domain;
 import java.util.LinkedList;
 
 import static resource.TextResource.ERROR_STATION_DUPLICATED_IN_SECTION;
-import static resource.TextResource.ERROR_STATION_ORDER_NOT_VALID;
+import static resource.TextResource.ERROR_ORDER_NOT_VALID;
 
 public class StationsInLine {
     private LinkedList<Station> stations;
@@ -14,7 +14,7 @@ public class StationsInLine {
 
     public void addStation(Station station, int order) {
         if (order < 1 || order > stations.size() + 1) {
-            throw new IllegalArgumentException(ERROR_STATION_ORDER_NOT_VALID);
+            throw new IllegalArgumentException(ERROR_ORDER_NOT_VALID);
         }
 
         if (stations.contains(station)) {

@@ -18,7 +18,13 @@ public class TextResource {
     public static final String ERROR_STATION_DUPLICATED_IN_SECTION = PREFIX_ERROR
             + "해당 노선의 구간에 입력한 역이 이미 존재 합니다.";
 
-    public static final String ERROR_STATION_ORDER_NOT_VALID = PREFIX_ERROR
+    public static final String ERROR_ORDER_NOT_VALID = PREFIX_ERROR
             + "입력한 순서가 올바르지 않습니다.";
+
+    public static final String ERROR_DISTANCE_TIME_NOT_POSITIVE = PREFIX_ERROR
+            + "거리와 소요시간은 음수 일 수 없습니다.";
+
+    public static final String ERROR_PATH_SIZE_OVER = PREFIX_ERROR
+            + "구간의 개수가 너무 많습니다.";
 
 }

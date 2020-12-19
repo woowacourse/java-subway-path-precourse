@@ -33,11 +33,11 @@ public class StationInLineTest {
         assertThatThrownBy(() -> {
             line.addStation(station, 5);
         }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ERROR_STATION_ORDER_NOT_VALID);
+                .hasMessage(ERROR_ORDER_NOT_VALID);
 
         assertThatThrownBy(() -> {
             line.addStation(station, 0);
         }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ERROR_STATION_ORDER_NOT_VALID);
+                .hasMessage(ERROR_ORDER_NOT_VALID);
     }
 }
