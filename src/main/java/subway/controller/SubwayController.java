@@ -13,10 +13,6 @@ public class SubwayController {
             List.of("교대역:강남역=2/3", "강남역:역삼역=2/3", "교대역:남부터미널역=3/2", "남부터미널역:양재역=6/5", "양재역:매봉역=1/1",
                     "강남역:양재역=2/8", "양재역:양재시민의숲역=10/3");
 
-    private static final String TIME_GRAPH = "timeGraph";
-    private static final String DISTANCE_GRAPH = "distanceGraph";
-
-
     public SubwayController() {
         for (String line : INIT_LINES) {
             String[] split = line.split(":");
@@ -28,25 +24,17 @@ public class SubwayController {
             saveLines(lineName);
         }
 
-        GraphRepository.addGraph(TIME_GRAPH);
-        GraphRepository.addGraph(DISTANCE_GRAPH);
+        GraphRepository.addGraph(GraphType.TIME);
+        GraphRepository.addGraph(GraphType.DISTANCE);
         saveStationWeight();
     }
 
-    public double getShortestTime(Station v1, Station v2) {
-        return GraphRepository.findGraphByName(TIME_GRAPH).shortestPathWeight(v1, v2);
+    public double getShortestPathWeight(Station v1, Station v2, GraphType graphType) {
+        return GraphRepository.findGraphByType(graphType).shortestPathWeight(v1, v2);
     }
 
-    public List<Station> getShortestTimePath(Station v1, Station v2) {
-        return GraphRepository.findGraphByName(TIME_GRAPH).shortestPath(v1, v2);
-    }
-
-    public double getShortestDistance(Station v1, Station v2) {
-        return GraphRepository.findGraphByName(DISTANCE_GRAPH).shortestPathWeight(v1, v2);
-    }
-
-    public List<Station> getShortestDistancePath(Station v1, Station v2) {
-        return GraphRepository.findGraphByName(DISTANCE_GRAPH).shortestPath(v1, v2);
+    public List<Station> getShortestPath(Station v1, Station v2, GraphType graphType) {
+        return GraphRepository.findGraphByType(graphType).shortestPath(v1, v2);
     }
 
     private void saveStationWeight() {
@@ -67,8 +55,8 @@ public class SubwayController {
     private void makeConnection(List<Station> stations, String distance, String time) {
         try {
 
-            GraphRepository.findGraphByName(TIME_GRAPH).makeConnection(stations.get(0), stations.get(1), Integer.parseInt(time));
-            GraphRepository.findGraphByName(DISTANCE_GRAPH).makeConnection(stations.get(0), stations.get(1), Integer.parseInt(distance));
+            GraphRepository.findGraphByType(GraphType.TIME).makeConnection(stations.get(0), stations.get(1), Integer.parseInt(time));
+            GraphRepository.findGraphByType(GraphType.DISTANCE).makeConnection(stations.get(0), stations.get(1), Integer.parseInt(distance));
 
         } catch (GraphNotExistException e) {
             // error

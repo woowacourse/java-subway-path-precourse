@@ -6,22 +6,18 @@ import java.util.Map;
 
 public class GraphRepository {
 
-    private final static Map<String, Graph> graphMap = new HashMap<>();
+    private final static Map<GraphType, Graph> graphMap = new HashMap<>();
 
-    public static Map<String, Graph> graphMaps() {
+    public static Map<GraphType, Graph> graphMaps() {
         return Collections.unmodifiableMap(graphMap);
     }
 
-    public static void addGraph(String graphName) {
-        graphMap.putIfAbsent(graphName, new Graph());
+    public static void addGraph(GraphType graphType) {
+        graphMap.putIfAbsent(graphType, new Graph());
     }
 
-    public static Graph findGraphByName(String graphName) {
-        return graphMap.getOrDefault(graphName, null);
-    }
-
-    private static boolean checkDuplication(String graphName) {
-        return graphMaps().containsKey(graphName);
+    public static Graph findGraphByType(GraphType graphType) {
+        return graphMap.getOrDefault(graphType, null);
     }
 
 }
