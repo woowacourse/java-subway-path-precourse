@@ -10,17 +10,17 @@ public class Input {
     }
 
     public String getMainFunction(){
-        System.out.println("원하는 기능을 선택하세요");
+        System.out.println("\n원하는 기능을 선택하세요");
         return getUserNumberInput();
     }
 
     public String getStartStation(){
-        System.out.println("출발역을 입력하세요.");
+        System.out.println("\n출발역을 입력하세요.");
         return getUserStringInput();
     }
 
     public String getEndStation(){
-        System.out.println("도착역을 입력하세요.");
+        System.out.println("\n도착역을 입력하세요.");
         return getUserStringInput();
     }
 

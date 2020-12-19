@@ -8,6 +8,15 @@ import java.util.Objects;
 public class LineRepository {
     private static final List<Line> lines = new ArrayList<>();
 
+    static {
+        lines.add(new Line("2호선", StationRepository.getStationByName("교대역"),
+                StationRepository.getStationByName("강남역"), StationRepository.getStationByName("역삼역")));
+        lines.add(new Line("3호선", StationRepository.getStationByName("교대역"),
+                StationRepository.getStationByName("남부터미널역"), StationRepository.getStationByName("양재역"), StationRepository.getStationByName("매봉역")));
+        lines.add(new Line("신분당선", StationRepository.getStationByName("강남역"),
+                StationRepository.getStationByName("양재역"), StationRepository.getStationByName("양재시민의숲역")));
+    }
+
     public static List<Line> lines() {
         return Collections.unmodifiableList(lines);
     }

@@ -8,8 +8,6 @@ public class Output {
     private static String SHORTEST_PATH = "최단 거리";
     private static String SHORTEST_TIME = "최소 시간";
     private static String BACK = "돌아가기";
-    private static String PREFIX_INFO = "[INFO]";
-    private static String PREFIX_ERROR = "[ERROR]";
 
     public static void printMainFunction(){
         System.out.println("## 메인 화면");
