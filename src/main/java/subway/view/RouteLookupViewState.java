@@ -1,7 +1,9 @@
 package subway.view;
 
 import subway.SubwayPath;
+import subway.domain.Station;
 import subway.exception.StateNotInitializedException;
+import subway.service.StationService;
 import subway.util.MainViewUtil;
 import subway.util.RouteLookupViewUtil;
 import subway.view.input.RouteLookupInputView;
@@ -39,12 +41,31 @@ public class RouteLookupViewState implements ViewState {
         try {
             routeLookupOutputView.printMenu();
             String menuFeature = routeLookupInputView.getMenuTargetFeature();
+            checkAndPrintMinimumDistance(menuFeature, subwayPath);
             checkAndGoBackToMainView(menuFeature, subwayPath);
         } catch (IllegalArgumentException illegalArgumentException) {
             commonOutputView.printExceptionMessage(illegalArgumentException);
         }
         return true;
     }
+
+    private void checkAndPrintMinimumDistance(String menuFeature, SubwayPath subwayPath) {
+        if (!menuFeature.equals(RouteLookupViewUtil.getBtnMinimumDistance())) {
+            return;
+        }
+
+        changeStateToMainView(subwayPath);
+    }
+
+    private void checkAndPrintMinimumTime(String menuFeature, SubwayPath subwayPath) {
+        if (!menuFeature.equals(RouteLookupViewUtil.getBtnMinimumTime())) {
+            return;
+        }
+        String stationBeginName = "";
+        Station stationBegin = StationService.getStationByName(stationBeginName);
+        changeStateToMainView(subwayPath);
+    }
+
 
     private void checkAndGoBackToMainView(String menuFeature, SubwayPath subwayPath) {
         if (!menuFeature.equals(RouteLookupViewUtil.getBtnBack())) {
