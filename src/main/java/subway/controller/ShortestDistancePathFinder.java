@@ -18,11 +18,11 @@ public class ShortestDistancePathFinder extends ShortestPathFinder {
         List<String> shortestDistancePath =
                 StationDistanceRespository.getShortestPath(departure, terminal);
         int consumedTime = getTimeOnShortestPath(shortestDistancePath);
-        PathOutputView.showCheckedResult(shortestDistancePath, shortestDistance, 0);
+        PathOutputView.showCheckedResult(shortestDistancePath, shortestDistance, consumedTime);
     }
 
     private int getTimeOnShortestPath(List<String> shortestDistancePath) {
-        int time = 0;
+        int time = ControllerConstant.ZERO_NUMBER;
 
         for (int i = ControllerConstant.ZERO_NUMBER;
                 i < shortestDistancePath.size() - ControllerConstant.ONE_NUMBER; i++) {
