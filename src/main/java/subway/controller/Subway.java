@@ -2,6 +2,7 @@ package subway.controller;
 
 import java.util.Scanner;
 
+import subway.domain.LineRepository;
 import subway.exception.constant.MainInputEnum;
 import subway.exception.constant.TraverseInputEnum;
 import subway.exception.validation.MainInputValidation;
@@ -20,31 +21,25 @@ public class Subway {
     public void run() {
         MainInputValidation mainInputValidation = new MainInputValidation(inputView);
         OutputView.printMainScreen();
-        if (mainInputValidation.input().equals(MainInputEnum.TRAVERSE_SUBWAY.getOption())) {
+        String mainInput = mainInputValidation.input();
+        if (mainInput.equals(MainInputEnum.TRAVERSE_SUBWAY.getOption())) {
             traverse();
-        }
-        if (mainInputValidation.input().equals(MainInputEnum.QUIT.getOption())) {
-            return;
         }
     }
 
     private void traverse() {
         OutputView.printTraverseScreen();
         TraverseInputValidation traverseInputValidation = new TraverseInputValidation(inputView);
-        OutputView.printTraverseScreen();
-        if (traverseInputValidation.input()
-            .equals(TraverseInputEnum.SHORTEST_DISTANCE.getOption())) {
+        String function = traverseInputValidation.input();
+        if (
+            function.equals(TraverseInputEnum.SHORTEST_DISTANCE.getOption())) {
+            LineRepository.getDijkstraShortestPath();
             return;
         }
-        if (traverseInputValidation.input().equals(TraverseInputEnum.SHORTEST_TIME.getOption())) {
+        if (function.equals(TraverseInputEnum.SHORTEST_TIME.getOption())) {
+            System.out.println("d");
             return;
         }
-        if (traverseInputValidation.input().equals(TraverseInputEnum.BACK.getOption())) {
-            run();
-        }
-    }
-
-    private void init() {
-
+        run();
     }
 }

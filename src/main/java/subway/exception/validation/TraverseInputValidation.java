@@ -22,13 +22,13 @@ public class TraverseInputValidation {
         String function = this.inputView.inputFunction();
         try {
             if (Arrays.stream(TraverseInputEnum.values())
-                .noneMatch(traverseInputEnum -> traverseInputEnum.getOption().equals(function))) {
-                throw new SubwayCustomException(TRAVERSE_FUNCTION_ERROR);
+                .anyMatch(traverseInputEnum -> traverseInputEnum.getOption().equals(function))) {
+                return function;
             }
+            throw new SubwayCustomException(TRAVERSE_FUNCTION_ERROR);
         } catch (SubwayCustomException e) {
             OutputView.printError(e);
             return input();
         }
-        return function;
     }
 }

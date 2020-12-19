@@ -22,13 +22,14 @@ public class MainInputValidation {
         String function = this.inputView.inputFunction();
         try {
             if (Arrays.stream(MainInputEnum.values())
-                .noneMatch(mainInputEnum -> mainInputEnum.getOption().equals(function))) {
-                throw new SubwayCustomException(MAIN_FUNCTION_ERROR);
+                .anyMatch(mainInputEnum -> mainInputEnum.getOption().equals(function))) {
+                return function;
+
             }
+            throw new SubwayCustomException(MAIN_FUNCTION_ERROR);
         } catch (SubwayCustomException e) {
             OutputView.printError(e);
             return input();
         }
-        return function;
     }
 }
