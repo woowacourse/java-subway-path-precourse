@@ -6,13 +6,22 @@ import java.util.List;
 import java.util.Objects;
 
 public class StationRepository {
+
     private static final List<Station> stations = new ArrayList<>();
 
     public static List<Station> stations() {
         return Collections.unmodifiableList(stations);
     }
 
-    public static void addStation(Station station) {
+    private static void validateStationNameDuplicate(String stationName)
+        throws IllegalArgumentException {
+        if (stations.stream().anyMatch(station -> station.getName().equals(stationName))) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void addStation(Station station) throws IllegalArgumentException {
+        validateStationNameDuplicate(station.getName());
         stations.add(station);
     }
 
