@@ -1,5 +1,7 @@
 package subway.domain;
 
+import subway.exception.NoSuchStationException;
+import subway.exception.SameStationException;
 import subway.view.InputView;
 import subway.view.OutputView;
 
@@ -12,6 +14,8 @@ public class SubwayManager {
         while (sceneState != SceneState.QUIT) {
             sceneState = viewMainScene(scanner, sceneState);
             sceneState = viewPathScene(scanner, sceneState);
+            sceneState = viewFindInformationByDistanceScene(scanner, sceneState);
+            sceneState = viewFindInformationByTimeScene(scanner, sceneState);
         }
     }
 
@@ -33,5 +37,73 @@ public class SubwayManager {
         }
 
         return sceneState;
+    }
+
+    private SceneState viewFindInformationByDistanceScene(Scanner scanner, SceneState sceneState) {
+        try {
+            return executeFindInformationByDistanceScene(scanner, sceneState);
+        }
+        catch (NoSuchStationException e) {
+            OutputView.printStationErrorMessage();
+            return viewFindInformationByDistanceScene(scanner, sceneState);
+        }
+    }
+
+    private SceneState executeFindInformationByDistanceScene(Scanner scanner, SceneState sceneState) {
+        try {
+            if (sceneState == SceneState.DISTANCE_MIN_SCENE) {
+                return showPathByDistance(StationRepository.findStationByName(InputView.inputDepartureStation(scanner))
+                        , StationRepository.findStationByName(InputView.inputArrivalStation(scanner)));
+            }
+
+            return sceneState;
+        }
+        catch (SameStationException e) {
+            OutputView.printSameStationErrorMessage();
+            return executeFindInformationByDistanceScene(scanner, sceneState);
+        }
+    }
+
+    private SceneState viewFindInformationByTimeScene(Scanner scanner, SceneState sceneState) {
+        try {
+            return executeFindInformationByTimeScene(scanner, sceneState);
+        }
+        catch (NoSuchStationException e) {
+            OutputView.printStationErrorMessage();
+            return viewFindInformationByTimeScene(scanner, sceneState);
+        }
+    }
+
+    private SceneState executeFindInformationByTimeScene(Scanner scanner, SceneState sceneState) {
+        try {
+            if (sceneState == SceneState.TIME_MIN_SCENE) {
+                return showPathByTime(StationRepository.findStationByName(InputView.inputDepartureStation(scanner))
+                        , StationRepository.findStationByName(InputView.inputArrivalStation(scanner)));
+            }
+
+            return sceneState;
+        }
+        catch (SameStationException e) {
+            OutputView.printSameStationErrorMessage();
+            return executeFindInformationByTimeScene(scanner, sceneState);
+        }
+    }
+
+    private SceneState showPathByDistance(Station departureStation, Station arrivalStation) {
+        if (departureStation.equals(arrivalStation)) {
+            throw new SameStationException();
+        }
+
+        return OutputView.printInquiryResult(
+                SectionRepository.getSectionDistanceStations(departureStation, arrivalStation));
+    }
+
+    private SceneState showPathByTime(Station departureStation, Station arrivalStation) {
+        if (departureStation.equals(arrivalStation)) {
+            throw new SameStationException();
+        }
+
+        return OutputView.printInquiryResult(
+                SectionRepository.getSectionTimeStations(departureStation, arrivalStation));
     }
 }
