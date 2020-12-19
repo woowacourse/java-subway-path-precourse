@@ -1,5 +1,6 @@
 package subway.view.path;
 
+import java.util.List;
 import javax.sound.sampled.Line.Info;
 import org.jgrapht.GraphPath;
 import subway.common.GuideMessage;
@@ -25,13 +26,12 @@ public class PathOutputManager {
         GuideMessage.print(ENTER_ARRIVAL_STATION);
     }
 
-    public static void printResultByShortestDistance(String[] stations, GraphPath targetPath) {
+    public static void printResultByShortestDistance(List<String> path) {
         GuideMessage.print(RESULT);
         InfoMessage.print(DIVIDER);
-        InfoMessage.print(TOTAL_DISTANCE + PathRepository.getShortestDistance(targetPath) + KM);
-        InfoMessage.print(TOTAL_TIME + PathRepository.getTimeByShortestDistance(stations[0], stations[1]) + MINUTE);
+        InfoMessage.print(TOTAL_DISTANCE + PathRepository.getDistanceByList(path) + KM);
+        InfoMessage.print(TOTAL_TIME + PathRepository.getTimeByList(path) + MINUTE);
         InfoMessage.print(DIVIDER);
-        PathRepository.getShortestDistanceList(stations[0], stations[1]).stream()
-            .forEach(station -> InfoMessage.print(station));
+        path.stream().forEach(station -> InfoMessage.print(station));
     }
 }

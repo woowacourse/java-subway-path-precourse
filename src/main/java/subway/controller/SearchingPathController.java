@@ -1,7 +1,7 @@
 package subway.controller;
 
+import java.util.List;
 import java.util.Scanner;
-import org.jgrapht.GraphPath;
 import subway.common.ErrorCustomException;
 import subway.common.ErrorMessage;
 import subway.domain.PathRepository;
@@ -45,9 +45,8 @@ public class SearchingPathController {
     private void searchShortestPath() {
         try {
             String[] stations = pathInputManager.inputStations();
-            GraphPath<String, String> targetPath = PathRepository
-                .getShortestDistance(stations[0], stations[1]);
-            PathOutputManager.printResultByShortestDistance(stations, targetPath);
+            List<String> path = PathRepository.getListByShortestDistance(stations[0],stations[1]);
+            PathOutputManager.printResultByShortestDistance(path);
         } catch (ErrorCustomException errorCustomException) {
             ErrorMessage.print(errorCustomException);
         }

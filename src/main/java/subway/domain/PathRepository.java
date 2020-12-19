@@ -39,22 +39,25 @@ public class PathRepository {
         graphByTime.setEdgeWeight(graphByTime.addEdge(sourceVertex, targetVertex), weight);
     }
 
-    public static GraphPath<String, String> getShortestDistance(String source, String sink) {
-        GraphPath<String, String> path = dijkstraShortestDistance.getPath(source, sink);
-        return path;
-    }
+//    public static GraphPath<String, String> getShortestDistance(String source, String sink) {
+//        GraphPath<String, String> path = dijkstraShortestDistance.getPath(source, sink);
+//        return path;
+//    }
 
-    public static List<String> getShortestDistanceList(String source, String sink) {
+    public static List<String> getListByShortestDistance(String source, String sink) {
         return dijkstraShortestDistance.getPath(source, sink).getVertexList();
     }
 
-    public static int getShortestDistance(GraphPath<String, String> path) {
-        double weight = path.getWeight();
-        return (int) weight;
+    public static int getDistanceByList(List<String> path) {
+        double totalTime = 0 ;
+        for (int i = 0; i < path.size() - 1; i++) {
+            totalTime += graphByDistance
+                .getEdgeWeight(graphByDistance.getEdge(path.get(i), path.get(i + 1)));
+        }
+        return (int)totalTime;
     }
 
-    public static int getTimeByShortestDistance(String source, String sink) {
-        List<String> path = getShortestDistanceList(source, sink);
+    public static int getTimeByList(List<String> path) {
         double totalTime = 0 ;
         for (int i = 0; i < path.size() - 1; i++) {
             totalTime += graphByTime
@@ -63,7 +66,7 @@ public class PathRepository {
         return (int)totalTime;
     }
 
-    public static GraphPath<String, String> getShortestTime(String source, String sink) {
+    public static GraphPath<String, String> getListByShortestTime(String source, String sink) {
         GraphPath<String, String> path = dijkstraShortestTime.getPath(source, sink);
         return path;
     }
