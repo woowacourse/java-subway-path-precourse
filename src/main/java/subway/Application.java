@@ -17,7 +17,7 @@ public class Application {
 	private static final String[][] DEFAULT_SECTION_LENGHT = { { "교대역", "강남역", "2" }, { "강남역", "역삼역", "2" },
 			{ "교대역", "남부터미널역", "3" }, { "남부터미널역", "양재역", "6" }, { "양재역", "매봉역", "1" }, { "강남역", "양재역", "2" },
 			{ "양재역", "양재시민의숲역", "10" } };
-	
+
 	public static void main(String[] args) {
 		final Scanner scanner = new Scanner(System.in);
 		// TODO: 프로그램 구현
@@ -27,13 +27,13 @@ public class Application {
 	static public void startProgram(Scanner scanner) {
 		StationRepository stationRepositiory = new StationRepository();
 		LineRepository lineRepositiory = new LineRepository();
-		 SubwaySection subwaySection = new SubwaySection();
+		SubwaySection subwaySection = new SubwaySection();
 
 		defaultStation(stationRepositiory, subwaySection);
 		defaultLine(lineRepositiory);
 		defaultSection(subwaySection);
-		
-		MainManegement main = new MainManegement(scanner, stationRepositiory, subwaySection);
+
+		MainManegement main = new MainManegement(scanner, subwaySection);
 
 	}
 
@@ -54,8 +54,10 @@ public class Application {
 
 	private static void defaultSection(SubwaySection subwaySection) {
 		for (int sectionCount = 0; sectionCount < DEFAULT_SECTION_TIME.length; sectionCount++) {
-			subwaySection.sectionTime(DEFAULT_SECTION_TIME[sectionCount][0], DEFAULT_SECTION_TIME[sectionCount][1], Integer.parseInt(DEFAULT_SECTION_TIME[sectionCount][2]));
-			subwaySection.sectionLength(DEFAULT_SECTION_LENGHT[sectionCount][0], DEFAULT_SECTION_LENGHT[sectionCount][1], Integer.parseInt(DEFAULT_SECTION_LENGHT[sectionCount][2]));
+			subwaySection.sectionTime(DEFAULT_SECTION_TIME[sectionCount][0], DEFAULT_SECTION_TIME[sectionCount][1],
+					Integer.parseInt(DEFAULT_SECTION_TIME[sectionCount][2]));
+			subwaySection.sectionLength(DEFAULT_SECTION_LENGHT[sectionCount][0],
+					DEFAULT_SECTION_LENGHT[sectionCount][1], Integer.parseInt(DEFAULT_SECTION_LENGHT[sectionCount][2]));
 		}
 	}
 }

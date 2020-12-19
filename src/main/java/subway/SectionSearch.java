@@ -13,24 +13,23 @@ public class SectionSearch {
 	private static final String END_STATION_MESSAGE = "\n## 도착역을 입력하세요.";
 	private static final String RESULT_SEARCH_MESSAGE = "\n## 조회 결과.";
 	private static final String ERROR_INPUT_MESSAGE = "[ERROR] 잘못된 입력값입니다.\n";
-	private static final String ERROR_EQUALS_STATION = "[ERROR] 출발역과 도착역이 동일합니다.\n";
-	private static final String ERROR_NOTFIND_STATION = "[ERROR] 없는 역이름입니다.\n";
+	private static final String ERROR_EQUALS_STATION = "[ERROR] 출발역과 도착역이 동일합니다.";
+	private static final String ERROR_NOTFIND_STATION = "[ERROR] 없는 역이름입니다.";
 
-	public static void sectionSearchMenu(Scanner scanner, StationRepository stationRepositiory, SubwaySection subwaySection) {
+	public static void sectionSearchMenu(Scanner scanner, SubwaySection subwaySection) {
 		boolean end = false;
 		while (!end) {
 			System.out.println(SEARCH_SELECT_MESSAGE);
-			end = selectSerchMenu(scanner, stationRepositiory, subwaySection);
+			end = selectSerchMenu(scanner, subwaySection);
 		}
 	}
-	
-	private static boolean selectSerchMenu(Scanner scanner, StationRepository stationRepositiory,
-			SubwaySection subwaySection) {
+
+	private static boolean selectSerchMenu(Scanner scanner, SubwaySection subwaySection) {
 		boolean end = true;
 		while (end) {
 			String select = scanner.nextLine();
 			if (select.equals("1") || select.equals("2")) {
-				end = searchInput(scanner, select, stationRepositiory, subwaySection);
+				end = searchInput(scanner, select, subwaySection);
 				return end;
 			}
 			if (select.equals("B") || select.equals("b")) {
@@ -44,14 +43,14 @@ public class SectionSearch {
 		return false;
 	}
 
-	private static boolean searchInput(Scanner scanner, String select, StationRepository stationRepositiory, SubwaySection subwaySection) {
+	private static boolean searchInput(Scanner scanner, String select, SubwaySection subwaySection) {
 		System.out.println(START_STATION_MESSAGE);
 		String startStation = scanner.nextLine();
-		if (!inputErrorCheck(stationRepositiory, startStation))
+		if (!inputErrorCheck(subwaySection, startStation))
 			return false;
 		System.out.println(END_STATION_MESSAGE);
 		String endStation = scanner.nextLine();
-		if (!inputErrorCheck(stationRepositiory, endStation))
+		if (!inputErrorCheck(subwaySection, endStation))
 			return false;
 		if (!inputErrorCheck(startStation, endStation))
 			return false;
@@ -67,8 +66,8 @@ public class SectionSearch {
 		return false;
 	}
 
-	private static boolean inputErrorCheck(StationRepository stationRepositiory, String station) {
-		if(stationRepositiory.findStation(station))
+	private static boolean inputErrorCheck(SubwaySection subwaySection, String station) {
+		if (subwaySection.findStation(station))
 			return true;
 		System.out.println(ERROR_NOTFIND_STATION);
 		return false;
@@ -82,10 +81,12 @@ public class SectionSearch {
 	}
 
 	private static void minLengthSearch(SubwaySection subwaySection, String startStation, String endStation) {
+		System.out.println(RESULT_SEARCH_MESSAGE);
 		subwaySection.minLengthSection(startStation, endStation);
 	}
 
 	private static void minTimeSearch(SubwaySection subwaySection, String startStation, String endStation) {
+		System.out.println(RESULT_SEARCH_MESSAGE);
 		subwaySection.minTimeSection(startStation, endStation);
 	}
 
