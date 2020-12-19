@@ -1,6 +1,6 @@
 package subway.controller;
 
-import subway.constant.Service;
+import subway.domain.FunctionChoice;
 import subway.exception.InvalidInputException;
 import subway.repository.LineRepository;
 import subway.repository.StationRepository;
@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 import static subway.view.resource.Information.MAIN_INFO;
 
-public class MainController extends Controller {
+public class MainController extends SubwayController {
 
     private PathController pathController;
 
@@ -32,6 +32,7 @@ public class MainController extends Controller {
         LineRepository.initLines();
     }
 
+    @Override
     public void start() {
         while (isContinue)
             run();
@@ -39,23 +40,23 @@ public class MainController extends Controller {
 
     private void run() {
         try {
-            String selectedService = getSelectedService();
-            Service.validate(selectedService);
-            runSelectedService(selectedService);
+            String selectedFunction = getSelectedFunction();
+            FunctionChoice.validate(selectedFunction);
+            runSelectedService(selectedFunction);
         } catch (InvalidInputException e) {
             getOutputView().printErrorMessage(e.getMessage());
         }
     }
 
-    private String getSelectedService() {
+    private String getSelectedFunction() {
         getOutputView().printInformation(MAIN_INFO);
-        return getInputView().getSelectedServiceInput();
+        return getInputView().getSelectedFunctionInput();
     }
 
     private void runSelectedService(String selectedService) {
-        if (selectedService.equals(Service.PATH.getCode()))
-            pathController.run();
-        if (selectedService.equals(Service.QUIT.getCode()))
+        if (selectedService.equals(FunctionChoice.PATH.getCode()))
+            pathController.start();
+        if (selectedService.equals(FunctionChoice.QUIT.getCode()))
             isContinue = false;
     }
 }

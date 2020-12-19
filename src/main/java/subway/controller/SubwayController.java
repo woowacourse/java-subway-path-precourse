@@ -3,12 +3,12 @@ package subway.controller;
 import subway.view.InputView;
 import subway.view.OutputView;
 
-public abstract class Controller {
+public abstract class SubwayController {
 
     private InputView inputView;
     private OutputView outputView;
 
-    public Controller(InputView inputView, OutputView outputView) {
+    public SubwayController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
     }
@@ -20,4 +20,6 @@ public abstract class Controller {
     public OutputView getOutputView() {
         return outputView;
     }
+
+    public abstract void start();
 }

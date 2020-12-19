@@ -15,11 +15,11 @@ public class InputView {
         return scanner.nextLine();
     }
 
-    public String getSelectedServiceInput() {
+    public String getSelectedFunctionInput() {
         return userInputString();
     }
 
-    public String getSelectedFunctionInput() {
+    public String getSelectedBasisInput() {
         return userInputString();
     }
 }

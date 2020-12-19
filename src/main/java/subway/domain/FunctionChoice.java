@@ -1,19 +1,19 @@
-package subway.constant;
+package subway.domain;
 
 import subway.exception.InvalidInputException;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public enum Service {
+public enum FunctionChoice {
 
     PATH("1"),
     QUIT("Q");
 
-    private static List<String> serviceCodes = new ArrayList<>();
+    private static List<String> functionCodes = new ArrayList<>();
     private String code;
 
-    Service(String code) {
+    FunctionChoice(String code) {
         this.code = code;
     }
 
@@ -23,16 +23,16 @@ public enum Service {
 
     public static void validate(String input) throws InvalidInputException {
         if (!isAvailable(input))
-            throw new InvalidInputException(InvalidInputException.ExceptionCode.INVALID_SERVICE_CODE);
+            throw new InvalidInputException(InvalidInputException.ExceptionCode.INVALID_FUNCTION_CODE);
     }
 
     private static boolean isAvailable(String input) {
         initServiceCodes();
-        return serviceCodes.contains(input);
+        return functionCodes.contains(input);
     }
 
     private static void initServiceCodes() {
-        for (Service service : Service.values())
-            serviceCodes.add(service.code);
+        for (FunctionChoice functionChoice : FunctionChoice.values())
+            functionCodes.add(functionChoice.code);
     }
 }
