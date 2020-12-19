@@ -1,6 +1,7 @@
 package subway.domain;
 
 import subway.util.DistanceRouteSearch;
+import subway.util.TimeRouteSearch;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,6 +18,7 @@ public class StationRepository {
     public static void addStation(Station station) {
         stations.add(station);
         DistanceRouteSearch.addVertex(station.getName());
+        TimeRouteSearch.addVertex(station.getName());
     }
 
     public static boolean deleteStation(String name) {

@@ -1,5 +1,7 @@
 package subway.view;
 
+import subway.util.validator.MenuValidator;
+
 import java.util.Scanner;
 
 public class MainMenu {
@@ -25,16 +27,17 @@ public class MainMenu {
             outputMainMenu();
             String input = scanner.nextLine();
             System.out.println();
+            MenuValidator.isVailableMainMenu(input);
             if (input.equals("1")) {
                 new RouteSearchMenu(scanner).startRouteSearchMenu();
             }
             if (input.equals("Q")) {
-                System.out.println();
                 System.out.println(QUIT_MESSAGE);
                 return;
             }
         }
     }
+
 
     private void outputMainMenu() {
         StringBuilder sb = new StringBuilder();

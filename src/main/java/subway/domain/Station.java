@@ -36,4 +36,22 @@ public class Station {
     public List<Section> sections() {
         return Collections.unmodifiableList(sectionList);
     }
+
+    public int getSectionDistance(String stationName) {
+        for (Section section : sectionList) {
+            if (section.getLinkedStationName().equals(stationName)) {
+                return section.getDistance();
+            }
+        }
+        return 0;
+    }
+
+    public int getSectionTime(String stationName) {
+        for (Section section : sectionList) {
+            if (section.getLinkedStationName().equals(stationName)) {
+                return section.getTime();
+            }
+        }
+        return 0;
+    }
 }

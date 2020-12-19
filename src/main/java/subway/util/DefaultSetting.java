@@ -44,12 +44,42 @@ public class DefaultSetting {
         sinBunDang.addStation(YANGJAE);
         sinBunDang.addStation(YANGJAE_CITIZEN_FOREST);
 
-        DistanceRouteSearch.addDisTanceEdgeWeight(KYODAE, GANGNAM, 2);
-        DistanceRouteSearch.addDisTanceEdgeWeight(GANGNAM, YEOKSAM, 2);
-        DistanceRouteSearch.addDisTanceEdgeWeight(KYODAE, NORTH_TERMINAL, 3);
-        DistanceRouteSearch.addDisTanceEdgeWeight(NORTH_TERMINAL, YANGJAE, 6);
-        DistanceRouteSearch.addDisTanceEdgeWeight(YANGJAE, MAEBONG, 1);
-        DistanceRouteSearch.addDisTanceEdgeWeight(GANGNAM, YANGJAE, 2);
-        DistanceRouteSearch.addDisTanceEdgeWeight(YANGJAE, YANGJAE_CITIZEN_FOREST, 10);
+        StationRepository.findStationByName(KYODAE)
+                .addSection(GANGNAM, 2, 3)
+                .addSection(DefaultStations.NORTH_TERMINAL.getName(), 3, 2);
+        StationRepository.findStationByName(GANGNAM)
+                .addSection(KYODAE, 2, 3)
+                .addSection(YEOKSAM, 2, 3)
+                .addSection(YANGJAE, 2, 8);
+        StationRepository.findStationByName(YEOKSAM)
+                .addSection(GANGNAM, 2, 3);
+        StationRepository.findStationByName(NORTH_TERMINAL)
+                .addSection(KYODAE, 3, 2)
+                .addSection(YANGJAE, 6, 5);
+        StationRepository.findStationByName(YANGJAE)
+                .addSection(NORTH_TERMINAL, 6, 5)
+                .addSection(MAEBONG, 1, 1)
+                .addSection(GANGNAM, 2, 8)
+                .addSection(YANGJAE_CITIZEN_FOREST, 10, 3);
+        StationRepository.findStationByName(MAEBONG)
+                .addSection(YANGJAE, 1, 1);
+        StationRepository.findStationByName(YANGJAE_CITIZEN_FOREST)
+                .addSection(YANGJAE, 10, 3);
+
+        DistanceRouteSearch.addDistanceEdgeWeight(KYODAE, GANGNAM, 2);
+        DistanceRouteSearch.addDistanceEdgeWeight(GANGNAM, YEOKSAM, 2);
+        DistanceRouteSearch.addDistanceEdgeWeight(KYODAE, NORTH_TERMINAL, 3);
+        DistanceRouteSearch.addDistanceEdgeWeight(NORTH_TERMINAL, YANGJAE, 6);
+        DistanceRouteSearch.addDistanceEdgeWeight(YANGJAE, MAEBONG, 1);
+        DistanceRouteSearch.addDistanceEdgeWeight(GANGNAM, YANGJAE, 2);
+        DistanceRouteSearch.addDistanceEdgeWeight(YANGJAE, YANGJAE_CITIZEN_FOREST, 10);
+
+        TimeRouteSearch.addDistanceEdgeWeight(KYODAE, GANGNAM, 3);
+        TimeRouteSearch.addDistanceEdgeWeight(GANGNAM, YEOKSAM, 3);
+        TimeRouteSearch.addDistanceEdgeWeight(KYODAE, NORTH_TERMINAL, 2);
+        TimeRouteSearch.addDistanceEdgeWeight(NORTH_TERMINAL, YANGJAE, 5);
+        TimeRouteSearch.addDistanceEdgeWeight(YANGJAE, MAEBONG, 1);
+        TimeRouteSearch.addDistanceEdgeWeight(GANGNAM, YANGJAE, 8);
+        TimeRouteSearch.addDistanceEdgeWeight(YANGJAE, YANGJAE_CITIZEN_FOREST, 3);
     }
 }

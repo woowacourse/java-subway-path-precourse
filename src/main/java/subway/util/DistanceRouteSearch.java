@@ -14,8 +14,8 @@ public class DistanceRouteSearch {
         distanceGraph.addVertex(stationName);
     }
 
-    public static void addDisTanceEdgeWeight(String station1, String station2, int distance) {
-        distanceGraph.setEdgeWeight(station1, station2, distance);
+    public static void addDistanceEdgeWeight(String station1, String station2, int distance) {
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(station1, station2), distance);
     }
 
     public static List<String> getShortestRoute(String startStation, String arrivalStation) {
