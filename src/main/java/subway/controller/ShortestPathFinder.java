@@ -1,5 +1,6 @@
 package subway.controller;
 
+import subway.Exception.CustomException;
 import subway.view.InputView;
 
 import java.util.Scanner;
@@ -17,8 +18,11 @@ public class ShortestPathFinder {
     }
 
     private String askValidStation() {
-//        try {
+        try {
             return InputView.askStartStation(scanner);
-//        }
+        } catch (CustomException exception) {
+            System.out.println(exception.getMessage());
+            return askValidStation();
+        }
     }
 }

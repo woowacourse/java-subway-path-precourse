@@ -1,5 +1,6 @@
 package subway.view;
 
+import subway.Exception.CustomException;
 import subway.controller.Validate;
 
 import java.util.Scanner;
@@ -13,11 +14,11 @@ public class InputView {
         return userInput;
     }
 
-    public static String askStartStation(Scanner scanner) {
+    public static String askStartStation(Scanner scanner) throws CustomException {
         System.out.println("\n## 출발역을 입력하세요.");
         String userInput = scanner.nextLine().trim();
+        Validate.existStation(userInput);
         return userInput;
-//        Validate.existStation(userInput);
     }
 
 
