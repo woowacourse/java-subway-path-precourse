@@ -9,7 +9,7 @@ public class RoutePage {
     public void printRoutePage(){
         System.out.println("## 경로 기준");
         System.out.println("1. 최단 거리");
-        System.out.println("1. 최소 시간");
+        System.out.println("2. 최소 시간");
         System.out.println("Q. 종료");
         System.out.println("\n## 원하는 기능을 선택하세요.");
     }
