@@ -1,11 +1,15 @@
 package subway.controller;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 import subway.domain.Line;
 import subway.domain.LineRepository;
 import subway.domain.Station;
 import subway.domain.StationRepository;
+import subway.exception.validation.MainInput;
+import subway.view.InputView;
+import subway.view.OutputView;
 
 public class Subway {
 
@@ -13,9 +17,18 @@ public class Subway {
         "매봉역"};
     private static final String[] initLines = {"2호선", "3호선", "신분당선"};
 
+    private Scanner scanner;
+
+    public Subway(Scanner scanner) {
+        this.scanner = scanner;
+    }
 
     public void run() {
         init();
+        InputView inputView = new InputView(this.scanner);
+        MainInput mainInput = new MainInput(inputView);
+        OutputView.printMainScreen();
+        System.out.println(mainInput.mainInput());
     }
 
     private void init() {
