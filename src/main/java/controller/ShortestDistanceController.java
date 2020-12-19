@@ -1,6 +1,5 @@
 package controller;
 
-import org.jgrapht.Graph;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
@@ -13,6 +12,8 @@ import java.util.Scanner;
 
 public class ShortestDistanceController {
     private static WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
+    private static List<String> shortestPath;
+    private static DijkstraShortestPath dijkstraShortestPath;
 
     public static void run(Scanner scanner) {
         System.out.println("## 출발역을 입력하세요.");
@@ -24,38 +25,49 @@ public class ShortestDistanceController {
 
         boolean checkFlag = checkValidateInput(departureStation, arrivalStation);
         if (checkFlag == true)
-            printSearchResult(departureStation, arrivalStation);
+            printSearchResult(scanner, departureStation, arrivalStation);
         if (checkFlag == false) run(scanner);
     }
 
     public static boolean checkValidateInput(String departureStation, String arrivalStation) {
+        if ((departureStation.charAt(departureStation.length() - 1) != '역')
+                || (arrivalStation.charAt(arrivalStation.length() - 1) != '역')) {
+            System.out.println("[ERROR] 마지막 글자는 역으로 끝나야 합니다.\n");
+            return false;
+        }
         if (departureStation.equals(arrivalStation)) {
-            System.out.println("[ERROR] 출발역과 도착역을 다르게 입력하세요.");
+            System.out.println("[ERROR] 출발역과 도착역을 다르게 입력하세요.\n");
             return false;
         }
         return true;
     }
 
-    public static void printSearchResult(String departureStation, String arrivalStation) {
+    public static boolean printSearchResult(Scanner scanner, String departureStation, String arrivalStation) {
         setVertex();
         setEdge();
-        try {
-            DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
-            List<String> shortestPath = dijkstraShortestPath.getPath(departureStation, arrivalStation).getVertexList();
-            int shortestDistance = (int) dijkstraShortestPath.getPathWeight(departureStation, arrivalStation);
-            System.out.println("## 조회 결과\n" +
-                    "[INFO] ---\n" +
-                    "[INFO] 총 거리: " + shortestDistance + "km\n" +
-                    "[INFO] 총 소요 시간: " + "" + "분\n" +
-                    "[INFO] ---");
 
-            for (int i = 0; i < shortestPath.size(); i++) {
-                System.out.println("[INFO] " + shortestPath.get(i));
-            }
+        try {
+            dijkstraShortestPath = new DijkstraShortestPath(graph);
+            shortestPath = dijkstraShortestPath.getPath(departureStation, arrivalStation).getVertexList();
+
         } catch (Exception e) {
-            System.out.println("[ERROR] 출발역과 도착역이 연결되어있지 않습니다.");
+            System.out.println("[ERROR] 출발역과 도착역이 연결되어있지 않습니다.\n");
+            run(scanner);
+            return false;
+        }
+
+        int shortestDistance = (int) dijkstraShortestPath.getPathWeight(departureStation, arrivalStation);
+        System.out.println("## 조회 결과\n" +
+                "[INFO] ---\n" +
+                "[INFO] 총 거리: " + shortestDistance + "km\n" +
+                "[INFO] 총 소요 시간: " + "" + "분\n" +
+                "[INFO] ---");
+
+        for (int i = 0; i < shortestPath.size(); i++) {
+            System.out.println("[INFO] " + shortestPath.get(i));
         }
         System.out.println();
+        return true;
     }
 
     public static void setVertex() {
