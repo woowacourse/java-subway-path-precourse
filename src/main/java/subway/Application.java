@@ -11,6 +11,7 @@ public class Application {
         final Scanner scanner = new Scanner(System.in);
         InputView inputView = new InputView(scanner);
 
+        SubwayInitializer.setUp();
         SubwayController.run(inputView);
     }
 }
