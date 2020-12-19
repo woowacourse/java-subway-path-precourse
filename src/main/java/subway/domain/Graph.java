@@ -4,6 +4,7 @@ import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Graph {
@@ -23,7 +24,7 @@ public class Graph {
     }
 
     public List<Station> shortestPath(Station v1, Station v2) {
-        return dijkstraShortestPath.getPath(v1, v2).getVertexList();
+        return Collections.unmodifiableList(dijkstraShortestPath.getPath(v1, v2).getVertexList());
     }
 
     public void makeConnection(Station v1, Station v2, double weight) {
