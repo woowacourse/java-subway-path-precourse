@@ -13,4 +13,22 @@ public class SectionRepository {
         distanceGraph.addVertex(station);
         timeGraph.addVertex(station);
     }
+
+    public static void addSectionInformation(String stationName
+            , String nextStationName
+            , SectionInformation sectionInformation) {
+        Station station = StationRepository.findStationByName(stationName);
+        Station nextStation = StationRepository.findStationByName(nextStationName);
+
+        addDistanceEdgeWeight(station, nextStation, sectionInformation.getDistance());
+        addTimeEdgeWeight(station, nextStation, sectionInformation.getTime());
+    }
+
+    private static void addDistanceEdgeWeight(Station station, Station nextStation, double distance) {
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(station, nextStation), distance);
+    }
+
+    private static void addTimeEdgeWeight(Station station, Station nextStation, double time) {
+        timeGraph.setEdgeWeight(timeGraph.addEdge(station, nextStation), time);
+    }
 }
