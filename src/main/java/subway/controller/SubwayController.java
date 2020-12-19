@@ -1,131 +1,91 @@
 package subway.controller;
 
-import subway.domain.Line.Line;
 import subway.domain.Line.LineRepository;
-import subway.domain.section.DistanceAndTime;
 import subway.domain.section.SectionWithDistanceRepository;
 import subway.domain.section.SectionWithTimeRepository;
-import subway.domain.section.SectionsAndDistance;
-import subway.domain.station.Station;
 import subway.domain.station.StationRepository;
 import subway.service.LineService;
 import subway.service.SectionService;
 import subway.service.StationService;
-
-import java.awt.datatransfer.ClipboardOwner;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import subway.view.InputView;
+import subway.view.MainChoice;
+import subway.view.OutputView;
+import subway.view.StandardChoice;
 
 public class SubwayController {
     private LineService lineService;
     private StationService stationService;
     SectionService sectionService;
+    InputView inputView;
 
     public SubwayController(LineService lineService, StationService stationService,
-                            SectionService sectionService) {
+                            SectionService sectionService, InputView inputView) {
         this.lineService = lineService;
         this.stationService = stationService;
         this.sectionService = sectionService;
+        this.inputView = inputView;
     }
 
     public void run() {
-        initialize();
-        SectionsAndDistance a =  sectionService.findShortestDistancePathByName("교대역", "양재역");
-        System.out.println(a);
+        try {
+            mainChoice();
+        } catch (Exception e) {
+            OutputView.errorOutput(e.getMessage());
+            run();
+        }
     }
 
-    private void initialize() {
-        addStations();
-        addLines();
+    public void mainChoice() {
+        OutputView.selectMainFunction();
+        OutputView.selectFunction();
+        MainChoice choice = MainChoice.of(inputView.scan());
+        mainFunction(choice);
     }
 
-    private void addStations() {
-        String[] stations = {
-                "교대역", "강남역", "역삼역", "남부터미널역", "양재역", "양재시민의숲역", "매봉역"
-        };
+    public void mainFunction(MainChoice choice) {
+        if(choice == MainChoice.FIND) {
+            standardChoice();
+        }
 
-        Arrays.stream(stations)
-                .forEach(station -> stationService.add(new Station(station)));
+        if(choice == MainChoice.EXIT) {
+            return;
+        }
     }
 
-    private void addLines() {
-        lineService.add("2호선", get2LineSections(),get2LineDistanceAndTime());
-        lineService.add("3호선", get3LineSections(),get3LineDistanceAndTime());
-        lineService.add("신분당선", getShinLineSections(),getShinLineDistanceAndTime());
+    public void standardChoice() {
+        OutputView.selectStandardFunction();
+        OutputView.selectFunction();
+        StandardChoice choice = StandardChoice.of(inputView.scan());
+        standardFunction(choice);
     }
 
-    private List<Station> get2LineSections() {
-        String[] stations = new String[]{
-                "교대역", "강남역", "역삼역"
-        };
-        return Arrays.stream(stations)
-                .map(Station::new)
-                .collect(Collectors.toList());
+    public void standardFunction(StandardChoice choice) {
+        if(choice == StandardChoice.DISTANCE) {
+            distance();
+        }
+
+        if(choice == StandardChoice.TIME) {
+            time();
+        }
+
+        if(choice == StandardChoice.BACK) {
+            return;
+        }
     }
 
-    private List<Station> get3LineSections() {
-        String[] stations = new String[]{
-                "교대역", "남부터미널역", "양재역", "매봉역"
-        };
-        return Arrays.stream(stations)
-                .map(Station::new)
-                .collect(Collectors.toList());
+    public void distance() {
+        OutputView.inputStartStation();
+        String start = inputView.scan();
+        OutputView.inputEndStation();
+        String end = inputView.scan();
+        OutputView.findResult(sectionService.findShortestDistancePathByName(start, end));
     }
 
-    private List<DistanceAndTime> get2LineDistanceAndTime() {
-        return new ArrayList<>() {
-            {
-                add(new DistanceAndTime(2, 3));
-                add(new DistanceAndTime(2, 3));
-            }
-        };
-    }
-
-    private List<DistanceAndTime> get3LineDistanceAndTime() {
-        return new ArrayList<>() {
-            {
-                add(new DistanceAndTime(3, 2));
-                add(new DistanceAndTime(6, 5));
-                add(new DistanceAndTime(1, 1));
-            }
-        };
-    }
-
-    private List<DistanceAndTime> getShinLineDistanceAndTime() {
-        return new ArrayList<>() {
-            {
-                add(new DistanceAndTime(2, 8));
-                add(new DistanceAndTime(10, 3));
-            }
-        };
-    }
-
-    private List<Station> getShinLineSections() {
-        String[] stations = new String[]{
-                "강남역", "양재역", "양재시민의숲역"
-        };
-        return Arrays.stream(stations)
-                .map(Station::new)
-                .collect(Collectors.toList());
-    }
-
-    public static void main(String[] args) {
-        LineRepository lineRepository = new LineRepository();
-        StationRepository stationRepository = new StationRepository();
-        SectionWithTimeRepository sectionWithTimeRepository = new SectionWithTimeRepository();
-        SectionWithDistanceRepository sectionWithDistanceRepository =
-                new SectionWithDistanceRepository();
-
-        LineService lineService = new LineService(lineRepository,
-                sectionWithDistanceRepository,
-                sectionWithTimeRepository);
-        StationService stationService = new StationService(stationRepository);
-
-        SectionService sectionService = new SectionService(sectionWithDistanceRepository, sectionWithTimeRepository);
-
-        SubwayController subwayController = new SubwayController(lineService, stationService, sectionService);
-        subwayController.run();
+    public void time() {
+        OutputView.inputStartStation();
+        String start = inputView.scan();
+        OutputView.inputEndStation();
+        String end = inputView.scan();
+        OutputView.findResult(sectionService.findShortestTimePathByName(start, end));
     }
 }

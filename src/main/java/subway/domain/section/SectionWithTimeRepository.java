@@ -3,6 +3,7 @@ package subway.domain.section;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
+import subway.exception.StationNotConnectedException;
 
 import java.util.List;
 
@@ -18,7 +19,13 @@ public class SectionWithTimeRepository {
     public SectionsAndTime find(String from, String to) {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(sectionsWithTime);
         List<String> sections = dijkstraShortestPath.getPath(from, to).getVertexList();
-        double time = dijkstraShortestPath.getPath(from, to).getWeight();
+
+        double time;
+        try {
+            time = dijkstraShortestPath.getPath(from, to).getWeight();
+        } catch (NullPointerException e) {
+            throw new StationNotConnectedException();
+        }
 
         return new SectionsAndTime(sections, time);
     }
@@ -32,7 +39,6 @@ public class SectionWithTimeRepository {
         sectionsWithTime.setEdgeWeight(
                 sectionsWithTime.addEdge(from, to), time.getTime());
     }
-
 
 
 }

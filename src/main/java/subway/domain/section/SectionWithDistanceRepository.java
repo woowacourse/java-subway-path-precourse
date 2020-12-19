@@ -3,6 +3,7 @@ package subway.domain.section;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
+import subway.exception.StationNotConnectedException;
 
 import java.util.List;
 
@@ -18,7 +19,13 @@ public class SectionWithDistanceRepository {
     public SectionsAndDistance find(String from, String to) {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(sectionsWithDistance);
         List<String> sections = dijkstraShortestPath.getPath(from, to).getVertexList();
-        double distance = dijkstraShortestPath.getPath(from, to).getWeight();
+
+        double distance;
+        try {
+            distance = dijkstraShortestPath.getPath(from, to).getWeight();
+        } catch (NullPointerException e) {
+            throw new StationNotConnectedException();
+        }
 
         return new SectionsAndDistance(sections, distance);
     }
