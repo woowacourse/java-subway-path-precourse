@@ -37,7 +37,7 @@ public class Route {
         }
     }
 
-    public void choose(int chosenNumber) {
+    private void choose(int chosenNumber) {
         List<String> subwayDistanceGraph = findDistanceByDistance();
         List<String> subwayTimeGraph = findDistanceByTime();
 
@@ -57,7 +57,7 @@ public class Route {
         }
     }
 
-    public List<String> findDistanceByDistance() {
+    private List<String> findDistanceByDistance() {
         subwayDistanceGraph.setSubwayGraphByDistance();
         return subwayDistanceGraph.getShortestPath(startStation, endStation);
     }
@@ -67,7 +67,7 @@ public class Route {
         return subwayTimeGraph.getShortestPath(startStation, endStation);
     }
 
-    public void getStationName() {
+    private void getStationName() {
         System.out.println("\n## 출발역을 입력하세요.");
         String startStationName = scanner.next();
         Validator.isStationExist(startStationName);
@@ -81,7 +81,7 @@ public class Route {
         Validator.isStationEquals(startStationName, endStationName);
     }
 
-    public void getDistanceAndTimeSum(List<String> shortestPath) {
+    private void getDistanceAndTimeSum(List<String> shortestPath) {
         int distance = INITIALIZATION;
         int time = INITIALIZATION;
 
