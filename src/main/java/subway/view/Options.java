@@ -1,6 +1,4 @@
-package subway.View;
-
-import subway.view.View;
+package subway.view;
 
 import java.util.ArrayList;
 import java.util.List;

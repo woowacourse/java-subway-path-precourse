@@ -1,6 +1,6 @@
 package subway.domain;
 
-import subway.View.PathMessages;
+import subway.view.PathMessages;
 
 import java.util.*;
 
@@ -10,6 +10,8 @@ public class LineRepository {
     static {
         InitialSubway.initializeLines();
         InitialSubway.initializeSections();
+        InitialSubway.initializeDistances();
+        InitialSubway.initializeTimes();
     }
 
     public static List<Line> lines() {

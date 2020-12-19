@@ -1,4 +1,4 @@
-package subway.View;
+package subway.view;
 
 public enum MainMessages {
 	MAIN_0(GeneralMessages.BASIC.getMessage() + "메인 화면"),

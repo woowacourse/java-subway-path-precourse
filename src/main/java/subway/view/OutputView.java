@@ -1,4 +1,4 @@
-package subway.View;
+package subway.view;
 
 import java.util.Arrays;
 

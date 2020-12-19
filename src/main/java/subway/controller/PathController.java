@@ -1,7 +1,6 @@
-package subway.Controller;
+package subway.controller;
 
-import subway.View.MainMessages;
-import subway.View.Options;
+import subway.view.Options;
 
 import java.util.HashMap;
 import java.util.Map;

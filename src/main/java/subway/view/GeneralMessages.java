@@ -1,4 +1,4 @@
-package subway.View;
+package subway.view;
 
 public enum GeneralMessages {
 	BASIC("## "),

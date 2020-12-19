@@ -1,4 +1,4 @@
-package subway.View;
+package subway.view;
 
 public enum PathMessages {
 	PATH_0(GeneralMessages.BASIC.getMessage() + "경로 기준"),
