@@ -11,4 +11,10 @@ public class EdgeRepository {
         TimeGraph.setEdge(edge.getLeftEndStation(), edge.getRightEndStation(), edge.getTime());
         DistanceGraph.setEdge(edge.getLeftEndStation(), edge.getRightEndStation(), edge.getDistance());
     }
+
+    public static void addEdgeByNamesAndNumbers(String leftEndStationName, String rightEndStationName, int distance,
+            int time) {
+        edges.add(new Edge(StationRepository.getStationByName(leftEndStationName),
+                StationRepository.getStationByName(rightEndStationName), distance, time));
+    }
 }
