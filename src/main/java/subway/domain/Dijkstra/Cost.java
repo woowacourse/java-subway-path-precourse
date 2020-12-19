@@ -1,4 +1,4 @@
-package subway.domain;
+package subway.domain.Dijkstra;
 
 public class Cost {
     private int distance;
