@@ -1,7 +1,11 @@
 package subway.domain;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Line {
     private String name;
+    private final List<Station> stations = new LinkedList<>();
 
     public Line(String name) {
         this.name = name;
@@ -11,5 +15,8 @@ public class Line {
         return name;
     }
 
-    // 추가 기능 구현
+    public void addStationByName(String stationName) {
+        Station station = StationRepository.findByName(stationName);
+        stations.add(station);
+    }
 }
