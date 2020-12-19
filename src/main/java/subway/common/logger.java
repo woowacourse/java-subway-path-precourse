@@ -2,7 +2,7 @@ package subway.common;
 
 public class logger {
 	public static final String LEVEL_GUIDE = "## ";
-	public static final String LEVEL_ERROR = "[ERROR] ";
+	public static final String LEVEL_ERROR = "\n[ERROR] ";
 	public static final String LEVEL_INFO = "[INFO] ";
 
 	public static void guidePrint(String errorBody) {
@@ -10,7 +10,7 @@ public class logger {
 	}
 
 	public static void errorPrint(String errorBody) {
-		System.out.println(LEVEL_ERROR + errorBody + "\n");
+		System.out.println(LEVEL_ERROR + errorBody);
 	}
 
 	public static void infoPrint(String infoBody) {
