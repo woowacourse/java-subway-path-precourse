@@ -5,9 +5,10 @@ import java.util.HashSet;
 public class Station {
     private String name;
     private HashSet<String> stationSet = new HashSet<String>();
-    
+   
     public Station(String name) {
         this.name = name;
+        registerStationSet(name);
     }
 
     public String getName() {
