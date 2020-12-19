@@ -23,4 +23,16 @@ public class StationRepository {
     public static void deleteAll() {
         stations.clear();
     }
+
+    //테스트용
+    public static void printAllStations() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n## 역 목록");
+        for (Station station : stations) {
+            sb.append("\n[INFO] ");
+            sb.append(station.getName());
+        }
+        System.out.println(sb);
+    }
+
 }
