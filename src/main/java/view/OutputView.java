@@ -1,5 +1,7 @@
 package view;
 
+import subway.domain.SectionRepository;
+
 import java.util.List;
 
 public class OutputView {
@@ -39,9 +41,16 @@ public class OutputView {
     }
 
     public static void printShortestDistancePathResult(double shortestDistance, List shortestDistancePath) {
+        int totalTime = 0;
+
+        for (int i = 0; i < shortestDistancePath.size() - 1; i++) {
+            totalTime += SectionRepository.getSectionTime(shortestDistancePath.get(i).toString(), shortestDistancePath.get(i+1).toString());
+        }
+
         System.out.println(SHORTEST_PATH_RESULT);
         System.out.println(INFO_BORDER_LINE);
         System.out.println(DISTANCE + (int) shortestDistance + KILOMETER);
+        System.out.println(TIME + totalTime + MINUTE);
         System.out.println(INFO_BORDER_LINE);
 
         for (Object path : shortestDistancePath) {
@@ -51,8 +60,14 @@ public class OutputView {
     }
 
     public static void printShortestTimePathResult(double shortestTime, List shortestTimePath) {
+        int totalDistance = 0;
+
+        for (int i = 0; i < shortestTimePath.size() - 1; i++) {
+            totalDistance += SectionRepository.getSectionDistance(shortestTimePath.get(i).toString(), shortestTimePath.get(i+1).toString());
+        }
         System.out.println(SHORTEST_PATH_RESULT);
         System.out.println(INFO_BORDER_LINE);
+        System.out.println(DISTANCE + totalDistance + KILOMETER);
         System.out.println(TIME + (int) shortestTime + MINUTE);
         System.out.println(INFO_BORDER_LINE);
 

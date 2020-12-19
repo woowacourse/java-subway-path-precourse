@@ -100,7 +100,7 @@ public class SubwayPathChecker {
     }
 
     private void getDijkstraShortestTimePath(String departureStationName, String arrivalStationName) {
-        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(SectionRepository.distanceWeightedGraph());
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(SectionRepository.timeWeightedGraph());
         double shortestTime = dijkstraShortestPath.getPath(departureStationName, arrivalStationName).getWeight();
         List shortestTimePath = dijkstraShortestPath.getPath(departureStationName, arrivalStationName).getVertexList();
         OutputView.printShortestTimePathResult(shortestTime, shortestTimePath);
