@@ -22,14 +22,19 @@ public class DistanceSectionRepository {
     }
 
     public static List<String> getShortestPath(Station source, Station destination) {
+        validateDuplicate(source, destination);
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
-        return dijkstraShortestPath.getPath(source.getName(), destination.getName())
-            .getVertexList();
+        try {
+            return dijkstraShortestPath.getPath(source.getName(), destination.getName())
+                .getVertexList();
+        } catch (IllegalArgumentException e){
+            throw new IllegalArgumentException("해당 역은 연결되어 있지 않습니다.");
+        }
     }
 
-//    public static Distance getShortestDistance(Station source, Station destination){
-//        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
-//        return Distance.newDistance((int)dijkstraShortestPath
-//            .getPathWeight(source.getName(), destination.getName()));
-//    }
+    private static void validateDuplicate(Station source, Station destination) {
+        if (source.equals(destination)){
+            throw new IllegalArgumentException("출발역과 도착역이 동일합니다.");
+        }
+    }
 }

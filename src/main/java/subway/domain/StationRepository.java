@@ -16,6 +16,7 @@ public class StationRepository {
         stations.add(Station.newStationWithName("양재역"));
         stations.add(Station.newStationWithName("양재시민의숲역"));
         stations.add(Station.newStationWithName("매봉역"));
+        stations.add(Station.newStationWithName("현구역"));
     }
 
     public static List<Station> stations() {
