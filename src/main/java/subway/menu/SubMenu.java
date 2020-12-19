@@ -12,6 +12,7 @@ public class SubMenu implements Menu {
     public static final String MINIMUM_DISTANCE = "1";
     public static final String MINIMUM_TIME = "2";
     public static final String BACK_MENU_SEL = "B";
+    public static final String ERROR = "ERROR";
     private InputView inputView;
 
     public SubMenu(InputView inputView) {
@@ -56,10 +57,15 @@ public class SubMenu implements Menu {
 
     private void getMinimumDistance() {
         String depatureStation = inputStation();
+        if (depatureStation.equals(ERROR)) {
+            return;
+        }
         String arrivalStation = inputStation(depatureStation);
+        if (arrivalStation.equals(ERROR)) {
+            return;
+        }
         List<Integer> res = StationGraph.dijkstra(Init.findStationNumber(depatureStation),
                 Init.findStationNumber(arrivalStation));
-
         if (res.get(0) == Integer.MAX_VALUE) {
             OutputView.printErrorMessage(new NotExistPathException());
             return;

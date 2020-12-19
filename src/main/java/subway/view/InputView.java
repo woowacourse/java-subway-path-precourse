@@ -45,7 +45,7 @@ public class InputView {
     }
 
     public String inputDepartureStation() {
-        String name = "";
+        String name = SubMenu.ERROR;
         try {
             name = scanWithInputStationMessage();
         } catch (NotExistStationException e) {
@@ -55,7 +55,7 @@ public class InputView {
     }
 
     public String inputArrivalStation(String departureStation) {
-        String name = "";
+        String name = SubMenu.ERROR;
         try {
             name = scanWithInputStationMessage(departureStation);
         } catch (NotExistStationException e) {
