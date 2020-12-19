@@ -21,6 +21,14 @@ public class StationRepository {
     public static boolean deleteStation(String name) {
         return stations.removeIf(station -> Objects.equals(station.getName(), name));
     }
+    
+    public static Station getStationByName(String stationName) {
+    	for ( Station station : stations()) {
+    		if (stationName.equals(station.getName()))
+    			return station;
+    	}
+    	return null;
+    }
 
     public static void deleteAll() {
         stations.clear();
