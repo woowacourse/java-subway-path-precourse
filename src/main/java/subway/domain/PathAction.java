@@ -13,6 +13,16 @@ public enum PathAction {
         this.actionName = actionName;
     }
 
+    public static boolean isBack(String inputAction) {
+        if (inputAction.equals(BACK.actionNumber)) {
+            return false;
+        }
+        if (inputAction.equals(SHORTEST_DISTANCE.actionNumber) || inputAction.equals(SHORTEST_TIME.actionNumber)) {
+            return true;
+        }
+        throw new IllegalArgumentException("옳지 않은 경로 기준 기능입니다.");
+    }
+
     public String getActionNumber() {
         return actionNumber;
     }
