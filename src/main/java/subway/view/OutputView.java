@@ -1,12 +1,14 @@
 package subway.view;
 
 import java.util.List;
-import subway.domain.Section.ResultDto;
+import subway.domain.section.ResultDto;
 import subway.domain.station.Station;
+import subway.screen.Screen;
 
 public class OutputView {
 
     private static final String INFO_PREFIX = "[INFO] ";
+    private static final String PREFIX = "## ";
     private static final String BOUNDARY_LINE = INFO_PREFIX + "---";
     private static final String TOTAL_DISTANCE_MESSAGE = "총 거리: ";
     private static final String TOTAL_TIME_MESSAGE = "총 소요 시간: ";
@@ -48,4 +50,11 @@ public class OutputView {
     }
 
 
+    public static void printMenus(Screen currentScreen) {
+        System.out.println(PREFIX + currentScreen.getTitle());
+        for (Screen screen : currentScreen.getValues()) {
+            System.out.println(screen.toString());
+        }
+        System.out.println();
+    }
 }
