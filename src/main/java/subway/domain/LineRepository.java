@@ -23,4 +23,13 @@ public class LineRepository {
     public static void deleteAll() {
         lines.clear();
     }
+
+    public static Line getLineByName(String name) {
+        for (Line line : lines) {
+            if (line.checkSameLineName(name)) {
+                return line;
+            }
+        }
+        return null;
+    }
 }
