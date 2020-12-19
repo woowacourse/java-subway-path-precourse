@@ -38,12 +38,6 @@ public class SectionRepository {
             new Station("양재역"),
             new Station("양재시민의숲역")
         )));
-        
-        // TODO - 테스트 구간
-        sections.add(new Section(10, 3, Arrays.asList(
-            new Station("테스트역1"),
-            new Station("테스트역2")
-        )));
     }
 
     public static Section getSectionByStations(Station station, Station otherStation) {
