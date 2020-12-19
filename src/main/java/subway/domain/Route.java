@@ -23,7 +23,7 @@ public class Route {
         String number;
         int chosenNumber;
 
-        System.out.println("## 경로 기준\n" +
+        System.out.println("\n## 경로 기준\n" +
                 "1. 최단 거리\n" +
                 "2. 최소 시간\n" +
                 "B. 돌아가기\n" +
@@ -68,12 +68,12 @@ public class Route {
     }
 
     public void getStationName() {
-        System.out.println("## 출발역을 입력하세요.");
+        System.out.println("\n## 출발역을 입력하세요.");
         String startStationName = scanner.next();
         Validator.isStationExist(startStationName);
         this.startStation = StationRepository.getStationByName(startStationName);
 
-        System.out.println("## 도착역을 입력하세요.");
+        System.out.println("\n## 도착역을 입력하세요.");
         String endStationName = scanner.next();
         Validator.isStationExist(endStationName);
         this.endStation = StationRepository.getStationByName(endStationName);
@@ -90,7 +90,7 @@ public class Route {
             time = time + subwayTimeGraph.getDistanceBetweenTwoStation(shortestPath.get(i), shortestPath.get(i + 1));
         }
 
-        System.out.println("## 조회 결과\n" +
+        System.out.println("\n## 조회 결과\n" +
                 "[INFO] ---\n" +
                 "[INFO] 총 거리: " + distance + "km\n" +
                 "[INFO] 총 소요 시간: " + time + "분\n" +
