@@ -1,5 +1,7 @@
 package subway.view;
 
+import subway.util.StationValidator;
+
 import java.util.Scanner;
 
 public class RouteSearchMenu {
@@ -43,7 +45,7 @@ public class RouteSearchMenu {
                 requestStartStation();
             }
             if (input.equals("2")) {
-
+                requestStartStation();
             }
             if (input.equals("B")) {
                 return;
@@ -54,10 +56,16 @@ public class RouteSearchMenu {
     private void requestStartStation() {
         System.out.println(REQUEST_START);
         String startStationName = scanner.nextLine();
+        if (StationValidator.haveStation(startStationName)) {
+            requestArrivalStation(startStationName);
+        }
     }
 
-    private void requestArrivalStation() {
+    private void requestArrivalStation(String startStationName) {
         System.out.println(REQUEST_ARRIVAL);
         String arrivalStationName = scanner.nextLine();
+        if (StationValidator.checkVailableArrivalStation(startStationName, arrivalStationName)) {
+
+        }
     }
 }
