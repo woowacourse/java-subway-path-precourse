@@ -15,7 +15,7 @@ public class DefaultStations {
     public static final String MAEBONG = "매봉역";
     private static List<Station> defaultStations = new ArrayList<>();
 
-    public DefaultStations() {
+    public static void initializeDefaultStations() {
         defaultStations.add(new Station(GYODAE));
         defaultStations.add(new Station(GANGNAM));
         defaultStations.add(new Station(YEOKSAM));
