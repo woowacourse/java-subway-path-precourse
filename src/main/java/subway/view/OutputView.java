@@ -15,12 +15,16 @@ public class OutputView {
     public static final String CHOOSE_FUNCTION = "원하는 기능을 선택하세요.";
     public static final String ROUTE_TITLE = "경로 기준";
     public static final String RETRIEVE_RESULT = "조회 결과";
+    public static final String TOTAL_DISTANCE = "총 거리: ";
+    public static final String TOTAL_TIME = "총 소요 시간: ";
+    public static final String KM = "km";
+    public static final String MINUTE = "분";
 
     public static void printRoute(RouteResultDTO routeResultDTO) {
         printNotice(RETRIEVE_RESULT);
         System.out.println(BORDER_LINE);
-        printInfo("총 거리: " + routeResultDTO.getDistanceWeight() + "km");
-        printInfo("총 소요 시간: " + routeResultDTO.getTimeWeight() + "분");
+        printInfo(TOTAL_DISTANCE + routeResultDTO.getDistanceWeight() + KM);
+        printInfo(TOTAL_TIME + routeResultDTO.getTimeWeight() + MINUTE);
         System.out.println(BORDER_LINE);
         routeResultDTO.getPath().forEach(OutputView::printInfo);
     }
