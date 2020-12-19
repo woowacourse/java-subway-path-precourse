@@ -22,5 +22,23 @@ public class InitialData {
         );
 
         Line line1 = Line.makeList("2호선", station1);
+        line1.addRouteInfo("( 2km / 3분 )");
+        line1.addStation(station2);
+        line1.addRouteInfo("( 2km / 3분 )");
+        line1.addStation(station3);
+
+        Line line2 = Line.makeList("3호선", station1);
+        line2.addRouteInfo("( 3km / 2분 )");
+        line2.addStation(station4);
+        line2.addRouteInfo("( 6km / 5분 )");
+        line2.addStation(station5);
+        line2.addRouteInfo("( 1km / 1분 )");
+        line2.addStation(station7);
+
+        Line line3 = Line.makeList("신분당선", station2);
+        line3.addRouteInfo("( 2km / 8분 )");
+        line3.addStation(station5);
+        line3.addRouteInfo("( 10km / 3분 )");
+        line3.addStation(station6);
     }
 }
