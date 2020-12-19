@@ -25,7 +25,7 @@ public class Line {
     }
 
     public static void addStation(Station station) {
-        lineStations.add(station);
+        lineStations.addStation(station);
     }
 
     public static void addRouteInfo(String string) {

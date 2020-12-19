@@ -22,8 +22,8 @@ public class LineStations {
         return false;
     }
 
-    public void add(Station station) {
-        LineStation newLineStation = LineStation.of(station);
+    public void addStation(Station station) {
+        LineStation newLineStation = LineStation.ofStation(station);
         if (contains(newLineStation.getStation())) {
             throw new StationAlreadyInLineException(station.getName());
         }

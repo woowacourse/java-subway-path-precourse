@@ -32,7 +32,7 @@ public class LineStation {
         return routeInfo;
     }
 
-    public static LineStation of(Station station) {
+    public static LineStation ofStation(Station station) {
         return new LineStation(station);
     }
 
