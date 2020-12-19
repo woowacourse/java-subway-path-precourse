@@ -20,15 +20,27 @@ public class Line {
     // 추가 기능 구현
     
     public Line(String name, List<String> station_name, int[] distances, int[] times) {
-    	this.name = name;
-    	int i=0;
+    	this.name = name;    	
     	for (String station : station_name) {    		
-    		stations.add(get_station_by_name(station));
+    		stations.add(get_station_by_name(station));    		
+    	}
+    	for(int i=0;i<distances.length;i++) {
     		this.distances.add(distances[i]);
     		this.times.add(times[i]);
-    		i++;
     	}
     	
+    }
+    
+    public List<Station> get_stations(){
+    	return stations;
+    }
+    
+    public List<Integer> get_distances(){
+    	return distances;
+    }
+    
+    public List<Integer> get_times(){
+    	return times;
     }
     
     public static Station get_station_by_name(String name) {
