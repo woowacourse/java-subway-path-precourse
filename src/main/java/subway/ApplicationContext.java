@@ -2,6 +2,7 @@ package subway;
 
 import subway.domain.Station;
 import subway.view.InputView;
+import subway.vo.FunctionType;
 import subway.vo.ManagementType;
 
 import java.util.*;
@@ -75,10 +76,22 @@ public class ApplicationContext {
             }
         }
     }
-    
+
     private void executeFunction(ManagementType managementType) {
         if (managementType == ManagementType.QUIT) {
             return;
+        }
+        selectRouteCriteria(managementType);
+    }
+
+    private void selectRouteCriteria(ManagementType managementType) {
+        try {
+            String state = inputView.inputRouteCriteria();
+            FunctionType functionType = managementType.findFunctionNumber(state);
+
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            selectRouteCriteria(managementType);
         }
     }
 }
