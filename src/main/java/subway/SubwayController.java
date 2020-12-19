@@ -1,5 +1,6 @@
 package subway;
 
+import subway.model.SubwayInit;
 import subway.view.InputView;
 import subway.view.OutputView;
 
@@ -12,6 +13,7 @@ public class SubwayController {
     public SubwayController(Scanner scanner) {
         this.inputView = new InputView(scanner);
         this.outputView = new OutputView();
+        new SubwayInit();
     }
 
     public void startManager() {
@@ -23,7 +25,7 @@ public class SubwayController {
 
     private void routeMainOption(String option) {
         if (option.equals("1")) {
-
+            startPathFind();
         }
         if (option.equals("Q")) {
             return;
