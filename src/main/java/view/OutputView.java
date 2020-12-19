@@ -1,6 +1,6 @@
 package view;
 
-public class outputView {
+public class OutputView {
 	
 	private static final String MAIN_MESSAGE = "## 메인 화면";
 	private static final String ROUTE_LOOK_UP_MESSAGE = "1. 경로 조회";
