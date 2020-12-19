@@ -55,11 +55,8 @@ public class RouteController {
 
     private void shortestLength() {
         String[] stations = stationInfo();
-        if(stations[START_STATION].isEmpty() || stations[END_STATION].isEmpty()){
-            new RouteController(scanner);
-            return;
-        }
-        if (!LineRepository.findShortestLength(stations[START_STATION], stations[END_STATION])) {
+        if (stations[START_STATION].isEmpty() || stations[END_STATION].isEmpty() ||
+                !LineRepository.findShortestLength(stations[START_STATION], stations[END_STATION])) {
             new RouteController(scanner);
             return;
         }
