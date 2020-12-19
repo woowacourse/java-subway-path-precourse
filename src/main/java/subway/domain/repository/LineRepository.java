@@ -1,11 +1,8 @@
-package subway.domain;
+package subway.domain.repository;
 
 import subway.domain.entity.Line;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class LineRepository {
     private static final List<Line> lines = new ArrayList<>();
@@ -24,5 +21,11 @@ public class LineRepository {
 
     public static void deleteAll() {
         lines.clear();
+    }
+
+    public static Optional<Line> findByName(String name) {
+        return lines.stream()
+                .filter(line -> line.matchesName(name))
+                .findFirst();
     }
 }
