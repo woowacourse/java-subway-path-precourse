@@ -29,4 +29,8 @@ public class PathDistanceWeight {
         }
     }
 
+    public WeightedMultigraph<Station, DefaultWeightedEdge> getPathDistance() {
+        return pathDistance;
+    }
+
 }
