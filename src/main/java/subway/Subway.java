@@ -26,7 +26,6 @@ public class Subway {
 		double distance;
 		
 		if (StationRepository.contains(departureStation) && StationRepository.contains(arrivalStation)) {
-			// 최단 거리 계산 기능 구현
 			sectionList = StationRepository.getSectionDistanceList(departureStation, arrivalStation);
 			distance = StationRepository.getSectionDistance(departureStation, arrivalStation);
 			printMinDistance(distance, sectionList);
@@ -49,11 +48,12 @@ public class Subway {
 		double time;
 		
 		if (StationRepository.contains(departureStation) && StationRepository.contains(arrivalStation)) {
-			// 최단 거리 계산 기능 구현
 			sectionList = StationRepository.getSectionTimeList(departureStation, arrivalStation);
 			time = StationRepository.getSectionTime(departureStation, arrivalStation);
 			printMinTime(time, sectionList);
+			return;
 		}
+		Output.error(Message.NOT_CONTAIN_STATION);
 	}
 	
 	public static void printMinTime(double time, List<DefaultWeightedEdge> sectionList) {
