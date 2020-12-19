@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 public class StationRepository {
 
@@ -18,6 +19,10 @@ public class StationRepository {
         if (stations.stream().anyMatch(station -> station.getName().equals(stationName))) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public static Optional<Station> getStationByName(String name) {
+        return stations.stream().filter(station -> station.getName().equals(name)).findFirst();
     }
 
     public static void addStation(Station station) throws IllegalArgumentException {
