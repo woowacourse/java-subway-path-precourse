@@ -33,7 +33,7 @@ public class Initial {
 
     public static void addInitialStations(List<String> stationNames) {
         for (String name : stationNames) {
-            if (!StationRepository.isExistName(name)) {
+            if (StationRepository.isExistStationName(name)) {
                 Station station = new Station(name);
                 StationRepository.addStation(station);
             }
