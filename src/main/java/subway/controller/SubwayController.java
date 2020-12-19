@@ -1,7 +1,9 @@
 package subway.controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 import org.jgrapht.alg.shortestpath.DijkstraManyToManyShortestPaths;
 import subway.domain.Line;
 import subway.domain.LineRepository;
@@ -141,8 +143,12 @@ public class SubwayController {
 
     public void findMinimumDistance() {
         String startStation = inputStartStation();
-        String endStation = inputEndSation();
+        String endStation = inputEndStation();
         List<String> shortestPath = distanceGraphPath.getPath(startStation,endStation).getVertexList();
+        ArrayList<String> path = listToArray(shortestPath);
+        int timeSum = calculateTime(path);
+        int distanceSum = calculateDistance(path);
+        System.out.println(timeSum);
         shortestPath.forEach(System.out::println);
         OutputView.printResult();
 
@@ -150,19 +156,60 @@ public class SubwayController {
 
     public void findMinimumTime() {
         String startStation = inputStartStation();
-        String endStation = inputEndSation();
+        String endStation = inputEndStation();
         List<String> shortestPath = timeGraphPath.getPath(startStation,endStation).getVertexList();
+        ArrayList<String> path = listToArray(shortestPath);
+        int timeSum = calculateTime(path);
+        int distanceSum = calculateDistance(path);
+        System.out.println(timeSum);
         shortestPath.forEach(System.out::println);
         OutputView.printResult();
     }
 
-    private String inputEndSation() {
+    private int calculateTime(ArrayList<String> path) {
+        List<Double> totalTime = new ArrayList<>();
+        IntStream.range(0, path.size() - 1).forEach(value -> totalTime.add(timeGraphPath.getPath(
+            path.get(value),
+            path.get(value + 1)).getWeight()));
+        int timeSum = 0;
+        for(int i=0; i<totalTime.size(); i++){
+            timeSum += totalTime.get(i);
+        }
+        return timeSum;
+    }
+
+    private int calculateDistance(ArrayList<String> path) {
+        List<Double> totalDistance = new ArrayList<>();
+        IntStream.range(0, path.size() - 1).forEach(value -> totalDistance.add(distanceGraphPath.getPath(
+            path.get(value),
+            path.get(value + 1)).getWeight()));
+        int timeSum = 0;
+        for(int i=0; i<totalDistance.size(); i++){
+            timeSum += totalDistance.get(i);
+        }
+        return timeSum;
+    }
+
+    private ArrayList<String> listToArray(List<String> list) {
+        ArrayList<String> array = new ArrayList(list);
+        return array;
+    }
+
+    private String inputEndStation() {
         OutputView.printEndStation();
-        return inputView.inputValue();
+        String input = inputView.inputValue();
+        if(StationRepository.hasStation(input)){
+            return input;
+        }
+        throw new SubwayException("존재하지 않는 역입니다.");
     }
 
     private String inputStartStation() {
         OutputView.printStartStation();
-        return inputView.inputValue();
+        String input = inputView.inputValue();
+        if(StationRepository.hasStation(input)){
+            return input;
+        }
+        throw new SubwayException("존재하지 않는 역입니다.");
     }
 }

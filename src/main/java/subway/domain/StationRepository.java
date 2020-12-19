@@ -7,6 +7,7 @@ import java.util.Objects;
 import subway.exception.SubwayException;
 
 public class StationRepository {
+
     private static final List<Station> stations = new ArrayList<>();
 
     public static List<Station> stations() {
@@ -23,6 +24,10 @@ public class StationRepository {
 
     public static void deleteAll() {
         stations.clear();
+    }
+
+    public static boolean hasStation(String name) {
+        return stations.stream().anyMatch(station -> Objects.equals(station.getName(), name));
     }
 
     public static Station findStation(String name) {
