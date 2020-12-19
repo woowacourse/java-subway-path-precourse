@@ -13,6 +13,18 @@ public class SectionRepository {
     private static final  WeightedMultigraph<Station, DefaultWeightedEdge> timeGraph
             = new WeightedMultigraph<>(DefaultWeightedEdge.class);
 
+    static {
+        StationRepository.stations().forEach(SectionRepository::addStation);
+
+        addSectionInformation("교대역", "강남역", new SectionInformation(2, 3));
+        addSectionInformation("강남역", "역삼역", new SectionInformation(2, 3));
+        addSectionInformation("교대역", "남부터미널역", new SectionInformation(3, 2));
+        addSectionInformation("남부터미널역", "양재역", new SectionInformation(6, 5));
+        addSectionInformation("양재역", "매봉역", new SectionInformation(1, 1));
+        addSectionInformation("강남역", "양재역", new SectionInformation(2, 8));
+        addSectionInformation("양재역", "양재시민의숲역", new SectionInformation(10, 3));
+    }
+
     public static void addStation(Station station) {
         distanceGraph.addVertex(station);
         timeGraph.addVertex(station);
