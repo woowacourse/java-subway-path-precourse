@@ -62,6 +62,11 @@ public class UserInterfaceView {
     private void routeSearchToNextFunction(String userInput) {
         String startStation = Input.getUserInput(Output.START_STATION);
         String endStation = Input.getUserInput(Output.END_STATION);
+        if (startStation.equals(endStation)) {
+            Output.printStationEqualsError();
+            routeSearch();
+            return;
+        }
         if (STR_ONE.equals(userInput)) {
             findMinDistance(startStation, endStation);
         }
