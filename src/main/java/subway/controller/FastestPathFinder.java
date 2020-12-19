@@ -17,7 +17,6 @@ public class FastestPathFinder {
     public void run() {
         String startStation = askValidStation(PREFIX_START_STATION);
         String endStation = askValidStation(PREFIX_END_STATION);
-        System.out.println(startStation + endStation);
     }
 
     private String askValidStation(String stationPrefix) {

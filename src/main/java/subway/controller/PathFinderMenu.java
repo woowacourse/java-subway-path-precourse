@@ -22,7 +22,6 @@ public class PathFinderMenu {
         } else if (userInput.equals("2")) {
             FastestPathFinder fastestPathFinder = new FastestPathFinder(scanner);
             fastestPathFinder.run();
-
         }
     }
 
