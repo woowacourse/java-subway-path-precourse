@@ -12,19 +12,35 @@ public class SectionService {
         checkSameStationName(startStationName, endStationName);
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(SectionRepository.getDistanceGraph());
 
-        List<Station> path = dijkstraShortestPath.getPath(StationRepository.findByName(startStationName), StationRepository.findByName(endStationName))
+        List<Station> path = dijkstraShortestPath
+            .getPath(StationRepository.findByName(startStationName), StationRepository.findByName(endStationName))
             .getVertexList();
 
         int totalDistance = 0;
         int totalTime = 0;
         for (int i = 0; i < path.size()-1; i++) {
-            try {
-                Section section = SectionRepository.findByStartAndEndStation(path.get(i), path.get(i+1));
-                totalDistance += section.getDistance();
-                totalTime += section.getTime();
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
+            Section section = SectionRepository.findByStartAndEndStation(path.get(i), path.get(i+1));
+            totalDistance += section.getDistance();
+            totalTime += section.getTime();
+        }
+
+        return new ResultDto(totalDistance, totalTime, path);
+    }
+
+    public static ResultDto findMinTimePath(String startStationName, String endStationName) {
+        checkSameStationName(startStationName, endStationName);
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(SectionRepository.getTimeGraph());
+
+        List<Station> path = dijkstraShortestPath
+            .getPath(StationRepository.findByName(startStationName), StationRepository.findByName(endStationName))
+            .getVertexList();
+
+        int totalDistance = 0;
+        int totalTime = 0;
+        for (int i = 0; i < path.size()-1; i++) {
+            Section section = SectionRepository.findByStartAndEndStation(path.get(i), path.get(i+1));
+            totalDistance += section.getDistance();
+            totalTime += section.getTime();
         }
 
         return new ResultDto(totalDistance, totalTime, path);
