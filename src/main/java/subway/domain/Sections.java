@@ -1,6 +1,8 @@
 package subway.domain;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class Sections {
@@ -13,5 +15,9 @@ public class Sections {
 				.getSections()
 				.sections
 				.add(location - 1, StationRepository.getStation(stationName)); // index = user's input location - 1
+	}
+
+	public List<Station> sections() {
+		return Collections.unmodifiableList(sections);
 	}
 }

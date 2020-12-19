@@ -1,9 +1,8 @@
 package subway.domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import subway.View.PathMessages;
+
+import java.util.*;
 
 public class LineRepository {
     private static final List<Line> lines = new ArrayList<>();
@@ -36,5 +35,20 @@ public class LineRepository {
                 .filter(line -> line.getName().equals(lineName))
                 .findAny()
                 .orElseThrow(IllegalArgumentException::new);
+    }
+
+    private static boolean isStationInUse(String stationName) {
+        return lines.stream()
+                .map(Line::getSections)
+                .map(Sections::sections)
+                .flatMap(Collection::stream)
+                .map(Station::getName)
+                .anyMatch(stationName::equals);
+    }
+
+    public static void validateStationInUse(String stationName) throws IllegalArgumentException {
+        if (isStationInUse(stationName)) {
+            throw new IllegalArgumentException(PathMessages.STATION_NOT_IN_USE_ERROR.getMessage());
+        }
     }
 }
