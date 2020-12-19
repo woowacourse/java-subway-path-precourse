@@ -5,6 +5,7 @@ import static subway.domain.Graph.addTimeEdge;
 import static subway.domain.Graph.addVertex;
 import static subway.domain.LineRepository.addLine;
 import static subway.domain.StationRepository.addStation;
+import static subway.domain.StationRepository.getStationByName;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,15 +39,14 @@ public class Setting {
 	private static void setInit2ndLine() {
 		Line line = new Line("2호선");
 		addLine(line);
-
 		for (String stationName : INIT_2ND_LINE_STATIONS) {
-			line.addStation(stationName);
-			addVertex(stationName);
+			if (getStationByName(stationName) != null) {
+				line.addStation(stationName);
+				addVertex(stationName);
+			}
 		}
-
 		addTimeEdge("교대역", "강남역", 3);
 		addTimeEdge("강남역", "역삼역", 3);
-
 		addDistanceEdge("교대역", "강남역", 2);
 		addDistanceEdge("강남역", "역삼역", 2);
 	}
@@ -54,16 +54,15 @@ public class Setting {
 	private static void setInit3rdLine() {
 		Line line = new Line("3호선");
 		addLine(line);
-
 		for (String stationName : INIT_3RD_LINE_STATIONS) {
-			line.addStation(stationName);
-			addVertex(stationName);
+			if (getStationByName(stationName) != null) {
+				line.addStation(stationName);
+				addVertex(stationName);
+			}
 		}
-
 		addTimeEdge("교대역", "남부터미널역", 2);
 		addTimeEdge("남부터미널역", "양재역", 5);
 		addTimeEdge("양재역", "매봉역", 1);
-
 		addDistanceEdge("교대역", "남부터미널역", 3);
 		addDistanceEdge("남부터미널역", "양재역", 6);
 		addDistanceEdge("양재역", "매봉역", 1);
@@ -72,15 +71,14 @@ public class Setting {
 	private static void setInitSinbundangLine() {
 		Line line = new Line("신분당");
 		addLine(line);
-
 		for (String stationName : INIT_SINBUNDANG_LINE_STATIONS) {
-			line.addStation(stationName);
-			addVertex(stationName);
+			if (getStationByName(stationName) != null) {
+				line.addStation(stationName);
+				addVertex(stationName);
+			}
 		}
-
 		addTimeEdge("강남역", "양재역", 8);
 		addTimeEdge("양재역", "양재시민의숲역", 3);
-
 		addDistanceEdge("강남역", "양재역", 2);
 		addDistanceEdge("양재역", "양재시민의숲역", 10);
 	}
