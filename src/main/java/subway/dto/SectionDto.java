@@ -13,7 +13,7 @@ public class SectionDto {
     }
 
     public Section toEntity() {
-        return new Section(time, distance);
+        return new Section(distance, time);
     }
 
     public int getTime() {
