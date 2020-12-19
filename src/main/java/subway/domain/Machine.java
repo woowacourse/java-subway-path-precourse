@@ -7,14 +7,13 @@ import subway.view.OutputView;
 
 public class Machine {
     public void start(Scanner scanner) {
-        while (true) {
-            OutputView.printMainMenu();
-            MainFunction mainFunction = getInputFunction(scanner);
-            if (mainFunction == MainFunction.QUIT) {
-                break;
-            }
-            mainFunction.operate();
+        OutputView.printMainMenu();
+        MainFunction mainFunction = getInputFunction(scanner);
+        if (mainFunction == MainFunction.QUIT) {
+            return;
         }
+        mainFunction.operate(scanner);
+        start(scanner);
     }
 
     private MainFunction getInputFunction(Scanner scanner) {
