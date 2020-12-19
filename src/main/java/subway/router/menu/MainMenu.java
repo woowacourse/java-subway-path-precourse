@@ -22,6 +22,7 @@ public enum MainMenu {
     }
 
     public static void printMenu() {
+        OutputView.printNewLine();
         OutputView.print(name);
         Arrays.stream(MainMenu.values())
                 .forEach(mainMenu -> OutputView.print(mainMenu.getMenu()));
