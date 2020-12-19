@@ -1,5 +1,7 @@
 package subway.Controller;
 
+import subway.menuSelection.MainMenuSelection;
+import subway.view.InputView;
 import subway.view.OutputView;
 
 public class MainController {
@@ -8,7 +10,13 @@ public class MainController {
     public static void run() {
         runFlag = true;
         while (runFlag) {
-            OutputView.printMainMenu();
+            try {
+                OutputView.printMainMenu();
+                MainMenuSelection selection = InputView.getMainMenuSelection();
+                selection.getMappedFunction().runMappedFunction();
+            } catch (Exception e) {
+                OutputView.printErrorMessage(e);
+            }
         }
     }
 
