@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.StringJoiner;
+import subway.domain.menu.exception.InvalidFunctionKeyException;
 
 public class Menu implements Iterable<MenuItem> {
     private static final String TITLE_FORMAT = "## %s";
@@ -30,7 +31,7 @@ public class Menu implements Iterable<MenuItem> {
     public void executeMenuItem(String key) {
         MenuItem matchedMenuItem = menuItems.stream()
                 .filter(streamMenuItem -> key.equals(streamMenuItem.getKey()))
-                .findAny().orElseThrow(null);
+                .findAny().orElseThrow(InvalidFunctionKeyException::new);
 
         matchedMenuItem.execute();
     }

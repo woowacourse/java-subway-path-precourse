@@ -22,6 +22,13 @@ public class JGraphtTest {
 
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
         List<String> shortestPath = dijkstraShortestPath.getPath("v3", "v1").getVertexList();
+        var asd = dijkstraShortestPath.getPath("v3", "v1").getWeight();
+
+        for (String string : shortestPath) {
+            System.out.println(string);
+        }
+
+        System.out.println(asd);
 
         assertThat(shortestPath.size()).isEqualTo(3);
     }
