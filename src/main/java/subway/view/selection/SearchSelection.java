@@ -26,4 +26,16 @@ public class SearchSelection {
     public String getOption() {
         return option;
     }
+
+    public boolean isOptionOne() {
+        return option.equals(OPTION_ONE);
+    }
+
+    public boolean isOptionTwo() {
+        return option.equals(OPTION_TWO);
+    }
+
+    public boolean isBack() {
+        return option.equals(OPTION_BACK) | option.equals(OPTION_BACK_LOWERCASE);
+    }
 }

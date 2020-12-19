@@ -1,15 +1,23 @@
 package subway.domain.distanceTime;
 
-import java.math.BigDecimal;
+import subway.exception.DistanceTimeException;
+import subway.exception.ErrorCode;
 
 public class Distance {
-    private BigDecimal km;
+    private int km;
 
-    public Distance(BigDecimal km) {
+    public Distance(int km) {
         this.km = km;
+        validate(km);
     }
 
-    public static Distance km(double km) {
-        return new Distance(BigDecimal.valueOf(km));
+    private void validate(int km) {
+        if (km < 1) {
+            throw new DistanceTimeException(ErrorCode.INPUT_VALUE_MUST_NATURAL);
+        }
+    }
+
+    public int getKm() {
+        return km;
     }
 }

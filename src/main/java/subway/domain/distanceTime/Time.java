@@ -1,15 +1,23 @@
 package subway.domain.distanceTime;
 
-import java.math.BigDecimal;
+import subway.exception.DistanceTimeException;
+import subway.exception.ErrorCode;
 
 public class Time {
-    private BigDecimal minute;
+    private int minute;
 
-    public Time(BigDecimal minute) {
+    public Time(int minute) {
         this.minute = minute;
+        validate(minute);
     }
 
-    public static Time minute(long minute) {
-        return new Time(BigDecimal.valueOf(minute));
+    private void validate(int minute) {
+        if (minute < 1) {
+            throw new DistanceTimeException(ErrorCode.INPUT_VALUE_MUST_NATURAL);
+        }
+    }
+
+    public int getMinute() {
+        return minute;
     }
 }

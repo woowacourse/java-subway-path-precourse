@@ -23,10 +23,10 @@ public enum ErrorCode {
 
     //Section
     SECTION_SAME_STATION_NAME("SE001", Prefix.ERROR.getPrefix() + "상행 좀점역과 하행 종점역의 이름이 같을 수 없습니다."),
-    SECTION_NOT_FOUND("SE002", Prefix.ERROR.getPrefix() + "입력된 이름으로 등록된 노선이 없습니다.");
+    SECTION_NOT_FOUND("SE002", Prefix.ERROR.getPrefix() + "입력된 이름으로 등록된 노선이 없습니다."),
 
-
-
+    //DistanceTime
+    INPUT_VALUE_MUST_NATURAL("D001", Prefix.ERROR.getPrefix() + "1이상의 자연수만 입력 가능합니다.");
 
     private final String code;
     private final String message;

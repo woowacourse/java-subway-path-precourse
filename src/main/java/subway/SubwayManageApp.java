@@ -38,6 +38,18 @@ public class SubwayManageApp {
         SearchView searchView = new SearchView(outputView);
         searchView.showOptions();
         SearchSelection searchSelection = new SearchSelection(inputView.inputNextLine());
+        chooseSearchOption(searchSelection);
+    }
 
+    private void chooseSearchOption(SearchSelection searchSelection) {
+        if (searchSelection.isOptionOne()) {
+
+        }
+        if (searchSelection.isOptionTwo()) {
+
+        }
+        if (searchSelection.isBack()) {
+            return;
+        }
     }
 }
