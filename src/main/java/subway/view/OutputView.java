@@ -5,14 +5,13 @@ import subway.domain.Station;
 
 import java.util.List;
 
-import static subway.view.resource.Constant.INFO_DIVIDER;
-import static subway.view.resource.Constant.INFO_HEADER;
+import static subway.view.resource.Constant.*;
 import static subway.view.resource.Information.*;
 
 public class OutputView {
 
     public void printErrorMessage(String message) {
-        print(message);
+        print(ERROR_HEADER + message);
     }
 
     public void printInformation(String information) {
