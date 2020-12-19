@@ -1,5 +1,5 @@
 package subway.service;
 
-public class SectionService {
+public class TimeSectionService {
 
 }

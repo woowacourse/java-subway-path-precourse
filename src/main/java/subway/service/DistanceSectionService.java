@@ -1,2 +1,5 @@
-package subway.service;public class DistanceSectionService {
+package subway.service;
+
+public class DistanceSectionService {
+
 }

@@ -1,22 +1,10 @@
 package subway.domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import org.jgrapht.graph.DefaultWeightedEdge;
+import org.jgrapht.graph.WeightedMultigraph;
 
-public class SectionRepository {
+public class TimeSectionRepository {
 
-    private static final List<Section> sections = new ArrayList<>();
-
-    public static List<Section> sections() {
-        return Collections.unmodifiableList(sections);
-    }
-
-    public static void addSection(Section section) {
-        sections.add(section);
-    }
-
-    public static boolean searchLinked(Station source, Station destination) {
-        return false;
-    }
+    private static final WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph(
+        DefaultWeightedEdge.class);
 }

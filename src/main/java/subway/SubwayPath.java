@@ -1,2 +1,5 @@
-package subway;public class SubwayPath {
+package subway;
+
+public class SubwayPath {
+
 }
