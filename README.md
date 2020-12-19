@@ -79,8 +79,8 @@ B. 돌아가기
 
 ## 조회 결과
 [INFO] ---
-[INFO] 총 거리: 6km
-[INFO] 총 소요 시간: 14분
+[INFO] 총 거리: 4km
+[INFO] 총 소요 시간: 11분
 [INFO] ---
 [INFO] 교대역
 [INFO] 강남역
