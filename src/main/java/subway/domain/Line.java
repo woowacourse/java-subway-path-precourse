@@ -9,15 +9,16 @@ public class Line {
 	private int time;
 	private List<String> section = new ArrayList<String>();
 
-	public Line(String name,int stationIndex, String stationName, int time, int distance) {
+	public Line(String name) {
 		this.name = name;
-		addSection(stationIndex, stationName);
 	}
 
 	public String getName() {
 		return name;
 	}
-
+	public void addSection(String stationName) {
+		section.add(stationName);
+	}
 
 	public void addSection(int index, String stationName) {
 		section.add(index, stationName);
@@ -26,4 +27,5 @@ public class Line {
 	public List<String> getSection(){
 		return section;
 	}
+	
 }
