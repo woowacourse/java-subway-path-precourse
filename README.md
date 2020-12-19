@@ -257,8 +257,8 @@ This project is [MIT](https://github.com/woowacourse/java-subway-path-precourse/
 ## ☑ 구현할 기능 목록
 
 - [ ] 초기 설정
-  - [ ] 초기 지하철 역을 등록한다.
-  - [ ] 초기 노선 등록을 등록한다.
+  - [x] 초기 지하철 역을 등록한다.
+  - [x] 초기 노선 등록을 등록한다.
   - [ ] 초기 path 등록을 등록한다.
 - [ ] 메인
   - [ ] 선택지에 없는 입력일 시 에러메세지를 출력한다.
