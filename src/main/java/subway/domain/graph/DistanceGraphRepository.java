@@ -1,4 +1,4 @@
-package subway.domain;
+package subway.domain.graph;
 
 import java.util.List;
 import org.jgrapht.Graph;

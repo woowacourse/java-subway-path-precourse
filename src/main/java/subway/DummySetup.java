@@ -2,12 +2,12 @@ package subway;
 
 import java.util.Arrays;
 import java.util.List;
-import subway.domain.DistanceGraphRepository;
-import subway.domain.Line;
-import subway.domain.LineRepository;
-import subway.domain.Station;
-import subway.domain.StationRepository;
-import subway.domain.TimeGraphRepository;
+import subway.domain.graph.DistanceGraphRepository;
+import subway.domain.line.Line;
+import subway.domain.line.LineRepository;
+import subway.domain.station.Station;
+import subway.domain.station.StationRepository;
+import subway.domain.graph.TimeGraphRepository;
 
 public class DummySetup {
 

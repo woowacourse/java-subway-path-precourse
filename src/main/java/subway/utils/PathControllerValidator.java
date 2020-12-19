@@ -1,8 +1,7 @@
 package subway.utils;
 
-import subway.domain.DistanceGraphRepository;
-import subway.domain.StationRepository;
-import subway.view.ErrorMessage;
+import subway.domain.station.StationRepository;
+import subway.view.message.ErrorMessage;
 
 public class PathControllerValidator {
 

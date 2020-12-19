@@ -1,10 +1,11 @@
 package subway.view;
 
-import static subway.view.InfoMessage.*;
+import static subway.view.message.InfoMessage.*;
 
 import java.util.List;
-import subway.domain.DistanceGraphRepository;
-import subway.domain.TimeGraphRepository;
+import subway.domain.graph.DistanceGraphRepository;
+import subway.domain.graph.TimeGraphRepository;
+import subway.view.message.MenuMessage;
 
 public class OutputView {
 

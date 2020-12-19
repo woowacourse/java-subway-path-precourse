@@ -1,10 +1,10 @@
-package subway.domain;
+package subway.domain.station;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import subway.view.ErrorMessage;
+import subway.view.message.ErrorMessage;
 
 public class StationRepository {
     private static final List<Station> stations = new ArrayList<>();

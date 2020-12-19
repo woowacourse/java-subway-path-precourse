@@ -1,4 +1,4 @@
-package subway.view;
+package subway.view.message;
 
 import java.util.Arrays;
 import java.util.List;

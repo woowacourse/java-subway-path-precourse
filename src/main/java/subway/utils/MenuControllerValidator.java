@@ -1,6 +1,6 @@
 package subway.utils;
 
-import subway.view.ErrorMessage;
+import subway.view.message.ErrorMessage;
 
 public class MenuControllerValidator {
 

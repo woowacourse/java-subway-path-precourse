@@ -2,7 +2,7 @@ package subway.controller.path;
 
 import java.util.List;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
-import subway.domain.DistanceGraphRepository;
+import subway.domain.graph.DistanceGraphRepository;
 import subway.view.InputView;
 import subway.view.OutputView;
 
