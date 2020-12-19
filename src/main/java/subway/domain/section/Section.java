@@ -24,7 +24,7 @@ public class Section {
         return time;
     }
 
-    public boolean isSame(Station station, Station otherStation) {
+    public boolean contains(Station station, Station otherStation) {
         return stations.contains(station) && stations.contains(otherStation);
     }
 }

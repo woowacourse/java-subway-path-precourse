@@ -49,7 +49,7 @@ public class SectionRepository {
     public static Section getSectionByStations(Station station, Station otherStation) {
 
         return sections.stream()
-            .filter(section -> section.isSame(station, otherStation))
+            .filter(section -> section.contains(station, otherStation))
             .findFirst()
             .orElseThrow(() -> new IllegalArgumentException("[ERROR] 존재하지 않는 구간입니다."));
     }
