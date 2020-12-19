@@ -28,4 +28,11 @@ public class Edge {
     public int getTime() {
         return time;
     }
+
+    public int getDistanceOrTime(String type) {
+        if(type.equals("distance")) {
+            return distance;
+        }
+        return time;
+    }
 }
