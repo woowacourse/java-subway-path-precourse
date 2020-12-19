@@ -1,6 +1,8 @@
 package subway.domain;
 
 import java.util.List;
+
+import org.jgrapht.GraphPath;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
@@ -18,10 +20,18 @@ public class DistanceGraph {
     }
     
     public static List<Station> getShortestPath(Station leftEndStation, Station rightEndStation) {
-        DijkstraShortestPath<Station, DefaultWeightedEdge> dijikstraShortestPath = new DijkstraShortestPath<>(
-                distanceGraph);
-        List<Station> shortestPath = dijikstraShortestPath.getPath(leftEndStation, rightEndStation).getVertexList();
+        DijkstraShortestPath<Station, DefaultWeightedEdge> dijikstraShortestPath;
+        GraphPath<Station, DefaultWeightedEdge> shortestPath;
         
-        return shortestPath;
+        if (leftEndStation == rightEndStation) {
+            throw new IllegalArgumentException(DomainConstants.ORIGIN_DEST_EQUAL_ERROR_MESSAGE);
+        }
+        dijikstraShortestPath = new DijkstraShortestPath<>(distanceGraph);
+        shortestPath = dijikstraShortestPath.getPath(leftEndStation, rightEndStation);
+        if (shortestPath == null) {
+            throw new IllegalArgumentException(DomainConstants.NO_PATH_ERROR_MESSAGE);
+        }
+        
+        return shortestPath.getVertexList();
     }
 }
