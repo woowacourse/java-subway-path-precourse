@@ -4,11 +4,11 @@ import java.util.Arrays;
 import java.util.List;
 import subway.functionList.Function;
 import subway.functionList.MainFunction;
-import subway.functionList.StationFunction;
+import subway.functionList.RouteFunction;
 
 public enum ControlScreen implements Screen {
     MAIN("메인 화면", Arrays.asList(MainFunction.values())),
-    STATION_MANAGEMENT("역 관리 화면", Arrays.asList(StationFunction.values())),
+    STATION_MANAGEMENT("역 관리 화면", Arrays.asList(RouteFunction.values())),
     ;
     private String title;
     private List<Function> functions;

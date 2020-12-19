@@ -4,6 +4,7 @@ package subway.view;
 import java.util.List;
 import java.util.Scanner;
 import subway.functionList.Function;
+import subway.message.Message;
 import subway.message.PrefixMessage;
 import subway.screen.Screen;
 
@@ -44,4 +45,15 @@ public class UserView {
         System.out.println(printedMessage);
     }
 
+    public static void guideMessagePrint(Message message) {
+        String printedMessage = String
+            .format(PrefixMessage.NOTICE_FORMAT.getMessage(), message.getMessage());
+        System.out.println(printedMessage);
+    }
+
+    public static String scanUserInput() {
+        String userInput = scanner.nextLine();
+        spaceLine();
+        return userInput;
+    }
 }
