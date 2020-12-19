@@ -11,6 +11,14 @@ public class Edge {
         this.time = time;
     }
 
+    public int getDistance() {
+        return distance;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
     public Station getDestination() {
         return destination;
     }

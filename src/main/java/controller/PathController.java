@@ -12,6 +12,13 @@ public class PathController {
     private static final String INPUT_START_STATION = "## 출발역을 입력하세요.";
     private static final String INPUT_DESTINATION_STATION = "## 도착역을 입력하세요.";
 
+    private static final String INFO_PREFIX = "[INFO] ";
+    private static final String DASH = "---";
+    private static final String TOTAL_DISTANCE = "총 거리: ";
+    private static final String TOTAL_TIME = "총 소요 시간: ";
+    private static final String KM = "km";
+    private static final String MINUTE = "분";
+
     public void run() {
         showMenu();
         String input = InputView.inputWithHintMessage(SELECT_FUCTION);
@@ -34,16 +41,22 @@ public class PathController {
         String to = InputView.inputWithHintMessage(INPUT_DESTINATION_STATION);
         Path path = new Path(StationRepository.getStationByName(from),
                 StationRepository.getStationByName(to));
-
         if (!path.validatePath()) {
             return;
         }
-        if (input.equals(PathMenu.PIVOT_SHORTEST_DISTANCE)) {
-
+        if (input.equals(PathMenu.PIVOT_SHORTEST_DISTANCE.getValue())) {
+            printResult(path.getShortestDistance(), path.getShortestTime());
         }
-        if (input.equals(PathMenu.PIVOT_SHORTEST_TIME)) {
-
+        if (input.equals(PathMenu.PIVOT_SHORTEST_TIME.getValue())) {
+            printResult(path.getShortestDistance(), path.getShortestTime());
         }
+    }
+
+    private void printResult(int distance, int time) {
+        OutputView.print(INFO_PREFIX + DASH);
+        OutputView.print(INFO_PREFIX + TOTAL_DISTANCE + distance + KM);
+        OutputView.print(INFO_PREFIX + TOTAL_TIME + time + MINUTE);
+        OutputView.print(INFO_PREFIX + DASH);
     }
 
 }

@@ -61,4 +61,101 @@ public class Path {
             }
         }
     }
+
+    public int getShortestTime() {
+        int shortestDistance = 0;
+
+        HashMap<Station, Integer> distanceMap = new HashMap<>();
+        for (Station station : StationRepository.stations()) {
+            distanceMap.put(station, Integer.MAX_VALUE);
+        }
+
+        HashMap<Station, Boolean> visitedMap = new HashMap<>();
+        for (Station station : StationRepository.stations()) {
+            visitedMap.put(station, false);
+        }
+
+        distanceMap.put(from, 0);
+
+        for (Station station : StationRepository.stations()) {
+            // check되지 않았으면서,
+            // 현재(i)정점으로부터 dist 값이 제일 작은 정점(j)의 번호 찾기
+            int min = Integer.MAX_VALUE;
+            Station cur = null;
+            for (Station s2 : StationRepository.stations()) {
+                if (!visitedMap.get(s2) && distanceMap.get(s2) < min) {
+                    min = distanceMap.get(s2);
+                    cur = s2;
+                }
+            }
+
+            // 현재 정점으로부터 dist 값이 제일 작은 정점을 못 찾았으면
+            if (cur == null)
+                break;
+
+            // 찾은 정점(j)으로부터 갈 수 있는 경로가 이미 알고 있는 dist보다 작다면 갱신
+            // index가 가지고 있는 모든 간선을 검사
+            for (Edge next : cur.edges()) {
+                // check되지 않았으면서 다음 노드 까지의 거리가
+                // 나까지 거리 + 나로부터 다음 노드까지 거리보다 작다면 갱신
+                if (!visitedMap.get(next.getDestination()) && distanceMap
+                        .get(next.getDestination()) > distanceMap.get(cur) + next.getTime()) {
+                    distanceMap.put(next.getDestination(), distanceMap.get(cur) + next.getTime());
+                }
+            }
+
+            // 체크 완료
+            visitedMap.put(cur, true);
+        }
+
+        return distanceMap.get(to);
+    }
+
+    public int getShortestDistance() {
+        int shortestDistance = 0;
+
+        HashMap<Station, Integer> distanceMap = new HashMap<>();
+        for (Station station : StationRepository.stations()) {
+            distanceMap.put(station, Integer.MAX_VALUE);
+        }
+
+        HashMap<Station, Boolean> visitedMap = new HashMap<>();
+        for (Station station : StationRepository.stations()) {
+            visitedMap.put(station, false);
+        }
+
+        distanceMap.put(from, 0);
+
+        for (Station station : StationRepository.stations()) {
+
+            int min = Integer.MAX_VALUE;
+            Station cur = null;
+            for (Station s2 : StationRepository.stations()) {
+                if (!visitedMap.get(s2) && distanceMap.get(s2) < min) {
+                    min = distanceMap.get(s2);
+                    cur = s2;
+                }
+            }
+
+
+            if (cur == null)
+                break;
+
+
+            for (Edge next : cur.edges()) {
+
+
+                if (!visitedMap.get(next.getDestination()) && distanceMap
+                        .get(next.getDestination()) > distanceMap.get(cur) + next.getDistance()) {
+                    distanceMap.put(next.getDestination(),
+                            distanceMap.get(cur) + next.getDistance());
+                }
+            }
+
+            visitedMap.put(cur, true);
+        }
+
+
+        return distanceMap.get(to);
+    }
 }

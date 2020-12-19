@@ -37,7 +37,7 @@ public class Application {
         StationRepository.getStationByName("강남역")
                 .addEdge(new Edge(StationRepository.getStationByName("역삼역"), 2, 3));
         StationRepository.getStationByName("강남역")
-                .addEdge(new Edge(StationRepository.getStationByName("양재역"), 10, 3));
+                .addEdge(new Edge(StationRepository.getStationByName("양재역"), 2, 8));
 
         StationRepository.getStationByName("역삼역")
                 .addEdge(new Edge(StationRepository.getStationByName("강남역"), 2, 3));
