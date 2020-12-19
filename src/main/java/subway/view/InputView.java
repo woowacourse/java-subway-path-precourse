@@ -30,9 +30,9 @@ public class InputView extends Validator {
 
     public String inputStartStation() {
         System.out.println(START_STATION_MESSAGE);
-        String station = scanner.nextLine();
-        //validate exist station
-        return station;
+        String stationName = scanner.nextLine();
+        validateStartStation(stationName);
+        return stationName;
     }
 
     public String inputEndStation() {
