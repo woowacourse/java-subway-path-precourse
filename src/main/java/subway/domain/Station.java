@@ -1,5 +1,7 @@
 package subway.domain;
 
+import java.util.function.Supplier;
+
 public class Station {
     private String name;
 
