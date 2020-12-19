@@ -46,4 +46,8 @@ public class Input {
     public static void printEndStation() {
         System.out.println(PREFIX + END_STATION_INPUT);
     }
+
+    public static void closeScanner() {
+        scanner.close();
+    }
 }

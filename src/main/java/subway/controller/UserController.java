@@ -12,6 +12,7 @@ public class UserController {
             Input.printMainMenu();
             runStatus = startMainMenu();
         }
+        Input.closeScanner();
     }
 
     private static boolean startMainMenu() {
