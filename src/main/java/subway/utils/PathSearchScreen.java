@@ -20,7 +20,7 @@ public enum PathSearchScreen {
             .getStationName(OutputView.ORDER_TO_INPUT_DEPARTURE_STATION);
         String arrivalStationName = inputView
             .getStationName(OutputView.ORDER_TO_INPUT_ARRIVAL_STATION);
-        return true;
+        return PathController.searchPathByMinimumTime(departureStationName,arrivalStationName);
     }),
     BACK("B", inputView -> false);
 

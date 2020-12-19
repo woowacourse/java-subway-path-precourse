@@ -7,7 +7,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import subway.InitialData;
 import subway.domain.Path;
 import subway.domain.PathRepository;
 import subway.domain.Station;
@@ -22,13 +21,14 @@ public class PathService {
         int distance, int time) {
         Station departureStation = StationService.searchOneByName(departureStationName);
         Station arrivalStation = StationService.searchOneByName(arrivalStationName);
-        Path upStreamPath = new Path(departureStation,arrivalStation,distance,time);
-        Path downStreamPath = new Path(arrivalStation,departureStation,distance,time);
+        Path upStreamPath = new Path(departureStation, arrivalStation, distance, time);
+        Path downStreamPath = new Path(arrivalStation, departureStation, distance, time);
         PathRepository.addPath(upStreamPath);
         PathRepository.addPath(downStreamPath);
     }
 
-    public static void searchShortestDistance(String departureStationName, String arrivalStationName) {
+    public static void searchShortestDistance(String departureStationName,
+        String arrivalStationName) {
         Station departureStation = StationService.searchOneByName(departureStationName);
         Station arrivalStation = StationService.searchOneByName(arrivalStationName);
         validateSameStations(departureStation, arrivalStation);
@@ -38,25 +38,38 @@ public class PathService {
         Result result = dijkstra(distanceMap, departureStation);
         getStopStations(arrivalStation, result, stops);
         Collections.reverse(stops);
-        OutputView.printList(result,arrivalStation,stops, result.distances.get(arrivalStation));
+        OutputView.printDistanceList(result, arrivalStation, stops, result.distances.get(arrivalStation));
     }
-
-    private static void getStopStations(Station arrivalStation, Result result, List<Station> stops) {
+    public static void searchMinimumTime(String departureStationName,
+        String arrivalStationName) {
+        Station departureStation = StationService.searchOneByName(departureStationName);
+        Station arrivalStation = StationService.searchOneByName(arrivalStationName);
+        validateSameStations(departureStation, arrivalStation);
+        Map<Station, Map<Station, Integer>> timeMap = PathRepository
+            .convertPathsToTimeMap();
+        List<Station> stops = new ArrayList<>();
+        Result result = dijkstra(timeMap, departureStation);
+        getStopStations(arrivalStation, result, stops);
+        Collections.reverse(stops);
+        OutputView.printTimeList(result, arrivalStation, stops, result.distances.get(arrivalStation));
+    }
+    private static void getStopStations(Station arrivalStation, Result result,
+        List<Station> stops) {
         Station curNode = arrivalStation;
         stops.add(arrivalStation);
-        while(!result.preNode.get(curNode).equals(new Station(""))){
+        while (!result.preNode.get(curNode).equals(new Station(""))) {
             curNode = result.preNode.get(curNode);
             stops.add(curNode);
         }
     }
 
     private static void validateSameStations(Station departureStation, Station arrivalStation) {
-        if(departureStation.equals(arrivalStation)){
+        if (departureStation.equals(arrivalStation)) {
             throw new IllegalArgumentException(SAME_STATION_ERROR);
         }
     }
 
-    private static Result dijkstra(Map<Station, Map<Station, Integer>> graph, Station source){
+    private static Result dijkstra(Map<Station, Map<Station, Integer>> graph, Station source) {
         Map<Station, Integer> distances = new HashMap<>();
         Map<Station, Station> preNode = new HashMap<>();
         Result result = new Result();
@@ -72,11 +85,11 @@ public class PathService {
 
     private static void iterateUntilQEmpty(Map<Station, Map<Station, Integer>> graph,
         Map<Station, Integer> distances, Map<Station, Station> preNode, Set<Station> Q) {
-        while(!Q.isEmpty()){
+        while (!Q.isEmpty()) {
             Station minNode = new Station("");
             int minNodeDistance = INFINITY;
-            for(Station node: Q){
-                if(distances.get(node) < minNodeDistance){
+            for (Station node : Q) {
+                if (distances.get(node) < minNodeDistance) {
                     minNode = node;
                     minNodeDistance = distances.get(node);
                 }
@@ -84,9 +97,9 @@ public class PathService {
             Q.remove(minNode);
 
             Map<Station, Integer> minNodeMap = graph.get(minNode);
-            for(Station key: minNodeMap.keySet()){
+            for (Station key : minNodeMap.keySet()) {
                 int distance = minNodeDistance + minNodeMap.get(key);
-                if(distance < distances.get(key)){
+                if (distance < distances.get(key)) {
                     distances.put(key, distance);
                     preNode.put(key, minNode);
                 }
@@ -94,11 +107,12 @@ public class PathService {
         }
     }
 
-    private static void convertMapKeyToSet(Map<Station, Map<Station, Integer>> graph, Station source,
+    private static void convertMapKeyToSet(Map<Station, Map<Station, Integer>> graph,
+        Station source,
         Map<Station, Integer> distances, Map<Station, Station> preNode, Set<Station> Q) {
-        for(Station key: graph.keySet()){
+        for (Station key : graph.keySet()) {
             Q.add(key);
-            if(!key.equals(source)){
+            if (!key.equals(source)) {
                 distances.put(key, INFINITY);
                 preNode.put(key, new Station(""));
             }

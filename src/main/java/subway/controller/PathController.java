@@ -18,4 +18,15 @@ public class PathController {
             return RETRY;
         }
     }
+
+    public static Boolean searchPathByMinimumTime(String departureStationName,
+        String arrivalStationName) {
+        try{
+            PathService.searchMinimumTime(departureStationName,arrivalStationName);
+            return BACK_TO_MAIN_SCREEN;
+        }catch(Exception e){
+            OutputView.print(e.getMessage());
+            return RETRY;
+        }
+    }
 }
