@@ -23,4 +23,9 @@ public class StationRepository {
     public static void deleteAll() {
         stations.clear();
     }
+
+    public static boolean isExistent(String name) {
+        return stations.stream()
+                .anyMatch(station -> station.isMatchedName(name));
+    }
 }
