@@ -1,24 +1,24 @@
 package subway.domain;
 
 public class Section {
-    private Station stationFrom;
-    private Station stationTo;
+    private Station sourceStation;
+    private Station targetStation;
     private int distance;
     private int time;
 
-    public Section(Station stationFrom, Station stationTo, int distance, int time) {
-        this.stationFrom = stationFrom;
-        this.stationTo = stationTo;
+    public Section(Station sourceStation, Station targetStation, int distance, int time) {
+        this.sourceStation = sourceStation;
+        this.targetStation = targetStation;
         this.distance = distance;
         this.time = time;
     }
 
-    public Station getStationFrom() {
-        return stationFrom;
+    public String getSourceStationName() {
+        return sourceStation.getName();
     }
 
-    public Station getStationTo() {
-        return stationTo;
+    public String getTargetStationName() {
+        return targetStation.getName();
     }
 
     public int getDistance() {
