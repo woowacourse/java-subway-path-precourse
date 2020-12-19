@@ -1,13 +1,13 @@
 package subway.controller;
 
-import subway.domain.MainMenu;
+import subway.domain.menu.MainMenu;
 import subway.utils.exception.InvalidMenuInputException;
 import subway.view.InputView;
-import subway.view.MainOutputView;
+import subway.view.output.MainOutputView;
 
 import java.util.Scanner;
 
-public class MainController {
+public class MainController implements Controller{
     MainOutputView mainOutputView;
     InputView inputView;
     MainMenu mainMenu;
@@ -17,6 +17,7 @@ public class MainController {
         mainOutputView = new MainOutputView();
     }
 
+    @Override
     public void run() {
         do {
             mainOutputView.printMainMenu(MainMenu.list());

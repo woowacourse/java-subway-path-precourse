@@ -1,5 +1,6 @@
-package subway.domain;
+package subway.domain.menu;
 
+import subway.controller.Controller;
 import subway.controller.RouteController;
 import subway.utils.exception.InvalidMenuInputException;
 
@@ -9,17 +10,17 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public enum MainMenu {
-    SHOW_ROUTE("1", "1. 경로 조회\n", RouteController::run),
+    SHOW_ROUTE("1", "1. 경로 조회\n", new RouteController()),
     QUITE("Q", "Q. 종료\n", null);
 
     private String button;
     private String menu;
-    private Runnable runnable;
+    private Controller controller;
 
-    MainMenu(String button, String menu, Runnable runnable) {
+    MainMenu(String button, String menu, Controller controller) {
         this.button = button;
         this.menu = menu;
-        this.runnable = runnable;
+        this.controller = controller;
     }
 
     public static List<String> list() {
@@ -45,7 +46,7 @@ public enum MainMenu {
 
     public void start() {
         if (isRunning()) {
-            runnable.run();
+            controller.run();
         }
     }
 }
