@@ -15,6 +15,7 @@ public class RouteSearchMenu {
     private final String REQUEST_ARRIVAL = "## 도착역을 입력하세요.";
 
     private Scanner scanner;
+    private String input;
 
     public RouteSearchMenu(Scanner scanner) {
         this.scanner = scanner;
@@ -38,7 +39,7 @@ public class RouteSearchMenu {
     private void inputMenu() {
         while (true) {
             outputRouteSearchMenu();
-            String input = scanner.nextLine();
+            this.input = scanner.nextLine();
             System.out.println();
             if (input.equals("1")) {
                 requestStartStation();
@@ -68,5 +69,22 @@ public class RouteSearchMenu {
         if (StationValidator.checkVailableArrivalStation(startStationName, arrivalStationName)) {
 
         }
+    }
+
+    private void checkSearchMethod() {
+        if (input.equals("1")) {
+            searchShortestDistanceRoute();
+        }
+        if (input.equals("2")) {
+            searchShortestTimeRoute();
+        }
+    }
+
+    private void searchShortestDistanceRoute() {
+
+    }
+
+    private void searchShortestTimeRoute() {
+
     }
 }
