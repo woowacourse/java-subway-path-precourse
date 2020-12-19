@@ -1,5 +1,6 @@
 package subway.controller;
 
+import subway.view.InputView;
 import subway.view.OutputView;
 
 import java.util.Scanner;
@@ -17,6 +18,6 @@ public class PathFinder {
 
     private String askValidMenuNumber() {
         OutputView.pathfiner();
-        return null;
+        return InputView.askMenu(scanner, "[1-2Bb]");
     }
 }
