@@ -34,14 +34,30 @@ public class Line {
             distance.add(tmpSaveDistance.get(i));
         }
     }
-    public List<Station> getLineStation(){
+    public List<Station> getLineStation() {
         return stations;
     }
-    public List<Integer> getLineDistance(){
+    public List<Integer> getLineDistance() {
         return distance;
     }
-    public List<Integer> getLineTime(){
+    public List<Integer> getLineTime() {
         return time;
     }
+    public int getDistance(Station startStation,Station endStation) {
+        int startIndex=stations.indexOf(startStation);
+        int endIndex=stations.indexOf(endStation);
+        if(startIndex>endIndex) {
+           return computeDistance(endIndex,startIndex);
+        }
+        return computeDistance(startIndex,endIndex);
+    }
+    public int computeDistance(int startIndex,int endIndex) {
+        int totalDistance=0;
+        for(int i=startIndex;i<endIndex;i++) {
+            totalDistance+=distance.get(i);
+        }
+        return totalDistance;
+    }
+
 
 }
