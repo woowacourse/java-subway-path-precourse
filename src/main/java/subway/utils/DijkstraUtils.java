@@ -59,8 +59,6 @@ public class DijkstraUtils {
 
     private static GraphPath<String, DefaultWeightedEdge> getPath(String sourceName,
             String targetName) {
-        //  todo 경로 조회 시 출발역과 도착역이 연결되어 있지 않으면 에러를 출력한다.
-
         DijkstraShortestPath<String, DefaultWeightedEdge> dijkstraShortestPath = new DijkstraShortestPath(
                 graph);
         return dijkstraShortestPath.getPath(sourceName, targetName);
