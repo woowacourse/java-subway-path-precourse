@@ -9,4 +9,11 @@ public class Cost {
         this.time = time;
     }
 
+    public int getDistance() {
+        return distance;
+    }
+
+    public int getTime() {
+        return time;
+    }
 }

@@ -1,5 +1,6 @@
 package subway.domain.Dijkstra;
 
+import java.util.List;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
@@ -24,8 +25,12 @@ public class RouteMap {
         return graph;
     }
 
-    public String getEdgeSourceName(DefaultWeightedEdge edge) {
-        return graph.getEdgeSource(edge).getName();
+    public Station getSourceStationOf(DefaultWeightedEdge edge) {
+        return graph.getEdgeSource(edge);
+    }
+
+    public Station getDestinationStationOf(DefaultWeightedEdge edge) {
+        return graph.getEdgeTarget(edge);
     }
 
 }

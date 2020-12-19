@@ -52,10 +52,7 @@ public class JGraphtTest {
             System.out.println(station.getName());
         }
 
-        for(DefaultWeightedEdge edge: Edges) {
-            System.out.println(routeMap.getEdgeSourceName(edge));
 
-        }
 
         System.out.println("dsdsdsdsdsd");
 

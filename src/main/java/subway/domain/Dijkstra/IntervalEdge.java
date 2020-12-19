@@ -21,6 +21,10 @@ public class IntervalEdge extends DefaultWeightedEdge {
         return end;
     }
 
+    public Cost getCost() {
+        return cost;
+    }
+
     @Override
     public String toString() {
         return start.getName() + "-" + end.getName();
