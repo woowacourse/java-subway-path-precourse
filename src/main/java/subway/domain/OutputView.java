@@ -13,7 +13,11 @@ public class OutputView {
     }
 
     public static void printCriteriaMenu() {
-
+        String message = "## 경로 기준" + newLine;
+        for (Menu.ROUTE_CRITERIA menu : Menu.ROUTE_CRITERIA.values()) {
+            message += String.format("%s. %s" + newLine, menu.getCode(), menu.getKorean() );
+        }
+        System.out.println(message);
     }
 
     public static void printRouteResult() {

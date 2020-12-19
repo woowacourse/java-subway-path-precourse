@@ -1,10 +1,11 @@
 package subway.domain;
 
+import java.util.Objects;
 import java.util.Stack;
 
 public class ScreenManager {
+    private static final String DONE = "-1";
     private static Stack<ScreenModel> screens = new Stack<>();
-
 
 
     public static boolean isEmpty() {
@@ -15,11 +16,21 @@ public class ScreenManager {
     }
 
     public static void show(ScreenModel screen) {
-        screen.showMenu();
+        String result = screen.showMenu();
+        if (result == DONE) {
+            return;
+        }
+        // todo 유효한 입력인지 검증한다.
+
+        addNextMenuScreen(screen.getNextMenuScreen(result));
+
     }
 
-    public static void add(ScreenModel screen) {
-        screens.push(screen);
+    public static void addNextMenuScreen(ScreenModel nextScreen) {
+        if (Objects.isNull(nextScreen)) {
+            return;
+        }
+        screens.push(nextScreen);
     }
 
     public static ScreenModel pop() {
