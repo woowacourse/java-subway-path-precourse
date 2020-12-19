@@ -24,4 +24,10 @@ public class Station {
     public boolean includedLine(String lineName) {
         return lineList.contains(lineName);
     }
+
+    private List<Section> sectionList = new ArrayList<>();
+
+    public void addSection(String linkedStationName, int distance, int time) {
+        sectionList.add(new Section(linkedStationName, distance, time));
+    }
 }
