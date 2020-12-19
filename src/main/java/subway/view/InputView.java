@@ -3,7 +3,13 @@ package subway.view;
 import java.util.Scanner;
 
 public class InputView {
-    public static String nextLine(Scanner scanner) {
+    private final Scanner scanner;
+
+    public InputView(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+    public String nextLine() {
         return scanner.nextLine();
     }
 }
