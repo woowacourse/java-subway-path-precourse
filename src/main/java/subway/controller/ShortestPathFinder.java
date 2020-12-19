@@ -1,7 +1,7 @@
 package subway.controller;
 
 import subway.Exception.CustomException;
-import subway.domain.DistanceRepository;
+import subway.domain.GraphRepository;
 import subway.view.InputView;
 
 import java.util.List;
@@ -38,9 +38,9 @@ public class ShortestPathFinder {
     }
 
     private void printShortestPath(String startStation, String endStation) {
-        int shortestLenth = DistanceRepository.getShortestPathLength(startStation, endStation);
-        List<String> pathList = DistanceRepository.getShortestPath(startStation, endStation);
-        int timeLength = DistanceRepository.getLengthByTime(pathList);
+        int shortestLenth = GraphRepository.getShortestPathLength(startStation, endStation);
+        List<String> pathList = GraphRepository.getShortestPath(startStation, endStation);
+        int timeLength = GraphRepository.getLengthByTime(pathList);
 
         StringBuilder sb = getStringBuilder(shortestLenth, pathList, timeLength);
         System.out.println(sb);
@@ -52,7 +52,7 @@ public class ShortestPathFinder {
         sb.append(NEW_LINE + PREFIX_INFO + HORIZONTAL_LINE);
         sb.append(NEW_LINE + PREFIX_DISTANCE + shortestLenth + SUFFIX_DISTANCE);
         sb.append(NEW_LINE + PREFIX_TIME + timeLength + SUFFIX_TIME);
-        sb.append("\n[INFO] ---");
+        sb.append(NEW_LINE + PREFIX_INFO + HORIZONTAL_LINE);
         for (String station : pathList) {
             sb.append(NEW_LINE + PREFIX_INFO);
             sb.append(station);

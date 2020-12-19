@@ -1,7 +1,7 @@
 package subway.controller;
 
 import subway.Exception.CustomException;
-import subway.domain.DistanceRepository;
+import subway.domain.GraphRepository;
 import subway.view.InputView;
 
 import java.util.List;
@@ -36,9 +36,9 @@ public class FastestPathFinder {
     }
 
     private void printFastestPath(String startStation, String endStation) {
-        int fastestLength = DistanceRepository.getFastestPathLength(startStation, endStation);
-        List<String> pathList = DistanceRepository.getFastestPath(startStation, endStation);
-        int distanceLength = DistanceRepository.getLengthByDistance(pathList);
+        int fastestLength = GraphRepository.getFastestPathLength(startStation, endStation);
+        List<String> pathList = GraphRepository.getFastestPath(startStation, endStation);
+        int distanceLength = GraphRepository.getLengthByDistance(pathList);
 
         StringBuilder sb = getStringBuilder(fastestLength, pathList, distanceLength);
         System.out.println(sb);

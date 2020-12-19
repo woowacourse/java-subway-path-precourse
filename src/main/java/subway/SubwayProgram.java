@@ -1,10 +1,8 @@
 package subway;
 
-import org.jgrapht.graph.DefaultWeightedEdge;
-import org.jgrapht.graph.WeightedMultigraph;
 import subway.controller.Initializer;
 import subway.controller.MainMenu;
-import subway.domain.DistanceRepository;
+import subway.domain.GraphRepository;
 
 import java.util.Scanner;
 
@@ -26,7 +24,7 @@ public class SubwayProgram {
     private void initializeData() {
         Initializer.stationInitialize();
         Initializer.lineInitialize();
-        DistanceRepository.initializePathByDistance();
-        DistanceRepository.initializePathByTime();
+        GraphRepository.initializePathByDistance();
+        GraphRepository.initializePathByTime();
     }
 }

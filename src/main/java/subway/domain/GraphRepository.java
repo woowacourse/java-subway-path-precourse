@@ -6,7 +6,7 @@ import org.jgrapht.graph.WeightedMultigraph;
 
 import java.util.List;
 
-public class DistanceRepository {
+public class GraphRepository {
     private static WeightedMultigraph<String, DefaultWeightedEdge> distanceGraph;
     private static DijkstraShortestPath dijkstraShortestPath;
     private static WeightedMultigraph<String, DefaultWeightedEdge> timeGraph;
