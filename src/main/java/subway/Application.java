@@ -15,7 +15,6 @@ public class Application {
         PathController pathController = new PathController();
         SubwayPathInitializer.loadDefaultData(pathController);
         SubwayPathManager subwayPathManager = new SubwayPathManager(inputView, pathController);
-        SubwayGraph.initiate();
         subwayPathManager.run();
         scanner.close();
     }
