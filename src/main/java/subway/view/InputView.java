@@ -10,6 +10,20 @@ public class InputView {
         return input;
     }
     
+    public static String inputStartStation(Scanner scanner) {
+        System.out.println("## 출발역을 입력하세요.");
+        String input = scanner.nextLine();
+        printEmptyLine();
+        return input;
+    }
+    
+    public static String inputEndStation(Scanner scanner) {
+        System.out.println("## 도착을 입력하세요.");
+        String input = scanner.nextLine();
+        printEmptyLine();
+        return input;
+    }
+    
     private static void printEmptyLine(){
         System.out.println();
     }
