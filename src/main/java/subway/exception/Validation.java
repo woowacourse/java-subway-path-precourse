@@ -1,9 +1,9 @@
 package subway.exception;
 
-import subway.domain.LineRepository;
-import subway.domain.Station;
-import subway.domain.Line;
-import subway.domain.StationRepository;
+import subway.model.domain.LineRepository;
+import subway.model.domain.Station;
+import subway.model.domain.Line;
+import subway.model.domain.StationRepository;
 
 import java.util.Arrays;
 import java.util.List;
