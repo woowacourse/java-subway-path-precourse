@@ -12,7 +12,14 @@ public class LineRepository {
         return Collections.unmodifiableList(lines);
     }
 
-    public static void addLine(Line line) {
+    private static void validateLineNameDuplicate(String lineName) throws IllegalArgumentException {
+        if (lines.stream().anyMatch(line -> line.getName().equals(lineName))) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void addLine(Line line) throws IllegalArgumentException {
+        validateLineNameDuplicate(line.getName());
         lines.add(line);
     }
 
