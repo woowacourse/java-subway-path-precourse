@@ -1,9 +1,6 @@
 package subway.domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class EdgeRepository {
     private static final List<Edge> edges = new ArrayList<>();
@@ -14,6 +11,10 @@ public class EdgeRepository {
 
     public static void addEdge(Edge edge) {
         edges.add(edge);
+    }
+
+    public static Edge getEdgeByFromAndTo(String from, String to) {
+        return edges.stream().filter(edge -> (Objects.equals(edge.getFrom(), from) && Objects.equals(edge.getTo(), to))).findFirst().get();
     }
 
     public static boolean deleteEdgeByFromAndTo(String from, String to) {

@@ -3,6 +3,16 @@
 
 # CHANGELOG
 
+## [5.0.0] feat(SubwayController.java): add selectPath feature
+
+Update files:
+
+    - SubwayController.java
+        - selectPath() : run appropriate finding pathway function by user input
+
+Add selectPath feature for selecting finding pathway
+
+---
 
 ## [4.0.0] feat(Presenter.java): add resultInfo feature
 

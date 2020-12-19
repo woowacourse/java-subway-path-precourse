@@ -1,16 +1,131 @@
 package subway.controller;
 
-import subway.domain.Edge;
-import subway.domain.EdgeRepository;
-import subway.domain.Station;
-import subway.domain.StationRepository;
+import subway.domain.*;
+import subway.view.Presenter;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
 
 public class SubwayController {
-    public void run() {
+    private static final String MENU_ONE = "1";
+    private static final String MENU_TWO = "2";
+    private static final String MENU_BACK = "B";
+    private static final String MENU_QUIT = "Q";
 
+    private final SubwayPath subwayPath;
+    private final Scanner scanner;
+    private final Presenter presenter;
+
+    public SubwayController(SubwayPath subwayPath, Scanner scanner, Presenter presenter) {
+        this.subwayPath = subwayPath;
+        this.scanner = scanner;
+        this.presenter = presenter;
     }
+
+    public void run() {
+        initPrimary();
+        do {
+            presenter.mainInfo();
+        } while (choiceFunction(scanner.nextLine()));
+    }
+
+    // false -> break;
+    private boolean choiceFunction(String input) {
+        if (input.equals(MENU_QUIT)) {
+            return false;
+        }
+        if (input.equals(MENU_ONE)) {
+            presenter.pathInfo();
+            return selectPath(scanner.nextLine());
+        }
+        presenter.wrongInput();
+        return true;
+    }
+
+    // false -> break;
+    private boolean selectPath(String input) {
+        if (input.equals(MENU_BACK)) {
+            return false;
+        }
+        if (input.equals(MENU_ONE) || input.equals(MENU_TWO)) {
+            return !getFromAndTo(input);
+        }
+        presenter.wrongInput();
+        return true;
+    }
+
+    private boolean getFromAndTo(String input) {
+        String from = getStartingStation();
+        if (from.equals("")) {
+            return false;
+        }
+        String to = getDestinationStation(from);
+        if (to.equals("")) {
+            return false;
+        }
+        printPath(input, from, to);
+        return false;
+    }
+
+    private void printPath(String input, String from, String to) {
+        List<String> path = null;
+        if (input.equals(MENU_ONE)) {
+            path = subwayPath.getDistancePath(from, to);
+        }
+
+        if (input.equals(MENU_TWO)) {
+            path = subwayPath.getTimePath(from, to);
+        }
+        presenter.resultInfo(getTotalDistance(path), getTotalTime(path), path);
+    }
+
+    private int getTotalDistance(List<String> path) {
+        if (path == null) {
+            return 0;
+        }
+        int distance = 0;
+        for (int i = 1; i < path.size(); i++) {
+            distance += EdgeRepository.getEdgeByFromAndTo(path.get(i - 1), path.get(i)).getDistance();
+        }
+        return distance;
+    }
+
+    private int getTotalTime(List<String> path) {
+        if (path == null) {
+            return 0;
+        }
+        int time = 0;
+        for (int i = 1; i < path.size(); i++) {
+            time += EdgeRepository.getEdgeByFromAndTo(path.get(i - 1), path.get(i)).getTime();
+        }
+        return time;
+    }
+
+    private String getStartingStation() {
+        presenter.inputStartingStation();
+        String station = scanner.nextLine();
+        if (!isInStations(station)) {
+            presenter.wrongInput();
+            return "";
+        }
+        return station;
+    }
+
+    private String getDestinationStation(String from) {
+        presenter.inputDestinationStation();
+        String station = scanner.nextLine();
+        if (!isInStations(station) || from.equals(station)) {
+            presenter.wrongInput();
+            return "";
+        }
+        return station;
+    }
+
+    private boolean isInStations(String name) {
+        return StationRepository.stations().stream().anyMatch(station -> station.getName().equals(name));
+    }
+
 
     public void initPrimary() {
         Arrays.asList("교대역", "강남역", "역삼역", "남부터미널역", "양재역", "양재시민의숲역", "매봉역")
@@ -23,5 +138,4 @@ public class SubwayController {
         EdgeRepository.addEdge(new Edge("강남역", "양재역", 2, 8));
         EdgeRepository.addEdge(new Edge("양재역", "양재시민의숲역", 10, 3));
     }
-
 }
