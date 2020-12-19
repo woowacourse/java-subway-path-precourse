@@ -1,6 +1,9 @@
 package subway.exception;
 
-public class SubwayException extends Throwable {
-    public SubwayException(String 메뉴_잘못_입력) {
+public class SubwayException extends IllegalArgumentException{
+    private static final String ERROR = "[ERROR] ";
+
+    public SubwayException(String message) {
+        super(ERROR + message);
     }
 }
