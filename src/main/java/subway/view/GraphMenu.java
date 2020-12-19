@@ -134,11 +134,7 @@ public class GraphMenu {
 
 
     private boolean validInput(String select) {
-        if (SELECTIONS.contains(select)) {
-            return true;
-        }
-
-        return false;
+        return SELECTIONS.contains(select);
     }
 
 
