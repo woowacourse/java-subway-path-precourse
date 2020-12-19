@@ -2,6 +2,7 @@ package subway.view;
 
 import subway.domain.LineRepository;
 
+import java.util.Locale;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.function.Consumer;
@@ -9,7 +10,7 @@ import java.util.function.Consumer;
 public class InputView {
 	public static String inputScreenOption(Scanner scanner, Map<String, Consumer<Scanner>> options) throws IllegalArgumentException {
 		System.out.println(GeneralMessages.CHOICE.getMessage());
-		String option = scanner.nextLine().replaceAll("\\s+", "");
+		String option = scanner.nextLine().replaceAll("\\s+", "").toUpperCase(Locale.ROOT);
 		System.out.println();
 		Options.validateOption(options, option);
 		return option;

@@ -2,6 +2,7 @@ package subway.controller;
 
 import subway.view.InputView;
 import subway.view.Options;
+import subway.view.OutputView;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,22 +15,22 @@ public class PathController {
 	static {
 		options.put(Options.OPTION_1.getOption(), PathController::findLeastDistance);
 		options.put(Options.OPTION_2.getOption(), PathController::findLeastTimeConsumed);
-		options.put(Options.QUIT.getOption(), (scanner) -> {});
+		options.put(Options.BACK.getOption(), (scanner) -> {});
 	}
 
-	private static void findLeastDistance(Scanner scanner) {
+	private static void findLeastDistance(Scanner scanner) throws IllegalArgumentException {
 		// TODO
 		String start = InputView.inputStartStation(scanner);
 		String end = InputView.inputEndStation(scanner, start);
 	}
 
-	private static void findLeastTimeConsumed(Scanner scanner) {
+	private static void findLeastTimeConsumed(Scanner scanner) throws IllegalArgumentException {
 		// TODO
 		String start = InputView.inputStartStation(scanner);
 		String end = InputView.inputEndStation(scanner, start);
 	}
 
-	private static void controlByOption(String option, Scanner scanner) {
+	private static void controlByOption(String option, Scanner scanner) throws IllegalArgumentException {
 		options.get(option).accept(scanner);
 		if (option.equals(Options.BACK.getOption())) {
 			return;
@@ -40,6 +41,7 @@ public class PathController {
 	public static void run(Scanner scanner) {
 		// TODO
 		try {
+			OutputView.printPathScreen();
 			String option = InputView.inputScreenOption(scanner, options);
 			controlByOption(option, scanner);
 		} catch (IllegalArgumentException e) {

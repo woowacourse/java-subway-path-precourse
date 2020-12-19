@@ -38,7 +38,7 @@ public enum InitialSubway {
 	public static void initializeStations() {
 		Arrays.stream(values())
 				.map(subway -> subway.sections)
-				.map(sections -> String.valueOf(sections.get(0)))
+				.flatMap(Collection::stream)
 				.distinct()
 				.forEach(station -> addStation(new Station(station)));
 	}

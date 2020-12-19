@@ -49,7 +49,7 @@ public class LineRepository {
     }
 
     public static void validateStationInUse(String stationName) throws IllegalArgumentException {
-        if (isStationInUse(stationName)) {
+        if (!isStationInUse(stationName)) {
             throw new IllegalArgumentException(PathMessages.STATION_NOT_IN_USE_ERROR.getMessage());
         }
     }

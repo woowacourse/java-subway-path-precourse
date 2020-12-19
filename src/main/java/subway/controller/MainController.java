@@ -3,6 +3,7 @@ package subway.controller;
 import subway.view.InputView;
 import subway.view.MainMessages;
 import subway.view.Options;
+import subway.view.OutputView;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,6 +23,7 @@ public class MainController {
 		if (option.equals(Options.QUIT.getOption())) {
 			return;
 		}
+		OutputView.printMainScreen();
 		run(scanner);
 	}
 
@@ -36,5 +38,4 @@ public class MainController {
 			run(scanner);
 		}
 	}
-
 }

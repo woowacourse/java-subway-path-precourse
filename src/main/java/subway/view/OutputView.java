@@ -14,7 +14,7 @@ public class OutputView {
 	}
 
 	public static void printPathScreen() {
-		Arrays.stream(MainMessages.values())
+		Arrays.stream(PathMessages.values())
 				.limit(PATH_SCREEN_OPTION_LENGTH)
 				.forEach(value -> System.out.println(value.getMessage()));
 		System.out.println();
