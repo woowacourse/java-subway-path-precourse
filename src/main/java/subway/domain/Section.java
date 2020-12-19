@@ -24,4 +24,8 @@ public class Section {
     public int getDistance() {
         return distance;
     }
+    
+    public int getTime() {
+        return time;
+    }
 }
