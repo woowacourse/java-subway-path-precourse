@@ -69,6 +69,60 @@
 
 <br>
 
+## 📂 완성된 디렉토리 구조
+```
+└─java-subway-path-precourse
+    │
+    ├─docs
+    │   └─README.md
+    └─src
+        └─main
+            └─java
+                └─subway
+                    ├─controller
+                    │   ├─validation
+                    │   │   └─PathValidation.java
+                    │   ├─OptionInterface.java
+                    │   ├─PathController.java
+                    │   └─SubwayController.java
+                    ├─domain
+                    │   ├─Line.java
+                    │   ├─Station.java
+                    │   └─Stations.java
+                    ├─repository
+                    │   ├─DistanceMapRepository.java
+                    │   ├─LineRepository.java
+                    │   ├─StationRepository.java
+                    │   ├─StationsRepository.java
+                    │   └─TimeMapRepository.java
+                    ├─service
+                    │   ├─initialization
+                    │   │   ├─DistanceMapInitialization.java
+                    │   │   ├─SubwayInitialization.java
+                    │   │   └─TimeMapInitialization.java
+                    │   ├─DistanceMapService.java
+                    │   ├─PathService.java
+                    │  ├─StationService.java
+                    │    └─TimeMapService.java
+                    ├─type
+                    │   ├─DistanceType.java
+                    │   ├─ExceptionType.java
+                    │   ├─IndexType.java
+                    │   ├─InformationType.java
+                    │   ├─InputType.java
+                    │   ├─LineType.java
+                    │   ├─ScreenType.java
+                    │   ├─StationType.java
+                    │   ├─TextType.java
+                    │   ├─TimeType.java
+                    ├─view
+                    │   ├─InputView.java
+                    │   └─OutputView.java
+                    └─Application.java
+```
+
+<br>
+
 ## 📝 License
 
 This project is [MIT](https://github.com/woowacourse/java-subway-path-precourse/blob/master/LICENSE.md) licensed.
