@@ -9,9 +9,11 @@ import java.util.List;
 public class MainController {
 
     private final InputView inputView;
+    private final PathController pathController;
 
     public MainController(InputView inputView) {
         this.inputView = inputView;
+        pathController = new PathController();
     }
 
     private final List<String> buttons = Arrays.asList(
@@ -21,7 +23,15 @@ public class MainController {
 
     public void run() {
         OutputView.printMain();
-        inputView.getFunctionSelect(buttons);
+        String selectedButton = inputView.getFunctionSelect(buttons);
+        nextProcedure(selectedButton);
+    }
+
+    private void nextProcedure(String button) {
+        if (button.equals(MainButton.INQUIRY.getSymbol())) {
+            pathController.run(inputView);
+            run();
+        }
     }
 
 }
