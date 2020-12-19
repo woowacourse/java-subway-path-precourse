@@ -26,9 +26,25 @@ public class View {
 	
 	private void moveViewBySelector(String selector) {
 		if (selector.equals(FIRST)) {
-			ViewManager.showPathView();
+			showPathView();
 			return;
 		} else if (selector.equals(QUITE)) {
+//			lineManagement();
+			return;
+		}
+	}
+	
+	private void showPathView() {
+		Output.pathView();
+		selector = Input.nextLine(scanner);
+		movePathViewBySelector(selector);
+	}
+	
+	private void movePathViewBySelector(String selector) {
+		if (selector.equals(FIRST)) {
+			ViewManager.showMinDistance();
+			return;
+		} else if (selector.equals(SECOND)) {
 //			lineManagement();
 			return;
 		}
