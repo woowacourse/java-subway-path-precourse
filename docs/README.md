@@ -62,6 +62,8 @@ pkeugine 브랜치의 구현물은 다음과 같은 특징을 갖고 있습니�
 | Line | 지하철 노선을 나타낸 클래스입니다. 노선에 포함되는 역을 저장할 수 있습니다. |
 | StationRepository | 해당 프로그램에 등록된 역 정보를 저장하는 클래스입니다. |
 | LineRepository | 해당 프로그램에 등록된 노선 정보를 저장하는 클래스입니다. |
+| DistanceGraphRepository | 역 사이의 거리를 저장하는 클래스입니다. |
+| TimeGraphRepository | 역 사이의 이동 시간을 저장하는 클래스입니다. |
 
 ### utils
 | 클래스 | 설명 |
