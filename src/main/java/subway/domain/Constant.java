@@ -34,4 +34,28 @@ public class Constant {
     public static final String ROUTE_SELECT_MENU_TITLE = "경로 기준";
 
     static final String IS_IN_MENU = "존재하지 않는 항목입니다.";
+
+    static final String[] defaultStations = {"교대역", "강남역", "역삼역", "남부터미널역", "양재역", "양재시민의숲역", "매봉역"};
+    static final String[] defaultLines = {"2호선", "3호선", "신분당선"};
+    static final String[][] defaultSetting = {
+            {defaultStations[0], defaultStations[1], defaultStations[2]},
+            {defaultStations[0], defaultStations[3], defaultStations[4], defaultStations[6]},
+            {defaultStations[1], defaultStations[4], defaultStations[5]}
+    };
+
+    private static final List<String> defaultStationList = Arrays.asList(defaultStations);
+    private static final List<String> defaultLineList = Arrays.asList(defaultLines);
+    private static final List<String[]> defaultSettingList = Arrays.asList(defaultSetting);
+
+    public static List<String> defaultStationList() {
+        return Collections.unmodifiableList(defaultStationList);
+    }
+
+    public static List<String> defaultLineList() {
+        return Collections.unmodifiableList(defaultLineList);
+    }
+
+    public static List<String[]> defaultSettingList() {
+        return Collections.unmodifiableList(defaultSettingList);
+    }
 }
