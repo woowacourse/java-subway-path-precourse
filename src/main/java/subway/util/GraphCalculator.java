@@ -10,7 +10,7 @@ import subway.domain.Station;
  * @author yhh1056
  * @since 2020/12/19
  */
-public class ShortestDistance {
+public class GraphCalculator {
     private static final WeightedMultigraph<String, DefaultWeightedEdge> graph
             = new WeightedMultigraph(DefaultWeightedEdge.class);
 

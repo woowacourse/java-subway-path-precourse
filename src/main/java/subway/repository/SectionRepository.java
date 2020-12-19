@@ -5,7 +5,7 @@ import java.util.List;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 import subway.domain.Section;
-import subway.util.ShortestDistance;
+import subway.util.GraphCalculator;
 
 /**
  * @author yhh1056
@@ -26,15 +26,15 @@ public class SectionRepository {
         sections.forEach(section -> addEdgeWeight(section.getStationName(),
                 section.getNextStationName(),
                 section.getStreet()));
-        return ShortestDistance.getStations(startStation, finishStation);
+        return GraphCalculator.getStations(startStation, finishStation);
     }
 
     private static void addVertex() {
-        ShortestDistance.addVertex(StationRepository.stations());
+        GraphCalculator.addVertex(StationRepository.stations());
     }
 
     private static void addEdgeWeight(String stationName, String nextStationName, int wight) {
-        ShortestDistance.setEdgeWeight(stationName, nextStationName, wight);
+        GraphCalculator.setEdgeWeight(stationName, nextStationName, wight);
     }
 
     public static List<String> CalculateMinimumTime(String startStation, String finishStation) {
@@ -42,7 +42,7 @@ public class SectionRepository {
         sections.forEach(section -> addEdgeWeight(section.getStationName(),
             section.getNextStationName(),
             section.getTime()));
-        return ShortestDistance.getStations(startStation, finishStation);
+        return GraphCalculator.getStations(startStation, finishStation);
     }
 
     public static String findTotalDistance(List<String> shortestDistanceStations) {
