@@ -1,7 +1,9 @@
 package subway;
 
 import subway.common.SelectOption;
+import subway.line.LineController;
 import subway.path.PathController;
+import subway.station.StationController;
 import subway.view.InputView;
 import subway.view.OutputView;
 
@@ -9,14 +11,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SubwayPath {
+    private StationController stationController;
+    private LineController lineController;
     private InputView inputView;
 
     public SubwayPath(InputView inputView) {
         this.inputView = inputView;
+        this.stationController = new StationController();
+        this.lineController = new LineController();
     }
 
     public boolean run() {
         try {
+            initialize();
             OutputView.showMainOption();
             List<String> optionList = getMainOptionList();
             String option = SelectOption.askOptionChoice(inputView, optionList);
@@ -28,6 +35,11 @@ public class SubwayPath {
             System.out.println(e.getMessage());
         }
         return true;
+    }
+
+    private void initialize() {
+        stationController.stationInitialize();
+        lineController.lineInitialize();
     }
 
     private boolean doProcess(String option) {
