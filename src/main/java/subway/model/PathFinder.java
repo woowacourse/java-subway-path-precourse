@@ -13,7 +13,6 @@ public class PathFinder {
         WeightedMultigraph<String, DefaultWeightedEdge> graph = DistanceRepository.distanceGraph();
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
         List<String> shortestPath = dijkstraShortestPath.getPath(start, arrive).getVertexList();
-        shortestPath = shortestPath;
         return shortestPath;
     }
 
