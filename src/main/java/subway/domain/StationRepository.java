@@ -1,5 +1,8 @@
 package subway.domain;
 
+import subway.Exception.CanNotFindStationException;
+import subway.Exception.SameStationException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -28,6 +31,6 @@ public class StationRepository {
         return stations().stream()
                 .filter(station -> station.getName().equals(name))
                 .findAny()
-                .orElseThrow(IllegalArgumentException::new);
+                .orElseThrow(CanNotFindStationException::new);
     }
 }
