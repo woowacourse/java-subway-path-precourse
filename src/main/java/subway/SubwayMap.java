@@ -1,6 +1,7 @@
 package subway;
 
 import subway.Initialization.LineInitialization;
+import subway.Initialization.SectionInitialization;
 import subway.Initialization.StationInitialization;
 import subway.domain.Line;
 import subway.domain.LineRepository;
@@ -26,8 +27,13 @@ public class SubwayMap {
 
     private void initLines() {
         Arrays.stream(LineInitialization.values())
-                .forEach(line -> LineRepository.addLine(new Line(line.getName())));
+                .forEach(line ->
+                        LineRepository.addLine(
+                                new Line(line.getName(),
+                                        SectionInitialization.getSectionInitialization(line).sections()))
+                );
     }
+
 
     public static SubwayMap getInstance() {
         return SubwayMap.LazyHolder.INSTANCE;
