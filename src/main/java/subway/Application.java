@@ -1,7 +1,6 @@
 package subway;
 
 import subway.domain.Line;
-import subway.domain.LineRepository;
 import subway.domain.Station;
 import subway.domain.StationRepository;
 
@@ -15,7 +14,6 @@ public class Application {
         final Scanner scanner = new Scanner(System.in);
         // TODO: 프로그램 구현
         initializeRepositories();
-
         MainMenu.initialize(scanner);
     }
 

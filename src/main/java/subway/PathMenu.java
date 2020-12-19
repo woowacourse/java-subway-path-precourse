@@ -1,5 +1,7 @@
 package subway;
 
+import subway.domain.StationRepository;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -35,11 +37,21 @@ public class PathMenu {
         return PATH_MENU;
     }
 
-    private static void execute(String command, Scanner scanner) {
-
+    private static void execute(String command, Scanner scanner) throws IllegalArgumentException {
+        String startStation = getStartStation(scanner);
     }
 
-    private static String getCommand(Scanner scanner, List<String> authorizedCommands) {
+    private static String getStartStation(Scanner scanner) throws IllegalArgumentException {
+        System.out.println("## 출발역을 입력하세요.");
+        String stationName = scanner.nextLine();
+        System.out.println();
+        if (!StationRepository.contains(stationName)) {
+            throw new IllegalArgumentException("등록되어 있지 않은 역입니다.");
+        }
+        return stationName;
+    }
+
+    private static String getCommand(Scanner scanner, List<String> authorizedCommands) throws IllegalArgumentException {
         System.out.println("## 원하는 기능을 선택하세요.");
         String userInput = scanner.nextLine();
         System.out.println();
