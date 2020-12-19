@@ -11,5 +11,7 @@ public class Line {
         return name;
     }
 
+    public boolean matchName(String name){return this.name.equals(name);}
+
     // 추가 기능 구현
 }
