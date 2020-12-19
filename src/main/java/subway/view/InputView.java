@@ -20,7 +20,6 @@ public class InputView {
 
     public String stationName() {
         String name = scanner.next();
-        // TODO 검증 작업
         return name;
     }
 }

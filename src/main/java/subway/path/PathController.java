@@ -3,6 +3,8 @@ package subway.path;
 import subway.common.SelectOption;
 import subway.station.Station;
 import subway.station.StationService;
+import subway.station.validation.NotRegisterStation;
+import subway.station.validation.SameStartEndStation;
 import subway.view.InputView;
 import subway.view.OutputView;
 
@@ -25,7 +27,7 @@ public class PathController {
             List<String> optionList = getSearchOptionList();
             String method = SelectOption.askOptionChoice(inputView, optionList);
             Station startStation = getStartStation();
-            Station endStation = getEndStation();
+            Station endStation = getEndStation(startStation);
 
             running = searchPath(method, startStation, endStation);
         }
@@ -33,14 +35,21 @@ public class PathController {
 
     private Station getStartStation() {
         OutputView.askStartStationName();
-        String stationName = inputView.stationName();
-        return stationService.findStation(stationName);
+        return getStation();
     }
 
-    private Station getEndStation() {
+    private Station getEndStation(Station startStation) {
         OutputView.askEndStationName();
+        Station endStation = getStation();
+        SameStartEndStation.validate(startStation, endStation);
+        return endStation;
+    }
+
+    private Station getStation() {
         String stationName = inputView.stationName();
-        return stationService.findStation(stationName);
+        Station station = stationService.findStation(stationName);
+        NotRegisterStation.validate(station);
+        return station;
     }
 
     private boolean searchPath(String method, Station startStation, Station endStation) {
