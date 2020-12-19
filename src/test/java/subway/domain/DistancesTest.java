@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class DistancesTest {
 
     @Test
-    @DisplayName("거리들을 입력받아 Distances 객체 생성 테스트")
+    @DisplayName("거리들을 입력받아 Distance 일급 컬렉션 객체 생성 테스트")
     public void create_DistanceList_NewInstance() {
 
         // when
