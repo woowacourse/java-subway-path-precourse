@@ -2,18 +2,19 @@ package subway.domain;
 
 import java.util.LinkedList;
 
-import static resource.TextResource.ERROR_NOT_EXISTENCE_STATION;
-import static resource.TextResource.ERROR_START_END_STATION_DUPLICATED;
+import static resource.TextResource.*;
 
 public class Line {
 
     private String name;
     private StationsInLine stations;
+    private Paths paths;
 
-    public Line(String name, Station startStation, Station endStation) {
+    public Line(String name, Station startStation, Station endStation, Path path) {
         this.name = name;
         checkValid(startStation.getName(), endStation.getName());
         createStationInLine(startStation, endStation);
+        createPaths(path);
     }
 
     private void checkValid(String startStation, String endStation) {
@@ -24,9 +25,15 @@ public class Line {
 
     private void createStationInLine(Station startStation, Station endStation) {
         LinkedList<Station> stations = new LinkedList<>();
-        stations.add(startStation);
-        stations.add(endStation);
+        stations.addFirst(startStation);
+        stations.addLast(endStation);
         this.stations = new StationsInLine(stations);
+    }
+
+    private void createPaths(Path path) {
+        LinkedList<Path> paths = new LinkedList<>();
+        paths.addFirst(path);
+        this.paths = new Paths(paths);
     }
 
     public String getName() {
@@ -35,5 +42,9 @@ public class Line {
 
     public void addStation(Station station, int order) {
         stations.addStation(station, order);
+    }
+    public void addPath(Path path, int order) {
+        int limit = stations.getSize();
+        paths.addPath(path, order, limit);
     }
 }
