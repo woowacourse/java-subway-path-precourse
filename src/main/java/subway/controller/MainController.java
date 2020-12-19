@@ -20,6 +20,7 @@ public class MainController {
         CommandType commandType = requestCommandNumber();
         while (isRunning(commandType)) {
             runDetailAction();
+            OutputView.printMainScreen(CommandType.getInfos());
             commandType = requestCommandNumber();
         }
     }
@@ -33,7 +34,6 @@ public class MainController {
                 break;
             } catch (Exception e) {
                 System.out.println(e.getMessage());
-                OutputView.printMainScreen(CommandType.getInfos());
             }
         }
 
