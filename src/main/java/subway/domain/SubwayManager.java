@@ -94,10 +94,9 @@ public class SubwayManager {
             throw new SameStationException();
         }
 
-        return OutputView.printInquiryResult(
+        return OutputView.printInquiryDistanceResult(
                 SectionRepository.getSectionDistanceStations(departureStation, arrivalStation)
-                , SectionRepository.getSectionDistance(departureStation, arrivalStation)
-                , SectionRepository.getSectionTime(departureStation, arrivalStation));
+                , SectionRepository.getSectionDistance(departureStation, arrivalStation));
     }
 
     private SceneState showPathByTime(Station departureStation, Station arrivalStation) {
@@ -105,9 +104,8 @@ public class SubwayManager {
             throw new SameStationException();
         }
 
-        return OutputView.printInquiryResult(
+        return OutputView.printInquiryTimeResult(
                 SectionRepository.getSectionTimeStations(departureStation, arrivalStation)
-                , SectionRepository.getSectionDistance(departureStation, arrivalStation)
                 , SectionRepository.getSectionTime(departureStation, arrivalStation));
     }
 }
