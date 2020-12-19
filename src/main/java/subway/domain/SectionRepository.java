@@ -37,11 +37,15 @@ public class SectionRepository {
         }
     }
 
-    public static void findShortestPath(String departure, String destination) {
-        int shortestDistance = 0;
+    public static int findShortestPath(String departure, String destination) {
 
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
         List<String> shortestPath = dijkstraShortestPath.getPath(departure, destination).getVertexList();
+
+        return (int) sections.stream()
+                .filter(section -> section.hasStation(departure, destination))
+                .mapToInt(Section::getDistance)
+                .sum();
 
     }
 

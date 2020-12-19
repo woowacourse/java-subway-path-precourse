@@ -18,10 +18,12 @@ public class FeatureScreen implements ScreenModel {
     @Override
     public String showScreen() {
         InputView inputView = new InputView(scanner);
+        int shortestResult = 0;
 
         String departure = inputView.enterDeparture();
         String arrival = inputView.enterArrival();
-        SectionRepository.findShortestPath(departure, arrival);
+        shortestResult = SectionRepository.findShortestPath(departure, arrival);
+        System.out.println(shortestResult);
 
         return "-1";
     }
