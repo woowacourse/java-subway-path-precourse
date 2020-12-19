@@ -1,5 +1,6 @@
 package subway;
 
+import subway.domain.exception.InvalidMenuSelectException;
 import subway.view.InputView;
 import subway.view.OutputView;
 
@@ -34,7 +35,12 @@ public class SubwayPathApp {
     }
 
     private MAIN_MENU selectMenu() {
-        return MAIN_MENU.of(InputView.selectMenu(scanner));
+        try {
+            return MAIN_MENU.of(InputView.selectMenu(scanner));
+        } catch (Exception e) {
+            OutputView.printError(e);
+            return selectMenu();
+        }
     }
 
     private void doSelectedMenu(MAIN_MENU selected) {
@@ -67,7 +73,7 @@ public class SubwayPathApp {
             return Arrays.stream(values())
                     .filter(menu -> menu.code.equals(userInput))
                     .findFirst()
-                    .orElseThrow(() -> new IllegalArgumentException("적절하지 않은 기능 선택입니다."));
+                    .orElseThrow(() -> new InvalidMenuSelectException());
         }
     }
 }

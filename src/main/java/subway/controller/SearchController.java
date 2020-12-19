@@ -3,6 +3,7 @@ package subway.controller;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.WeightedMultigraph;
 import subway.domain.*;
+import subway.domain.exception.UnreachableStationException;
 import subway.domain.validator.SearchValidator;
 import subway.view.InputView;
 import subway.view.OutputView;
@@ -23,19 +24,27 @@ public class SearchController {
     }
 
     public void searchByDistance() {
-        Station from = getDeparture();
-        Station to = getArrival();
-        SearchValidator.checkTwoStationsAreDifferent(from, to);
-        List<Station> shortest = dijkstraPathByDistance.getPath(from, to).getVertexList();
+        List<Station> shortest = getShortestByDistance(getDeparture(), getArrival());
         printResult(shortest);
     }
 
-    public void searchByTime() {
-        Station from = getDeparture();
-        Station to = getArrival();
+    public List<Station> getShortestByDistance(Station from, Station to) {
         SearchValidator.checkTwoStationsAreDifferent(from, to);
-        List<Station> shortest = dijkstraPathByTime.getPath(from, to).getVertexList();
+        return dijkstraPathByDistance.getPath(from, to).getVertexList();
+    }
+
+    public void searchByTime() {
+        List<Station> shortest = getShortestByTime(getDeparture(), getArrival());
         printResult(shortest);
+    }
+
+    public List<Station> getShortestByTime(Station from, Station to) {
+        try {
+            SearchValidator.checkTwoStationsAreDifferent(from, to);
+            return dijkstraPathByTime.getPath(from, to).getVertexList();
+        } catch (Exception e) {
+            throw new UnreachableStationException();
+        }
     }
 
     private void printResult(List<Station> path) {

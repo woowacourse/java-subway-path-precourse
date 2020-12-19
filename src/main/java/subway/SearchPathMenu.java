@@ -1,6 +1,7 @@
 package subway;
 
 import subway.controller.SearchController;
+import subway.domain.exception.InvalidMenuSelectException;
 import subway.view.InputView;
 import subway.view.OutputView;
 
@@ -19,19 +20,29 @@ public class SearchPathMenu {
     }
 
     public void run() {
-        printMenu();
-        execute(selectMenu());
+        try {
+            printMenu();
+            execute(selectMenu());
+        } catch (Exception e) {
+            OutputView.printError(e);
+            run();
+        }
     }
 
     private void printMenu() {
         List<String> menuNames = Arrays.stream(SEARCH_MENU.values())
                 .map(menu -> menu.menuName)
                 .collect(Collectors.toList());
-        OutputView.printMainMenu(menuNames);
+        OutputView.printSearchMenu(menuNames);
     }
 
     private SEARCH_MENU selectMenu() {
-        return SEARCH_MENU.of(InputView.selectMenu(scanner));
+        try {
+            return SEARCH_MENU.of(InputView.selectMenu(scanner));
+        } catch (Exception e) {
+            OutputView.printError(e);
+            return selectMenu();
+        }
     }
 
     private void execute(SEARCH_MENU selected) {
@@ -61,7 +72,7 @@ public class SearchPathMenu {
             return Arrays.stream(values())
                     .filter(menu -> menu.code.equals(userInput))
                     .findFirst()
-                    .orElseThrow(() -> new IllegalArgumentException("적절하지 않은 기능 선택입니다."));
+                    .orElseThrow(() -> new InvalidMenuSelectException());
         }
     }
 }

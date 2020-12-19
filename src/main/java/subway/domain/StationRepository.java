@@ -1,5 +1,7 @@
 package subway.domain;
 
+import subway.domain.exception.NotExistingStationException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -21,6 +23,6 @@ public class StationRepository {
         return stations.stream()
                 .filter(station -> station.isName(name))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 역입니다."));
+                .orElseThrow(() -> new NotExistingStationException());
     }
 }
