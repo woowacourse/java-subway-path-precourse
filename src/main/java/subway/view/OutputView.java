@@ -10,7 +10,7 @@ public class OutputView {
     private static final String TOTAL_DISTANCE = "총 소요 시간: %dkm";
     private static final String TOTAL_TIME = "총 소요 시간: %d분";
 
-    private OutputView() {      
+    private OutputView() {
     }
 
     public static void printMainDisplay() {
