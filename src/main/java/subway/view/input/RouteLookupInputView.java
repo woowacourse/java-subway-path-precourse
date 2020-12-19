@@ -35,4 +35,10 @@ public class RouteLookupInputView {
         return stationBeginName;
     }
 
+    public String getStationEnd() {
+        System.out.println("## 도착역을 입력하세요.");
+        String stationBeginName = scanner.nextLine();
+        System.out.println();
+        return stationBeginName;
+    }
 }

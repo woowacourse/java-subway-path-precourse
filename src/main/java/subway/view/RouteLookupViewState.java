@@ -54,8 +54,8 @@ public class RouteLookupViewState implements ViewState {
         if (!menuFeature.equals(RouteLookupViewUtil.getBtnMinimumDistance())) {
             return;
         }
-        String stationBeginName = routeLookupInputView.getStationBegin();
-        Station stationBegin = StationService.getStationByName(stationBeginName);
+        Station stationBegin = getStationBegin();
+        Station stationEnd = getStationEnd();
         changeStateToMainView(subwayPath);
     }
 
@@ -63,8 +63,8 @@ public class RouteLookupViewState implements ViewState {
         if (!menuFeature.equals(RouteLookupViewUtil.getBtnMinimumTime())) {
             return;
         }
-        String stationBeginName = routeLookupInputView.getStationBegin();
-        Station stationBegin = StationService.getStationByName(stationBeginName);
+        Station stationBegin = getStationBegin();
+        Station stationEnd = getStationEnd();
         changeStateToMainView(subwayPath);
     }
 
@@ -74,6 +74,16 @@ public class RouteLookupViewState implements ViewState {
             return;
         }
         changeStateToMainView(subwayPath);
+    }
+
+    private Station getStationBegin() {
+        String stationBeginName = routeLookupInputView.getStationBegin();
+        return StationService.getStationByName(stationBeginName);
+    }
+
+    private Station getStationEnd() {
+        String stationEndName = routeLookupInputView.getStationEnd();
+        return StationService.getStationByName(stationEndName);
     }
 
     private void changeStateToMainView(SubwayPath subwayPath){
