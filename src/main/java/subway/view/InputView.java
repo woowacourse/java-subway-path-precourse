@@ -9,7 +9,7 @@ public class InputView {
     private static final String SHARP_PREFIX = "## ";
     private static final String REQUEST_SELECTION = "원하는 기능을 선택하세요.";
     private static final String REQUEST_DEPART_STATION = "출발역을 입력하세요";
-    private static final String REQUEST_ARRIVAL_STATION = "출발역을 입력하세요";
+    private static final String REQUEST_ARRIVAL_STATION = "도착역을 입력하세요";
     private static Scanner scanner;
 
     public static void setScanner(Scanner scanner) {
@@ -18,12 +18,12 @@ public class InputView {
 
     public static MainMenuSelection getMainMenuSelection() {
         System.out.println(SHARP_PREFIX + REQUEST_SELECTION);
-        return MainMenuSelection.searchByKey(scanner.nextLine());
+        return MainMenuSelection.searchByKey(scanner.nextLine().toUpperCase());
     }
 
     public static PathStandardSelection getPathStandardSelection() {
         System.out.println(SHARP_PREFIX + REQUEST_SELECTION);
-        return PathStandardSelection.searchByKey(scanner.nextLine());
+        return PathStandardSelection.searchByKey(scanner.nextLine().toUpperCase());
     }
 
     public static String getDepartureStationName() {

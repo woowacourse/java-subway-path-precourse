@@ -6,6 +6,7 @@ import subway.domain.StationRepository;
 import subway.domain.TimeGraph;
 import subway.dto.PathDTO;
 import subway.view.InputView;
+import subway.view.OutputView;
 
 public class InquiryController {
 
@@ -18,8 +19,6 @@ public class InquiryController {
         }
         PathDTO pathDTO = TimeGraph.getShortestPath(departureStation, arrivalStation);
 
-        // pathDTO 출력 로직
-
+        OutputView.printResult(pathDTO);
     }
-
 }
