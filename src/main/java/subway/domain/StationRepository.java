@@ -1,13 +1,19 @@
 package subway.domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class StationRepository {
-    private static final List<Station> stations = new ArrayList<>();
+    static final Station stationKyoDae = new Station("교대역");
+    static final Station stationGangNam = new Station("강남역");
+    static final Station stationYeokSam = new Station("역삼역");
+    static final Station stationNamBu = new Station("남부터미널역");
+    static final Station stationYangJae = new Station("양재역");
+    static final Station stationYangJaeForest = new Station("양재시민의숲역");
+    static final Station stationMaeBong = new Station("매봉역");
 
+    private static final List<Station> stations = Arrays.asList(stationKyoDae, stationGangNam,
+                                                    stationYeokSam, stationNamBu, stationYangJae,
+                                                    stationYangJaeForest, stationMaeBong);
     public static List<Station> stations() {
         return Collections.unmodifiableList(stations);
     }
