@@ -17,5 +17,11 @@ public class Station {
     }
 
     // 추가 기능 구현
+    public void addConnectedStation(Station connectedStation) {
+        connectedStations.add(connectedStation);
+    }
 
+    public List<Station> getConnectedStations() {
+        return connectedStations;
+    }
 }

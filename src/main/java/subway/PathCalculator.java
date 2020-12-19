@@ -1,7 +1,6 @@
 package subway;
 
 import java.util.Scanner;
-import subway.domain.DistanceAndTimeBetweenStationsRepository;
 import subway.domain.Station;
 import subway.domain.StationRepository;
 
@@ -36,10 +35,10 @@ public class PathCalculator {
     }
 
     private static void calculateMinimumTimePath(Station startStation, Station endStation) {
-        // DistanceAndTimeBetweenStationsRepository.calculateMinimumTimePath(startStation, endStation);
+        MinimumTimePathFinder.find(startStation, endStation);
     }
 
-    private static void calculateShortestDistancePath(Station startStation,
-        Station endStation) {
+    private static void calculateShortestDistancePath(Station startStation, Station endStation) {
+        ShortestDistancePathFinder.find(startStation, endStation);
     }
 }

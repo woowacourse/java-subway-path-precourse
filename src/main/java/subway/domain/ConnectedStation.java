@@ -1,10 +1,10 @@
 package subway.domain;
 
-public class ConnectedStations {
+public class ConnectedStation {
     private final Station firstStation;
     private final Station secondStation;
 
-    public ConnectedStations(Station firstStation, Station secondStation) {
+    public ConnectedStation(Station firstStation, Station secondStation) {
         this.firstStation = firstStation;
         this.secondStation = secondStation;
     }

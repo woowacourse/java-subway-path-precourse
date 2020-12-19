@@ -1,5 +1,7 @@
 package subway;
 
+import java.util.ArrayList;
+import java.util.List;
 import subway.domain.DistanceAndTimeBetweenStationsRepository;
 
 public class Initializer {
@@ -10,8 +12,23 @@ public class Initializer {
     private static final String YANGJAE_STATION = "양재역";
     private static final String YANGJAE_CITIZENS_FOREST_STATION = "양재시민의숲역";
     private static final String MAEBONG_STATION = "매봉역";
+    private static final List<String> STATION_NAMES = new ArrayList<>() {
+        {
+            add(GYODAE_STATION);
+            add(GANGNAM_STATION);
+            add(YEOKSAM_STATION);
+            add(NAMBU_TERMINAL_STATION);
+            add(YANGJAE_STATION);
+            add(YANGJAE_CITIZENS_FOREST_STATION);
+            add(MAEBONG_STATION);
+        }
+    };
 
     public static void initialize() {
+        mapStations();
+    }
+
+    private static void mapStations() {
         DistanceAndTimeBetweenStationsRepository.addStations(GYODAE_STATION, GANGNAM_STATION,
             2, 3);
         DistanceAndTimeBetweenStationsRepository.addStations(GANGNAM_STATION, YEOKSAM_STATION,
