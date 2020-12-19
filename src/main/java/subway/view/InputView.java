@@ -30,15 +30,15 @@ public class InputView extends Validator {
 
     public String inputStartStation() {
         System.out.println(START_STATION_MESSAGE);
-        String stationName = scanner.nextLine();
-        validateStartStation(stationName);
-        return stationName;
+        String startStationName = scanner.nextLine();
+        validateStartStation(startStationName);
+        return startStationName;
     }
 
-    public String inputEndStation() {
+    public String inputEndStation(String startStationName) {
         System.out.println(ARRIVED_STATION_MESSAGE);
-        String station = scanner.nextLine();
-        //validate exist station & not duplicate with start station
-        return station;
+        String endStationName = scanner.nextLine();
+        validateEndStation(endStationName, startStationName);
+        return endStationName;
     }
 }

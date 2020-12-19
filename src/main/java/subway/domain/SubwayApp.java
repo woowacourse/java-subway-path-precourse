@@ -20,7 +20,8 @@ public class SubwayApp {
             inputView.inputMainMenuOption();
             printPathMenu();
             inputView.inputPathMenuOption();
-            inputView.inputStartStation();
+            String startStationName = inputView.inputStartStation();
+            inputView.inputEndStation(startStationName);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             run();
