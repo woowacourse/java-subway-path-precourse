@@ -7,37 +7,42 @@ import org.jgrapht.graph.WeightedMultigraph;
 import java.util.List;
 
 public class SubwayGraph {
-    WeightedMultigraph<Station, DefaultWeightedEdge> distanceWeightGraph;
-    WeightedMultigraph<Station, DefaultWeightedEdge> timeWeightGraph;
+    public static final WeightedMultigraph<Station, DefaultWeightedEdge> distanceWeightGraph = new WeightedMultigraph<>(DefaultWeightedEdge.class);
+    public static final WeightedMultigraph<Station, DefaultWeightedEdge> timeWeightGraph = new WeightedMultigraph<>(DefaultWeightedEdge.class);
 
-    public SubwayGraph() {
-        this.distanceWeightGraph = new WeightedMultigraph<>(DefaultWeightedEdge.class);
-        this.timeWeightGraph = new WeightedMultigraph<>(DefaultWeightedEdge.class);
-    }
-
-    public WeightedMultigraph<Station, DefaultWeightedEdge> getDistanceWeightGraph() {
+    public static WeightedMultigraph<Station, DefaultWeightedEdge> getDistanceWeightGraph() {
         return distanceWeightGraph;
     }
 
-    public WeightedMultigraph<Station, DefaultWeightedEdge> getTimeWeightGraph() {
+    public static WeightedMultigraph<Station, DefaultWeightedEdge> getTimeWeightGraph() {
         return timeWeightGraph;
     }
 
-    public void addVertices(List<Station> stations) {
+    public static void addVertices(List<Station> stations) {
         for (Station station : stations) {
             distanceWeightGraph.addVertex(station);
             timeWeightGraph.addVertex(station);
         }
     }
 
-    public void setEdgeWeight(List<Edge> edges) {
+    public static void setEdgeWeight(List<Edge> edges) {
         for (Edge edge : edges){
             setEdgeWeight(edge);
         }
     }
 
-    private void setEdgeWeight(Edge edge) {
+    private static void setEdgeWeight(Edge edge) {
         distanceWeightGraph.setEdgeWeight(distanceWeightGraph.addEdge(edge.getFrom(), edge.getTo()), edge.getDistance());
         timeWeightGraph.setEdgeWeight(distanceWeightGraph.addEdge(edge.getFrom(), edge.getTo()), edge.getTime());
+    }
+
+    public static List<Station> getTimeShortestPath(Station from, Station to) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(timeWeightGraph);
+        return dijkstraShortestPath.getPath(from, to).getVertexList();
+    }
+
+    public static List<Station> getDistanceShortestPath(Station from, Station to) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(distanceWeightGraph);
+        return dijkstraShortestPath.getPath(from, to).getVertexList();
     }
 }
