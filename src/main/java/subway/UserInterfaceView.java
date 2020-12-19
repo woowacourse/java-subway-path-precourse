@@ -85,5 +85,6 @@ public class UserInterfaceView {
             distance += data[Station.DISTANCE_INDEX];
             time += data[Station.TIME_INDEX];
         }
+        Output.printInfo(distance, time, path);
     }
 }
