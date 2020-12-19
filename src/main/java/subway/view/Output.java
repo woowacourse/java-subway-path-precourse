@@ -1,5 +1,8 @@
 package subway.view;
 
+import java.util.List;
+
+import subway.domain.Station;
 import subway.screen.Screen;
 
 public class Output {
@@ -17,5 +20,11 @@ public class Output {
     
     public static void printMenu(Screen screen) {
         screen.printScreen();
+    }
+    
+    public static void printRoute(List<Station> route) {
+        for (Station station : route) {
+            printResult(station.getName());
+        }
     }
 }

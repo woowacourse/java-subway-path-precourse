@@ -38,21 +38,14 @@ public class Subway {
     
     public void executeRouteCriterionMenu() {
         Output.printMenu(new RouteCriterionScreen());
-        if (Input.chooseFunction().equals(SHORTEST_DISTANCE_ROUTE)) {
-            Station departureStation = StationRepository.getStationByName(Input.inputDepartureStation());
-            Station arrivalStation = StationRepository.getStationByName(Input.inputArrivalStation());
-            List<Station> shortestDistancePath = Route.getShortestDistanceRoute(departureStation, arrivalStation);
-            for (Station station : shortestDistancePath) {
-                Output.printResult(station.getName());
-            }
+        String selectedFunction = Input.chooseFunction();
+        Station departureStation = StationRepository.getStationByName(Input.inputDepartureStation());
+        Station arrivalStation = StationRepository.getStationByName(Input.inputArrivalStation());
+        if (selectedFunction.equals(SHORTEST_DISTANCE_ROUTE)) {
+            Output.printRoute(Route.getShortestDistanceRoute(departureStation, arrivalStation));
         }
-        if (Input.chooseFunction().equals(SHORTEST_TIME_ROUTE)) {
-            Station departureStation = StationRepository.getStationByName(Input.inputDepartureStation());
-            Station arrivalStation = StationRepository.getStationByName(Input.inputArrivalStation());
-            List<Station> shortestDistancePath = Route.getShortestTimeRoute(departureStation, arrivalStation);
-            for (Station station : shortestDistancePath) {
-                Output.printResult(station.getName());
-            }
+        if (selectedFunction.equals(SHORTEST_TIME_ROUTE)) {
+            Output.printRoute(Route.getShortestTimeRoute(departureStation, arrivalStation));
         }
     }
    
