@@ -11,6 +11,14 @@ public class Edge {
         this.end = end;
     }
 
+    public String getStartStationName() {
+        return start.getName();
+    }
+
+    public String getEndStationName() {
+        return end.getName();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
