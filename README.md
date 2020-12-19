@@ -256,10 +256,10 @@ This project is [MIT](https://github.com/woowacourse/java-subway-path-precourse/
 
 ## ☑ 구현할 기능 목록
 
-- [ ] 초기 설정
+- [x] 초기 설정
   - [x] 초기 지하철 역을 등록한다.
   - [x] 초기 노선 등록을 등록한다.
-  - [ ] 초기 path 등록을 등록한다.
+  - [x] 초기 path 등록을 등록한다.
 - [ ] 메인
   - [ ] 선택지에 없는 입력일 시 에러메세지를 출력한다.
   - [ ] 사용자 입력에 따라 하위 기능을 실행한다.
@@ -271,5 +271,5 @@ This project is [MIT](https://github.com/woowacourse/java-subway-path-precourse/
 - [ ] 검색역 설정
   - [ ] 출발역과 도착역을 입력 받는다.
 - [ ] 최소 경로 탐색
-  - [ ] 최소 경로를 검색한다.
+  - [ ] jgrapht 라이브러리를 활용한 유틸을 활용하여 최소 경로를 검색한다.
   - [ ] 결과를 출력한다.
