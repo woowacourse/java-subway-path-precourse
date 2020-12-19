@@ -15,7 +15,7 @@ public class Line {
         for (String station : stations) {
             addStationInLine(StationRepository.findStationByName(station));
         }
-        for (int i=0; i<distance.length; i++) {
+        for (int i = 0; i < distance.length; i++) {
             addDistanceInterval(distance[i]);
             addTimeInterval(time[i]);
         }
@@ -31,6 +31,10 @@ public class Line {
 
     private void addTimeInterval(int time) {
         timeInterval.add(time);
+    }
+
+    public void registerInterval() {
+        Interval.registerIntervals(stationInLine, distanceInterval, timeInterval);
     }
 
     public String getName() {

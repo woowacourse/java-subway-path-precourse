@@ -10,7 +10,7 @@ public class Interval {
     private static WeightedMultigraph<Station, DefaultWeightedEdge> distanceInterval = new WeightedMultigraph(DefaultWeightedEdge.class);
     private static WeightedMultigraph<Station, DefaultWeightedEdge> timeInterval = new WeightedMultigraph(DefaultWeightedEdge.class);
 
-    public Interval(List<Station> stationInLine, List<Integer> distance, List<Integer> time) {
+    public static void registerIntervals(List<Station> stationInLine, List<Integer> distance, List<Integer> time) {
         for (Station station : stationInLine) {
             distanceInterval.addVertex(station);
             timeInterval.addVertex(station);
@@ -18,7 +18,7 @@ public class Interval {
 
         for (int i = 0; i < stationInLine.size() - 1; i++) {
             distanceInterval.setEdgeWeight(distanceInterval.addEdge(stationInLine.get(i), stationInLine.get(i + 1)), distance.get(i));
-            timeInterval.setEdgeWeight(timeInterval.addEdge(stationInLine.get(i), stationInLine.get(i + 1)), distance.get(i));
+            timeInterval.setEdgeWeight(timeInterval.addEdge(stationInLine.get(i), stationInLine.get(i + 1)), time.get(i));
         }
     }
 
