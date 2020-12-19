@@ -21,4 +21,8 @@ public class Line {
     public void addStation(Station station) {
         stations.add(station);
     }
+
+    public List<Station> getStations() {
+        return stations;
+    }
 }

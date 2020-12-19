@@ -19,6 +19,7 @@ public class LineRepository {
             for(String stationName : LINE_STATIONS[INDEX]){
                 line.addStation(new Station(stationName));
             }
+            lines.add(line);
             INDEX++;
         }
     }
