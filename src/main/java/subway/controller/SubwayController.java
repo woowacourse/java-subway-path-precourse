@@ -7,12 +7,18 @@ import subway.view.OutputView;
 import java.util.Scanner;
 
 public class SubwayController {
-    public static void run(Scanner scanner) {
+    private static final String EXIT = "Q";
+
+    public static final void run(Scanner scanner) {
         while (true) {
             OutputView.printMainMenu();
             try {
                 String functionNumber = InputValidation.isValidOfInputMainMenu(InputView.inputFunctionNumber(scanner));
-            } catch (IllegalArgumentException e){
+                if (functionNumber.toUpperCase().equals(EXIT)) {
+                    break;
+                }
+                SubwayRouteController.run();
+            } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
         }
