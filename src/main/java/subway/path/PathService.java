@@ -44,19 +44,27 @@ public class PathService {
         for (Line line : lines) {
             Sections sections = line.getSections();
             List<Section> sectionList = sections.getSections();
-            for (Section section : sectionList) {
-                int weight = 0;
-                if (method.equals(SearchMethod.DISTANCE.getValue())) {
-                    weight = section.getDistance();
-                }
-                if (method.equals(SearchMethod.TIME.getValue())) {
-                    weight = section.getTime();
-                }
-                graph.setEdgeWeight(graph.addEdge(section.getStartStation(), section.getEndStation()), weight);
-            }
+            addAllEdge(method, graph, sectionList);
         }
 
         return graph;
+    }
+
+    private void addAllEdge(String method, WeightedMultigraph<Station, DefaultWeightedEdge> graph, List<Section> sectionList) {
+        for (Section section : sectionList) {
+            addEdge(method, graph, section);
+        }
+    }
+
+    private void addEdge(String method, WeightedMultigraph<Station, DefaultWeightedEdge> graph, Section section) {
+        int weight = 0;
+        if (method.equals(SearchMethod.DISTANCE.getValue())) {
+            weight = section.getDistance();
+        }
+        if (method.equals(SearchMethod.TIME.getValue())) {
+            weight = section.getTime();
+        }
+        graph.setEdgeWeight(graph.addEdge(section.getStartStation(), section.getEndStation()), weight);
     }
 
     public int getPathTime(List<Station> shortestPath) {
