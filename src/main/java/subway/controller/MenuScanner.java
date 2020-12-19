@@ -9,13 +9,13 @@ import subway.view.OutputView;
 import java.util.Arrays;
 import java.util.List;
 
-public class MenuController {
+public class MenuScanner {
 
     private static final Menus menus = new Menus();
     private static final Criterions criterions = new Criterions();
     private static final List<String> signs = Arrays.asList(new String[]{});
 
-    public MenuController() {
+    public MenuScanner() {
     }
 
     public String scanMainMenu(InputView inputView) {

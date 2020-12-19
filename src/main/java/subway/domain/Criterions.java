@@ -1,11 +1,11 @@
 package subway.domain;
 
-import subway.controller.MenuController;
+import subway.controller.MenuScanner;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class Criterions extends MenuController {
+public class Criterions extends MenuScanner {
 
     private static final String distanceSign = "1";
     private static final String timeSign = "2";
