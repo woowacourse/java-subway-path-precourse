@@ -12,7 +12,7 @@ public class InputView {
     private static final String INPUT_MESSAGE = "## 원하는 기능을 선택하세요.";
     private static final String ROUTE_CHECK_SCREEN = "## 경로 기준\n1. 최단 거리\n2. 최소 시간\nB. 돌아가기";
     private static final String INPUT_START_STATION_MESSAGE = "## 출발역을 입력하세요.";
-
+    private static final String INPUT_ARRIVAL_STATION_MESSAGE = "## 도착역을 입력하세요.";
 
     private InputView() {
     }
@@ -41,6 +41,11 @@ public class InputView {
 
     public static Station inputStartStation(Scanner scanner) {
         System.out.println(INPUT_START_STATION_MESSAGE);
+        return StationRepository.findByStationName(scanner.nextLine());
+    }
+
+    public static Station inputArrivalStation(Scanner scanner) {
+        System.out.println(INPUT_ARRIVAL_STATION_MESSAGE);
         return StationRepository.findByStationName(scanner.nextLine());
     }
 }
