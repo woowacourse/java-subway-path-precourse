@@ -61,12 +61,17 @@ public class SubwayGraph {
             throw new PathStationDuplicationException();
         }
         DijkstraShortestPath dijkstraShortestPath = getShortestPath(functionType);
-        List<Station> stations = dijkstraShortestPath.getPath(firstStation, lastStation)
-                .getVertexList();
-        if (stations.isEmpty()) {
+        List<Station> stations = getStations(dijkstraShortestPath, firstStation, lastStation);
+        return calculateShortestPath(stations);
+    }
+
+    private List<Station> getStations(DijkstraShortestPath dijkstraShortestPath, Station firstStation, Station lastStation) {
+        try {
+            return dijkstraShortestPath.getPath(firstStation, lastStation)
+                    .getVertexList();
+        } catch (IllegalArgumentException illegalArgumentException) {
             throw new CannotFindPathException();
         }
-        return calculateShortestPath(stations);
     }
 
     private DijkstraShortestPath getShortestPath(FunctionType functionType) {

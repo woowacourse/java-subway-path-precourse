@@ -13,7 +13,8 @@ import subway.service.StationService;
 import subway.type.FunctionType;
 
 public class PathController {
-    private static final SubwayGraph SUBWAY_MAP_GRAPH = SubwayGraph.getInstance();
+
+    private final SubwayGraph subwayGraph = SubwayGraph.getInstance();
 
     public void addLine(LineDto lineDto, SectionDto sectionDto) {
         String upwardLastStationName = lineDto.getUpwardLastStationName();
@@ -37,6 +38,6 @@ public class PathController {
         String lastStationName = pathRequestDto.getLastStationName();
         Station firstStation = StationService.findStationByName(firstStationName);
         Station lastStation = StationService.findStationByName(lastStationName);
-        return SUBWAY_MAP_GRAPH.findShortestPath(firstStation, lastStation, functionType);
+        return subwayGraph.findShortestPath(firstStation, lastStation, functionType);
     }
 }
