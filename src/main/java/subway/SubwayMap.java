@@ -11,6 +11,8 @@ import java.util.Arrays;
 
 public class SubwayMap {
 
+    private SubwayMap() {}
+
     public void run() {
         init();
     }
@@ -33,8 +35,7 @@ public class SubwayMap {
                                         SectionInitialization.getSectionInitialization(line).sections()))
                 );
     }
-
-
+    
     public static SubwayMap getInstance() {
         return SubwayMap.LazyHolder.INSTANCE;
     }
