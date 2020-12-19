@@ -1,11 +1,13 @@
 package subway.domain;
 
+import org.jgrapht.GraphPath;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 import subway.exception.SubwayException;
 
 import java.util.List;
+import java.util.Objects;
 
 public class ShortestPathFinder {
     public static final String ERR_WRONG_TYPE_MSG = "해당 타입이 없습니다.";
@@ -31,20 +33,26 @@ public class ShortestPathFinder {
     }
 
     public int calculateShortestStationNumber(Station from, Station to) {
+        return getStationsOnPath(from,to).size();
+    }
+
+    public List<Station> getStationsOnPath(Station from, Station to) {
         isSame(from, to);
-        List<Station> shortestPath = dijkstraShortestPath.getPath(from, to).getVertexList();
-        return shortestPath.size();
+        GraphPath path = dijkstraShortestPath.getPath(from, to);
+        validatePath(path);
+        return path.getVertexList();
+    }
+
+    private void validatePath(GraphPath path) {
+        if (Objects.isNull(path)) {
+            throw new SubwayException("출발역부터 도착역까지 갈 수 있는 경로가 없습니다.");
+        }
     }
 
     private void isSame(Station from, Station to) {
         if (from.equals(to)) {
             throw new SubwayException("출발역과 도착역이 같을 수 없습니다.");
         }
-    }
-
-    public List<Station> getStationsOnPath(Station from, Station to) {
-        isSame(from, to);
-        return dijkstraShortestPath.getPath(from, to).getVertexList();
     }
 
     private void graphVertexAndEdgeSetting() {
