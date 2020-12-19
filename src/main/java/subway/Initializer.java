@@ -30,6 +30,8 @@ public class Initializer {
 	public static void run() {
 		initStation();
 		initLine();
+		addSectionDistance();
+		addSectionTime();
 	}
 	
 	private static void initStation() {
@@ -42,5 +44,25 @@ public class Initializer {
 		for (Entry<String, List<String>> line: INITIAL_LINES.entrySet()) {
 			LineRepository.addLine(new Line(line.getKey(), line.getValue()));
 		}
+	}
+	
+	private static void addSectionDistance() {
+		StationRepository.addSectionDistance("교대역", "강남역", 2);
+		StationRepository.addSectionDistance("강남역", "역삼역", 2);
+		StationRepository.addSectionDistance("교대역", "남부터미널역", 3);
+		StationRepository.addSectionDistance("남부터미널역", "양재역", 6);
+		StationRepository.addSectionDistance("양재역", "매봉역", 1);
+		StationRepository.addSectionDistance("강남역", "양재역", 2);
+		StationRepository.addSectionDistance("양재역", "양재시민의숲역", 10);
+	}
+	
+	private static void addSectionTime() {
+		StationRepository.addSectionTime("교대역", "강남역", 3);
+		StationRepository.addSectionTime("강남역", "역삼역", 3);
+		StationRepository.addSectionTime("교대역", "남부터미널역", 2);
+		StationRepository.addSectionTime("남부터미널역", "양재역", 5);
+		StationRepository.addSectionTime("양재역", "매봉역", 1);
+		StationRepository.addSectionTime("강남역", "양재역", 8);
+		StationRepository.addSectionTime("양재역", "양재시민의숲역", 3);
 	}
 }

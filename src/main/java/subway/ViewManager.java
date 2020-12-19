@@ -19,6 +19,6 @@ public class ViewManager {
 		Output.title(Message.ARRIVAL_STATION_INPUT);
 		arrivalStation = Input.nextLine(scanner);
 		
-		
+		Subway.minDistanceBetween(departureStation, arrivalStation);
 	}
 }
