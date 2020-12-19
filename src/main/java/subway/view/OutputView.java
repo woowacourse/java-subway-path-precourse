@@ -18,10 +18,10 @@ public class OutputView {
         System.out.println("B. 돌아가기");
     }
 
-    public static void printResult(GraphPath graphPath) {
+    public static void printResult(GraphPath graphPath, GraphPath graphTime) {
         System.out.println("\n## 조회 결과");
         System.out.println("[INFO] 총 거리: " + graphPath.getWeight());
-        System.out.println("[INFO] 총 소요 시간: " + graphPath.getWeight());
+        System.out.println("[INFO] 총 소요 시간: " + graphTime.getWeight());
         System.out.println("[INFO] ---");
         System.out.println(graphPath.getEdgeList());
     }

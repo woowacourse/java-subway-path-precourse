@@ -56,7 +56,8 @@ public class SearchPathService extends InputService {
         findStationByName(startStationName);
         findStationByName(endStationName);
         GraphPath shortestPath = LineStationRepository.findShortestPath(startStationName, endStationName);
-        printResult(shortestPath);
+        GraphPath shortestTime = LineStationRepository.findShortestTime(startStationName, endStationName);
+        printResult(shortestPath, shortestTime);
     }
 
     private void calculationShortestTime(String startStationName, String endStationName) {
@@ -65,7 +66,8 @@ public class SearchPathService extends InputService {
         }
         findStationByName(startStationName);
         findStationByName(endStationName);
-        GraphPath shortestPath = LineStationRepository.findShortestTime(startStationName, endStationName);
-        printResult(shortestPath);
+        GraphPath shortestPath = LineStationRepository.findShortestPath(startStationName, endStationName);
+        GraphPath shortestTime = LineStationRepository.findShortestTime(startStationName, endStationName);
+        printResult(shortestPath, shortestTime);
     }
 }
