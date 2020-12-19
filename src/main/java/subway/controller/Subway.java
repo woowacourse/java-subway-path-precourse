@@ -2,39 +2,43 @@ package subway.controller;
 
 import java.util.Scanner;
 
-import subway.domain.LineRepository;
 import subway.exception.constant.MainInputEnum;
 import subway.exception.constant.TraverseInputEnum;
 import subway.exception.validation.MainInputValidation;
+import subway.exception.validation.StationInputValidation;
 import subway.exception.validation.TraverseInputValidation;
 import subway.view.InputView;
 import subway.view.OutputView;
 
 public class Subway {
 
-    private InputView inputView;
+    private MainInputValidation mainInput;
+    private TraverseInputValidation traverseInput;
+    private StationInputValidation stationInput;
 
     public Subway(Scanner scanner) {
-        this.inputView = new InputView(scanner);
+        InputView inputView = new InputView(scanner);
+        this.mainInput = new MainInputValidation(inputView);
+        this.traverseInput = new TraverseInputValidation(inputView);
+        this.stationInput = new StationInputValidation(inputView);
     }
 
+
     public void run() {
-        MainInputValidation mainInputValidation = new MainInputValidation(inputView);
         OutputView.printMainScreen();
-        String mainInput = mainInputValidation.input();
-        if (mainInput.equals(MainInputEnum.TRAVERSE_SUBWAY.getOption())) {
+        String function = mainInput.input();
+        if (function.equals(MainInputEnum.TRAVERSE_SUBWAY.getOption())) {
             traverse();
         }
     }
 
     private void traverse() {
         OutputView.printTraverseScreen();
-        TraverseInputValidation traverseInputValidation = new TraverseInputValidation(inputView);
-        String function = traverseInputValidation.input();
+        String function = traverseInput.input();
         if (
             function.equals(TraverseInputEnum.SHORTEST_DISTANCE.getOption())) {
-            LineRepository.getDijkstraShortestPath();
-            return;
+            String startStation = stationInput.inputStartStation();
+            String endStation = stationInput.inputEndStation();
         }
         if (function.equals(TraverseInputEnum.SHORTEST_TIME.getOption())) {
             System.out.println("d");

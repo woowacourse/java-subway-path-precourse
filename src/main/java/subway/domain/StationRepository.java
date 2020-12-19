@@ -28,4 +28,8 @@ public class StationRepository {
     public static void addAll(List<Station> newStations) {
         stations.addAll(newStations);
     }
+
+    public static boolean contains(String stationName) {
+        return stations.stream().anyMatch(station -> station.getName().equals(stationName));
+    }
 }
