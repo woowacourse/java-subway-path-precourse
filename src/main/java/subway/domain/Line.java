@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Line {
+    private final static int MAX_NUMBER = Integer.MAX_VALUE;
     private String name;
     private WeightedMultigraph<String, DefaultWeightedEdge> time = new WeightedMultigraph(DefaultWeightedEdge.class);
     private WeightedMultigraph<String, DefaultWeightedEdge> length = new WeightedMultigraph(DefaultWeightedEdge.class);
@@ -69,7 +70,7 @@ public class Line {
             DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(length);
             return (int) dijkstraShortestPath.getPath(start, end).getWeight();
         }
-        return 100;
+        return MAX_NUMBER;
     }
 
     public int getTime(String start, String end) {
@@ -77,6 +78,6 @@ public class Line {
             DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(time);
             return (int) dijkstraShortestPath.getPath(start, end).getWeight();
         }
-        return 100;
+        return MAX_NUMBER;
     }
 }

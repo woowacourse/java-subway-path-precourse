@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
+    private final static int MAX_NUMBER = Integer.MAX_VALUE;
     private final StartStation startStation;
     private final EndStation endStation;
 
@@ -36,7 +37,7 @@ public class Order {
     }
 
     public int calculateLength() {
-        int shortest = 100;
+        int shortest = MAX_NUMBER;
         for (Line line : LineRepository.lines()) {
             shortest = Math.min(shortest, line.getLength(startStation.getStationName(), endStation.getStationName()));
         }
@@ -44,7 +45,7 @@ public class Order {
     }
 
     public int calculateTime() {
-        int shortest = 100;
+        int shortest = MAX_NUMBER;
         for (Line line : LineRepository.lines()) {
             shortest = Math.min(shortest, line.getTime(startStation.getStationName(), endStation.getStationName()));
         }
