@@ -6,4 +6,7 @@ public interface Screen {
 
     Screen run();
 
+    Screen[] getValues();
+
+    String getTitle();
 }
