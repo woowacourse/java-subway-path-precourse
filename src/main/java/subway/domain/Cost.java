@@ -5,7 +5,8 @@ public class Cost {
     private int time;
 
     public Cost(int distance, int time) {
-
+        this.distance = distance;
+        this.time = time;
     }
 
 }
