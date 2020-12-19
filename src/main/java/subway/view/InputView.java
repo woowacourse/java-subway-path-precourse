@@ -1,5 +1,7 @@
 package subway.view;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputView {
@@ -11,6 +13,16 @@ public class InputView {
 
     public String scanMenu() {
         OutputView.printSelectMessage();
+        return getInput();
+    }
+
+    public String scanStartStation() {
+        OutputView.printStartInputMessage();
+        return getInput();
+    }
+
+    public String scanEndStation() {
+        OutputView.printEndInputMessage();
         return getInput();
     }
 

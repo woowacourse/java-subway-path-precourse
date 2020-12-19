@@ -20,7 +20,7 @@ public class Application {
         String selectedMenus = menuScanner.scanMenus(inputView);
         boolean quit = Menus.isQuit(selectedMenus);
         while (!quit) {
-            Menus.run(selectedMenus);
+            Menus.run(inputView, selectedMenus);
             selectedMenus = menuScanner.scanMenus(inputView);
             quit = Menus.isQuit(selectedMenus);
         }
