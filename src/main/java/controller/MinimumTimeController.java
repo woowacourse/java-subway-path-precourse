@@ -6,6 +6,7 @@ import org.jgrapht.graph.WeightedMultigraph;
 import subway.domain.Line;
 import subway.domain.LineRepository;
 import subway.domain.Station;
+import subway.domain.StationRepository;
 
 import java.util.List;
 import java.util.Scanner;
@@ -72,12 +73,8 @@ public class MinimumTimeController {
     }
 
     public static void setVertex() {
-        List<Line> lines = LineRepository.lines();
-        for (Line line : lines) {
-            List<Station> stations = line.getSection();
-            for (Station station : stations) {
-                graph.addVertex(station.getName());
-            }
+        for (Station station : StationRepository.stations()) {
+            graph.addVertex(station.getName());
         }
     }
 
