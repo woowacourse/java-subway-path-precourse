@@ -35,6 +35,13 @@ public class LineRepository {
                 new Station("양재역"),
                 new Station("양재시민의숲역"))
             )));
+        
+        // TODO - 테스트용
+        lines.add(new Line("테스트선",
+            new ArrayList<Station>(Arrays.asList(
+                new Station("테스트역1"),
+                new Station("테스트역2"))
+            )));
     }
 
     public static List<Line> lines() {

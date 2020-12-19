@@ -15,19 +15,28 @@ public class ShortestPath {
         String startStationName,
         String endStationName
     ) {
-        WeightedMultigraph<String, DefaultWeightedEdge> graph
-            = new WeightedMultigraph(DefaultWeightedEdge.class);
-        setVertexAndEdgeWeightForShortestDistancePath(graph);
-        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
-        return dijkstraShortestPath.getPath(startStationName, endStationName).getVertexList();
+        try {
+            WeightedMultigraph<String, DefaultWeightedEdge> graph
+                = new WeightedMultigraph(DefaultWeightedEdge.class);
+            setVertexAndEdgeWeightForShortestDistancePath(graph);
+            DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
+            return dijkstraShortestPath.getPath(startStationName, endStationName).getVertexList();
+        } catch (NullPointerException e) {
+            throw new IllegalArgumentException("[ERROR] 출발역과 도착역이 연결되어 있지 않아서 경로 조회가 불가능합니다.");
+        }
     }
 
     public static int getShortestDistance(String startStationName, String endStationName) {
-        WeightedMultigraph<String, DefaultWeightedEdge> graph
-            = new WeightedMultigraph(DefaultWeightedEdge.class);
-        setVertexAndEdgeWeightForShortestDistancePath(graph);
-        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
-        return (int) dijkstraShortestPath.getPath(startStationName, endStationName).getWeight();
+        try {
+            WeightedMultigraph<String, DefaultWeightedEdge> graph
+                = new WeightedMultigraph(DefaultWeightedEdge.class);
+            setVertexAndEdgeWeightForShortestDistancePath(graph);
+            DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
+            return (int) dijkstraShortestPath.getPath(startStationName, endStationName).getWeight();
+        } catch (NullPointerException e) {
+            throw new IllegalArgumentException("[ERROR] 출발역과 도착역이 연결되어 있지 않아서 경로 조회가 불가능합니다.");
+        }
+
     }
 
     private static void setVertexAndEdgeWeightForShortestDistancePath(
@@ -65,19 +74,27 @@ public class ShortestPath {
     }
 
     public static List<String> getShortestTimePath(String startStationName, String endStationName) {
-        WeightedMultigraph<String, DefaultWeightedEdge> graph
-            = new WeightedMultigraph(DefaultWeightedEdge.class);
-        setVertexAndEdgeWeightForShortestTimePath(graph);
-        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
-        return dijkstraShortestPath.getPath(startStationName, endStationName).getVertexList();
+        try {
+            WeightedMultigraph<String, DefaultWeightedEdge> graph
+                = new WeightedMultigraph(DefaultWeightedEdge.class);
+            setVertexAndEdgeWeightForShortestTimePath(graph);
+            DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
+            return dijkstraShortestPath.getPath(startStationName, endStationName).getVertexList();
+        } catch (NullPointerException e) {
+            throw new IllegalArgumentException("[ERROR] 출발역과 도착역이 연결되어 있지 않아서 경로 조회가 불가능합니다.");
+        }
     }
 
     public static int getShortestTime(String startStationName, String endStationName) {
-        WeightedMultigraph<String, DefaultWeightedEdge> graph
-            = new WeightedMultigraph(DefaultWeightedEdge.class);
-        setVertexAndEdgeWeightForShortestTimePath(graph);
-        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
-        return (int) dijkstraShortestPath.getPath(startStationName, endStationName).getWeight();
+        try {
+            WeightedMultigraph<String, DefaultWeightedEdge> graph
+                = new WeightedMultigraph(DefaultWeightedEdge.class);
+            setVertexAndEdgeWeightForShortestTimePath(graph);
+            DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
+            return (int) dijkstraShortestPath.getPath(startStationName, endStationName).getWeight();
+        } catch (NullPointerException e) {
+            throw new IllegalArgumentException("[ERROR] 출발역과 도착역이 연결되어 있지 않아서 경로 조회가 불가능합니다.");
+        }
     }
 
     private static void setVertexAndEdgeWeightForShortestTimePath(

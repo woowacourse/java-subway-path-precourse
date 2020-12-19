@@ -17,6 +17,10 @@ public class StationRepository {
         stations.add(new Station("양재역"));
         stations.add(new Station("양재시민의숲역"));
         stations.add(new Station("매봉역"));
+        
+        // TODO - 테스트용
+        stations.add(new Station("테스트역1"));
+        stations.add(new Station("테스트역2"));
     }
 
     public static List<Station> stations() {
