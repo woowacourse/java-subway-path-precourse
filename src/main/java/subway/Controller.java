@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 public class Controller {
     private static final List<Station> stations = StationRepository.stations();
-    private static final List<Line> lines = LineRepository.lines();
     private Scanner scanner;
     private Output output;
     private Input input;
@@ -31,7 +30,7 @@ public class Controller {
                 runCommand();
                 continue;
             }
-            throw new IllegalArgumentException(String.join(" ", Constant.PREFIX_ERROR, "선택지만 입력할 수 있습니다."));
+            throw new IllegalArgumentException(String.join(" ", Constant.PREFIX_ERROR, "존재하지 않는 기능입니다."));
         }
     }
 
@@ -41,7 +40,11 @@ public class Controller {
         if (command.equals(Constant.COMMAND_BACK)) {
             return;
         }
-        readPath(command);
+        if(command.equals(Constant.COMMAND_ONE) || command.equals(Constant.COMMAND_TWO)){
+            readPath(command);
+            return;
+        }
+        throw new IllegalArgumentException(String.join(" ", Constant.PREFIX_ERROR, "존재하지 않는 기능입니다."));
     }
 
     private void readPath(String command) {
