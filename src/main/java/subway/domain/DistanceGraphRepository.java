@@ -23,4 +23,8 @@ public class DistanceGraphRepository {
         List<Station> shortestPath = dijkstraShortestPath.getPath(source, destination).getVertexList();
         return Collections.unmodifiableList(shortestPath);
     }
+
+    public static int getEdgeDistance(Station source, Station destination) {
+        return (int) distanceGraph.getEdgeWeight(distanceGraph.getEdge(source, destination));
+    }
 }

@@ -14,4 +14,8 @@ public class TimeGraphRepository {
     public static void addTimeBetweenStations(Station source, Station destination, int time) {
         timeGraph.setEdgeWeight(timeGraph.addEdge(source, destination), time);
     }
+
+    public static int getEdgeTime(Station source, Station destination) {
+        return (int) timeGraph.getEdgeWeight(timeGraph.getEdge(source, destination));
+    }
 }
