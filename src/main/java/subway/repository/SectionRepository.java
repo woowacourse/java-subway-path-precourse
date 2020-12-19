@@ -12,7 +12,6 @@ public class SectionRepository {
     private static final List<Section> sections = new ArrayList<>();
 
     public static void addSection(Section section) {
-        System.out.println(section);
         sections.add(section);
     }
 }
