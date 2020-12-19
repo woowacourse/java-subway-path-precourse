@@ -28,6 +28,12 @@ public class MainView {
         SubwayRouteSearcher.selectRoute(scanner, userRouteSelection);
     }
 
+    public static void printResultScreen(Scanner scanner, List<String> resultList) {
+        OutputView.printResultRoute(resultList);
+        System.out.println();
+        MainView.printMainScreen(scanner);
+    }
+
 
     private static void checkUserInput(Scanner scanner, String userSelection,
         List<String> SELECTLIST) {
@@ -35,6 +41,7 @@ public class MainView {
             ErrorValidator.checkMainSelection(SELECTLIST, userSelection);
         } catch (InputMismatchException e) {
             System.out.println(e.getMessage());
+            System.out.println();
             printMainScreen(scanner);
         }
     }
@@ -54,11 +61,13 @@ public class MainView {
         return endStaion;
     }
 
-    private static void checkStartEndStation(Scanner scanner, String startStation, String endStaion) {
+    private static void checkStartEndStation(Scanner scanner, String startStation,
+        String endStaion) {
         try {
             ErrorValidator.checkStartEndStation(startStation, endStaion);
         } catch (InputMismatchException e) {
             System.out.println(e.getMessage());
+            System.out.println();
             printMainScreen(scanner);
         }
     }
@@ -68,6 +77,7 @@ public class MainView {
             ErrorValidator.checkStationRepository(startStaion);
         } catch (InputMismatchException e) {
             System.out.println(e.getMessage());
+            System.out.println();
             printMainScreen(scanner);
         }
     }
@@ -77,6 +87,7 @@ public class MainView {
             ErrorValidator.checkStationRepository(endStaion);
         } catch (InputMismatchException e) {
             System.out.println(e.getMessage());
+            System.out.println();
             printMainScreen(scanner);
         }
     }
