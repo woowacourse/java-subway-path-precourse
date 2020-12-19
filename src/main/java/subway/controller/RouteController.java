@@ -68,18 +68,16 @@ public class RouteController {
 
     private String[] stationInfo(){
         String[] stations = new String[STATIONS_SIZE];
-        String startStation = InputView.writeStartStation(scanner);
-        if (startStation.equals(ERROR_MESSAGE)) {
+        stations[START_STATION] = InputView.writeStartStation(scanner);
+        if (stations[START_STATION].equals(ERROR_MESSAGE)) {
             new RouteController(scanner);
             return stations;
         }
-        String endStation = InputView.writeEndStation(scanner, startStation);
-        if (endStation.equals(ERROR_MESSAGE)) {
+        stations[END_STATION] = InputView.writeEndStation(scanner, stations[START_STATION]);
+        if (stations[END_STATION].equals(ERROR_MESSAGE)) {
             new RouteController(scanner);
             return stations;
         }
-        stations[START_STATION] = startStation;
-        stations[END_STATION] = endStation;
         return stations;
     }
 }
