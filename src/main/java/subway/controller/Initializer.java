@@ -1,5 +1,6 @@
 package subway.controller;
 
+import subway.domain.Edge;
 import subway.domain.Station;
 import subway.domain.StationRepository;
 import subway.domain.Line;
@@ -67,7 +68,36 @@ public class Initializer {
             String stationName = stationList.get(i);
             int order = i + ORDER_CONSTANT;
             line.addStationByName(stationName, order);
+            makeEdgeInLine(line);
         }
         LineRepository.addLine(line);
+    }
+
+    private static void makeEdgeInLine(Line line) {
+        List<Edge> edgeList = makeEdge(line);
+        for (int i = 0; i < edgeList.size(); i++) {
+            Edge edge = edgeList.get(i);
+            line.addEdge(edge,i);
+        }
+    }
+
+    //자료형 사용해보자, 수정 필요
+    private static List<Edge> makeEdge(Line line) {
+        String lineName = line.getName();
+        List<Edge> edgeList = new ArrayList<Edge>();
+        if (lineName.equals(line1)) {
+            edgeList.add(new Edge(2,3));
+            edgeList.add(new Edge(2,3));
+        }
+        if (lineName.equals(line2)) {
+            edgeList.add(new Edge(3,2));
+            edgeList.add(new Edge(6,5));
+            edgeList.add(new Edge(1,1));
+        }
+        if (lineName.equals(line3)) {
+            edgeList.add(new Edge(2,8));
+            edgeList.add(new Edge(10,3));
+        }
+        return edgeList;
     }
 }

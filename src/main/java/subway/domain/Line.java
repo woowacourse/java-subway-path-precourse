@@ -8,6 +8,7 @@ public class Line {
 
     private String name;
     private List<Station> stations = new ArrayList<>();
+    private List<Edge> edges = new ArrayList<>();
 
     public Line(String name) {
         this.name = name;
@@ -20,6 +21,10 @@ public class Line {
     private void addStation(Station station, int order) {
         int indexOrder = order - ORDER_CONSTANT;
         stations.add(indexOrder,station);
+    }
+
+    public void addEdge(Edge edge, int order) {
+        edges.add(order,edge);
     }
 
     public void addStationByName(String stationName, int order) {
