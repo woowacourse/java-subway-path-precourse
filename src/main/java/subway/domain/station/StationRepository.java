@@ -26,7 +26,7 @@ public class StationRepository {
         stations.clear();
     }
 
-    public void isExist(String name) {
+    public static void isExist(String name) {
         stations.stream()
                 .filter(station -> Objects.equals(station.getName(), name))
                 .findAny()

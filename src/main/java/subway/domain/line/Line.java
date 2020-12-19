@@ -19,4 +19,8 @@ public class Line {
     public static Line from(String name, List<String> stations) {
         return new Line(name, stations);
     }
+
+    public boolean contains(String station) {
+        return stations.contains(station);
+    }
 }

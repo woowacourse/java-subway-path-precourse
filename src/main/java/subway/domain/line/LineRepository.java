@@ -1,5 +1,7 @@
 package subway.domain.line;
 
+import subway.utils.exception.NotSameLineException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -22,5 +24,12 @@ public class LineRepository {
 
     public static void deleteAll() {
         lines.clear();
+    }
+
+    public static void sameLine(String firstStation, String lastStation) {
+        lines.stream()
+                .filter(line -> line.contains(firstStation) && line.contains(lastStation))
+                .findAny()
+                .orElseThrow(() -> new NotSameLineException());
     }
 }

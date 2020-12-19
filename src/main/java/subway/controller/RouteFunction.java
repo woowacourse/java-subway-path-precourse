@@ -1,10 +1,12 @@
 package subway.controller;
 
 import subway.domain.graph.DistanceGraphRepository;
+import subway.domain.line.LineRepository;
 import subway.domain.station.StationRepository;
 import subway.utils.exception.DuplicateStationException;
 import subway.utils.exception.InvalidStationNameException;
 import subway.utils.exception.NotExistStationException;
+import subway.utils.exception.NotSameLineException;
 import subway.view.InputView;
 import subway.view.output.RouteOutputView;
 
@@ -13,8 +15,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class RouteFunction {
-    private static final DistanceGraphRepository distanceGraphRepository = new DistanceGraphRepository();
-    private static final StationRepository stationRepository = new StationRepository();
     private RouteOutputView routeOutputView;
 
     public RouteFunction(RouteOutputView routeOutputView) {
@@ -33,10 +33,20 @@ public class RouteFunction {
     private List<String> inputStation() {
         try {
             String firstStation = inputFirstStation();
-            String lastStation =  inputLastStation();
+            String lastStation = inputLastStation();
             isSameStation(firstStation, lastStation);
+            isValidLine(firstStation, lastStation);
             return Arrays.asList(firstStation, lastStation);
-        } catch (InvalidStationNameException | NotExistStationException | DuplicateStationException e) {
+        } catch (NullPointerException | DuplicateStationException e) {
+            throw new NullPointerException();
+        }
+    }
+
+    private void isValidLine(String firstStation, String lastStation) {
+        try {
+            LineRepository.sameLine(firstStation, lastStation);
+//        LineRepository.invalidSequence(firstStation, lastStation);
+        } catch (NotSameLineException e) {
             throw new NullPointerException();
         }
     }
@@ -48,17 +58,25 @@ public class RouteFunction {
     }
 
     private String inputFirstStation() {
-        routeOutputView.printFirstStation();
-        String firstStation = InputView.inputStation();
-        stationRepository.isExist(firstStation);
-        return firstStation;
+        try {
+            routeOutputView.printFirstStation();
+            String firstStation = InputView.inputStation();
+            StationRepository.isExist(firstStation);
+            return firstStation;
+        } catch (InvalidStationNameException | NotExistStationException e) {
+            throw new NullPointerException();
+        }
     }
 
     private String inputLastStation() {
-        routeOutputView.printLastStation();
-        String lastStation = InputView.inputStation();
-        stationRepository.isExist(lastStation);
-        return lastStation;
+        try {
+            routeOutputView.printLastStation();
+            String lastStation = InputView.inputStation();
+            StationRepository.isExist(lastStation);
+            return lastStation;
+        } catch (InvalidStationNameException | NotExistStationException e) {
+            throw new NullPointerException();
+        }
     }
 
     public void shortestTime() {
