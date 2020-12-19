@@ -2,10 +2,14 @@ package subway.domain;
 
 import subway.util.PathCalculator;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 
 public class Station {
-    private String name;
+    private final String name;
+    private final List<NearbyStation> nearbyStations = new ArrayList<>();
 
     private Station(String name) {
         this.name = name;
@@ -20,6 +24,10 @@ public class Station {
 
     public String getName() {
         return name;
+    }
+
+    public List<NearbyStation> getNearbyStations() {
+        return Collections.unmodifiableList(nearbyStations);
     }
 
 
