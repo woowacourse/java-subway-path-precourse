@@ -1,5 +1,7 @@
 package subway.domain;
 
+import subway.Constants;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -36,6 +38,35 @@ public class StationRepository {
 
     public static int getSize() {
         return stations.size();
+    }
+
+    public static int getCost(String firstStation, String secondStation, String kind) {
+        for (Station station : stations) {
+            if (station.getName().equals(firstStation)) {
+                return findNextStation(station, secondStation, kind);
+            }
+        }
+        return Constants.ERROR_CODE;
+    }
+
+    private static int findNextStation(Station station, String nextStation, String kind) {
+        for (NodeData nodeData : station.getNodeData()) {
+            if (nodeData.getNextStation().equals(nextStation)) {
+                return getTimeOrDistanceCost(nodeData, kind);
+            }
+        }
+        return Constants.ERROR_CODE;
+    }
+
+    private static int getTimeOrDistanceCost(NodeData nodeData, String kind) {
+        if (kind.equals(Constants.DISTANCE_COST)) {
+            return nodeData.getDistanceCost();
+        }
+        if (kind.equals(Constants.TIME_COST)) {
+            return nodeData.getTimeCost();
+        }
+
+        return Constants.ERROR_CODE;
     }
 
     public static void setCost(String prevStationName, String nextStationName, int timeCost, int distanceCost) {
