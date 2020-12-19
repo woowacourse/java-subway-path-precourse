@@ -20,7 +20,6 @@ public class StationRepository {
         addStation(Station.newStationWithName("양재역"));
         addStation(Station.newStationWithName("양재시민의숲역"));
         addStation(Station.newStationWithName("매봉역"));
-        addStation(Station.newStationWithName("현구역"));
     }
 
     public static List<Station> stations() {

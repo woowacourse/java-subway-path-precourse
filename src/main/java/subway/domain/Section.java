@@ -17,13 +17,25 @@ public class Section {
         this.distance = distance;
     }
 
-    public static Section newSection(final Line line, final Station source, final Station destination,
+    public static Section newSection(final Line line, final Station source,
+        final Station destination,
         final Distance distance, final Time time) {
         return new Section(line, source, destination, distance, time);
     }
 
-    public boolean isSourceDestinationByName(String name) {
-        return name.equals(source.getName()) || name.equals(destination);
+    public boolean isSourceDestinationByName(String sourceName, String destinationName) {
+        return isEqualNames(sourceName, destinationName)
+            || isEqualNamesReverse(sourceName, destinationName);
+    }
+
+    private boolean isEqualNames(String sourceName, String destinationName) {
+        return sourceName.equals(source.getName())
+            && destinationName.equals(destination.getName());
+    }
+
+    private boolean isEqualNamesReverse(String sourceName, String destinationName) {
+        return sourceName.equals(destination.getName())
+            && destinationName.equals(source.getName());
     }
 
     public Distance getDistance() {
@@ -38,7 +50,7 @@ public class Section {
         return source;
     }
 
-    public Station getDestination(){
+    public Station getDestination() {
         return destination;
     }
 }

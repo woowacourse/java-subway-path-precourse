@@ -89,8 +89,9 @@ public class SectionRepository {
 
     private static int getDistanceBySection(String source, String destination) {
         Section findSection = sections.stream()
-            .filter(section -> section.isSourceDestinationByName(source)).findAny().get();
-        findSection.isSourceDestinationByName(destination);
+            .filter(section -> section.isSourceDestinationByName(source, destination))
+            .findAny()
+            .get();
         return findSection.getDistance().getKilometer();
     }
 
@@ -104,8 +105,9 @@ public class SectionRepository {
 
     private static int getTimeBySection(String source, String destination) {
         Section findSection = sections.stream()
-            .filter(section -> section.isSourceDestinationByName(source)).findAny().get();
-        findSection.isSourceDestinationByName(destination);
+            .filter(section -> section.isSourceDestinationByName(source, destination))
+            .findAny()
+            .get();
         return findSection.getTime().getMinute();
     }
 }
