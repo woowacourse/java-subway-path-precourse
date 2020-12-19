@@ -48,16 +48,16 @@ public class LineStation {
         prevStation = station;
     }
 
-    public void getDistance(double distance) {
-        PathRepository.getDistanceWeightGraph().getEdgeWeight(distanceWeightEdge);
+    public double getDistance(double distance) {
+        return PathRepository.getDistanceWeightGraph().getEdgeWeight(distanceWeightEdge);
     }
 
     public void setDistance(double distance) {
         PathRepository.getDistanceWeightGraph().setEdgeWeight(distanceWeightEdge, distance);
     }
 
-    public void getTime(double time) {
-        PathRepository.getTimeWeightGraph().getEdgeWeight(timeWeightEdge);
+    public double getTime(double time) {
+        return PathRepository.getTimeWeightGraph().getEdgeWeight(timeWeightEdge);
     }
 
     public void setTime(double time) {
