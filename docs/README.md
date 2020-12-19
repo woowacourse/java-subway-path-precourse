@@ -102,8 +102,8 @@
                     │   │   └─TimeMapInitialization.java
                     │   ├─DistanceMapService.java
                     │   ├─PathService.java
-                    │  ├─StationService.java
-                    │    └─TimeMapService.java
+                    │   ├─StationService.java
+                    │   └─TimeMapService.java
                     ├─type
                     │   ├─DistanceType.java
                     │   ├─ExceptionType.java
