@@ -9,11 +9,11 @@ import subway.view.OutputView;
 import java.util.List;
 import java.util.Scanner;
 
-public class ShortestDistanceService {
+public class RouteCheckService {
 
     private final Scanner scanner;
 
-    public ShortestDistanceService(Scanner scanner) {
+    public RouteCheckService(Scanner scanner) {
         this.scanner = scanner;
     }
 
@@ -48,5 +48,4 @@ public class ShortestDistanceService {
         }
         return totalTime;
     }
-
 }
