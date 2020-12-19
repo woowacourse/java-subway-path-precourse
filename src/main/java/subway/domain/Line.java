@@ -36,7 +36,6 @@ public class Line {
         stations.removeIf(station -> Objects.equals(station.getName(), name));
     }
 
-
     public boolean isContainedStation(String target) {
         long checkOverlapped = stations.stream()
                 .map(Station::getName)

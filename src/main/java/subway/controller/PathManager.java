@@ -2,6 +2,7 @@ package subway.controller;
 
 import java.util.Scanner;
 import subway.controller.constants.SelectOptionConstants;
+import subway.controller.option.PathOption;
 import subway.view.PathInputView;
 
 public class PathManager {

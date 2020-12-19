@@ -8,7 +8,7 @@ import subway.domain.StationTimeRepository;
 import subway.view.PathOutputView;
 
 public class ShortestTimePathFinder extends ShortestPathFinder {
-    ShortestTimePathFinder(Scanner scanner) {
+    public ShortestTimePathFinder(Scanner scanner) {
         super(scanner);
     }
 

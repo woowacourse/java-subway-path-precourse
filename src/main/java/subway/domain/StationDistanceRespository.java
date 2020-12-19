@@ -17,34 +17,33 @@ public class StationDistanceRespository {
     }
 
     public static void addStationIntervalDistance(String initialStation,
-            String lastStation, int distance) {
-        isSameInitialLastStation(initialStation, lastStation);
-        DefaultWeightedEdge stationEdge = spaceGraph.addEdge(initialStation, lastStation);
+            String terminalStation, int distance) {
+        isSameInitialLastStation(initialStation, terminalStation);
+        DefaultWeightedEdge stationEdge = spaceGraph.addEdge(initialStation, terminalStation);
         spaceGraph.setEdgeWeight(stationEdge, distance);
     }
 
-    public static List<String> getShortestPath(String initialStation, String lastStation) {
-        isSameInitialLastStation(initialStation, lastStation);
-        List<String> shortestPath = dijkstraShortestPath.getPath(initialStation, lastStation)
+    public static List<String> getShortestPath(String initialStation, String terminalStation) {
+        isSameInitialLastStation(initialStation, terminalStation);
+        List<String> shortestPath = dijkstraShortestPath.getPath(initialStation, terminalStation)
                 .getVertexList();
         return shortestPath;
     }
 
-    public static int getShortestDistance(String initialStation, String lastStation) {
-        isSameInitialLastStation(initialStation, lastStation);
+    public static int getShortestDistance(String initialStation, String terminalStation) {
+        isSameInitialLastStation(initialStation, terminalStation);
 
         try {
-            int shortestDistance = (int) dijkstraShortestPath.getPath(initialStation, lastStation)
+            return (int) dijkstraShortestPath.getPath(initialStation, terminalStation)
                     .getWeight();
-            return shortestDistance;
         } catch (Exception error) {
             System.out.println(DomainErrorMessage.NO_CONNECT);
             throw new IllegalArgumentException(DomainErrorMessage.NO_CONNECT);
         }
     }
 
-    private static void isSameInitialLastStation(String initialStation, String lasStation) {
-        if (initialStation.equals(lasStation)) {
+    private static void isSameInitialLastStation(String initialStation, String terminalStation) {
+        if (initialStation.equals(terminalStation)) {
             System.out.println(DomainErrorMessage.SAME_STATION);
             throw new IllegalArgumentException(DomainErrorMessage.SAME_STATION);
         }

@@ -1,6 +1,7 @@
-package subway.controller;
+package subway.controller.option;
 
 import java.util.Scanner;
+import subway.controller.PathManager;
 import subway.controller.constants.QuestionNumber;
 
 public enum EntireOption {

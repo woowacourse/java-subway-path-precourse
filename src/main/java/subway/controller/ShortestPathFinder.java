@@ -6,7 +6,6 @@ import subway.domain.StationRepository;
 import subway.view.PathInputView;
 
 abstract public class ShortestPathFinder {
-
     private final Scanner scanner;
 
     ShortestPathFinder(Scanner scanner) {

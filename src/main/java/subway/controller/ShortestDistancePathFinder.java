@@ -8,13 +8,12 @@ import subway.domain.StationTimeRepository;
 import subway.view.PathOutputView;
 
 public class ShortestDistancePathFinder extends ShortestPathFinder {
-    ShortestDistancePathFinder(Scanner scanner) {
+    public ShortestDistancePathFinder(Scanner scanner) {
         super(scanner);
     }
 
     @Override
     public void showPath(String departure, String terminal) {
-        System.out.println("1");
         int shortestDistance = StationDistanceRespository.getShortestDistance(departure, terminal);
         List<String> shortestDistancePath =
                 StationDistanceRespository.getShortestPath(departure, terminal);

@@ -3,6 +3,7 @@ package subway.controller;
 import java.util.Scanner;
 import subway.controller.constants.QuestionNumber;
 import subway.controller.constants.SelectOptionConstants;
+import subway.controller.option.EntireOption;
 import subway.view.MainInputView;
 
 public class EntirePathSystem {
