@@ -32,6 +32,12 @@
 
 <br>
 
+###구현하지 못한 부분
+1. 최단 거리 탐색시 기준값이 아닌 값으로 출력하는 기능
+ex)) 거리 탐색시 해당 경로의 시간
+2. 거리 예외 처리 4번 역이 연결되어있는지를 판단.
+
+<br>
 ## 📝 License
 
 This project is [MIT](https://github.com/woowacourse/java-subway-path-precourse/blob/master/LICENSE.md) licensed.
