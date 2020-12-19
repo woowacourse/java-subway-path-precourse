@@ -25,4 +25,18 @@ public class Criterions extends Menus {
         }
         return false;
     }
+
+    public boolean isDistanceSign(String sign) {
+        if (sign.equals(distanceSign)) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isTimeSign(String sign) {
+        if (sign.equals(timeSign)) {
+            return true;
+        }
+        return false;
+    }
 }

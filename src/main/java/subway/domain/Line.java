@@ -35,4 +35,12 @@ public class Line {
             }
         }
     }
+
+    public List<String> getStationNameList() {
+        List<String> stationList = new ArrayList<String>();
+        for (int i = 0; i < stations.size(); i++) {
+            stationList.add(stations.get(i).getName());
+        }
+        return stationList;
+    }
 }

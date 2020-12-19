@@ -1,5 +1,6 @@
 package subway.controller;
 
+import subway.controller.Navigator;
 import subway.domain.Edge;
 import subway.domain.Station;
 import subway.domain.StationRepository;
@@ -12,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Initializer {
+    private static final int NEXT_CONSTANT = 1;
     private static final int ORDER_CONSTANT = 1;
 
     private static final String station1 = "교대역";
@@ -41,43 +43,48 @@ public class Initializer {
     private Initializer() {
     }
 
-    public static void set() {
-        HashMap<String,Station> stations = makeStations();
+    public static Navigator set() {
+        Navigator navigator = new Navigator();
+        HashMap<String,Station> stations = makeStations(navigator);
         List<String> lineNameList = new ArrayList<String>(initLines.keySet());
         for (int i = 0; i < lineNameList.size(); i++) {
             String lineName = lineNameList.get(i);
-            makeLine(lineName);
+            makeLine(lineName, navigator);
         }
+        return navigator;
     }
 
-    private static HashMap<String, Station> makeStations() {
+    private static HashMap<String, Station> makeStations(Navigator navigator) {
         HashMap<String, Station> stations = new HashMap<String, Station>();
         for (int i = 0; i < initStations.size(); i++) {
             String stationName = initStations.get(i);
             Station station = new Station(stationName);
             StationRepository.addStation(station);
             stations.put(stationName, station);
+            navigator.addStation(stationName);
         }
         return stations;
     }
 
-    private static void makeLine(String lineName) {
+    private static void makeLine(String lineName, Navigator navigator) {
         Line line = new Line(lineName);
         List<String> stationList = initLines.get(lineName);
         for (int i = 0; i < stationList.size(); i++) {
             String stationName = stationList.get(i);
             int order = i + ORDER_CONSTANT;
             line.addStationByName(stationName, order);
-            makeEdgeInLine(line);
+            makeEdgeInLine(line, navigator);
         }
         LineRepository.addLine(line);
     }
 
-    private static void makeEdgeInLine(Line line) {
+    private static void makeEdgeInLine(Line line, Navigator navigator) {
         List<Edge> edgeList = makeEdge(line);
+        List<String> stationNameList = line.getStationNameList();
         for (int i = 0; i < edgeList.size(); i++) {
             Edge edge = edgeList.get(i);
-            line.addEdge(edge,i);
+            //line.addEdge(edge,i);
+            //navigator.addEdge(stationNameList.get(i), stationNameList.get(i+NEXT_CONSTANT),edge);
         }
     }
 

@@ -1,5 +1,6 @@
 package subway.domain;
 
+import subway.controller.Navigator;
 import subway.domain.exception.NonExistentMenuException;
 import subway.domain.exception.NonExistentNameException;
 import subway.domain.exception.SamePointsException;
@@ -14,15 +15,21 @@ public abstract class Menus {
     public static final Criterions criterions = new Criterions();
     private static final List<String> signs = Arrays.asList(new String[]{});
 
-    public static void run(InputView inputView, String selectedCriterions) {
+    public static void run(InputView inputView, String selectedCriterions, Navigator navigator) {
         if (isBack(selectedCriterions)) {
             return;
         }
-        search(inputView, selectedCriterions);
+        search(inputView, selectedCriterions, navigator);
     }
 
-    public static void search(InputView inputView, String criterion) {
-        List<String> startStation, endStation = scanValidStations(inputView);
+    public static void search(InputView inputView, String criterion, Navigator navigator) {
+        List<String> stations = scanValidStations(inputView);
+        if (criterions.isDistanceSign(criterion)) {
+            navigator.searchShortestDistance(stations);
+        }
+        if (criterions.isTimeSign(criterion)) {
+            navigator.searchShortestTime(stations);
+        }
     }
 
     private static List<String> scanValidStations(InputView inputView) {
