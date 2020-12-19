@@ -26,6 +26,10 @@ public class LineRepository {
         lines.add(line);
     }
 
+    public static void saveAll(List<Line> lines) {
+        lines.forEach(LineRepository::save);
+    }
+
     public static boolean deleteLineByName(String name) {
         return lines.removeIf(line -> Objects.equals(line.getName(), name));
     }

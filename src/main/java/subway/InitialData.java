@@ -1,6 +1,7 @@
 package subway;
 
 import subway.domain.line.Line;
+import subway.domain.line.LineRepository;
 import subway.domain.station.Station;
 import subway.domain.station.StationRepository;
 
@@ -40,5 +41,7 @@ public class InitialData {
         line3.addStation(station5);
         line3.addRouteInfo("( 10km / 3분 )");
         line3.addStation(station6);
+
+        LineRepository.saveAll(Arrays.asList(line1, line2, line3));
     }
 }
