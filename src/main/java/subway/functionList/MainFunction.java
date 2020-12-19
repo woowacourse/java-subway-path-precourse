@@ -6,7 +6,7 @@ import subway.controller.MainController;
 import subway.controller.RouteController;
 
 public enum MainFunction implements Function {
-    MANAGE_STATION("1", "경로 조회", RouteController::run),
+    MANAGE_ROUTE("1", "경로 조회", RouteController::run),
     QUIT("Q", "종료", MainController::back)
     ;
     private String code;

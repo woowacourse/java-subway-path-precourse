@@ -4,7 +4,7 @@ public enum PrefixMessage implements Message{
     NOTICE_FORMAT("## %s"),
     INFO_FORMAT("[INFO] %s"),
     FUNCTION_FORMAT("%s. %s"),
-    ERROR_FORMAT("[ERROR] %s]"),
+    ERROR_FORMAT("[ERROR] %s"),
     ;
 
     private String message;

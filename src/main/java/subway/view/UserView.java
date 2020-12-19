@@ -56,4 +56,11 @@ public class UserView {
         spaceLine();
         return userInput;
     }
+
+
+    public static void errorDirectPrint(IllegalArgumentException error) {
+        String errorMessage = String
+            .format(PrefixMessage.ERROR_FORMAT.getMessage(), error.getMessage());
+        System.out.println(errorMessage);
+    }
 }
