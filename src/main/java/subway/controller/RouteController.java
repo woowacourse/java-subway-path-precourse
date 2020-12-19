@@ -1,6 +1,6 @@
 package subway.controller;
 
-import subway.domain.RouteMenu;
+import subway.menus.RouteMenu;
 import subway.views.routeviews.RouteInputView;
 import subway.views.routeviews.RouteOutputView;
 

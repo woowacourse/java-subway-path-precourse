@@ -1,6 +1,6 @@
 package subway.controller;
 
-import subway.domain.MainMenu;
+import subway.menus.MainMenu;
 import subway.views.mainviews.MainInputView;
 import subway.views.mainviews.MainOutputView;
 
