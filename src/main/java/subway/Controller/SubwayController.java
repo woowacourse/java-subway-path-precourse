@@ -3,6 +3,7 @@ package subway.Controller;
 import subway.Category.Category;
 import subway.Exception.SameStationException;
 import subway.Service.ShortestDistanceService;
+import subway.Service.ShortestTimeService;
 import subway.domain.Station;
 import subway.domain.StationRepository;
 import views.InputView;
@@ -62,17 +63,16 @@ public class SubwayController {
     public void shortestDistance(Station startStation, Station arriveStation) {
         ShortestDistanceService shortestDistanceService = new ShortestDistanceService();
         shortestDistanceService.lookup(startStation, arriveStation);
+        OutputView.path_lookup_result();
     }
 
     private void shortestTime(Station startStation, Station arriveStation) {
-
+        ShortestTimeService shortestTimeService = new ShortestTimeService();
     }
 
-
-    public static boolean isSameStation(Station station1, Station station2) {
+    public static void isSameStation(Station station1, Station station2) {
         if (station1.equals(station2)) {
             throw new SameStationException();
         }
-        return true;
     }
 }
