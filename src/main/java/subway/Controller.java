@@ -9,12 +9,10 @@ import java.util.Scanner;
 
 public class Controller {
     private static final List<Station> stations = StationRepository.stations();
-    private Scanner scanner;
     private Output output;
     private Input input;
 
     public Controller(Scanner scanner) {
-        this.scanner = scanner;
         output = new Output();
         input = new Input(scanner);
     }
@@ -40,7 +38,7 @@ public class Controller {
         if (command.equals(Constant.COMMAND_BACK)) {
             return;
         }
-        if(command.equals(Constant.COMMAND_ONE) || command.equals(Constant.COMMAND_TWO)){
+        if (command.equals(Constant.COMMAND_ONE) || command.equals(Constant.COMMAND_TWO)) {
             readPath(command);
             return;
         }
@@ -52,6 +50,7 @@ public class Controller {
         Station endStation = validStation(input.getEndStation());
         isSameStation(startStation, endStation);
         Path resultPath = PathRepository.getPath(startStation, endStation, command);
+        validPath(resultPath);
         output.printPathResult(resultPath);
     }
 
@@ -60,9 +59,15 @@ public class Controller {
                 .orElseThrow(() -> new IllegalArgumentException(String.join(" ", Constant.PREFIX_ERROR, "존재하지 않는 역입니다.")));
     }
 
+    private void validPath(Path path) {
+        if (path.getPathList().size() == 0) {
+            throw new IllegalStateException(String.join(" ", Constant.PREFIX_ERROR, "경로가 존재하지 않습니다."));
+        }
+    }
+
     private void isSameStation(Station startStation, Station endStation) {
         if (startStation.isSameStation(endStation)) {
-            throw new IllegalArgumentException(String.join(" ", Constant.PREFIX_ERROR, "출발역과 도착역이 같을 수 없습니다"));
+            throw new IllegalArgumentException(String.join(" ", Constant.PREFIX_ERROR, "출발역과 도착역이 같을 수 없습니다."));
         }
     }
 }
