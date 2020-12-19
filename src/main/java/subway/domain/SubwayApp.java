@@ -15,7 +15,12 @@ public class SubwayApp {
     }
 
     public void run() {
-        printMainMenu();
-        inputView.inputMainMenuOption();
+        try {
+            printMainMenu();
+            inputView.inputMainMenuOption();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            run();
+        }
     }
 }
