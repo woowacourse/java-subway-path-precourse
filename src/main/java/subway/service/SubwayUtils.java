@@ -26,32 +26,60 @@ public class SubwayUtils {
     public static final String MAEBONG_STATION = "매봉역";
     public static final String YANGJAE_CITIZEN_STATION = "양재시민의숲역";
 
-    private static WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
+    private static final WeightedMultigraph<String, DefaultWeightedEdge> distanceGraph =
+            new WeightedMultigraph(DefaultWeightedEdge.class);
+
+    private static final WeightedMultigraph<String, DefaultWeightedEdge> timeGraph =
+            new WeightedMultigraph(DefaultWeightedEdge.class);
 
     private SubwayUtils() {}
 
     public static void initGraph() {
-        graph.addVertex(KYODAE_STATION);
-        graph.addVertex(KANGNAME_STATION);
-        graph.addVertex(YEOKSAM_STATION);
-        graph.addVertex(NAMBU_TERMINAL_STATION);
-        graph.addVertex(YANGJAE_STATION);
-        graph.addVertex(MAEBONG_STATION);
-        graph.addVertex(YANGJAE_CITIZEN_STATION);
-
-        graph.setEdgeWeight(graph.addEdge(KYODAE_STATION, KANGNAME_STATION), 2);
-        graph.setEdgeWeight(graph.addEdge(KANGNAME_STATION, YEOKSAM_STATION), 2);
-
-        graph.setEdgeWeight(graph.addEdge(KYODAE_STATION, NAMBU_TERMINAL_STATION), 3);
-        graph.setEdgeWeight(graph.addEdge(NAMBU_TERMINAL_STATION, YANGJAE_STATION), 6);
-        graph.setEdgeWeight(graph.addEdge(YANGJAE_STATION, MAEBONG_STATION), 1);
-
-
-        graph.setEdgeWeight(graph.addEdge(KANGNAME_STATION, YANGJAE_STATION), 2);
-        graph.setEdgeWeight(graph.addEdge(YANGJAE_STATION, YANGJAE_CITIZEN_STATION), 10);
+        initDistanceGraph();
+        initTimeGraph();
     }
 
-    public static SubwayService initialize() {
+    private static void initDistanceGraph() {
+        distanceGraph.addVertex(KYODAE_STATION);
+        distanceGraph.addVertex(KANGNAME_STATION);
+        distanceGraph.addVertex(YEOKSAM_STATION);
+        distanceGraph.addVertex(NAMBU_TERMINAL_STATION);
+        distanceGraph.addVertex(YANGJAE_STATION);
+        distanceGraph.addVertex(MAEBONG_STATION);
+        distanceGraph.addVertex(YANGJAE_CITIZEN_STATION);
+
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(KYODAE_STATION, KANGNAME_STATION), 2);
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(KANGNAME_STATION, YEOKSAM_STATION), 2);
+
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(KYODAE_STATION, NAMBU_TERMINAL_STATION), 3);
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(NAMBU_TERMINAL_STATION, YANGJAE_STATION), 6);
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(YANGJAE_STATION, MAEBONG_STATION), 1);
+
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(KANGNAME_STATION, YANGJAE_STATION), 2);
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(YANGJAE_STATION, YANGJAE_CITIZEN_STATION), 10);
+    }
+
+    private static void initTimeGraph() {
+        timeGraph.addVertex(KYODAE_STATION);
+        timeGraph.addVertex(KANGNAME_STATION);
+        timeGraph.addVertex(YEOKSAM_STATION);
+        timeGraph.addVertex(NAMBU_TERMINAL_STATION);
+        timeGraph.addVertex(YANGJAE_STATION);
+        timeGraph.addVertex(MAEBONG_STATION);
+        timeGraph.addVertex(YANGJAE_CITIZEN_STATION);
+
+        timeGraph.setEdgeWeight(timeGraph.addEdge(KYODAE_STATION, KANGNAME_STATION), 3);
+        timeGraph.setEdgeWeight(timeGraph.addEdge(KANGNAME_STATION, YEOKSAM_STATION), 3);
+        timeGraph.setEdgeWeight(timeGraph.addEdge(KYODAE_STATION, NAMBU_TERMINAL_STATION), 2);
+        timeGraph.setEdgeWeight(timeGraph.addEdge(NAMBU_TERMINAL_STATION, YANGJAE_STATION), 5);
+        timeGraph.setEdgeWeight(timeGraph.addEdge(YANGJAE_STATION, MAEBONG_STATION), 1);
+        timeGraph.setEdgeWeight(timeGraph.addEdge(KANGNAME_STATION, YANGJAE_STATION), 8);
+        timeGraph.setEdgeWeight(timeGraph.addEdge(YANGJAE_STATION, YANGJAE_CITIZEN_STATION), 3);
+    }
+
+    public static LineRepository initialize() {
+        initGraph();
+
         StationRepository secondLineRepository = new StationRepository().addStations(KYODAE_STATION,
                 KANGNAME_STATION, YEOKSAM_STATION);
         StationRepository thirdLineRepository = new StationRepository().addStations(KYODAE_STATION,
@@ -80,13 +108,19 @@ public class SubwayUtils {
         Line thirdLine = new Line(THIRD_LINE, thirdLineDirection);
         Line sinbundangLine = new Line(SINBUNDANG_LINE, sinbundangLineDirection);
 
-        LineRepository lineRepository = new LineRepository().addLines(secondLine, thirdLine, sinbundangLine);
 
-        return new SubwayService(lineRepository);
+        return new LineRepository().addLines(secondLine, thirdLine, sinbundangLine);
     }
 
-    public static List<String> findShortenPath(String startStation, String endStation) {
-        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
-        return dijkstraShortestPath.getPath(startStation, endStation).getVertexList();
+    public static List<String> findShortenPathByDistance(String startStation, String endStation) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(distanceGraph);
+        return dijkstraShortestPath.getPath(startStation, endStation)
+                .getVertexList();
+    }
+
+    public static List<String> findShortenPathByTime(String startStation, String endStation) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(timeGraph);
+        return dijkstraShortestPath.getPath(startStation, endStation)
+                .getVertexList();
     }
 }
