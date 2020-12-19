@@ -9,7 +9,7 @@ public class OutputMessages {
     public final String INPUT_START = "## 출발역을 입력하세요.";
     public final String INPUT_ARRIVE = "## 도착역을 입력하세요.";
     public final String RESULT = "## 조회 결과";
-    public final String INFO = "[INFO]";
+    public final String INFO = "[INFO] ";
     public final String DIVIDE = "---";
     public final String RESULT_DISTANCE = "총 거리: ";
     public final String RESULT_KM = "km";
