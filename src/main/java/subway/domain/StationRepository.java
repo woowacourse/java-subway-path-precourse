@@ -24,6 +24,14 @@ public class StationRepository {
         stations.clear();
     }
 
+    public static Station searchStationByName(String name) {
+        return stations.stream()
+                .filter(station -> station.getName().equals(name))
+                .findFirst()
+                .orElse(null);
+    }
+
+
     //테스트용
     public static void printAllStations() {
         StringBuilder sb = new StringBuilder();

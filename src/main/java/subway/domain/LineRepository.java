@@ -23,4 +23,15 @@ public class LineRepository {
     public static void deleteAll() {
         lines.clear();
     }
+
+    public static void printAllLinesAndStation() {
+        System.out.println("\n## 지하철 노선도");
+        for (Line line : lines) {
+            System.out.println(line);
+        }
+
+    }
+
+
+
 }
