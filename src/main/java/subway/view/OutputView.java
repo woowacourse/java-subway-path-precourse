@@ -24,6 +24,10 @@ public class OutputView {
         System.out.println();
     }
 
+    public static void printError(String message) {
+        System.out.println(message);
+    }
+
     public static void printResults(List<String> stations, double distance, double time) {
         System.out.println(ENTER + "## 조회 결과");
         printWeights(distance, time);

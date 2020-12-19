@@ -19,7 +19,7 @@ public class SubwayController {
                 }
                 SubwayRouteController.logic(scanner);
             } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+                OutputView.printError(e.getMessage());
             }
         }
     }

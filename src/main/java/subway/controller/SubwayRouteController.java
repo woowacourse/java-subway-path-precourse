@@ -87,7 +87,7 @@ public class SubwayRouteController {
             double time = summation(shortestPath, TIME);
             OutputView.printResults(shortestPath, distance, time);
         } catch (Exception e) {
-            System.out.println(ERROR + "출발역과 도착역이 연결되어 있지 않습니다.");
+            OutputView.printError(ERROR + "출발역과 도착역이 연결되어 있지 않습니다.");
         }
     }
 
@@ -99,7 +99,7 @@ public class SubwayRouteController {
             double time = dijkstraShortestPath.getPathWeight(arrival, departure);
             OutputView.printResults(shortestPath, distance, time);
         } catch (Exception e) {
-            System.out.println(ERROR + "출발역과 도착역이 연결되어 있지 않습니다.");
+            OutputView.printError(ERROR + "출발역과 도착역이 연결되어 있지 않습니다.");
         }
     }
 
