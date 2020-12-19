@@ -22,7 +22,8 @@ public class OutputView {
 
     public void printSharp(String text) {
         sb.append(Prefix.ENTER.getPrefix());
-        sb.append(text).append(Prefix.ENTER.getPrefix());
+        sb.append(Prefix.SHARP.getPrefix());
+        sb.append(text);
 
         System.out.println(sb.toString());
         clearSb();

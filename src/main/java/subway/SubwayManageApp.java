@@ -42,8 +42,9 @@ public class SubwayManageApp {
     }
 
     private void chooseSearchOption(SearchSelection searchSelection) {
+        SearchService searchService = new SearchService(inputView, new SearchView(outputView));
         if (searchSelection.isOptionOne()) {
-
+            searchService.findShortestDistance();
         }
         if (searchSelection.isOptionTwo()) {
 
