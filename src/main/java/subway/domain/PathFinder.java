@@ -36,7 +36,14 @@ public class PathFinder {
     }
 
     public static void findShortestTimePath(Scanner scanner) {
-        startAndEndStationInput(scanner);
+        try {
+            startAndEndStationInput(scanner);
+            int totalDist = DijkstraGraphRepository.getShortestTime(startStationName, endStationName);
+            List<String> path = DijkstraGraphRepository.getShortestTimePath(startStationName, endStationName);
+            OutputView.printResult(totalDist, path);
+        } catch (IllegalArgumentException e) {
+            System.out.println("\n[ERROR]" + e.getMessage());
+        }
     }
 
     public static String stationNameInput(Scanner scanner) throws IllegalArgumentException {
