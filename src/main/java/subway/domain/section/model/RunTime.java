@@ -1,4 +1,4 @@
-package subway.domain.section;
+package subway.domain.section.model;
 
 public class RunTime {
     private static final int STANDARD_NEGATIVE_NUMBER = 0;

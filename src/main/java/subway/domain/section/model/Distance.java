@@ -1,4 +1,4 @@
-package subway.domain.section;
+package subway.domain.section.model;
 
 public class Distance {
 

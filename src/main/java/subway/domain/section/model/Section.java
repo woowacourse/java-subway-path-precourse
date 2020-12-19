@@ -1,6 +1,6 @@
-package subway.domain.section;
+package subway.domain.section.model;
 
-import subway.domain.Station;
+import subway.station.model.Station;
 
 public class Section {
     private final Station startStation;
@@ -16,6 +16,6 @@ public class Section {
     }
 
     public Section(Station startStation, Station arrivalStation, int runTime, int distance) {
-        this(startStation,arrivalStation, new RunTime(runTime), new Distance(distance));
+        this(startStation, arrivalStation, new RunTime(runTime), new Distance(distance));
     }
 }

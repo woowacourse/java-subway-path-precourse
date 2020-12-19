@@ -1,9 +1,9 @@
-package subway.domain.section;
+package subway.domain.section.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import subway.domain.Station;
+import subway.station.model.Station;
 
 import java.util.List;
 
