@@ -6,24 +6,66 @@ import subway.domain.StationRepository;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.PriorityQueue;
 
 public class FindPath {
 
+    private static final int INIT_MIN_VALUE = 0;
+    private static final int MAX_VALUE = 99999999;
     private static ArrayList<ArrayList<Pair>> subwayList;
     private static int dist[];
+    private static boolean visited[];
     private static int stationSize;
+    private static PriorityQueue<Pair> q;
 
     public static void start(String select, String startStation, String arriveStation) {
-        setBeforeDijkstra(select);
+        setBeforeDijkstra(select, startStation);
+        int value = startDijkstra(startStation, arriveStation);
+        System.out.println(value);
+        if(value == MAX_VALUE){
+            throw new IllegalArgumentException("[ERROR] 연결되어 있지 않은 역입니다.");
+        }
+        System.out.println(value);
     }
 
-    private static void setBeforeDijkstra(String select) {
+    //depth 2이하로 고치기, 메소드 15줄 이하
+    private static int startDijkstra(String startStation, String arriveStation) {
+        int startNumber = findNumberByName(startStation);
+        int arriveNumber = findNumberByName(arriveStation);
+        dist[startNumber] = INIT_MIN_VALUE;
+        visited[startNumber] = true;
+
+        while(!q.isEmpty()){
+            Pair p = q.poll();
+
+            int start = p.start;
+
+            for(int i=0;i<subwayList.get(start).size();i++){
+                int end = subwayList.get(start).get(i).end;
+                int cost = subwayList.get(start).get(i).cost;
+                if(!visited[end]){
+                    if(dist[end] > dist[start] + cost){
+                        dist[end] = dist[start] + cost;
+                        q.add(new Pair(end, 0, dist[end]));
+                    }
+                }
+            }
+            visited[start] = true;
+        }
+
+        return dist[arriveNumber];
+    }
+
+    private static void setBeforeDijkstra(String select, String startStation) {
         subwayList = new ArrayList<ArrayList<Pair>>();
         stationSize = StationRepository.getSize();
         setSubwayList(select);
         dist = new int[stationSize];
+        visited = new boolean[stationSize];
+        Arrays.fill(dist, MAX_VALUE);
+        q = new PriorityQueue<>();
 
-        Arrays.fill(dist, Integer.MAX_VALUE);
+        q.add(new Pair(findNumberByName(startStation), 0, 0));
     }
 
     private static void setSubwayList(String select) {
@@ -46,6 +88,7 @@ public class FindPath {
 
     private static int findNumberByName(String name) {
         for (int i = 0; i < stationSize; i++) {
+
             if (StationRepository.stations().get(i).getName().equals(name)) {
                 return i;
             }
@@ -66,11 +109,11 @@ public class FindPath {
     }
 
     public static class Pair implements Comparable<Pair> {
-        int s, e, cost;
+        int start, end, cost;
 
-        Pair(int s, int e, int cost) {
-            this.s = s;
-            this.e = e;
+        Pair(int start, int end, int cost) {
+            this.start = start;
+            this.end = end;
             this.cost = cost;
         }
 
