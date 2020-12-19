@@ -7,9 +7,20 @@ public class Station {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
+    public boolean isName(String name) {
+        return this.name.equals(name);
     }
 
-    // 추가 기능 구현
+    @Override
+    public String toString() {
+        return this.name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Station) {
+            return ((Station) o).name.equals(this.name);
+        }
+        return false;
+    }
 }
