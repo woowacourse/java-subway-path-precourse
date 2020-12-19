@@ -17,6 +17,5 @@ public class MainValidator {
 
         throw new IllegalArgumentException(
             CommonMessage.ERROR_SELECT_FUNCTION.getMessage());
-
     }
 }

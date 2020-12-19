@@ -15,21 +15,20 @@ public class RouteController {
     }
 
     public static void run() {
-        while (true) {
-            UserView.displayScreen(ControlScreen.ROUTE_MANAGEMENT);
-            UserView.guideMessagePrint(CommonMessage.SELECT_FUNCTION);
-
-            try {
-                String menuNumber = RouteValidator.validRouteMenu(UserView.scanUserInput());
-                if (isBack(menuNumber)) {
-                    return;
-                }
-                MainFunction.runNext(menuNumber);
-            } catch (IllegalArgumentException error) {
-                UserView.errorDirectPrint(error);
+        UserView.displayScreen(ControlScreen.ROUTE_MANAGEMENT);
+        UserView.guideMessagePrint(CommonMessage.SELECT_FUNCTION);
+        try {
+            String menuNumber = RouteValidator.validRouteMenu(UserView.scanUserInput());
+            if (isBack(menuNumber)) {
+                return;
             }
+            RouteFunction.runNext(menuNumber);
+        } catch (IllegalArgumentException error) {
+            UserView.errorDirectPrint(error);
+            RouteController.run();
         }
     }
+
 
     public static void back() {
         // done
