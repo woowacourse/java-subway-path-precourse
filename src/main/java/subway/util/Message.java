@@ -33,4 +33,10 @@ public class Message {
 	
 	// etc
 	public static final String LINE_SEPARATOR = "---";
+	
+	/*
+	 * error
+	 */
+	public static final String WRONG_INPUT = "잘못된 입력입니다.";
+	public static final String SAME_STATION = "출발역과 도착역이 동일합니다.";
 }

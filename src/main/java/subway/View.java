@@ -31,7 +31,9 @@ public class View {
 			return;
 		} else if (selector.equals(QUITE)) {
 			Subway.exit();
+			return;
 		}
+		Output.error(Message.WRONG_INPUT);
 	}
 	
 	private void showPathView() {
@@ -49,6 +51,7 @@ public class View {
 			return;
 		} else if (selector.equals(BACK)) {
 			Subway.back();
+			return;
 		}
 	}
 		
