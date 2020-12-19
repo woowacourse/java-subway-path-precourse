@@ -12,6 +12,7 @@ public class Station {
     public static Station from(String name) {
         Station station = new Station(name);
         PathCalculator.addStation(station.getName());
+        StationRepository.addStation(station);
         return station;
     }
 

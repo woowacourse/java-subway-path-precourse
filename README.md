@@ -3,7 +3,7 @@
 - [ ] 앱이 시작되면서 초기 설정을 한다
   - [x] Station을 생성한다
     - [x] 생성된 역을 최단경로/최단시간 계산 클래스에 추가한다
-    - [ ] 생성된 역을 StationRepository에 추가한다
+    - [x] 생성된 역을 StationRepository에 추가한다
   - [ ] 노선을 생성한다
     - [ ] 생성된 노선을 LineRepository에 추가한다
   - [ ] 노선에 역을 등록한다
