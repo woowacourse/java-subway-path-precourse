@@ -3,7 +3,7 @@ package subway.utils;
 import subway.domain.station.StationRepository;
 import subway.view.message.ErrorMessage;
 
-public class PathControllerValidator {
+public class StationValidator {
 
     public static void validateStations(String startingStation, String finishingStation) {
         validateExisting(startingStation);

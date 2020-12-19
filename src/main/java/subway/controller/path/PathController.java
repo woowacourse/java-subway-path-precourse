@@ -1,7 +1,7 @@
 package subway.controller.path;
 
 import subway.controller.Controller;
-import subway.utils.PathControllerValidator;
+import subway.utils.StationValidator;
 import subway.view.InputView;
 import subway.view.OutputView;
 
@@ -18,7 +18,7 @@ public abstract class PathController implements Controller {
         try {
             String startingStationName = getStartingStationName();
             String finishingStationName = getFinishingStationName();
-            PathControllerValidator.validateStations(startingStationName, finishingStationName);
+            StationValidator.validateStations(startingStationName, finishingStationName);
 
             calculatePath(startingStationName, finishingStationName);
         } catch (IllegalArgumentException e) {
