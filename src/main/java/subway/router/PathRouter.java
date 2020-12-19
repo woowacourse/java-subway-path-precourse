@@ -8,6 +8,8 @@ import subway.view.OutputView;
 
 public class PathRouter {
 
+    private PathRouter() {}
+
     public static void run() {
         do {
             PathMenu.initMenuStatus();
