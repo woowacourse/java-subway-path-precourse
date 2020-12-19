@@ -49,14 +49,14 @@ public class SubwayController {
     private void printMainCategory() {
         OutputView.chooseCategory();
         try {
-            excuteMainCategory(inputView.inputValue());
+            executeMainCategory(inputView.inputValue());
         } catch (SubwayException exception) {
             OutputView.showErrorMessage(exception);
             printMainCategory();
         }
     }
 
-    public void excuteMainCategory(String inputCategory) {
+    public void executeMainCategory(String inputCategory) {
         String category = findMainCategory(inputCategory);
         if (category.equals(MainMenu.PATH.category)) {
             printPathCategory();
@@ -94,6 +94,8 @@ public class SubwayController {
         String category = findPathCategory(inputCategory);
         try{
             executePathCategoryImmediately(category);
+            MainMenu.startManage();
+            printMainCategory();
         } catch (SubwayException exception){
             OutputView.showErrorMessage(exception);
             printPathCategory();
@@ -107,10 +109,7 @@ public class SubwayController {
         }
         if (category.equals(PathMenu.TIME.category)) {
             findMinimumTime();
-            return;
         }
-        MainMenu.startManage();
-        printMainCategory();
     }
 
     private static String findPathCategory(String inputCategory) {
