@@ -20,4 +20,14 @@ public class InputView {
         
         return userCommand;
     }
+    
+    public static String askName(String message) {
+        String name;
+        
+        System.out.println(message);
+        name = scanner.nextLine().trim();
+        System.out.println(ViewConstants.EMPTY_LINE);
+        
+        return name;
+    }
 }

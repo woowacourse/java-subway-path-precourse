@@ -14,7 +14,7 @@ public class EdgeRepository {
 
     public static void addEdgeByNamesAndNumbers(String leftEndStationName, String rightEndStationName, int distance,
             int time) {
-        edges.add(new Edge(StationRepository.getStationByName(leftEndStationName),
+        addEdge(new Edge(StationRepository.getStationByName(leftEndStationName),
                 StationRepository.getStationByName(rightEndStationName), distance, time));
     }
 }
