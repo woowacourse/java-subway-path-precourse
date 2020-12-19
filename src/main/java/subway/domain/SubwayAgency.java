@@ -21,11 +21,21 @@ public class SubwayAgency {
                 = pathByDistance.getPath(stationBetween.getStart(), stationBetween.getEnd());
         List<Station> stationList = path.getVertexList();
         int distance = (int) path.getWeight();
-        int time = getTotalTime(stationList, Weight.TIME);
+        int time = getTotalWeight(stationList, Weight.TIME);
         return new GraphResult(stationList, distance, time);
     }
 
-    private int getTotalTime(List<Station> stationList, Weight weight) {
+    public GraphResult getResultByTime(StationBetween stationBetween) {
+        DijkstraShortestPath<Station, DefaultWeightedEdge> pathByTime
+                = subwayMap.getPathByTime();
+        GraphPath<Station, DefaultWeightedEdge> path = pathByTime.getPath(stationBetween.getStart(), stationBetween.getEnd());
+        List<Station> stationList = path.getVertexList();
+        int time = (int) path.getWeight();
+        int distance = getTotalWeight(stationList, Weight.DISTANCE);
+        return new GraphResult(stationList, distance, time);
+    }
+
+    private int getTotalWeight(List<Station> stationList, Weight weight) {
         int result = 0;
         for (int i = 1; i < stationList.size(); i++) {
             int before = i - 1;

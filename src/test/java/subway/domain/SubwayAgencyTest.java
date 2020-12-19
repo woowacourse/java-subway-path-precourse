@@ -18,11 +18,11 @@ class SubwayAgencyTest {
     public void testByDistance() throws Exception{
         //given
         int expectedDistance = 4;
-        int expectedTime = 6;
+        int expectedTime = 11;
         List<Line> lines = LineRepository.lines();
         SubwayAgency subwayAgency = new SubwayAgency(new SubwayMap(lines));
         //when
-        GraphResult resultByDistance = subwayAgency.getResultByDistance(new StationBetween("교대역", "역삼역"));
+        GraphResult resultByDistance = subwayAgency.getResultByDistance(new StationBetween("교대역", "양재역"));
         //then
         Assertions.assertEquals(expectedDistance, resultByDistance.getDistance());
         Assertions.assertEquals(expectedTime, resultByDistance.getTime());
@@ -31,9 +31,15 @@ class SubwayAgencyTest {
     @Test
     public void testByTime() throws Exception{
         //given
-
+        int expectedDistance = 9;
+        int expectedTime = 7;
+        List<Line> lines = LineRepository.lines();
+        SubwayAgency subwayAgency = new SubwayAgency(new SubwayMap(lines));
         //when
-
+        GraphResult resultByTime = subwayAgency.getResultByTime(new StationBetween("교대역", "양재역"));
         //then
+        Assertions.assertEquals(expectedDistance, resultByTime.getDistance());
+        Assertions.assertEquals(expectedTime, resultByTime.getTime());
     }
+
 }
