@@ -68,6 +68,7 @@ public class UserInterfaceView {
             routeSearch();
             return;
         }
+        // TODO - 역이 존재하지 않을때 처리, 역끼리 연결이 안되어있을때 처리
         if (STR_ONE.equals(userInput)) {
             findMinDistance(startStation, endStation);
         }
