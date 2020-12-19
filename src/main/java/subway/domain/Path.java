@@ -1,5 +1,7 @@
 package subway.domain;
 
+import java.util.Objects;
+
 public class Path {
 
     private Station srcStation;
@@ -12,6 +14,11 @@ public class Path {
         this.dstStation = dstStation;
         this.distance = distance;
         this.time = time;
+    }
+
+    public Path(Station srcStation, Station dstStation) {
+        this.srcStation = srcStation;
+        this.dstStation = dstStation;
     }
 
     public Station getSrcStation() {
@@ -28,5 +35,18 @@ public class Path {
 
     public double getTime() {
         return time;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Path)) return false;
+        Path path = (Path) o;
+        return Objects.equals(srcStation, path.srcStation) && Objects.equals(dstStation, path.dstStation);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(srcStation, dstStation);
     }
 }

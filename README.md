@@ -276,4 +276,5 @@ This project is [MIT](https://github.com/woowacourse/java-subway-path-precourse/
   - [x] 그래프를 초기화한다.
   - [x] jgrapht 라이브러리를 활용한 유틸을 활용하여 최소 경로를 검색한다.
   - [x] 올바른 경로 검색 결과를 출력한다.
+  - [x] edge에 없는 경로의 최소 거리와 소요시간을 계산한다.
   - [ ] 연결되어 있지 않은 경로일 시 에러메세지를 출력한다.

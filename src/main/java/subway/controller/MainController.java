@@ -3,6 +3,7 @@ package subway.controller;
 import subway.domain.FunctionChoice;
 import subway.exception.InvalidInputException;
 import subway.repository.LineRepository;
+import subway.repository.PathRepository;
 import subway.repository.StationRepository;
 import subway.service.MainService;
 import subway.view.InputView;
@@ -32,6 +33,7 @@ public class MainController extends SubwayController {
 
     private void initData() {
         StationRepository.initStations();
+        PathRepository.initPaths();
         LineRepository.initLines();
     }
 

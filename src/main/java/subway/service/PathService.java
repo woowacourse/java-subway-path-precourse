@@ -1,9 +1,8 @@
 package subway.service;
 
 import org.jgrapht.GraphPath;
-import subway.domain.Basis;
-import subway.domain.PathResult;
-import subway.domain.Station;
+import subway.domain.*;
+import subway.repository.PathRepository;
 import subway.util.PathCalculator;
 
 import java.util.List;
@@ -26,7 +25,26 @@ public class PathService {
     }
 
     private PathResult buildPathResult(GraphPath result) {
+        if (basis.getBasis().equals(BasisChoice.DISTANCE.getCode()))
+            return new PathResult(result.getWeight(), calcTotalTime(result), result.getVertexList());
+        if (basis.getBasis().equals(BasisChoice.TIME.getCode()))
+            return new PathResult(calcTotalDistance(result), result.getWeight(), result.getVertexList());
+        return null;    // TODO: 예외처리
+    }
+
+    private double calcTotalDistance(GraphPath result) {
         List<Station> stations = result.getVertexList();
-        return new PathResult(result.getWeight(), result.getWeight(), stations);
+        double totalDistance = 0;
+        for (int i = 0; i < stations.size() - 1; i++)
+            totalDistance += PathRepository.getDistance(new Path(stations.get(i), stations.get(i + 1)));
+        return totalDistance;
+    }
+
+    private double calcTotalTime(GraphPath result) {
+        List<Station> stations = result.getVertexList();
+        double totalTime = 0;
+        for (int i = 0; i < stations.size() - 1; i++)
+            totalTime += PathRepository.getTime(new Path(stations.get(i), stations.get(i + 1)));
+        return totalTime;
     }
 }
