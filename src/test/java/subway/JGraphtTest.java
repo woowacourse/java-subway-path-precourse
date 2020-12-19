@@ -1,10 +1,11 @@
-package subway;
+ package subway;
 
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -24,5 +25,16 @@ public class JGraphtTest {
         List<String> shortestPath = dijkstraShortestPath.getPath("v3", "v1").getVertexList();
 
         assertThat(shortestPath.size()).isEqualTo(3);
+        ArrayList<String> strings = new ArrayList<>(shortestPath);
+        strings.forEach(System.out::println);
+    }
+
+    @Test
+    public void DijkstraTest() throws Exception{
+        //given
+
+        //when
+
+        //then
     }
 }
