@@ -6,6 +6,8 @@ import subway.domain.exception.NonExistentMenuException;
 
 public abstract class Menus {
 
+    public static final Functions functions = new Functions();
+    public static final Criterions criterions = new Criterions();
     private static final List<String> signs = Arrays.asList(new String[]{});
 
     public boolean isValid(String sign) {

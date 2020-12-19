@@ -17,4 +17,11 @@ public class Functions extends Menus {
     public List<String> getSigns() {
         return signs;
     }
+
+    public boolean isQuit(String menu) {
+        if (menu.equals(quitSign)) {
+            return true;
+        }
+        return false;
+    }
 }
