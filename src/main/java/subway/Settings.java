@@ -14,6 +14,8 @@ public class Settings {
     public static void init() {
         initStations();
         initLines();
+        SubwayGraph.addVertices(StationRepository.stations());
+        SubwayGraph.setEdgeWeight(EdgeRepository.edges());
     }
 
     private static void initStations() {
