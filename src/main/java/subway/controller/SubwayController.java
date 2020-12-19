@@ -113,31 +113,49 @@ public class SubwayController {
         return userInput;
     }
 
-    private void searchByShortestPath() {
-        String departureStation = inputDepartureStation();
-        String arrivalStation = inputArrivalStation();
+    private void validatedDuplicateStationForShortestPath(String departureStation, String arrivalStation) {
         if (isDuplicateStation(departureStation, arrivalStation)) {
             subwayView.printMessage(SubwayMessage.ERROR_DUPLICATE_STATION);
             searchByShortestPath();
         }
-        List<String> shortestPath = SubwayMap.getShortestPath(departureStation, arrivalStation);
+    }
+
+    private void validatedDisconnectedPathForShortestPath(List<String> shortestPath) {
         if (isDisconnectedPath(shortestPath)) {
             subwayView.printMessage(SubwayMessage.ERROR_DISCONNECTED_PATH);
             searchByShortestPath();
         }
     }
 
-    private void searchByMinimumTime() {
-        String departureStation = inputDepartureStation();
-        String arrivalStation = inputArrivalStation();
+    private void validatedDuplicateStationForMinimumTime(String departureStation, String arrivalStation) {
         if (isDuplicateStation(departureStation, arrivalStation)) {
             subwayView.printMessage(SubwayMessage.ERROR_DUPLICATE_STATION);
             searchByMinimumTime();
         }
-        List<String> minimumTime = SubwayMap.getMinimumTime(departureStation, arrivalStation);
+    }
+
+    private void validatedDisconnectedPathForMinimumTime(List<String> minimumTime) {
         if (isDisconnectedPath(minimumTime)) {
             subwayView.printMessage(SubwayMessage.ERROR_DISCONNECTED_PATH);
             searchByMinimumTime();
         }
+    }
+
+    private void searchByShortestPath() {
+        String departureStation = inputDepartureStation();
+        String arrivalStation = inputArrivalStation();
+        validatedDuplicateStationForShortestPath(departureStation, arrivalStation);
+        List<String> shortestPath = SubwayMap.getShortestPath(departureStation, arrivalStation);
+        validatedDisconnectedPathForShortestPath(shortestPath);
+        subwayView.printResult(shortestPath);
+    }
+
+    private void searchByMinimumTime() {
+        String departureStation = inputDepartureStation();
+        String arrivalStation = inputArrivalStation();
+        validatedDuplicateStationForMinimumTime(departureStation, arrivalStation);
+        List<String> minimumTime = SubwayMap.getMinimumTime(departureStation, arrivalStation);
+        validatedDisconnectedPathForMinimumTime(minimumTime);
+        subwayView.printResult(minimumTime);
     }
 }

@@ -1,15 +1,17 @@
 package subway.domain;
 
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 
+import java.util.Collections;
 import java.util.List;
 
 public class SubwayMap {
     private String lineName;
     private List<SubwayPath> subwayPaths;
-    WeightedMultigraph<String, DefaultWeightedEdge> shortestPathGraph;
-    WeightedMultigraph<String, DefaultWeightedEdge> minimumTimeGraph;
+    private final static WeightedMultigraph<String, DefaultWeightedEdge> shortestPathGraph = new WeightedMultigraph(DefaultWeightedEdge.class);
+    private final static WeightedMultigraph<String, DefaultWeightedEdge> minimumTimeGraph = new WeightedMultigraph(DefaultWeightedEdge.class);
 
     public SubwayMap(String lineName, List<SubwayPath> subwayPaths) {
         this.lineName = lineName;
@@ -35,7 +37,6 @@ public class SubwayMap {
     }
 
     private void makeShortestPathGraph() {
-        shortestPathGraph = new WeightedMultigraph(DefaultWeightedEdge.class);
         for (SubwayPath subwayPath : subwayPaths) {
             String departureStation = subwayPath.getDepartureStation();
             String arrivalStation = subwayPath.getArrivalStation();
@@ -47,19 +48,35 @@ public class SubwayMap {
     }
 
     private void makeMinimumTimeGraph() {
-        minimumTimeGraph = new WeightedMultigraph(DefaultWeightedEdge.class);
         for (SubwayPath subwayPath : subwayPaths) {
             String departureStation = subwayPath.getDepartureStation();
             String arrivalStation = subwayPath.getArrivalStation();
             int time = subwayPath.getTime();
-            shortestPathGraph.addVertex(departureStation);
-            shortestPathGraph.addVertex(arrivalStation);
-            shortestPathGraph.setEdgeWeight(shortestPathGraph.addEdge(departureStation, arrivalStation), time);
+            minimumTimeGraph.addVertex(departureStation);
+            minimumTimeGraph.addVertex(arrivalStation);
+            minimumTimeGraph.setEdgeWeight(minimumTimeGraph.addEdge(departureStation, arrivalStation), time);
         }
     }
 
-//        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
-//        List<String> shortestPath = dijkstraShortestPath.getPath("v3", "v1").getVertexList();
+    public static List<String> getShortestPath(String departureStation, String arrivalStation) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(shortestPathGraph);
+        List<String> shortestPath;
+        try {
+            shortestPath = dijkstraShortestPath.getPath(departureStation, arrivalStation).getVertexList();
+        } catch (IllegalArgumentException illegalArgumentException) {
+            shortestPath = Collections.emptyList();
+        }
+        return shortestPath;
+    }
 
-
+    public static List<String> getMinimumTime(String departureStation, String arrivalStation) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(minimumTimeGraph);
+        List<String> minimumTime;
+        try {
+            minimumTime = dijkstraShortestPath.getPath(departureStation, arrivalStation).getVertexList();
+        } catch (IllegalArgumentException illegalArgumentException) {
+            minimumTime = Collections.emptyList();
+        }
+        return minimumTime;
+    }
 }
