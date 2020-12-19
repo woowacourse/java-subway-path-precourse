@@ -9,11 +9,12 @@ import java.util.List;
 최단 시간을 가중치로 둔 그래프
  */
 public class TimeGraph {
+    private String line;
     WeightedMultigraph<String, DefaultWeightedEdge> graph
             = new WeightedMultigraph(DefaultWeightedEdge.class);
-    private static String line;
 
     public TimeGraph(String line, List<String> stations) {
+        this.line = line;
         stations.forEach(station -> graph.addVertex(station));
     }
 
