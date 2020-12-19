@@ -3,8 +3,13 @@ package subway.domain;
 public class Line {
     private String name;
 
-    public Line(String name) {
+    private Line(String name) {
         this.name = name;
+    }
+
+    public static Line from(String name) {
+        Line line = new Line(name);
+        return line;
     }
 
     public String getName() {
