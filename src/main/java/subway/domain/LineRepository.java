@@ -23,4 +23,14 @@ public class LineRepository {
     public static void deleteAll() {
         lines.clear();
     }
+
+    public static Line getLine(String name){
+        Line selectedLine = null;
+        for(Line line : lines){
+            if(line.getName().equals(name)){
+                selectedLine=line;
+            }
+        }
+        return selectedLine;
+    }
 }
