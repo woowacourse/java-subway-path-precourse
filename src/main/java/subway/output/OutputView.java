@@ -36,12 +36,24 @@ public class OutputView {
         }
     }
 
+    public static void printMinimumTimeStations(List<String> minimumTimeStations) {
+        System.out.println(RESULT);
+        System.out.println(RESULT_EXPRESS);
+        System.out.println(INFO + TOTAL_DISTANCE);
+        System.out.println(INFO + TOTAL_TIME);
+        System.out.println(RESULT_EXPRESS);
+        for (String stationName : minimumTimeStations) {
+            System.out.println(INFO + stationName);
+        }
+    }
     //todo : 최소 시간, 최소 거리 구현
+
     private static String getTotalDistance(List<String> shortestDistanceStations) {
         return SectionRepository.findTotalDistance(shortestDistanceStations);
     }
 
     private static String getTotalTime(List<String> shortestDistanceStations) {
+
         return SectionRepository.findTotalDistance(shortestDistanceStations);
     }
 }
