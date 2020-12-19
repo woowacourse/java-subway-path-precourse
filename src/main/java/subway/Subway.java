@@ -67,4 +67,8 @@ public class Subway {
 		Output.print(Message.EXIT);
 		System.exit(0);
 	}
+	
+	public static void back() {
+		Output.print(Message.PRINT_BACK_TO_MAIN);
+	}
 }

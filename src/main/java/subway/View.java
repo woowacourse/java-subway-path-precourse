@@ -3,6 +3,7 @@ package subway;
 import java.util.Scanner;
 
 import subway.util.Input;
+import subway.util.Message;
 import subway.util.Output;
 
 public class View {
@@ -46,6 +47,8 @@ public class View {
 		} else if (selector.equals(SECOND)) {
 			ViewManager.showMinTime();
 			return;
+		} else if (selector.equals(BACK)) {
+			Subway.back();
 		}
 	}
 		
