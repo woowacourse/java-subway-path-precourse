@@ -49,7 +49,7 @@ public class Settings {
     }
 
     private static void initLine3 () {
-        Station s1 = StationRepository.getStation("교대역");
+        Station s1 = StationRepository.getStation("강남역");
         Station s2 = StationRepository.getStation("양재역");
         Station s3 = StationRepository.getStation("양재시민의숲역");
         Edge e1 = new Edge(s1,s2,2,8);
