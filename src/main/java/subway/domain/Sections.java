@@ -13,5 +13,4 @@ public class Sections {
     public static int size() {
         return sections.size();
     }
-
 }

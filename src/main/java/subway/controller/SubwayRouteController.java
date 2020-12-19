@@ -119,5 +119,4 @@ public class SubwayRouteController {
         }
         return totalValue;
     }
-
 }
