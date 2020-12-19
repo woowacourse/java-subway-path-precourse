@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class SubwayPathProgram {
     public static void start(Scanner scanner) {
-        printAndGetInput(scanner);
+        printAndGetUserSelectionInput(scanner);
     }
 
-    private static void printAndGetInput(Scanner scanner) {
+    private static void printAndGetUserSelectionInput(Scanner scanner) {
         MainScreenPrinter.printMainScreen();
         getUserSelectionInput(scanner);
     }
@@ -24,7 +24,7 @@ public class SubwayPathProgram {
             if (userSelectionInput.equals(MainSelection.QUIT.getStrValue())){
                 return;
             }
-            // resolveUserSelection(userSelectionInput);
+            PathCriteriaSelector.start(userSelectionInput, scanner);
         }
     }
 }
