@@ -7,7 +7,8 @@ import subway.domain.Line;
 import subway.domain.LineRepository;
 import subway.domain.Station;
 import subway.domain.StationRepository;
-import subway.exception.validation.MainInput;
+import subway.exception.constant.MainInputEnum;
+import subway.exception.validation.MainInputValidation;
 import subway.view.InputView;
 import subway.view.OutputView;
 
@@ -26,9 +27,15 @@ public class Subway {
     public void run() {
         init();
         InputView inputView = new InputView(this.scanner);
-        MainInput mainInput = new MainInput(inputView);
+        MainInputValidation mainInputValidation = new MainInputValidation(inputView);
         OutputView.printMainScreen();
-        System.out.println(mainInput.mainInput());
+        if (mainInputValidation.mainInput().equals(MainInputEnum.TRAVERSE_SUBWAY.getOption())) {
+            traverse();
+        }
+    }
+
+    private void traverse() {
+
     }
 
     private void init() {
