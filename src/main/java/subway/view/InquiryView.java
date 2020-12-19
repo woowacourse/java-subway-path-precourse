@@ -11,7 +11,6 @@ import subway.util.Constants;
 import subway.util.DialogUtils;
 import subway.util.MessageUtils;
 
-@SuppressWarnings("checkstyle:Indentation")
 public class InquiryView {
 
     private boolean isRunning = true;
