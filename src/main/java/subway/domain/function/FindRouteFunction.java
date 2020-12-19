@@ -2,6 +2,7 @@ package subway.domain.function;
 
 import java.util.Arrays;
 import java.util.Scanner;
+import subway.domain.line.LineRepository;
 import subway.domain.station.Station;
 import subway.domain.station.StationRepository;
 import subway.view.InputView;
@@ -12,6 +13,8 @@ public enum FindRouteFunction {
         public void operate(Scanner scanner) {
             Station startStation = getInputStartStation(scanner);
             Station endStation = getInputEndStation(scanner);
+            validateOverlappedStation(startStation, endStation);
+            validateIfStationsExistsInSameLine(startStation, endStation);
         }
     },
     FIND_MINIMUM_TIME_ROUTE("2") {
@@ -55,6 +58,21 @@ public enum FindRouteFunction {
     private static void validateIfStationExists(Station station) {
         if (!StationRepository.contains(station)) {
             throw new IllegalArgumentException("[ERROR] 존재하지 않는 역입니다.");
+        }
+    }
+
+    private static void validateOverlappedStation(Station startStation, Station endStation) {
+        if (startStation.equals(endStation)) {
+            throw new IllegalArgumentException("[ERROR] 출발역과 도착역이 같으면 안 됩니다.");
+        }
+    }
+
+    private static void validateIfStationsExistsInSameLine(
+        Station startStation,
+        Station endStation
+    ) {
+        if (!LineRepository.existsStationsInSameLine(startStation, endStation)) {
+            throw new IllegalArgumentException("[ERROR] 출발역과 도착역이 연걸되어 있지 않아서 경로 조회가 불가능합니다.");
         }
     }
 
