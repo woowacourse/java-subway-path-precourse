@@ -1,6 +1,10 @@
 package controller;
 
 import subway.domain.*;
+import view.InputView;
+import view.OutputView;
+
+import java.util.Scanner;
 
 public class SubwayPathChecker {
     private static final String LINE_NUMBER_TWO = "2호선";
@@ -14,7 +18,10 @@ public class SubwayPathChecker {
     private static final String YANGJAE_CITIZEN_FOREST_STATION = "양재시민의숲역";
     private static final String MAEBONG_STATION = "매봉역";
 
-    public SubwayPathChecker() {
+    private final Scanner scanner;
+
+    public SubwayPathChecker(Scanner scanner) {
+        this.scanner = scanner;
         registerLine();
         registerStation();
         insertStationToLine();
@@ -22,7 +29,23 @@ public class SubwayPathChecker {
     }
 
     public void run() {
+        MainMenuType mainMenuType;
 
+        do {
+            OutputView.printMainScreen();
+            mainMenuType = InputView.inputFunctionNumber(scanner);
+            executeFunction(mainMenuType);
+        } while (mainMenuType != MainMenuType.QUIT);
+    }
+
+    private void executeFunction(MainMenuType mainMenuType) {
+        if (mainMenuType == MainMenuType.PATH_CHECK) {
+            pathCheck();
+        }
+    }
+
+    private void pathCheck() {
+        OutputView.printPathStandardSelectionScreen();
     }
 
     private void registerLine() {
