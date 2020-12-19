@@ -57,8 +57,9 @@ public class SubMenu implements Menu {
     private void getMinimumDistance() {
         String depatureStation = inputStation();
         String arrivalStation = inputStation(depatureStation);
-        List<Integer> res = StationGraph.dijkstra(Init.findStationNumber(depatureStation), Init.findStationNumber(arrivalStation));
-        
+        List<Integer> res = StationGraph.dijkstra(Init.findStationNumber(depatureStation),
+                Init.findStationNumber(arrivalStation));
+
         if (res.get(0) == Integer.MAX_VALUE) {
             OutputView.printErrorMessage(new NotExistPathException());
             return;
@@ -69,7 +70,8 @@ public class SubMenu implements Menu {
     private void getMinimumTime() {
         String depatureStation = inputStation();
         String arrivalStation = inputStation(depatureStation);
-        List<Integer> res = StationGraph.dijkstraTime(Init.findStationNumber(depatureStation), Init.findStationNumber(arrivalStation));
+        List<Integer> res = StationGraph.dijkstraTime(Init.findStationNumber(depatureStation),
+                Init.findStationNumber(arrivalStation));
 
         if (res.get(1) == Integer.MAX_VALUE) {
             OutputView.printErrorMessage(new NotExistPathException());

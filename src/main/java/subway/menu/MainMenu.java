@@ -17,7 +17,7 @@ public class MainMenu implements Menu {
     @Override
     public void printMenu() {
         OutputView.printMainDisplay();
-    }   
+    }
 
     @Override
     public String inputMenu() {

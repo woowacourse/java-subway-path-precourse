@@ -35,7 +35,6 @@ public class OutputView {
         String total_time = String.format(TOTAL_TIME, time);
         System.out.printf(SUCCESS_MESSAGE_FORMAT, total_time);
         System.out.printf(SUCCESS_MESSAGE_FORMAT, CONTOUR);
-        // 경로
         StationGraph.getStationList().stream().forEach(item -> {
             System.out.printf(SUCCESS_MESSAGE_FORMAT, item.getName());
         });
