@@ -31,8 +31,7 @@ public class Application {
 		defaultLine(lineRepositiory);
 		//defaultSection(subwaySection);
 		
-		stationRepositiory.viewStations();
-		lineRepositiory.viewLineRepository();
+		MainManegement main = new MainManegement(scanner, stationRepositiory, lineRepositiory);
 		
 		//subwaySection.viewSection();
 	}
