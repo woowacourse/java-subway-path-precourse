@@ -264,6 +264,11 @@ public void getDijkstraShortestPath() {
   - line이름 중복 확인  `[ERROR] '%s'은 이미 존재합니다.` (o)
   - line + station + routeinfo(거리,시간) 저장 (station 저장 기능o)
 - **경로기준**
+  - 진행과정
+    - 출발역과 도착역을 입력받는다.
+    - 출발역과 도착역의 index를 잦는다.
+    - jgrapht 라이브러리를 활용해 최단거리를 조회한다. + 그에따른 시간도 저장한다.
+    - jgrapht 라이브러리를 활용해 최단시간을 조회한다. + 그에따른 거리도 저장한다.
   - 최단거리
     - 출발역, 도착역 입력
       - 출발역 = 도착역 `[ERROR] 출발역과 도착역이 동일합니다.`
