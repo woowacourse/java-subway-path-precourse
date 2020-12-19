@@ -1,6 +1,8 @@
 package subway.domain;
 
 import subway.domain.exception.NonExistentMenuException;
+import subway.domain.exception.NonExistentNameException;
+import subway.domain.exception.SamePointsException;
 import subway.view.InputView;
 
 import java.util.Arrays;
@@ -16,13 +18,45 @@ public abstract class Menus {
         if (isBack(selectedCriterions)) {
             return;
         }
-        String start = inputView.scanStartStation();
-        String end = inputView.scanEndStation();
-        search(start, end);
+        search(inputView, selectedCriterions);
     }
 
-    public static void search(String start, String end) {
+    public static void search(InputView inputView, String criterion) {
+        List<String> startStation, endStation = scanValidStations(inputView);
+    }
 
+    private static List<String> scanValidStations(InputView inputView) {
+        String start;
+        String end;
+        boolean validation = false;
+        do {
+            start = inputView.scanStartStation();
+            end = inputView.scanEndStation();
+            validation = isValidStations(start, end);
+        } while (!validation);
+        return Arrays.asList(start, end);
+    }
+
+    private static boolean isValidStations(String start, String end) {
+        try {
+            checkValidationOfStations(start, end);
+            return true;
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    private static void checkValidationOfStations(String start, String end) {
+        if (Station.isSameStation(start,end)) {
+            throw new SamePointsException();
+        }
+        if (!StationRepository.isExistStationName(start)) {
+            throw new NonExistentNameException();
+        }
+        if (!StationRepository.isExistStationName(end)) {
+            throw new NonExistentNameException();
+        }
     }
 
     public static boolean isQuit(String sign) {

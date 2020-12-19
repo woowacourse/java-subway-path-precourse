@@ -11,5 +11,10 @@ public class Station {
         return name;
     }
 
-    // 추가 기능 구현
+    public static boolean isSameStation(String start, String end) {
+        if (start.equals(end)) {
+            return true;
+        }
+        return false;
+    }
 }
