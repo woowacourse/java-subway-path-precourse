@@ -1,5 +1,7 @@
 package subway.util;
 
+import org.jgrapht.GraphPath;
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 import subway.domain.*;
@@ -10,7 +12,7 @@ import java.util.List;
 
 public class PathCalculator {
 
-    private WeightedMultigraph<Station, Integer> graph;
+    private WeightedMultigraph<Station, DefaultWeightedEdge> graph;
     private Basis basis;
 
     public void initGraph(Basis basis) {
@@ -39,13 +41,8 @@ public class PathCalculator {
 
     private void initEdge(Path path) {
         if (basis.getBasis().equals(BasisChoice.DISTANCE.getCode()))
-            graph.addEdge(path.getSrcStation(), path.getDstStation(), path.getDistance());
+            graph.setEdgeWeight(graph.addEdge(path.getSrcStation(), path.getDstStation()), path.getDistance());
         if (basis.getBasis().equals(BasisChoice.TIME.getCode()))
-            graph.addEdge(path.getSrcStation(), path.getDstStation(), path.getTime());
-    }
-
-
-    public String calculate() {
-        return null;
+            graph.setEdgeWeight(graph.addEdge(path.getSrcStation(), path.getDstStation()), path.getTime());
     }
 }
