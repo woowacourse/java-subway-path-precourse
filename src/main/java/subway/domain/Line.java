@@ -1,15 +1,32 @@
 package subway.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Line {
-    private String name;
+	private String name;
+	private int distance;
+	private int time;
+	private List<String> section = new ArrayList<String>();
 
-    public Line(String name) {
-        this.name = name;
-    }
+	public Line(String name) {
+		this.name = name;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    // 추가 기능 구현
+	public void addSection(String stationName) {
+		section.add(stationName);
+	}
+
+	public void addSection(int index, String stationName) {
+		section.add(index, stationName);
+	}
+
+	public List<String> getSection() {
+		return section;
+	}
+
 }
