@@ -2,6 +2,8 @@ package subway.domain;
 
 import subway.util.PathCalculator;
 
+import java.util.Objects;
+
 public class Station {
     private String name;
 
@@ -20,5 +22,21 @@ public class Station {
         return name;
     }
 
-    // 추가 기능 구현
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj instanceof Station) {
+            Station station = (Station) obj;
+            return station.getName().equals(name);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
 }
