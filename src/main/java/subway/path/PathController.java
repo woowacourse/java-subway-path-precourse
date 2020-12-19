@@ -40,13 +40,17 @@ public class PathController {
                     break;
                 }
 
-                Station startStation = getStartStation();
-                Station endStation = getEndStation(startStation);
-                running = searchPath(method, startStation, endStation);
+                running = searchPath(method);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
         }
+    }
+
+    private boolean searchPath(String method) {
+        Station startStation = getStartStation();
+        Station endStation = getEndStation(startStation);
+        return searchPath(method, startStation, endStation);
     }
 
     private Station getStartStation() {
