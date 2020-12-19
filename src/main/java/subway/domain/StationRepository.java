@@ -23,4 +23,12 @@ public class StationRepository {
     public static void deleteAll() {
         stations.clear();
     }
+
+    public static boolean contains(String name){
+        for(Station station: stations){
+            if(station.matchName(name))
+                return true;
+        }
+        return false;
+    }
 }
