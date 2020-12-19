@@ -246,6 +246,41 @@ public void getDijkstraShortestPath() {
   - [AngularJS Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 참고해 commit log를 남긴다.
 - [프리코스 과제 제출 문서](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 절차를 따라 미션을 제출한다.
   - [프리코스 과제 FAQ](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse/faq) 문서를 참고하여 진행할 수 있다.
+  
+<br>
+
+## 🚝 기능 구현 사항
+**1.입력 기능**
+- 메뉴를 입력받는다.
+    - [예외] 메뉴 이외의 값을 입력한 경우
+    - 메인 화면 메뉴: `1, Q`
+    - 경로 조회 화면 메뉴: `1, 2, B`
+- 출발역과 도착역을 입력받는다.
+    - [예외] `~~역`의 형식이 아닌 경우
+    - [예외] 한글 이외의 값을 입력한 경우
+    - [예외] 존재하지 않는 역을 입력한 경우
+    - [예외] 출발역과 도착역이 같은 경우
+    - [예외] 출발역과 도착역이 연결되어 있지 않은 경우
+
+**2.동작 기능**
+- 역, 노선, 구간 정보의 초기 값을 설정한다.
+- 각 메뉴에서 입력에 맞게 메뉴 화면을 이동한다.
+- 경로를 조회한다.
+    - 최단 거리를 기준으로 경로를 조회한다.
+    - 최소 시간을 기준으로 경로를 조회한다.
+    - jgrapht 라이브러리를 활용한다.
+
+**3.출력 기능**
+- 각 메뉴 화면을 출력한다.
+    - 메인 화면, 경로 조회 화면
+- 입력 시, 각 안내 문구를 출력한다.
+- 경로 조회 결과를 출력한다.
+    - 조회 결과는 `[INFO]`를 앞에 붙여서 출력
+    - 총 거리, 총 소요 시간, 경로 출력
+- 에러 발생 시, 에러 문구를 출력한다.
+    - 에러 문구는 `[ERROR]`를 앞에 붙여서 출력
+- 종료 시, 종료 문구를 출력한다.
+
 <br>
 
 ## 📝 License
