@@ -38,11 +38,6 @@ public class Station {
         return name;
     }
 
-    public List<NearbyStation> getNearbyStations() {
-        return Collections.unmodifiableList(nearbyStations);
-    }
-
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

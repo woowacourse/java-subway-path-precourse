@@ -4,7 +4,6 @@ import subway.service.dto.DistanceAndTimeDto;
 
 import java.util.List;
 
-import static subway.util.PathCalculator.calculateShortestDistancePath;
 import static subway.util.PathCalculator.calculateShortestTimePath;
 import static subway.view.InputView.inputEndStation;
 import static subway.view.InputView.inputStartStation;
