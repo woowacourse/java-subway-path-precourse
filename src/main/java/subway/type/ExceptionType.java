@@ -1,7 +1,7 @@
 package subway.type;
 
 public enum ExceptionType {
-    ERROR("\n[ERROR] "),
+    ERROR("[ERROR] "),
 
     INVALID_OPTION_CHOICE(ERROR.getException() + "화면에 나타난 기능만 선택 가능합니다.\n");
 

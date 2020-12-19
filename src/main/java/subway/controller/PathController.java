@@ -10,14 +10,23 @@ import java.util.Scanner;
 public class PathController {
     public static void startPath(Scanner scanner) {
         while (true) {
-            OutputView.printPathCriteriaScreen();
-            String pathInput = InputView.scanPathInput(scanner);
+            String pathInput = getPathInput(scanner);
+            System.out.println();
 
-            if (pathInput.equals(InputType.BACK.getInput())) {
+            if (isBack(pathInput)) {
                 return;
             }
             chooseOption(pathInput);
         }
+    }
+
+    public static String getPathInput(Scanner scanner) {
+        OutputView.printPathCriteriaScreen();
+        return InputView.scanPathInput(scanner);
+    }
+
+    public static boolean isBack(String pathInput) {
+        return pathInput.equals(InputType.BACK.getInput());
     }
 
     public static void chooseOption(String input) {

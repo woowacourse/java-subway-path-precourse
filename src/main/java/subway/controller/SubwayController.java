@@ -21,15 +21,23 @@ public class SubwayController {
 
     public static void startSubway(Scanner scanner) {
         while (true) {
-            OutputView.printMainScreen();
-            String mainInput = InputView.scanMainInput(scanner);
+            String mainInput = getMainInput(scanner);
+            System.out.println();
 
-            if (mainInput.equals(InputType.QUITTING.getInput())) {
+            if (isQuitting(mainInput)) {
                 break;
             }
-
             chooseOption(mainInput, scanner);
         }
+    }
+
+    public static String getMainInput(Scanner scanner) {
+        OutputView.printMainScreen();
+        return InputView.scanMainInput(scanner);
+    }
+
+    public static boolean isQuitting(String mainInput) {
+        return mainInput.equals(InputType.QUITTING.getInput());
     }
 
     public static void chooseOption(String input, Scanner scanner) {
