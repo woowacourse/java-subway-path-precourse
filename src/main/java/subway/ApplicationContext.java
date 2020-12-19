@@ -2,6 +2,7 @@ package subway;
 
 import subway.domain.Station;
 import subway.view.InputView;
+import subway.vo.ManagementType;
 
 import java.util.*;
 
@@ -63,7 +64,21 @@ public class ApplicationContext {
     }
 
     public void run() {
-        String state = inputView.inputMainMenu();
-
+        ManagementType managementType = ManagementType.STATION;
+        while (managementType.isRunning()) {
+            try {
+                String state = inputView.inputMainMenu();
+                managementType = ManagementType.findManagementNumber(state);
+                executeFunction(managementType);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+    
+    private void executeFunction(ManagementType managementType) {
+        if (managementType == ManagementType.QUIT) {
+            return;
+        }
     }
 }
