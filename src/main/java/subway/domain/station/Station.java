@@ -1,17 +1,34 @@
 package subway.domain.station;
 
 import java.util.Objects;
+import javax.naming.InvalidNameException;
+import subway.exception.InvalidStationNameException;
 
 public class Station {
 
+    private static final int NAME_MIN_LENGTH = 2;
+
     private String name;
 
-    public Station(String name) {
+    private Station(String name) {
         this.name = name;
     }
 
     public String getName() {
         return name;
+    }
+
+    public static Station of(String name) {
+
+        if (name == null || name.isEmpty()) {
+            throw new InvalidStationNameException();
+        }
+
+        if (name.length() < NAME_MIN_LENGTH) {
+            throw new InvalidStationNameException();
+        }
+
+        return new Station(name);
     }
 
     @Override
@@ -34,6 +51,10 @@ public class Station {
     @Override
     public String toString() {
         return name;
+    }
+
+    public boolean isMatchName(String name) {
+        return this.name.equals(name);
     }
 
     // 추가 기능 구현
