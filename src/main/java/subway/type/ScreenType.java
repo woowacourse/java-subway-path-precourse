@@ -8,7 +8,9 @@ public enum ScreenType {
     PATH_CRITERIA_SCREEN("## 경로 기준\n"),
     SHORTEST_DISTANCE("1. 최단 거리\n"),
     SHORTEST_TIME("2. 최단 시간\n"),
-    BACK("B. 돌아가기\n\n");
+    BACK("B. 돌아가기\n\n"),
+
+    OPTION_CHOICE("## 원하는 기능을 선택하세요.");
 
     private final String screen;
 
