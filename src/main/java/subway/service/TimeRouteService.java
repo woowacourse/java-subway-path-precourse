@@ -17,7 +17,6 @@ public class TimeRouteService implements RouteService {
         try {
             inputStations(scanner);
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
             goToMenu(e, scanner);
         }
     }
