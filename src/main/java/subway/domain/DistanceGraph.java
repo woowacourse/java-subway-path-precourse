@@ -50,6 +50,22 @@ public class DistanceGraph {
                 .collect(Collectors.toList());
         double distance = graphPath.getWeight();
 
-        return new PathDTO(stationsName, 0, distance);  //0은 개발용으로 넣은 것입니다. 추후 시간을 구해서 다시 넣습니다.
+        return new PathDTO(stationsName, getTime(stationsName), distance);  //0은 개발용으로 넣은 것입니다. 추후 시간을 구해서 다시 넣습니다.
+    }
+
+    public static int getTime(List<String> staionsNames) {
+        Iterator<String> iterator = staionsNames.iterator();
+        int total = 0;
+        String from = iterator.next();
+        String to = iterator.next();
+        try {
+            do {
+                total += SectionRepository.getTimeWeightByStationName(from, to);
+                from = to;
+                to = iterator.next();
+            } while (true);
+        } catch (Exception e) {
+        }
+        return total;
     }
 }

@@ -50,6 +50,22 @@ public class TimeGraph {
                 .collect(Collectors.toList());
         double time = graphPath.getWeight();
 
-        return new PathDTO(stationsName, time, 0);  //0는 개발 과정에서 시험용으로 넣은 것입니다. 이후 거리를 구해서 다시 넣습니다.
+        return new PathDTO(stationsName, time, getDistance(stationsName));  //0는 개발 과정에서 시험용으로 넣은 것입니다. 이후 거리를 구해서 다시 넣습니다.
+    }
+
+    public static int getDistance(List<String> staionsNames) {
+        Iterator<String> iterator = staionsNames.iterator();
+        int total = 0;
+        String from = iterator.next();
+        String to = iterator.next();
+        try {
+            do {
+                total += SectionRepository.getDistanceWeightByStationName(from, to);
+                from = to;
+                to = iterator.next();
+            } while (true);
+        } catch (Exception e) {
+        }
+        return total;
     }
 }

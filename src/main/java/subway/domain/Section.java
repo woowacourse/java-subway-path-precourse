@@ -28,6 +28,13 @@ public class Section {
         return stations;
     }
 
+    public boolean hasStationName(String from, String to) {
+        if (stations.contains(new Station(from)) && stations.contains(new Station(to))) {
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public int hashCode() {
         return this.stations.hashCode();
