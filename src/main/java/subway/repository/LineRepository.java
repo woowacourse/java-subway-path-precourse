@@ -28,7 +28,9 @@ public class LineRepository {
     }
 
     public static void initLines() {
-        for (Line newLine : InitialData.lines)
-            addLine(newLine);
+        for (int i = 0; i < InitialData.lines.size(); i++) {
+            addLine(InitialData.lines.get(i));
+            InitialData.lines.get(i).addPath(InitialData.linePaths.get(i));
+        }
     }
 }

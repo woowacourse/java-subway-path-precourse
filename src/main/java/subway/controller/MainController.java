@@ -20,7 +20,6 @@ public class MainController {
     private void initData() {
         StationRepository.initStations();
         LineRepository.initLines();
-
     }
 
     private void initViews(Scanner scanner) {

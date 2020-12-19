@@ -1,7 +1,14 @@
 package subway.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Line {
+
     private String name;
+    private Station upEnd;
+    private Station downEnd;
+    private List<Path> paths = new ArrayList<>();
 
     public Line(String name) {
         this.name = name;
@@ -11,5 +18,8 @@ public class Line {
         return name;
     }
 
-    // 추가 기능 구현
+
+    public void addPath(List<Path> paths) {
+        this.paths = paths;
+    }
 }
