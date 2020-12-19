@@ -1,6 +1,5 @@
 package subway.utils;
 
-import javax.xml.crypto.Data;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 import subway.domain.Line;
