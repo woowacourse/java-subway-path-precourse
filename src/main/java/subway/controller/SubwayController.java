@@ -147,18 +147,25 @@ public class SubwayController {
         String startStation = inputStartStation();
         String endStation = inputEndStation();
         ValidateUtils.isSame(startStation,endStation);
-        List<String> shortestPath = distanceGraphPath.getPath(startStation, endStation)
-            .getVertexList();
-        calculateRoutes(shortestPath);
-
+        try{
+            List<String> shortestPath = distanceGraphPath.getPath(startStation, endStation)
+                .getVertexList();
+            calculateRoutes(shortestPath);
+        } catch (NullPointerException exception){
+            throw new SubwayException("경로가 존재하지 않습니다.");
+        }
     }
 
     public void findMinimumTime() {
         String startStation = inputStartStation();
         String endStation = inputEndStation();
         ValidateUtils.isSame(startStation,endStation);
-        List<String> shortestPath = timeGraphPath.getPath(startStation, endStation).getVertexList();
-        calculateRoutes(shortestPath);
+        try{
+            List<String> shortestPath = timeGraphPath.getPath(startStation, endStation).getVertexList();
+            calculateRoutes(shortestPath);
+        } catch (NullPointerException exception){
+            throw new SubwayException("경로가 존재하지 않습니다.");
+        }
     }
 
     private void calculateRoutes(List<String> shortestPath) {

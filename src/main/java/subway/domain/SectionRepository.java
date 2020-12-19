@@ -45,11 +45,11 @@ public class SectionRepository {
         timeGraph.setEdgeWeight(timeGraph.addEdge("양재역", "양재시민의숲역"), 3);
     }
 
-    public WeightedMultigraph<String, DefaultWeightedEdge> getDistanceGraph(){
+    public WeightedMultigraph<String, DefaultWeightedEdge> getDistanceGraph() {
         return distanceGraph;
     }
 
-    public WeightedMultigraph<String, DefaultWeightedEdge> getTimeGraph(){
+    public WeightedMultigraph<String, DefaultWeightedEdge> getTimeGraph() {
         return timeGraph;
     }
 }
