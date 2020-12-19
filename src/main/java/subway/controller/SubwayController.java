@@ -17,7 +17,7 @@ public class SubwayController {
                 if (functionNumber.toUpperCase().equals(EXIT)) {
                     break;
                 }
-                SubwayRouteController.run();
+                SubwayRouteController.logic(scanner);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
