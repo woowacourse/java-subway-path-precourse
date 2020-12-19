@@ -10,7 +10,7 @@ public enum MainMenu {
         this.option = option;
         this.message = message;
     }
-    
+
     public String getOption() {
         return option;
     }
