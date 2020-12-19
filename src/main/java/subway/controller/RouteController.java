@@ -10,42 +10,46 @@ import subway.view.OutputView;
 
 import java.util.List;
 
-import static subway.domain.GraphByDistance.getShortestPathDistanceTime;
 
 public class RouteController {
+    private static final String DEPARTURE_STATION = "출발역";
+    private static final String ARRIVAL_STATION = "도착역";
+    private static final String SAME_STATION_ERROR_MESSAGE = "%s과 %s이 동일합니다.";
 
     public static void showRouteByDistance() {
-        OutputView.showPrompt("출발역");
+        OutputView.showPrompt(DEPARTURE_STATION);
         Station departStation = StationRepository.findStationByName(InputView.getInput());
-        OutputView.showPrompt("도착역");
+        OutputView.showPrompt(ARRIVAL_STATION);
         Station arrivalStation = StationRepository.findStationByName(InputView.getInput());
         if (departStation.equals(arrivalStation)) {
-            throw new TransitRouteException("출발역과 도착역이 동일합니다.");
+            throw new TransitRouteException(String.format(SAME_STATION_ERROR_MESSAGE, DEPARTURE_STATION,
+                    ARRIVAL_STATION));
         }
-        List<String> shortestPath = GraphByDistance.checkShortestPath(departStation.getName(),
+        List<String> shortestPath = GraphByDistance.getShortestPathByDistance(departStation.getName(),
                 arrivalStation.getName());
-        int shortestPathDistance = GraphByDistance.checkShortestPathDistance(departStation.getName(),
+        int shortestPathDistance = GraphByDistance.getDistanceOfShortestPathByDistance(departStation.getName(),
                 arrivalStation.getName());
-        ;
-        System.out.println(shortestPath);
-        System.out.println(shortestPathDistance);
-        System.out.println(getShortestPathDistanceTime(departStation.getName(), arrivalStation.getName()));
+        int timeOfShortestPathDistance = GraphByDistance.getTimeOfShortestPathByDistance(departStation.getName(),
+                arrivalStation.getName());
+        OutputView.lookUpResult(shortestPathDistance, timeOfShortestPathDistance, shortestPath);
     }
 
     public static void showRouteByTime() {
-        OutputView.showPrompt("출발역");
+        OutputView.showPrompt(DEPARTURE_STATION);
         Station departStation = StationRepository.findStationByName(InputView.getInput());
-        OutputView.showPrompt("도착역");
+        OutputView.showPrompt(ARRIVAL_STATION);
         Station arrivalStation = StationRepository.findStationByName(InputView.getInput());
         if (departStation.equals(arrivalStation)) {
-            throw new TransitRouteException("출발역과 도착역이 동일합니다.");
+            throw new TransitRouteException(String.format(SAME_STATION_ERROR_MESSAGE, DEPARTURE_STATION,
+                    ARRIVAL_STATION));
         }
-        List<String> shortestPath = GraphByTime.checkShortestPath(departStation.getName(),
+        List<String> shortestPath = GraphByTime.getShortestPathByTime(departStation.getName(),
                 arrivalStation.getName());
-        int shortestPathTime = GraphByTime.checkShortestPathTime(departStation.getName(),
+        int shortestPathTime = GraphByTime.getTimeOfShortestPathByTime(departStation.getName(),
                 arrivalStation.getName());
-        System.out.println(shortestPath);
-        System.out.println(shortestPathTime);
+        int distanceOfShortestPathTime = GraphByTime.getDistanceOfShortestPathByTime(departStation.getName(),
+                arrivalStation.getName());
+        OutputView.lookUpResult(distanceOfShortestPathTime, shortestPathTime, shortestPath);
     }
 
     /*

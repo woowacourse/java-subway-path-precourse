@@ -18,6 +18,8 @@ public enum MainMenu {
         this.action = action;
     }
 
+    private static final String ERROR_CATEGORY_SELECTION = "잘못 입력 하셨습니다";
+
     private final String title;
     private final String command;
     private final Runnable action;
@@ -27,7 +29,7 @@ public enum MainMenu {
                 .filter(mainMenu -> mainMenu.command.equalsIgnoreCase(command))
                 .findAny()
                 .orElseThrow(() -> {
-                    throw new TransitRouteException("메뉴 잘못 입력");
+                    throw new TransitRouteException(ERROR_CATEGORY_SELECTION);
                 });
     }
 

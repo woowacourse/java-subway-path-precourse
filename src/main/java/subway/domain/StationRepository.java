@@ -26,7 +26,7 @@ public class StationRepository {
         stations.clear();
     }
 
-    public static List<Station> getStations(){
+    public static List<Station> getStations() {
         return stations;
     }
 

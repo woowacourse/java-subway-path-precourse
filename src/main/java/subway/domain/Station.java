@@ -18,7 +18,7 @@ public class Station {
         if (o == this) {
             return true;
         }
-        if(o==null||getClass()!=o.getClass()){
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
         Station station = (Station) o;
@@ -26,7 +26,7 @@ public class Station {
     }
 
     @Override
-    public int hashCode(){
+    public int hashCode() {
         return Objects.hash(name);
     }
 }

@@ -22,22 +22,22 @@ public class GraphByDistance {
         graph.setEdgeWeight(graph.addEdge(from, to), distance);
     }
 
-    public static List<String> checkShortestPath(String from, String to) {
+    public static List<String> getShortestPathByDistance(String from, String to) {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
         List<String> shortestPath = dijkstraShortestPath.getPath(from, to).getVertexList();
         return shortestPath;
     }
 
-    public static int getShortestPathDistanceTime(String from, String to) {
+    public static int getTimeOfShortestPathByDistance(String from, String to) {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
-        int totalTime = 0;
-        for(Object edge: dijkstraShortestPath.getPath(from, to).getEdgeList()){
-            totalTime += GraphByTime.getGraph().getEdgeWeight(edge);
-        }
+        WeightedMultigraph<String, DefaultWeightedEdge> timeGraph = GraphByTime.getGraph();
+        int totalTime = dijkstraShortestPath.getPath(from, to).getEdgeList()
+                .stream()
+                .mapToInt(edge -> (int) timeGraph.getEdgeWeight((DefaultWeightedEdge) edge)).sum();
         return totalTime;
     }
 
-    public static int checkShortestPathDistance(String from, String to) {
+    public static int getDistanceOfShortestPathByDistance(String from, String to) {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
         return (int) dijkstraShortestPath.getPathWeight(from, to);
     }
