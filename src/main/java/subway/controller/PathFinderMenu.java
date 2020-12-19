@@ -19,6 +19,10 @@ public class PathFinderMenu {
         if (userInput.equals("1")) {
             ShortestPathFinder shortestPathFinder = new ShortestPathFinder(scanner);
             shortestPathFinder.run();
+        } else if (userInput.equals("2")) {
+            FastestPathFinder fastestPathFinder = new FastestPathFinder(scanner);
+            fastestPathFinder.run();
+
         }
     }
 

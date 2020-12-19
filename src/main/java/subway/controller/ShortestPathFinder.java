@@ -9,6 +9,8 @@ import java.util.Scanner;
 
 
 public class ShortestPathFinder {
+    public static final String PREFIX_START_STATION = "start";
+    public static final String PREFIX_END_STATION = "end";
     private final Scanner scanner;
 
     public ShortestPathFinder(Scanner scanner) {
@@ -16,8 +18,8 @@ public class ShortestPathFinder {
     }
 
     public void run() {
-        String startStation = askValidStation("start");
-        String endStation = askValidStation("end");
+        String startStation = askValidStation(PREFIX_START_STATION);
+        String endStation = askValidStation(PREFIX_END_STATION);
         try {
             Validate.notSameStation(startStation, endStation);
         } catch (CustomException exception) {
