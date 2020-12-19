@@ -3,6 +3,7 @@ package subway.menu;
 import java.util.List;
 
 import subway.controller.Init;
+import subway.domain.NotExistPathException;
 import subway.domain.StationGraph;
 import subway.view.InputView;
 import subway.view.OutputView;
@@ -57,6 +58,11 @@ public class SubMenu implements Menu {
         String depatureStation = inputStation();
         String arrivalStation = inputStation(depatureStation);
         List<Integer> res = StationGraph.dijkstra(Init.findStationNumber(depatureStation), Init.findStationNumber(arrivalStation));
+        
+        if (res.get(0) == Integer.MAX_VALUE) {
+            OutputView.printErrorMessage(new NotExistPathException());
+            return;
+        }
         OutputView.printSuccessDisplay(res.get(0), res.get(1));
     }
 
@@ -64,6 +70,11 @@ public class SubMenu implements Menu {
         String depatureStation = inputStation();
         String arrivalStation = inputStation(depatureStation);
         List<Integer> res = StationGraph.dijkstraTime(Init.findStationNumber(depatureStation), Init.findStationNumber(arrivalStation));
+
+        if (res.get(1) == Integer.MAX_VALUE) {
+            OutputView.printErrorMessage(new NotExistPathException());
+            return;
+        }
         OutputView.printSuccessDisplay(res.get(0), res.get(1));
     }
 }

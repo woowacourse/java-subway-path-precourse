@@ -2,6 +2,7 @@ package subway.view;
 
 import java.util.Scanner;
 
+import subway.domain.NotExistPathException;
 import subway.domain.NotExistStationException;
 import subway.domain.SameStationNameException;
 import subway.domain.StationRepository;
@@ -101,14 +102,14 @@ public class InputView {
 
     private String isAccptedDepartureInput(String name) {
         if (StationRepository.stations().stream().noneMatch(station -> station.getName().equals(name))) {
-            throw new NotAccptedMenuInputException();
+            throw new NotExistStationException();
         }
         return name;
     }
 
     private String isAccptedArrivalInput(String name, String departureStation) {
         if (StationRepository.stations().stream().noneMatch(station -> station.getName().equals(name))) {
-            throw new NotAccptedMenuInputException();
+            throw new NotExistStationException();
         }
 
         if (name.equals(departureStation)) {
