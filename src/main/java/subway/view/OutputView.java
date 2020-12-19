@@ -1,5 +1,7 @@
 package subway.view;
 
+import java.util.List;
+
 import subway.exception.SubwayCustomException;
 
 public class OutputView {
@@ -28,5 +30,13 @@ public class OutputView {
         System.out.println();
         System.out.println(e.getMessage());
         System.out.println();
+    }
+
+    public static void printResult(List<String> shortestPath) {
+        System.out.println();
+        System.out.println("## 조회 결과");
+        for (String path : shortestPath) {
+            System.out.println("[INFO] " + path);
+        }
     }
 }
