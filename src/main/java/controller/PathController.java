@@ -11,6 +11,9 @@ public class PathController {
     public void run() {
         showMenu();
         String input = InputView.inputWithHintMessage(SELECT_FUCTION);
+        if (input.equals(PathMenu.GO_BACK.getValue())) {
+            return;
+        }
         OutputView.printNewLine();
     }
 
@@ -19,6 +22,15 @@ public class PathController {
         Arrays.stream(PathMenu.values()).forEach(
                 pathMenu -> OutputView.print(pathMenu.getValue() + DOT + pathMenu.getAction()));
         OutputView.printNewLine();
+    }
+
+    private void processInput(String input) {
+        if (input.equals(PathMenu.PIVOT_SHORTEST_DISTANCE)) {
+
+        }
+        if (input.equals(PathMenu.PIVOT_SHORTEST_TIME)) {
+
+        }
     }
 
 }
