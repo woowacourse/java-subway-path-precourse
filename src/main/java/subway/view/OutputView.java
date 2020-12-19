@@ -1,7 +1,13 @@
 package subway.view;
 
+import subway.domain.Station;
+
+import java.util.List;
+
 public class OutputView {
     private static final String NEW_LINE = "\n";
+    private static final String INFO = "[INFO] ";
+    private static final String INFO_LINE = INFO + "---";
 
     public static void printMainScene() {
         System.out.println(NEW_LINE + "## 메인 화면");
@@ -14,5 +20,14 @@ public class OutputView {
         System.out.println("1. 최단 거리");
         System.out.println("2. 최소 시간");
         System.out.println("B. 돌아가기");
+    }
+
+    public static void printInquiryResult(List<Station> stations, int distance, int time) {
+        System.out.println(NEW_LINE + INFO_LINE);
+        System.out.println(INFO + "총 거리: " + distance);
+        System.out.println(INFO + "총 소요 시간: " + time);
+        System.out.println(INFO_LINE);
+
+        // printStations(stations);
     }
 }
