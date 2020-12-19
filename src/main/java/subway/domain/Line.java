@@ -11,5 +11,9 @@ public class Line {
         return name;
     }
 
+    public void addStationOnLine(Station station) {
+
+    }
+    
     // 추가 기능 구현
 }
