@@ -14,4 +14,9 @@ public class PathCalculator {
         distanceGraph.addVertex(name);
     }
 
+    public static void addWeightInfo(String startStation, String arrivedStation, int distance, int time) {
+        timeGraph.setEdgeWeight(timeGraph.addEdge(startStation, arrivedStation), time);
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(startStation, arrivedStation), distance);
+    }
+
 }
