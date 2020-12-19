@@ -2,6 +2,7 @@ package subway.controller;
 
 import subway.domain.Criterions;
 import subway.domain.Functions;
+import subway.domain.Menus;
 import subway.view.InputView;
 import subway.view.OutputView;
 
@@ -11,6 +12,16 @@ public class MenuScanner {
     private static final Criterions criterions = new Criterions();
 
     public MenuScanner() {
+    }
+
+    public String scanMenus(InputView inputView) {
+        String selectedFunction = scanFunctions(inputView);
+        boolean quit = Menus.isQuit(selectedFunction);
+        if (quit) {
+            return selectedFunction;
+        }
+        String selectedCriterion = scanCriterions(inputView);
+        return selectedCriterion;
     }
 
     public String scanFunctions(InputView inputView) {

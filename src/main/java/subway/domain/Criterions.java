@@ -18,4 +18,11 @@ public class Criterions extends Menus {
     public List<String> getSigns() {
         return signs;
     }
+
+    public static boolean isBack(String sign) {
+        if (sign.equals(backSign)) {
+            return true;
+        }
+        return false;
+    }
 }

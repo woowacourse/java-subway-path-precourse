@@ -18,7 +18,7 @@ public class Functions extends Menus {
         return signs;
     }
 
-    public boolean isQuit(String menu) {
+    public static boolean isQuit(String menu) {
         if (menu.equals(quitSign)) {
             return true;
         }

@@ -10,6 +10,21 @@ public abstract class Menus {
     public static final Criterions criterions = new Criterions();
     private static final List<String> signs = Arrays.asList(new String[]{});
 
+    public static void run(String selectedCriterions) {
+        if (isBack(selectedCriterions)) {
+            return;
+        }
+        System.out.println("run");
+    }
+
+    public static boolean isQuit(String sign) {
+        return functions.isQuit(sign);
+    }
+
+    public static boolean isBack(String sign) {
+        return criterions.isBack(sign);
+    }
+
     public boolean isValid(String sign) {
         try {
             checkValidationOf(sign);

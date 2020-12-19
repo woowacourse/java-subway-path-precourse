@@ -15,10 +15,12 @@ public class Application {
 
     private static void run(InputView inputView) {
         MenuScanner menuScanner = new MenuScanner();
-        boolean quit = false;
-        do {
-            String selectedMenu = menuScanner.scanFunctions(inputView);
-            quit = Menus.functions.isQuit(selectedMenu);
-        } while(!quit);
+        String selectedMenus = menuScanner.scanMenus(inputView);
+        boolean quit = Menus.isQuit(selectedMenus);
+        while (!quit) {
+            Menus.run(selectedMenus);
+            selectedMenus = menuScanner.scanMenus(inputView);
+            quit = Menus.isQuit(selectedMenus);
+        }
     }
 }
