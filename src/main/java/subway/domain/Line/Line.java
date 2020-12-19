@@ -1,6 +1,7 @@
-package subway.domain;
+package subway.domain.Line;
 
 public class Line {
+
     private String name;
 
     public Line(String name) {
@@ -11,5 +12,4 @@ public class Line {
         return name;
     }
 
-    // 추가 기능 구현
 }
