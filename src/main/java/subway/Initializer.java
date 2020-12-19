@@ -3,7 +3,10 @@ package subway;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map.Entry;
 
+import subway.domain.Line;
+import subway.domain.LineRepository;
 import subway.domain.Station;
 import subway.domain.StationRepository;
 
@@ -26,11 +29,18 @@ public class Initializer {
 	
 	public static void run() {
 		initStation();
+		initLine();
 	}
 	
 	private static void initStation() {
 		for (String name: INITIAL_STATIONS) {
 			StationRepository.addStation(new Station(name));
+		}
+	}
+	
+	private static void initLine() {
+		for (Entry<String, List<String>> line: INITIAL_LINES.entrySet()) {
+			LineRepository.addLine(new Line(line.getKey(), line.getValue()));
 		}
 	}
 }
