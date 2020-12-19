@@ -27,8 +27,12 @@ public class Interval {
         return dijkstraShortestPath.getPath(start, end).getVertexList();
     }
 
-    public static int getTotalDistance(Station start, Station end) {
-        List<Station> path = shortestDistancePath(start, end);
+    public static List<Station> shortestTimePath(Station start, Station end) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(timeInterval);
+        return dijkstraShortestPath.getPath(start, end).getVertexList();
+    }
+
+    public static int getTotalDistance(List<Station> path) {
         int total = 0;
         for (int i = 0; i < path.size() - 1; i++) {
             total += distanceInterval.getEdgeWeight(distanceInterval.getEdge(path.get(i), path.get(i + 1)));
@@ -36,8 +40,7 @@ public class Interval {
         return total;
     }
 
-    public static int getTotalTime(Station start, Station end) {
-        List<Station> path = shortestDistancePath(start, end);
+    public static int getTotalTime(List<Station> path) {
         int total = 0;
         for (int i = 0; i < path.size() - 1; i++) {
             total += timeInterval.getEdgeWeight(timeInterval.getEdge(path.get(i), path.get(i + 1)));
