@@ -43,12 +43,24 @@ public class PathRepository {
         GraphPath<String, String> path = dijkstraShortestDistance.getPath(source, sink);
         return path;
     }
-    public static List<String> getShortestPath(String source, String sink){
+
+    public static List<String> getShortestDistanceList(String source, String sink) {
         return dijkstraShortestDistance.getPath(source, sink).getVertexList();
     }
+
     public static int getShortestDistance(GraphPath<String, String> path) {
         double weight = path.getWeight();
-        return (int)weight;
+        return (int) weight;
+    }
+
+    public static int getTimeByShortestDistance(String source, String sink) {
+        List<String> path = getShortestDistanceList(source, sink);
+        double totalTime = 0 ;
+        for (int i = 0; i < path.size() - 1; i++) {
+            totalTime += graphByTime
+                .getEdgeWeight(graphByTime.getEdge(path.get(i), path.get(i + 1)));
+        }
+        return (int)totalTime;
     }
 
     public static GraphPath<String, String> getShortestTime(String source, String sink) {

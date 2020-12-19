@@ -13,6 +13,8 @@ public class PathOutputManager {
     private static final String TOTAL_DISTANCE = "총 거리 : ";
     private static final String KM = "km";
     private static final String RESULT = "조회 결과";
+    private static final String TOTAL_TIME = "총 소요 시간 : ";
+    private static final String MINUTE = "분";
 
 
     public static void printDepartureStationGuide() {
@@ -27,8 +29,9 @@ public class PathOutputManager {
         GuideMessage.print(RESULT);
         InfoMessage.print(DIVIDER);
         InfoMessage.print(TOTAL_DISTANCE + PathRepository.getShortestDistance(targetPath) + KM);
+        InfoMessage.print(TOTAL_TIME + PathRepository.getTimeByShortestDistance(stations[0], stations[1]) + MINUTE);
         InfoMessage.print(DIVIDER);
-        PathRepository.getShortestPath(stations[0], stations[1]).stream()
+        PathRepository.getShortestDistanceList(stations[0], stations[1]).stream()
             .forEach(station -> InfoMessage.print(station));
     }
 }
