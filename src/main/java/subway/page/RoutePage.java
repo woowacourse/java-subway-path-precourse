@@ -11,21 +11,24 @@ import subway.output.OutputView;
  */
 public class RoutePage {
     private static final List<String> routePageItem = Arrays
-            .asList("\n## 경로 기준", "1. 최단 거리", "2. 최소 시간");
+            .asList("\n## 경로 기준", "1. 최단 거리", "2. 최소 시간", "B. 돌아가기");
     private static final String SHORTEST_DISTANCE = "1";
     private static final String MINIMUM_TIME = "2";
+    private static final String BACK = "B";
 
     public void start() {
         OutputView.printPage(routePageItem);
         String button = InputView.inputFunctionButton();
 
-        while (true) {
+        while (!button.equals(BACK)) {
             if (button.equals(SHORTEST_DISTANCE)) {
                 //todo: 최단 거리
             }
             if (button.equals(MINIMUM_TIME)) {
                 //todo: 최소 시간
             }
+            OutputView.printPage(routePageItem);
+            button = InputView.inputFunctionButton();
         }
     }
 }
