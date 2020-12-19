@@ -21,7 +21,7 @@ public class PathRepository {
         }
     }
 
-    public Path getPath(String startStationName, String endStationName) {
+    public static Path getPath(String startStationName, String endStationName) {
         return pathMap.get(String.format("%s/%s", startStationName, endStationName));
     }
 }
