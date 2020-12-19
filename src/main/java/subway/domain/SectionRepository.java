@@ -1,7 +1,5 @@
 package subway.domain;
 
-import static subway.utils.GetPath.getDijkstraShortestPath;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -19,5 +17,22 @@ public class SectionRepository {
         sections.add(section);
     }
 
+    public static int getSectionValue(String startStationName,String endStationName) {
+        //구간의 시간 합을 구합니다.
+        return
+            SectionRepository
+            .sections()
+            .stream()
+            .filter(section -> section.getUpStation().equals(startStationName))
+            .filter(section -> section.getUpStation().equals(endStationName))
+            .collect(Collectors.toList())
+            .get(0)
+            .getTime();
+
+
+
+
+
+    }
 
 }

@@ -1,11 +1,14 @@
 package subway.view;
 
 
+import static subway.controller.RouteController.sumTime;
+
 import java.util.List;
 import java.util.Scanner;
 import subway.functionList.Function;
 import subway.message.Message;
 import subway.message.PrefixMessage;
+import subway.message.RouteMessage;
 import subway.screen.Screen;
 
 public class UserView {
@@ -57,11 +60,58 @@ public class UserView {
         return userInput;
     }
 
-
     public static void errorDirectPrint(IllegalArgumentException error) {
         String errorMessage = String
             .format(PrefixMessage.ERROR_FORMAT.getMessage(), error.getMessage());
         System.out.println(errorMessage);
         spaceLine();
+    }
+
+    public static void info(Message message) {
+        String assembledString = String
+            .format(PrefixMessage.INFO_FORMAT.getMessage(), message.getMessage());
+        System.out.println(assembledString);
+
+    }
+
+    public static void info(String message) {
+        String assembledString = String
+            .format(PrefixMessage.INFO_FORMAT.getMessage(), message);
+        System.out.println(assembledString);
+
+    }
+
+    public static void printDistanceResult(List<String> pathList, int weight) {
+        guideMessagePrint(RouteMessage.RESULT);
+        info(RouteMessage.LINE);
+
+        String distanceString = String.format(PrefixMessage.KILOMETER_FORMAT.getMessage(),weight);
+        info(distanceString);
+
+        //구현 실패
+        //String timeString = String.format(PrefixMessage.TIME_FORMAT.getMessage(),sumTime(pathList));
+        //info(timeString);
+
+        info(RouteMessage.LINE);
+        for(String path:pathList){
+            info(path);
+        }
+    }
+
+    public static void printTimeResult(List<String> pathList, int weight) {
+        guideMessagePrint(RouteMessage.RESULT);
+        info(RouteMessage.LINE);
+
+        String distanceString = String.format(PrefixMessage.TIME_FORMAT.getMessage(),weight);
+        info(distanceString);
+
+        //구현 실패
+        //String timeString = String.format(PrefixMessage.TIME_FORMAT.getMessage(),sumTime(pathList));
+        //info(timeString);
+
+        info(RouteMessage.LINE);
+        for(String path:pathList){
+            info(path);
+        }
     }
 }
