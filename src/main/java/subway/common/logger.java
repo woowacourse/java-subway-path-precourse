@@ -1,6 +1,6 @@
 package subway.common;
 
-public class logger {
+public class Logger {
 	public static final String LEVEL_GUIDE = "## ";
 	public static final String LEVEL_ERROR = "\n[ERROR] ";
 	public static final String LEVEL_INFO = "[INFO] ";
