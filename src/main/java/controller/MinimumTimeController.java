@@ -3,8 +3,6 @@ package controller;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
-import subway.domain.Line;
-import subway.domain.LineRepository;
 import subway.domain.Station;
 import subway.domain.StationRepository;
 
@@ -57,11 +55,9 @@ public class MinimumTimeController {
             return false;
         }
 
-        int totalDistance = -1;
         int minimumTime = (int) dijkstraShortestPath.getPathWeight(departureStation, arrivalStation);
         System.out.println("## 조회 결과\n" +
                 "[INFO] ---\n" +
-                "[INFO] 총 거리: " + totalDistance + "km\n" +
                 "[INFO] 총 소요 시간: " + minimumTime + "분\n" +
                 "[INFO] ---");
 

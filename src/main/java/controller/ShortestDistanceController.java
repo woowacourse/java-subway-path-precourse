@@ -3,18 +3,16 @@ package controller;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
-import subway.domain.Line;
-import subway.domain.LineRepository;
 import subway.domain.Station;
 import subway.domain.StationRepository;
-
 import java.util.List;
 import java.util.Scanner;
 
 public class ShortestDistanceController {
     private static WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
+    private static WeightedMultigraph<String, DefaultWeightedEdge> graph2 = new WeightedMultigraph(DefaultWeightedEdge.class);
     private static List<String> shortestPath;
-    private static DijkstraShortestPath dijkstraShortestPath;
+    private static DijkstraShortestPath dijkstraShortestPath, dijkstraTotalTimePath;
 
     public static void run(Scanner scanner) {
         System.out.println("## 출발역을 입력하세요.");
@@ -49,6 +47,7 @@ public class ShortestDistanceController {
 
         try {
             dijkstraShortestPath = new DijkstraShortestPath(graph);
+            dijkstraTotalTimePath = new DijkstraShortestPath(graph2);
             shortestPath = dijkstraShortestPath.getPath(departureStation, arrivalStation).getVertexList();
 
         } catch (Exception e) {
@@ -58,11 +57,9 @@ public class ShortestDistanceController {
         }
 
         int shortestDistance = (int) dijkstraShortestPath.getPathWeight(departureStation, arrivalStation);
-        int totalTime = -1;
         System.out.println("## 조회 결과\n" +
                 "[INFO] ---\n" +
                 "[INFO] 총 거리: " + shortestDistance + "km\n" +
-                "[INFO] 총 소요 시간: " + totalTime + "분\n" +
                 "[INFO] ---");
 
         for (int i = 0; i < shortestPath.size(); i++) {
@@ -75,6 +72,7 @@ public class ShortestDistanceController {
     public static void setVertex() {
         for (Station station : StationRepository.stations()) {
             graph.addVertex(station.getName());
+            graph2.addVertex(station.getName());
         }
     }
 
