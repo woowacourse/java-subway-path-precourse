@@ -1,8 +1,5 @@
 package subway.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Station {
     private String name;
 

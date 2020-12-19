@@ -1,7 +1,5 @@
 package subway.view;
 
-import subway.domain.Station;
-
 import java.util.List;
 
 public class OutputView {
@@ -25,24 +23,24 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printResults(List<String> stations, double distance, double time){
+    public static void printResults(List<String> stations, double distance, double time) {
         System.out.println("## 조회 결과");
         printWeights(distance, time);
         printResultsByStationList(stations);
         System.out.println();
     }
 
-    private static void printWeights(double distance, double time){
+    private static void printWeights(double distance, double time) {
         System.out.println(INFO_MARK + SEPARATER);
         System.out.printf(INFO_MARK + TOTAL_DISTANCE, distance);
         System.out.println();
-        System.out.printf(INFO_MARK + TOTAL_TIME , time);
+        System.out.printf(INFO_MARK + TOTAL_TIME, time);
         System.out.println();
         System.out.println(INFO_MARK + SEPARATER);
     }
 
-    private static void printResultsByStationList(List<String> stations){
-        for(String station: stations){
+    private static void printResultsByStationList(List<String> stations) {
+        for (String station : stations) {
             System.out.println(INFO_MARK + station);
         }
     }

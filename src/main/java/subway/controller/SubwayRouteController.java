@@ -68,14 +68,14 @@ public class SubwayRouteController {
 
     private static final void isValid(String arrival, String departure) {
         if (arrival.equals(departure)) {
-            throw new IllegalArgumentException("[ERROR] 출발역과 도착역이 같습니다.");
+            throw new IllegalArgumentException(ERROR + "출발역과 도착역이 같습니다.");
         }
     }
 
     private static final void isExist(String arrival, String departure) {
         if (!StationRepository.isExist(arrival) ||
                 !StationRepository.isExist(departure)) {
-            throw new IllegalArgumentException("[ERROR] 존재하지 않는 역이 포함되어 있습니다.");
+            throw new IllegalArgumentException(ERROR + "존재하지 않는 역이 포함되어 있습니다.");
         }
     }
 
