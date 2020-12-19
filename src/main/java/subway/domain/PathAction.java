@@ -9,9 +9,9 @@ public enum PathAction {
     SHORTEST_TIME("2", "최소 시간", SubwayController::makeShortestTime),
     BACK("B", "돌아가기", null);
 
-    private String actionNumber;
-    private String actionName;
-    private BiFunction<Station, Station, Boolean> action;
+    private final String actionNumber;
+    private final String actionName;
+    private final BiFunction<Station, Station, Boolean> action;
 
     PathAction(String actionNumber, String actionName, BiFunction<Station, Station, Boolean> action) {
         this.actionNumber = actionNumber;

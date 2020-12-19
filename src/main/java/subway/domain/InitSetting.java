@@ -51,7 +51,6 @@ public class InitSetting {
     }
 
     private static void addInitSecondLine(List<Station> stations) {
-
         SubwayLengthRepository.setPathWeightWithTwoStation(stations.get(0), stations.get(1), 2);
         SubwayLengthRepository.setPathWeightWithTwoStation(stations.get(1), stations.get(2), 2);
 
