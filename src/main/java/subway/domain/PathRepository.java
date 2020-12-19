@@ -63,5 +63,4 @@ public class PathRepository {
         return (int) totalTime;
     }
 
-
 }

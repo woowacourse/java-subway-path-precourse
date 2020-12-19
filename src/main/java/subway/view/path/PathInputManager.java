@@ -29,7 +29,6 @@ public class PathInputManager {
 
     private void checkListDepartureStation(String station) {
         checkEnrolledStation(station);
-
     }
 
     private void checkEnrolledStation(String station) {

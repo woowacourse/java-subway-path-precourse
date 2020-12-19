@@ -31,4 +31,5 @@ public class PathOutputManager {
         InfoMessage.print(DIVIDER);
         path.forEach(InfoMessage::print);
     }
+
 }

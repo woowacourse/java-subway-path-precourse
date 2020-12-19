@@ -24,5 +24,4 @@ public class LineRepository {
         lines.clear();
     }
 
-
 }

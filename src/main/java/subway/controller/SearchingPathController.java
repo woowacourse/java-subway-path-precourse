@@ -13,7 +13,6 @@ import subway.view.path.PathInputManager;
 import subway.view.path.PathOutputManager;
 
 public class SearchingPathController {
-
     private final MenuInputManager menuInputManager;
     private final PathInputManager pathInputManager;
 
@@ -61,4 +60,5 @@ public class SearchingPathController {
             ErrorMessage.print(errorCustomException);
         }
     }
+
 }
