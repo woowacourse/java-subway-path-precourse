@@ -28,6 +28,10 @@ public class TextResource {
     public static final String ERROR_PATH_SIZE_OVER = PREFIX_ERROR
             + "구간의 개수가 너무 많습니다.";
 
+    public static final String ERROR_START_END_STATION_SAME = PREFIX_ERROR
+            + "출발역과 도착역이 동일합니다.\n";
+
+
     public static String HEADER_MAIN_VIEW = "\n## 메인 화면";
     public static String HEADER_ROUTE_SHOWING = "\n## 경로 기준";
     public static String HEADER_ROUTE_RESULT = "\n## 조회결과";

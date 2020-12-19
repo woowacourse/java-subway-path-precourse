@@ -43,7 +43,11 @@ public class RouteShowView extends View{
             onBackListener.onBack();
             return;
         }
-        doSectionManageFunction(selection);
+        try {
+            doSectionManageFunction(selection);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private void doSectionManageFunction(String selection) {
@@ -65,33 +69,40 @@ public class RouteShowView extends View{
         String startStation = scanner.nextLine();
         System.out.println(ASK_END_STATION);
         String endStation = scanner.nextLine();
+        checkStartAndEndStationSame(startStation, endStation);
         System.out.println(PREFIX_INFO + " " + HEADER_ROUTE_RESULT);
         System.out.println(PREFIX_INFO + " " + DIVISION_LINE);
         int totalDistance = (int) RouteRepository.getTotalDistance(startStation, endStation);
         System.out.println(PREFIX_INFO + " " + TOTAL_DISTANCE + totalDistance + UNIT_KM);
         System.out.println(PREFIX_INFO + " " + DIVISION_LINE);
-        List<String> shortestPath = RouteRepository.getRouteMinDistance(startStation, endStation);
-        for (String station : shortestPath) {
-            System.out.println(PREFIX_INFO + " " + station);
-        }
-        System.out.println();
+        printRouteList(RouteRepository.getRouteMinDistance(startStation, endStation));
     }
 
     private void printRouteMinTime() {
         System.out.println(PREFIX_INFO + " " + DIVISION_LINE);
         System.out.println(ASK_START_STATION);
         String startStation = scanner.nextLine();
+        System.out.println(ASK_END_STATION);
         String endStation = scanner.nextLine();
+        checkStartAndEndStationSame(startStation, endStation);
         System.out.println(PREFIX_INFO + " " + HEADER_ROUTE_RESULT);
         System.out.println(PREFIX_INFO + " " + DIVISION_LINE);
         int totalTime = (int) RouteRepository.getTotalTime(startStation, endStation);
         System.out.println(PREFIX_INFO + " " + TOTAL_TIME + totalTime + UNIT_MIN);
         System.out.println(PREFIX_INFO + " " + DIVISION_LINE);
-        List<String> shortestPath = RouteRepository.getRouteMinTime(startStation, endStation);
+        printRouteList(RouteRepository.getRouteMinTime(startStation, endStation));
+    }
+
+    private void printRouteList( List<String> shortestPath) {
         for (String station : shortestPath) {
             System.out.println(PREFIX_INFO + " " + station);
         }
-        System.out.println();
+    }
+
+    private void checkStartAndEndStationSame(String startStation, String endStation) {
+        if (startStation.equals(endStation)) {
+            throw new IllegalArgumentException(ERROR_START_END_STATION_SAME);
+        }
     }
 
     private void initMenu() {
