@@ -1,5 +1,6 @@
 package subway;
 
+import org.jgrapht.graph.DefaultWeightedEdge;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -46,10 +47,16 @@ public class JGraphtTest {
 
         DijkstraPath dijkstraPath = new DijkstraPath(routeMap);
         List<Station> stations = dijkstraPath.getStationsPassing(s1, s2);
-        List<IntervalEdge> intervalEdges = dijkstraPath.getIntervalsPassing(s1, s2);
+        List<DefaultWeightedEdge> Edges = dijkstraPath.getIntervalsPassing(s1, s2);
         for(Station station: stations) {
             System.out.println(station.getName());
         }
+
+        for(DefaultWeightedEdge edge: Edges) {
+            System.out.println(routeMap.getEdgeSourceName(edge));
+
+        }
+
         System.out.println("dsdsdsdsdsd");
 
     }

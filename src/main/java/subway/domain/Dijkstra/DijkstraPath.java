@@ -4,6 +4,7 @@ package subway.domain.Dijkstra;
 import java.util.List;
 
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
+import org.jgrapht.graph.DefaultWeightedEdge;
 
 public class DijkstraPath {
     DijkstraShortestPath dijkstraShortestPath = null;
@@ -16,7 +17,7 @@ public class DijkstraPath {
         return dijkstraShortestPath.getPath(source, destination).getVertexList();
     }
 
-    public List<IntervalEdge> getIntervalsPassing(Station source, Station destination) {
+    public List<DefaultWeightedEdge> getIntervalsPassing(Station source, Station destination) {
         return dijkstraShortestPath.getPath(source, destination).getEdgeList();
     }
 

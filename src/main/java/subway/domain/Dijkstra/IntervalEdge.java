@@ -1,8 +1,8 @@
 package subway.domain.Dijkstra;
 
-import org.jgrapht.graph.DefaultEdge;
+import org.jgrapht.graph.DefaultWeightedEdge;
 
-public class IntervalEdge extends DefaultEdge {
+public class IntervalEdge extends DefaultWeightedEdge {
     private Station start;
     private Station end;
     private Cost cost;
@@ -21,4 +21,8 @@ public class IntervalEdge extends DefaultEdge {
         return end;
     }
 
+    @Override
+    public String toString() {
+        return start.getName() + "-" + end.getName();
+    }
 }
