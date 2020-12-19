@@ -6,14 +6,14 @@
 > 3차 미션까지 상태 데이터를 얻기 위해 데이터를 꺼내는 문제점을 고치지 못했습니다.
 이번 시험에서는 객체의 상태를 알기 위해서는 객체에게 메시지를 보내는 형식으로 꼭 구현해보겠습니다.
 
-- [x]  제일 먼저 미션의 요구사항 대로 기능 목록 대략적 작성하여 필요한 기능 파악
-- [ ]  커밋 시, [블로그에 정리한 커밋 컨벤션](https://velog.io/@new_wisdom/Clean-Coding-Commit-Message-Conventions) 지키기
-- [ ]  [블로그에 정리한 자바 코딩 컨벤션](https://velog.io/@new_wisdom/JAVA-Google-Java-Style-Guide-%EB%B2%88%EC%97%AD) 지키기
-- [ ]  MVC 패턴으로 UI 로직과 비즈니스 로직 분리하기
-- [ ]  하드코딩 된 값이 없는지 확인하기
-- [ ]  변수명이나 메소드 명은 축약하지 않기, 클래스명은 명사로, 메소드는 동사로 이름 짓기
-- [ ]  java api 사용하기
-- [ ]  배열이 아닌 collection 프레임 워크 사용하기
+- 제일 먼저 미션의 요구사항 대로 기능 목록 대략적 작성하여 필요한 기능 파악
+- 커밋 시, [블로그에 정리한 커밋 컨벤션](https://velog.io/@new_wisdom/Clean-Coding-Commit-Message-Conventions) 지키기
+- [블로그에 정리한 자바 코딩 컨벤션](https://velog.io/@new_wisdom/JAVA-Google-Java-Style-Guide-%EB%B2%88%EC%97%AD) 지키기
+- MVC 패턴으로 UI 로직과 비즈니스 로직 분리하기
+- 하드코딩 된 값이 없는지 확인하기
+- 변수명이나 메소드 명은 축약하지 않기, 클래스명은 명사로, 메소드는 동사로 이름 짓기
+- java api 사용하기
+- 배열이 아닌 collection 프레임 워크 사용하기
 
 ## 📃 구현할 기능 목록
 ### 초기 설정
