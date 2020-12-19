@@ -2,11 +2,9 @@ package subway;
 
 import static subway.domain.LineRepository.addLine;
 import static subway.domain.StationRepository.addStation;
-import static subway.domain.StationRepository.getStationByName;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import subway.domain.Line;
 import subway.domain.Station;
@@ -18,8 +16,8 @@ public class Setting {
 	public static void initSetting() {
 		setInitStations();
 		setInit2ndLine();
-		/*setInit3rdLine();
-		setInitSinbundangLine();*/
+		setInit3rdLine();
+		setInitSinbundangLine();
 	}
 
 	private static void setInitStations() {
