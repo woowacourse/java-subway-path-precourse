@@ -1,6 +1,5 @@
 package subway;
 
-import subway.controller.MainButton;
 import subway.controller.MainController;
 import subway.util.Initialization;
 import subway.view.InputView;
