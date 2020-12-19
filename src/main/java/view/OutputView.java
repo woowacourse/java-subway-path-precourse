@@ -15,6 +15,9 @@ public class OutputView {
     private static final String KILOMETER = "km";
     private static final String INFO = "[INFO] ";
     private static final String INFO_BORDER_LINE = "[INFO] ---";
+    private static final String TIME = "[INFO] 총 소요 시간: ";
+    private static final String MINUTE = "분";
+
 
     private OutputView() {
     }
@@ -35,13 +38,25 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printShortestPathResult(double shortestDistance, List shortestPath) {
+    public static void printShortestDistancePathResult(double shortestDistance, List shortestDistancePath) {
         System.out.println(SHORTEST_PATH_RESULT);
         System.out.println(INFO_BORDER_LINE);
         System.out.println(DISTANCE + (int) shortestDistance + KILOMETER);
         System.out.println(INFO_BORDER_LINE);
 
-        for (Object path : shortestPath) {
+        for (Object path : shortestDistancePath) {
+            System.out.println(INFO + path.toString());
+        }
+        System.out.println();
+    }
+
+    public static void printShortestTimePathResult(double shortestTime, List shortestTimePath) {
+        System.out.println(SHORTEST_PATH_RESULT);
+        System.out.println(INFO_BORDER_LINE);
+        System.out.println(TIME + (int) shortestTime + MINUTE);
+        System.out.println(INFO_BORDER_LINE);
+
+        for (Object path : shortestTimePath) {
             System.out.println(INFO + path.toString());
         }
         System.out.println();

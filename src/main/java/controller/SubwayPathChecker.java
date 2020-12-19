@@ -55,6 +55,10 @@ public class SubwayPathChecker {
         if (pathStandardType == PathStandardType.SHORTEST_DISTANCE) {
             searchShortestDistancePath();
         }
+
+        if (pathStandardType == PathStandardType.SHORTEST_TIME) {
+            searchShortestTimePath();
+        }
     }
 
     private void searchShortestDistancePath() {
@@ -75,8 +79,30 @@ public class SubwayPathChecker {
     private void getDijkstraShortestDistancePath(String departureStationName, String arrivalStationName) {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(SectionRepository.distanceWeightedGraph());
         double shortestDistance = dijkstraShortestPath.getPath(departureStationName, arrivalStationName).getWeight();
-        List shortestPath = dijkstraShortestPath.getPath(departureStationName, arrivalStationName).getVertexList();
-        OutputView.printShortestPathResult(shortestDistance, shortestPath);
+        List shortestDistancePath = dijkstraShortestPath.getPath(departureStationName, arrivalStationName).getVertexList();
+        OutputView.printShortestDistancePathResult(shortestDistance, shortestDistancePath);
+    }
+
+    private void searchShortestTimePath() {
+        Station departureStation = null;
+        Station arrivalStation = null;
+
+        try {
+            departureStation = InputView.inputDepartureStation(scanner);
+            arrivalStation = InputView.inputArrivalStation(scanner);
+            hasStationNameDuplication(departureStation, arrivalStation);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            pathCheck();
+        }
+        getDijkstraShortestTimePath(departureStation.getName(), arrivalStation.getName());
+    }
+
+    private void getDijkstraShortestTimePath(String departureStationName, String arrivalStationName) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(SectionRepository.distanceWeightedGraph());
+        double shortestTime = dijkstraShortestPath.getPath(departureStationName, arrivalStationName).getWeight();
+        List shortestTimePath = dijkstraShortestPath.getPath(departureStationName, arrivalStationName).getVertexList();
+        OutputView.printShortestTimePathResult(shortestTime, shortestTimePath);
     }
 
     private void hasStationNameDuplication(Station departureStation, Station arrivalStation) {
