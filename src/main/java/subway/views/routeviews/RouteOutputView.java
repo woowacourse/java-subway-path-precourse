@@ -1,7 +1,6 @@
 package subway.views.routeviews;
 
-import subway.domain.MainMenu;
-import subway.domain.RouteMenu;
+import subway.menus.RouteMenu;
 import subway.views.OutputView;
 
 import java.util.Arrays;
