@@ -15,4 +15,14 @@ public class StationService {
         Station connectStation = StationRepository.getStation(connectStationName);
         station.addConnectData(connectStation, distance, time);
     }
+
+    public static int getDistance(String sourceStationName, String TargetStationName) {
+        Station sourceStation = StationRepository.getStation(sourceStationName);
+        Station targetStation = StationRepository.getStation(TargetStationName);
+        int distance = sourceStation.getDistance(targetStation);
+        if (distance == Station.ERROR_NUMBER) {
+            distance = targetStation.getDistance(sourceStation);
+        }
+        return distance;
+    }
 }
