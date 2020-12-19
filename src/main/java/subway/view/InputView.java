@@ -29,8 +29,12 @@ public class InputView {
     }
 
     private String ask(String message) {
-        System.out.printf("## %s\n\n", message);
+        System.out.printf("## %s\n", message);
 
-        return scanner.nextLine();
+        String input = scanner.nextLine();
+
+        System.out.println();
+
+        return input;
     }
 }
