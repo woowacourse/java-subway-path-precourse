@@ -1,32 +1,26 @@
-package subway.view.mainview;
+package subway.view.pathview;
 
 import java.util.Arrays;
-import subway.view.View;
-import subway.view.pathview.PathMenuView;
+import subway.view.mainview.MainChoice;
 
-public enum MainChoice {
-    PATHSERACH("1", "경로 조회", new PathMenuView()),
-    EXIT("Q", "종료", null);
+public enum PathChoice {
+    SHORTEST_DISTANCE("1", "최단 거리"),
+    MINIMUN_TIME("2", "최소 시간"),
+    BACK("B", "돌아가기");
 
     private final String select;
     private final String name;
-    private final View view;
 
-    MainChoice(String select, String name, View view) {
+    PathChoice(String select, String name) {
         this.select = select;
         this.name = name;
-        this.view = view;
     }
 
-    public static MainChoice of(String input) {
-        return Arrays.stream(MainChoice.values())
+    public static PathChoice of(String input) {
+        return Arrays.stream(PathChoice.values())
             .filter(choice -> choice.getSelect().equals(input))
             .findAny()
             .orElseThrow(() -> {throw new IllegalArgumentException("[ERROR] 선택할 수 없는 기능입니다. ");});
-    }
-
-    public void visitView() {
-        this.view.setVisible();
     }
 
     public String getSelect() {
