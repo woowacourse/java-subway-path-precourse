@@ -1,15 +1,15 @@
-package subway.controller;
+package subway;
 
 import subway.view.InputView;
 import subway.view.OutputView;
 
 import java.util.Scanner;
 
-public class SubwayMapManager {
+public class SubwayController {
     InputView inputView;
     OutputView outputView;
 
-    public SubwayMapManager(Scanner scanner) {
+    public SubwayController(Scanner scanner) {
         this.inputView = new InputView(scanner);
         this.outputView = new OutputView();
     }
