@@ -14,6 +14,7 @@ public class ShortestDistancePathFinder extends ShortestPathFinder {
 
     @Override
     public void showPath(String departure, String terminal) {
+        System.out.println("1");
         int shortestDistance = StationDistanceRespository.getShortestDistance(departure, terminal);
         List<String> shortestDistancePath =
                 StationDistanceRespository.getShortestPath(departure, terminal);

@@ -93,19 +93,19 @@ public class Initiator {
 
     private static void initiateSecondLineDistancePath() {
         for (InitialSecondLineDistance eachPath : InitialSecondLineDistance.values()) {
-            String depature = eachPath.getDepartureName();
+            String departure = eachPath.getDepartureName();
             String terminal = eachPath.getTerminalName();
             int distance = eachPath.getDistance();
-            StationDistanceRespository.addStationIntervalDistance(depature, terminal, distance);
+            StationDistanceRespository.addStationIntervalDistance(departure, terminal, distance);
         }
     }
 
     private static void initiateSecondLineTimePath() {
         for (InitialSecondLineTime eachPath : InitialSecondLineTime.values()) {
-            String depature = eachPath.getDepartureName();
+            String departure = eachPath.getDepartureName();
             String terminal = eachPath.getTerminalName();
             int time = eachPath.getTime();
-            StationDistanceRespository.addStationIntervalDistance(depature, terminal, time);
+            StationTimeRepository.addStationIntervalTime(departure, terminal, time);
         }
     }
 
@@ -116,20 +116,20 @@ public class Initiator {
 
     private static void initiateThirdLineDistancePath() {
         for (InitialThirdLineDistance eachPath : InitialThirdLineDistance.values()) {
-            String depature = eachPath.getDepartureName();
+            String departure = eachPath.getDepartureName();
             String terminal = eachPath.getTerminalName();
             int distance = eachPath.getDistance();
-            StationDistanceRespository.addStationIntervalDistance(depature, terminal, distance);
+            StationDistanceRespository.addStationIntervalDistance(departure, terminal, distance);
         }
     }
 
 
     private static void initiateThirdLineTimePath() {
         for (InitialThirdLineTime eachPath : InitialThirdLineTime.values()) {
-            String depature = eachPath.getDepartureName();
+            String departure = eachPath.getDepartureName();
             String terminal = eachPath.getTerminalName();
             int time = eachPath.getTime();
-            StationDistanceRespository.addStationIntervalDistance(depature, terminal, time);
+            StationTimeRepository.addStationIntervalTime(departure, terminal, time);
         }
     }
 
@@ -140,19 +140,19 @@ public class Initiator {
 
     private static void initiateNewBoonDangLineDistancePath() {
         for (InitialNewBoonDangLineDistance eachPath : InitialNewBoonDangLineDistance.values()) {
-            String depature = eachPath.getDepartureName();
+            String departure = eachPath.getDepartureName();
             String terminal = eachPath.getTerminalName();
             int distance = eachPath.getDistance();
-            StationDistanceRespository.addStationIntervalDistance(depature, terminal, distance);
+            StationDistanceRespository.addStationIntervalDistance(departure, terminal, distance);
         }
     }
 
     private static void initiateNewBoonDangLineTimePath() {
         for (InitialNewBoonDangLineTime eachPath : InitialNewBoonDangLineTime.values()) {
-            String depature = eachPath.getDepartureName();
+            String departure = eachPath.getDepartureName();
             String terminal = eachPath.getTerminalName();
             int time = eachPath.getTime();
-            StationDistanceRespository.addStationIntervalDistance(depature, terminal, time);
+            StationTimeRepository.addStationIntervalTime(departure, terminal, time);
         }
     }
 }

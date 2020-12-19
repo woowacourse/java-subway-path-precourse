@@ -1,8 +1,8 @@
 package subway.controller.constants;
 
 public enum InitialThirdLineTime {
-    ONE("교대역", "남부터미널",2),
-    TWO("남부터미널", "양재역",5),
+    ONE("교대역", "남부터미널역",2),
+    TWO("남부터미널역", "양재역",5),
     THREE("양재역", "매봉역", 1);
 
     private final String departureName;

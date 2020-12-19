@@ -28,7 +28,8 @@ public class ShortestTimePathFinder extends ShortestPathFinder {
                 i < shortestTimePath.size() - ControllerConstant.ONE_NUMBER; i++) {
             String departure = shortestTimePath.get(i);
             String terminal = shortestTimePath.get(i + ControllerConstant.ONE_NUMBER);
-            distance = distance + StationTimeRepository.getShortestTime(departure, terminal);
+            distance = distance + StationDistanceRespository
+                    .getShortestDistance(departure, terminal);
         }
 
         return distance;
