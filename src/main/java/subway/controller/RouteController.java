@@ -19,8 +19,6 @@ public class RouteController {
         Station departStation = StationRepository.findStationByName(InputView.getInput());
         OutputView.showPrompt("도착역");
         Station arrivalStation = StationRepository.findStationByName(InputView.getInput());
-        System.out.println(departStation.getName());
-        System.out.println(arrivalStation.getName());
         if (departStation.equals(arrivalStation)) {
             throw new TransitRouteException("출발역과 도착역이 동일합니다.");
         }
@@ -48,10 +46,6 @@ public class RouteController {
                 arrivalStation.getName());
         System.out.println(shortestPath);
         System.out.println(shortestPathTime);
-    }
-
-    public static void showRoute(){
-
     }
 
     /*
