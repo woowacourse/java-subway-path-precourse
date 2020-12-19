@@ -1,5 +1,6 @@
 package subway;
 
+import subway.domain.LineRepository;
 import subway.domain.StationRepository;
 
 public class DataInitService {
@@ -25,6 +26,13 @@ public class DataInitService {
             MAEBONG_STATION};
         for (String stationName : StationNames) {
             StationService.addStation(stationName);
+        }
+    }
+
+    private static void addLine() {
+        String[] lineNames = {LINE_TOW, LINE_THREE, LINE_SINBUNDANG};
+        for (String lineName : lineNames) {
+            LineService.addLine(lineName);
         }
     }
 }
