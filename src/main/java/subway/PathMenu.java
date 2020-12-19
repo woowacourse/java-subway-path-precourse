@@ -48,11 +48,18 @@ public class PathMenu {
     private static void showResults(List<String> shortestPath) {
         int totalDistance = PathFinder.getTotalDistance(shortestPath);
         int totalTime = PathFinder.getTotalTime(shortestPath);
+        System.out.println("## 조회 결과");
+        System.out.println("[INFO] ---");
+        System.out.println("[INFO] 총 거리: " + totalDistance + "km");
+        System.out.println("[INFO] 총 소요 시간: " + totalTime + "분");
+        System.out.println("[INFO] ---");
+        shortestPath.forEach(station -> System.out.println("[INFO] " + station));
+        System.out.println();
     }
 
 
     private static String getEndStation(Scanner scanner, String startStation) {
-        System.out.println("## 출발역을 입력하세요.");
+        System.out.println("## 도착역을 입력하세요.");
         String stationName = getStation(scanner);
         if (stationName.equals(startStation)) {
             throw new IllegalArgumentException("출발역과 도착역이 동일합니다.");
@@ -72,8 +79,7 @@ public class PathMenu {
 
     private static String getStartStation(Scanner scanner) throws IllegalArgumentException {
         System.out.println("## 출발역을 입력하세요.");
-        String stationName = getStation(scanner);
-        return stationName;
+        return getStation(scanner);
     }
 
     private static String getCommand(Scanner scanner, List<String> authorizedCommands) throws IllegalArgumentException {
