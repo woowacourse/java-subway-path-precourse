@@ -5,6 +5,7 @@ import subway.service.PathService;
 import subway.view.OutputView;
 
 public class PathController {
+
     private PathController() {}
 
     public void calculateShortDistance() {

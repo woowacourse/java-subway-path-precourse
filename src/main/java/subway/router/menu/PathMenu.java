@@ -53,6 +53,7 @@ public enum PathMenu {
     private static void goBack() {
         restart = false;
     }
+
     private String getMenu() {
         return menu;
     }
