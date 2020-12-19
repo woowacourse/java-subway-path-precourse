@@ -1,6 +1,6 @@
 package subway.exception;
 
-import subway.domain.Section.Section;
+import subway.domain.section.Section;
 
 public class AlreadyExistSectionException extends IllegalArgumentException {
 
