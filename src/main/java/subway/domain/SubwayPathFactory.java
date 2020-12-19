@@ -4,6 +4,7 @@ public class SubwayPathFactory {
 
     public static void init() {
         initStation();
+        initLine();
     }
 
     private static void initStation() {
@@ -14,5 +15,11 @@ public class SubwayPathFactory {
         StationRepository.addStation(new Station("양재역"));
         StationRepository.addStation(new Station("양재시민의숲역"));
         StationRepository.addStation(new Station("매봉역"));
+    }
+
+    private static void initLine() {
+        LineRepository.addLine(new Line("2호선"));
+        LineRepository.addLine(new Line("3호선"));
+        LineRepository.addLine(new Line("신분당선"));
     }
 }
