@@ -19,4 +19,8 @@ public class Line {
     public void lineInAddStation(Station station) {
         LineInStationList.add(station);
     }
+
+    public boolean isEqualName(String name) {
+        return name.equals(this.name);
+    }
 }
