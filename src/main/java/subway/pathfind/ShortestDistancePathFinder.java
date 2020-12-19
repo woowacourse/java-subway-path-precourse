@@ -20,6 +20,10 @@ public class ShortestDistancePathFinder {
         findWay(startStation, endStation, INITIAL_TIME, INITIAL_DISTANCE, new ArrayList<>());
         PathFindValidator.validatePathExists(shortestDistancePath);
         ResultPrinter.resultPrinter(shortestDistancePath, shortestDistance, totalTime);
+        shortestDistancePath.clear();
+        visitedStations.clear();
+        totalTime = Integer.MAX_VALUE;
+        shortestDistance = Integer.MAX_VALUE;
     }
 
     private static void findWay(Station currentStation, Station endStation, int currentTime,

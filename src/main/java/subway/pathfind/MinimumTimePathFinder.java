@@ -19,6 +19,10 @@ public class MinimumTimePathFinder {
         findWay(startStation, endStation, INITIAL_TIME, INITIAL_DISTANCE, new ArrayList<>());
         PathFindValidator.validatePathExists(minimumTimePath);
         ResultPrinter.resultPrinter(minimumTimePath, totalDistance, minimumTime);
+        minimumTimePath.clear();
+        visitedStations.clear();
+        minimumTime = Integer.MAX_VALUE;
+        totalDistance = Integer.MAX_VALUE;
     }
 
     private static void findWay(Station currentStation, Station endStation, int currentTime,
