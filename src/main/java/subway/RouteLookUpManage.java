@@ -6,6 +6,8 @@ import static subway.common.ErrorCase.SAME_DEPARTURE_ARRIVAL_ERROR;
 import static subway.common.ErrorCase.UNCONNECTED_DEPARTURE_ARRIVAL_ERROR;
 import static subway.common.Logger.errorPrint;
 import static subway.domain.Graph.DISTANCE_GRAPH;
+import static subway.domain.Graph.TIME_GRAPH;
+import static subway.domain.Graph.getDistanceByVertexList;
 import static subway.domain.Graph.getTimeByVertexList;
 import static subway.domain.StationRepository.getStationByName;
 import static subway.view.InputView.inputArrivalStation;
@@ -24,7 +26,6 @@ public class RouteLookUpManage {
 	private final static String SHORTEST_DISTANCE = "1";
 	private final static String MINIMUM_TIME = "2";
 	private final static String BACK = "B";
-	static boolean ERROR_FLAG = false;
 
 	public static void routeLookUpManage(Scanner scanner) {
 		boolean exitFlag = false;
@@ -43,8 +44,7 @@ public class RouteLookUpManage {
 			return findPathByDistanceControl(scanner);
 		}
 		if (input.equals(MINIMUM_TIME)) {
-			//findPathByTime(scanner);
-			return false;
+			return findPathByTimeControl(scanner);
 		}
 		errorPrint(FUNCTION_INPUT_ERROR);
 		return false;
@@ -55,16 +55,32 @@ public class RouteLookUpManage {
 		if (!verifyExistStation(departureStation)) {
 			return false;
 		}
-
 		String arrivalStation = inputArrivalStation(scanner);
 		if (!verifyExistStation(arrivalStation)) {
 			return false;
 		}
-		if (!verifyDepartArrivalStation(departureStation, arrivalStation)) {
+		if (verifyDifferentStation(departureStation, arrivalStation)) {
 			return false;
 		}
 
 		findPathByDistance(departureStation, arrivalStation);
+		return true;
+	}
+
+	private static boolean findPathByTimeControl(Scanner scanner) {
+		String departureStation = inputDepartureStation(scanner);
+		if (!verifyExistStation(departureStation)) {
+			return false;
+		}
+		String arrivalStation = inputArrivalStation(scanner);
+		if (!verifyExistStation(arrivalStation)) {
+			return false;
+		}
+		if (verifyDifferentStation(departureStation, arrivalStation)) {
+			return false;
+		}
+
+		findPathByTime(departureStation, arrivalStation);
 		return true;
 	}
 
@@ -76,14 +92,13 @@ public class RouteLookUpManage {
 		return true;
 	}
 
-	private static boolean verifyDepartArrivalStation(String departureStation,
+	private static boolean verifyDifferentStation(String departureStation,
 		String arrivalStation) {
 		if (departureStation.equals(arrivalStation)) {
 			errorPrint(SAME_DEPARTURE_ARRIVAL_ERROR);
-			return false;
+			return true;
 		}
-		// TODO : UNCONNECTED ERROR handling
-		return true;
+		return false;
 	}
 
 	private static void findPathByDistance(String departureStation, String arrivalStation) {
@@ -91,10 +106,27 @@ public class RouteLookUpManage {
 			DISTANCE_GRAPH);
 		GraphPath<String, DefaultWeightedEdge> path = shortestDistancePath
 			.getPath(departureStation, arrivalStation);
-
+		if (path == null) {
+			errorPrint(UNCONNECTED_DEPARTURE_ARRIVAL_ERROR);
+		}
 		List<String> pathStations = path.getVertexList();
 		int totalDistance = (int) path.getWeight();
 		int totalTime = getTimeByVertexList(pathStations);
+
+		printLookUpResult(totalDistance, totalTime, pathStations);
+	}
+
+	private static void findPathByTime(String departureStation, String arrivalStation) {
+		DijkstraShortestPath<String, DefaultWeightedEdge> shortestDistancePath = new DijkstraShortestPath<>(
+			TIME_GRAPH);
+		GraphPath<String, DefaultWeightedEdge> path = shortestDistancePath
+			.getPath(departureStation, arrivalStation);
+		if (path == null) {
+			errorPrint(UNCONNECTED_DEPARTURE_ARRIVAL_ERROR);
+		}
+		List<String> pathStations = path.getVertexList();
+		int totalTime = (int) path.getWeight();
+		int totalDistance = getDistanceByVertexList(pathStations);
 
 		printLookUpResult(totalDistance, totalTime, pathStations);
 	}
