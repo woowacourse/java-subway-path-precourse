@@ -27,8 +27,7 @@ public class StationInputValidation {
             if (isNotOnSameLine(startStationName, endStationName)) {
                 throw new SubwayCustomException(NOT_ON_SAME_LINE);
             }
-            String[] stations = {startStationName, endStationName};
-            return stations;
+            return new String[]{startStationName, endStationName};
         } catch (SubwayCustomException e) {
             OutputView.printError(e);
             return input();
