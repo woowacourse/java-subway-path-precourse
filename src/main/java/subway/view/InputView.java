@@ -5,9 +5,9 @@ import subway.util.Validator;
 import java.util.Scanner;
 
 public class InputView extends Validator {
-    private static final String OPTION_SELECT_MESSAGE = "## 원하는 기능을 선택하세요.";
-    private static final String START_STATION_MESSAGE = "## 출발역을 입력하세요.";
-    private static final String END_STATION_MESSAGE = "## 도착역을 입력하세요.";
+    private static final String OPTION_SELECT_MESSAGE = "\n## 원하는 기능을 선택하세요.";
+    private static final String START_STATION_MESSAGE = "\n## 출발역을 입력하세요.";
+    private static final String END_STATION_MESSAGE = "\n## 도착역을 입력하세요.";
     private static Scanner scanner;
 
     public InputView(Scanner scanner) {

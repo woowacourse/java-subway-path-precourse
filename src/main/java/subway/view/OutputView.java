@@ -7,9 +7,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class OutputView {
-    private static final String MAIN_HEADER = "## 메인 화면";
-    private static final String PATH_HEADER = "## 경로 기준";
-    private static final String PATH_RESULT_HEADER = "## 조회 결과";
+    private static final String MAIN_HEADER = "\n## 메인 화면";
+    private static final String PATH_HEADER = "\n## 경로 기준";
+    private static final String PATH_RESULT_HEADER = "\n## 조회 결과";
     private static final String INFO_PREFIX = "[INFO] ";
     private static final String THREE_DASHES = "---";
     private static final String TOTAL_DISTANCE_PREFIX = "총 거리 : ";
