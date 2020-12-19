@@ -10,4 +10,16 @@ public class Result {
     public Result(List<String> route) {
         this.route = route;
     }
+
+    public List<String> getRoute() {
+        return route;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public int getTime() {
+        return time;
+    }
 }
