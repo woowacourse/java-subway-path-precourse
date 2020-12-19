@@ -29,6 +29,10 @@ public class MainController {
     }
     public void startMainMenu(Scanner scanner) {
         while(true) {
+                initializeSubwayStation();
+                initializeSubwayLine();
+                initializeDistance();
+                initializeTime();
                 outputView.setMainMenuMainDisplay();
                 String tmpSaveMenuChoice = inputView.getChooseFunction(scanner);
                 if (tmpSaveMenuChoice.equals(MAIN_CONTROLLER_MENU_QUIT)) {

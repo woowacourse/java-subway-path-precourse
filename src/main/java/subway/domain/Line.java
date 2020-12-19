@@ -43,7 +43,9 @@ public class Line {
     public List<Integer> getLineTime() {
         return time;
     }
+
     public int getDistance(Station startStation,Station endStation) {
+
         int startIndex=stations.indexOf(startStation);
         int endIndex=stations.indexOf(endStation);
         if(startIndex>endIndex) {
@@ -53,9 +55,11 @@ public class Line {
     }
     public int computeDistance(int startIndex,int endIndex) {
         int totalDistance=0;
-        for(int i=startIndex;i<endIndex;i++) {
+        for(int i=startIndex;i<endIndex-1;i++) {
+            System.out.println("ds");
             totalDistance+=distance.get(i);
         }
+        System.out.println("sddsss");
         return totalDistance;
     }
 

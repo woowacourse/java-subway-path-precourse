@@ -6,11 +6,13 @@ import subway.View.OutputView;
 import java.util.Scanner;
 
 public class PathController {
-    OutputView outputView=new OutputView();
-    InputView inputView =new InputView();
     private static final String PATH_CONTROLLER_SHORT_DISTANCE="1";
     private static final String PATH_CONTROLLER_SHORT_TIME="2";
     private static final String PATH_CONTROLLER_BACK="B";
+
+    OutputView outputView=new OutputView();
+    InputView inputView =new InputView();
+    ComputeShortValue computeShortValue =new ComputeShortValue();
 
     public void startPathMenu(Scanner scanner) {
             outputView.setPathMenuPathStandard();
@@ -25,13 +27,13 @@ public class PathController {
 
         }
         if(tmpSavePathMenuChoice.equals(PATH_CONTROLLER_SHORT_DISTANCE)) {
-
+            setPathControllerShortDistance(scanner);
         }
     }
     public void setPathControllerShortDistance(Scanner scanner) {
-        inputView.getStationEnd(scanner);
-        inputView.getStationStart(scanner);
-
+        //.getStationEnd(scanner);
+        //inputView.getStationStart(scanner);
+        computeShortValue.setGraph();
     }
     public void setPathControllerShortTime(Scanner scanner) {
         inputView.getStationEnd(scanner);

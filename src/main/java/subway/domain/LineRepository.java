@@ -12,7 +12,9 @@ public class LineRepository {
     public static List<Line> lines() {
         return Collections.unmodifiableList(lines);
     }
-
+    public static List<Line> getLines() {
+        return lines;
+    }
     public static void addLine(Line line) {
         lines.add(line);
     }
