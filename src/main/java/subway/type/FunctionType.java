@@ -3,7 +3,7 @@ package subway.type;
 import java.util.Objects;
 
 public enum FunctionType {
-    SHORTEST_DISTANCE_ROUTE("1"),
+    SHORTEST_DISTANCE_PATH("1"),
     MINIMUM_TIME_ROUTE("2"),
     BACK("B");
 

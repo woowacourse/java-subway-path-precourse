@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public enum ManagementType {
     ROUTE_SEARCH("1",
-            Arrays.asList(FunctionType.SHORTEST_DISTANCE_ROUTE, FunctionType.MINIMUM_TIME_ROUTE, FunctionType.BACK)),
+            Arrays.asList(FunctionType.SHORTEST_DISTANCE_PATH, FunctionType.MINIMUM_TIME_ROUTE, FunctionType.BACK)),
     EXIT("Q", Collections.emptyList());
 
     private final String managementLetter;

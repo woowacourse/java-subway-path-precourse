@@ -70,7 +70,7 @@ public class SubwayMapGraph {
     }
 
     private DijkstraShortestPath getShortestPath(FunctionType functionType) {
-        if (functionType == FunctionType.SHORTEST_DISTANCE_ROUTE) {
+        if (functionType == FunctionType.SHORTEST_DISTANCE_PATH) {
             return new DijkstraShortestPath(shortestDistanceGraph);
         }
         return new DijkstraShortestPath(minimumTimeGraph);
