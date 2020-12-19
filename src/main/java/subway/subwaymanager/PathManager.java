@@ -5,6 +5,7 @@ import subway.domain.Path;
 import subway.domain.PathRepository;
 import subway.utils.InputView;
 import subway.utils.OutputView;
+import subway.utils.ValidateStationSameNameCheck;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +41,7 @@ public class PathManager {
         String start = InputView.inputStationName();
         System.out.println("끝역");
         String end = InputView.inputStationName();
+        ValidateStationSameNameCheck.validateStationSameNameCheck(start, end);
         List<String> stationNames = DistanceGraph.getPath(start, end);
         List<Path> paths = new ArrayList<>();
         for (int i = 1; i < stationNames.size(); i++) {
