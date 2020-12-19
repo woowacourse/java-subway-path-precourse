@@ -1,6 +1,6 @@
 package subway.view.util;
 
-import subway.controller.ProgramController;
+import subway.controller.ScreenController;
 import subway.view.OutputView;
 import subway.view.resource.ErrorCode;
 import subway.view.resource.Screen;
@@ -14,7 +14,7 @@ public class InputValidator {
     public static String validateFunctionCode(Scanner scanner, String functionCode, Screen screen) {
         if (isInvalidFunctionCode(functionCode, screen)) {
             OutputView.printError(ErrorCode.INVALID_FUNCTION);
-            ProgramController.run(screen, scanner);
+            ScreenController.run(screen, scanner);
         }
         return functionCode;
     }

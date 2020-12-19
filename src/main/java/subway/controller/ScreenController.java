@@ -4,8 +4,8 @@ import subway.view.resource.Screen;
 
 import java.util.Scanner;
 
-public class ProgramController {
-    private ProgramController(){
+public class ScreenController {
+    private ScreenController(){
     }
 
     public static void run(Screen screen, Scanner scanner){
@@ -13,7 +13,7 @@ public class ProgramController {
             MainController.run(scanner);
         }
         if (screen.equals(Screen.PATH)){
-//            PathController.run();
+            PathController.run(scanner);
         }
     }
 }
