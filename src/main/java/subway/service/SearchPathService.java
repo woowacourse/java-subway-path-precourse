@@ -50,6 +50,9 @@ public class SearchPathService extends InputService {
     }
 
     private void calculationShortestPath(String startStationName, String endStationName) {
+        if (startStationName.equals(endStationName)) {
+            throw new IllegalArgumentException("[ERROR] 출발역과 도착역이 동일합니다.");
+        }
         findStationByName(startStationName);
         findStationByName(endStationName);
         GraphPath shortestPath = LineStationRepository.findShortestPath(startStationName, endStationName);
@@ -57,6 +60,9 @@ public class SearchPathService extends InputService {
     }
 
     private void calculationShortestTime(String startStationName, String endStationName) {
+        if (startStationName.equals(endStationName)) {
+            throw new IllegalArgumentException("[ERROR] 출발역과 도착역이 동일합니다.");
+        }
         findStationByName(startStationName);
         findStationByName(endStationName);
         GraphPath shortestPath = LineStationRepository.findShortestTime(startStationName, endStationName);
