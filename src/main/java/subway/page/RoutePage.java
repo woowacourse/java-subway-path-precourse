@@ -21,14 +21,28 @@ public class RoutePage {
         String button = InputView.inputFunctionButton();
 
         while (!button.equals(BACK)) {
-            if (button.equals(SHORTEST_DISTANCE)) {
-                //todo: 최단 거리
+            if (isSuccessShortestDistance(button)) {
+                break;
             }
-            if (button.equals(MINIMUM_TIME)) {
-                //todo: 최소 시간
+            if (isSuccessMinimumTime(button)) {
+                break;
             }
             OutputView.printPage(routePageItem);
             button = InputView.inputFunctionButton();
         }
+    }
+
+    private boolean isSuccessShortestDistance(String button) {
+        if (button.equals(SHORTEST_DISTANCE)) {
+            String startStation = InputView.inputStartStation();
+        }
+        return true;
+    }
+
+    private boolean isSuccessMinimumTime(String button) {
+        if (button.equals(MINIMUM_TIME)) {
+            String startStation = InputView.inputStartStation();
+        }
+        return true;
     }
 }
