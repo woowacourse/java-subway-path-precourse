@@ -13,6 +13,13 @@ public class Section {
         this.time = time;
     }
 
+    public boolean matches(Station sourceStation, Station targetStation) {
+        if (sourceStation == sourceStation
+                && targetStation == targetStation)
+            return true;
+        return false;
+    }
+
     public String getSourceStationName() {
         return sourceStation.getName();
     }
