@@ -7,6 +7,7 @@ public class Application {
         final Scanner scanner = new Scanner(System.in);
         // TODO: 프로그램 구현
         SubwayProgram subwayProgram = new SubwayProgram(scanner);
+        DataLoader.load();
         subwayProgram.run();
     }
 }
