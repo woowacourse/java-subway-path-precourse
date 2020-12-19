@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import subway.domain.LineRepository;
+import subway.domain.ShortenPathDTO;
 
 public class SubwayUtilsTest {
 
@@ -31,10 +32,10 @@ public class SubwayUtilsTest {
         SubwayUtils.initGraph();
 
         // when
-        List<String> stations = SubwayUtils.findShortenPathByDistance("교대역", "양재역");
+        ShortenPathDTO shortenPathDTO = SubwayUtils.findShortenPathByDistance("교대역", "양재역");
 
         //then
-        assertThat(stations).containsExactly("교대역", "강남역", "양재역");
+        assertThat(shortenPathDTO.getStationNames()).containsExactly("교대역", "강남역", "양재역");
     }
 
     @Test
@@ -44,10 +45,9 @@ public class SubwayUtilsTest {
         // given
         SubwayUtils.initGraph();
 
-        // when
-        List<String> stations = SubwayUtils.findShortenPathByTime("교대역", "양재역");
+        ShortenPathDTO shortenPathDTO = SubwayUtils.findShortenPathByTime("교대역", "양재역");
 
         //then
-        assertThat(stations).containsExactly("교대역", "남부터미널역", "양재역");
+        assertThat(shortenPathDTO.getStationNames()).containsExactly("교대역", "남부터미널역", "양재역");
     }
 }
