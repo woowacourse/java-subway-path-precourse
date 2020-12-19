@@ -18,6 +18,7 @@ import subway.view.Output;
 public class Subway {
     private static final String INQURY_ROUTE = "1";
     private static final String SHORTEST_DISTANCE_ROUTE = "1";
+    private static final String SHORTEST_TIME_ROUTE = "2";
     
     public static boolean progress = true;
 	
@@ -41,6 +42,14 @@ public class Subway {
             Station departureStation = StationRepository.getStationByName(Input.inputDepartureStation());
             Station arrivalStation = StationRepository.getStationByName(Input.inputArrivalStation());
             List<Station> shortestDistancePath = Route.getShortestDistanceRoute(departureStation, arrivalStation);
+            for (Station station : shortestDistancePath) {
+                Output.printResult(station.getName());
+            }
+        }
+        if (Input.chooseFunction().equals(SHORTEST_TIME_ROUTE)) {
+            Station departureStation = StationRepository.getStationByName(Input.inputDepartureStation());
+            Station arrivalStation = StationRepository.getStationByName(Input.inputArrivalStation());
+            List<Station> shortestDistancePath = Route.getShortestTimeRoute(departureStation, arrivalStation);
             for (Station station : shortestDistancePath) {
                 Output.printResult(station.getName());
             }
