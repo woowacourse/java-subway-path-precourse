@@ -1,6 +1,6 @@
 package subway;
 
-import subway.view.screen.exception.NotSupportedScreenException;
+import subway.view.screen.exception.NotSupportedFunctionException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,13 +15,14 @@ public class FunctionMapper {
     private static final String BACK = "B";
 
     static {
+        MAIN_FUNCTION_MAPPER.put(QUIT, Status::terminate);
     }
 
-    public static Runnable matchFunction(Map<String, Runnable> mapper, String command) {
+    public static Runnable matchMainFunction(Map<String, Runnable> mapper, String command) {
         return mapper.entrySet().stream()
                 .filter(entry -> entry.getKey().equals(command))
                 .map(Map.Entry::getValue)
                 .findAny()
-                .orElseThrow(NotSupportedScreenException::new);
+                .orElseThrow(NotSupportedFunctionException::new);
     }
 }
