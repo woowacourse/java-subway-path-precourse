@@ -23,11 +23,12 @@ public class Controller {
 
     public void run() {
         String command = "";
-        do {
+        while (!command.equals(Constant.COMMAND_QUIT)) {
             output.printMainFunction();
             command = input.getMainFunction();
             runCommand();
-        } while (!command.equals("Q"));
+        }
+
     }
 
     private void runCommand() {
@@ -44,9 +45,7 @@ public class Controller {
         Station endStation = validStation(input.getEndStation());
         isSameStation(startStation, endStation);
         Path resultPath = PathRepository.getPath(startStation, endStation, command);
-        for(int i=0; i<resultPath.getPathList().size(); i++){
-            System.out.println(resultPath.getPathList().get(i).getName());
-        }
+        output.printPathResult(resultPath);
     }
 
     private Station validStation(String stationName) {

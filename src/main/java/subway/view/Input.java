@@ -11,7 +11,7 @@ public class Input {
 
     public String getMainFunction(){
         System.out.println("\n원하는 기능을 선택하세요");
-        return getUserNumberInput();
+        return getUserStringInput();
     }
 
     public String getStartStation(){
