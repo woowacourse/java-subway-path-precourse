@@ -66,7 +66,7 @@ public class UserInterfaceView {
             findMinDistance(startStation, endStation);
         }
         if (STR_TWO.equals(userInput)) {
-            // findMinTime(startStation, endStation);
+            findShortTime(startStation, endStation);
         }
     }
 
@@ -86,5 +86,10 @@ public class UserInterfaceView {
             time += data[Station.TIME_INDEX];
         }
         Output.printInfo(distance, time, path);
+    }
+
+    private void findShortTime(String startStation, String endStation) {
+        List<String> path = GraphService.getShortTimePath(startStation, endStation);
+        sumDistanceAndTimeAndPrint(path);
     }
 }
