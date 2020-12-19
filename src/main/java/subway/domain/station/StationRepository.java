@@ -31,7 +31,7 @@ public class StationRepository {
         Station findStation = stations.stream()
                 .filter(station -> station.getName().equals(stationName))
                 .findAny()
-                .orElseThrow(() -> new StationException(ErrorCode.STATION_NOT_EXIST));
+                .orElseThrow(() -> new StationException(ErrorCode.STATION_NOT_FOUND));
         return findStation;
     }
 }

@@ -1,5 +1,8 @@
 package subway.domain.line;
 
+import subway.exception.ErrorCode;
+import subway.exception.LineException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -22,5 +25,13 @@ public class LineRepository {
 
     public static void deleteAll() {
         lines.clear();
+    }
+
+    public static Line findByName(String lineName) {
+        Line findLine = lines.stream()
+                .filter(line -> line.getName().equals(lineName))
+                .findAny()
+                .orElseThrow(() -> new LineException(ErrorCode.LINE_NOT_FOUND));
+        return findLine;
     }
 }
