@@ -1,12 +1,12 @@
 package subway.view;
 
-import static subway.common.logger.guidePrint;
-import static subway.common.logger.infoPrint;
+import static subway.common.Logger.guidePrint;
+import static subway.common.Logger.infoPrint;
 
 import java.util.List;
 import subway.domain.Station;
 
-public class outputView {
+public class OutputView {
 
 	public static void printMain() {
 		System.out.println();
@@ -26,14 +26,14 @@ public class outputView {
 	}
 
 	public static void printLookUpResult(int totalDistance, int totalTime,
-		List<Station> totalRoute) {
+		List<String> totalRoute) {
 		guidePrint("조회 결과");
 		infoPrint("---");
 		infoPrint("총 거리: " + totalDistance + "km");
 		infoPrint("총 소요 시간: " + totalTime + "분");
 		infoPrint("---");
-		for (Station station : totalRoute) {
-			infoPrint(station.getName());
+		for (String stationName : totalRoute) {
+			infoPrint(stationName);
 		}
 		System.out.println();
 	}
