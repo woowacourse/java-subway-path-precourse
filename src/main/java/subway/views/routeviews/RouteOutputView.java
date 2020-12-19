@@ -1,6 +1,7 @@
 package subway.views.routeviews;
 
 import subway.domain.MainMenu;
+import subway.domain.RouteMenu;
 import subway.views.OutputView;
 
 import java.util.Arrays;
@@ -10,7 +11,7 @@ public class RouteOutputView implements OutputView {
 
     public static void printRouteMenu() {
         System.out.println(LINE_WRAP + ROUTE_SCREEN_MESSAGE);
-        Arrays.stream(MainMenu.values())
+        Arrays.stream(RouteMenu.values())
             .forEach(System.out::println);
     }
 }
