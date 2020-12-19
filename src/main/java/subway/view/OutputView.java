@@ -1,14 +1,19 @@
 package subway.view;
 
+import subway.domain.FindPathType;
 import subway.menu.MainMenu;
 
 import java.util.List;
 
 public class OutputView {
-    public static final String REQUEST_SELECT_MSG = "## 원하는 기능을 선택하세요.";
-    public static final String DOT_AND_BLANK = ". ";
+    private static final String REQUEST_SELECT_MSG = "## 원하는 기능을 선택하세요.";
+    private static final String DOT_AND_BLANK = ". ";
+    private static final String REQUEST_INPUT_START_STATION_MSG = "## 출발역을 입력하세요";
+    private static final String REQUEST_INPUT_END_STATION_MSG = "## 도착역을 입력하세요";
     private static String MAIN_MENU_HEADER = "## 메인메뉴";
-    public static void println(String message){
+    private static final String CALCUALTE_PATH_MENU_HEADER = "## 경로기준";
+
+    public static void println(String message) {
         System.out.println(message);
     }
 
@@ -16,6 +21,14 @@ public class OutputView {
         String header = MAIN_MENU_HEADER + System.lineSeparator();
         List<String> commands = MainMenu.getCommands();
         List<String> titles = MainMenu.getTitles();
+        println(convertMenuToStringForConsoleOutput(header, commands, titles));
+        printRequestSelectMsg();
+    }
+
+    public static void showShortestPathMenu() {
+        String header = CALCUALTE_PATH_MENU_HEADER + System.lineSeparator();
+        List<String> commands = FindPathType.getCommands();
+        List<String> titles = FindPathType.getTitles();
         println(convertMenuToStringForConsoleOutput(header, commands, titles));
         printRequestSelectMsg();
     }
@@ -34,5 +47,13 @@ public class OutputView {
             menu.append(menuLine);
         }
         return menu.toString();
+    }
+
+    public static void showRequestStartStationInput() {
+        println(REQUEST_INPUT_START_STATION_MSG);
+    }
+
+    public static void showRequestEndStationInput() {
+        println(REQUEST_INPUT_END_STATION_MSG);
     }
 }
