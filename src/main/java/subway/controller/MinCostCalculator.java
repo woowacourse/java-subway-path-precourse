@@ -1,14 +1,8 @@
 package subway.controller;
 
-import java.util.List;
-import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
-import subway.domain.DefaultLines;
-import subway.domain.DefaultSections;
-import subway.domain.DefaultStations;
 import subway.domain.DefaultSubwayGraph;
-import subway.domain.Line;
-import subway.domain.Station;
 import subway.view.InputView;
+import subway.view.OutputView;
 
 public class MinCostCalculator {
 
@@ -20,14 +14,18 @@ public class MinCostCalculator {
 
     public void runToGetMinDistance() {
         getStationNames();
-        calculateMinDistance();
-//        printResult();
+        String result = calculateMinDistance();
+        printResult(result);
     }
 
     public void runToGetMinTime() {
         getStationNames();
-        calculateMinTime();
-//        printResult();
+        String result = calculateMinTime();
+        printResult(result);
+    }
+
+    private void printResult(String result) {
+        OutputView.printResult(result);
     }
 
     private void getStationNames() {
@@ -43,16 +41,19 @@ public class MinCostCalculator {
         }
     }
 
-    public void calculateMinDistance() {
-        DefaultSubwayGraph defaultSubwayGraph = new DefaultSubwayGraph();
+    public String calculateMinDistance() {
+//        DefaultSubwayGraph defaultSubwayGraph = new DefaultSubwayGraph();
 //        List shortest_path = (List) DijkstraShortestPath
 //            .findPathBetween(defaultSubwayGraph, departureStation, arrivalStation);
 //        System.out.println(shortest_path);
 //        DefaultSections defaultSections = new DefaultSections();
 //        System.out.println(defaultSections.getSections());
-
+        String result= "";
+        return result;
     }
 
-    public void calculateMinTime() {
+    public String calculateMinTime() {
+        String result = "";
+        return result;
     }
 }

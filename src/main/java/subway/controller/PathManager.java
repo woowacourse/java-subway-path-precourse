@@ -1,6 +1,5 @@
 package subway.controller;
 
-import subway.domain.DefaultSubwayGraph;
 import subway.view.InputView;
 import subway.view.OutputView;
 

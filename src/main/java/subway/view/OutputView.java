@@ -9,6 +9,9 @@ public class OutputView {
     private static final String PATH_OPTION_ONE = "1. 최단 거리";
     private static final String PATH_OPTION_TWO = "2. 최소 시간";
     private static final String PATH_OPTION_BACK = "B. 돌아가기";
+    private static final String SEARCH_RESULT = "## 조회 결과";
+    private static final String INFO_PREFIX = "[INFO] ";
+    private static final String DASHED_LINE = "---";
 
     public static void printMainScreen() {
         System.out.println(MAIN_TITLE);
@@ -21,5 +24,10 @@ public class OutputView {
         System.out.println(PATH_OPTION_ONE);
         System.out.println(PATH_OPTION_TWO);
         System.out.println(PATH_OPTION_BACK);
+    }
+
+    public static void printResult(String result) {
+        System.out.println(SEARCH_RESULT);
+        System.out.println(INFO_PREFIX + DASHED_LINE);
     }
 }

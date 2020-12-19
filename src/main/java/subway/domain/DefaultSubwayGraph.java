@@ -13,14 +13,12 @@ public class DefaultSubwayGraph {
         defaultSections = new DefaultSections();
     }
 
-    private static Graph<String, DefaultEdge> createStringGraph()
-    {
+    private static Graph<String, DefaultEdge> createStringGraph() {
         Graph<String, DefaultEdge> graph = new SimpleGraph<>(DefaultEdge.class);
         addDefaultStations();
         addDefaultEdges();
         return graph;
     }
-
 
     public static void addDefaultStations() {
         DefaultStations defaultStations = new DefaultStations();
@@ -34,7 +32,7 @@ public class DefaultSubwayGraph {
         for (Section section : defaultSections.getSections()) {
             DefaultEdge e = graph
                 .addEdge(section.getDepartureStation(), section.getArrivalStation());
-            graph.setEdgeWeight(e, section.getCost().getDistanceCost());
+//            graph.setEdgeWeight(e, (double)section.getCost().getDistanceCost());
         }
     }
 }
