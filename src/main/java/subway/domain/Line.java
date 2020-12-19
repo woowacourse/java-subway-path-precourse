@@ -20,5 +20,4 @@ public class Line {
         Station station = StationRepository.findStation(name);
         sections.add(station);
     }
-    // 추가 기능 구현
 }
