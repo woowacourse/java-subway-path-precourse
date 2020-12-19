@@ -6,13 +6,12 @@ import subway.view.View;
 
 public abstract class ViewController {
     protected View view;
-    
-    public ViewController() {
-    }
-    
+
+    public ViewController() {}
+
     abstract public BiConsumer<Scene, View> selectMenu();
-    
-    public void run (Scene scene) {
+
+    public void run(Scene scene) {
         BiConsumer<Scene, View> action = selectMenu();
         if (action != null) {
             action.accept(scene, view);;

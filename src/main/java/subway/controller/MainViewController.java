@@ -9,8 +9,8 @@ import subway.menu.MainMenu;
 import subway.view.MainView;
 import subway.view.View;
 
-public class MainViewController extends ViewController{ 
-    
+public class MainViewController extends ViewController {
+
     public MainViewController(Scanner scanner, PrintStream printStream) {
         view = new MainView(scanner, printStream);
     }
@@ -24,11 +24,11 @@ public class MainViewController extends ViewController{
         }
         return result;
     }
-    
+
     public static void goSectionView(Scene scene, View view) {
         scene.goView(new SectionViewController(scene.getScanner(), scene.getPrinstream()));
     }
-    
+
     public static void exit(Scene scene, View view) {
         scene.exit();
     }
