@@ -1,5 +1,7 @@
 package subway.controller;
 
+import subway.domain.Line;
+import subway.domain.LineRepository;
 import subway.view.InputView;
 import subway.view.OutputView;
 
@@ -33,6 +35,21 @@ public class RouteController {
     }
 
     private void shortestTime() {
+        String startStation = InputView.writeStartStation(scanner);
+        if(startStation.equals("ERROR")){
+            new RouteController(scanner);
+            return;
+        }
+        String endStation = InputView.writeEndStation(scanner, startStation);
+        if(endStation.equals("ERROR")){
+            new RouteController(scanner);
+            return;
+        }
+        if(!LineRepository.findShortestTime(startStation, endStation)){
+            new RouteController(scanner);
+            return;
+        }
+        new Controller(scanner);
     }
 
     private void shortestLength() {
