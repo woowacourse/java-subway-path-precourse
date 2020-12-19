@@ -17,6 +17,7 @@ public class Constants {
     public static final int FUNCTION_INPUT_ERROR = 0;
     public static final int NO_SUCH_NAME_ERROR = 1;
     public static final int SAME_NAME_ERROR = 2;
+    public static final int UNKNOWN_ERROR = 3;
 
     public static final String FIND_PATH = "1";
     public static final String FINISH_PROGRAM = "Q";
