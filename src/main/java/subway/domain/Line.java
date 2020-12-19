@@ -2,6 +2,7 @@ package subway.domain;
 
 public class Line {
     private String name;
+    private LineStations stations;
 
     public Line(String name) {
         this.name = name;
@@ -11,5 +12,7 @@ public class Line {
         return name;
     }
 
-    // 추가 기능 구현
+    public void addLineStation(Station station) {
+        stations.addLineStation(station);
+    }
 }
