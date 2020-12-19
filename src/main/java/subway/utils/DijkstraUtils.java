@@ -42,13 +42,19 @@ public class DijkstraUtils {
     }
 
     private static Double getTime(List<String> vertexList) {
-        //todo vertexList 따라가면서 timeWeight 더하기
-        return 1.0;
+        double total = 0;
+        for (int i = 0; i < vertexList.size() - 1; i++) {
+            total += SectionRepository.findByName(vertexList.get(i), vertexList.get(i + 1)).getTimeWeight();
+        }
+        return total;
     }
 
     private static Double getDistance(List<String> vertexList) {
-        //todo vertexList 따라가면서 distanceWeight 더하기
-        return 1.0;
+        double total = 0;
+        for (int i = 0; i < vertexList.size() - 1; i++) {
+            total += SectionRepository.findByName(vertexList.get(i), vertexList.get(i + 1)).getDistanceWeight();
+        }
+        return total;
     }
 
     private static GraphPath<String, DefaultWeightedEdge> getPath(String sourceName,
