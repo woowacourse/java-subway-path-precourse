@@ -24,7 +24,9 @@ public class StationRepository {
         stations.clear();
     }
 
-    public static boolean containsStation(String stationName){
-        return stations.stream().anyMatch(station -> Objects.equals(station.getName(), stationName));
+    public static boolean containsStation(String stationName) {
+        return stations.stream()
+            .anyMatch(station -> Objects.equals(station.getName(), stationName));
     }
+
 }

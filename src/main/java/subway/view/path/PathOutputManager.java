@@ -15,7 +15,6 @@ public class PathOutputManager {
     private static final String TOTAL_TIME = "총 소요 시간 : ";
     private static final String MINUTE = "분";
 
-
     public static void printDepartureStationGuide() {
         GuideMessage.print(ENTER_DEPARTURE_STATION);
     }

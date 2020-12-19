@@ -16,13 +16,13 @@ public class InitialInfo {
     }
 
     private void setShortestPath() {
-        PathRepository.setGraphEdgeWeight("교대역", "강남역", 2,3);
-        PathRepository.setGraphEdgeWeight("강남역", "역삼역", 2,3);
-        PathRepository.setGraphEdgeWeight("교대역", "남부터미널역", 3,2);
-        PathRepository.setGraphEdgeWeight("남부터미널역", "양재역", 6,5);
-        PathRepository.setGraphEdgeWeight("양재역", "매봉역", 1,1);
-        PathRepository.setGraphEdgeWeight("강남역", "양재역", 2,8);
-        PathRepository.setGraphEdgeWeight("양재역", "양재시민의숲역", 10,3);
+        PathRepository.setGraphEdgeWeight("교대역", "강남역", 2, 3);
+        PathRepository.setGraphEdgeWeight("강남역", "역삼역", 2, 3);
+        PathRepository.setGraphEdgeWeight("교대역", "남부터미널역", 3, 2);
+        PathRepository.setGraphEdgeWeight("남부터미널역", "양재역", 6, 5);
+        PathRepository.setGraphEdgeWeight("양재역", "매봉역", 1, 1);
+        PathRepository.setGraphEdgeWeight("강남역", "양재역", 2, 8);
+        PathRepository.setGraphEdgeWeight("양재역", "양재시민의숲역", 10, 3);
     }
 
     private void setStations() {

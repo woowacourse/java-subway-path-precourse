@@ -9,4 +9,5 @@ public class ErrorMessage {
     public static void print(ErrorCustomException errorCustomException) {
         System.out.println(errorCustomException.getMessage());
     }
+
 }

@@ -15,7 +15,7 @@ import subway.view.path.PathOutputManager;
 public class SearchingPathController {
 
     private final MenuInputManager menuInputManager;
-    private PathInputManager pathInputManager;
+    private final PathInputManager pathInputManager;
 
     SearchingPathController(Scanner scanner, MenuInputManager menuInputManager) {
         this.menuInputManager = menuInputManager;

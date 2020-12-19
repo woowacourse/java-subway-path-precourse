@@ -10,7 +10,8 @@ import subway.view.menu.MenuOutputManager;
 public class MainController {
     private final MenuInputManager menuInputManager;
     private final SearchingPathController searchingPathController;
-    public MainController(Scanner scanner){
+
+    public MainController(Scanner scanner) {
         menuInputManager = new MenuInputManager(scanner);
         searchingPathController = new SearchingPathController(scanner, menuInputManager);
         initInfo();

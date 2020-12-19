@@ -1,6 +1,5 @@
 package subway.view.path;
 
-import java.nio.file.Path;
 import java.util.Scanner;
 import subway.common.ErrorCustomException;
 import subway.domain.StationRepository;
@@ -21,24 +20,6 @@ public class PathInputManager {
         return lines;
     }
 
-    private String getArrivalStation(String departureStation) {
-        PathOutputManager.printArrivalStationGuide();
-        String station = scanner.nextLine().trim();
-        checkListArrivalStation(departureStation, station);
-        return station;
-    }
-
-    private void checkListArrivalStation(String departureStation, String station) {
-        checkEnrolledStation(station);
-        checkSameAsDepartureStation(departureStation, station);
-    }
-
-    private void checkSameAsDepartureStation(String departureStation, String station) {
-        if(station.equals(departureStation)){
-            throw new ErrorCustomException(SAME_DEPARTURE_ARRIVAL);
-        }
-    }
-
     private String getDepartureStation() {
         PathOutputManager.printDepartureStationGuide();
         String station = scanner.nextLine().trim();
@@ -56,4 +37,23 @@ public class PathInputManager {
             throw new ErrorCustomException(NOT_ENROLLED_STATION);
         }
     }
+
+    private String getArrivalStation(String departureStation) {
+        PathOutputManager.printArrivalStationGuide();
+        String station = scanner.nextLine().trim();
+        checkListArrivalStation(departureStation, station);
+        return station;
+    }
+
+    private void checkListArrivalStation(String departureStation, String station) {
+        checkEnrolledStation(station);
+        checkSameAsDepartureStation(departureStation, station);
+    }
+
+    private void checkSameAsDepartureStation(String departureStation, String station) {
+        if (station.equals(departureStation)) {
+            throw new ErrorCustomException(SAME_DEPARTURE_ARRIVAL);
+        }
+    }
+
 }

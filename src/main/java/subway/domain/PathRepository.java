@@ -1,7 +1,6 @@
 package subway.domain;
 
 import java.util.List;
-import org.jgrapht.GraphPath;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
@@ -28,7 +27,6 @@ public class PathRepository {
         int time) {
         setWeightByDistance(sourceVertex, targetVertex, distance);
         setWeightByTime(sourceVertex, targetVertex, time);
-
     }
 
     private static void setWeightByDistance(String sourceVertex, String targetVertex, int weight) {
@@ -38,11 +36,6 @@ public class PathRepository {
     private static void setWeightByTime(String sourceVertex, String targetVertex, int weight) {
         graphByTime.setEdgeWeight(graphByTime.addEdge(sourceVertex, targetVertex), weight);
     }
-
-//    public static GraphPath<String, String> getShortestDistance(String source, String sink) {
-//        GraphPath<String, String> path = dijkstraShortestDistance.getPath(source, sink);
-//        return path;
-//    }
 
     public static List<String> getListByShortestDistance(String source, String sink) {
         return dijkstraShortestDistance.getPath(source, sink).getVertexList();
