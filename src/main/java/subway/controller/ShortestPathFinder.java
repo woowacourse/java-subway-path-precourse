@@ -10,7 +10,15 @@ import java.util.Scanner;
 
 public class ShortestPathFinder {
     public static final String PREFIX_START_STATION = "start";
-    public static final String PREFIX_END_STATION = "end";
+    private static final String PREFIX_END_STATION = "end";
+    public static final String NEW_LINE = "\n";
+    public static final String PATH_RESULT = "## 조회 결과";
+    public static final String PREFIX_INFO = "[INFO] ";
+    public static final String HORIZONTAL_LINE = "---";
+    public static final String PREFIX_TIME = "총 소요시간: ";
+    public static final String PREFIX_DISTANCE = "총 거리 : ";
+    public static final String SUFFIX_TIME = "분";
+    public static final String SUFFIX_DISTANCE = "km";
     private final Scanner scanner;
 
     public ShortestPathFinder(Scanner scanner) {
@@ -34,17 +42,22 @@ public class ShortestPathFinder {
         List<String> pathList = DistanceRepository.getShortestPath(startStation, endStation);
         int timeLength = DistanceRepository.getLengthByTime(pathList);
 
+        StringBuilder sb = getStringBuilder(shortestLenth, pathList, timeLength);
+        System.out.println(sb);
+    }
+
+    private StringBuilder getStringBuilder(int shortestLenth, List<String> pathList, int timeLength) {
         StringBuilder sb = new StringBuilder();
-        sb.append("\n## 조회 결과");
-        sb.append("\n[INFO] ---");
-        sb.append("\n[INFO] 총 거리: " + shortestLenth + "km");
-        sb.append("\n[INFO] 총 소요 시간: " + timeLength + "분");
+        sb.append(NEW_LINE + PATH_RESULT);
+        sb.append(NEW_LINE + PREFIX_INFO + HORIZONTAL_LINE);
+        sb.append(NEW_LINE + PREFIX_DISTANCE + shortestLenth + SUFFIX_DISTANCE);
+        sb.append(NEW_LINE + PREFIX_TIME + timeLength + SUFFIX_TIME);
         sb.append("\n[INFO] ---");
         for (String station : pathList) {
-            sb.append("\n[INFO]");
+            sb.append(NEW_LINE + PREFIX_INFO);
             sb.append(station);
         }
-        System.out.println(sb);
+        return sb;
     }
 
 

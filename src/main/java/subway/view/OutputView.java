@@ -7,7 +7,7 @@ public class OutputView {
         System.out.println("Q. 종료");
     }
 
-    public static void pathfinerMenu() {
+    public static void pathfinderMenu() {
         System.out.println("\n## 경로 기준");
         System.out.println("1. 최단 거리");
         System.out.println("2. 최소 시간");

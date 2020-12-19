@@ -8,6 +8,8 @@ import java.util.Scanner;
 
 public class PathFinderMenu {
     public static final String REGEX_VALID_PATH_FINDER_MENU = "[1-2Bb]";
+    public static final String MENU_SHORTEST_PATH_FINDER = "1";
+    public static final String MENU_FASTEST_PATH_FINDER = "2";
     private final Scanner scanner;
 
     public PathFinderMenu(Scanner scanner) {
@@ -16,17 +18,17 @@ public class PathFinderMenu {
 
     public void run() {
         String userInput = askValidMenuNumber();
-        if (userInput.equals("1")) {
+        if (userInput.equals(MENU_SHORTEST_PATH_FINDER)) {
             ShortestPathFinder shortestPathFinder = new ShortestPathFinder(scanner);
             shortestPathFinder.run();
-        } else if (userInput.equals("2")) {
+        } else if (userInput.equals(MENU_FASTEST_PATH_FINDER)) {
             FastestPathFinder fastestPathFinder = new FastestPathFinder(scanner);
             fastestPathFinder.run();
         }
     }
 
     private String askValidMenuNumber() {
-        OutputView.pathfinerMenu();
+        OutputView.pathfinderMenu();
         try {
             return InputView.askMenu(scanner, REGEX_VALID_PATH_FINDER_MENU);
         } catch (CustomException exception) {

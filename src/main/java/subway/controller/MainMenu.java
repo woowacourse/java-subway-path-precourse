@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class MainMenu {
     public static final String REGEX_VALID_MAIN_MENU = "[1Qq]";
     public static final String REGEX_QUIT_MENU = "[Qq]";
+    public static final String MENU_PATH_FINDER = "1";
     private final Scanner scanner;
     private boolean doNext;
 
@@ -19,7 +20,7 @@ public class MainMenu {
 
     public void run() {
         String userInput = askValidMenuNumber();
-        if (userInput.equals("1")) {
+        if (userInput.equals(MENU_PATH_FINDER)) {
             PathFinderMenu pathFinderMenu = new PathFinderMenu(scanner);
             pathFinderMenu.run();
         } else if (userInput.matches(REGEX_QUIT_MENU)) {

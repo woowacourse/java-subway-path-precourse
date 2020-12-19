@@ -10,6 +10,14 @@ import java.util.Scanner;
 public class FastestPathFinder {
     public static final String PREFIX_START_STATION = "start";
     private static final String PREFIX_END_STATION = "end";
+    public static final String NEW_LINE = "\n";
+    public static final String PATH_RESULT = "## 조회 결과";
+    public static final String PREFIX_INFO = "[INFO] ";
+    public static final String HORIZONTAL_LINE = "---";
+    public static final String PREFIX_TIME = "총 소요시간: ";
+    public static final String PREFIX_DISTANCE = "총 거리 : ";
+    public static final String SUFFIX_TIME = "분";
+    public static final String SUFFIX_DISTANCE = "km";
     private final Scanner scanner;
 
     public FastestPathFinder(Scanner scanner) {
@@ -32,18 +40,22 @@ public class FastestPathFinder {
         List<String> pathList = DistanceRepository.getFastestPath(startStation, endStation);
         int distanceLength = DistanceRepository.getLengthByDistance(pathList);
 
+        StringBuilder sb = getStringBuilder(fastestLength, pathList, distanceLength);
+        System.out.println(sb);
+    }
 
+    private StringBuilder getStringBuilder(int fastestLength, List<String> pathList, int distanceLength) {
         StringBuilder sb = new StringBuilder();
-        sb.append("\n## 조회 결과");
-        sb.append("\n[INFO] ---");
-        sb.append("\n[INFO] 총 소요시간: " + fastestLength + "분");
-        sb.append("\n[INFO] 총 거리 : " + distanceLength + "km");
-        sb.append("\n[INFO] ---");
+        sb.append(NEW_LINE + PATH_RESULT);
+        sb.append(NEW_LINE + PREFIX_INFO + HORIZONTAL_LINE);
+        sb.append(NEW_LINE + PREFIX_INFO + PREFIX_TIME + fastestLength + SUFFIX_TIME);
+        sb.append(NEW_LINE + PREFIX_INFO + PREFIX_DISTANCE + distanceLength + SUFFIX_DISTANCE);
+        sb.append(NEW_LINE + PREFIX_INFO + HORIZONTAL_LINE);
         for (String station : pathList) {
-            sb.append("\n[INFO]");
+            sb.append(NEW_LINE + PREFIX_INFO);
             sb.append(station);
         }
-        System.out.println(sb);
+        return sb;
     }
 
     private String askValidStation(String stationPrefix) {
