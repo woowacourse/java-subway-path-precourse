@@ -200,52 +200,13 @@ public class StationRepository {
 
 <br>
 
-## ❗️힌트
-### 최단 경로 라이브러리
-- jgrapht 라이브러리를 활용하면 간편하게 최단거리를 조회할 수 있음
-- Dijkstra 알고리즘을 반드시 이해할 필요는 없고 미션에 적용할 정도로만 이해하면 됨
-- JGraphtTest 클래스의 테스트를 활용하여 미션에 필요한 라이브러리의 기능을 학습할 수 있음 
-- 정점(vertex)과 간선(edge), 그리고 가중치 개념을 이용
-  - 정점: 지하철역
-  - 간선: 지하철역 연결정보
-  - 가중치: 거리 or 소요 시간
-- 최단 거리 기준 조회 시 가중치를 거리로 설정
+## 기능 구현 목록
+- Line 안에 Station list 변수 생성 및 추가 기능 구현    
+- 구간 객체 생성
+    - JGrapht 활용하여 시간, 거리 개념의 구간 정보 가짐
+    - 최단거리, 최단시간 도출해내는 기능 구현
+- Line 객체가 구간 객체 가지도록 구현 
 
-```java
-@Test
-public void getDijkstraShortestPath() {
-    WeightedMultigraph<String, DefaultWeightedEdge> graph
-            = new WeightedMultigraph(DefaultWeightedEdge.class);
-    graph.addVertex("v1");
-    graph.addVertex("v2");
-    graph.addVertex("v3");
-    graph.setEdgeWeight(graph.addEdge("v1", "v2"), 2);
-    graph.setEdgeWeight(graph.addEdge("v2", "v3"), 2);
-    graph.setEdgeWeight(graph.addEdge("v1", "v3"), 100);
-
-    DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
-    List<String> shortestPath = dijkstraShortestPath.getPath("v3", "v1").getVertexList();
-
-    assertThat(shortestPath.size()).isEqualTo(3);
-}
-```
-
-#### 테스트 설명
-
-<img src="image/dijkstra-sample.png" width=400>
-
-- 역 사이의 거리를 고려하지 않는 경우 V1->V3 경로가 최단 경로
-- 역 사이의 거리를 고려할 경우 V1->V3 경로의 거리는 100km, V1->V2->V3 경로의 거리는 4km이므로 최단 경로는 V1->V2->V3
-
-<br>
-
-## 📈 진행 요구사항
-- 미션은 [java-subway-path-precourse 저장소](https://github.com/woowacourse/java-subway-path-precourse) 를 fork/clone해 시작한다.
-- 기능을 구현하기 전에 java-subway-path-precourse/docs/README.md 파일에 구현할 기능 목록을 정리해 추가한다.
-- git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가한다.
-  - [AngularJS Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 참고해 commit log를 남긴다.
-- [프리코스 과제 제출 문서](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 절차를 따라 미션을 제출한다.
-  - [프리코스 과제 FAQ](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse/faq) 문서를 참고하여 진행할 수 있다.
 <br>
 
 ## 📝 License
