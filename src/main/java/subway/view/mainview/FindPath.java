@@ -1,7 +1,7 @@
 package subway.view.mainview;
 
 import subway.controller.PathMenuService;
-import subway.controller.inputmenu.PathMenuInput;
+import subway.controller.input.PathMenuInput;
 import subway.domain.Menu;
 import subway.view.pathview.PathMenu;
 

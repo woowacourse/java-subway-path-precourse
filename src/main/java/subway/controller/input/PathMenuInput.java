@@ -1,6 +1,5 @@
-package subway.controller.inputmenu;
+package subway.controller.input;
 
-import subway.controller.InputController;
 import subway.controller.util.InputValidator;
 
 public class PathMenuInput extends InputController {
