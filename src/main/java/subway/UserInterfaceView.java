@@ -2,8 +2,10 @@ package subway;
 
 import java.util.Arrays;
 import java.util.List;
+import subway.domain.Station;
 
 public class UserInterfaceView {
+
 
     private static final int ZERO = 0;
     private static final String STR_ONE = "1";
@@ -61,10 +63,27 @@ public class UserInterfaceView {
         String startStation = Input.getUserInput(Output.START_STATION);
         String endStation = Input.getUserInput(Output.END_STATION);
         if (STR_ONE.equals(userInput)) {
-            // findMinDistance(startStation, endStation);
+            findMinDistance(startStation, endStation);
         }
         if (STR_TWO.equals(userInput)) {
             // findMinTime(startStation, endStation);
+        }
+    }
+
+    private void findMinDistance(String startStation, String endStation) {
+        List<String> path = GraphService.getMinDistancePath(startStation, endStation);
+        sumDistanceAndTimeAndPrint(path);
+    }
+
+    private void sumDistanceAndTimeAndPrint(List<String> path) {
+        int distance = ZERO;
+        int time = ZERO;
+        int findMaxSize = path.size() - 1;
+        for (int sourceIndex = ZERO; sourceIndex < findMaxSize; sourceIndex++) {
+            int targetIndex = sourceIndex + 1;
+            int[] data= StationService.getDistanceAndTime(path.get(sourceIndex), path.get(targetIndex));
+            distance += data[Station.DISTANCE_INDEX];
+            time += data[Station.TIME_INDEX];
         }
     }
 }
