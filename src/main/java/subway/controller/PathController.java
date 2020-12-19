@@ -1,5 +1,6 @@
 package subway.controller;
 
+import subway.view.InputView;
 import subway.view.Options;
 
 import java.util.HashMap;
@@ -16,6 +17,18 @@ public class PathController {
 		options.put(Options.QUIT.getOption(), (scanner) -> {});
 	}
 
+	private static void findLeastDistance(Scanner scanner) {
+		// TODO
+		String start = InputView.inputStartStation(scanner);
+		String end = InputView.inputEndStation(scanner, start);
+	}
+
+	private static void findLeastTimeConsumed(Scanner scanner) {
+		// TODO
+		String start = InputView.inputStartStation(scanner);
+		String end = InputView.inputEndStation(scanner, start);
+	}
+
 	private static void controlByOption(String option, Scanner scanner) {
 		options.get(option).accept(scanner);
 		if (option.equals(Options.BACK.getOption())) {
@@ -24,16 +37,15 @@ public class PathController {
 		run(scanner);
 	}
 
-	private static void findLeastDistance(Scanner scanner) {
-		// TODO
-	}
-
-	private static void findLeastTimeConsumed(Scanner scanner) {
-		// TODO
-	}
-
 	public static void run(Scanner scanner) {
 		// TODO
-
+		try {
+			String option = InputView.inputScreenOption(scanner, options);
+			controlByOption(option, scanner);
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+			System.out.println();
+			run(scanner);
+		}
 	}
 }

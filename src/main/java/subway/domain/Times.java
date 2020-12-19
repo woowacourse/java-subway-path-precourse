@@ -1,6 +1,7 @@
 package subway.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Times {
@@ -11,5 +12,9 @@ public class Times {
 				.getTimes()
 				.times
 				.add(location, time);
+	}
+
+	public List<Integer> times() {
+		return Collections.unmodifiableList(times);
 	}
 }

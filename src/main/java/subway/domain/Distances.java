@@ -1,6 +1,7 @@
 package subway.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Distances {
@@ -11,5 +12,9 @@ public class Distances {
 				.getDistances()
 				.distances
 				.add(location, distance); // index = user's input location - 1
+	}
+
+	public List<Integer> distances() {
+		return Collections.unmodifiableList(distances);
 	}
 }

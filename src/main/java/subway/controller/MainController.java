@@ -1,5 +1,6 @@
 package subway.controller;
 
+import subway.view.InputView;
 import subway.view.MainMessages;
 import subway.view.Options;
 
@@ -26,6 +27,14 @@ public class MainController {
 
 	public static void run(Scanner scanner) {
 		//TODO
+		try {
+			String option = InputView.inputScreenOption(scanner, options);
+			controlByOption(option, scanner);
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+			System.out.println();
+			run(scanner);
+		}
 	}
 
 }
