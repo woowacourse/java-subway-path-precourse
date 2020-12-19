@@ -21,19 +21,14 @@ public class SubwayController {
 
     public void run() {
         while (true) {
-            try {
-                OutputView.mainView();
-                String status = InputView.inputFunction(scanner);
-                Category.MAIN.isValidFunction(status, Category.MAIN.getActionType());
+            OutputView.mainView();
+            String status = InputView.inputFunction(scanner, Category.MAIN.getActionType());
 
-                if (status.equals("1")) {
-                    routeLookup();
-                }
-                if (status.equals("Q")) {
-                    break;
-                }
-            } catch (IllegalArgumentException ie) {
-                System.out.println(ie.getMessage());
+            if (status.equals("1")) {
+                routeLookup();
+            }
+            if (status.equals("Q")) {
+                break;
             }
         }
     }
@@ -41,8 +36,7 @@ public class SubwayController {
     public void routeLookup() {
         try {
             OutputView.path_standardView();
-            String status = InputView.inputFunction(scanner);
-            Category.ROUTE.isValidFunction(status, Category.ROUTE.getActionType());
+            String status = InputView.inputFunction(scanner, Category.ROUTE.getActionType());
 
             Station startStation = StationRepository.findByName(InputView.inputStartStation(scanner));
             Station arrivalStation = StationRepository.findByName(InputView.inputArriveStation(scanner));
