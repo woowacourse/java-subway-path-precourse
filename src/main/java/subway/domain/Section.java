@@ -1,5 +1,7 @@
 package subway.domain;
 
+import subway.repository.StationRepository;
+
 /**
  * @author yhh1056
  * @since 2020/12/19

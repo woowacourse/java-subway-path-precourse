@@ -1,11 +1,11 @@
-package subway;
+package subway.setUp;
 
 import subway.domain.Line;
-import subway.domain.LineRepository;
+import subway.repository.LineRepository;
 import subway.domain.Section;
-import subway.domain.SectionRepository;
+import subway.repository.SectionRepository;
 import subway.domain.Station;
-import subway.domain.StationRepository;
+import subway.repository.StationRepository;
 import subway.domain.Street;
 import subway.domain.Time;
 

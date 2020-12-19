@@ -1,7 +1,8 @@
-package subway.domain;
+package subway.repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import subway.domain.Section;
 
 /**
  * @author yhh1056

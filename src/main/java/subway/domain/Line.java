@@ -2,6 +2,7 @@ package subway.domain;
 
 import java.util.LinkedList;
 import java.util.List;
+import subway.repository.StationRepository;
 
 public class Line {
     private String name;
