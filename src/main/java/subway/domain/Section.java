@@ -24,6 +24,10 @@ public class Section {
         return this.distance;
     }
 
+    public Set<Station> stationsSet() {
+        return stations;
+    }
+
     @Override
     public int hashCode() {
         return this.stations.hashCode();
