@@ -1,5 +1,7 @@
 package subway.view;
 
+import subway.domain.StationGraph;
+
 public class OutputView {
     private static final String MAIN_DISPLAY = "\n## 메인 화면\n1. 경로 조회\nQ. 종료";
     private static final String SUCCESS_MESSAGE_FORMAT = "\n[INFO] %s";
@@ -34,6 +36,9 @@ public class OutputView {
         System.out.printf(SUCCESS_MESSAGE_FORMAT, total_time);
         System.out.printf(SUCCESS_MESSAGE_FORMAT, CONTOUR);
         // 경로
+        StationGraph.getStationList().stream().forEach(item -> {
+            System.out.printf(SUCCESS_MESSAGE_FORMAT, item.getName());
+        });
         System.out.println();
     }
 }

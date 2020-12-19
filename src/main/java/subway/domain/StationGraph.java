@@ -13,6 +13,7 @@ public class StationGraph {
     private static int[] dist = new int[Init.initList.size() + 1];
     private static int[] time = new int[Init.initList.size() + 1];
     private static boolean[] check = new boolean[Init.initList.size() + 1];
+    private static List<Station> stationList = new ArrayList<>();
 
     public StationGraph() {
         stationDistanceGraph = new ArrayList<>();
@@ -22,11 +23,19 @@ public class StationGraph {
         return stationDistanceGraph;
     }
 
+    public static List<Station> getStationList() {
+        return stationList;
+    }
+
     public static List<Integer> dijkstra(int start, int end) {
         Arrays.fill(dist, Integer.MAX_VALUE);
+        Arrays.fill(time, Integer.MAX_VALUE);
         Arrays.fill(check, false);
+        stationList.clear();
         pq.offer(new Section(start, 0));
         dist[start] = 0;
+        time[start] = 0;
+        stationList.add(new Station(Init.findStationName(start)));
 
         while (!pq.isEmpty()) {
             detailDijkstra();
@@ -49,8 +58,15 @@ public class StationGraph {
             if (!check[node.getEndStation()] && dist[node.getEndStation()] > dist[cur] + node.getDistance()) {
                 dist[node.getEndStation()] = dist[cur] + node.getDistance();
                 time[node.getEndStation()] = time[cur] + node.getTime();
+                addStation(cur);
                 pq.add(new Section(node.getEndStation(), dist[node.getEndStation()]));
             }
+        }
+    }
+
+    private static void addStation(int cur) {
+        if (stationList.stream().noneMatch(i -> Init.findStationNumber(i.getName()) == cur)) {
+            stationList.add(new Station(Init.findStationName(cur)));
         }
     }
 
@@ -58,9 +74,11 @@ public class StationGraph {
         Arrays.fill(dist, Integer.MAX_VALUE);
         Arrays.fill(time, Integer.MAX_VALUE);
         Arrays.fill(check, false);
+        stationList.clear();
         pq.offer(new Section(start, 0));
         dist[start] = 0;
         time[start] = 0;
+        stationList.add(new Station(Init.findStationName(start)));
 
         while (!pq.isEmpty()) {
             detailDijkstraTime();
@@ -83,6 +101,7 @@ public class StationGraph {
             if (!check[node.getEndStation()] && time[node.getEndStation()] > time[cur] + node.getTime()) {
                 dist[node.getEndStation()] = dist[cur] + node.getDistance();
                 time[node.getEndStation()] = time[cur] + node.getTime();
+                addStation(cur);
                 pq.add(new Section(node.getEndStation(), dist[node.getEndStation()]));
             }
         }
