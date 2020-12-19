@@ -27,6 +27,12 @@ public class Basis {
         return dstStation;
     }
 
+
+    public void validate() throws InvalidInputException {
+        BasisChoice.validate(this.basis);
+        validateStations();
+    }
+
     private void validateStations() {
         validateSrcAndDstDifferent();
         validateStationsExist();
@@ -34,7 +40,7 @@ public class Basis {
 
     private void validateSrcAndDstDifferent() throws InvalidInputException {
         if (srcStation.equals(dstStation))
-            throw new InvalidInputException(InvalidInputException.ExceptionCode.INVALID_SRC_AND_DST);
+            throw new InvalidInputException(InvalidInputException.ExceptionCode.SAME_SRC_AND_DST);
     }
 
     private void validateStationsExist() throws InvalidInputException {
@@ -50,10 +56,5 @@ public class Basis {
     private void validateDstStation() throws InvalidInputException {
         if (!StationRepository.stations().contains(dstStation))
             throw new InvalidInputException(InvalidInputException.ExceptionCode.NO_SUCH_STATION);
-    }
-
-    public void validate() {
-        BasisChoice.validate(this.basis);
-        validateStations();
     }
 }

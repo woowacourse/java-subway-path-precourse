@@ -20,16 +20,15 @@ public class PathService {
     public PathResult searchPath(Basis basis) throws InvalidInputException {
         this.basis = basis;
         this.basis.validate();
-        pathCalculator.initGraph(this.basis);
         GraphPath result = pathCalculator.calculate();
         return buildPathResult(result);
     }
 
     private PathResult buildPathResult(GraphPath result) throws InvalidInputException {
         validatePathAvailable(result);
-        if (basis.getBasis().equals(BasisChoice.DISTANCE.getCode()))
+        if (this.basis.getBasis().equals(BasisChoice.DISTANCE.getCode()))
             return new PathResult(result.getWeight(), calcTotalTime(result), result.getVertexList());
-        if (basis.getBasis().equals(BasisChoice.TIME.getCode()))
+        if (this.basis.getBasis().equals(BasisChoice.TIME.getCode()))
             return new PathResult(calcTotalDistance(result), result.getWeight(), result.getVertexList());
         throw new InvalidInputException(InvalidInputException.ExceptionCode.INVALID_BASIS_CODE);
     }

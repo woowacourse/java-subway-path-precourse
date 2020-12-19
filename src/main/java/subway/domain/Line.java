@@ -6,8 +6,6 @@ import java.util.List;
 public class Line {
 
     private String name;
-    private Station upEnd;
-    private Station downEnd;
     private List<Path> paths = new ArrayList<>();
 
     public Line(String name) {
@@ -22,7 +20,7 @@ public class Line {
         return paths;
     }
 
-    public void addPath(List<Path> paths) {
+    public void addPaths(List<Path> paths) {
         this.paths = paths;
     }
 }

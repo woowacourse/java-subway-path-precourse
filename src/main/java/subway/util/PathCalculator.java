@@ -15,7 +15,13 @@ public class PathCalculator {
     private WeightedMultigraph<Station, DefaultWeightedEdge> graph;
     private Basis basis;
 
-    public void initGraph(Basis basis) {
+    public GraphPath calculate() {
+        this.initGraph(this.basis);
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
+        return dijkstraShortestPath.getPath(basis.getSrcStation(), basis.getDstStation());
+    }
+
+    private void initGraph(Basis basis) {
         graph = new WeightedMultigraph(DefaultWeightedEdge.class);
         this.basis = basis;
         initVertices();
@@ -44,11 +50,5 @@ public class PathCalculator {
             graph.setEdgeWeight(graph.addEdge(path.getSrcStation(), path.getDstStation()), path.getDistance());
         if (basis.getBasis().equals(BasisChoice.TIME.getCode()))
             graph.setEdgeWeight(graph.addEdge(path.getSrcStation(), path.getDstStation()), path.getTime());
-    }
-
-
-    public GraphPath calculate() {
-        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
-        return dijkstraShortestPath.getPath(basis.getSrcStation(), basis.getDstStation());
     }
 }

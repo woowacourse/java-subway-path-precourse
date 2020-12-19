@@ -2,7 +2,6 @@ package subway.repository;
 
 import subway.constant.InitialData;
 import subway.domain.Line;
-import subway.domain.Station;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -31,7 +30,7 @@ public class LineRepository {
     public static void initLines() {
         for (int i = 0; i < InitialData.lines.size(); i++) {
             addLine(InitialData.lines.get(i));
-            InitialData.lines.get(i).addPath(InitialData.linePaths.get(i));
+            InitialData.lines.get(i).addPaths(InitialData.linePaths.get(i));
         }
     }
 }
