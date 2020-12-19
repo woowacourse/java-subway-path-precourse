@@ -14,4 +14,9 @@ public class Input {
         System.out.println(MESSAGE_SELECT_MENU);
         return scanner.nextLine();
     }
+
+    public static String getPathCriteriaScreenInput() {
+        System.out.println(MESSAGE_SELECT_MENU);
+        return scanner.nextLine();
+    }
 }
