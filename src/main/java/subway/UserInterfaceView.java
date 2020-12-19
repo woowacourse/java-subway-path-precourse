@@ -52,6 +52,17 @@ public class UserInterfaceView {
         if (B.equals(userInput)) {
             return;
         }
-        // TODO - 다음함수 호출하기
+        routeSearchToNextFunction(userInput);
+    }
+
+    private void routeSearchToNextFunction(String userInput) {
+        String startStation = Input.getUserInput(Output.START_STATION);
+        String endStation = Input.getUserInput(Output.END_STATION);
+        if (ONE.equals(userInput)) {
+            // TODO - 최단거리 함수 호출하기
+        }
+        if (TWO.equals(userInput)) {
+            // TODO - 최소거리 함수 호출하기
+        }
     }
 }
