@@ -16,6 +16,7 @@ public class SubwayPath {
 
     private void run(){
         OutputView.printMainView();
+        
     }
 
 }

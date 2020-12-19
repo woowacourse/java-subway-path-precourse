@@ -11,13 +11,10 @@ public class OutputView {
         for(MainMenu mainMenu : MainMenu.values()){
             System.out.printf(Constant.VIEW_MENU_FORMAT, mainMenu.getOrder(), mainMenu.getMenuMessage());
         }
+        printAskingFunction();
     }
 
     public static void printPathRuleView(){
-
-    }
-
-    public static void printAskingFunction(){
 
     }
 
@@ -33,8 +30,13 @@ public class OutputView {
 
     }
 
-    private static final void printHeader(){
+    private static void printHeader(){
         System.out.print(Constant.VIEW_HEADER);
     }
 
+    private static void printAskingFunction(){
+        System.out.println();
+        printHeader();
+        System.out.println(Constant.VIEW_ASKING_FUNCTION);
+    }
 }
