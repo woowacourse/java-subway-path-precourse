@@ -4,28 +4,20 @@ import java.util.Scanner;
 
 public class ShortestDistanceController {
     public static void run(Scanner scanner) {
-        System.out.println("## 경로 기준\n" +
-                "1. 최단 거리\n" +
-                "2. 최소 시간\n" +
-                "B. 돌아가기\n" +
-                "\n" +
-                "## 원하는 기능을 선택하세요.");
-        String userInput = scanner.nextLine();
+        System.out.println("## 출발역을 입력하세요.");
+        String departureStation = scanner.nextLine();
+        System.out.println();
+        System.out.println("## 도착역을 입력하세요.");
+        String arrivalStation = scanner.nextLine();
+        System.out.println();
 
-        boolean inputCheck = false;
-        if (userInput.equals("1")) {
-            inputCheck = true;
-        }
-        if (userInput.equals("2")) {
-            inputCheck = true;
-        }
-        if (userInput.equals("B")) {
-            inputCheck = true;
-            SubwayController.run(scanner);
-        }
-        if (inputCheck == false) {
-            System.out.println("[ERROR] 올바른 번호를 입력해주세요");
-            run(scanner);
-        }
+        searchResult();
+    }
+    public static void searchResult() {
+        System.out.println("[INFO] ---\n" +
+                "[INFO] 총 거리: " + "몇키로" + "\n" +
+                "[INFO] 총 소요 시간: " + "몇시간" + "\n" +
+                "[INFO] ---");
+
     }
 }
