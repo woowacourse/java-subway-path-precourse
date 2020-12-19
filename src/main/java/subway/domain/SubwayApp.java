@@ -19,7 +19,7 @@ public class SubwayApp {
     public void run() {
         try {
             printMainMenu();
-            MainMenu selectedMainMenu = findMainMenyByOption(inputView.inputMainMenuOption());
+            MainMenu selectedMainMenu = findMainMenuByOption(inputView.inputMainMenuOption());
             if (selectedMainMenu == EXIT) {
                 return;
             }

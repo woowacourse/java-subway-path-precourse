@@ -14,7 +14,7 @@ public enum MainMenu {
         this.message = message;
     }
 
-    public static MainMenu findMainMenyByOption(String option) {
+    public static MainMenu findMainMenuByOption(String option) {
         return Arrays.stream(values())
                 .filter(value -> value.getOption().equals(option))
                 .findFirst().orElseThrow(IllegalArgumentException::new);

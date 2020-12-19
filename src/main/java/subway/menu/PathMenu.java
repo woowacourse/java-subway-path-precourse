@@ -15,7 +15,7 @@ public enum PathMenu {
         this.message = message;
     }
 
-    public static PathMenu findMainMenyByOption(String option) {
+    public static PathMenu findPathMenuByOption(String option) {
         return Arrays.stream(values())
                 .filter(value -> value.getOption().equals(option))
                 .findFirst().orElseThrow(IllegalArgumentException::new);
