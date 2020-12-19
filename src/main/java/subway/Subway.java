@@ -16,6 +16,9 @@ import subway.view.Input;
 import subway.view.Output;
 
 public class Subway {
+    private static final String INQURY_ROUTE = "1";
+    private static final String SHORTEST_DISTANCE_ROUTE = "1";
+    
     public static boolean progress = true;
 	
     public Subway(Scanner scanner) {
@@ -26,9 +29,24 @@ public class Subway {
     public void run() {
         while (progress) {
             Output.printMenu(new MainScreen());
+            if (Input.chooseFunction().equals(INQURY_ROUTE)) {
+                executeRouteCriterionMenu();
+            }
         }
     }
-
+    
+    public void executeRouteCriterionMenu() {
+        Output.printMenu(new RouteCriterionScreen());
+        if (Input.chooseFunction().equals(SHORTEST_DISTANCE_ROUTE)) {
+            Station departureStation = StationRepository.getStationByName(Input.inputDepartureStation());
+            Station arrivalStation = StationRepository.getStationByName(Input.inputArrivalStation());
+            List<Station> shortestDistancePath = Route.getShortestDistanceRoute(departureStation, arrivalStation);
+            for (Station station : shortestDistancePath) {
+                Output.printResult(station.getName());
+            }
+        }
+    }
+   
     public void initialization() {
         initializeStation();
         initializeLine();
