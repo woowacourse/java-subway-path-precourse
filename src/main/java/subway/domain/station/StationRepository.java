@@ -1,5 +1,7 @@
 package subway.domain.station;
 
+import subway.exception.station.DuplicateStationNameException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -10,6 +12,13 @@ public class StationRepository {
 
     public static List<Station> stations() {
         return Collections.unmodifiableList(stations);
+    }
+
+    public static void save(Station station) {
+        if (stations.contains(station)) {
+            throw new DuplicateStationNameException(station.getName());
+        }
+        stations.add(station);
     }
 
     public static void addStation(Station station) {

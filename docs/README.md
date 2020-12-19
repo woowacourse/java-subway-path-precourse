@@ -255,6 +255,7 @@ public void getDijkstraShortestPath() {
   - 경로기준 화면 (o)
   - 메뉴에 있는 번호가 아니면 `[ERROR] 선택할 수 없는 기능입니다.` (o)
 - **Station 설정 및 초기 값 저장**
+  - 초기 값 저장시 station이름 중복 확인 `[ERROR] '%s'은 이미 존재합니다.` (o)
 - **Line 설정 및 저장 초기 값 저장**
 - **경로기준**
   - 최단거리
