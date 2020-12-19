@@ -1,8 +1,8 @@
 package subway;
 
-import subway.domain.MainScreen;
-import subway.domain.ScreenManager;
-import subway.domain.ScreenModel;
+import subway.screen.MainScreen;
+import subway.screen.ScreenManager;
+import subway.screen.ScreenModel;
 
 import java.util.Scanner;
 

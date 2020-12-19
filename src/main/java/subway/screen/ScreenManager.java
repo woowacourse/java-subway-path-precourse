@@ -1,4 +1,4 @@
-package subway.domain;
+package subway.screen;
 
 import java.util.Objects;
 import java.util.Stack;

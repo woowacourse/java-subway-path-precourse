@@ -1,4 +1,4 @@
-package subway.domain;
+package subway.menu;
 
 public class Menu {
     public enum Main {

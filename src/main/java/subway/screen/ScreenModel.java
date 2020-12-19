@@ -1,4 +1,4 @@
-package subway.domain;
+package subway.screen;
 
 public interface ScreenModel {
     public default String showMenu() {return null;}

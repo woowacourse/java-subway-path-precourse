@@ -1,4 +1,4 @@
-package subway.domain;
+package subway.view;
 
 import java.util.Scanner;
 

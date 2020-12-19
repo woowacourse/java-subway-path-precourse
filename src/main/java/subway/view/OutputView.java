@@ -1,4 +1,6 @@
-package subway.domain;
+package subway.view;
+
+import subway.menu.Menu;
 
 public class OutputView {
 
