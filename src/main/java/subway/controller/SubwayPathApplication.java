@@ -13,6 +13,7 @@ public class SubwayPathApplication {
 			try {
 				MainMenu.getInstance().printMenu();
 				selectedMenu = MainMenuInput.getInstance().getUserInput(scanner);
+				MainMenuService.selectMenu(selectedMenu, scanner);
 			} catch (IllegalArgumentException e) {
 				System.out.println(e.getMessage());
 			}
