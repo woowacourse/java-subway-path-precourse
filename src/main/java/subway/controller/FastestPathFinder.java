@@ -34,7 +34,7 @@ public class FastestPathFinder {
         StringBuilder sb = new StringBuilder();
         sb.append("\n## 조회 결과");
         sb.append("\n[INFO] ---");
-        sb.append("\n[INFO] 총 거리: " + length + "km");
+        sb.append("\n[INFO] 총 거리: " + length + "분");
         sb.append("\n[INFO] ---");
         for (String station : pathList) {
             sb.append("\n[INFO]");
