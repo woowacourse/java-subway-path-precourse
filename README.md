@@ -272,7 +272,7 @@ This project is [MIT](https://github.com/woowacourse/java-subway-path-precourse/
     - [x] 둘이 같은 역일 시 에러메세지를 출력한다. 
     - [x] 존재하지 않는 역일 시 에러메세지를 출력한다.
   - [x] 사용자 입력이 B인 경우 메인으로 돌아간다.
-- [ ] 최소 경로 탐색
+- [x] 최소 경로 탐색
   - [x] 그래프를 초기화한다.
   - [x] jgrapht 라이브러리를 활용한 유틸을 활용하여 최소 경로를 검색한다.
-  - [ ] 결과를 출력한다.
+  - [x] 결과를 출력한다.
