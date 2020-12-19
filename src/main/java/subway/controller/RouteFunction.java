@@ -39,7 +39,7 @@ public class RouteFunction {
             int distance = SubwayMap.findShortestTimeOfDistance(paths);
             routeOutputView.printRoute(distance, time, paths);
         } catch (NullPointerException e) {
-            System.out.println(e.getMessage());
+            return;
         }
     }
 
