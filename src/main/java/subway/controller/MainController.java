@@ -7,9 +7,6 @@ import subway.view.OutputView;
 
 public class MainController {
 
-    public MainController() {
-    }
-
     public void run() {
         while (true) {
             try {
@@ -23,6 +20,7 @@ public class MainController {
     }
 
     private void chooseFunction() {
+        MainFunction.printFunctions();
         MainFunction.runFunction(InputView.getInputString());
     }
 }
