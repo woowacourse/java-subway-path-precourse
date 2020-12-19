@@ -30,7 +30,7 @@ public enum MenuType {
     public void validateMenuRange(String menu) {
         boolean isContains = this.keys.contains(menu);
         if (!isContains) {
-            throw new IllegalArgumentException("[ERROR] 선택할 수 없는 기능입니다.");
+            throw new IllegalArgumentException("\n[ERROR] 선택할 수 없는 기능입니다.");
         }
     }
 }

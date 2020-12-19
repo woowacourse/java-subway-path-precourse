@@ -7,6 +7,8 @@ import subway.service.SubwayService;
 
 import java.util.Scanner;
 
+import static subway.domain.MenuType.MAIN_MENU_RANGE;
+
 public class SubwayController {
     private final InputService inputService = new InputService();
     private final SubwayService subwayService = new SubwayService();
@@ -16,7 +18,7 @@ public class SubwayController {
         try {
             while (!MenuType.MAIN_EXIT.isKeyEquals(menu)) {
                 OutputView.printMainMenu();
-                menu = inputService.inputSelectMenu(scanner);
+                menu = inputService.inputSelectMenu(scanner, MAIN_MENU_RANGE);
                 subwayService.selectMainMenu(scanner, menu);
             }
         } catch (IllegalArgumentException e) {
