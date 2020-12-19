@@ -16,11 +16,11 @@ public class PathValidation {
                 throw new SameFromToStationException();
             }
 
-            if(StationService.isAlreadyExistStation(fromStationName)) {
+            if(!StationService.isAlreadyExistStation(fromStationName)) {
                 throw new StationIsNotExistException();
             }
 
-            if(StationService.isAlreadyExistStation(toStationName)) {
+            if(!StationService.isAlreadyExistStation(toStationName)) {
                 throw new StationIsNotExistException();
             }
 
