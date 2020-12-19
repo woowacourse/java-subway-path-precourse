@@ -14,4 +14,5 @@ public class InputView {
         System.out.println(SELECT_YOUR_CHOICE);
         return scanner.next();
     }
+
 }
