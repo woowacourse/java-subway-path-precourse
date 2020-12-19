@@ -23,6 +23,10 @@ public enum MenuType {
         this.keys = keys;
     }
 
+    public boolean isKeyEquals(String menu) {
+        return this.key.equals(menu);
+    }
+
     public void validateMenuRange(String menu) {
         boolean isContains = this.keys.contains(menu);
         if (!isContains) {
