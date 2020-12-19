@@ -2,9 +2,9 @@ package subway.controller;
 
 import java.util.Scanner;
 import subway.domain.InitialInfo;
-import subway.domain.menu.Menu;
+import subway.domain.Menu;
 import subway.view.menu.MenuInputManager;
-import subway.domain.menu.MenuKeys;
+import subway.domain.MenuKeys;
 import subway.view.menu.MenuOutputManager;
 
 public class MainController {

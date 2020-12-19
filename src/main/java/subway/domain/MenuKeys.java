@@ -1,4 +1,4 @@
-package subway.domain.menu;
+package subway.domain;
 
 public enum MenuKeys {
     ONE("1"), TWO("2"), EXIT("Q"), BACK("B");
