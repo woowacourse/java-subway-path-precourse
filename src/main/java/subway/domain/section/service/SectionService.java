@@ -10,8 +10,10 @@ import subway.station.model.Station;
 import java.util.List;
 
 public class SectionService {
+    private static final String START_STATION_IS_EQUAL_TO_ARRIVAL_STATION_MESSAGE = "[ERROR] 출발역과 도착역이 동일합니다.";
 
     public static List<Station> findDistanceShortestPath(Station startStation, Station arrivalStation) {
+        validateFindShortestPath(startStation, arrivalStation);
         WeightedMultigraph<Station, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
         List<Section> sections = SectionRepository.sections();
         sections.stream()
@@ -21,12 +23,19 @@ public class SectionService {
     }
 
     public static List<Station> findRunTimeShortestPath(Station startStation, Station arrivalStation) {
+        validateFindShortestPath(startStation, arrivalStation);
         WeightedMultigraph<Station, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
         List<Section> sections = SectionRepository.sections();
         sections.stream()
                 .forEach(section -> section.updateRunTimeGraph(graph));
 
         return findShortestPath(startStation, arrivalStation, graph);
+    }
+
+    private static void validateFindShortestPath(Station startStation, Station arrivalStation) {
+        if (startStation.equals(arrivalStation)) {
+            throw new IllegalArgumentException(START_STATION_IS_EQUAL_TO_ARRIVAL_STATION_MESSAGE);
+        }
     }
 
     private static List findShortestPath(Station startStation, Station arrivalStation,

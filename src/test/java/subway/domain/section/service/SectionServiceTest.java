@@ -11,6 +11,7 @@ import subway.station.model.Station;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
 class SectionServiceTest {
@@ -56,5 +57,29 @@ class SectionServiceTest {
         assertThat(shortestPath)
                 .usingElementComparatorOnFields("name")
                 .containsExactlyInAnyOrder(startStation, new Station("강남역"), arrivalStation);
+    }
+
+    @DisplayName("출발역과 도착역이 동일하면 최소시간 경로를 찾는 기능은 예외를 발생시킨다")
+    @Test
+    void testFindDistanceShortestPathIfStartStationEqualToArrivalStation() {
+        //given
+        Station startStation = new Station("교대역");
+        Station arrivalStation = new Station("교대역");
+
+        //when //then
+        assertThatThrownBy(() -> SectionService.findDistanceShortestPath(startStation, arrivalStation))
+                .isExactlyInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("출발역과 도착역이 동일하면 최소시간 경로를 찾는 기능은 예외를 발생시킨다")
+    @Test
+    void testFindRunTimeShortestPathIfStartStationEqualToArrivalStation() {
+        //given
+        Station startStation = new Station("교대역");
+        Station arrivalStation = new Station("교대역");
+
+        //when //then
+        assertThatThrownBy(() -> SectionService.findRunTimeShortestPath(startStation, arrivalStation))
+                .isExactlyInstanceOf(IllegalArgumentException.class);
     }
 }
