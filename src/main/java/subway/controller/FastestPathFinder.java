@@ -1,8 +1,10 @@
 package subway.controller;
 
 import subway.Exception.CustomException;
+import subway.domain.DistanceRepository;
 import subway.view.InputView;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class FastestPathFinder {
@@ -19,9 +21,26 @@ public class FastestPathFinder {
         String endStation = askValidStation(PREFIX_END_STATION);
         try {
             Validate.notSameStation(startStation, endStation);
+            printFastestPath(startStation, endStation);
         } catch (CustomException exception) {
             System.out.println(exception.getMessage());
         }
+    }
+
+    private void printFastestPath(String startStation, String endStation) {
+        int length = DistanceRepository.getFastestPathLength(startStation, endStation);
+        List<String> pathList = DistanceRepository.getFastestPath(startStation, endStation);
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n## 조회 결과");
+        sb.append("\n[INFO] ---");
+        sb.append("\n[INFO] 총 거리: " + length + "km");
+        sb.append("\n[INFO] ---");
+        for (String station : pathList) {
+            sb.append("\n[INFO]");
+            sb.append(station);
+        }
+        System.out.println(sb);
     }
 
     private String askValidStation(String stationPrefix) {

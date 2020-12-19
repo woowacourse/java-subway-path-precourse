@@ -27,5 +27,6 @@ public class SubwayProgram {
         Initializer.stationInitialize();
         Initializer.lineInitialize();
         DistanceRepository.initializePathByDistance();
+        DistanceRepository.initializePathByTime();
     }
 }
