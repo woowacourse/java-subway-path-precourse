@@ -11,6 +11,7 @@ public class PathController {
                 "\n" +
                 "## 원하는 기능을 선택하세요.");
         String userInput = scanner.nextLine();
+        System.out.println();
 
         boolean inputCheck = false;
         if (userInput.equals("1")) {
@@ -19,13 +20,14 @@ public class PathController {
         }
         if (userInput.equals("2")) {
             inputCheck = true;
+            MinimumTimeController.run(scanner);
         }
         if (userInput.equals("B")) {
             inputCheck = true;
-            SubwayController.run(scanner);
+            MainController.run(scanner);
         }
         if (inputCheck == false) {
-            System.out.println("[ERROR] 올바른 번호를 입력해주세요");
+            System.out.println("[ERROR] 올바른 문자를 입력해주세요.\n");
             run(scanner);
         }
     }

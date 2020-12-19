@@ -57,10 +57,11 @@ public class ShortestDistanceController {
         }
 
         int shortestDistance = (int) dijkstraShortestPath.getPathWeight(departureStation, arrivalStation);
+        int totalTime = -1;
         System.out.println("## 조회 결과\n" +
                 "[INFO] ---\n" +
                 "[INFO] 총 거리: " + shortestDistance + "km\n" +
-                "[INFO] 총 소요 시간: " + "" + "분\n" +
+                "[INFO] 총 소요 시간: " + totalTime + "분\n" +
                 "[INFO] ---");
 
         for (int i = 0; i < shortestPath.size(); i++) {
@@ -80,6 +81,9 @@ public class ShortestDistanceController {
         }
     }
 
+    /**
+     * 가중치: 소요 거리
+     */
     public static void setEdge() {
         graph.setEdgeWeight(graph.addEdge("교대역", "강남역"), 2);
         graph.setEdgeWeight(graph.addEdge("강남역", "역삼역"), 2);
