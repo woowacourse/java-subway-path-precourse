@@ -1,5 +1,6 @@
 package subway.controller;
 
+import org.jgrapht.graph.DefaultWeightedEdge;
 import subway.domain.SubwayMap;
 import subway.domain.SubwayPath;
 import subway.repository.SubwayPathRepository;
@@ -147,6 +148,13 @@ public class SubwayController {
         validatedDuplicateStationForShortestPath(departureStation, arrivalStation);
         List<String> shortestPath = SubwayMap.getShortestPath(departureStation, arrivalStation);
         validatedDisconnectedPathForShortestPath(shortestPath);
+
+//        int sumWeight = 0;
+//        for (int i = 1; i < shortestPath.size(); i++) {
+//            DefaultWeightedEdge edge = SubwayMap.getShortestPathGraph().getEdge(shortestPath.get(i - 1), shortestPath.get(i));
+//            sumWeight += SubwayMap.getShortestPathGraph().getEdgeWeight(edge);
+//        }
+
         subwayView.printResult(shortestPath);
     }
 

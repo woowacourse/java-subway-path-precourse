@@ -1,7 +1,9 @@
 package subway.view;
 
+import subway.controller.InitialPath;
 import subway.controller.SubwayMessage;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -32,6 +34,7 @@ public class SubwayView {
 
     public void printResult(List<String> stationList) {
         System.out.print(SEARCH_RESULT);
+        System.out.print(INFO_PREFIX + DASH_DIVIDER);
         System.out.print(INFO_PREFIX + DASH_DIVIDER);
         for (String station : stationList) {
             System.out.println(INFO_PREFIX + station);

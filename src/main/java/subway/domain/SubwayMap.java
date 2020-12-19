@@ -28,11 +28,11 @@ public class SubwayMap {
         return subwayPaths;
     }
 
-    public WeightedMultigraph<String, DefaultWeightedEdge> getShortestPathGraph() {
+    public static WeightedMultigraph<String, DefaultWeightedEdge> getShortestPathGraph() {
         return shortestPathGraph;
     }
 
-    public WeightedMultigraph<String, DefaultWeightedEdge> getMinimumTimeGraph() {
+    public static WeightedMultigraph<String, DefaultWeightedEdge> getMinimumTimeGraph() {
         return minimumTimeGraph;
     }
 
