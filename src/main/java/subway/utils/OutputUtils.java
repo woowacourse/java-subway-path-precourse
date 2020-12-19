@@ -39,5 +39,9 @@ public class OutputUtils {
         System.out.println(NEW_LINE+ERROR+"출발역과 도착역이 동일합니다."+NEW_LINE);
     }
 
+    public static void nonExistRouteError(){
+        System.out.println(NEW_LINE+ERROR+"이동 가능한 경로가 없습니다."+NEW_LINE);
+    }
+
     public static void newline() { System.out.printf(NEW_LINE); }
 }

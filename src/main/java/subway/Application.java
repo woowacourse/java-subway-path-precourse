@@ -73,8 +73,11 @@ public class Application {
             OutputUtils.sameStationNameError();
             return true;
         }
-
         ShortestPathRouteService shortestPathRouteService = new ShortestPathRouteService(startStation, endStation);
+        if(!shortestPathRouteService.containRoute()){
+            OutputUtils.nonExistRouteError();
+            return true;
+        }
         return false;
     }
 }

@@ -12,6 +12,7 @@ import subway.domain.StationRepository;
 public class ShortestPathRouteService {
     private WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
     private DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
+    List<String> shortestPath;
     private String startStation;
     private String endStation;
 
@@ -20,6 +21,7 @@ public class ShortestPathRouteService {
         this.endStation = endStation;
         addVertex();
         setEdgeWeight();
+        calculateShortestPath();
     }
 
     public void addVertex(){
@@ -36,5 +38,15 @@ public class ShortestPathRouteService {
             String nextStationName = route.getNext().getName();
             graph.setEdgeWeight(graph.addEdge(currentStationName,nextStationName),route.getDistance());
         }
+    }
+
+    public void calculateShortestPath(){
+        shortestPath = dijkstraShortestPath.getPath(startStation, endStation).getVertexList();
+    }
+
+    public boolean containRoute(){
+        if(shortestPath.size()==0)
+            return false;
+        return true;
     }
 }
