@@ -11,6 +11,7 @@ import java.util.List;
 
 public class SectionService {
     private static final String START_STATION_IS_EQUAL_TO_ARRIVAL_STATION_MESSAGE = "[ERROR] 출발역과 도착역이 동일합니다.";
+    private static final int ZERO = 0;
 
     public static List<Station> findDistanceShortestPath(Station startStation, Station arrivalStation) {
         validateFindShortestPath(startStation, arrivalStation);
@@ -42,5 +43,27 @@ public class SectionService {
                                          WeightedMultigraph<Station, DefaultWeightedEdge> graph) {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
         return dijkstraShortestPath.getPath(startStation, arrivalStation).getVertexList();
+    }
+
+    public static int findTotalDistance(List<Station> path) {
+        List<Section> sections = SectionRepository.sections();
+
+        int pathSize = path.size();
+        int distance = 0;
+        for (int i = 0; i < pathSize - 1; i++) {
+            distance += getDistance(path.get(i), path.get(i + 1), sections);
+        }
+
+        return distance;
+    }
+
+    private static int getDistance(Station startStation, Station arrivalStation, List<Section> sections) {
+        for (Section section : sections) {
+            if (section.isEqualTo(startStation, arrivalStation)) {
+                return section.getDistance();
+            }
+        }
+
+        return ZERO;
     }
 }

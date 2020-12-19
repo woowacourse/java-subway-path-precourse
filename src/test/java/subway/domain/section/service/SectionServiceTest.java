@@ -82,4 +82,19 @@ class SectionServiceTest {
         assertThatThrownBy(() -> SectionService.findRunTimeShortestPath(startStation, arrivalStation))
                 .isExactlyInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("총 거리를 반환하는 기능을 테스트한다")
+    @Test
+    void testFindTotalDistance() {
+        //given
+        Station startStation = new Station("교대역");
+        Station arrivalStation = new Station("역삼역");
+        List<Station> shortestPath = SectionService.findDistanceShortestPath(startStation, arrivalStation);
+
+        //when
+        int totalDistance = SectionService.findTotalDistance(shortestPath);
+
+        //then
+        assertThat(totalDistance).isEqualTo(3);
+    }
 }

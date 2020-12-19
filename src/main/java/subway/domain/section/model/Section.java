@@ -37,4 +37,12 @@ public class Section {
         graph.addVertex(arrivalStation);
         graph.setEdgeWeight(graph.addEdge(startStation, arrivalStation), runTime.getValue());
     }
+
+    public boolean isEqualTo(Station startStation, Station arrivalStation) {
+        return this.startStation.equals(startStation) && this.arrivalStation.equals(arrivalStation);
+    }
+
+    public int getDistance() {
+        return distance.getValue();
+    }
 }
