@@ -24,4 +24,9 @@ public class Initializer {
         lines.forEach(Line::from);
     }
 
+    private void enrolllStationOnLine() {
+        //findLineByName
+        //findLine.addStation(station);
+    }
+
 }
