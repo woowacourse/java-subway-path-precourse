@@ -2,7 +2,6 @@ package subway.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class SectionRepository {
     private static List<Section> sections = new ArrayList<>();

@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class GraphInitializer {
+    public static final String DISTANCE = "km";
+    public static final String TIME = "분";
     public static final String RESULT = "## 조회 결과";
     public static final String DIVIDE_LINE = "[INFO] ---";
     public static final String RESULT_DISTANCE = "[INFO] 총 거리: ";
@@ -74,8 +76,8 @@ public class GraphInitializer {
     public void printResult(List<String> shortestPath) {
         System.out.println(RESULT);
         System.out.println(DIVIDE_LINE);
-        System.out.println(RESULT_DISTANCE + calDistanceOrTime(shortestPath, "distance") + "km");
-        System.out.println(RESULT_TIME + calDistanceOrTime(shortestPath, "time") + "분");
+        System.out.println(RESULT_DISTANCE + calDistanceOrTime(shortestPath, "distance") + DISTANCE);
+        System.out.println(RESULT_TIME + calDistanceOrTime(shortestPath, "time") + TIME);
         System.out.println(DIVIDE_LINE);
     }
 
