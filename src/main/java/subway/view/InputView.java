@@ -22,4 +22,12 @@ public class InputView {
     public String getSelectedBasisInput() {
         return userInputString();
     }
+
+    public String getSrcStationInput() {
+        return userInputString();
+    }
+
+    public String getDstStationInput() {
+        return userInputString();
+    }
 }

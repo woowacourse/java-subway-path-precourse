@@ -34,11 +34,11 @@ public class PathController extends SubwayController {
 
     private String getSrcStation() {
         getOutputView().printInformation(SRC_INFO);
-        return getInputView().getSelectedBasisInput();
+        return getInputView().getSrcStationInput();
     }
 
     private String getDstStation() {
         getOutputView().printInformation(DST_INFO);
-        return getInputView().getSelectedBasisInput();
+        return getInputView().getDstStationInput();
     }
 }
