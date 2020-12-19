@@ -1,6 +1,8 @@
 package subway.controller;
 
 import java.util.Arrays;
+import java.util.List;
+import org.jgrapht.alg.shortestpath.DijkstraManyToManyShortestPaths;
 import subway.domain.Line;
 import subway.domain.LineRepository;
 import subway.domain.SectionRepository;
@@ -21,9 +23,15 @@ public class SubwayController {
     private static final String LineThree = "3호선";
     private static final String LineSinBunDang = "신분당선";
     private final InputView inputView;
+    private final SectionRepository sectionRepository;
+    private static DijkstraManyToManyShortestPaths<String, org.jgrapht.graph.DefaultWeightedEdge> distanceGraphPath;
+    public static DijkstraManyToManyShortestPaths<String, org.jgrapht.graph.DefaultWeightedEdge> timeGraphPath;
 
     public SubwayController(InputView inputView) {
         this.inputView = inputView;
+        sectionRepository = new SectionRepository();
+        distanceGraphPath = new DijkstraManyToManyShortestPaths<>(SectionRepository.getDistanceGraph());
+        timeGraphPath = new DijkstraManyToManyShortestPaths<>(SectionRepository.getTimeGraph());
     }
 
 
@@ -69,37 +77,92 @@ public class SubwayController {
     private void printMainCategory() {
         OutputView.chooseCategory();
         try {
-            MainMenu.execute(inputView.inputValue());
+            mainExecute(inputView.inputValue());
         } catch (SubwayException exception) {
             OutputView.showErrorMessage(exception);
             printMainCategory();
         }
     }
 
-    public static void startPathMenu() {
-        PathMenu.startManage();
-        printPathCategory();
+    public void mainExecute(String inputCategory) {
+        String category = findMainCategory(inputCategory);
+        if(category.equals("1")){
+            PathMenu.startManage();
+            printPathCategory();
+            pathExecute(inputView.inputValue());
+        }
+        if(category.equals("Q")){
+            exitMain();
+        }
     }
 
-    private static void printPathCategory() {
+    private String findMainCategory(String inputCategory) {
+        return Arrays.stream(MainMenu.values())
+            .filter(value -> value.category.equals(inputCategory.toUpperCase()))
+            .findFirst()
+            .orElseThrow(() -> new SubwayException("잘못된 값을 입력했습니다."))
+            .category;
+    }
+
+    private static void exitMain() {
+        System.exit(0);
+    }
+
+    private void printPathCategory() {
         OutputView.chooseCategory();
         try {
-            MainMenu.execute(inputView.inputValue());
+            pathExecute(inputView.inputValue());
         } catch (SubwayException exception) {
             OutputView.showErrorMessage(exception);
             printPathCategory();
         }
     }
 
-    public static void findMinimumDistance() {
-        OutputView.printStartStation();
-        OutputView.printEndStation();
+    public  void pathExecute(String inputCategory) {
+        String category = findPathCategory(inputCategory);
+        if(category.equals("1")){
+            findMinimumDistance();
+            return;
+        }
+        if (category.equals("2")){
+            findMinimumTime();
+            return;
+        }
+
+    }
+
+    private static String findPathCategory(String inputCategory) {
+        return Arrays.stream(PathMenu.values())
+            .filter(value -> value.category.equals(inputCategory.toUpperCase()))
+            .findFirst()
+            .orElseThrow(() -> new SubwayException("잘못된 값을 입력했습니다."))
+            .category;
+    }
+
+    public void findMinimumDistance() {
+        String startStation = inputStartStation();
+        String endStation = inputEndSation();
+        List<String> shortestPath = distanceGraphPath.getPath(startStation,endStation).getVertexList();
+        shortestPath.forEach(System.out::println);
+        OutputView.printResult();
+
+    }
+
+    public void findMinimumTime() {
+        String startStation = inputStartStation();
+        String endStation = inputEndSation();
+        List<String> shortestPath = timeGraphPath.getPath(startStation,endStation).getVertexList();
+        shortestPath.forEach(System.out::println);
         OutputView.printResult();
     }
 
-    public static void findMinimumTime() {
-        OutputView.printStartStation();
+    private String inputEndSation() {
         OutputView.printEndStation();
-        OutputView.printResult();
+        return inputView.inputValue();
+    }
+
+    private String inputStartStation() {
+        OutputView.printStartStation();
+        return inputView.inputValue();
     }
 }

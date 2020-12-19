@@ -27,4 +27,8 @@ public class OutputView {
     public static void printResult(){
         System.out.println("## 조회 결과");
     }
+
+    public static void printPathScreen() {
+        System.out.println("## 경로 기준");
+    }
 }

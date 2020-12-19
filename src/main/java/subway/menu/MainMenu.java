@@ -6,19 +6,15 @@ import subway.exception.SubwayException;
 import subway.view.OutputView;
 
 public enum MainMenu {
-    PATH("1", "1. 경로 조회", SubwayController::startPathMenu),
-    EXIT("Q", "Q. 종료", () -> {
-        System.exit(0);
-    });
+    PATH("1", "1. 경로 조회"),
+    EXIT("Q", "Q. 종료");
 
-    private final String category;
+    public final String category;
     private final String menu;
-    private final Runnable handler;
 
-    MainMenu(String category, String menu, Runnable handler) {
+    MainMenu(String category, String menu) {
         this.category = category;
         this.menu = menu;
-        this.handler = handler;
     }
 
     public static void startManage() {
@@ -27,13 +23,4 @@ public enum MainMenu {
             .forEach(value -> System.out.println(value.menu));
     }
 
-    public static void execute(String inputCategory) {
-        Arrays.stream(values())
-            .filter(value -> value.category.equals(inputCategory.toUpperCase()))
-            .findFirst()
-            .orElseThrow(() -> new SubwayException("잘못된 값을 입력했습니다."))
-            .handler
-            .run();
-        startManage();
-    }
 }
