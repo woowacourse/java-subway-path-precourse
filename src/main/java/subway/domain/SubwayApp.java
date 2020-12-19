@@ -18,6 +18,8 @@ public class SubwayApp {
         try {
             printMainMenu();
             inputView.inputMainMenuOption();
+            printPathMenu();
+            inputView.inputPathMenuOption();
         } catch (Exception e) {
             System.out.println(e.getMessage());
             run();
