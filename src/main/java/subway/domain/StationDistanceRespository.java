@@ -1,5 +1,7 @@
 package subway.domain;
 
+import java.util.List;
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 import subway.domain.constants.DomainErrorMessage;
@@ -7,6 +9,8 @@ import subway.domain.constants.DomainErrorMessage;
 public class StationDistanceRespository {
     private static WeightedMultigraph<String, DefaultWeightedEdge> spaceGraph =
             new WeightedMultigraph(DefaultWeightedEdge.class);
+    private static DijkstraShortestPath dijkstraShortestPath =
+            new DijkstraShortestPath(spaceGraph);
 
     public static void addStationTitle(String stationTitle) {
         spaceGraph.addVertex(stationTitle);
@@ -17,6 +21,20 @@ public class StationDistanceRespository {
         isSameInitialLastStation(initialStation, lastStation);
         DefaultWeightedEdge stationEdge = spaceGraph.addEdge(initialStation, lastStation);
         spaceGraph.setEdgeWeight(stationEdge, distance);
+    }
+
+    public static List<String> getShortestPath(String initialStation, String lastStation) {
+        isSameInitialLastStation(initialStation, lastStation);
+        List<String> shortestPath = dijkstraShortestPath.getPath(initialStation, lastStation)
+                .getVertexList();
+        return shortestPath;
+    }
+
+    public static int getShortestDistance(String initialStation, String lastStation) {
+        isSameInitialLastStation(initialStation, lastStation);
+        int shortestDistance = (int) dijkstraShortestPath.getPath(initialStation, lastStation)
+                .getWeight();
+        return shortestDistance;
     }
 
     private static void isSameInitialLastStation(String initialStation, String lasStation) {
