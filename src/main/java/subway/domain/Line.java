@@ -18,6 +18,9 @@ public class Line {
         return name;
     }
 
+    public List<Path> getPaths() {
+        return paths;
+    }
 
     public void addPath(List<Path> paths) {
         this.paths = paths;

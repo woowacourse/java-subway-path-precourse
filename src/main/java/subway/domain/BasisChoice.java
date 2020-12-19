@@ -18,6 +18,10 @@ public enum BasisChoice {
         this.code = code;
     }
 
+    public String getCode() {
+        return code;
+    }
+
     public static void validate(String input) throws InvalidInputException {
         if (!isAvailable(input))
             throw new InvalidInputException(InvalidInputException.ExceptionCode.INVALID_FUNCTION_CODE);

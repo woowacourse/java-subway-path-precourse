@@ -15,6 +15,10 @@ public class Basis {
         this.dstStation = new Station(dstStationName);
     }
 
+    public String getBasis() {
+        return basis;
+    }
+
     private void validateStations() {
         validateSrcAndDstDifferent();
         validateStationsExist();
