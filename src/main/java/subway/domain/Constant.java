@@ -1,4 +1,4 @@
-package subway;
+package subway.domain;
 
 public class Constant {
     public static final String COMMAND_ONE = "1";

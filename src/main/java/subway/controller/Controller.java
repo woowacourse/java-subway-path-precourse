@@ -1,5 +1,6 @@
-package subway;
+package subway.controller;
 
+import subway.domain.Constant;
 import subway.domain.*;
 import subway.view.Input;
 import subway.view.Output;

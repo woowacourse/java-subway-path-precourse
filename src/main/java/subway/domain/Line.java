@@ -15,9 +15,9 @@ public class Line {
         this.name = name;
     }
 
-    public Line(String name, Station... stations){
+    public Line(String name, Station... stations) {
         this.name = name;
-        for(int i=0; i< stations.length; i++){
+        for (int i = 0; i < stations.length; i++) {
             stationList.add(stations[i]);
         }
     }

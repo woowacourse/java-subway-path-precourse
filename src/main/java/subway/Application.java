@@ -1,5 +1,7 @@
 package subway;
 
+import subway.controller.Controller;
+
 import java.util.Scanner;
 
 public class Application {
