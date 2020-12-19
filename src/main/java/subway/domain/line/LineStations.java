@@ -22,12 +22,11 @@ public class LineStations {
         return false;
     }
 
-    public void addStation(LineStation lineStation) {
-        if (contains(lineStation.getStation())) {
-            throw new StationAlreadyInLineException(lineStation.getStationName());
+    public void add(Station station) {
+        LineStation newLineStation = LineStation.of(station);
+        if (contains(newLineStation.getStation())) {
+            throw new StationAlreadyInLineException(station.getName());
         }
-        lineStations.add(lineStation);
+        lineStations.add(newLineStation);
     }
-
-    public void addRouteInto() {}
 }

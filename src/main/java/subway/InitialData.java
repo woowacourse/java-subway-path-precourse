@@ -1,5 +1,6 @@
 package subway;
 
+import subway.domain.line.Line;
 import subway.domain.station.Station;
 import subway.domain.station.StationRepository;
 
@@ -19,5 +20,8 @@ public class InitialData {
         StationRepository.saveAll(
                 Arrays.asList(station1, station2, station3, station4, station5, station6, station7)
         );
+
+        Line line1 = Line.makeList("2호선", station1);
+        line1.
     }
 }

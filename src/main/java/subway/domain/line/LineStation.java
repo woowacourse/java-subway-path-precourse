@@ -17,4 +17,8 @@ public class LineStation {
     public Station getStation() {
         return station;
     }
+
+    public static LineStation of(Station station) {
+        return new LineStation(station);
+    }
 }
