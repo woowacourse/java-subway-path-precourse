@@ -10,6 +10,9 @@ public class InitSubway {
     public static void initSubway() {
         initStation();
         initLine();
+        PathRepository.init();
+        TimeGraph.init();
+        DistanceGraph.init();
     }
 
     private static void initStation() {

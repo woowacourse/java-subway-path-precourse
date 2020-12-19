@@ -15,7 +15,7 @@ public class Line {
         return name;
     }
     // 추가 기능 구현
-    public List<Station> getStation() {
+    public List<Station> getStations() {
         return stations;
     }
 }
