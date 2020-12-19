@@ -1,6 +1,7 @@
 package subway;
 
 import subway.view.InputView;
+import subway.view.Prefix;
 import subway.view.screen.SearchView;
 import subway.view.selection.MainSelection;
 import subway.view.OutputView;
@@ -20,8 +21,14 @@ public class SubwayManageApp {
         MainView mainView = new MainView(outputView);
         while (true) {
             mainView.showOptions();
-            MainSelection mainSelection = new MainSelection(inputView.inputNextLine());
-            chooseOption(mainSelection);
+            MainSelection mainSelection;
+            try {
+                mainSelection = new MainSelection(inputView.inputNextLine());
+                chooseOption(mainSelection);
+            } catch (Exception exception) {
+                System.out.println(Prefix.ENTER.getPrefix() + Prefix.ERROR.getPrefix() + exception.getMessage());
+                continue;
+            }
             if (mainSelection.isQuit()) {
                 break;
             }
@@ -36,9 +43,17 @@ public class SubwayManageApp {
 
     private void manageSearch() {
         SearchView searchView = new SearchView(outputView);
-        searchView.showOptions();
-        SearchSelection searchSelection = new SearchSelection(inputView.inputNextLine());
-        chooseSearchOption(searchSelection);
+        while (true) {
+            try {
+                searchView.showOptions();
+                SearchSelection searchSelection = new SearchSelection(inputView.inputNextLine());
+                chooseSearchOption(searchSelection);
+                break;
+            } catch (Exception exception) {
+                System.out.println(Prefix.ENTER.getPrefix() + Prefix.ERROR.getPrefix() + exception.getMessage());
+                continue;
+            }
+        }
     }
 
     private void chooseSearchOption(SearchSelection searchSelection) {
