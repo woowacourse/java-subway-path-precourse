@@ -1,9 +1,20 @@
 package subway.controller;
 
+import subway.exception.SubwayMapException;
+import subway.service.PathService;
+import subway.view.OutputView;
+
 public class PathController {
     private PathController() {}
 
-    public void calculateShortDistance() {}
+    public void calculateShortDistance() {
+        try {
+            PathService.calculateShortDistance();
+        } catch (SubwayMapException e) {
+            OutputView.printNewLine();
+            OutputView.print(e.getMessage());
+        }
+    }
 
     public void calculateMinimumTime() {}
 
