@@ -1,6 +1,7 @@
 package subway.controller;
 
 import java.util.Scanner;
+import subway.domain.InitialInfo;
 import subway.domain.menu.Menu;
 import subway.domain.menu.MenuInputManager;
 import subway.domain.menu.MenuKeys;
@@ -16,6 +17,7 @@ public class MainController {
     }
     //todo : 정보 초기화
     private void initInfo() {
+        new InitialInfo();
     }
 
     public void run() {
