@@ -30,11 +30,18 @@ public class SubwayController {
             Station startStation = StationRepository.findStationByName(inputView.receiveStart());
             Station finishStation = StationRepository.findStationByName(inputView.receiveFinish());
 
+            checkValidStations(startStation, finishStation);
+
             makeShortestTime(startStation, finishStation);
             makeShortestLength(startStation, finishStation);
         }
     }
 
+    public static void checkValidStations(Station startStation, Station finishStation){
+        if(startStation.equals(finishStation)){
+            throw new IllegalArgumentException("출발역과 도착역이 같을 수 없습니다.");
+        }
+    }
     public static void makeShortestTime(Station startStation, Station finishStation) {
         ShortestTimeReport shortestTimeReport = new ShortestTimeReport(SubwayTimeRepository.subwayTime());
         shortestTimeReport.makePaths(startStation, finishStation);
@@ -42,6 +49,8 @@ public class SubwayController {
         int totalTime = shortestTimeReport.calculateTotalTime();
         int totalLength = shortestTimeReport.calculateTotalLength();
 
+        OutputView.printReport(totalLength, totalTime);
+        OutputView.printStations(shortestTimeReport.makeStations().stream().map(Station::toString).collect(Collectors.toList()));
     }
 
     private void makeShortestLength(Station startStation, Station finishStation) {
