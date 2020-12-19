@@ -1,5 +1,7 @@
 package subway.utils;
 
+import java.util.List;
+
 public class OutputUtils {
     private final static String INFORMATION = "[INFO] ";
     private final static String ERROR = "[ERROR] ";
@@ -18,6 +20,17 @@ public class OutputUtils {
         System.out.println("B. 돌아가기"+NEW_LINE);
     }
 
+    public static void shortestPathResult(List<String> stationList){
+        System.out.println("## 조회 결과");
+        System.out.println(INFORMATION+"---");
+        System.out.println(INFORMATION+"총 거리: ");
+        System.out.println(INFORMATION+"총 소요 시간: ");
+        System.out.println(INFORMATION+"---");
+        for(String station: stationList){
+            System.out.println(INFORMATION+station);
+        }
+        newline();
+    }
 
     public static void selectMenu(){
         System.out.println("## 원하는 기능을 선택하세요.");

@@ -1,5 +1,6 @@
 package subway.service;
 
+import java.util.Collections;
 import java.util.List;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
@@ -49,4 +50,6 @@ public class ShortestPathRouteService {
             return false;
         return true;
     }
+
+    public List<String> getShortestPath() {return Collections.unmodifiableList(shortestPath);}
 }

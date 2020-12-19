@@ -73,11 +73,17 @@ public class Application {
             OutputUtils.sameStationNameError();
             return true;
         }
+
+        return getShortestPath(startStation, endStation);
+    }
+
+    public static boolean getShortestPath(String startStation,String endStation){
         ShortestPathRouteService shortestPathRouteService = new ShortestPathRouteService(startStation, endStation);
         if(!shortestPathRouteService.containRoute()){
             OutputUtils.nonExistRouteError();
             return true;
         }
+        OutputUtils.shortestPathResult(shortestPathRouteService.getShortestPath());
         return false;
     }
 }
