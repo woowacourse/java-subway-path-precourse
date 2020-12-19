@@ -3,6 +3,7 @@ package subway;
 import subway.view.InputView;
 import subway.view.MainSelection;
 import subway.view.OutputView;
+import subway.view.SearchSelection;
 import subway.view.screen.MainView;
 
 public class SubwayManageApp {
@@ -28,7 +29,12 @@ public class SubwayManageApp {
 
     private void chooseOption(MainSelection mainSelection) {
         if (mainSelection.isOptionOne()) {
-
+            manageSearch();
         }
+    }
+
+    private void manageSearch() {
+        SearchSelection searchSelection = new SearchSelection(inputView.inputNextLine());
+
     }
 }
