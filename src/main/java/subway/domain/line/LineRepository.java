@@ -1,4 +1,6 @@
-package subway.domain;
+package subway.domain.line;
+
+import subway.exception.NoSuchLineException;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -7,6 +9,12 @@ import java.util.Objects;
 
 public class LineRepository {
     private static final List<Line> lines = new ArrayList<>();
+
+    static {
+        lines.add(new Line("2호선"));
+        lines.add(new Line("3호선"));
+        lines.add(new Line("신분당선"));
+    }
 
     public static List<Line> lines() {
         return Collections.unmodifiableList(lines);
@@ -22,5 +30,12 @@ public class LineRepository {
 
     public static void deleteAll() {
         lines.clear();
+    }
+
+    public static Line findLineByName(String name) {
+        return lines.stream()
+                .filter(line -> line.getName().equals(name))
+                .findFirst()
+                .orElseThrow(NoSuchLineException::new);
     }
 }
