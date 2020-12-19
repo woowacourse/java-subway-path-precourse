@@ -13,6 +13,9 @@ public class Output {
     private static final String SHORT_TIME = "2. 최소 시간";
     private static final String BACK = "B. 돌아가기";
     private static final String[] ROUTE_LIST = {ROUTE_VIEW, MIN_DISTANCE, SHORT_TIME, BACK};
+    public static final String YOU_CHOICE = "## 원하는 기능을 선택하세요";
+    public static final String START_STATION = "## 출발역을 입력하세요.";
+    public static final String END_STATION = "## 도착역을 입력하세요.";
 
     private static void printView(String[] strArray) {
         for (String str : strArray) {
@@ -31,5 +34,9 @@ public class Output {
 
     public static void printRouteSearchView() {
         printView(ROUTE_LIST);
+    }
+
+    public static void printInputBefore(String str) {
+        System.out.println(str);
     }
 }
