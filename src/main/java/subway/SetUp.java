@@ -2,8 +2,12 @@ package subway;
 
 import subway.domain.Line;
 import subway.domain.LineRepository;
+import subway.domain.Section;
+import subway.domain.SectionRepository;
 import subway.domain.Station;
 import subway.domain.StationRepository;
+import subway.domain.Street;
+import subway.domain.Time;
 
 /**
  * @author yhh1056
@@ -22,9 +26,19 @@ public class SetUp {
     private static final String THREE_LINE = "3호선";
     private static final String SINBUNDANG_LINE = "신분당선";
 
+    private static final int ONE = 1;
+    private static final int TWO = 2;
+    private static final int THREE = 3;
+    private static final int FIVE = 5;
+    private static final int SIX = 6;
+    private static final int EIGHT = 8;
+    private static final int TEN = 10;
+
+
     public static void setUp() {
         setUpStation();
         setUpLine();
+        setUpSection();
     }
 
     public static void setUpStation() {
@@ -67,5 +81,39 @@ public class SetUp {
         sinbundangLine.addStationByName(GANGNAM);
         sinbundangLine.addStationByName(YANGJAE);
         sinbundangLine.addStationByName(YANGJAE_CITIZEN_FOREST);
+    }
+
+    private static void setUpSection() {
+        setUpTwoSection();
+        setUpThreeSection();
+        setUpSinbundangSection();
+    }
+
+    private static void setUpTwoSection() {
+        SectionRepository
+            .addSection(createSection(GYODAE, GANGNAM, new Street(TWO), new Time(THREE)));
+        SectionRepository
+            .addSection(createSection(GANGNAM, YEOKSAM, new Street(TWO), new Time(THREE)));
+    }
+
+    private static void setUpThreeSection() {
+        SectionRepository
+                .addSection(createSection(GYODAE, NAMBU_TERMINAL, new Street(THREE), new Time(TWO)));
+        SectionRepository
+                .addSection(createSection(NAMBU_TERMINAL, YANGJAE, new Street(SIX), new Time(FIVE)));
+        SectionRepository
+                .addSection(createSection(YANGJAE, MAEBONG, new Street(ONE), new Time(ONE)));
+    }
+
+    private static void setUpSinbundangSection() {
+        SectionRepository
+            .addSection(createSection(GANGNAM, YANGJAE, new Street(TWO), new Time(EIGHT)));
+        SectionRepository
+            .addSection(createSection(YANGJAE, YANGJAE_CITIZEN_FOREST, new Street(TEN), new Time(THREE)));
+    }
+
+    private static Section createSection(String startName, String finishName, Street street,
+        Time time) {
+        return new Section(startName, finishName, street, time);
     }
 }
