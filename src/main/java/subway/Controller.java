@@ -1,9 +1,6 @@
 package subway;
 
-import subway.domain.Line;
-import subway.domain.LineRepository;
-import subway.domain.Station;
-import subway.domain.StationRepository;
+import subway.domain.*;
 import subway.view.Input;
 import subway.view.Output;
 
@@ -51,6 +48,7 @@ public class Controller {
         Station startStation = validStation(input.getStartStation());
         Station endStation = validStation(input.getEndStation());
         isSameStation(startStation, endStation);
+        PathRepository.shortestTimePath(startStation, endStation);
     }
 
     private Station validStation(String stationName) {

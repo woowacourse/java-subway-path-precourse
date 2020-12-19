@@ -34,7 +34,7 @@ public class StationRepository {
         stations.clear();
     }
 
-    public static Station getStationByName(String stationName){
+    public static Station getStationByName(String stationName) {
         return stations.stream().filter(s -> s.isSameName(stationName)).findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 역입니다."));
     }
