@@ -2,6 +2,7 @@ package subway.controller;
 
 import subway.controller.enums.MainMenu;
 import subway.service.InitializationService;
+import subway.view.OutputView;
 import subway.view.inputview.MainView;
 
 import java.util.Scanner;
@@ -46,7 +47,7 @@ public class MainController extends Controller {
             String selectedMenu = mainView.inputCommand();
             return selectedMenu;
         } catch (IllegalArgumentException e) {
-            super.outputView.printError(e.getMessage());
+            OutputView.printError(e.getMessage());
             return selectMenu();
         }
     }

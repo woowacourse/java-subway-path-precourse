@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public enum MainMenu {
     FIND_PATH("1", PathController.getInstance(new Scanner(System.in))::run),
-    EXIT("Q", OutputView.getInstance()::printExit);
+    EXIT("Q", OutputView::printExit);
 
     private String type;
     private Runnable expression;
