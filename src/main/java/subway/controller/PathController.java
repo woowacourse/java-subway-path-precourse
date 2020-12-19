@@ -1,12 +1,11 @@
 package subway.controller;
 
 import subway.domain.Basis;
-import subway.domain.BasisChoice;
 import subway.exception.InvalidInputException;
 import subway.view.InputView;
 import subway.view.OutputView;
 
-import static subway.view.resource.Information.BASIS_INFO;
+import static subway.view.resource.Information.*;
 
 public class PathController extends SubwayController {
 
@@ -21,9 +20,8 @@ public class PathController extends SubwayController {
 
     private void run() {
         try {
-            String selectedBasis = getSelectedBasis();
-            BasisChoice.validate(selectedBasis);
-            Basis basis = new Basis(selectedBasis, null, null);
+            Basis basis = new Basis(getSelectedBasis(), getSrcStation(), getDstStation());
+            basis.validate();
         } catch (InvalidInputException e) {
             getOutputView().printErrorMessage(e.getMessage());
         }
@@ -31,6 +29,16 @@ public class PathController extends SubwayController {
 
     private String getSelectedBasis() {
         getOutputView().printInformation(BASIS_INFO);
+        return getInputView().getSelectedBasisInput();
+    }
+
+    private String getSrcStation() {
+        getOutputView().printInformation(SRC_INFO);
+        return getInputView().getSelectedBasisInput();
+    }
+
+    private String getDstStation() {
+        getOutputView().printInformation(DST_INFO);
         return getInputView().getSelectedBasisInput();
     }
 }

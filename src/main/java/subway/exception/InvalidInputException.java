@@ -12,8 +12,9 @@ public class InvalidInputException extends RuntimeException {
     public enum ExceptionCode {
         INVALID_FUNCTION_CODE,
         INVALID_BASIS_CODE,
+        INVALID_SRC_AND_DST,
         NO_SUCH_STATION,
-        NO_SUCH_PATH
+        NO_PATH_AVAILABLE
     }
 
     public String getMessage() {
@@ -21,9 +22,11 @@ public class InvalidInputException extends RuntimeException {
             return ERROR_HEADER + "선택할 수 없는 기능입니다.";
         if (exceptionCode.equals(ExceptionCode.INVALID_BASIS_CODE))
             return ERROR_HEADER + "선택할 수 없는 기준입니다.";
+        if (exceptionCode.equals(ExceptionCode.INVALID_SRC_AND_DST))
+            return ERROR_HEADER + "출발역과 도착역은 서로 달라야 합니다.";
         if (exceptionCode.equals(ExceptionCode.NO_SUCH_STATION))
             return ERROR_HEADER + "존재하지 않는 역 이름입니다.";
-        if (exceptionCode.equals(ExceptionCode.NO_SUCH_PATH))
+        if (exceptionCode.equals(ExceptionCode.NO_PATH_AVAILABLE))
             return ERROR_HEADER + "존재하지 않는 경로입니다.";
         return "";
     }
