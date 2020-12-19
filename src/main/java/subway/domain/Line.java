@@ -15,5 +15,11 @@ public class Line {
         return name;
     }
     // 추가 기능 구현
+    public List<Section> sections() {
+        return sections;
+    }
 
+    public boolean isExistStationInSections(Station station) {
+        return sections.stream().anyMatch(section -> section.isStartStation(station));
+    }
 }

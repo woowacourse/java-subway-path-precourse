@@ -15,17 +15,21 @@ public class PathService {
         Station endStation = initStation(InputView.PLEASE_INPUT_END_STATION);
 
         validateStationDuplicated(startStation, endStation);
+        validatePathSections(startStation, endStation);
     }
 
     private static Station initStation(String message) {
         return StationRepository.findByName(InputView.print(message))
-            .orElseThrow(StationNotFoundException::new);
+                .orElseThrow(StationNotFoundException::new);
     }
 
     private static void validateStationDuplicated(Station startStation, Station endStation) {
-        if(startStation.equals(endStation)){
+        if (startStation.equals(endStation)) {
             throw new SectionStationDuplicateException();
         }
     }
 
+    private static void validatePathSections(Station startStation, Station endStation) {
+
+    }
 }

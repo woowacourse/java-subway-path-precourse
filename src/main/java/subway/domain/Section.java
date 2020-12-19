@@ -15,4 +15,8 @@ public class Section {
         this.distance = distance;
         this.time = time;
     }
+
+    public boolean isStartStation(Station startStation) {
+        return  this.startStation.equals(startStation);
+    }
 }
