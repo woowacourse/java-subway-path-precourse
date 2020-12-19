@@ -1,8 +1,8 @@
 package subway.domain;
 
 public class Station {
-    private String name;
-
+    private String name;   
+    
     public Station(String name) {
         this.name = name;
     }
@@ -12,4 +12,5 @@ public class Station {
     }
 
     // 추가 기능 구현
+    
 }
