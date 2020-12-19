@@ -23,4 +23,21 @@ public class StationRepository {
     public static void deleteAll() {
         stations.clear();
     }
+
+    public static Station findStationByName(String comparedName) {
+        for (Station station : stations()) {
+            if (station.isSameName(comparedName)) {
+                return station;
+            }
+        }
+        return null;
+    }
+
+    public static String makeString() {
+        StringBuilder st = new StringBuilder();
+        for (Station station : stations()) {
+            st.append(station.getName());
+        }
+        return st.toString();
+    }
 }

@@ -1,12 +1,19 @@
 package subway.controller;
 
-import subway.domain.MainAction;
-import subway.domain.PathAction;
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
+import subway.domain.*;
 import subway.view.InputView;
 import subway.view.OutputView;
 
+import java.util.List;
+import java.util.Objects;
+
+import static subway.domain.InitSetting.initSetting;
+
 public class SubwayController {
     public void run(InputView inputView) {
+        initSetting();
+
         while(true) {
             OutputView.printMain();
             if (MainAction.isFinish(inputView.receiveAction())) {
@@ -17,6 +24,7 @@ public class SubwayController {
             if (PathAction.isBack(inputView.receiveAction())) {
                 break;
             }
+
         }
     }
 }

@@ -15,10 +15,10 @@ public enum PathAction {
 
     public static boolean isBack(String inputAction) {
         if (inputAction.equals(BACK.actionNumber)) {
-            return false;
+            return true;
         }
         if (inputAction.equals(SHORTEST_DISTANCE.actionNumber) || inputAction.equals(SHORTEST_TIME.actionNumber)) {
-            return true;
+            return false;
         }
         throw new IllegalArgumentException("옳지 않은 경로 기준 기능입니다.");
     }
