@@ -33,4 +33,10 @@ public class PathController {
         inputView.getStationStart(scanner);
 
     }
+    public void setPathControllerShortTime(Scanner scanner) {
+        inputView.getStationEnd(scanner);
+        inputView.getStationStart(scanner);
+
+    }
+
 }
