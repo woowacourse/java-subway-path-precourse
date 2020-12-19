@@ -2,7 +2,6 @@ package subway.domain.section;
 
 import java.time.Duration;
 import java.util.Objects;
-import subway.exception.InvalidTimeException;
 
 public class Time {
 

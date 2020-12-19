@@ -3,10 +3,12 @@ package subway.view;
 import java.util.List;
 import jdk.jfr.Description;
 import org.junit.jupiter.api.Test;
-import subway.domain.Section.Distance;
-import subway.domain.Section.ResultDto;
-import subway.domain.Section.Time;
+import subway.domain.section.Distance;
+import subway.domain.section.ResultDto;
+import subway.domain.section.Time;
 import subway.domain.station.Station;
+import subway.screen.MainScreen;
+import subway.screen.RouteScreen;
 
 class OutputViewTest {
 
@@ -19,6 +21,14 @@ class OutputViewTest {
         List<Station> stations = List.of(Station.of("강남역"), Station.of("남강역"), Station.of("부산역"));
 
         OutputView.printResult(stations,result);
+    }
+
+    @Test
+    @Description("스크린 메뉴 출력 확인")
+    public void printMenusTest(){
+
+        OutputView.printMenus(MainScreen.EXIT);
+        OutputView.printMenus(RouteScreen.DISTANCE);
 
     }
 

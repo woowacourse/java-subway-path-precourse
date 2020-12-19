@@ -18,11 +18,15 @@ public class SubwayPath {
 
     public void run() {
 
-        while (screen != null){
+        while (checkExit()){
             selectCommandAndRun();
 
         }
 
+    }
+
+    private boolean checkExit() {
+        return screen != null;
     }
 
     private void selectCommandAndRun() {
