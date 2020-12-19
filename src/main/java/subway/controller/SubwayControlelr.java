@@ -1,6 +1,7 @@
 package subway.controller;
 
 import java.util.Scanner;
+import java.util.function.BiFunction;
 
 import subway.domain.LineRepository;
 import subway.domain.ShortenPathDTO;
@@ -9,6 +10,8 @@ import subway.view.InputView;
 import subway.view.OutputView;
 
 public class SubwayControlelr {
+
+    public static final String SAME_END_STATION_ERROR = "[ERROR] 출발역과 도착역이 동일합니다.";
 
     private final LineRepository lineRepository;
 
@@ -33,20 +36,24 @@ public class SubwayControlelr {
             String directionInput = inputView.askFunction();
 
             if (directionInput.equals("1")) {
-                String startStation = inputView.askStartStation();
-                String endStation = inputView.askEndStation();
-
-                ShortenPathDTO shortenPathDTO = SubwayUtils.findShortenPathByDistance(startStation, endStation);
-                outputView.showPath(shortenPathDTO);
+                functionDirection(SubwayUtils::findShortenPathByDistance);
             } else if (directionInput.equals("2")) {
-                String startStation = inputView.askStartStation();
-                String endStation = inputView.askEndStation();
-
-                ShortenPathDTO shortenPathDTO = SubwayUtils.findShortenPathByTime(startStation, endStation);
-                outputView.showPath(shortenPathDTO);
+                functionDirection(SubwayUtils::findShortenPathByTime);
             }
 
             run();
         }
+    }
+
+    private void functionDirection(BiFunction<String, String, ShortenPathDTO> biFunction) {
+        String startStation = inputView.askStartStation();
+        String endStation = inputView.askEndStation();
+
+        if (startStation.equals(endStation)) {
+            throw new IllegalArgumentException(SAME_END_STATION_ERROR);
+        }
+
+        ShortenPathDTO shortenPathDTO = biFunction.apply(startStation, endStation);
+        outputView.showPath(shortenPathDTO);
     }
 }
