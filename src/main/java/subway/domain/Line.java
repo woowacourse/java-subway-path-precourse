@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Line {
+    private static final int ZERO = 0;
     private final String name;
     private final List<Path> paths;
 
@@ -36,5 +37,18 @@ public class Line {
         if (!graph.containsVertex(station)) {
             graph.addVertex(station);
         }
+    }
+
+    public int getWeight(Station start, Station end, Weight weight) {
+        return paths.stream()
+                .filter(path -> path.getStartStation().equals(start) && path.getEndStation().equals(end))
+                .mapToInt(path -> Weight.getWeight(path, weight))
+                .findFirst()
+                .orElse(ZERO);
+    }
+
+    public boolean containsPath(Station start, Station end) {
+        return paths.stream()
+                .anyMatch(path -> path.getStartStation().equals(start) && path.getEndStation().equals(end));
     }
 }

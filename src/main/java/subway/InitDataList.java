@@ -6,19 +6,19 @@ import java.util.*;
 
 public enum InitDataList {
     LINE_2("2호선",
-            new Path(new Station("교대역"), new Station("강남역"), 2, 3),
-            new Path(new Station("강남역"), new Station("역삼역"), 2, 3)
+            new Path(new StationBetween("교대역", "강남역"), 2, 3),
+            new Path(new StationBetween("강남역", "역삼역"), 2, 3)
     ),
 
     LINE_3("3호선",
-            new Path(new Station("교대역"), new Station("남부터미널역"), 3, 2),
-            new Path(new Station("남부터미널역"), new Station("양재역"), 6, 5),
-            new Path(new Station("양재역"), new Station("매봉역"), 1, 1)
+            new Path(new StationBetween("교대역", "남부터미널역"), 3, 2),
+            new Path(new StationBetween("남부터미널역", "양재역"), 6, 5),
+            new Path(new StationBetween("양재역", "매봉역"), 1, 1)
     ),
 
     LINE_NEW("신분당선",
-            new Path(new Station("강남역"), new Station("양재역"), 2, 8),
-            new Path(new Station("양재역"), new Station("양재시민의숲역"), 10, 3)
+            new Path(new StationBetween("강남역", "양재역"), 2, 8),
+            new Path(new StationBetween("양재역", "양재시민의숲역"), 10, 3)
     );
 
     private static final int FIRST = 0;

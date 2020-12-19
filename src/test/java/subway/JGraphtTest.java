@@ -1,5 +1,6 @@
  package subway;
 
+import org.jgrapht.Graph;
 import org.jgrapht.GraphPath;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
@@ -49,9 +50,11 @@ public class JGraphtTest {
         //when
         DijkstraShortestPath<Station, DefaultWeightedEdge> result = new DijkstraShortestPath<>(graph);
         GraphPath<Station, DefaultWeightedEdge> path = result.getPath(station1, station3);
+
+        Graph<Station, DefaultWeightedEdge> graph1 = path.getGraph();
+        System.out.println(path.getVertexList());
+
         List<Station> vertexList = path.getVertexList();
-        System.out.println(path.getWeight());
-        System.out.println(path.getStartVertex());
 
         //then
     }

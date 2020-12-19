@@ -1,24 +1,22 @@
 package subway.domain;
 
 public class Path {
-    private Station start;
-    private Station end;
+    private StationBetween stationBetween;
     private int distance;
     private int time;
 
-    public Path(Station start, Station end, int distance, int time) {
-        this.start = start;
-        this.end = end;
+    public Path(StationBetween stationBetween, int distance, int time) {
+        this.stationBetween = stationBetween;
         this.distance = distance;
         this.time = time;
     }
 
     public Station getStartStation() {
-        return start;
+        return stationBetween.getStart();
     }
 
     public Station getEndStation() {
-        return end;
+        return stationBetween.getEnd();
     }
 
     public int getTime() {
