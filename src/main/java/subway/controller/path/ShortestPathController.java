@@ -1,7 +1,6 @@
 package subway.controller.path;
 
 import subway.view.InputView;
-import subway.view.OutputView;
 
 public class ShortestPathController extends PathController {
 
@@ -10,11 +9,7 @@ public class ShortestPathController extends PathController {
     }
 
     @Override
-    public void run() {
-        try {
-            getStartingStation();
-        } catch (IllegalArgumentException e) {
-            OutputView.printError(e);
-        }
+    protected void calculatePath() {
+
     }
 }
