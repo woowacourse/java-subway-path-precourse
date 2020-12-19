@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 import subway.domain.Section.Section;
-import subway.domain.station.Station;
 
 public class Line implements Comparable<Line> {
 
@@ -47,5 +46,12 @@ public class Line implements Comparable<Line> {
 
     public boolean isMatchName(String name) {
         return this.name.equals(name);
+    }
+
+    public void addSection(Section section) {
+        if (sections.contains(section)) {
+            throw new IllegalArgumentException("[ERROR] 이미 노선에 존재하는 구간입니다.");
+        }
+        sections.add(section);
     }
 }
