@@ -5,6 +5,10 @@ import java.util.Scanner;
 public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
-        // TODO: 프로그램 구현
+        Input.init(scanner);
+        DataInitService.init();
+        GraphService.init();
+        UserInterfaceView userInterfaceView = new UserInterfaceView();
+        userInterfaceView.start();
     }
 }
