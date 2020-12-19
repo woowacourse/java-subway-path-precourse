@@ -6,6 +6,8 @@ public class Presenter {
     private static final String info = "[INFO] ";
     private static final String error = "[ERROR] ";
 
+
+    // 입력 안내
     private void selectFunction() {
         System.out.println("\n## 원하는 기능을 선택하세요.");
     }
@@ -35,6 +37,8 @@ public class Presenter {
         System.out.println("\n## 도착역을 입력하세요.");
     }
 
+
+    // 결과 출력
     public void resultInfo(int totalDistance, int totalTime, List<String> path) {
         System.out.println("\n" +
                 "## 조회 결과\n" +
@@ -49,6 +53,8 @@ public class Presenter {
         path.forEach(station -> System.out.println(info + station));
     }
 
+
+    // 에러 출력
     public void sameStation() {
         System.out.println(error + "출발역과 도착역이 동일합니다.");
     }
@@ -59,5 +65,9 @@ public class Presenter {
 
     public void noStation() {
         System.out.println(error + "없는 지하철 역입니다.");
+    }
+
+    public void noPath() {
+        System.out.println(error + "연결되어 있지 않은 역입니다.");
     }
 }

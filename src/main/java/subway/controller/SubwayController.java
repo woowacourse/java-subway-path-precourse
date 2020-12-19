@@ -4,6 +4,7 @@ import subway.domain.*;
 import subway.view.Presenter;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -30,7 +31,7 @@ public class SubwayController {
         } while (choiceFunction(scanner.nextLine()));
     }
 
-    // false -> break;
+    // false -> loop break;
     private boolean choiceFunction(String input) {
         if (input.equals(MENU_QUIT)) {
             return false;
@@ -43,7 +44,7 @@ public class SubwayController {
         return true;
     }
 
-    // false -> break;
+    // false -> loop break;
     private boolean selectPath(String input) {
         if (input.equals(MENU_BACK)) {
             return false;
@@ -64,20 +65,23 @@ public class SubwayController {
         if (to.equals("")) {
             return false;
         }
-        printPath(input, from, to);
-        return false;
+        return printPath(input, from, to);
     }
 
-    private void printPath(String input, String from, String to) {
+    private boolean printPath(String input, String from, String to) {
         List<String> path = null;
         if (input.equals(MENU_ONE)) {
             path = subwayPath.getDistancePath(from, to);
         }
-
         if (input.equals(MENU_TWO)) {
             path = subwayPath.getTimePath(from, to);
         }
+        if (path == null || path.size() == 0) {
+            presenter.noPath();
+            return false;
+        }
         presenter.resultInfo(getTotalDistance(path), getTotalTime(path), path);
+        return true;
     }
 
     private int getTotalDistance(List<String> path) {
@@ -106,7 +110,7 @@ public class SubwayController {
         presenter.inputStartingStation();
         String station = scanner.nextLine();
         if (!isInStations(station)) {
-            presenter.wrongInput();
+            presenter.noStation();
             return "";
         }
         return station;
@@ -115,8 +119,12 @@ public class SubwayController {
     private String getDestinationStation(String from) {
         presenter.inputDestinationStation();
         String station = scanner.nextLine();
-        if (!isInStations(station) || from.equals(station)) {
-            presenter.wrongInput();
+        if (!isInStations(station)) {
+            presenter.noStation();
+            return "";
+        }
+        if (from.equals(station)) {
+            presenter.sameStation();
             return "";
         }
         return station;

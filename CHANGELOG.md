@@ -3,6 +3,17 @@
 
 # CHANGELOG
 
+## [5.0.1] feat(SubwayController.java): add pathCheck feature
+
+Update files:
+
+    - SubwayController.java
+        - pathCheck() : print error when there is no path (NOT YET)
+
+Trying to Add pathCheck feature for print error
+
+---
+
 ## [5.0.0] feat(SubwayController.java): add selectPath feature
 
 Update files:
