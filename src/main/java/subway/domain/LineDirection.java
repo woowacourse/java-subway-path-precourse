@@ -6,7 +6,7 @@ public class LineDirection {
 
     private static final int DIFFERENCE_WITH_REPOSITORY = 1;
 
-    public static final String NOT_MATCH_SIZE_ERROR = "노선의 역들과 거리, 소요 시간간의 크기가 맞지 않습니다.";
+    public static final String NOT_MATCH_SIZE_ERROR = "[ERROR] 노선의 역들과 거리, 소요 시간간의 크기가 맞지 않습니다.";
 
     private final StationRepository stationRepository;
 

@@ -7,9 +7,9 @@ import java.util.Objects;
 
 public class LineRepository {
 
-    public static final String DUPLICATE_LINE_ERROR = "해당 노선은 이미 등록되어 있습니다.";
+    public static final String DUPLICATE_LINE_ERROR = "[ERROR] 해당 노선은 이미 등록되어 있습니다.";
 
-    public static final String NOT_FOUND_STATION_ERROR = "해당 노선은 존재하지 않습니다.";
+    public static final String NOT_FOUND_STATION_ERROR = "[ERROR] 해당 노선은 존재하지 않습니다.";
 
     private final List<Line> lines;
 
