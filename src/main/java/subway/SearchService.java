@@ -1,11 +1,10 @@
 package subway;
 
+import org.jgrapht.GraphPath;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import subway.domain.station.Station;
 import subway.domain.station.StationRepository;
-import subway.domain.station.StationService;
 import subway.exception.ErrorCode;
-import subway.exception.SectionException;
 import subway.exception.StationException;
 import subway.view.InputView;
 import subway.view.screen.SearchView;
@@ -35,11 +34,26 @@ public class SearchService {
         String firstStationName = inputView.inputNextLine();
         Station firstStation = StationRepository.findByName(firstStationName);
 
+        searchView.printSecondAdd();
+        String secondStationName = inputView.inputNextLine();
+        Station secondStation = StationRepository.findByName(secondStationName);
+        checkSameName(firstStationName, secondStationName);
 
+        searchView.printAfterAdd();
+        printDistance(firstStation, secondStation);
     }
-    private void checkSameName(String firstStationName, String downwardStationName) {
-        if (firstStationName.equals(downwardStationName)) {
-            throw new StationException(ErrorCode.SECTION_SAME_STATION_NAME);
+
+    private void printDistance(Station firstStation, Station secondStation) {
+        DijkstraShortestPath dijkstraShortestPathDistance = dijkstraShortestPaths.get(DISTANCE_INDEX);
+        double pathWeight = dijkstraShortestPathDistance.getPathWeight(firstStation.getName(), secondStation.getName());
+        GraphPath path = dijkstraShortestPathDistance.getPath(firstStation.getName(), secondStation.getName());
+
+        searchView.printList(path, pathWeight);
+    }
+
+    private void checkSameName(String firstStationName, String secondStationName) {
+        if (firstStationName.equals(secondStationName)) {
+            throw new StationException(ErrorCode.STATION_SAME_NAME);
         }
     }
 }

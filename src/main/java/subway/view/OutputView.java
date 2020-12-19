@@ -29,6 +29,13 @@ public class OutputView {
         clearSb();
     }
 
+    public void printInfos(String string) {
+        sb.append(Prefix.INFO.getPrefix());
+        sb.append(string);
+        System.out.println(sb.toString());
+        clearSb();
+    }
+
     private void clearSb() {
         sb.delete(START_INDEX, sb.length());
     }

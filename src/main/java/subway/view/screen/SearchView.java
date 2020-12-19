@@ -1,7 +1,10 @@
 package subway.view.screen;
 
+import org.jgrapht.GraphPath;
 import subway.view.OutputView;
 import subway.view.Prefix;
+
+import java.util.List;
 
 public class SearchView {
     private static final String MAIN = Prefix.SHARP.getPrefix() + "경로 기준";
@@ -10,7 +13,7 @@ public class SearchView {
     private static final String BACK = Prefix.BACK.getPrefix() + "돌아가기";
     private static final String PRINT_ADD = "출발역을 입력하세요.";
     private static final String PRINT_ADD_SECOND = "도착역을 입력하세요.";
-    private static final String PRINT_AFTER_ADD = "조회결과.";
+    private static final String PRINT_AFTER_ADD = "조회결과";
 
     private final OutputView outputView;
 
@@ -24,5 +27,21 @@ public class SearchView {
 
     public void printAdd() {
         outputView.printSharp(PRINT_ADD);
+    }
+
+    public void printAfterAdd() {
+        outputView.printSharp(PRINT_AFTER_ADD);
+    }
+
+    public void printSecondAdd() {
+        outputView.printSharp(PRINT_ADD_SECOND);
+    }
+
+    public void printList(GraphPath path, double pathWeight) {
+        outputView.printInfos(Prefix.CONTOUR.getPrefix());
+        outputView.printInfos("총 거리: " + pathWeight + "km");
+        outputView.printInfos(Prefix.CONTOUR.getPrefix());
+
+
     }
 }
