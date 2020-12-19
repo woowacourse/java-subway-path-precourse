@@ -9,7 +9,7 @@ public class ShortestPathController extends PathController {
     }
 
     @Override
-    protected void calculatePath() {
+    protected void calculatePath(String startingStationName, String finishingStationName) {
 
     }
 }

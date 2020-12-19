@@ -20,13 +20,13 @@ public abstract class PathController implements Controller {
             String finishingStationName = getFinishingStationName();
             PathControllerValidator.validateStations(startingStationName, finishingStationName);
 
-            calculatePath();
+            calculatePath(startingStationName, finishingStationName);
         } catch (IllegalArgumentException e) {
             OutputView.printError(e);
         }
     }
 
-    protected abstract void calculatePath();
+    protected abstract void calculatePath(String startingStationName, String finishingStationName);
 
     protected String getStartingStationName() {
         return inputView.inputStartingStationName();
