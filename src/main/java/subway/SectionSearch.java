@@ -33,10 +33,11 @@ public class SectionSearch {
 				return end;
 			}
 			if (select.equals("B") || select.equals("b")) {
-				return false;
+				System.out.println();
+				return true;
 			}
 			System.out.println(ERROR_INPUT_MESSAGE);
-			return true;
+			return false;
 		}
 		System.out.println(ERROR_INPUT_MESSAGE);
 		return false;
