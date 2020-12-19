@@ -65,7 +65,14 @@ public class SectionRepository {
     }
 
     public static List<Section> sections() {
+        validateEmpty();
         return Collections.unmodifiableList(sections);
+    }
+
+    private static void validateEmpty() {
+        if(sections.isEmpty()){
+            throw new IllegalArgumentException("등록되어 있는 지하철 구간이 없습니다.");
+        }
     }
 
     public static void addSection(Section section) {

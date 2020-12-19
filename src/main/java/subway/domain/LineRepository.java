@@ -19,7 +19,14 @@ public class LineRepository {
     }
 
     public static List<Line> lines() {
+        validateEmpty();
         return Collections.unmodifiableList(lines);
+    }
+
+    private static void validateEmpty() {
+        if(lines.isEmpty()){
+            throw new IllegalArgumentException("등록되어 있는 지하철 노선이 없습니다.");
+        }
     }
 
     public static void addLine(Line line) {
