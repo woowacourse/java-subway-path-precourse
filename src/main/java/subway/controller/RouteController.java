@@ -1,10 +1,13 @@
 package subway.controller;
 
+import java.util.List;
 import java.util.Objects;
 import subway.domain.SectionRepository;
+import subway.domain.StationRepository;
 import subway.functionList.RouteFunction;
 import subway.message.CommonMessage;
 import subway.screen.ControlScreen;
+import subway.utils.GetPath;
 import subway.validation.RouteValidator;
 import subway.view.UserView;
 
@@ -38,7 +41,8 @@ public class RouteController {
         String startStation = UserView.scanUserInput();
         String endStation = UserView.scanUserInput();
 
-        SectionRepository.findShortestDistance(startStation,endStation);
+        List<String> tmp = GetPath.getDijkstraShortestPath(startStation,endStation);
+        System.out.println(tmp.toString());
     }
 
     public static void findShortestTime() {

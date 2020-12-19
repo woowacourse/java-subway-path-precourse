@@ -20,9 +20,4 @@ public class SectionRepository {
     }
 
 
-    public static void findShortestDistance(String startStation, String endStation) {
-        Station upStation = StationRepository.getStationByName(startStation);
-        Station downStation = StationRepository.getStationByName(endStation);
-        getDijkstraShortestPath(upStation,downStation);
-    }
 }
