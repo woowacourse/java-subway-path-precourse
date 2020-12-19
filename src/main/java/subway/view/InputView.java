@@ -9,7 +9,7 @@ public class InputView {
         this.scanner = scanner;
     }
 
-    private String scanMenu() {
+    public String scanMenu() {
         OutputView.printSelectMessage();
         return getInput();
     }
