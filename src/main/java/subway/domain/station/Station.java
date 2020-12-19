@@ -14,6 +14,4 @@ public class Station {
     public static Station from(String name) {
         return new Station(name);
     }
-
-    // 추가 기능 구현
 }

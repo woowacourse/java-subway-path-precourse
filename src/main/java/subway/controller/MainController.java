@@ -5,7 +5,7 @@ import subway.utils.exception.InvalidMenuInputException;
 import subway.view.InputView;
 import subway.view.output.MainOutputView;
 
-public class MainController implements Controller{
+public class MainController implements Controller {
     MainOutputView mainOutputView;
     MainMenu mainMenu;
 

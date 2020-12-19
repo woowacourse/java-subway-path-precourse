@@ -53,9 +53,9 @@ public class SubwayMap {
 
     public static int findShortestDistanceTime(List<String> paths) {
         int time = 0;
-        for (int i=0; i<paths.size()-1; i++) {
+        for (int i = 0; i < paths.size() - 1; i++) {
             String firstStation = paths.get(i);
-            String lastStation = paths.get(i+1);
+            String lastStation = paths.get(i + 1);
             time += timeEdge.get(Arrays.asList(firstStation, lastStation));
         }
         return time;
@@ -81,9 +81,9 @@ public class SubwayMap {
 
     public static int findShortestTimeDistance(List<String> paths) {
         int distance = 0;
-        for (int i=0; i<paths.size()-1; i++) {
+        for (int i = 0; i < paths.size() - 1; i++) {
             String firstStation = paths.get(i);
-            String lastStation = paths.get(i+1);
+            String lastStation = paths.get(i + 1);
             distance += timeEdge.get(Arrays.asList(firstStation, lastStation));
         }
         return distance;
