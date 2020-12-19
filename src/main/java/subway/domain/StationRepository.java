@@ -30,6 +30,6 @@ public class StationRepository {
                 return station;
             }
         }
-        throw new IllegalArgumentException("옳지 않은 역 이름입니다.");
+        throw new IllegalArgumentException("존재하지 않는 역입니다.");
     }
 }
