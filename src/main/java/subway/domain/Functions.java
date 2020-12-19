@@ -6,14 +6,14 @@ import subway.controller.MenuScanner;
 import java.util.Arrays;
 import java.util.List;
 
-public class Menus extends MenuScanner {
+public class Functions extends MenuScanner {
 
     private static final String searchSign = "1";
     private static final String quitSign = "Q";
     private static final List<String> signs = Arrays
         .asList(new String[]{searchSign, quitSign});
 
-    public Menus() {
+    public Functions() {
     }
 
     public boolean isValid(String sign) {

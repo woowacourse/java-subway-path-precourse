@@ -1,7 +1,7 @@
 package subway.controller;
 
 import subway.domain.Criterions;
-import subway.domain.Menus;
+import subway.domain.Functions;
 import subway.domain.exception.NonExistentMenuException;
 import subway.view.InputView;
 import subway.view.OutputView;
@@ -11,20 +11,20 @@ import java.util.List;
 
 public class MenuScanner {
 
-    private static final Menus menus = new Menus();
+    private static final Functions functions = new Functions();
     private static final Criterions criterions = new Criterions();
     private static final List<String> signs = Arrays.asList(new String[]{});
 
     public MenuScanner() {
     }
 
-    public String scanMainMenu(InputView inputView) {
+    public String scanFunctions(InputView inputView) {
         OutputView.printMainScreen();
-        String selectedMenu;
+        String selectedFunction;
         do {
-            selectedMenu = inputView.scanMenu();
-        } while(!menus.isValid(selectedMenu));
-        return selectedMenu;
+            selectedFunction = inputView.scanMenu();
+        } while(!functions.isValid(selectedFunction));
+        return selectedFunction;
     }
 
     public String scanCriterions(InputView inputView) {

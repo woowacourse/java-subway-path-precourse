@@ -9,7 +9,7 @@ public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         InputView inputView = new InputView(scanner);
-        MenuScanner menuController = new MenuScanner();
-        menuController.scanMainMenu(inputView);
+        MenuScanner menuScanner = new MenuScanner();
+        menuScanner.scanFunctions(inputView);
     }
 }
