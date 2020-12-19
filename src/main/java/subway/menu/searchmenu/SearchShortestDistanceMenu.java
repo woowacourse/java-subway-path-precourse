@@ -35,10 +35,15 @@ public class SearchShortestDistanceMenu implements SearchMenu {
     }
 
     private void searchPath(String startInput, String endInput) {
-        Station startStation = StationRepository.findStationByName(startInput);
-        Station endStation = StationRepository.findStationByName(endInput);
-        List<Station> shortestPath = Interval.shortestDistancePath(startStation, endStation);
+        try {
+            Station startStation = StationRepository.findStationByName(startInput);
+            Station endStation = StationRepository.findStationByName(endInput);
+            List<Station> shortestPath = Interval.shortestDistancePath(startStation, endStation);
 
-        InfoOutput.printSearchResult(Interval.getTotalDistance(shortestPath), Interval.getTotalTime(shortestPath), shortestPath);
+            InfoOutput.printSearchResult(Interval.getTotalDistance(shortestPath), Interval.getTotalTime(shortestPath), shortestPath);
+        } catch (Exception e) {
+            ErrorOutput.printNotConnectedError();
+        }
+
     }
 }

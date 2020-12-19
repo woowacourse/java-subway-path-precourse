@@ -36,10 +36,14 @@ public class SearchShortestTimeMenu implements SearchMenu{
     }
 
     private void searchPath(String startInput, String endInput) {
-        Station startStation = StationRepository.findStationByName(startInput);
-        Station endStation = StationRepository.findStationByName(endInput);
-        List<Station> shortestPath = Interval.shortestTimePath(startStation, endStation);
+        try {
+            Station startStation = StationRepository.findStationByName(startInput);
+            Station endStation = StationRepository.findStationByName(endInput);
+            List<Station> shortestPath = Interval.shortestTimePath(startStation, endStation);
 
-        InfoOutput.printSearchResult(Interval.getTotalDistance(shortestPath), Interval.getTotalTime(shortestPath), shortestPath);
+            InfoOutput.printSearchResult(Interval.getTotalDistance(shortestPath), Interval.getTotalTime(shortestPath), shortestPath);
+        } catch (Exception e) {
+            ErrorOutput.printNotConnectedError();
+        }
     }
 }

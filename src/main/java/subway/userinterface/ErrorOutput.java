@@ -39,5 +39,9 @@ public class ErrorOutput {
         return false;
     }
 
+    public static void printNotConnectedError() {
+        System.out.println(ERROR+"출발역과 도착역이 서로 연결되어있지 않습니다.");
+    }
+
 
 }
