@@ -16,10 +16,6 @@ public class Section {
         this.stations = new ArrayList<>(stations);
     }
 
-    public List<Station> getStations() {
-        return new ArrayList<>(stations);
-    }
-
     public int getDistance() {
         return distance;
     }

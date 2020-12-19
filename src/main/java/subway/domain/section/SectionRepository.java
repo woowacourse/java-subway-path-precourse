@@ -2,7 +2,6 @@ package subway.domain.section;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import subway.domain.station.Station;
 
@@ -75,15 +74,5 @@ public class SectionRepository {
             ).getTime();
         }
         return timeSum;
-    }
-
-    public static boolean contains(Station station, Station otherStation) {
-        for (Section section : sections) {
-            List<Station> stations = section.getStations();
-            if (stations.contains(station) && stations.contains(otherStation)) {
-                return true;
-            }
-        }
-        return false;
     }
 }
