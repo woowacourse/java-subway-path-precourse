@@ -7,7 +7,7 @@ import subway.view.OutputView;
 public class Machine {
     public void start(Scanner scanner) {
         while (true) {
-            OutputView.printMain();
+            OutputView.printMainMenu();
             MainFunction mainFunction = getInputFunction(scanner);
             if (mainFunction == MainFunction.QUIT) {
                 break;
