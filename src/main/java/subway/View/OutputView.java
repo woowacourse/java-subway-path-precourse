@@ -16,6 +16,7 @@ public class OutputView {
         System.out.println(MAIN_MENU_QUIT);
     }
     public void setPathMenuPathStandard(){
+        System.out.println();
         System.out.println(PATH_MENU_PATH_STANDARD);
         System.out.println(PATH_MENU_SHORT_DISTANCE);
         System.out.println(PATH_MENU_SHORT_TIME);
