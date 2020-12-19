@@ -1,7 +1,11 @@
 package subway.domain;
 
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
+import subway.view.OutputView;
+
+import java.util.List;
 
 public class SectionRepository {
     private static final WeightedMultigraph<Station, DefaultWeightedEdge> distanceGraph
@@ -30,5 +34,17 @@ public class SectionRepository {
 
     private static void addTimeEdgeWeight(Station station, Station nextStation, double time) {
         timeGraph.setEdgeWeight(timeGraph.addEdge(station, nextStation), time);
+    }
+
+    public static List<Station> getSectionDistanceStations(Station departureStation, Station arrivalStation) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(distanceGraph);
+
+        return dijkstraShortestPath.getPath(departureStation, arrivalStation).getVertexList();
+    }
+
+    public static List<Station> getSectionTimeStations(Station departureStation, Station arrivalStation) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(timeGraph);
+
+        return dijkstraShortestPath.getPath(departureStation, arrivalStation).getVertexList();
     }
 }
