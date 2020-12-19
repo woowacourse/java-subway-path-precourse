@@ -23,4 +23,9 @@ public class InputView {
         System.out.println(NEW_LINE + "## 출발역을 입력하세요.");
         return scanner.nextLine();
     }
+
+    public static String inputArrivalStation(Scanner scanner) {
+        System.out.println(NEW_LINE + "## 도착역을 입력하세요.");
+        return scanner.nextLine();
+    }
 }
