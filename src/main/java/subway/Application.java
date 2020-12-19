@@ -1,5 +1,6 @@
 package subway;
 
+import subway.Controller.MainController;
 import subway.domain.DataInitializer;
 import subway.view.InputView;
 
@@ -12,5 +13,6 @@ public class Application {
 
         DataInitializer.initialize();
 
+        MainController.run();
     }
 }
