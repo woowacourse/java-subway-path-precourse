@@ -54,6 +54,7 @@ public class UserInterfaceView {
             return;
         }
         if (B.equals(userInput)) {
+            routeSearch();
             return;
         }
         routeSearchToNextFunction(userInput);
