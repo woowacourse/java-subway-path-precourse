@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Line {
+    private final int 중간_사이에_삽입_인덱스 = 1;
     private String name;
     private ArrayList<Station> lineStations = new ArrayList<>();
     private ArrayList<DistanceAndTime> lineDistanceAndTimes = new ArrayList<>();
@@ -28,7 +29,7 @@ public class Line {
     }
 
     public void addStation(int index, Station station) {
-        lineStations.add(index - 1, station);
+        lineStations.add(index - 중간_사이에_삽입_인덱스, station);
     }
 
     public void deleteStation(String name) {

@@ -9,6 +9,8 @@ public class Route {
     private final int SHORTEST_DISTANCE = 1;
     private final int SHORTEST_TIME = 2;
     private final int INITIALIZATION = 0;
+    private final int INDEX_BOUNDARY_NUMBER = 1;
+    private final int NEXT_STATION_NUMBER = 1;
     private Scanner scanner;
     private Station startStation;
     private Station endStation;
@@ -85,9 +87,9 @@ public class Route {
         int distance = INITIALIZATION;
         int time = INITIALIZATION;
 
-        for (int i = 0; i < shortestPath.toArray().length - 1; i++) {
-            distance = distance + subwayDistanceGraph.getDistanceBetweenTwoStation(shortestPath.get(i), shortestPath.get(i + 1));
-            time = time + subwayTimeGraph.getDistanceBetweenTwoStation(shortestPath.get(i), shortestPath.get(i + 1));
+        for (int i = 0; i < shortestPath.toArray().length - INDEX_BOUNDARY_NUMBER; i++) {
+            distance = distance + subwayDistanceGraph.getDistanceBetweenTwoStation(shortestPath.get(i), shortestPath.get(i + NEXT_STATION_NUMBER));
+            time = time + subwayTimeGraph.getDistanceBetweenTwoStation(shortestPath.get(i), shortestPath.get(i + NEXT_STATION_NUMBER));
         }
 
         System.out.println("\n## 조회 결과\n" +

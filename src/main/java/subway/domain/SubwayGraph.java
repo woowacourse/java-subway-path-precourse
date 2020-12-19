@@ -7,7 +7,7 @@ import org.jgrapht.graph.WeightedMultigraph;
 import java.util.*;
 
 public class SubwayGraph {
-    private static final int 다음역 = 1;
+    private static final int NEXT_STATION_NUMBER = 1;
     private WeightedMultigraph<String, DefaultWeightedEdge> subwayGraph = new WeightedMultigraph(DefaultWeightedEdge.class);
 
 
@@ -20,8 +20,8 @@ public class SubwayGraph {
                 subwayGraph.addVertex(station.getName());
             }
 
-            for (int i = 0; i < line.getLineStations().size() - 다음역; i++) {
-                subwayGraph.setEdgeWeight(subwayGraph.addEdge(line.getLineStations().get(i).getName(), line.getLineStations().get(i + 1).getName()), line.getLineDistances().get(i).getDistance()); // 거리로
+            for (int i = 0; i < line.getLineStations().size() - NEXT_STATION_NUMBER; i++) {
+                subwayGraph.setEdgeWeight(subwayGraph.addEdge(line.getLineStations().get(i).getName(), line.getLineStations().get(i + NEXT_STATION_NUMBER).getName()), line.getLineDistances().get(i).getDistance()); // 거리로
             }
         }
     }
@@ -32,8 +32,8 @@ public class SubwayGraph {
                 subwayGraph.addVertex(station.getName());
             }
 
-            for (int i = 0; i < line.getLineStations().size() - 다음역; i++) {
-                subwayGraph.setEdgeWeight(subwayGraph.addEdge(line.getLineStations().get(i).getName(), line.getLineStations().get(i + 다음역).getName()), line.getLineDistances().get(i).getTime()); // 시간으로
+            for (int i = 0; i < line.getLineStations().size() - NEXT_STATION_NUMBER; i++) {
+                subwayGraph.setEdgeWeight(subwayGraph.addEdge(line.getLineStations().get(i).getName(), line.getLineStations().get(i + NEXT_STATION_NUMBER).getName()), line.getLineDistances().get(i).getTime()); // 시간으로
             }
         }
     }
