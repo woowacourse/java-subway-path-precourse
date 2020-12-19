@@ -14,7 +14,7 @@ import subway.domain.StationRepository;
 
 public class DijkstraUtils {
 	private static final int FIRST = 0;
-	private static final int LAST = 0;
+	private static final int LAST = 1;
 
 	public static WeightedMultigraph<String, DefaultWeightedEdge> getGraphByDistance() {
 		WeightedMultigraph<String, DefaultWeightedEdge> graph = 
