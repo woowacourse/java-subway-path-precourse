@@ -1,6 +1,6 @@
 package subway.controller;
 
-import subway.exception.SubwayException;
+import subway.exception.TransitRouteException;
 import subway.menu.RouteMenu;
 import subway.view.InputView;
 import subway.view.OutputView;
@@ -11,7 +11,7 @@ public class MainController {
             OutputView.showRouteMenu();
             RouteMenu.findByCommand(InputView.getInput()).run();
         }
-        catch (SubwayException error){
+        catch (TransitRouteException error){
             System.out.println(error.getMessage());
             viewRoute();
         }

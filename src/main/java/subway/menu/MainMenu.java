@@ -1,7 +1,7 @@
 package subway.menu;
 
 import subway.controller.MainController;
-import subway.exception.SubwayException;
+import subway.exception.TransitRouteException;
 
 import static java.util.stream.Collectors.*;
 
@@ -27,7 +27,7 @@ public enum MainMenu {
                 .filter(mainMenu -> mainMenu.command.equalsIgnoreCase(command))
                 .findAny()
                 .orElseThrow(() -> {
-                    throw new SubwayException("메뉴 잘못 입력");
+                    throw new TransitRouteException("메뉴 잘못 입력");
                 });
     }
 

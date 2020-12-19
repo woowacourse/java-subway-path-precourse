@@ -1,9 +1,9 @@
 package subway.exception;
 
-public class SubwayException extends IllegalArgumentException{
+public class TransitRouteException extends IllegalArgumentException{
     private static final String ERROR = "[ERROR] ";
 
-    public SubwayException(String message) {
+    public TransitRouteException(String message) {
         super(ERROR + message);
     }
 }
