@@ -15,6 +15,12 @@ public class ShortestPathFinder {
     public void run() {
         String startStation = askValidStation("start");
         String endStation = askValidStation("end");
+        try {
+            Validate.notSameStation(startStation, endStation);
+        } catch (CustomException exception) {
+            System.out.println(exception.getMessage());
+            run();
+        }
         System.out.println("입력하신 역은 " + startStation);
         System.out.println("입력하신 역은 " + endStation);
     }

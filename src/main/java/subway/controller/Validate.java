@@ -15,4 +15,10 @@ public class Validate {
             throw new CustomException("존재하지 않는 역입니다.");
         }
     }
+
+    public static void notSameStation(String startStation, String endStation) {
+        if (startStation.equals(endStation)) {
+            throw new CustomException("출발역과 도착역이 동일합니다.");
+        }
+    }
 }
