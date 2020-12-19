@@ -64,6 +64,9 @@ public class RouteShowView extends View{
         String endStation = scanner.nextLine();
         System.out.println(PREFIX_INFO + " " + HEADER_ROUTE_RESULT);
         System.out.println(PREFIX_INFO + " " + DIVISION_LINE);
+        int totalDistance = (int) RouteRepository.getTotalDistance(startStation, endStation);
+        System.out.println(PREFIX_INFO + " " + TOTAL_DISTANCE + totalDistance + UNIT_KM);
+        System.out.println(PREFIX_INFO + " " + DIVISION_LINE);
         List<String> shortestPath = RouteRepository.getRouteMinDistance(startStation, endStation);
         for (String station : shortestPath) {
             System.out.println(PREFIX_INFO + " " + station);
@@ -78,6 +81,9 @@ public class RouteShowView extends View{
         System.out.println(ASK_END_STATION);
         String endStation = scanner.nextLine();
         System.out.println(PREFIX_INFO + " " + HEADER_ROUTE_RESULT);
+        System.out.println(PREFIX_INFO + " " + DIVISION_LINE);
+        int totalTime = (int) RouteRepository.getTotalTime(startStation, endStation);
+        System.out.println(PREFIX_INFO + " " + TOTAL_TIME + totalTime + UNIT_MIN);
         System.out.println(PREFIX_INFO + " " + DIVISION_LINE);
         List<String> shortestPath = RouteRepository.getRouteMinTime(startStation, endStation);
         for (String station : shortestPath) {
