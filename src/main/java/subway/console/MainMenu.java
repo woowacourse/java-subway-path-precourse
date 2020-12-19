@@ -14,29 +14,35 @@ public enum MainMenu {
         void execute() { }
     };
 
+
     private final String name;
     private final String symbol;
 
-    MainMenu (String name, String symbol) {
+    MainMenu(String name, String symbol) {
         this.name = name;
         this.symbol = symbol;
-    }
-
-    public String getSymbol() {
-        return symbol;
     }
 
     public String getName() {
         return name;
     }
 
+    public String getSymbol() {
+        return symbol;
+    }
+
     abstract void execute();
 
     public static void executeMenuByInput(String input) {
-        Arrays.stream(MainMenu.values())
-            .filter(menu -> menu.getSymbol().equals(input))
-            .findAny()
-            .get()
-            .execute();
+        try {
+            Arrays.stream(MainMenu.values())
+                .filter(menu -> menu.getSymbol().equals(input))
+                .findAny()
+                .get()
+                .execute();
+        } catch (Exception e) {
+            throw new IllegalMenuInputException();
+        }
+
     }
 }

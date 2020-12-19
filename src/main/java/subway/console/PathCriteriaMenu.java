@@ -39,10 +39,15 @@ public enum PathCriteriaMenu {
     abstract void execute();
 
     public static void executeMenuByInput(String input) {
-        Arrays.stream(PathCriteriaMenu.values())
-            .filter(menu -> menu.getSymbol().equals(input))
-            .findAny()
-            .get()
-            .execute();
+        try {
+            Arrays.stream(PathCriteriaMenu.values())
+                .filter(menu -> menu.getSymbol().equals(input))
+                .findAny()
+                .get()
+                .execute();
+        } catch (Exception e) {
+            throw new IllegalMenuInputException();
+        }
+
     }
 }
