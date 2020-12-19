@@ -28,11 +28,19 @@ public enum RouteFunction {
     }
 
     public static void runFunction(String inputString) {
-        Arrays.stream(RouteFunction.values())
-                .filter(routeFunction -> routeFunction.button.equals(inputString))
-                .findAny()
-                .orElseThrow(InputException::new)
-                .runnable.run();
+        while (true) {
+            try {
+                Arrays.stream(RouteFunction.values())
+                        .filter(routeFunction -> routeFunction.button.equals(inputString))
+                        .findAny()
+                        .orElseThrow(InputException::new)
+                        .runnable.run();
+            } catch (GoBackException e) {
+                return;
+            } catch (Exception e) {
+                OutputView.printError(e);
+            }
+        }
     }
 
     private static void retrieveByShortestDistance() {
