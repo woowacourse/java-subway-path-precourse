@@ -38,8 +38,8 @@ public class DummyData {
                 .collect(Collectors.toList());
         LineRepository.addLine(new Line("2호선", stations));
 
-        SectionRepository.addSection(new Section("교대역", "강남역", 2, 3));
-        SectionRepository.addSection(new Section("강남역", "역삼역", 2, 3));
+        SectionRepository.addSection(new Section("교대역", "강남역", 3, 2));
+        SectionRepository.addSection(new Section("강남역", "역삼역", 3, 2));
     }
 
     private static void initSubwayLineThree() {
@@ -49,8 +49,8 @@ public class DummyData {
                 .collect(Collectors.toList());
         LineRepository.addLine(new Line("3호선", stations));
 
-        SectionRepository.addSection(new Section("교대역", "남부터미널역", 3, 2));
-        SectionRepository.addSection(new Section("남부터미널역", "양재역", 6, 5));
+        SectionRepository.addSection(new Section("교대역", "남부터미널역", 2, 3));
+        SectionRepository.addSection(new Section("남부터미널역", "양재역", 5, 6));
         SectionRepository.addSection(new Section("양재역", "매봉역", 1, 1));
     }
 
@@ -61,7 +61,7 @@ public class DummyData {
                 .collect(Collectors.toList());
         LineRepository.addLine(new Line("신분당선", stations));
 
-        SectionRepository.addSection(new Section("강남역", "양재역", 2, 8));
-        SectionRepository.addSection(new Section("양재역", "양재시민의숲역", 10, 3));
+        SectionRepository.addSection(new Section("강남역", "양재역", 8, 2));
+        SectionRepository.addSection(new Section("양재역", "양재시민의숲역", 3, 10));
     }
 }
