@@ -29,7 +29,7 @@ public class RouteControlCenter {
         if (command.equals(RouteSearchMenu.SHORTEST_DISTANCE.getCommand()))
             return searchShortestDistance(scanner);
         if (command.equals(RouteSearchMenu.MINIMUM_TIME.getCommand()))
-            return "";
+            return searchMinimumTime(scanner);
         if (command.equalsIgnoreCase(RouteSearchMenu.BACK.getCommand()))
             return RouteSearchMenu.BACK.getCommand();
         return "";
@@ -39,9 +39,19 @@ public class RouteControlCenter {
         String departure = inputDeparture(scanner);
         String arrival = inputArriaval(scanner);
         List<String> shortestPath = DistanceNavigator.getShortestPath(departure, arrival);
-        int shortestDistance = getDistance(departure, arrival);
-        int minimumTime = getTime(departure, arrival);
-        RouteView.printResult(shortestDistance, minimumTime, shortestPath);
+        int shortestDistance = getShortestDistance(departure, arrival);
+        int time = getTime(shortestPath);
+        RouteView.printResult(shortestDistance, time, shortestPath);
+        return RouteSearchMenu.SHORTEST_DISTANCE.getCommand();
+    }
+
+    private String searchMinimumTime(Scanner scanner) {
+        String departure = inputDeparture(scanner);
+        String arrival = inputArriaval(scanner);
+        List<String> minimumPath = TimeNavigator.getShortestPath(departure, arrival);
+        int minimumTime = getMinimumTime(departure, arrival);
+        int distance = getDistance(minimumPath);
+        RouteView.printResult(distance, minimumTime, minimumPath);
         return RouteSearchMenu.SHORTEST_DISTANCE.getCommand();
     }
 
@@ -55,7 +65,7 @@ public class RouteControlCenter {
         return MainControlCenter.inputCommand(scanner);
     }
 
-    private int getDistance(String departure, String arrival) {
+    private int getShortestDistance(String departure, String arrival) {
         List<String> shortestPath = DistanceNavigator.getShortestPath(departure, arrival);
         Route route = RouteRepository.getRouteByLineName(InitialLines.LINE_2.getName());
         List<InitialStations> stations = route.getStations();
@@ -68,8 +78,32 @@ public class RouteControlCenter {
         return distance;
     }
 
-    private int getTime(String departure, String arrival) {
+    private int getDistance(List<String> shortestPath) {
+        Route route = RouteRepository.getRouteByLineName(InitialLines.LINE_2.getName());
+        List<InitialStations> stations = route.getStations();
+        List<Integer> distances = route.getDistanceToNextStation();
+        int distance = 0;
+        for (int i = 0; i < stations.size(); i++) {
+            if (stations.get(i).getName().equals(shortestPath.get(shortestPath.size() - 1)) || i == stations.size() - 1) continue;
+            distance += distances.get(i);
+        }
+        return distance;
+    }
+
+    private int getMinimumTime(String departure, String arrival) {
         List<String> minimumPath = TimeNavigator.getShortestPath(departure, arrival);
+        Route route = RouteRepository.getRouteByLineName(InitialLines.LINE_2.getName());
+        List<InitialStations> stations = route.getStations();
+        List<Integer> times = route.getTimeToNextStation();
+        int time = 0;
+        for (int i = 0; i < stations.size(); i++) {
+            if (stations.get(i).getName().equals(minimumPath.get(minimumPath.size() - 1)) || i == stations.size() - 1) continue;
+            time += times.get(i);
+        }
+        return time;
+    }
+
+    private int getTime(List<String> minimumPath) {
         Route route = RouteRepository.getRouteByLineName(InitialLines.LINE_2.getName());
         List<InitialStations> stations = route.getStations();
         List<Integer> times = route.getTimeToNextStation();
