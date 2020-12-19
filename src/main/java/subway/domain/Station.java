@@ -13,8 +13,6 @@ public class Station {
         return name;
     }
 
-    // 추가 기능 구현
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
