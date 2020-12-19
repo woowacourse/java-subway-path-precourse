@@ -61,13 +61,4 @@ public class LineRepository {
     public static void deleteAll() {
         lines.clear();
     }
-    
-    public static boolean existsStationsInSameLine(Station startStation, Station endStation) {
-        for (Line line : lines) {
-            if (line.containsAll(startStation, endStation)) {
-                return true;
-            }
-        }
-        return false;
-    }
 }

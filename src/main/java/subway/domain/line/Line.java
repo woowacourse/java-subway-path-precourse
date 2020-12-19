@@ -19,11 +19,4 @@ public class Line {
     public String getName() {
         return name;
     }
-
-    public boolean containsAll(Station startStation, Station endStation) {
-        if (stations.contains(startStation) && stations.contains(endStation)) {
-            return true;
-        }
-        return false;
-    }
 }
