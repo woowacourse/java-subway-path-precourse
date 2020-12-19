@@ -23,4 +23,8 @@ public class StationRepository {
     public static void deleteAll() {
         stations.clear();
     }
+    
+    public static boolean contains(Station station) {
+        return stations.contains(station);
+    }
 }
