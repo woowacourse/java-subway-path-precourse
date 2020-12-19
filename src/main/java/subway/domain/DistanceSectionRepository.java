@@ -10,7 +10,7 @@ public class DistanceSectionRepository {
     private static final WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph(
         DefaultWeightedEdge.class);
 
-    static {
+    public static void initDistanceSectionRepository() {
         SectionRepository.sections().stream().forEach(section -> {
             graph.addVertex(section.getSource().getName());
             graph.addVertex(section.getDestination().getName());

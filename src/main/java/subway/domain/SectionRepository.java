@@ -10,7 +10,7 @@ public class SectionRepository {
 
     private static final List<Section> sections = new ArrayList<>();
 
-    static {
+    public static void initSectionRepository() {
         sections.add(Section.newSection(
             LineService.findLineByName("2호선"),
             StationService.findStationByName("교대역"),

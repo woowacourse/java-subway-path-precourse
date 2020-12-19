@@ -6,9 +6,10 @@ import java.util.List;
 import java.util.Objects;
 
 public class LineRepository {
+
     private static final List<Line> lines = new ArrayList<>();
 
-    static {
+    public static void initLineRepository() {
         lines.add(Line.newLineWithName("2호선"));
         lines.add(Line.newLineWithName("3호선"));
         lines.add(Line.newLineWithName("신분당선"));

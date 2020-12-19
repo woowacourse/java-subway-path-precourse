@@ -10,7 +10,7 @@ public class TimeSectionRepository {
     private static final WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph(
         DefaultWeightedEdge.class);
 
-    static {
+    public static void initTimeSectionRepository() {
         SectionRepository.sections().stream().forEach(section -> {
             graph.addVertex(section.getSource().getName());
             graph.addVertex(section.getDestination().getName());
@@ -21,14 +21,21 @@ public class TimeSectionRepository {
         });
     }
 
-    public static List<String> getShortestPath(Station source, Station destination){
+    public static List<String> getShortestPath(Station source, Station destination) {
+        validateDuplicate(source, destination);
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
-        return dijkstraShortestPath.getPath(source.getName(), destination.getName()).getVertexList();
+        try {
+            return dijkstraShortestPath.getPath(source.getName(), destination.getName())
+                .getVertexList();
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("해당 역은 연결되어 있지 않습니다.");
+        }
     }
 
-    public static Time getShortestTime(Station source, Station destination){
-        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
-        return Time.newTime((int)dijkstraShortestPath
-            .getPathWeight(source.getName(), destination.getName()));
+    private static void validateDuplicate(Station source, Station destination) {
+        if (source.equals(destination)) {
+            throw new IllegalArgumentException("출발역과 도착역이 동일합니다.");
+        }
     }
+
 }

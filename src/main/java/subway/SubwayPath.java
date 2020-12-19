@@ -1,11 +1,20 @@
 package subway;
 
-import java.util.Scanner;
+import subway.domain.DistanceSectionRepository;
+import subway.domain.LineRepository;
+import subway.domain.SectionRepository;
+import subway.domain.StationRepository;
+import subway.domain.TimeSectionRepository;
 import subway.view.MainDisplay;
 
 public class SubwayPath {
 
-    private SubwayPath(){
+    private SubwayPath() {
+        StationRepository.initStationRepository();
+        LineRepository.initLineRepository();
+        SectionRepository.initSectionRepository();
+        DistanceSectionRepository.initDistanceSectionRepository();
+        TimeSectionRepository.initTimeSectionRepository();
     }
 
     public static SubwayPath newSubwayPath() {

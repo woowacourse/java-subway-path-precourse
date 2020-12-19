@@ -6,9 +6,10 @@ import java.util.List;
 import java.util.Objects;
 
 public class StationRepository {
+
     private static final List<Station> stations = new ArrayList<>();
 
-    static {
+    public static void initStationRepository() {
         stations.add(Station.newStationWithName("교대역"));
         stations.add(Station.newStationWithName("강남역"));
         stations.add(Station.newStationWithName("역삼역"));
