@@ -1,16 +1,23 @@
 package subway.domain;
 
+import subway.exception.DuplicatedStationException;
+
 public class Station {
 
-    private String name;
+    private final String name;
 
     public Station(String name) {
+        validateDuplicatedName(name);
         this.name = name;
+    }
+
+    private void validateDuplicatedName(String name) {
+        if (StationRepository.exists(name)) {
+            throw new DuplicatedStationException();
+        }
     }
 
     public String getName() {
         return name;
     }
-
-    // 추가 기능 구현
 }
