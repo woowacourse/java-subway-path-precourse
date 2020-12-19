@@ -7,6 +7,7 @@ import java.util.Objects;
 
 public class StationRepository {
     private static final List<Station> stations = new ArrayList<>();
+    private static final String ERROR_NOT_FOUND_STATION_BY_NAME = "[ERROR] 해당 이름의 역을 찾지 못했습니다.";
 
     public static List<Station> stations() {
         return Collections.unmodifiableList(stations);
@@ -22,5 +23,12 @@ public class StationRepository {
 
     public static void deleteAll() {
         stations.clear();
+    }
+
+    public static Station findStationByName(String stationName) {
+        return stations().stream()
+                .filter(station -> station.getName().equals(stationName))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(ERROR_NOT_FOUND_STATION_BY_NAME));
     }
 }
