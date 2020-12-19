@@ -1,6 +1,6 @@
 package subway;
 
-public class OutPut {
+public class Output {
     private static final String MAIN_VIEW = "## 메인 화면";
     private static final String ROUTE_SEARCH = "1. 경로 조회";
     private static final String QUIT = "Q. 종료";
