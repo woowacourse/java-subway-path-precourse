@@ -2,6 +2,7 @@ package subway.service;
 
 import subway.domain.*;
 import subway.dto.MinimumDistanceResultDto;
+import subway.exception.DuplicatedStartAndEndException;
 
 import java.util.List;
 
@@ -15,6 +16,9 @@ public class DistanceService {
     }
 
     public static MinimumDistanceResultDto getShortestPhysicalDistanceResult(Station stationBegin, Station stationEnd) {
+        if(stationBegin.equals(stationEnd)) {
+            throw new DuplicatedStartAndEndException();
+        }
         List<Station> stationList = graph.getMinimumTimeDistanceBetweenStations(stationBegin, stationEnd);
         int physicalDistance = DistanceRepository.getPhysicalDistance(stationList);
         int timeDistance = DistanceRepository.getTimeDistance(stationList);
@@ -24,6 +28,9 @@ public class DistanceService {
     }
 
     public static MinimumDistanceResultDto getShortestTimeDistanceResult(Station stationBegin, Station stationEnd) {
+        if(stationBegin.equals(stationEnd)) {
+            throw new DuplicatedStartAndEndException();
+        }
         List<Station> stationList = graph.getMinimumTimeDistanceBetweenStations(stationBegin, stationEnd);
         int physicalDistance = DistanceRepository.getPhysicalDistance(stationList);
         int timeDistance = DistanceRepository.getTimeDistance(stationList);
