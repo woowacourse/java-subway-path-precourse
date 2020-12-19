@@ -2,6 +2,8 @@ package subway;
 
 import java.util.Scanner;
 
+import subway.domain.StationRepository;
+
 public class Application {
 	final static Scanner scanner = new Scanner(System.in);
 	static String select = null;
@@ -56,9 +58,15 @@ public class Application {
     
     private static boolean print_from_to() {
     	System.out.println("\n## 출발역을 입력하세요.");
-    	String from = scanner.next();    	
+    	String from = scanner.next();
+    	if(!StationRepository.check_station(from)) {    		
+    		return false;
+    	}
     	System.out.println("\n## 도착역을 입력하세요.");
     	String to = scanner.next();
+    	if(!StationRepository.check_station(to)) {    		
+    		return false;
+    	}
     	if (Path_function.check_isSame_from_to(from, to)) {
     		System.out.println("[ERROR] 출발역과 도착역이 동일합니다.");
     		return false;
