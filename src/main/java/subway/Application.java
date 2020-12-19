@@ -1,6 +1,7 @@
 package subway;
 
 import subway.controller.MainController;
+import subway.controller.PathController;
 import subway.view.OutputView;
 
 import java.util.Scanner;

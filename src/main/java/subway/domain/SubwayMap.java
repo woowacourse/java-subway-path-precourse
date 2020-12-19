@@ -14,7 +14,10 @@ public class SubwayMap {
 
 	static {
 		StationRepository.stations()
-				.forEach(station -> subwayMapDistance.addVertex(station.getName()));
+				.forEach(station -> {
+					subwayMapDistance.addVertex(station.getName());
+					subwayMapTime.addVertex(station.getName());
+				});
 		LineRepository.lines()
 				.forEach(line -> {
 					setSubwayDistance(line);
@@ -23,7 +26,7 @@ public class SubwayMap {
 	}
 
 	public static void setSubwayDistance(Line line) {
-		for (int i = 0; i < line.getDistances().distances().size(); i++) {
+		for (int i = 0; i < line.getSections().sections().size() - 1; i++) {
 			subwayMapDistance.setEdgeWeight(subwayMapDistance.addEdge(line.getSections().stationNames().get(i),
 					line.getSections().stationNames().get(i + 1)),
 					line.getDistances().distances().get(i));
@@ -31,7 +34,7 @@ public class SubwayMap {
 	}
 
 	public static void setSubwayTime(Line line) {
-		for (int i = 0; i < line.getDistances().distances().size(); i++) {
+		for (int i = 0; i < line.getSections().sections().size() - 1; i++) {
 			subwayMapTime.setEdgeWeight(subwayMapTime.addEdge(line.getSections().stationNames().get(i),
 					line.getSections().stationNames().get(i + 1)),
 					line.getTimes().times().get(i));

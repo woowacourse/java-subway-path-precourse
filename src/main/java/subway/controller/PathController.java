@@ -24,14 +24,16 @@ public class PathController {
 		// TODO
 		String start = InputView.inputStartStation(scanner);
 		String end = InputView.inputEndStation(scanner, start);
-		SubwayMap.getLeastDistancePath(start, end);
+		List<String> shortestPath = SubwayMap.getLeastDistancePath(start, end);
+		OutputView.printPathInformation(shortestPath);
 	}
 
-	private static void findLeastTimeConsumed(Scanner scanner) throws IllegalArgumentException {
+	public static void findLeastTimeConsumed(Scanner scanner) throws IllegalArgumentException {
 		// TODO
 		String start = InputView.inputStartStation(scanner);
 		String end = InputView.inputEndStation(scanner, start);
-		List<String> shortestPath = SubwayMap.getLeastDistancePath(start, end);
+		List<String> shortestPath = SubwayMap.getLeastTimePath(start, end);
+		OutputView.printPathInformation(shortestPath);
 	}
 
 	private static void controlByOption(String option, Scanner scanner) throws IllegalArgumentException {
