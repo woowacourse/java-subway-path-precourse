@@ -17,4 +17,10 @@ public class InputView {
         NotExistOption.validate(option, optionList);
         return option;
     }
+
+    public String stationName() {
+        String name = scanner.next();
+        // TODO 검증 작업
+        return name;
+    }
 }

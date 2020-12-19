@@ -8,6 +8,8 @@ public class OutputView {
     private static final String PATH_TITLE = "## 경로 기준";
     private static final String DOT = ". ";
     private static final String SELECT_OPTION = "## 원하는 기능을 선택하세요.";
+    private static final String ENTER_START_STATION = "## 출발역을 입력하세요.";
+    private static final String ENTER_END_STATION = "## 도착역을 입력하세요.";
 
     public static void showMainOption() {
         System.out.println(MAIN_TITLE);
@@ -29,5 +31,13 @@ public class OutputView {
             System.out.println(method.getDescription());
         }
         System.out.println();
+    }
+
+    public static void askStartStationName() {
+        System.out.println(ENTER_START_STATION);
+    }
+
+    public static void askEndStationName() {
+        System.out.println(ENTER_END_STATION);
     }
 }

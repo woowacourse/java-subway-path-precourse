@@ -8,4 +8,8 @@ public class StationService {
             StationRepository.addStation(station);
         }
     }
+
+    public Station findStation(String name) {
+        return StationRepository.findByName(name);
+    }
 }
