@@ -1,9 +1,11 @@
 package controller;
 
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import subway.domain.*;
 import view.InputView;
 import view.OutputView;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class SubwayPathChecker {
@@ -56,8 +58,9 @@ public class SubwayPathChecker {
     }
 
     private void searchShortestDistance() {
-        Station departureStation;
-        Station arrivalStation;
+        Station departureStation = null;
+        Station arrivalStation = null;
+
         try {
             departureStation = InputView.inputDepartureStation(scanner);
             arrivalStation = InputView.inputArrivalStation(scanner);
@@ -66,7 +69,15 @@ public class SubwayPathChecker {
             System.out.println(e.getMessage());
             pathCheck();
         }
-        
+        getDijkstraShortestPath(departureStation.getName(), arrivalStation.getName());
+    }
+
+    private void getDijkstraShortestPath(String departureStationName, String arrivalStationName) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(SectionRepository.graphs());
+        double shortestDistance = dijkstraShortestPath.getPath(departureStationName, arrivalStationName).getWeight();
+        List shortestPath = dijkstraShortestPath.getPath(departureStationName, arrivalStationName).getVertexList();
+        System.out.println(shortestDistance);
+        System.out.println(shortestPath);
     }
 
     private void hasStationNameDuplication(Station departureStation, Station arrivalStation) {
@@ -125,14 +136,14 @@ public class SubwayPathChecker {
     }
 
     private void registerSection() {
-        SectionRepository.addSection(new Section(GYODAE_STATION, GANGNAM_STATION, 2, 3));
-        SectionRepository.addSection(new Section(GANGNAM_STATION, YEOKSAM_STATION, 2, 3));
+        SectionRepository.addSection(new Section(new Station(GYODAE_STATION), new Station(GANGNAM_STATION), 2, 3));
+        SectionRepository.addSection(new Section(new Station(GANGNAM_STATION), new Station(YEOKSAM_STATION), 2, 3));
 
-        SectionRepository.addSection(new Section(GYODAE_STATION, NAMBU_TERMINAL_STATION, 3, 2));
-        SectionRepository.addSection(new Section(NAMBU_TERMINAL_STATION, YANGJAE_STATION, 6, 5));
-        SectionRepository.addSection(new Section(YANGJAE_STATION, MAEBONG_STATION, 1, 1));
+        SectionRepository.addSection(new Section(new Station(GYODAE_STATION), new Station(NAMBU_TERMINAL_STATION), 3, 2));
+        SectionRepository.addSection(new Section(new Station(NAMBU_TERMINAL_STATION), new Station(YANGJAE_STATION), 6, 5));
+        SectionRepository.addSection(new Section(new Station(YANGJAE_STATION), new Station(MAEBONG_STATION), 1, 1));
 
-        SectionRepository.addSection(new Section(GANGNAM_STATION, YANGJAE_STATION, 2, 8));
-        SectionRepository.addSection(new Section(YANGJAE_STATION, YANGJAE_CITIZEN_FOREST_STATION, 10, 3));
+        SectionRepository.addSection(new Section(new Station(GANGNAM_STATION), new Station(YANGJAE_STATION), 2, 8));
+        SectionRepository.addSection(new Section(new Station(YANGJAE_STATION), new Station(YANGJAE_CITIZEN_FOREST_STATION), 10, 3));
     }
 }
