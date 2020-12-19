@@ -23,4 +23,8 @@ public class StationRepository {
     public static void deleteAll() {
         stations.clear();
     }
+
+    public static Station selectStationByName(String name) {
+        return (Station) stations().stream().filter(s -> s.getName().equals(name));
+    }
 }
