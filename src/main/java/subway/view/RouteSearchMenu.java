@@ -21,11 +21,7 @@ public class RouteSearchMenu {
     }
 
     public void startRouteSearchMenu() {
-        outputRouteSearchMenu();
-        String input = scanner.nextLine();
-        System.out.println();
-        inputMenu(input);
-
+        inputMenu();
     }
 
     private void outputRouteSearchMenu() {
@@ -39,8 +35,11 @@ public class RouteSearchMenu {
         System.out.println(sb);
     }
 
-    private void inputMenu(String input) {
+    private void inputMenu() {
         while (true) {
+            outputRouteSearchMenu();
+            String input = scanner.nextLine();
+            System.out.println();
             if (input.equals("1")) {
                 requestStartStation();
             }
@@ -56,6 +55,7 @@ public class RouteSearchMenu {
     private void requestStartStation() {
         System.out.println(REQUEST_START);
         String startStationName = scanner.nextLine();
+        System.out.println();
         if (StationValidator.haveStation(startStationName)) {
             requestArrivalStation(startStationName);
         }
@@ -64,6 +64,7 @@ public class RouteSearchMenu {
     private void requestArrivalStation(String startStationName) {
         System.out.println(REQUEST_ARRIVAL);
         String arrivalStationName = scanner.nextLine();
+        System.out.println();
         if (StationValidator.checkVailableArrivalStation(startStationName, arrivalStationName)) {
 
         }

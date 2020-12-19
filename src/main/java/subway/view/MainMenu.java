@@ -17,10 +17,23 @@ public class MainMenu {
     }
 
     public void startMainMENU() {
-        outputMainMenu();
-        String input = scanner.nextLine();
-        System.out.println();
-        inputMenu(input);
+        inputMenu();
+    }
+
+    private void inputMenu() {
+        while (true) {
+            outputMainMenu();
+            String input = scanner.nextLine();
+            System.out.println();
+            if (input.equals("1")) {
+                new RouteSearchMenu(scanner).startRouteSearchMenu();
+            }
+            if (input.equals("Q")) {
+                System.out.println();
+                System.out.println(QUIT_MESSAGE);
+                return;
+            }
+        }
     }
 
     private void outputMainMenu() {
@@ -31,18 +44,5 @@ public class MainMenu {
                 .append(ENTER)
                 .append(CHOICE_MENU);
         System.out.println(sb);
-    }
-
-    private void inputMenu(String input) {
-        while (true) {
-            if (input.equals("1")) {
-                new RouteSearchMenu(scanner).startRouteSearchMenu();
-            }
-            if (input.equals("Q")) {
-                System.out.println();
-                System.out.println(QUIT_MESSAGE);
-                return;
-            }
-        }
     }
 }
