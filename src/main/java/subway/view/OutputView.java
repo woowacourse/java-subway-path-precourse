@@ -42,6 +42,7 @@ public class OutputView {
             .forEach((station) -> {
                 System.out.println(RESULT_PREFIX + station);
             });
+        System.out.println();
     }
 
     public static void println() {
