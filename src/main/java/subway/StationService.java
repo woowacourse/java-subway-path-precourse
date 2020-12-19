@@ -16,13 +16,13 @@ public class StationService {
         station.addConnectData(connectStation, distance, time);
     }
 
-    public static int getDistance(String sourceStationName, String TargetStationName) {
+    public static int[] getDistanceAndTime(String sourceStationName, String TargetStationName) {
         Station sourceStation = StationRepository.getStation(sourceStationName);
         Station targetStation = StationRepository.getStation(TargetStationName);
-        int distance = sourceStation.getDistance(targetStation);
-        if (distance == Station.ERROR_NUMBER) {
-            distance = targetStation.getDistance(sourceStation);
+        int[] data = sourceStation.getDistanceAndTime(targetStation);
+        if (data[Station.DISTANCE_INDEX] == Station.ERROR_NUMBER) {
+            data = targetStation.getDistanceAndTime(sourceStation);
         }
-        return distance;
+        return data;
     }
 }
