@@ -1,7 +1,11 @@
 package subway.domain;
 
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
+
+import java.util.Collections;
+import java.util.List;
 
 
 public class TimeGraphRepository {
@@ -13,6 +17,12 @@ public class TimeGraphRepository {
 
     public static void addTimeBetweenStations(Station source, Station destination, int time) {
         timeGraph.setEdgeWeight(timeGraph.addEdge(source, destination), time);
+    }
+
+    public static List<Station> findShortestPath(Station source, Station destination) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(timeGraph);
+        List<Station> shortestPath = dijkstraShortestPath.getPath(source, destination).getVertexList();
+        return Collections.unmodifiableList(shortestPath);
     }
 
     public static int getEdgeTime(Station source, Station destination) {

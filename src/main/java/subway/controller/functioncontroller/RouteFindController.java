@@ -18,6 +18,10 @@ public class RouteFindController extends FunctionController {
     private static final String BACK = "B";
     private static final String INVALID_INPUT = "";
 
+    private static final int INITIALIZE = 0;
+    private static final int NEXT_INDEX = 1;
+    private static final int EXCEPT_LAST_INDEX = 1;
+
     public static void start(Scanner scanner) {
         runRouteFindController(scanner);
     }
@@ -72,7 +76,17 @@ public class RouteFindController extends FunctionController {
     }
 
     private static boolean findShortestTime(Scanner scanner) {
-
+        String userInputStartStation = getUserInputStartStation(scanner);
+        if (userInputStartStation.equals(INVALID_INPUT)) {
+            return false;
+        }
+        String userInputEndStation = getUserInputEndStation(scanner, userInputStartStation);
+        if (userInputEndStation.equals(INVALID_INPUT)) {
+            return false;
+        }
+        if (!findShortestTimePath(userInputStartStation, userInputEndStation)) {
+            return false;
+        }
         return true;
     }
 
@@ -108,20 +122,34 @@ public class RouteFindController extends FunctionController {
         return true;
     }
 
+    private static boolean findShortestTimePath(String userInputStartStation, String userInputEndStation) {
+        Station source = StationRepository.getStationByName(userInputStartStation);
+        Station destination = StationRepository.getStationByName(userInputEndStation);
+        RouteFindOutputView.printPathResult();
+        List<Station> shortestPath = TimeGraphRepository.findShortestPath(source, destination);
+        if (!RouteFindValidation.checkValidPath(shortestPath)) {
+            return false;
+        }
+        String totalDistance = Integer.toString(findTotalDistance(shortestPath));
+        String totalTime = Integer.toString(findTotalTime(shortestPath));
+        RouteFindInformationView.printRouteInformation(totalDistance, totalTime, shortestPath);
+        return true;
+    }
+
     private static int findTotalDistance(List<Station> shortestPath) {
-        int totalDistance = 0;
+        int totalDistance = INITIALIZE;
         int pathLength = shortestPath.size();
-        for (int i=0; i<pathLength-1; i++) {
-            totalDistance += DistanceGraphRepository.getEdgeDistance(shortestPath.get(i), shortestPath.get(i+1));
+        for (int i = INITIALIZE; i < pathLength - 1; i++) {
+            totalDistance += DistanceGraphRepository.getEdgeDistance(shortestPath.get(i), shortestPath.get(i + 1));
         }
         return totalDistance;
     }
 
     private static int findTotalTime(List<Station> shortestPath) {
-        int totalTime = 0;
-        int pathLength = shortestPath.size();
-        for (int i=0; i<pathLength-1; i++) {
-            totalTime += TimeGraphRepository.getEdgeTime(shortestPath.get(i), shortestPath.get(i+1));
+        int totalTime = INITIALIZE;
+        int pathLength = shortestPath.size() - EXCEPT_LAST_INDEX;
+        for (int i = INITIALIZE; i < pathLength; i++) {
+            totalTime += TimeGraphRepository.getEdgeTime(shortestPath.get(i), shortestPath.get(i + NEXT_INDEX));
         }
         return totalTime;
     }
