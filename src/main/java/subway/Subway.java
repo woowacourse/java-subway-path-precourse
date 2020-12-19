@@ -18,7 +18,6 @@ public class Subway {
 
 
     public Subway() {
-
         for (String line : INIT_LINES) {
             String[] split = line.split(":");
 
@@ -29,14 +28,13 @@ public class Subway {
             saveLines(lineName);
         }
 
-        saveStationWeight();
-
-    }
-
-    private void saveWeights() {
-
         GraphRepository.addGraph(TIME_GRAPH);
         GraphRepository.addGraph(DISTANCE_GRAPH);
+        saveStationWeight();
+    }
+
+    public double getShortestTime(Station v1, Station v2) {
+        return GraphRepository.findGraphByName(TIME_GRAPH).shortestPath(v1, v2);
     }
 
     private void saveStationWeight() {
