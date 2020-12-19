@@ -10,7 +10,9 @@ import java.util.List;
 import java.util.Objects;
 
 public class ShortestPathFinder {
-    public static final String ERR_WRONG_TYPE_MSG = "해당 타입이 없습니다.";
+    private static final String ERR_WRONG_TYPE_MSG = "해당 타입이 없습니다.";
+    private static final String ERR_NOT_FONND_PATH_MSG = "출발역부터 도착역까지 갈 수 있는 경로가 없습니다.";
+    private static final String ERR_CANT_SAME_STATION_MSG = "출발역과 도착역이 같을 수 없습니다.";
 
     private List<Station> stations;
     private Sections sections;
@@ -45,19 +47,19 @@ public class ShortestPathFinder {
 
     private void validatePath(GraphPath path) {
         if (Objects.isNull(path)) {
-            throw new SubwayException("출발역부터 도착역까지 갈 수 있는 경로가 없습니다.");
+            throw new SubwayException(ERR_NOT_FONND_PATH_MSG);
         }
     }
 
     private void isSame(Station from, Station to) {
         if (from.equals(to)) {
-            throw new SubwayException("출발역과 도착역이 같을 수 없습니다.");
+            throw new SubwayException(ERR_CANT_SAME_STATION_MSG);
         }
     }
 
     private void graphVertexAndEdgeSetting() {
         addVertex();
-        addEdge(sections);
+        addEdge();
     }
 
     private void addVertex() {
@@ -66,7 +68,7 @@ public class ShortestPathFinder {
         }
     }
 
-    private void addEdge(Sections allSections) {
+    private void addEdge() {
         for (Section section : sections.getUnmodifiableList()) {
             graph.addEdge(section.from(), section.to());
         }

@@ -11,10 +11,16 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SubwayInitializer {
-
     private static final String SECOND_LINE = "2호선";
     private static final String THIRD_LINE = "3호선";
     private static final String NEW_BOONDANG_LINE = "신분당선";
+    private static final String GYODAE_STATION = "교대역";
+    private static final String GANGNAM_STATION = "강남역";
+    private static final String YEOKSAM_STATION = "역삼역";
+    private static final String SOUTH_TERMINAL_STATION = "남부터미널역";
+    private static final String YANGJAE_STATION = "양재역";
+    private static final String YANGJAE_FOREST_STATION = "양재시민의숲역";
+    private static final String MAEBONG_STATION = "매봉역";
 
     public static void setUp() {
         addStations();
@@ -24,7 +30,7 @@ public class SubwayInitializer {
 
     private static void addStations() {
         List<String> stationNames =
-                Arrays.asList("교대역", "강남역", "역삼역", "남부터미널역", "양재역", "양재시민의숲역", "매봉역");
+                Arrays.asList(GYODAE_STATION, GANGNAM_STATION, YEOKSAM_STATION, SOUTH_TERMINAL_STATION, YANGJAE_STATION, YANGJAE_FOREST_STATION, MAEBONG_STATION);
 
         for (String stationName : stationNames) {
             StationRepository.addStation(new Station(stationName));
@@ -39,12 +45,12 @@ public class SubwayInitializer {
     }
 
     private static void addSections() {
-        SectionRepository.addSection(LineRepository.findByName(SECOND_LINE), SectionFactory.makeSection(new Station("교대역"), new Station("강남역"), 2, 3));
-        SectionRepository.addSection(LineRepository.findByName(SECOND_LINE), SectionFactory.makeSection(new Station("강남역"), new Station("역삼역"), 2, 3));
-        SectionRepository.addSection(LineRepository.findByName(THIRD_LINE), SectionFactory.makeSection(new Station("교대역"), new Station("남부터미널역"), 3, 2));
-        SectionRepository.addSection(LineRepository.findByName(THIRD_LINE), SectionFactory.makeSection(new Station("남부터미널역"), new Station("양재역"), 6, 5));
-        SectionRepository.addSection(LineRepository.findByName(THIRD_LINE), SectionFactory.makeSection(new Station("양재역"), new Station("매봉역"), 1, 1));
-        SectionRepository.addSection(LineRepository.findByName(NEW_BOONDANG_LINE), SectionFactory.makeSection(new Station("강남역"), new Station("양재역"), 2, 8));
-        SectionRepository.addSection(LineRepository.findByName(NEW_BOONDANG_LINE), SectionFactory.makeSection(new Station("양재역"), new Station("양재시민의숲역"), 10, 3));
+        SectionRepository.addSection(LineRepository.findByName(SECOND_LINE), SectionFactory.makeSection(new Station(GYODAE_STATION), new Station(GANGNAM_STATION), 2, 3));
+        SectionRepository.addSection(LineRepository.findByName(SECOND_LINE), SectionFactory.makeSection(new Station(GANGNAM_STATION), new Station(YEOKSAM_STATION), 2, 3));
+        SectionRepository.addSection(LineRepository.findByName(THIRD_LINE), SectionFactory.makeSection(new Station(GYODAE_STATION), new Station(SOUTH_TERMINAL_STATION), 3, 2));
+        SectionRepository.addSection(LineRepository.findByName(THIRD_LINE), SectionFactory.makeSection(new Station(SOUTH_TERMINAL_STATION), new Station(YANGJAE_STATION), 6, 5));
+        SectionRepository.addSection(LineRepository.findByName(THIRD_LINE), SectionFactory.makeSection(new Station(YANGJAE_STATION), new Station(MAEBONG_STATION), 1, 1));
+        SectionRepository.addSection(LineRepository.findByName(NEW_BOONDANG_LINE), SectionFactory.makeSection(new Station(GANGNAM_STATION), new Station(YANGJAE_STATION), 2, 8));
+        SectionRepository.addSection(LineRepository.findByName(NEW_BOONDANG_LINE), SectionFactory.makeSection(new Station(YANGJAE_STATION), new Station(YANGJAE_FOREST_STATION), 10, 3));
     }
 }

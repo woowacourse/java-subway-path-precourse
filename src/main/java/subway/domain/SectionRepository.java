@@ -4,6 +4,7 @@ import java.util.List;
 
 public class SectionRepository {
     private static final int ONE = 1;
+    private static final int ZERO = 0;
 
     public static void addSection(Line line, Section section) {
         Line target = LineRepository.findByName(line.getName());
@@ -24,7 +25,7 @@ public class SectionRepository {
     }
 
     public static int calculateTotalDistance(List<Station> stations) {
-        int totalDistance = 0;
+        int totalDistance = ZERO;
         for (int i = ONE; i < stations.size(); i++) {
             String from = stations.get(i - ONE).getName();
             String to = stations.get(i).getName();
@@ -34,7 +35,7 @@ public class SectionRepository {
     }
 
     public static int calculateTakenTime(List<Station> stations) {
-        int totalTime = 0;
+        int totalTime = ZERO;
         for (int i = ONE; i < stations.size(); i++) {
             String from = stations.get(i - ONE).getName();
             String to = stations.get(i).getName();
