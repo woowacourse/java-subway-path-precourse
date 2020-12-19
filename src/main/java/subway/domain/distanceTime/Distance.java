@@ -1,4 +1,4 @@
-package subway.domain;
+package subway.domain.distanceTime;
 
 import java.math.BigDecimal;
 
