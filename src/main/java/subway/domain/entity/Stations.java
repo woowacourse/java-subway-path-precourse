@@ -8,6 +8,7 @@ import java.util.stream.Stream;
 
 public class Stations {
     private static final SubwayMapGraph SUBWAY_MAP_GRAPH = SubwayMapGraph.getInstance();
+    private static final int INDEX_ADJUSTMENT = 1;
 
     private final List<Station> stations;
 
@@ -23,5 +24,12 @@ public class Stations {
         List<Station> stations = Stream.of(upwardLastStation, nextStation)
                 .collect(Collectors.toList());
         return new Stations(stations);
+    }
+
+    public void addStation(Station station, Section section) {
+        int stationCounts = stations.size();
+        Station lastStation = stations.get(stationCounts - INDEX_ADJUSTMENT);
+        SUBWAY_MAP_GRAPH.addStationToGraph(lastStation, station, section);
+        stations.add(station);
     }
 }
