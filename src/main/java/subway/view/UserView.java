@@ -104,14 +104,13 @@ public class UserView {
 
         String distanceString = String.format(PrefixMessage.TIME_FORMAT.getMessage(),weight);
         info(distanceString);
-
         //구현 실패
         //String timeString = String.format(PrefixMessage.TIME_FORMAT.getMessage(),sumTime(pathList));
         //info(timeString);
-
         info(RouteMessage.LINE);
         for(String path:pathList){
             info(path);
         }
+        info(RouteMessage.LINE);
     }
 }

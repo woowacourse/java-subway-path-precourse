@@ -14,20 +14,21 @@ public class MainController {
     }
 
     public static void run() {
-        while (true) {
-            UserView.displayScreen(ControlScreen.MAIN);
-            UserView.guideMessagePrint(CommonMessage.SELECT_FUNCTION);
+        UserView.displayScreen(ControlScreen.MAIN);
+        UserView.guideMessagePrint(CommonMessage.SELECT_FUNCTION);
 
-            try {
-                String menuNumber = MainValidator.validMainMenu(UserView.scanUserInput());
-                if (isQuit(menuNumber)) {
-                    return;
-                }
-                MainFunction.runNext(menuNumber);
-            } catch (IllegalArgumentException error) {
-                UserView.errorDirectPrint(error);
+        try {
+            String menuNumber = MainValidator.validMainMenu(UserView.scanUserInput());
+            if (isQuit(menuNumber)) {
+                return;
             }
+            MainFunction.runNext(menuNumber);
+            MainController.run();
+        } catch (IllegalArgumentException error) {
+            UserView.errorDirectPrint(error);
         }
+
+
     }
 
     public static void back() {
