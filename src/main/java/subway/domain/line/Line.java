@@ -19,5 +19,10 @@ public class Line {
         return name;
     }
 
-    // 추가 기능 구현
+    public boolean containsAll(Station startStation, Station endStation) {
+        if (stations.contains(startStation) && stations.contains(endStation)) {
+            return true;
+        }
+        return false;
+    }
 }
