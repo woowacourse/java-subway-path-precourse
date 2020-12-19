@@ -1,5 +1,6 @@
 package subway.menuSelection;
 
+import subway.Controller.InquiryController;
 import subway.Controller.MainController;
 import subway.menuSelection.exception.NoSuchMenuException;
 
@@ -7,7 +8,7 @@ import java.util.Arrays;
 
 public enum PathStandardSelection {
     DISTANCE("1", "경로 조회", () -> {}),   //dummy function, 업데이트 예정
-    TIME("2", "최소 시간", () -> {}),
+    TIME("2", "최소 시간", InquiryController::inquiryByTime),
     BACK("B", "돌아가기", MainController::backToMainScreen);
 
     private static final String MENU_FORMAT = "%s. %s";
