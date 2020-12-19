@@ -20,4 +20,12 @@ public class Section {
     public Station to() {
         return to;
     }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public int getTakenTime() {
+        return takenTime;
+    }
 }
