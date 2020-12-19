@@ -6,8 +6,9 @@ public class Line {
     private String name;
     private List<Edge> edges;
 
-    public Line(String name) {
+    public Line(String name, List<Edge> edges) {
         this.name = name;
+        this.edges = edges;
     }
 
     public String getName() {
