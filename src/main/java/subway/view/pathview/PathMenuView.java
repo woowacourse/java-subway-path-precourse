@@ -14,11 +14,11 @@ public class PathMenuView implements View {
             try {
                 OutputView.println(VIEW_PREFIX + name);
                 OutputView.printPathMenuInputGuideMessage();
-                PathChoice pathChoice = PathChoice.of(InputView.inputString());
-                if (pathChoice == PathChoice.BACK) {
+                PathChoice choice = PathChoice.of(InputView.inputString());
+                if (choice == PathChoice.BACK) {
                     return;
                 }
-                /** TODO: 최단 거리, 최소 시간 뷰로 이동 기능 구현  */
+                choice.visitView();
                 return;
             } catch (RuntimeException e) {
                 OutputView.printExceptionMessage(e);

@@ -18,6 +18,14 @@ public class OutputView {
             .forEach(s -> System.out.println(s.toString()));
     }
 
+    public static void printInputStartStationGuideMessage() {
+        println(View.VIEW_PREFIX + "출발역을 입력하세요.");
+    }
+
+    public static void printInputEndStationGuideMessage() {
+        println(View.VIEW_PREFIX + "도착역을 입력하세요.");
+    }
+
     public static void println() {
         println();
     }

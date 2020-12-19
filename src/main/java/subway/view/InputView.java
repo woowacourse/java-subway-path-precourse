@@ -10,4 +10,12 @@ public class InputView {
         return scanner.nextLine();
     }
 
+    public static String inputStation() {
+        String input = scanner.nextLine();
+        if (input.isBlank() || input.equals("")) {
+            throw new IllegalArgumentException("[ERROR] 역 이름을 입력해주세요.");
+        }
+        return input;
+    }
+
 }
