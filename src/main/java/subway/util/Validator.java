@@ -1,6 +1,7 @@
 package subway.util;
 
 import subway.menu.MainMenu;
+import subway.menu.PathMenu;
 
 import java.util.Arrays;
 
@@ -10,6 +11,15 @@ public class Validator {
     protected void validateMainMenuOption(String option) {
         boolean result = Arrays.stream(MainMenu.values())
                 .map(MainMenu::getOption)
+                .anyMatch(menuOption -> menuOption.equals(option));
+        if (!result) {
+            throw new IllegalArgumentException(OPTION_NOT_FOUND_WARN);
+        }
+    }
+
+    protected void validatePathMenuOption(String option) {
+        boolean result = Arrays.stream(PathMenu.values())
+                .map(PathMenu::getOption)
                 .anyMatch(menuOption -> menuOption.equals(option));
         if (!result) {
             throw new IllegalArgumentException(OPTION_NOT_FOUND_WARN);

@@ -22,7 +22,7 @@ public class InputView extends Validator {
     public String inputPathMenuOption() {
         System.out.println(OPTION_SELECT_MESSAGE);
         String option = scanner.nextLine();
-        //validate
+        validatePathMenuOption(option);
         return option;
     }
 }
