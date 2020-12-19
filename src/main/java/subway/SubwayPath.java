@@ -25,6 +25,11 @@ public class SubwayPath {
     private void run() {
         OutputView.printMainView();
         String order = selectMenu();
+        selectPathRuleMenu(order);
+    }
+
+    private void selectPathRuleMenu(String order) {
+        OutputView.printPathRuleView();
     }
 
     private String selectMenu() {

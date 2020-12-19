@@ -2,6 +2,7 @@ package subway.view;
 
 import subway.Constant;
 import subway.menu.MainMenu;
+import subway.menu.PathRuleMenu;
 
 public class OutputView {
 
@@ -14,10 +15,14 @@ public class OutputView {
     }
 
     public static void printPathRuleView(){
-
+        printHeader();
+        System.out.println(Constant.VIEW_PATH_RULE_HEADER);
+        for(PathRuleMenu pathRuleMenu : PathRuleMenu.values()){
+            System.out.printf(Constant.VIEW_MENU_FORMAT, pathRuleMenu.getOrder(), pathRuleMenu.getMenuMessage());
+        }
     }
 
-    public static void printAskingStartingStation(){
+    public static void printAskingPathRule(){
 
     }
 
