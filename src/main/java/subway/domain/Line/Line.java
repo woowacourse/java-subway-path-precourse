@@ -8,7 +8,7 @@ import subway.exception.LineNameFormatException;
 import java.util.List;
 
 public class Line {
-    private static final String LINE = "역";
+    private static final String LINE = "선";
     private static final int LINE_NAME_LENGTH = 2;
 
     private String name;
@@ -37,6 +37,9 @@ public class Line {
         }
     }
 
+    public boolean isSameName(String name) {
+        return this.name.equals(name);
+    }
     public String getName() {
         return name;
     }
