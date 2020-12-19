@@ -1,5 +1,7 @@
 package subway.domain;
 
+import subway.domain.exception.NoSuchStationException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -28,6 +30,13 @@ public class StationRepository {
 
     public static boolean deleteStation(String name) {
         return stations.removeIf(station -> Objects.equals(station.getName(), name));
+    }
+
+    public static Station searchByName(String name) {
+        return stations.stream()
+                .filter(station -> station.getName().equals(name))
+                .findAny()
+                .orElseThrow(NoSuchStationException::new);
     }
 
     public static void deleteAll() {
