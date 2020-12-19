@@ -8,6 +8,10 @@ import java.util.Objects;
 public class StationRepository {
     private static final List<Station> stations = new ArrayList<>();
 
+    static {
+        InitialSubway.initializeStations();
+    }
+
     public static List<Station> stations() {
         return Collections.unmodifiableList(stations);
     }
@@ -22,5 +26,14 @@ public class StationRepository {
 
     public static void deleteAll() {
         stations.clear();
+    }
+
+    public static Station getStation(String name) throws IllegalArgumentException {
+        return StationRepository
+                .stations()
+                .stream()
+                .filter(station -> station.getName().equals(name))
+                .findAny()
+                .orElseThrow(IllegalArgumentException::new);
     }
 }

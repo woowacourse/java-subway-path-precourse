@@ -8,6 +8,11 @@ import java.util.Objects;
 public class LineRepository {
     private static final List<Line> lines = new ArrayList<>();
 
+    static {
+        InitialSubway.initializeLines();
+        InitialSubway.initializeSections();
+    }
+
     public static List<Line> lines() {
         return Collections.unmodifiableList(lines);
     }
@@ -22,5 +27,14 @@ public class LineRepository {
 
     public static void deleteAll() {
         lines.clear();
+    }
+
+    public static Line getLine(String lineName) throws IllegalArgumentException {
+        return LineRepository
+                .lines()
+                .stream()
+                .filter(line -> line.getName().equals(lineName))
+                .findAny()
+                .orElseThrow(IllegalArgumentException::new);
     }
 }
