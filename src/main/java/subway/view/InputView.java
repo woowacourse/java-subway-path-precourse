@@ -13,15 +13,15 @@ public class InputView {
         this.scanner = scanner;
     }
 
-    public String getFunctionSelect(List<String> choices) {
+    public String getFunctionSelect(List<String> buttons) {
         OutputView.printFunctionSelectQuery();
         try {
             String input = scanner.nextLine();
             System.out.println();
-            Validator.functionSelect(choices, input);
+            Validator.functionSelect(buttons, input);
             return input;
         } catch (IllegalArgumentException e) {
-            return getFunctionSelect(choices);
+            return getFunctionSelect(buttons);
         }
     }
 }
