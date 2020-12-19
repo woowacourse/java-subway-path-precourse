@@ -34,18 +34,34 @@ public class SubwayPathChecker {
         do {
             OutputView.printMainScreen();
             mainMenuType = InputView.inputFunctionNumber(scanner);
-            executeFunction(mainMenuType);
+            executeMainMenuFunction(mainMenuType);
         } while (mainMenuType != MainMenuType.QUIT);
     }
 
-    private void executeFunction(MainMenuType mainMenuType) {
+    private void executeMainMenuFunction(MainMenuType mainMenuType) {
         if (mainMenuType == MainMenuType.PATH_CHECK) {
             pathCheck();
         }
     }
 
     private void pathCheck() {
+        PathStandardType pathStandardType;
+
         OutputView.printPathStandardSelectionScreen();
+        pathStandardType = InputView.inputPathStandardFunctionNumber(scanner);
+
+        if (pathStandardType == PathStandardType.SHORTEST_DISTANCE) {
+            searchShortestDistance();
+        }
+    }
+
+    private void searchShortestDistance() {
+        try {
+            InputView.inputDepartureStation(scanner);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            pathCheck();
+        }
     }
 
     private void registerLine() {
