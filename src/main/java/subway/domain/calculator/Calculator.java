@@ -14,13 +14,14 @@ public class Calculator {
     private Calculator() {
     }
 
-    public static Result getShortestPathByTime(Station source, Station dest) {
+    public static Result getShortestPathByTime(String source, String dest) {
+        CalculationValidator.validateCalculation(source, dest);
         WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
         initVertex(graph);
         initEdgesByTime(graph);
 
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
-        List<String> shortestPath = dijkstraShortestPath.getPath(source.getName(), dest.getName()).getVertexList();
+        List<String> shortestPath = dijkstraShortestPath.getPath(source, dest).getVertexList();
         return new Result(shortestPath);
     }
 
@@ -44,13 +45,14 @@ public class Calculator {
         }
     }
 
-    public static Result getShortestPathByDistance(Station source, Station dest) {
+    public static Result getShortestPathByDistance(String source, String dest) {
+        CalculationValidator.validateCalculation(source, dest);
         WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
         initVertex(graph);
         initEdgesByDistance(graph);
 
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
-        List<String> shortestPath = dijkstraShortestPath.getPath(source.getName(), dest.getName()).getVertexList();
+        List<String> shortestPath = dijkstraShortestPath.getPath(source, dest).getVertexList();
         return new Result(shortestPath);
     }
 
