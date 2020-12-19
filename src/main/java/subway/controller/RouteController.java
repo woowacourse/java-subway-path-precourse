@@ -28,12 +28,4 @@ public class RouteController implements Controller {
             return inputRouteMenu();
         }
     }
-
-    public static void shortestDistance() {
-        System.out.println("최단 거리 메뉴 실행 \n");
-    }
-
-    public static void shortestTime() {
-        System.out.println("최단 시간 메뉴 실행 \n");
-    }
 }
