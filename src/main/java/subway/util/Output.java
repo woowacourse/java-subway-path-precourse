@@ -39,7 +39,7 @@ public class Output {
 	}
 	
 	public static void time(double time) {
-		System.out.println("[INFO] 총 소요 시간: " + time + "");
+		System.out.println("[INFO] 총 소요 시간: " + time + "분");
 	}
 	
 	public static void section(DefaultWeightedEdge station) {
