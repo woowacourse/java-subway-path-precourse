@@ -11,7 +11,7 @@ public class InputView extends Validator {
     private static Scanner scanner;
 
     public InputView(Scanner scanner) {
-        this.scanner = scanner;
+        InputView.scanner = scanner;
     }
 
     public static String inputMainMenuOption() {
