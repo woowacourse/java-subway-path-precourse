@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class LineRepository {
+    private static final String LINE_NOT_FOUND_WARN = "[ERROR] 해당 노선이 존재하지 않습니다.";
     private static final List<Line> lines = new ArrayList<>();
 
     public static List<Line> lines() {
@@ -22,5 +23,12 @@ public class LineRepository {
 
     public static void deleteAll() {
         lines.clear();
+    }
+
+    public static Line findLineByName(String name) {
+        return lines.stream()
+                .filter(line -> line.getName().equals(name))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(LINE_NOT_FOUND_WARN));
     }
 }
