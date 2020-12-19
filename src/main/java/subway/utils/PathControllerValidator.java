@@ -19,7 +19,13 @@ public class PathControllerValidator {
     }
 
     private static void validateDuplicate(String startingStation, String finishingStation) {
+        if (namesAreSame(startingStation, finishingStation)) {
+            throw new IllegalArgumentException(ErrorMessage.STATION_DUPLICATE);
+        }
+    }
 
+    private static boolean namesAreSame(String startingStation, String finishingStation) {
+        return startingStation.equals(finishingStation);
     }
 
     private static void validateConnected(String startingStation, String finishingStation) {
