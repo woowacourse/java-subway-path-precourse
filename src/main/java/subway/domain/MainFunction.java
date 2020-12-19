@@ -3,7 +3,7 @@ package subway.domain;
 import java.util.Arrays;
 
 public enum MainFunction {
-    ORDER("1") {
+    FIND_ROUTE("1") {
         @Override
         public void operate() {
         }
@@ -26,6 +26,6 @@ public enum MainFunction {
             .findFirst()
             .orElseThrow(() -> new IllegalArgumentException("[ERROR] 선택할 수 없는 기능입니다."));
     }
-    
+
     public abstract void operate();
 }
