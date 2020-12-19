@@ -1,4 +1,4 @@
-package subway.view;
+package subway.view.output;
 
 public class ErrorOutputView extends OutputView {
     private static String ERROR_SYMBOL = "\n[ERROR] ";

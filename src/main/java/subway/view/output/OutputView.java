@@ -1,4 +1,4 @@
-package subway.view;
+package subway.view.output;
 
 import java.util.List;
 
