@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import subway.domain.DistanceGraph;
+import subway.domain.EdgeRepository;
 import subway.domain.Station;
 import subway.domain.StationRepository;
 import subway.domain.TimeGraph;
@@ -19,6 +20,9 @@ public class RouteScreen implements Screen {
     private static final String BACK_MESSAGE = "돌아가기";
     private static final String ASK_ORIGIN_STATION_NAME_MESSAGE = "출발역을 입력하세요.";
     private static final String ASK_DESTINATION_STATION_NAME_MESSAGE = "도착역을 입력하세요.";
+    private static final int ZERO = 0;
+    private static final int LIST_INDEX_START = 0;
+    private static final int LIST_FIND_BUFFER_SIZE_ONE = 1;
     
     private final List<Choice> choices = new ArrayList<>();
     
@@ -55,11 +59,13 @@ public class RouteScreen implements Screen {
     private void showMinimumDistanceRoute() {
         Station originStation;
         Station destinationStation;
+        List<Station> path;
         
         try {
             originStation = StationRepository.getStationByName(InputView.askName(ASK_ORIGIN_STATION_NAME_MESSAGE));
             destinationStation = StationRepository.getStationByName(InputView.askName(ASK_DESTINATION_STATION_NAME_MESSAGE));
-            OutputView.printStations(TimeGraph.getShortestPath(originStation, destinationStation));
+            path = TimeGraph.getShortestPath(originStation, destinationStation);
+            OutputView.printPath(path, getTotalDistance(path), getTotalTime(path));
         } catch (IllegalArgumentException exception) {
             OutputView.printErrorMessage(exception);
         }
@@ -68,13 +74,37 @@ public class RouteScreen implements Screen {
     private void showMinimumTimeRoute() {
         Station originStation;
         Station destinationStation;
+        List<Station> path;
         
         try {
             originStation = StationRepository.getStationByName(InputView.askName(ASK_ORIGIN_STATION_NAME_MESSAGE));
             destinationStation = StationRepository.getStationByName(InputView.askName(ASK_DESTINATION_STATION_NAME_MESSAGE));
-            OutputView.printStations(DistanceGraph.getShortestPath(originStation, destinationStation));
+            path = DistanceGraph.getShortestPath(originStation, destinationStation);
+            OutputView.printPath(path, getTotalDistance(path), getTotalTime(path));
         } catch (IllegalArgumentException exception) {
             OutputView.printErrorMessage(exception);
         }
+    }
+    
+    private int getTotalDistance(List<Station> path) {
+        int totalDistance = ZERO;
+        
+        for (int index = LIST_INDEX_START; index < path.size() - LIST_FIND_BUFFER_SIZE_ONE; index++) {
+            totalDistance += EdgeRepository
+                    .getEdgeByStations(path.get(index), path.get(index + LIST_FIND_BUFFER_SIZE_ONE)).getDistance();
+        }
+        
+        return totalDistance;
+    }
+    
+    private int getTotalTime(List<Station> path) {
+        int totalTime = ZERO;
+        
+        for (int index = LIST_INDEX_START; index < path.size() - LIST_FIND_BUFFER_SIZE_ONE; index++) {
+            totalTime += EdgeRepository
+                    .getEdgeByStations(path.get(index), path.get(index + LIST_FIND_BUFFER_SIZE_ONE)).getTime();
+        }
+        
+        return totalTime;
     }
 }

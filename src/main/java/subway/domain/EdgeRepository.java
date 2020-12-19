@@ -17,4 +17,13 @@ public class EdgeRepository {
         addEdge(new Edge(StationRepository.getStationByName(leftEndStationName),
                 StationRepository.getStationByName(rightEndStationName), distance, time));
     }
+    
+    public static Edge getEdgeByStations(Station leftEndStation, Station rightEndStation) {
+        for (Edge edge : edges) {
+            if (edge.stationsEquals(leftEndStation, rightEndStation)) {
+                return edge;
+            }
+        }
+        return null;
+    }
 }
