@@ -33,21 +33,38 @@ public class PathMenu {
             execute(command, scanner);
         } catch (Exception exception) {
             System.out.println("[ERROR] " + exception.getMessage() + "\n");
+            return PATH_MENU;
         }
-        return PATH_MENU;
+        return BACK;
     }
 
     private static void execute(String command, Scanner scanner) throws IllegalArgumentException {
         String startStation = getStartStation(scanner);
+        String endStation = getEndStation(scanner, startStation);
     }
 
-    private static String getStartStation(Scanner scanner) throws IllegalArgumentException {
+    private static String getEndStation(Scanner scanner, String startStation) {
         System.out.println("## 출발역을 입력하세요.");
+        String stationName = getStation(scanner);
+        if (stationName.equals(startStation)) {
+            throw new IllegalArgumentException("출발역과 도착역이 동일합니다.");
+        }
+        return stationName;
+    }
+
+    private static String getStation(Scanner scanner) throws IllegalArgumentException {
         String stationName = scanner.nextLine();
         System.out.println();
         if (!StationRepository.contains(stationName)) {
             throw new IllegalArgumentException("등록되어 있지 않은 역입니다.");
         }
+        return stationName;
+    }
+
+
+    private static String getStartStation(Scanner scanner) throws IllegalArgumentException {
+        System.out.println("## 출발역을 입력하세요.");
+        String stationName = getStation(scanner);
         return stationName;
     }
 
