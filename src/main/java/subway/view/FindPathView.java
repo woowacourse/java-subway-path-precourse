@@ -1,5 +1,9 @@
 package subway.view;
 
+import subway.domain.GraphRepository;
+import subway.exception.ExceptionManager;
+import subway.util.GraphInitializer;
+
 import java.util.Scanner;
 
 public class FindPathView {
@@ -9,11 +13,19 @@ public class FindPathView {
     public static final String PATH_MENU_BACK = "B. 돌아가기";
     public static final String PATH_ASK_START = "## 출발역을 입력하세요.";
     public static final String PATH_ASK_DESTINATION = "## 도착역을 입력하세요.";
-    public static final String PATH_ASK_COMMAND = "## 원하는 기능을 선택하세요.";
 
     public static void printFindPathView(Scanner scanner) {
+        String command;
         printPathMenu();
-        String command = Input.getInput(scanner);
+        while(true) {
+            try {
+                command = Input.getCommand(scanner);
+                ExceptionManager.checkPathCommand(command);
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println(ExceptionManager.COMMAND_WRONG);
+            }
+        }
         generateCommand(command, scanner);
     }
 
@@ -25,12 +37,11 @@ public class FindPathView {
     }
 
     public static void generateCommand(String command, Scanner scanner) {
-        if(command.equals("1")) {
-
+        if(command.equals("1") || command.equals("2")) {
+            GraphInitializer graphInitializer = new GraphInitializer(command, scanner);
+            return;
         }
-        if(command.equals("2")) {
 
-        }
         if(command.equals("B")) {
             MainView.printMainView(scanner);
         }
