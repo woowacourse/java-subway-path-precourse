@@ -18,6 +18,10 @@ public enum ManagementType {
         this.functions = functions;
     }
 
+    public static ManagementType initiate() {
+        return ManagementType.ROUTE_SEARCH;
+    }
+
     public static ManagementType findManagementType(String managementLetter) {
         return Arrays.stream(ManagementType.values())
                 .filter(managementType -> managementType.matches(managementLetter))
@@ -34,5 +38,9 @@ public enum ManagementType {
 
     private boolean matches(String managementLetter) {
         return Objects.equals(this.managementLetter, managementLetter);
+    }
+
+    public boolean isRunning() {
+        return this != EXIT;
     }
 }
