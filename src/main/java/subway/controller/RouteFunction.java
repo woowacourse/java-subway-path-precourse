@@ -2,6 +2,7 @@ package subway.controller;
 
 import subway.domain.graph.DistanceGraphRepository;
 import subway.domain.station.StationRepository;
+import subway.utils.exception.DuplicateStationException;
 import subway.utils.exception.InvalidStationNameException;
 import subway.utils.exception.NotExistStationException;
 import subway.view.InputView;
@@ -9,14 +10,15 @@ import subway.view.output.RouteOutputView;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class RouteFunction {
     private static final DistanceGraphRepository distanceGraphRepository = new DistanceGraphRepository();
     private static final StationRepository stationRepository = new StationRepository();
     private RouteOutputView routeOutputView;
 
-    public RouteFunction(RouteOutputView outeOutputView) {
-        this.routeOutputView = outeOutputView;
+    public RouteFunction(RouteOutputView routeOutputView) {
+        this.routeOutputView = routeOutputView;
     }
 
     public void shortestDistance() {
@@ -32,16 +34,22 @@ public class RouteFunction {
         try {
             String firstStation = inputFirstStation();
             String lastStation =  inputLastStation();
-
+            isSameStation(firstStation, lastStation);
             return Arrays.asList(firstStation, lastStation);
-        } catch (InvalidStationNameException | NotExistStationException e) {
+        } catch (InvalidStationNameException | NotExistStationException | DuplicateStationException e) {
             throw new NullPointerException();
+        }
+    }
+
+    private void isSameStation(String firstStation, String lastStation) {
+        if (Objects.equals(firstStation, lastStation)) {
+            throw new DuplicateStationException();
         }
     }
 
     private String inputFirstStation() {
         routeOutputView.printFirstStation();
-        String firstStation = inputFirstStation();
+        String firstStation = InputView.inputStation();
         stationRepository.isExist(firstStation);
         return firstStation;
     }
