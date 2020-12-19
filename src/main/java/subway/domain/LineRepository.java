@@ -23,4 +23,9 @@ public class LineRepository {
     public static void deleteAll() {
         lines.clear();
     }
+    
+    public static boolean hasStation(String stationName) {
+        return lines.stream()
+                    .anyMatch(line -> line.isStation(stationName));
+    }
 }
