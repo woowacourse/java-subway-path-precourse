@@ -16,6 +16,10 @@ public class Section {
         this.stations = new ArrayList<>(stations);
     }
 
+    public List<Station> getStations() {
+        return new ArrayList<>(stations);
+    }
+
     public int getDistance() {
         return distance;
     }
@@ -23,8 +27,8 @@ public class Section {
     public int getTime() {
         return time;
     }
-    
-    public boolean contains(Station station, Station otherStation) {
+
+    public boolean isSame(Station station, Station otherStation) {
         return stations.contains(station) && stations.contains(otherStation);
     }
 }
