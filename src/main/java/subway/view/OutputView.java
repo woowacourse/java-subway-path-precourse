@@ -30,7 +30,4 @@ public class OutputView {
         }
         System.out.println();
     }
-
-    public static void askSearchMethodChoice() {
-    }
 }
