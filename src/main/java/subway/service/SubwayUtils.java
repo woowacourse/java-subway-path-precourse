@@ -11,6 +11,7 @@ import subway.domain.ElapsedTimes;
 import subway.domain.Line;
 import subway.domain.LineDirection;
 import subway.domain.LineRepository;
+import subway.domain.ShortenPathDTO;
 import subway.domain.StationRepository;
 
 public class SubwayUtils {
@@ -112,15 +113,21 @@ public class SubwayUtils {
         return new LineRepository().addLines(secondLine, thirdLine, sinbundangLine);
     }
 
-    public static List<String> findShortenPathByDistance(String startStation, String endStation) {
+    public static ShortenPathDTO findShortenPathByDistance(String startStation, String endStation) {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(distanceGraph);
-        return dijkstraShortestPath.getPath(startStation, endStation)
-                .getVertexList();
+
+        List<String> stationNames = dijkstraShortestPath.getPath(startStation, endStation).getVertexList();
+        int distance = (int) dijkstraShortestPath.getPathWeight(startStation, endStation);
+
+        return new ShortenPathDTO(distance, 0, stationNames);
     }
 
-    public static List<String> findShortenPathByTime(String startStation, String endStation) {
+    public static ShortenPathDTO findShortenPathByTime(String startStation, String endStation) {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(timeGraph);
-        return dijkstraShortestPath.getPath(startStation, endStation)
-                .getVertexList();
+
+        List<String> stationNames = dijkstraShortestPath.getPath(startStation, endStation).getVertexList();
+        int times = (int) dijkstraShortestPath.getPathWeight(startStation, endStation);
+
+        return new ShortenPathDTO(0, times, stationNames);
     }
 }
