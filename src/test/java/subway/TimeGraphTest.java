@@ -8,6 +8,7 @@ import subway.domain.DataInitializer;
 import subway.domain.Station;
 import subway.domain.StationRepository;
 import subway.domain.TimeGraph;
+import subway.dto.PathDTO;
 
 import java.util.List;
 
@@ -19,16 +20,16 @@ public class TimeGraphTest {
     @DisplayName("최단 경로 출력 테스트")
     @Test
     public void timePathTest() {
-        GraphPath<Station, DefaultWeightedEdge> graphPath = TimeGraph.getShortestPath(
+        PathDTO pathDTO = TimeGraph.getShortestPath(
                 StationRepository.searchByName("교대역"),
                 StationRepository.searchByName("양재역")
         );
 
-        List<Station> shortPath = graphPath.getVertexList();
-        for (Station station : shortPath) {
-            System.out.println(station.getName());
+        for (String name : pathDTO.getStationsNameList()) {
+            System.out.println(name);
         }
 
-        System.out.println(graphPath.getWeight());
+        System.out.println(pathDTO.getCost());
+
     }
 }

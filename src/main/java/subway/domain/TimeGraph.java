@@ -4,9 +4,11 @@ import org.jgrapht.GraphPath;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
+import subway.dto.PathDTO;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TimeGraph {
     public static WeightedMultigraph<Station, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
@@ -36,8 +38,13 @@ public class TimeGraph {
         updateShortestPath();
     }
 
-    public static GraphPath<Station, DefaultWeightedEdge> getShortestPath(Station from, Station to) {
+    public static PathDTO getShortestPath(Station from, Station to) {
         GraphPath<Station, DefaultWeightedEdge> graphPath = dijkstraShortestPath.getPath(from, to);
-        return graphPath;
+        List<String> stationsName = graphPath.getVertexList().stream()
+                .map(Station::getName)
+                .collect(Collectors.toList());
+        double cost = graphPath.getWeight();
+
+        return new PathDTO(stationsName, cost);
     }
 }
