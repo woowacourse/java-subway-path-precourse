@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
+import subway.error.SectionNotExistException;
 
 public class SectionRepository {
 
@@ -13,6 +14,7 @@ public class SectionRepository {
 
     public static void addSection(Station start, Station end, long distance, long time) {
         Section section = new Section(start, end, distance, time);
+        sections.add(section);
         setDistanceGraph(section);
         setTimeGraph(section);
     }
@@ -29,6 +31,14 @@ public class SectionRepository {
         timeGraph.setEdgeWeight(timeGraph.addEdge(section.getStart(), section.getEnd()), section.getTime());
     }
 
+    public static WeightedMultigraph<Station, DefaultWeightedEdge> getDistanceGraph() {
+        return distanceGraph;
+    }
+
+    public static WeightedMultigraph<Station, DefaultWeightedEdge> getTimeGraph() {
+        return timeGraph;
+    }
+
     public static Section findByStartAndEndStation(Station start, Station end) {
         return sections.stream()
             .filter(section -> {
@@ -39,6 +49,6 @@ public class SectionRepository {
                 return false;
             })
             .findAny()
-            .orElseThrow(() -> {throw new SecurityException();});
+            .orElseThrow(() -> {throw new SectionNotExistException();});
     }
 }

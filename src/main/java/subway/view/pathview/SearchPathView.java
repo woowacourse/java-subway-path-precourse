@@ -1,5 +1,7 @@
 package subway.view.pathview;
 
+import subway.domain.StationRepository;
+import subway.error.StationNotExistException;
 import subway.view.InputView;
 import subway.view.OutputView;
 import subway.view.View;
@@ -24,7 +26,6 @@ public abstract class SearchPathView implements View {
 
     private String inputStation() {
         String input = InputView.inputStation();
-        /** TODO: StationRepository로부터 역이 존재하는지 확인 (예외 던져야함) */
         return input;
     }
 
