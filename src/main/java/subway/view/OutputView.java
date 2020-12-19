@@ -11,7 +11,6 @@ public class OutputView {
         for(MainMenu mainMenu : MainMenu.values()){
             System.out.printf(Constant.VIEW_MENU_FORMAT, mainMenu.getOrder(), mainMenu.getMenuMessage());
         }
-        printAskingFunction();
     }
 
     public static void printPathRuleView(){
@@ -26,6 +25,10 @@ public class OutputView {
 
     }
 
+    public static void printError(String errorMessage){
+        System.out.printf(Constant.EXCEPTION_FORMAT, errorMessage);
+    }
+
     public static void printResult(){
 
     }
@@ -34,7 +37,7 @@ public class OutputView {
         System.out.print(Constant.VIEW_HEADER);
     }
 
-    private static void printAskingFunction(){
+    public static void printAskingFunction(){
         System.out.println();
         printHeader();
         System.out.println(Constant.VIEW_ASKING_FUNCTION);
