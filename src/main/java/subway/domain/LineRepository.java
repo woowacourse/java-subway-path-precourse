@@ -23,4 +23,14 @@ public class LineRepository {
     public static void deleteAll() {
         lines.clear();
     }
+
+    public static ArrayList<Line> getLineByStation(Station station) {
+        ArrayList<Line> linesContainThisStation = new ArrayList<>();
+        for (Line line : lines) {
+            if(line.stations().contains(station)){
+                linesContainThisStation.add(line);
+            }
+        }
+        return linesContainThisStation;
+    }
 }

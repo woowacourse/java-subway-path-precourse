@@ -23,4 +23,13 @@ public class StationRepository {
     public static void deleteAll() {
         stations.clear();
     }
+
+    public static Station getStationByName(String stationName) {
+        for (Station station : stations) {
+            if(station.getName().equals(stationName)){
+                return station;
+            }
+        }
+        throw new IllegalArgumentException(Constant.STATION_NOT_EXIST);
+    }
 }
