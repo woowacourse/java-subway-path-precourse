@@ -3,10 +3,13 @@ package subway.domain.Dijkstra;
 import exception.SubwayMapException;
 import java.util.ArrayList;
 import java.util.List;
+import subway.domain.StationRepository;
 
 public class IntervalEdges {
-    private List<IntervalEdge> intervalEdges = new ArrayList<>();
     private static final String NOT_EXIST_ROUTE = "두 역 사이에 구간이 존재하지 않습니다.";
+    private static final int START_INDEX = 0;
+    private List<IntervalEdge> intervalEdges = new ArrayList<>();
+    private List<Station> stations = new ArrayList<>();
 
     public IntervalEdges() {
         this.intervalEdges = intervalEdges;
@@ -33,6 +36,18 @@ public class IntervalEdges {
             totalDistance += intervalEdge.getCost().getTime();
         }
         return totalDistance;
+    }
+
+    public void updateStations() {
+        stations.add(intervalEdges.get(START_INDEX).getStart());
+        for(IntervalEdge intervalEdge: intervalEdges) {
+            stations.add(intervalEdge.getEnd());
+        }
+    }
+
+    public List<Station> getStations() {
+        updateStations();
+        return stations;
     }
 
 }
