@@ -1,9 +1,11 @@
 package subway;
 
-import static subway.common.errorCase.FUNCTION_INPUT_ERROR;
-import static subway.common.logger.errorPrint;
-import static subway.view.inputView.inputFunctionNumber;
-import static subway.view.outputView.printMain;
+import static subway.RouteLookUpManage.routeLookUpManage;
+import static subway.Setting.initSetting;
+import static subway.common.ErrorCase.FUNCTION_INPUT_ERROR;
+import static subway.common.Logger.errorPrint;
+import static subway.view.InputView.inputFunctionNumber;
+import static subway.view.OutputView.printMain;
 
 import java.util.Scanner;
 
@@ -13,7 +15,7 @@ public class Application {
 
 	public static void main(String[] args) {
 		final Scanner scanner = new Scanner(System.in);
-		//initSetting();
+		initSetting();
 		boolean exitFlag = false;
 		while (!exitFlag) {
 			printMain();
@@ -27,7 +29,7 @@ public class Application {
 			return true;
 		}
 		if (input.equals(ROUTE_LOOKUP)) {
-			//routeLookUpManage(scanner);
+			routeLookUpManage(scanner);
 			return false;
 		}
 		errorPrint(FUNCTION_INPUT_ERROR);
