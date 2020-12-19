@@ -8,10 +8,10 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class JGraphtTest {
-    //@Test
-    public void getDijkstraShortestPath() {
+	// @Test
+	public void getDijkstraShortestPath() {
         WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
-        graph.addVertex("v1");
+        graph.addVertex("v1");a
         graph.addVertex("v2");
         graph.addVertex("v3");
         graph.setEdgeWeight(graph.addEdge("v1", "v2"), 2);
