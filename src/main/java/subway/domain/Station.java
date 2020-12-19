@@ -10,6 +10,7 @@ import java.util.Objects;
 public class Station {
     private final String name;
     private final List<NearbyStation> nearbyStations = new ArrayList<>();
+    private final String NEARBY_STATION_NOT_FOUND = "[ERROR] 해당 인근 역을 찾지 못했습니다.";
 
     private Station(String name) {
         this.name = name;
@@ -20,6 +21,13 @@ public class Station {
         PathCalculator.addStation(station.getName());
         StationRepository.addStation(station);
         return station;
+    }
+
+    public NearbyStation findNearbyStationByName(String name) {
+        Station station = StationRepository.findStationByName(name);
+        return nearbyStations.stream()
+                .filter(nearbyStation -> nearbyStation.equals(station))
+                .findFirst().orElseThrow(() -> new IllegalArgumentException(NEARBY_STATION_NOT_FOUND));
     }
 
     public void addNearbyStation(NearbyStation nearbyStation) {
