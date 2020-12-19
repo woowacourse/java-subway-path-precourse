@@ -10,13 +10,13 @@ public class Output {
     private static String BACK = "돌아가기";
 
     public static void printMainFunction(){
-        System.out.println("## 메인 화면");
+        System.out.println("\n## 메인 화면");
         System.out.println(String.join(". ", Constant.COMMAND_ONE, READ_PATH));
         System.out.println(String.join(". ", Constant.COMMAND_QUIT, QUIT));
     }
 
     public static void printPathStandard(){
-        System.out.println("## 경로 기준");
+        System.out.println("\n## 경로 기준");
         System.out.println(String.join(". ", Constant.COMMAND_ONE, SHORTEST_PATH));
         System.out.println(String.join(". ", Constant.COMMAND_TWO, SHORTEST_TIME));
         System.out.println(String.join(". ", Constant.COMMAND_BACK, BACK));

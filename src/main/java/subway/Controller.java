@@ -33,22 +33,20 @@ public class Controller {
     private void runCommand() {
         output.printPathStandard();
         String command = input.getMainFunction();
-        if (command.equals(Constant.COMMAND_ONE)) {
-            readPath();
-        }
-        if (command.equals(Constant.COMMAND_TWO)) {
-            readPath();
-        }
         if (command.equals(Constant.COMMAND_BACK)) {
             return;
         }
+        readPath(command);
     }
 
-    private void readPath() {
+    private void readPath(String command) {
         Station startStation = validStation(input.getStartStation());
         Station endStation = validStation(input.getEndStation());
         isSameStation(startStation, endStation);
-        PathRepository.shortestTimePath(startStation, endStation);
+        Path resultPath = PathRepository.getPath(startStation, endStation, command);
+        for(int i=0; i<resultPath.getPathList().size(); i++){
+            System.out.println(resultPath.getPathList().get(i).getName());
+        }
     }
 
     private Station validStation(String stationName) {

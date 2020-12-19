@@ -3,6 +3,7 @@ package subway.domain;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
+import subway.Constant;
 
 import java.util.List;
 
@@ -48,18 +49,19 @@ public class PathRepository {
                 StationRepository.getStationByName("양재시민의숲역")), 3);
     }
 
-    public void shortestLengthPath(Station startStation, Station endStation) {
-        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(shortestLengthPath);
+    public static Path getPath(Station startStation, Station endStation, String flag){
+        DijkstraShortestPath dijkstraShortestPath = null;
+        if(flag.equals(Constant.COMMAND_ONE)){
+            dijkstraShortestPath = new DijkstraShortestPath(shortestLengthPath);
+        }
+        if(flag.equals(Constant.COMMAND_TWO)){
+            dijkstraShortestPath = new DijkstraShortestPath(shortestTimePath);
+        }
         List<Station> pathList = dijkstraShortestPath.getPath(startStation, endStation).getVertexList();
         int totalTime = getTotalTime(pathList);
         int totalLength = getTotalLength(pathList);
-    }
-
-    public static void shortestTimePath(Station startStation, Station endStation) {
-        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(shortestTimePath);
-        List<Station> pathList = dijkstraShortestPath.getPath(startStation, endStation).getVertexList();
-        int totalTime = getTotalTime(pathList);
-        int totalLength = getTotalLength(pathList);
+        Path path = new Path(totalTime, totalLength, pathList);
+        return path;
     }
 
     private static int getTotalTime(List<Station> pathList){
