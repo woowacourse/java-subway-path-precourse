@@ -14,7 +14,6 @@ public class Controller {
     private Output output;
     private Input input;
 
-
     public Controller(Scanner scanner) {
         this.scanner = scanner;
         output = new Output();
@@ -22,13 +21,18 @@ public class Controller {
     }
 
     public void run() {
-        String command = "";
-        while (!command.equals(Constant.COMMAND_QUIT)) {
+        while (true) {
             output.printMainFunction();
-            command = input.getMainFunction();
-            runCommand();
+            String command = input.getMainFunction();
+            if (command.equals(Constant.COMMAND_QUIT)) {
+                break;
+            }
+            if (command.equals(Constant.COMMAND_ONE)) {
+                runCommand();
+                continue;
+            }
+            throw new IllegalArgumentException(String.join(" ", Constant.PREFIX_ERROR, "선택지만 입력할 수 있습니다."));
         }
-
     }
 
     private void runCommand() {

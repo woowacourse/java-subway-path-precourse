@@ -31,6 +31,7 @@ public class Output {
 
     public static void printPathResult(Path path){
         List<Station> pathList = path.getPathList();
+        System.out.println("\n## 조회 결과");
         System.out.println(String.join(" ", Constant.PREFIX_INFO, BAR));
         System.out.println(String.join(" ", Constant.PREFIX_INFO, String.format(TOTAL_LENGTH, path.getTotalLength())));
         System.out.println(String.join(" ", Constant.PREFIX_INFO, String.format(TOTAL_TIME, path.getTotalTime())));
