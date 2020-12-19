@@ -24,7 +24,7 @@ public class UserInterfaceView {
 
     private boolean printMainViewAndReturnIsEnd() {
         Output.printMainView();
-        String userInput = Input.getUserInput();
+        String userInput = Input.getUserInput(Output.YOU_CHOICE);
         if (!Arrays.asList(MAIN_CHOICE_LIST).contains((userInput))) {
             Output.printChoiceErrorMessage();
             return false;
@@ -44,7 +44,7 @@ public class UserInterfaceView {
 
     private void routeSearch() {
         Output.printRouteSearchView();
-        String userInput = Input.getUserInput();
+        String userInput = Input.getUserInput(Output.YOU_CHOICE);
         if (!Arrays.asList(ROUTE_SEARCH_CHOICE_LIST).contains((userInput))) {
             Output.printChoiceErrorMessage();
             return;
