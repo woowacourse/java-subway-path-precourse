@@ -1,6 +1,7 @@
 package subway.utils;
 
 import subway.domain.DefaultStations;
+import subway.domain.Station;
 
 public class InputValidator {
 
@@ -33,7 +34,8 @@ public class InputValidator {
     }
 
     public static void validateStationName(String stationName) {
-        if (!DefaultStations.getDefaultStations().contains(stationName)) {
+        DefaultStations defaultStations = new DefaultStations();
+        if (!defaultStations.getDefaultNames().contains(stationName)) {
             throw new IllegalArgumentException(STATION_NOT_EXIST_ERROR);
         }
     }

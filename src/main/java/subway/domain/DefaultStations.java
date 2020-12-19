@@ -15,7 +15,7 @@ public class DefaultStations {
     public static final String MAEBONG = "매봉역";
     private static List<Station> defaultStations = new ArrayList<>();
 
-    public static void initializeDefaultStations() {
+    public DefaultStations() {
         defaultStations.add(new Station(GYODAE));
         defaultStations.add(new Station(GANGNAM));
         defaultStations.add(new Station(YEOKSAM));
@@ -27,5 +27,13 @@ public class DefaultStations {
 
     public static List<Station> getDefaultStations() {
         return Collections.unmodifiableList(defaultStations);
+    }
+
+    public static List<String> getDefaultNames() {
+        List<String> defaultNames = new ArrayList<>();
+        for (Station station : defaultStations) {
+            defaultNames.add(station.getName());
+        }
+        return defaultNames;
     }
 }

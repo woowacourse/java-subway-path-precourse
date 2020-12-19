@@ -19,7 +19,6 @@ public class PathManager {
 
     public void run() {
         while (!userWantGoBack()) {
-//            new DefaultSubwayGraph().addDefaultEdges();
             OutputView.printPathManagerScreen();
             userOption = InputView.inputPathUserOption();
             runUserOption(userOption);

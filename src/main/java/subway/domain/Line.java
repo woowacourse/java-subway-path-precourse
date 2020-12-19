@@ -19,5 +19,4 @@ public class Line {
         stations.add(station);
         return this;
     }
-
 }
