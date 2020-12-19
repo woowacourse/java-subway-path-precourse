@@ -1,7 +1,9 @@
-package subway.domain;
+package subway.service;
 
 import java.util.Arrays;
 import java.util.List;
+import subway.domain.Station;
+import subway.domain.StationRepository;
 
 /*
  * 지하철 역에 관련된 기능을 관리하는 클래스
