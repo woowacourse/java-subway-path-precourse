@@ -29,4 +29,9 @@ public class Station {
     public int hashCode() {
         return Objects.hash(getName());
     }
+
+    @Override
+    public String toString() {
+        return "[INFO] " + name;
+    }
 }

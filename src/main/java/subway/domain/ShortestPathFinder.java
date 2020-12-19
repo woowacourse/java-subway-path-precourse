@@ -12,7 +12,8 @@ public class ShortestPathFinder {
 
     List<Station> stations;
     Sections sections;
-    WeightedMultigraph<Station, DefaultWeightedEdge> graph;
+    WeightedMultigraph<Station, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
+    DijkstraShortestPath dijkstraShortestPath;
 
     public ShortestPathFinder(List<Station> stations, Sections sections) {
         this.stations = stations;
@@ -22,23 +23,25 @@ public class ShortestPathFinder {
 
     public void setType(FindPathType type) {
         graphEdgeWeightSetting(type);
+        computeShortestPath();
     }
 
-    public int calculateShortest(Station from, Station to) {
-        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
+    private void computeShortestPath() {
+        dijkstraShortestPath = new DijkstraShortestPath(graph);
+    }
+
+    public int calculateShortestStationNumber(Station from, Station to) {
         List<Station> shortestPath = dijkstraShortestPath.getPath(from, to).getVertexList();
         return shortestPath.size();
     }
 
     public List<Station> getStationsOnPath(Station from, Station to) {
-        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
         return dijkstraShortestPath.getPath(from, to).getVertexList();
     }
 
     private void graphVertexAndEdgeSetting() {
         addVertex();
-        Sections allSections = SectionRepository.allSections();
-        addEdge(allSections);
+        addEdge(sections);
     }
 
     private void addVertex() {
@@ -49,7 +52,7 @@ public class ShortestPathFinder {
 
     private void addEdge(Sections allSections) {
         for (Section section : sections.getUnmodifiableList()) {
-            graph.addEdge(section.from, section.to);
+            graph.addEdge(section.from(), section.to());
         }
     }
 
@@ -67,13 +70,13 @@ public class ShortestPathFinder {
 
     private void edgeWeightSettingForDistance(Sections sections) {
         for (Section section : sections.getUnmodifiableList()) {
-            graph.setEdgeWeight(graph.getEdge(section.from, section.to), section.getDistance());
+            graph.setEdgeWeight(graph.getEdge(section.from(), section.to()), section.getDistance());
         }
     }
 
     private void edgeWeightSettingForTime(Sections sections) {
         for (Section section : sections.getUnmodifiableList()) {
-            graph.setEdgeWeight(graph.getEdge(section.from, section.to), section.getTakenTime());
+            graph.setEdgeWeight(graph.getEdge(section.from(), section.to()), section.getTakenTime());
         }
     }
 }

@@ -2,7 +2,7 @@ package subway.domain;
 
 public class Line {
     private String name;
-    private Sections sections;
+    private Sections sections = new Sections();
 
     public Line(String name) {
         this.name = name;
