@@ -14,6 +14,13 @@
     - 정점(vertex): 지하철 역
     - 간선(edge): 지하철역 연결정보
     - 가중치: 거리 or 소요 시간
+    
+ ## 구간 관련
+ - 구간(Section), 구간저장소(SectionRepository) 생성
+ - 구간은 연결역(station1, station2), 거리(distatnce), 시간(time)으로 구성된다.
+ - 구간저장소는 중복된 구간을 저장하지 않는다.
+ 
+ 
  
  ## 출력
  - 화면 구성
