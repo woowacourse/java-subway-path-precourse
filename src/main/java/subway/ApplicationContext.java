@@ -1,8 +1,7 @@
 package subway;
 
-import subway.domain.Line;
 import subway.domain.Station;
-import subway.domain.StationRepository;
+import subway.view.InputView;
 
 import java.util.*;
 
@@ -22,6 +21,7 @@ public class ApplicationContext {
     }
     private ArrayList<Edge>[] subwayNetwork;
     private Map<Station, Integer> stationMapper = new HashMap<>();
+    private InputView inputView = InputView.getInstance();
 
     // 구현
     public ApplicationContext() {
@@ -63,8 +63,7 @@ public class ApplicationContext {
     }
 
     public void run() {
-        // 실행
-
+        String state = inputView.inputMainMenu();
 
     }
 }
