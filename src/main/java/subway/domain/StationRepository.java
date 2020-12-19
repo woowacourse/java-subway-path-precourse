@@ -33,12 +33,4 @@ public class StationRepository {
         return false;
     }
 
-    public static Station getStationNamed(String stationName) {
-        for (Station station : stations) {
-            if (station.getName().equals(stationName)) {
-                return station;
-            }
-        }
-        return null;
-    }
 }
