@@ -1,5 +1,6 @@
 package subway.domain;
 
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -22,5 +23,11 @@ public class LineRepository {
 
     public static void deleteAll() {
         lines.clear();
+    }
+
+    public static void addAllLine(List<Line> lineList) {
+        for (Line line : lineList) {
+            addLine(line);
+        }
     }
 }
