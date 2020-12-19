@@ -26,6 +26,7 @@ public class InitialSetting {
     public static void settingInitialSubways() {
         StationRepository.deleteAll();
         LineRepository.deleteAll();
+
         settingInitialStations();
 
         settingInitialLines(LINE_TWO, LINE_TWO_STATIONS);
