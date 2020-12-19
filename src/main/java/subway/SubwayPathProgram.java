@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class SubwayPathProgram {
     public static void start(Scanner scanner) {
+        Initializer.initialize();
         printAndGetUserSelectionInput(scanner);
     }
 
