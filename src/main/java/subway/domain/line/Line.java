@@ -8,6 +8,7 @@ import subway.domain.section.SectionRepository;
 import subway.domain.station.Station;
 
 public class Line {
+
     private String name;
     private List<Station> stations;
 

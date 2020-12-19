@@ -12,6 +12,7 @@ import subway.domain.section.Section;
 import subway.domain.station.Station;
 
 public class LineRepository {
+
     private static final List<Line> lines = new ArrayList<>();
 
     static {

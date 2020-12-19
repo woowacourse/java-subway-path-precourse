@@ -2,7 +2,6 @@ package subway.view;
 
 import java.util.List;
 import subway.domain.section.SectionRepository;
-import subway.domain.station.Station;
 
 public class OutputView {
 

@@ -41,10 +41,6 @@ public class SectionRepository {
         )));
     }
 
-    public static List<Section> sections() {
-        return Collections.unmodifiableList(sections);
-    }
-
     public static Section getSectionByStations(Station station, Station otherStation) {
 
         return sections.stream()

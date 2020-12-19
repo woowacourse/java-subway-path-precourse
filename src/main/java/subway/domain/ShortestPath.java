@@ -64,7 +64,6 @@ public class ShortestPath {
         }
     }
 
-
     public static List<String> getShortestTimePath(String startStationName, String endStationName) {
         WeightedMultigraph<String, DefaultWeightedEdge> graph
             = new WeightedMultigraph(DefaultWeightedEdge.class);
@@ -104,26 +103,5 @@ public class ShortestPath {
             int time = sections.get(i).getTime();
             graph.setEdgeWeight(graph.addEdge(sourceStationName, targetStationName), time);
         }
-    }
-
-    public static List<String> getShortestPath(String startStationName, String endStationName) {
-        List<Line> lines = LineRepository.lines();
-        WeightedMultigraph<String, DefaultWeightedEdge> graph
-            = new WeightedMultigraph(DefaultWeightedEdge.class);
-        for (Line line : lines) {
-            List<Station> stations = line.getStations();
-            for (Station station : stations) {
-                graph.addVertex(station.getName());
-            }
-            List<Section> sections = line.getSections();
-            for (int i = 0; i < sections.size(); i++) {
-                String sourceStationName = stations.get(i).getName();
-                String tartgetStationName = stations.get(i + 1).getName();
-                int distance = sections.get(i).getDistance();
-                graph.setEdgeWeight(graph.addEdge(sourceStationName, tartgetStationName), distance);
-            }
-        }
-        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
-        return dijkstraShortestPath.getPath(startStationName, endStationName).getVertexList();
     }
 }

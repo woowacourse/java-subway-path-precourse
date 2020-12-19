@@ -3,6 +3,7 @@ package subway.domain.station;
 import java.util.Objects;
 
 public class Station {
+
     private String name;
 
     public Station(String name) {

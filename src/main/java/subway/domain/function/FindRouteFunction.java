@@ -3,11 +3,7 @@ package subway.domain.function;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
-import org.jgrapht.graph.DefaultWeightedEdge;
-import org.jgrapht.graph.WeightedMultigraph;
 import subway.domain.ShortestPath;
-import subway.domain.line.LineRepository;
 import subway.domain.station.Station;
 import subway.domain.station.StationRepository;
 import subway.view.InputView;
@@ -23,7 +19,8 @@ public enum FindRouteFunction {
             int shortestDistance
                 = ShortestPath.getShortestDistance(startStation.getName(), endStation.getName());
             List<String> shortestDistancePath
-                = ShortestPath.getShortestDistancePath(startStation.getName(), endStation.getName());
+                = ShortestPath
+                .getShortestDistancePath(startStation.getName(), endStation.getName());
             OutputView.printShortestDistanceResult(shortestDistance, shortestDistancePath);
         }
     },

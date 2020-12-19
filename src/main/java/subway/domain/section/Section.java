@@ -2,10 +2,10 @@ package subway.domain.section;
 
 import java.util.ArrayList;
 import java.util.List;
-import subway.domain.line.Line;
 import subway.domain.station.Station;
 
 public class Section {
+
     List<Station> stations;
     private int distance;
     private int time; // 단위 : 분
