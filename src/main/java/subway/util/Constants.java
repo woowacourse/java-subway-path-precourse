@@ -48,7 +48,13 @@ public class Constants {
     public final static String INQUIRY_START_STATION_ASK = "## 출발역을 입력하세요";
     public final static String INQUIRY_END_STATION_ASK = "## 도착역을 입력하세요";
     public final static String INQUIRY_RESULT = "## 조회 결과";
+    public final static String INQUIRY_DISTANCE = "총 거리: ";
+    public final static String INQUIRY_DISTANCE_UNIT = "km";
+    public final static String INQUIRY_TIME = "총 소요 시간: ";
+    public final static String INQUIRY_TIME_UNIT = "분";
+
+
     public static final String INVALID_START_TO_END_STATION = "출발역과 도착역이 동일합니다.";
 
-    public final static String SEPARATE_STRING_SUBWAY_MAP = "---";
+    public final static String SEPARATE_STRING_INQUIRY = "---";
 }

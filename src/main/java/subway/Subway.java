@@ -76,16 +76,6 @@ public class Subway {
             stationRepository.findByName("양재역"),
             stationRepository.findByName("양재시민의숲역"), 10);
 
-        List s = distancePathRepository.findStationToStation(
-            stationRepository.findByName("교대역"),
-            stationRepository.findByName("양재역"));
-        s.stream().forEach(name -> System.out.println(name));
-
-        System.out.println(distancePathRepository.findValue(stationRepository.findByName("교대역"),
-            stationRepository.findByName("양재역")));
-        System.out.println(distancePathRepository.findValue(stationRepository.findByName("강남역"),
-            stationRepository.findByName("양재역")));
-
     }
 
     private void loadInitTimeData() {
@@ -127,15 +117,6 @@ public class Subway {
             stationRepository.findByName("양재역"),
             stationRepository.findByName("양재시민의숲역"), 3);
 
-        List s = timePathRepository.findStationToStation(
-            stationRepository.findByName("교대역"),
-            stationRepository.findByName("양재역"));
-        s.stream().forEach(name -> System.out.println(name));
-
-        System.out.println(timePathRepository.findValue(stationRepository.findByName("교대역"),
-            stationRepository.findByName("양재역")));
-        System.out.println(timePathRepository.findValue(stationRepository.findByName("강남역"),
-            stationRepository.findByName("양재역")));
     }
 
     private void loadInitStationData() {
