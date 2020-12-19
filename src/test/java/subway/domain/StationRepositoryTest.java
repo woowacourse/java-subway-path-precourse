@@ -77,6 +77,18 @@ public class StationRepositoryTest {
     }
 
     @Test
+    @DisplayName("존재하지 않는 역 삭제 시 예외 발생 테스트")
+    public void deleteStation_DoesNotExistStation_ExceptionThrown() {
+
+        // when
+        ThrowableAssert.ThrowingCallable callable = () -> stationRepository.deleteStation("봉천역");
+
+        //then
+        assertThatThrownBy(callable).isExactlyInstanceOf(IllegalArgumentException.class)
+                .hasMessage(StationRepository.NOT_FOUND_STATION_ERROR);
+    }
+
+    @Test
     @DisplayName("모든 역 삭제 테스트")
     public void deleteAll_StationRepository_EmptyStationRepository() {
 

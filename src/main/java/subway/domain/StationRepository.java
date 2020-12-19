@@ -9,6 +9,8 @@ public class StationRepository {
 
     public static final String DUPLICATE_STATION_ERROR = "해당 역은 이미 등록되어 있습니다.";
 
+    public static final String NOT_FOUND_STATION_ERROR = "해당 역은 존재하지 않습니다.";
+
     private final List<Station> stations;
 
     public StationRepository() {
@@ -44,8 +46,11 @@ public class StationRepository {
     }
 
     public StationRepository deleteStation(String name) {
-        stations.removeIf(station -> Objects.equals(station.getName(), name));
+        boolean removed = stations.removeIf(station -> Objects.equals(station.getName(), name));
 
+        if (!removed) {
+            throw new IllegalArgumentException(NOT_FOUND_STATION_ERROR);
+        }
         return new StationRepository(stations);
     }
 
