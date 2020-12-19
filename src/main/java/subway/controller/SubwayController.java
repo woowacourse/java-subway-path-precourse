@@ -1,18 +1,36 @@
 package subway.controller;
 
+import subway.service.LineService;
+import subway.service.SubwayMapService;
+import subway.service.StationService;
 import subway.view.SubwayView;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class SubwayController {
+    private static final List<String> INITIAL_STATION_NAMES = Arrays.asList("교대역", "강남역", "역삼역", "남부터미널역", "양재역", "양재시민의숲역", "매봉역");
+    private static final List<String> INITIAL_LINE_NAMES = Arrays.asList("2호선", "3호선", "신분당선");
+
     private SubwayView subwayView;
 
     public SubwayController(Scanner scanner) {
         subwayView = new SubwayView(scanner);
     }
 
+    private void initSubwayInformation() {
+        INITIAL_STATION_NAMES.stream()
+                .forEach(stationName -> StationService.addStation(stationName));
+        INITIAL_LINE_NAMES.stream()
+                .forEach(lineName -> LineService.addLine(lineName));
+        Arrays.stream(InitialPath.values())
+                .forEach(path -> SubwayMapService.addMap(path.getLinName(), path.getPaths()));
+    }
+
     public void run() {
+        initSubwayInformation();
         redirectToMainScreen();
     }
 
