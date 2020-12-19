@@ -14,4 +14,18 @@ public class SectionRepository {
     public static void addSection(Section section) {
         sections.add(section);
     }
+
+    public static List<Station> getAnotherStationList(Station station) {
+        List<Station> stationList = new ArrayList<>();
+        sections.stream()
+                .filter(section -> section.getStations().contains(station))
+                .forEach(section -> stationList.add(section.getAnotherStation(station)));
+        return stationList;
+    }
+
+    public static Section getSectionByFromTo(Station from, Station to) {
+        return sections.stream()
+                .filter(section -> section.)
+    }
+
 }
