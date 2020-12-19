@@ -12,4 +12,12 @@ public class Section {
         this.distance = distance;
         this.time = time;
     }
+
+    public int getDistance(String departureStation, String arrivalStation) {
+        return this.distance;
+    }
+
+    public int getTime(String departureStation, String arrivalStation) {
+        return this.time;
+    }
 }
