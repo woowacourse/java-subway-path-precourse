@@ -25,4 +25,14 @@ public class StationRepository {
     public static void deleteAll() {
         stations.clear();
     }
+
+    public static Station findByName(String name) {
+        for (Station station : stations) {
+            String stationName = station.getName();
+            if (name.equals(stationName)) {
+                return station;
+            }
+        }
+        return null;
+    }
 }
