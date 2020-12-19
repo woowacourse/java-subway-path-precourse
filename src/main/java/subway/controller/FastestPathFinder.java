@@ -17,6 +17,11 @@ public class FastestPathFinder {
     public void run() {
         String startStation = askValidStation(PREFIX_START_STATION);
         String endStation = askValidStation(PREFIX_END_STATION);
+        try {
+            Validate.notSameStation(startStation, endStation);
+        } catch (CustomException exception) {
+            System.out.println(exception.getMessage());
+        }
     }
 
     private String askValidStation(String stationPrefix) {
