@@ -14,6 +14,11 @@ public class TimeRouteService implements RouteService {
 
     @Override
     public void routingService(Scanner scanner) {
-
+        try {
+            inputStations(scanner);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            goToMenu(e, scanner);
+        }
     }
 }
