@@ -7,7 +7,7 @@ public class Output {
     private static final String QUIT = "Q. 종료";
     private static final String[] MAIN_LIST = {MAIN_VIEW, ROUTE_SEARCH, QUIT};
     private static final String ERROR = "[ERROR] ";
-    private static final String BAD_CHOICE = "목록에 없는것을 선택하셨습니다.";
+    private static final String BAD_CHOICE = "목록에 없는것을 선택하셨습니다.\n";
     private static final String ROUTE_VIEW = "## 경로 기준";
     private static final String MIN_DISTANCE = "1. 최단 거리";
     private static final String SHORT_TIME = "2. 최소 시간";
