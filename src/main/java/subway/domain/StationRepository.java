@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Stream;
 
 public class StationRepository {
     private static final List<Station> stations = new ArrayList<>();
@@ -22,5 +23,14 @@ public class StationRepository {
 
     public static void deleteAll() {
         stations.clear();
+    }
+
+    public static Station getStation(String stationName) {
+        Stream<Station> stationStream = StationRepository.stations().stream();
+        try {
+            return stationStream.filter(station -> station.getName().equals(stationName)).findFirst().get();
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
     }
 }
