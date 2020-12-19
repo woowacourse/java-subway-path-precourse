@@ -1,5 +1,8 @@
 package subway;
 
+import subway.domain.LineRepository;
+import subway.domain.SubwayMap;
+
 import java.util.Scanner;
 
 public class Application {
@@ -7,5 +10,6 @@ public class Application {
         final Scanner scanner = new Scanner(System.in);
         // TODO: 프로그램 구현
         InitDataList.insertData();
+        SubwayMap subwayMap = new SubwayMap(LineRepository.lines());
     }
 }
