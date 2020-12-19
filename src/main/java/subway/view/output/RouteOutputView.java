@@ -30,7 +30,7 @@ public class RouteOutputView extends OutputView {
         print();
     }
 
-    public void printMinDistanceRoute(int distance, int time, List<String> paths) {
+    public void printRoute(int distance, int time, List<String> paths) {
         printResult();
         printLine();
         infoSymbol();

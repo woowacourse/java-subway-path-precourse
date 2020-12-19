@@ -25,7 +25,7 @@ public class RouteFunction {
             int distance = SubwayMap.findShortestDistance(inputStations);
             List<String> paths = SubwayMap.findShortestDistancePath(inputStations);
             int time = SubwayMap.findShortestDistanceTime(paths);
-            routeOutputView.printMinDistanceRoute(distance, time, paths);
+            routeOutputView.printRoute(distance, time, paths);
         } catch (NullPointerException e) {
             return;
         }
@@ -86,6 +86,14 @@ public class RouteFunction {
     }
 
     public void shortestTime() {
-        System.out.println("최단 시간\n");
+        try {
+            List<String> inputStations = inputStation();
+            int time = SubwayMap.findShortestTime(inputStations);
+            List<String> paths = SubwayMap.findShortestTimePath(inputStations);
+            int distance = SubwayMap.findShortestTimeDistance(paths);
+            routeOutputView.printRoute(distance, time, paths);
+        } catch (NullPointerException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
