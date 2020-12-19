@@ -7,9 +7,11 @@ import subway.view.output.RouteOutputView;
 public class RouteController implements Controller {
     protected static RouteOutputView routeOutputView;
     private RouteMenu routeMenu;
+    private static RouteFunction routeFunction;
 
     public RouteController() {
         routeOutputView = new RouteOutputView();
+        routeFunction = new RouteFunction(routeOutputView);
     }
 
     @Override
@@ -27,5 +29,13 @@ public class RouteController implements Controller {
         } catch (NullPointerException e) {
             return inputRouteMenu();
         }
+    }
+
+    public static void shortestDistance() {
+        routeFunction.shortestDistance();
+    }
+
+    public static void shortestTime() {
+        routeFunction.shortestTime();
     }
 }

@@ -1,8 +1,7 @@
 package subway.domain.menu;
 
 import subway.controller.Controller;
-import subway.controller.DistanceGraphController;
-import subway.controller.TimeGraphController;
+import subway.controller.RouteController;
 import subway.utils.exception.InvalidMenuInputException;
 
 import java.util.Arrays;
@@ -11,18 +10,18 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public enum RouteMenu {
-    SHORTEST_DISTANCE("1", "1. 최단 거리\n", new DistanceGraphController()),
-    SHORTEST_TIME("2", "2. 최소 시간\n", new TimeGraphController()),
+    SHORTEST_DISTANCE("1", "1. 최단 거리\n", RouteController::shortestDistance),
+    SHORTEST_TIME("2", "2. 최소 시간\n", RouteController::shortestTime),
     BACK("B", "B. 돌아가기\n", null);
 
     private String button;
     private String menu;
-    private Controller controller;
+    private Runnable runnable;
 
-    RouteMenu(String button, String menu, Controller controller) {
+    RouteMenu(String button, String menu, Runnable runnable) {
         this.button = button;
         this.menu = menu;
-        this.controller = controller;
+        this.runnable = runnable;
     }
 
     public static RouteMenu findMenu(String name) {
@@ -40,7 +39,7 @@ public enum RouteMenu {
 
     public void run() {
         if (isRunning()) {
-            controller.run();
+            runnable.run();
         }
     }
 
