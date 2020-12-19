@@ -10,7 +10,6 @@ import subway.view.OutputView;
 
 import java.util.List;
 
-
 public class RouteController {
     private static final String DEPARTURE_STATION = "출발역";
     private static final String ARRIVAL_STATION = "도착역";
