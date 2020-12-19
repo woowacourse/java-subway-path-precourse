@@ -29,7 +29,7 @@ public class UserInterfaceView {
             Output.printChoiceErrorMessage();
             return false;
         }
-        if (userInput == Q) {
+        if (Q.equals(userInput)) {
             return true;
         }
         mainToNextFunction(userInput);
