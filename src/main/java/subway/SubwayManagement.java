@@ -1,5 +1,7 @@
 package subway;
 
+import subway.domain.StationRepository;
+
 public class SubwayManagement {
 
     private User user;
@@ -9,6 +11,9 @@ public class SubwayManagement {
     }
 
     public void start() {
+
+        InitSetting.initSetting();
+
         while (true) {
             PrintScreen.printMain();
             String select = user.getInput();
@@ -41,13 +46,34 @@ public class SubwayManagement {
             System.out.println(e.getMessage());
         }
         if (select.equals(Constants.FUNCTION_ONE) || select.equals(Constants.FUNCTION_TWO)) {
-            System.out.println(select);
+            selectFindPathFunction(select);
         }
     }
 
     private void checkFindPathSelect(String select) {
-        if(!select.equals(Constants.FUNCTION_ONE) && !select.equals(Constants.FUNCTION_TWO) && !select.equals(Constants.FUNCTION_B)){
+        if (!select.equals(Constants.FUNCTION_ONE) && !select.equals(Constants.FUNCTION_TWO) && !select.equals(Constants.FUNCTION_B)) {
             throw new IllegalArgumentException("[ERROR] 선택할 수 없는 기능입니다.\n");
+        }
+    }
+
+    private void selectFindPathFunction(String select) {
+        PrintScreen.printInputStartStation();
+        String startStation = user.getInput();
+        PrintScreen.printInputArriveStation();
+        String arriveStation = user.getInput();
+
+        try {
+            checkContainStation(startStation, arriveStation);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
+        FindPath.start(select, startStation, arriveStation);
+    }
+
+    private void checkContainStation(String startStation, String arriveStation) {
+        if (!StationRepository.isContain(startStation) || !StationRepository.isContain(arriveStation)) {
+            throw new IllegalArgumentException("[ERROR] 존재하지 않는 역입니다.\n");
         }
     }
 }
