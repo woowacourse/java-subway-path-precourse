@@ -1,5 +1,6 @@
 package subway.domain;
 
+import exception.NoExistStationException;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
@@ -38,16 +39,15 @@ public class Line {
                 return;
             }
         }
-        throw new IllegalArgumentException(); // 없는 스테이션
+        throw new NoExistStationException();
     }
 
     public List<String> calculateLength(String start, String end) {
         List<String> result = new ArrayList<>();
         if (length.containsVertex(start) && length.containsVertex(end)) {
             DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(length);
-            if(!dijkstraShortestPath.getPath(start, end).getVertexList().isEmpty()) {
+            if (!dijkstraShortestPath.getPath(start, end).getVertexList().isEmpty()) {
                 result = dijkstraShortestPath.getPath(start, end).getVertexList();
-                System.out.println(result);
             }
         }
         return result;
@@ -57,17 +57,24 @@ public class Line {
         List<String> result = new ArrayList<>();
         if (length.containsVertex(start) && length.containsVertex(end)) {
             DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(time);
-            if(!dijkstraShortestPath.getPath(start, end).getVertexList().isEmpty()) {
+            if (!dijkstraShortestPath.getPath(start, end).getVertexList().isEmpty()) {
                 result = dijkstraShortestPath.getPath(start, end).getVertexList();
             }
         }
         return result;
     }
 
-    public int calculateKm(String start, String end) {
+    public int getLength(String start, String end) {
         if (length.containsVertex(start) && length.containsVertex(end)) {
             DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(length);
-            System.out.println((int) dijkstraShortestPath.getPath(start, end).getWeight());
+            return (int) dijkstraShortestPath.getPath(start, end).getWeight();
+        }
+        return 100;
+    }
+
+    public int getTime(String start, String end) {
+        if (length.containsVertex(start) && length.containsVertex(end)) {
+            DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(time);
             return (int) dijkstraShortestPath.getPath(start, end).getWeight();
         }
         return 100;

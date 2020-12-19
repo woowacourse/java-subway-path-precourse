@@ -16,50 +16,59 @@ public class DefaultData {
     private final static int[] LINE_THREE_TIME = {2, 5, 1};
     private final static String[] LINE_SHIN = {"강남역", "양재역", "양재시민의숲역"};
     private final static int[] LINE_SHIN_LENGTH = {2, 10};
-    private final static int[] LINE_SHIN_TIME = {10, 3};
+    private final static int[] LINE_SHIN_TIME = {8, 3};
 
-    public DefaultData(){
+    public DefaultData() {
         addDefaultStations();
         addDefaultLines();
         setLineInformation();
     }
 
-    private void addDefaultStations(){
-        for(String station : STATIONS){
+    private void addDefaultStations() {
+        for (String station : STATIONS) {
             StationRepository.addStation(new Station(station));
         }
     }
 
-    private void addDefaultLines(){
-        for(String line : LINES){
+    private void addDefaultLines() {
+        for (String line : LINES) {
             LineRepository.addLine(new Line(line));
         }
     }
 
-    private void setLineInformation(){
+    private void setLineInformation() {
         setDefaultLineTwo();
         setDefaultLineThree();
         setDefaultLineShin();
     }
 
-    private void setDefaultLineTwo(){
+    private void setDefaultLineTwo() {
         Line line = LineRepository.getLine("2호선");
-        for(int i = 0; i<LINE_TWO.length-1; i++){
-            line.addInformation(LINE_TWO[i], LINE_TWO[i+1], LINE_TWO_TIME[i], LINE_TWO_LENGTH[i]);
+        for (String name : LINE_TWO) {
+            line.addLineStation(name);
+        }
+        for (int i = 0; i < LINE_TWO.length - 1; i++) {
+            line.addInformation(LINE_TWO[i], LINE_TWO[i + 1], LINE_TWO_TIME[i], LINE_TWO_LENGTH[i]);
         }
     }
 
-    private void setDefaultLineThree(){
+    private void setDefaultLineThree() {
         Line line = LineRepository.getLine("3호선");
-        for(int i = 0; i<LINE_THREE.length-1; i++){
-            line.addInformation(LINE_THREE[i], LINE_THREE[i+1], LINE_THREE_TIME[i], LINE_THREE_LENGTH[i]);
+        for (String name : LINE_THREE) {
+            line.addLineStation(name);
+        }
+        for (int i = 0; i < LINE_THREE.length - 1; i++) {
+            line.addInformation(LINE_THREE[i], LINE_THREE[i + 1], LINE_THREE_TIME[i], LINE_THREE_LENGTH[i]);
         }
     }
 
-    private void setDefaultLineShin(){
+    private void setDefaultLineShin() {
         Line line = LineRepository.getLine("신분당선");
-        for(int i = 0; i<LINE_SHIN.length-1; i++){
-            line.addInformation(LINE_SHIN[i], LINE_SHIN[i+1], LINE_SHIN_TIME[i], LINE_SHIN_LENGTH[i]);
+        for (String name : LINE_SHIN) {
+            line.addLineStation(name);
+        }
+        for (int i = 0; i < LINE_SHIN.length - 1; i++) {
+            line.addInformation(LINE_SHIN[i], LINE_SHIN[i + 1], LINE_SHIN_TIME[i], LINE_SHIN_LENGTH[i]);
         }
     }
 }

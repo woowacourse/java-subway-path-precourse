@@ -15,5 +15,7 @@ public interface Output {
     public final static String FIND_RESULT = "조회 결과";
     public final static String INFO = "[INFO] ";
     public final static String CONTOUR = "---";
+    public final static String DISTANCE = "총 거리: %skm\n";
+    public final static String TIME = "총 소요 시간: %s분\n";
 }
 

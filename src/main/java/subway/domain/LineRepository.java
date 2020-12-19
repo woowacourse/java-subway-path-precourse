@@ -24,11 +24,11 @@ public class LineRepository {
         lines.clear();
     }
 
-    public static Line getLine(String name){
+    public static Line getLine(String name) {
         Line selectedLine = null;
-        for(Line line : lines){
-            if(line.getName().equals(name)){
-                selectedLine=line;
+        for (Line line : lines) {
+            if (line.getName().equals(name)) {
+                selectedLine = line;
             }
         }
         return selectedLine;

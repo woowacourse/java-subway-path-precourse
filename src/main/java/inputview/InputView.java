@@ -5,11 +5,15 @@ import java.util.Scanner;
 public class InputView {
     private final Scanner scanner;
 
-    public InputView(Scanner scanner){
+    public InputView(Scanner scanner) {
         this.scanner = scanner;
     }
 
-    public String selectFunction(){
+    public String selectFunction() {
+        return scanner.next();
+    }
+
+    public String selectStation() {
         return scanner.next();
     }
 }
