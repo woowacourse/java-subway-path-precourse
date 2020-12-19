@@ -12,7 +12,7 @@ public class PathFinder {
     private static String startStationName;
     private static String endStationName;
 
-    public static void startAndEndStationInput(Scanner scanner) {
+    private static void startAndEndStationInput(Scanner scanner) {
         try {
             InputView.printStartStationInput();
             startStationName = stationNameInput(scanner);
@@ -29,7 +29,8 @@ public class PathFinder {
             startAndEndStationInput(scanner);
             int totalDist = DijkstraGraphRepository.getShortestDist(startStationName, endStationName);
             List<String> path = DijkstraGraphRepository.getShortestDistPath(startStationName, endStationName);
-            OutputView.printResult(totalDist, path);
+            int totalTime = getTotalTime(path);
+            OutputView.printResult(totalDist, path, totalTime);
         } catch (IllegalArgumentException e) {
             System.out.println("\n[ERROR]" + e.getMessage());
         }
@@ -38,9 +39,9 @@ public class PathFinder {
     public static void findShortestTimePath(Scanner scanner) {
         try {
             startAndEndStationInput(scanner);
-            int totalDist = DijkstraGraphRepository.getShortestTime(startStationName, endStationName);
+            int totalTime = DijkstraGraphRepository.getShortestTime(startStationName, endStationName);
             List<String> path = DijkstraGraphRepository.getShortestTimePath(startStationName, endStationName);
-            OutputView.printResult(totalDist, path);
+            OutputView.printResult(0, path, totalTime);
         } catch (IllegalArgumentException e) {
             System.out.println("\n[ERROR]" + e.getMessage());
         }
@@ -52,5 +53,18 @@ public class PathFinder {
             throw new IllegalArgumentException("존재하지 않는 역이름 입니다.");
         }
         return stationName;
+    }
+
+    private static int getTotalTime(List<String> path) {
+        int totalTime = 0;
+        //Map<String, Map<String, Integer>> stationTimeMap = DijkstraGraphRepository.getStationTimeMap();
+        for (int i = 0; i < path.size() - 1; ++i) {
+            String beforeStation = path.get(i);
+            String afterStation = path.get(i + 1);
+            //totalTime += DijkstraGraphRepository.stationTimeMap.get(beforeStation).get(afterStation);
+            //System.out.println(beforeStation + " " + afterStation);
+            //System.out.println(DijkstraGraphRepository.getDist(beforeStation, afterStation));
+        }
+        return totalTime;
     }
 }

@@ -32,6 +32,7 @@ public class DijkstraGraphRepository {
         return map;
     }
 
+
     private static void secondLineSet() {
         shortDistanceGraph.setEdgeWeight(shortDistanceGraph.addEdge("교대역", "강남역"), 2);
         stationDistMap.put("교대역", setMap("강남역", 2));

@@ -12,7 +12,7 @@ public class OutputView {
         System.out.println();
         System.out.println(INFO_HEADER + SEPARATOR);
         System.out.println(INFO_HEADER + "총 거리: " + totalDist + "km");
-        System.out.println(INFO_HEADER + "총 소요 시간: " + totalTime + "km");
+        System.out.println(INFO_HEADER + "총 소요 시간: " + totalTime + "분");
         System.out.println(INFO_HEADER + SEPARATOR);
         printPath(path);
     }
