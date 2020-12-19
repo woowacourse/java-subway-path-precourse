@@ -1,20 +1,13 @@
-package subway.domain;
+package subway.domain.station;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Objects;
 
-public class Line implements Comparable<Line> {
+public class Station {
 
     private String name;
-    private List<Station> stations = new LinkedList<>();
 
-    private Line(String name) {
+    public Station(String name) {
         this.name = name;
-    }
-
-    public static Line of(String name) {
-        return new Line(name);
     }
 
     public String getName() {
@@ -29,8 +22,8 @@ public class Line implements Comparable<Line> {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Line line = (Line) o;
-        return Objects.equals(getName(), line.getName());
+        Station station = (Station) o;
+        return getName().equals(((Station) o).getName());
     }
 
     @Override
@@ -39,7 +32,9 @@ public class Line implements Comparable<Line> {
     }
 
     @Override
-    public int compareTo(Line o) {
-        return name.compareTo(o.name);
+    public String toString() {
+        return name;
     }
+
+    // 추가 기능 구현
 }

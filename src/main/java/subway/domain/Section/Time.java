@@ -1,4 +1,4 @@
-package subway.domain;
+package subway.domain.Section;
 
 import java.time.Duration;
 import java.util.Objects;
