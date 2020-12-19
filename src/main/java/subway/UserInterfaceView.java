@@ -1,15 +1,17 @@
 package subway;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class UserInterfaceView {
 
-    private static final String ONE = "1";
-    private static final String TWO = "2";
+    private static final int ZERO = 0;
+    private static final String STR_ONE = "1";
+    private static final String STR_TWO = "2";
     private static final String Q = "Q";
     private static final String B = "B";
-    private static final String[] MAIN_CHOICE_LIST = {ONE, Q};
-    private static final String[] ROUTE_SEARCH_CHOICE_LIST = {ONE, TWO, B};
+    private static final String[] MAIN_CHOICE_LIST = {STR_ONE, Q};
+    private static final String[] ROUTE_SEARCH_CHOICE_LIST = {STR_ONE, STR_TWO, B};
 
     public UserInterfaceView() {
     }
@@ -37,7 +39,7 @@ public class UserInterfaceView {
     }
 
     private void mainToNextFunction(String userInput) {
-        if (ONE.equals(userInput)) {
+        if (STR_ONE.equals(userInput)) {
             routeSearch();
         }
     }
@@ -58,11 +60,11 @@ public class UserInterfaceView {
     private void routeSearchToNextFunction(String userInput) {
         String startStation = Input.getUserInput(Output.START_STATION);
         String endStation = Input.getUserInput(Output.END_STATION);
-        if (ONE.equals(userInput)) {
-            // TODO - 최단거리 함수 호출하기
+        if (STR_ONE.equals(userInput)) {
+            // findMinDistance(startStation, endStation);
         }
-        if (TWO.equals(userInput)) {
-            // TODO - 최소거리 함수 호출하기
+        if (STR_TWO.equals(userInput)) {
+            // findMinTime(startStation, endStation);
         }
     }
 }
