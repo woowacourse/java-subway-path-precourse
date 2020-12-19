@@ -52,7 +52,7 @@ public class OutputView {
         System.out.println(ENTER_END_STATION);
     }
 
-    public static void showMinimumDistancePath(List<Station> shortestPath, int shortestDistance, int shortestTime) {
+    public static void showMinimumCostPath(List<Station> shortestPath, int shortestDistance, int shortestTime) {
         System.out.println(RESULT_TITLE);
         System.out.println(RESULT_PREFIX + RESULT_DIVIDER);
         System.out.println(RESULT_PREFIX + TOTAL_DISTANCE + COLON + shortestDistance + KILOMETER);

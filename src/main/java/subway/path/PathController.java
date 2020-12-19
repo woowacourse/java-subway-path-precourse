@@ -65,7 +65,7 @@ public class PathController {
                 searchMinimumDistance(startStation, endStation);
             }
             if (method.equals(SearchMethod.TIME.getValue())) {
-                // TODO 최소 시간
+                searchMinimumTime(startStation, endStation);
             }
             return false;
         } catch (IllegalArgumentException e) {
@@ -89,12 +89,25 @@ public class PathController {
         List<Station> stations = stationService.findAllStation();
         List<Line> lines = lineService.findAllLine();
 
-        GraphPath path = pathService.getDijkstraShortestPath(stations, lines, startStation, endStation);
+        GraphPath path = pathService.getDijkstraShortestPath(stations, lines, startStation, endStation, SearchMethod.DISTANCE.getValue());
 
-        List<Station> shortestPath = pathService.getMinimumDistancePath(path);
-        int shortestDistance = Integer.parseInt(String.valueOf(Math.round(pathService.getMinimumDistance(path))));
+        List<Station> shortestPath = pathService.getMinimumPath(path);
+        int shortestDistance = Integer.parseInt(String.valueOf(Math.round(pathService.getMinimumWeight(path))));
         int shortestTime = pathService.getPathTime(shortestPath);
 
-        OutputView.showMinimumDistancePath(shortestPath, shortestDistance, shortestTime);
+        OutputView.showMinimumCostPath(shortestPath, shortestDistance, shortestTime);
+    }
+
+    private void searchMinimumTime(Station startStation, Station endStation) {
+        List<Station> stations = stationService.findAllStation();
+        List<Line> lines = lineService.findAllLine();
+
+        GraphPath path = pathService.getDijkstraShortestPath(stations, lines, startStation, endStation, SearchMethod.TIME.getValue());
+
+        List<Station> shortestPath = pathService.getMinimumPath(path);
+        int shortestDistance = pathService.getPathDistance(shortestPath);
+        int shortestTime = Integer.parseInt(String.valueOf(Math.round(pathService.getMinimumWeight(path))));
+
+        OutputView.showMinimumCostPath(shortestPath, shortestDistance, shortestTime);
     }
 }

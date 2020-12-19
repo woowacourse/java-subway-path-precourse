@@ -23,4 +23,14 @@ public class SectionService {
         }
         return ZERO;
     }
+
+    public int getSectionDistance(Station start, Station end) {
+        List<Section> sections = SectionRepository.sections();
+        for (Section section : sections) {
+            if (section.getStartStation().equals(start) && section.getEndStation().equals(end)) {
+                return section.getDistance();
+            }
+        }
+        return ZERO;
+    }
 }

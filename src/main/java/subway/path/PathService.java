@@ -19,22 +19,21 @@ public class PathService {
         this.sectionService = new SectionService();
     }
 
-    public List<Station> getMinimumDistancePath(GraphPath path) {
+    public List<Station> getMinimumPath(GraphPath path) {
         return path.getVertexList();
     }
 
-    public double getMinimumDistance(GraphPath path) {
+    public double getMinimumWeight(GraphPath path) {
         return path.getWeight();
     }
 
-    public GraphPath getDijkstraShortestPath(List<Station> stations, List<Line> lines, Station startStation, Station endStation) {
-        WeightedMultigraph<Station, DefaultWeightedEdge> graph = getGraph(stations, lines);
+    public GraphPath getDijkstraShortestPath(List<Station> stations, List<Line> lines, Station startStation, Station endStation, String method) {
+        WeightedMultigraph<Station, DefaultWeightedEdge> graph = getGraph(stations, lines, method);
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
         return dijkstraShortestPath.getPath(startStation, endStation);
-
     }
 
-    private WeightedMultigraph<Station, DefaultWeightedEdge> getGraph(List<Station> stations, List<Line> lines) {
+    private WeightedMultigraph<Station, DefaultWeightedEdge> getGraph(List<Station> stations, List<Line> lines, String method) {
         WeightedMultigraph<Station, DefaultWeightedEdge> graph
                 = new WeightedMultigraph(DefaultWeightedEdge.class);
 
@@ -46,7 +45,14 @@ public class PathService {
             Sections sections = line.getSections();
             List<Section> sectionList = sections.getSections();
             for (Section section : sectionList) {
-                graph.setEdgeWeight(graph.addEdge(section.getStartStation(), section.getEndStation()), section.getDistance());
+                int weight = 0;
+                if (method.equals(SearchMethod.DISTANCE.getValue())) {
+                    weight = section.getDistance();
+                }
+                if (method.equals(SearchMethod.TIME.getValue())) {
+                    weight = section.getTime();
+                }
+                graph.setEdgeWeight(graph.addEdge(section.getStartStation(), section.getEndStation()), weight);
             }
         }
 
@@ -61,5 +67,15 @@ public class PathService {
             time += sectionService.getSectionTime(start, end);
         }
         return time;
+    }
+
+    public int getPathDistance(List<Station> shortestPath) {
+        int distance = 0;
+        for (int i = 0; i < shortestPath.size() - 1; i++) {
+            Station start = shortestPath.get(i);
+            Station end = shortestPath.get(i + 1);
+            distance += sectionService.getSectionDistance(start, end);
+        }
+        return distance;
     }
 }
