@@ -38,6 +38,6 @@ public class ViewManager {
 			Output.error(Message.SAME_STATION);
 			return;
 		}
-		Subway.minTimeBetween(getDepartureStation(), getArrivalStation());
+		Subway.minTimeBetween(departureStation, arrivalStation);
 	}
 }
