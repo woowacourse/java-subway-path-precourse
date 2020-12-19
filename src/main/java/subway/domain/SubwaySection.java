@@ -13,6 +13,7 @@ public class SubwaySection {
 			DefaultWeightedEdge.class);
 
 	private static final String ERROR_INPUT_MESSAGE = "[ERROR] 잘못된 입력값 입니다.\n";
+	private static final String ERROR_SECTION_MESSAGE = "[ERROR] 연결되어 있지 않은 경로 입니다..\n";
 
 	public static void addSection(String station) {
 		timeGraph.addVertex(station);
@@ -43,43 +44,51 @@ public class SubwaySection {
 	}
 
 	public void minTimeSection(String startStation, String endStation) {
-		DijkstraShortestPath dijkstraLengthShortestPath = new DijkstraShortestPath(lengthGraph);
-		DijkstraShortestPath dijkstraTimeShortestPath = new DijkstraShortestPath(timeGraph);
-		List<String> shortestPath = dijkstraTimeShortestPath.getPath(startStation, endStation).getVertexList();
-		int tempLength = 0;
-		for (int count = 0; count < shortestPath.size() - 1; count++) {
-			tempLength += (int) dijkstraLengthShortestPath.getPathWeight(shortestPath.get(count),
-					shortestPath.get(count + 1));
+		try {
+			DijkstraShortestPath dijkstraLengthShortestPath = new DijkstraShortestPath(lengthGraph);
+			DijkstraShortestPath dijkstraTimeShortestPath = new DijkstraShortestPath(timeGraph);
+			List<String> shortestPath = dijkstraTimeShortestPath.getPath(startStation, endStation).getVertexList();
+			int tempLength = 0;
+			for (int count = 0; count < shortestPath.size() - 1; count++) {
+				tempLength += (int) dijkstraLengthShortestPath.getPathWeight(shortestPath.get(count),
+						shortestPath.get(count + 1));
+			}
+			System.out.println("[INFO] ---");
+			System.out.println("[INFO] 총 거리: " + tempLength + "km");
+			System.out.println(
+					"[INFO] 총 소요 시간: " + (int) dijkstraTimeShortestPath.getPathWeight(startStation, endStation) + "분");
+			System.out.println("[INFO] ---");
+			for (int i = 0; i < shortestPath.size(); i++) {
+				System.out.println("[INFO] " + shortestPath.get(i));
+			}
+			System.out.println();
+		} catch (Exception e) {
+			System.out.println(ERROR_SECTION_MESSAGE);
 		}
-		System.out.println("[INFO] ---");
-		System.out.println("[INFO] 총 거리: " + tempLength + "km");
-		System.out.println(
-				"[INFO] 총 소요 시간: " + (int) dijkstraTimeShortestPath.getPathWeight(startStation, endStation) + "분");
-		System.out.println("[INFO] ---");
-		for (int i = 0; i < shortestPath.size(); i++) {
-			System.out.println("[INFO] " + shortestPath.get(i));
-		}
-		System.out.println();
 	}
 
 	public void minLengthSection(String startStation, String endStation) {
-		DijkstraShortestPath dijkstraLengthShortestPath = new DijkstraShortestPath(lengthGraph);
-		DijkstraShortestPath dijkstraTimeShortestPath = new DijkstraShortestPath(timeGraph);
-		List<String> shortestPath = dijkstraLengthShortestPath.getPath(startStation, endStation).getVertexList();
-		int tempTime = 0;
-		for (int count = 0; count < shortestPath.size() - 1; count++) {
-			tempTime += (int) dijkstraTimeShortestPath.getPathWeight(shortestPath.get(count),
-					shortestPath.get(count + 1));
-		}
-		System.out.println("[INFO] ---");
-		System.out.println(
-				"[INFO] 총 거리: " + (int) dijkstraLengthShortestPath.getPathWeight(startStation, endStation) + "km");
-		System.out.println("[INFO] 총 소요 시간: " + tempTime + "분");
+		try {
+			DijkstraShortestPath dijkstraLengthShortestPath = new DijkstraShortestPath(lengthGraph);
+			DijkstraShortestPath dijkstraTimeShortestPath = new DijkstraShortestPath(timeGraph);
+			List<String> shortestPath = dijkstraLengthShortestPath.getPath(startStation, endStation).getVertexList();
+			int tempTime = 0;
+			for (int count = 0; count < shortestPath.size() - 1; count++) {
+				tempTime += (int) dijkstraTimeShortestPath.getPathWeight(shortestPath.get(count),
+						shortestPath.get(count + 1));
+			}
+			System.out.println("[INFO] ---");
+			System.out.println(
+					"[INFO] 총 거리: " + (int) dijkstraLengthShortestPath.getPathWeight(startStation, endStation) + "km");
+			System.out.println("[INFO] 총 소요 시간: " + tempTime + "분");
 
-		System.out.println("[INFO] ---");
-		for (int i = 0; i < shortestPath.size(); i++) {
-			System.out.println("[INFO] " + shortestPath.get(i));
+			System.out.println("[INFO] ---");
+			for (int i = 0; i < shortestPath.size(); i++) {
+				System.out.println("[INFO] " + shortestPath.get(i));
+			}
+			System.out.println();
+		} catch (Exception e) {
+			System.out.println(ERROR_SECTION_MESSAGE);
 		}
-		System.out.println();
 	}
 }
