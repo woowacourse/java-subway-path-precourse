@@ -49,7 +49,10 @@ public class SubwayGraph {
         } catch (Exception e) {
             throw new IllegalArgumentException("[ERROR] 두 역이 연결되어있지 않습니다.");
         }
+    }
 
+    public int getDistanceBetweenTwoStation(String previousStation, String nextStation) {
+        return (int) subwayGraph.getEdgeWeight(subwayGraph.getEdge(previousStation, nextStation));
     }
 
 }
