@@ -27,6 +27,10 @@ public class StationRepository {
         return stations.removeIf(station -> Objects.equals(station.getName(), name));
     }
 
+    public static boolean isStationPresent(String name) {
+        return stations.stream().anyMatch(station -> station.getName().equals(name));
+    }
+
     public static void deleteAll() {
         stations.clear();
     }
