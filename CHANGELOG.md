@@ -3,8 +3,22 @@
 
 # CHANGELOG
 
-## [0.1.0] feat(Edge.java): add Edge class
+## [1.0.0] feat(SubwayController.java): add init feature
+
 Upload files:
+
+    - SubwayController.java
+        : A class controllers all main features in this project
+            - initPrimary() : Initiating all the project's needed objects
+
+Add an initiate all the project's needed objects feature
+
+---
+
+## [0.1.0] feat(Edge.java): add Edge class
+
+Upload files:
+
     - Edge.java
         : A class having information between Stations
             - from : Starting point Station's name
@@ -20,7 +34,9 @@ Add Edge class and Edge Repository
 ---
 
 ## [0.0.1] docs(README.md): add feature plan
+
 Upload files:
+
     - README.md
         : Add project's main feature plan
 
