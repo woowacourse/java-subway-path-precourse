@@ -24,9 +24,13 @@ public class MinimumDistancePathCheckView extends SubwayPathManagerView {
 	private static int minimumMinute;
 
 	public MinimumDistancePathCheckView(Scanner scanner) {
-		getStation(scanner);
-		calculate();
-		print();
+		try {
+			getStation(scanner);
+			calculate();
+			print();
+		} catch (IllegalArgumentException e) {
+			printError(e.getMessage());
+		}
 		new MainView(scanner);
 	}
 
