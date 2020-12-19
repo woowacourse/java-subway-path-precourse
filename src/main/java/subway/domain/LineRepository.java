@@ -23,4 +23,8 @@ public class LineRepository {
     public static void deleteAll() {
         lines.clear();
     }
+
+    public static Line selectLineByName(String name){
+        return (Line)lines().stream().filter(l->l.getName().equals(name));
+    }
 }
