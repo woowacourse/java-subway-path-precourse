@@ -16,7 +16,7 @@ public class DijkstraPath {
         return dijkstraShortestPath.getPath(source, destination).getVertexList();
     }
 
-    public List<Interval> getIntervalsPassing(Station source, Station destination) {
+    public List<IntervalEdge> getIntervalsPassing(Station source, Station destination) {
         return dijkstraShortestPath.getPath(source, destination).getEdgeList();
     }
 

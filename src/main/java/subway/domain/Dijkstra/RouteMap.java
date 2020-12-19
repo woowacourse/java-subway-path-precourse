@@ -1,9 +1,10 @@
 package subway.domain.Dijkstra;
 
+import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 
 public class RouteMap {
-    private WeightedMultigraph<Station, Interval> graph = new WeightedMultigraph(Interval.class);
+    private WeightedMultigraph<Station, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
 
     public RouteMap() {
 
@@ -13,11 +14,12 @@ public class RouteMap {
         graph.addVertex(station);
     }
 
-    public void addInterval(Station source, Station destination, int weight) {
-        graph.setEdgeWeight(graph.addEdge(source, destination), weight);
+    public void addInterval(Station s1, Station s2, int weight) {
+
+        graph.setEdgeWeight(graph.addEdge(s1, s2), weight);
     }
 
-    public WeightedMultigraph<Station, Interval> getGraph() {
+    public WeightedMultigraph<Station, DefaultWeightedEdge> getGraph() {
         return graph;
     }
 
