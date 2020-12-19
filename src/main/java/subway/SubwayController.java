@@ -1,9 +1,11 @@
 package subway;
 
+import subway.model.PathFinder;
 import subway.model.SubwayInit;
 import subway.view.InputView;
 import subway.view.OutputView;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class SubwayController {
@@ -36,19 +38,54 @@ public class SubwayController {
         outputView.mapView();
         outputView.getUserOption();
         String option = inputView.userInput();
-        routeMapOption(option);
+        routePathFindOption(option);
     }
 
-    private void routeMapOption(String option) {
+    private void routePathFindOption(String option) {
         if (option.equals("1")) {
-            // 최단 거리
+            pathFindByDistance();
         }
         if (option.equals("2")) {
-            // 최소 시간
+            pathFindByTime();
         }
-        if (option.equals("B")) {
-            // 돌아가기
-            startManager();
-        }
+        startManager();
+    }
+
+    private void pathFindByDistance() {
+        String[] stationInput = getStationInput();
+        String start = stationInput[0];
+        String arrive = stationInput[1];
+        List<String> result = PathFinder.getShortestPathByDistance(start, arrive);
+        int totalDistance = PathFinder.getTotalDistance(result);
+        int totalTime = PathFinder.getTotalTime(result);
+        showResult(result, totalDistance, totalTime);
+    }
+
+    private void pathFindByTime() {
+        outputView.getUserStart();
+        String start = inputView.userInput();
+        outputView.getUserArrive();
+        String arrive = inputView.userInput();
+        List<String> result = PathFinder.getShortestPathByTime(start, arrive);
+        int totalDistance = PathFinder.getTotalDistance(result);
+        int totalTime = PathFinder.getTotalTime(result);
+        showResult(result, totalDistance, totalTime);
+    }
+
+    private String[] getStationInput() {
+        outputView.getUserStart();
+        String start = inputView.userInput();
+        outputView.getUserArrive();
+        String arrive = inputView.userInput();
+        return new String[]{ start, arrive };
+    }
+
+    private void showResult(List<String> shortestPath, int totalDistance, int totalTime) {
+        outputView.printResult();
+        outputView.printDivide();
+        outputView.printTotalDistance(totalDistance);
+        outputView.printTotalTime(totalTime);
+        outputView.printDivide();
+        outputView.printShortestPath(shortestPath);
     }
 }
