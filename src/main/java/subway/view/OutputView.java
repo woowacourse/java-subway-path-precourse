@@ -1,5 +1,7 @@
 package subway.view;
 
+import java.util.List;
+
 public class OutputView {
 
     private static final String MAIN_TITLE = "## 메인 화면";
@@ -10,6 +12,11 @@ public class OutputView {
     private static final String INQUIRY_SHORTEST_PATH = "1. 최단 거리";
     private static final String INQUIRY_LEAST_TIME = "2. 최소 시간";
     private static final String INQUIRY_BACK = "B. 돌아가기";
+
+    private static final String RESULT_TITLE = "## 조회 결과";
+    private static final String RESULT_LINE = "---";
+    private static final String RESULT_DISTANCE_FORMAT = "총 거리: %dkm";
+    private static final String RESULT_TIME_FORMAT = "총 소요 시간: %d분";
 
     private static final String QUERY_FUNCTION_SELECT = "## 원하는 기능을 선택하세요.";
     private static final String QUERY_SOURCE_STATION = "## 출발역을 입력하세요.";
@@ -48,11 +55,23 @@ public class OutputView {
         System.out.println(QUERY_DESTINATION_STATION);
     }
 
-    public static void printInformation(String message) {
+    public static void printInquiryGraph(final List<String> graph, final int totalDistance, final int totalTime) {
+        System.out.println(RESULT_TITLE);
+        printInformation(RESULT_LINE);
+        printInformation(String.format(RESULT_DISTANCE_FORMAT, totalDistance));
+        printInformation(String.format(RESULT_TIME_FORMAT, totalTime));
+        printInformation(RESULT_LINE);
+        for (String stationName : graph) {
+            printInformation(stationName);
+        }
+        printEmptyLine();
+    }
+
+    public static void printInformation(final String message) {
         System.out.println("[INFO] " + message);
     }
 
-    public static void printError(String message) {
+    public static void printError(final String message) {
         System.out.println("[ERROR] " + message);
         printEmptyLine();
     }
