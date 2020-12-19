@@ -50,19 +50,12 @@ public class Controller {
         Station endStation = validStation(input.getEndStation());
         isSameStation(startStation, endStation);
         Path resultPath = PathRepository.getPath(startStation, endStation, command);
-        validPath(resultPath);
         output.printPathResult(resultPath);
     }
 
     private Station validStation(String stationName) {
         return stations.stream().filter(s -> s.isSameName(stationName)).findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(String.join(" ", Constant.PREFIX_ERROR, "존재하지 않는 역입니다.")));
-    }
-
-    private void validPath(Path path) {
-        if (path.getPathList().size() == 0) {
-            throw new IllegalStateException(String.join(" ", Constant.PREFIX_ERROR, "경로가 존재하지 않습니다."));
-        }
     }
 
     private void isSameStation(Station startStation, Station endStation) {
