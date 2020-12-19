@@ -4,20 +4,40 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import subway.domain.Section.Distance;
+import subway.domain.Section.Section;
+import subway.domain.Section.Time;
 import subway.domain.line.Line;
+import subway.domain.station.Station;
 
 public class LineRepository {
+
     private static final List<Line> lines = new ArrayList<>();
 
-    public static List<Line> lines() {
+    static {    //샘플 데이터
+        new SectionRepository();
+    }
+
+
+    public List<Line> lines() {
         return Collections.unmodifiableList(lines);
     }
 
-    public static void addLine(Line line) {
+    public void addLine(Line line) {
         lines.add(line);
     }
 
-    public static boolean deleteLineByName(String name) {
+    public Line findByName(String name) {
+        return lines.stream()
+            .filter(line -> line.isMatchName(name))
+            .findFirst()
+            .orElseThrow(() -> {
+                throw new IllegalArgumentException("[ERROR] 해당 이름의 노선은 존재하지 않습니다.");
+            });
+    }
+
+
+    public boolean deleteLineByName(String name) {
         return lines.removeIf(line -> Objects.equals(line.getName(), name));
     }
 

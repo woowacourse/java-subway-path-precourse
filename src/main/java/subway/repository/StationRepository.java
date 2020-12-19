@@ -4,24 +4,48 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import subway.domain.Section.Distance;
+import subway.domain.Section.Section;
+import subway.domain.Section.Time;
+import subway.domain.line.Line;
 import subway.domain.station.Station;
+import subway.exception.AlreadyAddedStationException;
 
 public class StationRepository {
+
     private static final List<Station> stations = new ArrayList<>();
 
-    public static List<Station> stations() {
+    static {    //샘플 데이터
+        new SectionRepository();
+    }
+
+    public List<Station> stations() {
         return Collections.unmodifiableList(stations);
     }
 
-    public static void addStation(Station station) {
+    public void addStation(Station station) {
+
+        if (stations.contains(station)) {
+            throw new AlreadyAddedStationException(station);
+        }
+
         stations.add(station);
     }
 
-    public static boolean deleteStation(String name) {
+    public boolean deleteStation(String name) {
         return stations.removeIf(station -> Objects.equals(station.getName(), name));
     }
 
-    public static void deleteAll() {
+    public Station findByName(String name) {
+        return stations.stream()
+            .filter(station -> station.isMatchName(name))
+            .findFirst()
+            .orElseThrow(() -> {
+                throw new IllegalArgumentException("[ERROR] 해당 이름의 역을 찾을 수 없습니다.");
+            });
+    }
+
+    public void deleteAll() {
         stations.clear();
     }
 }
