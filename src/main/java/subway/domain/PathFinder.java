@@ -1,13 +1,16 @@
 package subway.domain;
 
+import subway.domain.repositories.DijkstraGraphRepository;
 import subway.utils.Validator;
 import subway.view.InputView;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class PathFinder {
     private static String startStationName;
     private static String endStationName;
+
     public static void startAndEndStationInput(Scanner scanner) {
         try {
             InputView.printStartStationInput();
@@ -21,7 +24,13 @@ public class PathFinder {
     }
 
     public static void findShortestDistPath(Scanner scanner) {
-        startAndEndStationInput(scanner);
+        try {
+            startAndEndStationInput(scanner);
+            int totalDist = DijkstraGraphRepository.getShortestDist(startStationName, endStationName);
+            List<String> path = DijkstraGraphRepository.getShortestDistPath(startStationName, endStationName);
+        } catch (IllegalArgumentException e) {
+            System.out.println("\n[ERROR]" + e.getMessage());
+        }
     }
 
     public static void findShortestTimePath(Scanner scanner) {
