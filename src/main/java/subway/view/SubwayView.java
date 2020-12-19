@@ -11,7 +11,17 @@ public class SubwayView {
         this.scanner = scanner;
     }
 
+    public String userInput() {
+        String userInput = scanner.nextLine();
+        newLine();
+        return userInput;
+    }
+
     public void printMessage(SubwayMessage subwayMessage) {
-        System.out.println(subwayMessage.getContent());
+        System.out.print(subwayMessage.getContent());
+    }
+
+    public void newLine() {
+        System.out.println();
     }
 }
