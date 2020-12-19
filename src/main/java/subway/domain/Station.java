@@ -21,8 +21,7 @@ public class Station {
         return name.equals(this.name);
     }
 
-    public void addConnectData(String stationName, int distance, int time) {
-        Station station = StationRepository.getStation(stationName);
+    public void addConnectData(Station station, int distance, int time) {
         ConnectData connectData = new ConnectData(station, distance, time);
         ConnectDataList.add(connectData);
     }
