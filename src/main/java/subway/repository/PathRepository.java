@@ -7,6 +7,7 @@ import subway.exception.InvalidInputException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class PathRepository {
     private static final List<Path> paths = new ArrayList<>();
@@ -17,6 +18,15 @@ public class PathRepository {
 
     public static void addPath(Path path) {
         paths.add(path);
+    }
+
+    public static boolean deletePath(String srcStationName, String dstStationName) {
+        return paths.removeIf(path -> Objects.equals(path.getSrcStation().getName(), srcStationName)
+                && Objects.equals(path.getDstStation().getName(), dstStationName));
+    }
+
+    public static void deleteAll() {
+        paths.clear();
     }
 
     private static void addPaths(List<Path> paths) {
