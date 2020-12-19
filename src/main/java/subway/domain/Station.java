@@ -10,4 +10,10 @@ public class Station {
     public String getName() {
         return name;
     }
+
+    public boolean matches(String name) {
+        if (this.name.equals(name))
+            return true;
+        return false;
+    }
 }
