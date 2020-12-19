@@ -16,7 +16,11 @@ public class ShortestTimeReport {
     }
 
     public void makePaths(Station startStation, Station finishStation){
-        this.paths = dijkstraShortestTime.getPath(startStation, finishStation);
+        try {
+            this.paths = dijkstraShortestTime.getPath(startStation, finishStation);
+        }catch (IllegalArgumentException e){
+            throw new IllegalArgumentException("역이 연결되어 있지 않습니다.");
+        }
     }
 
     public int calculateTotalTime() {
