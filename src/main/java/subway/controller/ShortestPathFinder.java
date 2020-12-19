@@ -1,10 +1,12 @@
 package subway.controller;
 
 import java.util.Scanner;
+import subway.controller.constants.ControllerError;
 import subway.domain.StationRepository;
 import subway.view.PathInputView;
 
 abstract public class ShortestPathFinder {
+
     private final Scanner scanner;
 
     ShortestPathFinder(Scanner scanner) {
@@ -21,7 +23,10 @@ abstract public class ShortestPathFinder {
 
     public String validTerminal() {
         String candidate = scanner.nextLine();
-        StationRepository.isExistedStation(candidate);
+        if (!StationRepository.isExistedStation(candidate)) {
+            System.out.println(ControllerError.NO_EXISTED_STATION);
+            throw new IllegalArgumentException(ControllerError.NO_EXISTED_STATION);
+        }
         return candidate;
     }
 

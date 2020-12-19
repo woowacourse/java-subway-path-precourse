@@ -32,9 +32,14 @@ public class StationDistanceRespository {
 
     public static int getShortestDistance(String initialStation, String lastStation) {
         isSameInitialLastStation(initialStation, lastStation);
-        int shortestDistance = (int) dijkstraShortestPath.getPath(initialStation, lastStation)
-                .getWeight();
-        return shortestDistance;
+        try {
+            int shortestDistance = (int) dijkstraShortestPath.getPath(initialStation, lastStation)
+                    .getWeight();
+            return shortestDistance;
+        } catch (Exception error) {
+            System.out.println(DomainErrorMessage.NO_CONNECT);
+            throw new IllegalArgumentException(DomainErrorMessage.NO_CONNECT);
+        }
     }
 
     private static void isSameInitialLastStation(String initialStation, String lasStation) {

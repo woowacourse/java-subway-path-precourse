@@ -32,9 +32,14 @@ public class StationTimeRepository {
 
     public static int getShortestTime(String initialStation, String lastStation) {
         isSameInitialLastStation(initialStation, lastStation);
-        int shortestTime = (int) dijkstraShortestPath.getPath(initialStation, lastStation)
-                .getWeight();
-        return shortestTime;
+        try {
+            int shortestTime = (int) dijkstraShortestPath.getPath(initialStation, lastStation)
+                    .getWeight();
+            return shortestTime;
+        } catch (Exception error) {
+            System.out.println(DomainErrorMessage.NO_CONNECT);
+            throw new IllegalArgumentException(DomainErrorMessage.NO_CONNECT);
+        }
     }
 
     private static void isSameInitialLastStation(String initialStation, String lasStation) {
