@@ -24,6 +24,8 @@ public class RouteFunction {
             List<String> inputStations = inputStation();
             int distance = SubwayMap.findShortestDistance(inputStations);
             List<String> paths = SubwayMap.findShortestDistancePath(inputStations);
+            int time = SubwayMap.findShortestDistanceTime(paths);
+            routeOutputView.printMinDistanceRoute(distance, time, paths);
         } catch (NullPointerException e) {
             return;
         }

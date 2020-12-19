@@ -33,4 +33,8 @@ public class OutputView {
         stringBuilder.append(SELECT_MENU);
         print();
     }
+
+    protected void infoSymbol() {
+        stringBuilder.append(INFO_SYMBOL);
+    }
 }

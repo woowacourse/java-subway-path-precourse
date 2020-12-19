@@ -5,11 +5,15 @@ import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 import subway.domain.station.StationRepository;
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SubwayMap {
     private static WeightedMultigraph<String, DefaultWeightedEdge> distanceGraph = new WeightedMultigraph(DefaultWeightedEdge.class);
     private static WeightedMultigraph<String, DefaultWeightedEdge> timeGraph = new WeightedMultigraph(DefaultWeightedEdge.class);
+    private static Map<List<String>, Integer> timeEdge = new HashMap<>();
 
     public static void setStations(List<String> stations) {
         stations.stream()
@@ -24,6 +28,7 @@ public class SubwayMap {
         String lastStation = stations.get(StationRepository.LAST_STATION_INDEX);
         distanceGraph.setEdgeWeight(distanceGraph.addEdge(firstStation, lastStation), distance);
         timeGraph.setEdgeWeight(distanceGraph.addEdge(firstStation, lastStation), time);
+        timeEdge.put(stations, time);
     }
 
     public static int findShortestDistance(List<String> stations) {
@@ -46,9 +51,11 @@ public class SubwayMap {
 
     public static int findShortestDistanceTime(List<String> paths) {
         int time = 0;
-        for (int i = 0; i < paths.size() - 1; i++) {
-            time += timeGraph.getEdgeWeight(distanceGraph.getEdge(paths.get(i), paths.get(i + 1)));
-            System.out.println(paths.get(i) + paths.get(i+1) +  time + "\n");
+        for (int i=0; i<paths.size()-1; i++) {
+            String firstStation = paths.get(i);
+            String lastStation = paths.get(i+1);
+            System.out.println(firstStation+lastStation+timeEdge.get(Arrays.asList(firstStation, lastStation)));
+            time += timeEdge.get(Arrays.asList(firstStation, lastStation));
         }
         return time;
     }
