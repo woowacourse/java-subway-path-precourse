@@ -34,16 +34,17 @@ public class SubwayRouteController {
 
     private static final void MenuConnectByCommand(Scanner scanner, String command) {
         if (command.equals(SHORTEST_DIST)) {
-            lookupShortestDistancePath(scanner);
+            lookupShortestPath(scanner, DISTANCE);
             return;
         }
+
         if (command.equals(MIN_TIME)) {
-            lookupMinTimePath(scanner);
+            lookupShortestPath(scanner, TIME);
             return;
         }
     }
 
-    private static final void lookupShortestDistancePath(Scanner scanner) {
+    private static final void lookupShortestPath(Scanner scanner, String type) {
         String arrivalStation = InputView.inputStation(scanner, ARRIVAL);
         String departureStation = InputView.inputStation(scanner, DEPARTURE);
         if (!isValid(arrivalStation, departureStation)) {
@@ -64,15 +65,11 @@ public class SubwayRouteController {
         return !arrival.equals(departure);
     }
 
-    private static final void lookupMinTimePath(Scanner scanner) {
-
-    }
-
     private static final void calculatePath(String arrival, String departure, String type) {
         WeightedMultigraph<String, DefaultWeightedEdge> graph = SubwayInitializer.initGraph(type);
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
         List<String> shortestPath = dijkstraShortestPath.getPath(arrival, departure).getVertexList();
-        double distance = dijkstraShortestPath.getPathWeight(arrival,departure);
+        double distance = dijkstraShortestPath.getPath(arrival, departure).getWeight();
         OutputView.printResults(shortestPath, distance);
     }
 

@@ -7,8 +7,8 @@ import java.util.List;
 public class OutputView {
     private static final String INFO_MARK = "[INFO] ";
     private static final String SEPARATER = "---";
-    private static final String TOTAL_DISTANCE = "총 거리: %dkm";
-    private static final String TOTAL_TIME = "총 소요 시간: %d분";
+    private static final String TOTAL_DISTANCE = "총 거리: %.0fkm";
+    private static final String TOTAL_TIME = "총 소요 시간: %.0f분";
 
     public static void printMainMenu() {
         System.out.println("## 메인 화면");
@@ -27,7 +27,7 @@ public class OutputView {
 
     public static void printResults(List<String> stations, double weight){
         System.out.println("## 조회 결과");
-        printWeights()
+        printWeights(weight, 0);
         printResultsByStationList(stations);
     }
 
