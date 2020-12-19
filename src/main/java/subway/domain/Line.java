@@ -3,10 +3,14 @@ package subway.domain;
 import java.util.Objects;
 
 public class Line {
+
     private final String name;
 
-    public Line(String name) {
+    private final LineDirection lineDirection;
+
+    public Line(String name, LineDirection lineDirection) {
         this.name = name;
+        this.lineDirection = lineDirection;
     }
 
     public String getName() {

@@ -29,7 +29,7 @@ public class LineRepository {
         LineRepository lineRepository = new LineRepository();
 
         for (String lineName : lineNames) {
-            lineRepository.addLine(new Line(lineName));
+            lineRepository.addLine(new Line(lineName, null));
         }
 
         return lineRepository;

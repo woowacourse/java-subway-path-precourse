@@ -12,6 +12,8 @@ public class LineRepositoryTest {
 
     private LineRepository lineRepository;
 
+    private final Line line = LineUtils.getTestInstance();
+
     @BeforeEach
     public void initLineRepository() {
         lineRepository = new LineRepository();
@@ -21,14 +23,11 @@ public class LineRepositoryTest {
     @DisplayName("노선 추가 테스트")
     public void addLine_NewLine_LineIsAdded() {
 
-        // given
-        Line Line = new Line("2호선");
-
         // when
-        lineRepository = lineRepository.addLine(Line);
+        lineRepository = lineRepository.addLine(line);
 
         //then
-        assertThat(lineRepository.lines()).containsExactly(Line);
+        assertThat(lineRepository.lines()).containsExactly(line);
     }
 
     @Test
@@ -36,11 +35,10 @@ public class LineRepositoryTest {
     public void addLine_DuplicateLine_ExceptionThrown() {
 
         // given
-        Line Line = new Line("봉천역");
-        lineRepository = lineRepository.addLine(Line);
+        lineRepository = lineRepository.addLine(line);
 
         // when
-        ThrowableAssert.ThrowingCallable callable = () -> lineRepository.addLine(Line);
+        ThrowableAssert.ThrowingCallable callable = () -> lineRepository.addLine(line);
 
         //then
         assertThatThrownBy(callable).isExactlyInstanceOf(IllegalArgumentException.class)
@@ -67,8 +65,7 @@ public class LineRepositoryTest {
     public void deleteLine_OldLine_LineRemoved() {
 
         // given
-        Line Line = new Line("2호선");
-        lineRepository = lineRepository.addLine(Line);
+        lineRepository = lineRepository.addLine(line);
 
         // when
         lineRepository = lineRepository.deleteLineByName("2호선");
@@ -94,7 +91,6 @@ public class LineRepositoryTest {
     public void deleteAll_LineRepository_EmptyLineRepository() {
 
         // given
-        Line line = new Line("2호선");
         lineRepository = lineRepository.addLine(line);
 
         // when
