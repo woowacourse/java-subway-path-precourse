@@ -1,7 +1,10 @@
 package subway.graph;
 
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
+
+import java.util.List;
 
 public class DistanceWeightedGraph {
 
@@ -15,8 +18,14 @@ public class DistanceWeightedGraph {
         return graph.addEdge(source, destination);
     }
 
-    public static void setEdgeWeight(DefaultWeightedEdge e, double weight) {
-        graph.setEdgeWeight(e, weight);
+    public static void setEdgeWeight(DefaultWeightedEdge DWE, double weight) {
+        graph.setEdgeWeight(DWE, weight);
+    }
+
+    public static List<String> getOptimalGraph(String source, String destination) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
+        List<String> optimalGraph = dijkstraShortestPath.getPath(source, destination).getVertexList();
+        return optimalGraph;
     }
 
 }
