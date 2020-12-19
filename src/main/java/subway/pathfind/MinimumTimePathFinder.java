@@ -24,9 +24,11 @@ public class MinimumTimePathFinder {
     private static void findWay(Station currentStation, Station endStation, int currentTime,
         int currentDistance, List<Station> currentPath) {
         visitedStations.add(currentStation);
+        currentPath.add(currentStation);
         if (currentStation.getName().equals(endStation.getName())) {
             if (resetPathAndTimeAndDistanceValue(currentTime, currentPath, currentDistance)) {
                 currentPath.remove(currentStation);
+                visitedStations.remove(currentStation);
                 return;
             }
         }
@@ -43,18 +45,19 @@ public class MinimumTimePathFinder {
             }
             TimeAndDistance timeAndDistance = DistanceAndTimeBetweenStationsRepository
                 .getBetweenTimeAndDistance(currentStation, nextConnectedStation);
-            currentPath.add(nextConnectedStation);
             findWay(nextConnectedStation, endStation, currentTime + timeAndDistance.getTime(),
                 currentDistance + timeAndDistance.getDistance(), currentPath);
         }
         currentPath.remove(currentStation);
+        visitedStations.remove(currentStation);
     }
 
     private static boolean resetPathAndTimeAndDistanceValue(int currentTime,
         List<Station> currentPath, int currentDistance) {
         if (minimumTime > currentTime) {
             minimumTime = currentTime;
-            minimumTimePath = currentPath;
+            minimumTimePath.clear();
+            minimumTimePath.addAll(currentPath);
             totalDistance = currentDistance;
             return true;
         }

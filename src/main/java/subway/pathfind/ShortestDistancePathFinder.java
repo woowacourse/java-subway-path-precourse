@@ -1,6 +1,7 @@
 package subway.pathfind;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import subway.domain.DistanceAndTimeBetweenStationsRepository;
 import subway.domain.Station;
@@ -28,6 +29,7 @@ public class ShortestDistancePathFinder {
         if (currentStation.getName().equals(endStation.getName())) {
             resetPathAndTimeAndDistanceValue(currentTime, currentPath, currentDistance);
             currentPath.remove(currentStation);
+            visitedStations.remove(currentStation);
             return;
         }
         List<Station> nextConnectedStations = currentStation.getConnectedStations();
@@ -47,13 +49,15 @@ public class ShortestDistancePathFinder {
                 currentDistance + timeAndDistance.getDistance(), currentPath);
         }
         currentPath.remove(currentStation);
+        visitedStations.remove(currentStation);
     }
 
     private static void resetPathAndTimeAndDistanceValue(int currentTime,
         List<Station> currentPath, int currentDistance) {
         if (shortestDistance > currentDistance) {
             totalTime = currentTime;
-            shortestDistancePath = new ArrayList<>(currentPath);
+            shortestDistancePath.clear();
+            shortestDistancePath.addAll(currentPath);
             shortestDistance = currentDistance;
         }
     }
