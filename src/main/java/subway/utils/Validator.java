@@ -52,4 +52,9 @@ public class Validator {
 
         throw new IllegalArgumentException(Constant.ILLEGAL_ARGUMENT_EXCEPTION_INVALID_STATION);
     }
+
+    public static void checkValidStationPoint(String starting, String ending) {
+        if(starting.equals(ending))
+            throw new IllegalArgumentException(Constant.ILLEGAL_ARGUMENT_EXCEPTION_INVALID_SAME_POINT);
+    }
 }

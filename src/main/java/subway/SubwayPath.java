@@ -3,6 +3,7 @@ package subway;
 import subway.domain.data.Station;
 import subway.domain.data.StationRepository;
 import subway.menu.MainMenu;
+import subway.utils.Validator;
 import subway.view.InputView;
 import subway.view.OutputView;
 import java.util.Scanner;
@@ -18,17 +19,36 @@ public class SubwayPath {
     }
 
     private void run() {
-        OutputView.printMainView();
-        String mainOrder = selectMenu();
+        while(true) {
+            OutputView.printMainView();
+            String mainOrder = selectMenu();
 
-        if(mainOrder.equals(MainMenu.END.getOrder())){
+            if (mainOrder.equals(MainMenu.END.getOrder())) {
+                return;
+            }
+
+            findPath(mainOrder);
+        }
+    }
+
+    private void findPath(String mainOrder) {
+        try {
+            String pathRuleOrder = selectPathRuleMenu();
+            String startingStation = getStationName(Station.POINT.STARTING);
+            String endingStation = getStationName(Station.POINT.ENDING);
+            Validator.checkValidStationPoint(startingStation, endingStation);
+            getResult(pathRuleOrder, startingStation, endingStation);
+        } catch (IllegalArgumentException e){
+            OutputView.printError(e.getMessage());
+            findPath(mainOrder);
             return;
         }
-
-        String pathRuleOrder = selectPathRuleMenu();
-        String startingStation = getStationName(Station.POINT.STARTING);
-        String endingStation = getStationName(Station.POINT.ENDING);
     }
+
+    private void getResult(String pathRuleOrder, String startingStation, String endingStation) {
+
+    }
+
 
     private String getStationName(Station.POINT point){
         try {
