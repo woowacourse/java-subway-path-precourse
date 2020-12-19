@@ -14,6 +14,15 @@ public class RouteSearchService {
     public static final String ERR_SAME_FROM_TO_STATION = "출발역과 도착역이 동일합니다.";
     public static final String ERR_IMPROPER_INPUT_CODE = "잘못된 입력값입니다.";
 
+    public static void main() {
+        try {
+            view();
+        } catch (IllegalArgumentException e) {
+            OutputView.printError(e.getMessage());
+            main();
+        }
+    }
+
     public static void view() {
         OutputView.printRouteSearchView();
         String code = InputView.getAnswer();
