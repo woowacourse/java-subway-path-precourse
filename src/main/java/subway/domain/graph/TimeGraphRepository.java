@@ -1,7 +1,6 @@
 package subway.domain.graph;
 
 import java.util.List;
-import org.jgrapht.Graph;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
@@ -13,10 +12,6 @@ public class TimeGraphRepository {
 
     public static DijkstraShortestPath getQuickestPath() {
         return new DijkstraShortestPath(timeGraph);
-    }
-
-    private static Graph getGraph() {
-        return timeGraph;
     }
 
     public static void addStationsWithTime(String firstStation, String secondStation, int time) {
@@ -36,13 +31,20 @@ public class TimeGraphRepository {
 
     public static int totalTime(List<String> chosenPath) {
         int totalTime = 0;
-        for (int i = 0; i < chosenPath.size() - 1; ++i) {
-            final DefaultWeightedEdge individualEdge = timeGraph
-                    .getEdge(chosenPath.get(i), chosenPath.get(i + 1));
-            final int edgeWeight = (int)timeGraph.getEdgeWeight(individualEdge);
+        for (int currentStation = 0; currentStation < chosenPath.size() - 1; ++currentStation) {
+            final DefaultWeightedEdge individualEdge = getEdge(chosenPath, currentStation);
+            final int edgeWeight = getTime(individualEdge);
 
             totalTime += edgeWeight;
         }
         return totalTime;
+    }
+
+    private static DefaultWeightedEdge getEdge(List<String> chosenPath, int current) {
+        return timeGraph.getEdge(chosenPath.get(current), chosenPath.get(current + 1));
+    }
+
+    private static int getTime(DefaultWeightedEdge individualEdge) {
+        return (int)timeGraph.getEdgeWeight(individualEdge);
     }
 }
