@@ -24,12 +24,13 @@ public class LineRepository {
         lines.clear();
     }
 
-    public static Line getLineByStation(Station station) {
+    public static ArrayList<Line> getLineByStation(Station station) {
+        ArrayList<Line> linesContainThisStation = new ArrayList<>();
         for (Line line : lines) {
             if(line.stations().contains(station)){
-                return line;
+                linesContainThisStation.add(line);
             }
         }
-        throw new IllegalArgumentException(Constant.STATION_NOT_EXIST_IN_LINE);
+        return linesContainThisStation;
     }
 }
