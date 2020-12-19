@@ -8,7 +8,5 @@ public class MainView implements Output{
         System.out.println();
     }
 
-    public static void printFunctionSelect(){
-        System.out.println(HEAD + FUNCTION);
-    }
+
 }
