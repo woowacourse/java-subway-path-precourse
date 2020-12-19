@@ -54,6 +54,7 @@ public class RoutePage {
             if (validateInputEqualsStation(startStation, finishStation)) {
                 return false;
             }
+            SectionRepository.CalculateMinimumTime(startStation, finishStation);
         }
         return true;
     }

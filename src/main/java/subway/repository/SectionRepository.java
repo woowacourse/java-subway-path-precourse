@@ -26,7 +26,7 @@ public class SectionRepository {
         sections.forEach(section -> addEdgeWeight(section.getStationName(),
                 section.getNextStationName(),
                 section.getStreet()));
-        return ShortestDistance.getShortestStations(startStation, finishStation);
+        return ShortestDistance.getStations(startStation, finishStation);
     }
 
     private static void addVertex() {
@@ -35,5 +35,13 @@ public class SectionRepository {
 
     private static void addEdgeWeight(String stationName, String nextStationName, int wight) {
         ShortestDistance.setEdgeWeight(stationName, nextStationName, wight);
+    }
+
+    public static List<String> CalculateMinimumTime(String startStation, String finishStation) {
+        addVertex();
+        sections.forEach(section -> addEdgeWeight(section.getStationName(),
+            section.getNextStationName(),
+            section.getTime()));
+        return ShortestDistance.getStations(startStation, finishStation);
     }
 }

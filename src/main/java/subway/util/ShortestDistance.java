@@ -24,7 +24,7 @@ public class ShortestDistance {
         graph.setEdgeWeight(graph.addEdge(stationName, nextStationName), street);
     }
 
-    public static List<String> getShortestStations(String startStation, String finishStation) {
+    public static List<String> getStations(String startStation, String finishStation) {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
         //todo: 없을 경우 예외 처리
         return dijkstraShortestPath.getPath(startStation, finishStation).getVertexList();

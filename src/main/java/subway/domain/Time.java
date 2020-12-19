@@ -10,4 +10,8 @@ public class Time {
     public Time(int time) {
         this.time = time;
     }
+
+    public int getTime() {
+        return time;
+    }
 }

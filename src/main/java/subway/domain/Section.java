@@ -30,4 +30,8 @@ public class Section {
     public int getStreet() {
         return street.getStreet();
     }
+
+    public int getTime() {
+        return time.getTime();
+    }
 }
