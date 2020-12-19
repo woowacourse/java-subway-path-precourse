@@ -13,16 +13,18 @@ public class ShortestPathFinder {
     }
 
     public void run() {
-        String startStation = askValidStation();
+        String startStation = askValidStation("start");
+        String endStation = askValidStation("end");
         System.out.println("입력하신 역은 " + startStation);
+        System.out.println("입력하신 역은 " + endStation);
     }
 
-    private String askValidStation() {
+    private String askValidStation(String stationPrefix) {
         try {
-            return InputView.askStartStation(scanner);
+            return InputView.askStation(scanner, stationPrefix);
         } catch (CustomException exception) {
             System.out.println(exception.getMessage());
-            return askValidStation();
+            return askValidStation(stationPrefix);
         }
     }
 }

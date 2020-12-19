@@ -14,8 +14,12 @@ public class InputView {
         return userInput;
     }
 
-    public static String askStartStation(Scanner scanner) throws CustomException {
-        System.out.println("\n## 출발역을 입력하세요.");
+    public static String askStation(Scanner scanner, String stationPrefix) throws CustomException {
+        if (stationPrefix.equals("start")) {
+            System.out.println("\n## 출발역을 입력하세요.");
+        } else if (stationPrefix.equals("end")) {
+            System.out.println("\n## 도착역을 입력하세요.");
+        }
         String userInput = scanner.nextLine().trim();
         Validate.existStation(userInput);
         return userInput;
