@@ -1,6 +1,5 @@
 package subway.validator;
 
-import subway.domain.LineRepository;
 import subway.domain.StationRepository;
 
 public class Validator {
