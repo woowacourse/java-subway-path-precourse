@@ -39,41 +39,27 @@
 
 > dijkstraShortestPath.getPath() 기능이 연결되지 않은 경로를 구하면, NullPointerException 을 발생시키는 것을 테스트 코드 추트 코드 추가하여 확인  
 
-**** 예외사항 더 고민해보기 **** 
-
 ## ✍🏻 입출력 요구사항
-- [ ] `프로그래밍 실행 결과 예시`와 동일하게 입출력을 구현한다.
-- [ ] 기대하는 출력 결과는 `[INFO]`를 붙여서 출력한다. 출력값의 형식은 예시와 동일하게 한다.
-- [ ] 에러 발생 시 `[ERROR]`를 붙여서 출력한다. 에러의 문구는 자유롭게 작성한다.
+- [x] `프로그래밍 실행 결과 예시`와 동일하게 입출력을 구현한다.
+- [x] 기대하는 출력 결과는 `[INFO]`를 붙여서 출력한다. 출력값의 형식은 예시와 동일하게 한다.
+- [x] 에러 발생 시 `[ERROR]`를 붙여서 출력한다. 에러의 문구는 자유롭게 작성한다.
 
 ### 프로그래밍 요구사항 - Application
-- [ ] Application 클래스를 활용해 구현해야 한다.
-- [ ] Application의 패키지 구조는 변경하지 않는다.
-- [ ] Application 클래스에 있는 Scanner를 사용하고 별도의 Scanner 객체를 만들지 않는다.
+- [x] Application 클래스를 활용해 구현해야 한다.
+- [x] Application의 패키지 구조는 변경하지 않는다.
+- [x] Application 클래스에 있는 Scanner를 사용하고 별도의 Scanner 객체를 만들지 않는다.
 
 ### 프로그래밍 요구사항 - Station, Line
-- [ ] Station, Line 클래스를 활용하여 지하철역과 노선을 구현해야 한다.
-- [ ] 제공하는 각 클래스의 기본 생성자를 추가할 수 없다.
-- [ ] 필드(인스턴스 변수)인 name의 접근 제어자 private을 변경할 수 없다.
-- [ ] 가능하면 setter 메소드(ex. setXXX)를 추가하지 않고 구현한다.
+- [x] Station, Line 클래스를 활용하여 지하철역과 노선을 구현해야 한다.
+- [x] 제공하는 각 클래스의 기본 생성자를 추가할 수 없다.
+- [x] 필드(인스턴스 변수)인 name의 접근 제어자 private을 변경할 수 없다.
+- [x] 가능하면 setter 메소드(ex. setXXX)를 추가하지 않고 구현한다.
 
 ### 프로그래밍 요구사항 - StationRepository, LineRepository
-- [ ] Station과 Line의 상태를 저장할 수 있는 StationRepository, LineRepository를 제공한다.
-- [ ] 필요 시 StationRepository, LineRepository 이 외 추가로 Repository를 만들 수 있다.
-- [ ] 추가로 생성되는 객체에 대해서 XXXRepository 네이밍으로 저장 클래스를 추가한다.
-- [ ] 객체들의 상태를 관리하기 위해서 XXXRepository 클래스를 활용해 저장 로직을 구현해야 한다.
-- [ ] 작성된 메서드는 수정할 수 없고, 필요에 따라 메서드를 자유롭게 추가할 수 있다.
+- [x] Station과 Line의 상태를 저장할 수 있는 StationRepository, LineRepository를 제공한다.
+- [x] 필요 시 StationRepository, LineRepository 이 외 추가로 Repository를 만들 수 있다.
+- [x] 추가로 생성되는 객체에 대해서 XXXRepository 네이밍으로 저장 클래스를 추가한다.
+- [x] 객체들의 상태를 관리하기 위해서 XXXRepository 클래스를 활용해 저장 로직을 구현해야 한다.
+- [x] 작성된 메서드는 수정할 수 없고, 필요에 따라 메서드를 자유롭게 추가할 수 있다.
 
-<br>
-
-## ❗️힌트
-### 최단 경로 라이브러리
-- jgrapht 라이브러리를 활용하면 간편하게 최단거리를 조회할 수 있음
-- Dijkstra 알고리즘을 반드시 이해할 필요는 없고 미션에 적용할 정도로만 이해하면 됨
-- JGraphtTest 클래스의 테스트를 활용하여 미션에 필요한 라이브러리의 기능을 학습할 수 있음
-- 정점(vertex)과 간선(edge), 그리고 가중치 개념을 이용
-    - 정점: 지하철역
-    - 간선: 지하철역 연결정보
-    - 가중치: 거리 or 소요 시간
-- 최단 거리 기준 조회 시 가중치를 거리로 설정
 

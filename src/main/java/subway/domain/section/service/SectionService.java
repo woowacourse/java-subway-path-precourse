@@ -5,7 +5,7 @@ import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 import subway.domain.section.model.Section;
 import subway.domain.section.model.SectionRepository;
-import subway.station.model.Station;
+import subway.domain.station.model.Station;
 
 import java.util.List;
 

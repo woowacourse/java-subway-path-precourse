@@ -1,6 +1,6 @@
 package subway.view;
 
-import subway.station.model.Station;
+import subway.domain.station.model.Station;
 
 import java.util.Scanner;
 

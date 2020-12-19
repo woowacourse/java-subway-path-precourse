@@ -2,7 +2,7 @@ package subway.domain.section.model;
 
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
-import subway.station.model.Station;
+import subway.domain.station.model.Station;
 
 public class Section {
     private final Station startStation;

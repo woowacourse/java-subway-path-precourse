@@ -4,8 +4,8 @@ import subway.domain.line.model.Line;
 import subway.domain.line.model.LineRepository;
 import subway.domain.section.model.Section;
 import subway.domain.section.model.SectionRepository;
-import subway.station.model.Station;
-import subway.station.model.StationRepository;
+import subway.domain.station.model.Station;
+import subway.domain.station.model.StationRepository;
 
 import java.util.Arrays;
 import java.util.List;

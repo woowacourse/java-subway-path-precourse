@@ -1,7 +1,7 @@
 package subway.manager;
 
 import subway.domain.section.service.SectionService;
-import subway.station.model.Station;
+import subway.domain.station.model.Station;
 import subway.view.InputView;
 import subway.view.OutputView;
 

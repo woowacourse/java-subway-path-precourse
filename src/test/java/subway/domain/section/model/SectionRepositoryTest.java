@@ -3,7 +3,7 @@ package subway.domain.section.model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import subway.station.model.Station;
+import subway.domain.station.model.Station;
 
 import java.util.List;
 

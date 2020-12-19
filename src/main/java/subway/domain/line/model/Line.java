@@ -1,6 +1,6 @@
 package subway.domain.line.model;
 
-import subway.station.model.Station;
+import subway.domain.station.model.Station;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +17,4 @@ public class Line {
     public String getName() {
         return name;
     }
-
-    // 추가 기능 구현
 }
