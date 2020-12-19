@@ -16,6 +16,7 @@ public class OutputView {
     private static final String TOTAL_DISTANCE_SUFFIX = "km";
     private static final String TOTAL_TIME_PREFIX = "총 소요 시간 : ";
     private static final String TOTAL_TIME_SUFFIX = "분";
+    private static final String ERROR_PREFIX = "[ERROR] ";
 
     public static void printMainMenu() {
         System.out.println(MAIN_HEADER);
@@ -46,5 +47,9 @@ public class OutputView {
 
     private static void printEachStation(String stationName) {
         System.out.println(INFO_PREFIX + stationName);
+    }
+
+    public static void printErrorMessage(String message) {
+        System.out.println(ERROR_PREFIX + message);
     }
 }

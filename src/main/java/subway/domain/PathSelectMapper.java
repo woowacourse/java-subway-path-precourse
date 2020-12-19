@@ -5,6 +5,7 @@ import subway.menu.PathMenu;
 import static subway.menu.PathMenu.BACK;
 import static subway.menu.PathMenu.findPathMenuByOption;
 import static subway.view.InputView.inputPathMenuOption;
+import static subway.view.OutputView.printErrorMessage;
 import static subway.view.OutputView.printPathMenu;
 
 public class PathSelectMapper {
@@ -21,7 +22,7 @@ public class PathSelectMapper {
             }
             selectedPathMenu.request();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            printErrorMessage(e.getMessage());
             run();
         }
     }

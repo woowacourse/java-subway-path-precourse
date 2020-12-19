@@ -6,6 +6,7 @@ import subway.util.Initializer;
 import static subway.menu.MainMenu.EXIT;
 import static subway.menu.MainMenu.findMainMenuByOption;
 import static subway.view.InputView.inputMainMenuOption;
+import static subway.view.OutputView.printErrorMessage;
 import static subway.view.OutputView.printMainMenu;
 
 public class SubwayApp {
@@ -31,7 +32,7 @@ public class SubwayApp {
             }
             selectedMainMenu.request();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            printErrorMessage(e.getMessage());
             run();
         }
         return true;
