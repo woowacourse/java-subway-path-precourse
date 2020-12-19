@@ -44,4 +44,8 @@ public class Line implements Comparable<Line> {
     public int compareTo(Line o) {
         return name.compareTo(o.name);
     }
+
+    public boolean isMatchName(String name) {
+        return this.name.equals(name);
+    }
 }
