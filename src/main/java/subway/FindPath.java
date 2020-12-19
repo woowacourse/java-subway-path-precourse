@@ -7,25 +7,59 @@ import subway.domain.StationRepository;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.PriorityQueue;
+import java.util.Stack;
 
 public class FindPath {
 
     private static final int INIT_MIN_VALUE = 0;
     private static final int MAX_VALUE = 99999999;
+
     private static ArrayList<ArrayList<Pair>> subwayList;
     private static int dist[];
     private static boolean visited[];
+    private static int parent[];
     private static int stationSize;
     private static PriorityQueue<Pair> q;
 
     public static void start(String select, String startStation, String arriveStation) {
         setBeforeDijkstra(select, startStation);
-        int value = startDijkstra(startStation, arriveStation);
-        System.out.println(value);
-        if(value == MAX_VALUE){
-            throw new IllegalArgumentException("[ERROR] 연결되어 있지 않은 역입니다.");
+        int minCost = startDijkstra(startStation, arriveStation);
+        if (minCost == MAX_VALUE) {
+            throw new IllegalArgumentException("[ERROR] 서로 연결되어 있지 않은 역입니다.");
         }
-        System.out.println(value);
+
+        int anotherMinCost = traceMinCost(findNumberByName(startStation), findNumberByName(arriveStation), select);
+        Stack<String> stack = tracePath(findNumberByName(startStation), findNumberByName(arriveStation));
+
+    }
+
+    private static int traceMinCost(int startNumber, int endNumber, String kind) {
+        if (kind.equals(Constants.FUNCTION_ONE)) {
+            kind = Constants.TIME_COST;
+        }
+        if (kind.equals(Constants.FUNCTION_TWO)) {
+            kind = Constants.DISTANCE_COST;
+        }
+        int minCost = 0;
+        int cur = endNumber;
+
+        while (cur != startNumber) {
+            minCost += StationRepository.getCost(findNameByNumber(cur), findNameByNumber(parent[cur]), kind);
+            cur = parent[cur];
+        }
+        return minCost;
+    }
+
+    private static Stack<String> tracePath(int startNumber, int endNumber) {
+        Stack<String> stack = new Stack<>();
+        int cur = endNumber;
+
+        while (cur != startNumber) {
+            stack.push(findNameByNumber(cur));
+            cur = parent[cur];
+        }
+        stack.push(findNameByNumber(cur));
+        return stack;
     }
 
     //depth 2이하로 고치기, 메소드 15줄 이하
@@ -35,18 +69,19 @@ public class FindPath {
         dist[startNumber] = INIT_MIN_VALUE;
         visited[startNumber] = true;
 
-        while(!q.isEmpty()){
+        while (!q.isEmpty()) {
             Pair p = q.poll();
 
             int start = p.start;
 
-            for(int i=0;i<subwayList.get(start).size();i++){
+            for (int i = 0; i < subwayList.get(start).size(); i++) {
                 int end = subwayList.get(start).get(i).end;
                 int cost = subwayList.get(start).get(i).cost;
-                if(!visited[end]){
-                    if(dist[end] > dist[start] + cost){
+                if (!visited[end]) {
+                    if (dist[end] > dist[start] + cost) {
                         dist[end] = dist[start] + cost;
                         q.add(new Pair(end, 0, dist[end]));
+                        parent[end] = start;
                     }
                 }
             }
@@ -62,6 +97,7 @@ public class FindPath {
         setSubwayList(select);
         dist = new int[stationSize];
         visited = new boolean[stationSize];
+        parent = new int[stationSize];
         Arrays.fill(dist, MAX_VALUE);
         q = new PriorityQueue<>();
 
@@ -94,7 +130,7 @@ public class FindPath {
             }
         }
 
-        return -1;
+        return Constants.ERROR_CODE;
     }
 
     private static int selectDistanceOrTime(String select, NodeData nodeData) {
@@ -105,7 +141,7 @@ public class FindPath {
             return nodeData.getTimeCost();
         }
 
-        return 0;
+        return Constants.ERROR_CODE;
     }
 
     public static class Pair implements Comparable<Pair> {
