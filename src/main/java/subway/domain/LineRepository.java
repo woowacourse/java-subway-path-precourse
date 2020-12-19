@@ -37,7 +37,7 @@ public class LineRepository {
         lines.clear();
     }
 
-    public void lineInitialization() {
+    public static void lineInitialization() {
         Line secondLine = new Line("2호선");
         secondLine.setLineStations(new ArrayList<Station>(Arrays.asList(StationRepository.getStationByName("교대역"), StationRepository.getStationByName("강남역"), StationRepository.getStationByName("역삼역"))));
         secondLine.setLineDistances(new ArrayList<Distance>(Arrays.asList(new Distance(교대에서_강남_거리, 교대에서_강남_시간), new Distance(강남에서_역삼_거리, 강남에서_역삼_시간))));
