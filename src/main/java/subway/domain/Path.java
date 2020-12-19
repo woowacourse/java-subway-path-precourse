@@ -1,28 +1,24 @@
 package subway.domain;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class Path {
-    private static final int START = 0;
-    private static final int END = 1;
-
-    private List<Station> stations;
-    private int time;
+    private Station start;
+    private Station end;
     private int distance;
+    private int time;
 
-    public Path(Station start, Station end, int time, int distance) {
-        this.stations = Arrays.asList(start, end);
-        this.time = time;
+    public Path(Station start, Station end, int distance, int time) {
+        this.start = start;
+        this.end = end;
         this.distance = distance;
+        this.time = time;
     }
 
     public Station getStartStation() {
-        return stations.get(START);
+        return start;
     }
 
     public Station getEndStation() {
-        return stations.get(END);
+        return end;
     }
 
     public int getTime() {
