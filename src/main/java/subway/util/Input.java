@@ -1,5 +1,9 @@
 package subway.util;
 
-public class Input {
+import java.util.Scanner;
 
+public class Input {
+	public static String nextLine(Scanner scanner) {
+		return scanner.nextLine();
+	}
 }
