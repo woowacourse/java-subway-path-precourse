@@ -6,7 +6,7 @@ import subway.service.dto.DistanceAndTimeDto;
 
 import java.util.List;
 
-import static subway.domain.StationRepository.findStationByName;
+import static subway.domain.repository.StationRepository.findStationByName;
 
 public class BaseService {
 

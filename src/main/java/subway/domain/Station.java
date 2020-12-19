@@ -1,5 +1,6 @@
 package subway.domain;
 
+import subway.domain.repository.StationRepository;
 import subway.util.PathCalculator;
 
 import java.util.ArrayList;

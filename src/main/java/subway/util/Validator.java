@@ -1,6 +1,6 @@
 package subway.util;
 
-import subway.domain.StationRepository;
+import subway.domain.repository.StationRepository;
 import subway.menu.MainMenu;
 import subway.menu.PathMenu;
 
