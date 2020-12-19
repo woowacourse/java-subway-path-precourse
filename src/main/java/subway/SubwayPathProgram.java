@@ -13,7 +13,18 @@ public class SubwayPathProgram {
     }
 
     private static void getUserSelectionInput(Scanner scanner) {
-        CommonPrinter.printUserSelectionMessage();
-        String userSelection = scanner.nextLine();
+        while (true) {
+            CommonPrinter.printUserSelectionMessage();
+            String userSelectionInput = scanner.nextLine();
+//            try {
+//                validateMainUserSelectionInput(userSelectionInput);
+//            } catch (IllegalArgumentException e) {
+//                continue;
+//            }
+            if (userSelectionInput.equals(MainSelection.QUIT.getStrValue())){
+                return;
+            }
+            // resolveUserSelection(userSelectionInput);
+        }
     }
 }
