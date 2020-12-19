@@ -6,7 +6,7 @@ import subway.view.OutputView;
 import java.util.Arrays;
 
 public enum MainMenu {
-    STATION_MENU("1", "1. 경로 조회", PathRouter::run),
+    PATH_MENU("1", "1. 경로 조회", PathRouter::run),
     EXIT("Q", "Q. 종료", MainMenu::exit);
 
     private static final String name = "## 메인 화면";
