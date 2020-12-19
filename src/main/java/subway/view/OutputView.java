@@ -12,9 +12,10 @@ public class OutputView {
     private static final String DOT_AND_BLANK = ". ";
     private static final String REQUEST_INPUT_START_STATION_MSG = "## 출발역을 입력하세요";
     private static final String REQUEST_INPUT_END_STATION_MSG = "## 도착역을 입력하세요";
-    public static final String THREE_DASH = "---";
-    private static String MAIN_MENU_HEADER = "## 메인메뉴";
+    private static final String THREE_DASH = "---";
+    private static final String EMPTY_STRING = "";
     private static final String CALCUALTE_PATH_MENU_HEADER = "## 경로기준";
+    private static final String MAIN_MENU_HEADER = "## 메인메뉴";
 
     public static void println(String message) {
         System.out.println(message);
@@ -32,8 +33,31 @@ public class OutputView {
         String header = CALCUALTE_PATH_MENU_HEADER + System.lineSeparator();
         List<String> commands = FindPathType.getCommands();
         List<String> titles = FindPathType.getTitles();
+        printEmptyLine();
         println(convertMenuToStringForConsoleOutput(header, commands, titles));
         printRequestSelectMsg();
+    }
+
+    public static void showRequestStartStationInput() {
+        printEmptyLine();
+        println(REQUEST_INPUT_START_STATION_MSG);
+    }
+
+    public static void showRequestEndStationInput() {
+        printEmptyLine();
+        println(REQUEST_INPUT_END_STATION_MSG);
+    }
+
+    public static void showShortestPathResult(List<Station> stations) {
+        printEmptyLine();
+        println(THREE_DASH);
+        println("총 시간 : " + SectionRepository.calculateTakenTime(stations));
+        println("총 거리 : " + SectionRepository.calculateTotalDistance(stations));
+        println(THREE_DASH);
+        for (Station station : stations) {
+            println(station.toString());
+        }
+        printEmptyLine();
     }
 
     private static void printRequestSelectMsg() {
@@ -52,21 +76,13 @@ public class OutputView {
         return menu.toString();
     }
 
-    public static void showRequestStartStationInput() {
-        println(REQUEST_INPUT_START_STATION_MSG);
+    public static void printErrorMessage(String message) {
+        printEmptyLine();
+        println(message);
+        printEmptyLine();
     }
 
-    public static void showRequestEndStationInput() {
-        println(REQUEST_INPUT_END_STATION_MSG);
-    }
-
-    public static void showShortestPathResult(List<Station> stations) {
-        println(THREE_DASH);
-        println("총 시간 : " + SectionRepository.calculateTakenTime(stations));
-        println("총 거리 : " + SectionRepository.calculateTotalDistance(stations));
-        println(THREE_DASH);
-        for (Station station : stations) {
-            println(station.toString());
-        }
+    private static void printEmptyLine() {
+        println(EMPTY_STRING);
     }
 }

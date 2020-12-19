@@ -28,7 +28,7 @@ public class SubwayController {
                     break;
                 }
             } catch (SubwayException e) {
-                OutputView.println(e.getMessage());
+                OutputView.printErrorMessage(e.getMessage());
             }
         }
     }
