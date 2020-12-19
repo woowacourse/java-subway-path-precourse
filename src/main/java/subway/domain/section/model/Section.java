@@ -45,4 +45,8 @@ public class Section {
     public int getDistance() {
         return distance.getValue();
     }
+
+    public int getRunTime() {
+        return runTime.getValue();
+    }
 }

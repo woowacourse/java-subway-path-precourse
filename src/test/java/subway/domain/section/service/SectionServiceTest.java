@@ -97,4 +97,19 @@ class SectionServiceTest {
         //then
         assertThat(totalDistance).isEqualTo(3);
     }
+
+    @DisplayName("총 소요 시간을 반환하는 기능을 테스트한다")
+    @Test
+    void testFindTotalRunTime() {
+        //given
+        Station startStation = new Station("교대역");
+        Station arrivalStation = new Station("역삼역");
+        List<Station> shortestPath = SectionService.findRunTimeShortestPath(startStation, arrivalStation);
+
+        //when
+        int totalRunTime = SectionService.findTotalRunTime(shortestPath);
+
+        //then
+        assertThat(totalRunTime).isEqualTo(4);
+    }
 }

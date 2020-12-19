@@ -66,4 +66,27 @@ public class SectionService {
 
         return ZERO;
     }
+
+
+    public static int findTotalRunTime(List<Station> path) {
+        List<Section> sections = SectionRepository.sections();
+
+        int pathSize = path.size();
+        int runTime = 0;
+        for (int i = 0; i < pathSize - 1; i++) {
+            runTime += getRunTime(path.get(i), path.get(i + 1), sections);
+        }
+
+        return runTime;
+    }
+
+    private static int getRunTime(Station startStation, Station arrivalStation, List<Section> sections) {
+        for (Section section : sections) {
+            if (section.isEqualTo(startStation, arrivalStation)) {
+                return section.getRunTime();
+            }
+        }
+
+        return ZERO;
+    }
 }
