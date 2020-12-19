@@ -42,12 +42,6 @@ public class MinCostCalculator {
     }
 
     public String calculateMinDistance() {
-//        DefaultSubwayGraph defaultSubwayGraph = new DefaultSubwayGraph();
-//        List shortest_path = (List) DijkstraShortestPath
-//            .findPathBetween(defaultSubwayGraph, departureStation, arrivalStation);
-//        System.out.println(shortest_path);
-//        DefaultSections defaultSections = new DefaultSections();
-//        System.out.println(defaultSections.getSections());
         String result = "";
         return result;
     }

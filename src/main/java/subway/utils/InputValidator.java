@@ -1,7 +1,6 @@
 package subway.utils;
 
 import subway.domain.DefaultStations;
-import subway.domain.Station;
 
 public class InputValidator {
 
