@@ -5,10 +5,8 @@ import subway.exception.SubwayProgramException;
 import java.util.Arrays;
 
 public enum MainMenuType {
-
     ROUTE_CHECK("1"),
     END_PROGRAM("Q");
-
 
     private static final String MENU_ERROR = "선택할 수 없습니다.";
 

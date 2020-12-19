@@ -9,7 +9,6 @@ import java.util.Objects;
 
 public class StationRepository {
     private static final String STATION_NOT_EXIST_ERROR = "등록되어 있지 않은 역입니다.";
-    private static final String SAME_STATION_ERROR = "출발역과 도착역이 동일합니다.";
 
     private static final List<Station> stations = new ArrayList<>();
 
@@ -34,11 +33,5 @@ public class StationRepository {
                 .filter(station -> station.isSame(name))
                 .findFirst()
                 .orElseThrow(() -> new SubwayProgramException(STATION_NOT_EXIST_ERROR));
-    }
-
-    public static void validateSameStation(Station startStation, Station arrivalStation) {
-        if (startStation.equals(arrivalStation)) {
-            throw new SubwayProgramException(SAME_STATION_ERROR);
-        }
     }
 }
