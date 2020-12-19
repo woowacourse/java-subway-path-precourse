@@ -14,6 +14,5 @@ public class StationService {
         Station station = StationRepository.getStation(stationName);
         Station connectStation = StationRepository.getStation(connectStationName);
         station.addConnectData(connectStation, distance, time);
-        connectStation.addConnectData(station, distance, time);
     }
 }
