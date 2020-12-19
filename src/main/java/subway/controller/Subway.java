@@ -18,15 +18,14 @@ public class Subway {
         "매봉역"};
     private static final String[] initLines = {"2호선", "3호선", "신분당선"};
 
-    private Scanner scanner;
+    private InputView inputView;
 
     public Subway(Scanner scanner) {
-        this.scanner = scanner;
+        this.inputView = new InputView(scanner);
     }
 
     public void run() {
         init();
-        InputView inputView = new InputView(this.scanner);
         MainInputValidation mainInputValidation = new MainInputValidation(inputView);
         OutputView.printMainScreen();
         if (mainInputValidation.mainInput().equals(MainInputEnum.TRAVERSE_SUBWAY.getOption())) {
