@@ -27,6 +27,15 @@ public class StationRepository {
         }
     }
 
+    public static void validateStationNameExist(String stationName)
+        throws IllegalArgumentException {
+        if (!stationNameExists(stationName)) {
+            throw new IllegalArgumentException(
+                ErrorMessage.STATION_REPOSITORY_STATION_DOES_NOT_EXIST.toString()
+            );
+        }
+    }
+
     public static void addStation(Station station) throws IllegalArgumentException {
         validateStationNameDuplicate(station.getName());
         stations.add(station);
