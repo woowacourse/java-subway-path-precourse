@@ -3,10 +3,7 @@ package subway.domain.line;
 import subway.utils.exception.InvalidSequnceLineException;
 import subway.utils.exception.NotSameLineException;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class LineRepository {
     private static final List<Line> lines = new ArrayList<>();
@@ -27,10 +24,14 @@ public class LineRepository {
         lines.clear();
     }
 
-    public static void sameLine(String firstStation, String lastStation) {
-        lines.stream()
+    private static Optional<Line> findLine(String firstStation, String lastStation) {
+        return lines.stream()
                 .filter(line -> line.contains(firstStation) && line.contains(lastStation))
-                .findAny()
+                .findAny();
+    }
+
+    public static void sameLine(String firstStation, String lastStation) {
+        findLine(firstStation, lastStation)
                 .orElseThrow(() -> new NotSameLineException());
     }
 
@@ -39,5 +40,11 @@ public class LineRepository {
                 .filter(line -> line.contains(firstStation) && line.contains(lastStation) && line.validSequence(firstStation, lastStation))
                 .findAny()
                 .orElseThrow(() -> new InvalidSequnceLineException());
+    }
+
+    public static String findSelectLine(String firstStation, String lastStation) {
+        return findLine(firstStation, lastStation)
+                .get()
+                .getName();
     }
 }

@@ -1,6 +1,6 @@
 package subway.controller;
 
-import subway.domain.graph.DistanceGraphRepository;
+import subway.domain.graph.SubwayMap;
 import subway.domain.line.LineRepository;
 import subway.domain.station.StationRepository;
 import subway.utils.exception.*;
@@ -14,6 +14,7 @@ import java.util.Objects;
 public class RouteFunction {
     private RouteOutputView routeOutputView;
 
+
     public RouteFunction(RouteOutputView routeOutputView) {
         this.routeOutputView = routeOutputView;
     }
@@ -21,10 +22,16 @@ public class RouteFunction {
     public void shortestDistance() {
         try {
             List<String> inputStations = inputStation();
-            System.out.println("출발 도착 입력 완료");
+            int distance = SubwayMap.findShortestDistance(inputStations);
+            List<String> paths = SubwayMap.findShortestDistancePath(inputStations);
         } catch (NullPointerException e) {
             return;
         }
+    }
+
+    private String findLine(List<String> inputStations) {
+        return LineRepository.findSelectLine(
+                inputStations.get(StationRepository.FIRST_STATION_INDEX), inputStations.get(StationRepository.LAST_STATION_INDEX));
     }
 
     private List<String> inputStation() {
