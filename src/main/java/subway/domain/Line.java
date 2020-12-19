@@ -19,6 +19,14 @@ public class Line {
         return name;
     }
 
+    public boolean compareName(String compareName) {
+        if (name.equals(compareName)) {
+            return true;
+        }
+
+        return false;
+    }
+
     public void insertStation(int location, Station station) {
         checkOverlappedStation(station.getName());
         stations.add(location - DomainConstant.HUMAN_NUMBER_CALIBRATION, station);
