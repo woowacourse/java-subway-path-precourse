@@ -1,5 +1,7 @@
 package subway.util;
 
+import org.jgrapht.graph.DefaultWeightedEdge;
+
 public class Output {
 	public static void mainView() {
 		Output.title(Message.MAIN_VIEW);
@@ -30,5 +32,17 @@ public class Output {
 	
 	public static void error(String message) {
 		System.out.println("[ERROR] " + message);
+	}
+	
+	public static void distance(double distance) {
+		System.out.println("[INFO] 총 거리: " + distance + "km");
+	}
+	
+	public static void time(double time) {
+		System.out.println("[INFO] 총 소요 시간: " + time + "");
+	}
+	
+	public static void section(DefaultWeightedEdge station) {
+		System.out.println("[INFO] " + station);
 	}
 }

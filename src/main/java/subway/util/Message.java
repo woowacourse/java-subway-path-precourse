@@ -27,4 +27,7 @@ public class Message {
 	public static final String MIN_TIME = "2. 최소 시간";
 	
 	public static final String BACK = "B. 돌아가기";
+	
+	// etc
+	public static final String LINE_SEPARATOR = "---";
 }
