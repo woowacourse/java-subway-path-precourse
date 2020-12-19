@@ -18,16 +18,17 @@ a. 시작과 끝 역이 중복되어 조회되면 안된다.
 7. 입력 값을 위한 InputViewer를 추가 한다.
 8. 결과 값 출력을 위한 OutputViewer를 추가 한다.
 9. 초창기 값을 입력해주는 Initiator를 추가 한다.
-10. 경로 기준 최단 거리를 찾아 주는 Controller를 추가해준다.
-11. 경로 기준 최소 시간을 찾아 주는 Controller를 추가해준다.
+10. 역을 입력 받아 최단 거리를 찾아 주는 Controller를 추가해준다.
+11. 역을 입력 받아 최소 시간을 찾아 주는 Controller를 추가해준다.
 12. 경로 기준에서 메뉴를 컨트롤 해주는 Controller를 추가 해준다.  
-a. 이 때, Input의 처음과 끝이 중복되는지, 해당하는 역이 존재하는 역인지 체크해준다.
-b. 환승을 통해서 갈 수 없을 경우에 에러도 생각해준다.
-13. 전체적인 경로 시스템을 관리해주는 PathSystem을 구현한다.
+a. 이 때, Input의 처음과 끝이 중복되는지 확인 해준다.  
+b. 해당하는 역이 존재하는 역인지 체크해준다.  
+c. 환승을 통해서 갈 수 없을 경우에 에러도 고려해준다.
+13. 전체적인 경로 시스템을 관리해주는 EntirePathSystem을 구현한다.
 
 ### Application
 - 전체 시스템을 시동한다.  
-### SubwaySystem
+### SubwayPathSystem
 - Controller의 PathSystem을 작동시켜 경로를 찾아주는 프로그램을 실행 한다.
 ### domain
 #### Station
@@ -59,9 +60,9 @@ b. 환승을 통해서 갈 수 없을 경우에 에러도 생각해준다.
 ### Control
 #### PathSystem
 - 경로 전체 시스템을 관리해주는 Viewer
-#### ShortTimeFinder
+#### ShortPathTimeFinder
 - 가장 짧은 시간 경로를 계산하는 객체
-#### ShortPathFinder
+#### ShortDistancePathFinder
 - 가장 짧은 거리 경로를 계산하는 객체
 #### Constants
 - Controller에서 자주 쓰이는 상수 모음
