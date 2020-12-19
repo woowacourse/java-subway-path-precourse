@@ -1,5 +1,7 @@
 package subway;
 
+import java.util.List;
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 import subway.domain.Station;
@@ -30,4 +32,9 @@ public class GraphService {
         }
     }
 
+    public static List<String> getMinDistancePath(String startStationName, String endStationName) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(GRAPH_DISTANCE);
+        List<String> shortestPath = dijkstraShortestPath.getPath(startStationName, endStationName).getVertexList();
+        return shortestPath;
+    }
 }
