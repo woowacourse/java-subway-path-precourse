@@ -9,9 +9,9 @@ public class OutputView {
 	private static final String ROUTE_SHORTEST_DISTANCE = "1. 최단 거리";
 	private static final String ROUTE_SHORTEST_TIME = "2. 최소 시간";
 	
-	private static final String DEPARTURE_STATION = "## 출발역을 입력하세요.";
-	private static final String ARRIVAL_STATION = "## 도착역을 입력하세요.";
-	private static final String SElECT_FUNCTION = "## 원하는 기능을 선택하세요.";
+	public static final String DEPARTURE_STATION = "## 출발역을 입력하세요.";
+	public static final String ARRIVAL_STATION = "## 도착역을 입력하세요.";
+	public static final String SElECT_FUNCTION = "## 원하는 기능을 선택하세요.";
 	
 	private static final String INFOMATION_MESSAGE = "[INFO] ";
 	private static final String ERROR_MESSAGE = "[ERROR] ";
