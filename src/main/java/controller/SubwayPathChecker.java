@@ -19,6 +19,7 @@ public class SubwayPathChecker {
     private static final String YANGJAE_STATION = "양재역";
     private static final String YANGJAE_CITIZEN_FOREST_STATION = "양재시민의숲역";
     private static final String MAEBONG_STATION = "매봉역";
+    private static final String SAME_STATION_NAME_ERROR = "[ERROR] 출발역과 도착역이 동일합니다.";
 
     private final Scanner scanner;
 
@@ -107,7 +108,7 @@ public class SubwayPathChecker {
 
     private void hasStationNameDuplication(Station departureStation, Station arrivalStation) {
         if (departureStation.equals(arrivalStation)) {
-            throw new IllegalArgumentException("[ERROR] 출발역과 도착역이 동일합니다.");
+            throw new IllegalArgumentException(SAME_STATION_NAME_ERROR);
         }
     }
 
