@@ -24,11 +24,10 @@ public class Subway {
 	public static void minDistanceBetween(String departureStation, String arrivalStation) {
 		List<DefaultWeightedEdge> sectionList;
 		double distance;
-		double time;
-		time = StationRepository.getSectionTime(departureStation, arrivalStation);
+		
 		if (StationRepository.contains(departureStation) && StationRepository.contains(arrivalStation)) {
 			// 최단 거리 계산 기능 구현
-			sectionList = StationRepository.getSectionList(departureStation, arrivalStation);
+			sectionList = StationRepository.getSectionDistanceList(departureStation, arrivalStation);
 			distance = StationRepository.getSectionDistance(departureStation, arrivalStation);
 			printMinDistance(distance, sectionList);
 		}
@@ -37,6 +36,27 @@ public class Subway {
 	public static void printMinDistance(double distance, List<DefaultWeightedEdge> sectionList) {
 		Output.info(Message.LINE_SEPARATOR);
 		Output.distance(distance);
+		Output.info(Message.LINE_SEPARATOR);
+		for (DefaultWeightedEdge station: sectionList) {
+			Output.section(station);
+		}
+	}
+	
+	public static void minTimeBetween(String departureStation, String arrivalStation) {
+		List<DefaultWeightedEdge> sectionList;
+		double time;
+		
+		if (StationRepository.contains(departureStation) && StationRepository.contains(arrivalStation)) {
+			// 최단 거리 계산 기능 구현
+			sectionList = StationRepository.getSectionTimeList(departureStation, arrivalStation);
+			time = StationRepository.getSectionTime(departureStation, arrivalStation);
+			printMinTime(time, sectionList);
+		}
+	}
+	
+	public static void printMinTime(double time, List<DefaultWeightedEdge> sectionList) {
+		Output.info(Message.LINE_SEPARATOR);
+		Output.time(time);
 		Output.info(Message.LINE_SEPARATOR);
 		for (DefaultWeightedEdge station: sectionList) {
 			Output.section(station);

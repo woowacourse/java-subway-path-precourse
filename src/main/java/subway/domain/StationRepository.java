@@ -53,7 +53,7 @@ public class StationRepository {
     	timeGraph.setEdgeWeight(timeGraph.addEdge(vertexStart, vertexEnd), time);
     }
     
-    public static Double getSectionDistance(String vertexStart, String vertexEnd) {
+    public static double getSectionDistance(String vertexStart, String vertexEnd) {
     	DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(distanceGraph, vertexStart, vertexEnd);
     	return dijkstraShortestPath.getPathLength();
     }
@@ -63,7 +63,12 @@ public class StationRepository {
     	return dijkstraShortestPath.getPathLength();
     }
     
-    public static List<DefaultWeightedEdge> getSectionList(String vertexStart, String vertexEnd) {
+    public static List<DefaultWeightedEdge> getSectionDistanceList(String vertexStart, String vertexEnd) {
+    	List<DefaultWeightedEdge> sectionList =   DijkstraShortestPath.findPathBetween(distanceGraph, vertexStart, vertexEnd);
+    	return sectionList;
+    }
+    
+    public static List<DefaultWeightedEdge> getSectionTimeList(String vertexStart, String vertexEnd) {
     	List<DefaultWeightedEdge> sectionList =   DijkstraShortestPath.findPathBetween(timeGraph, vertexStart, vertexEnd);
     	return sectionList;
     }

@@ -45,7 +45,7 @@ public class View {
 			ViewManager.showMinDistance();
 			return;
 		} else if (selector.equals(SECOND)) {
-//			lineManagement();
+			ViewManager.showMinTime();
 			return;
 		}
 	}

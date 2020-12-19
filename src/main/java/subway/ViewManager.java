@@ -9,16 +9,20 @@ import subway.util.Output;
 public class ViewManager {
 	private static Scanner scanner = new Scanner(System.in);
 	
-	public static void showMinDistance() {
-		String departureStation;
-		String arrivalStation;
-		
+	private static String getDepartureStation() {
 		Output.title(Message.DEPARTURE_STATION_INPUT);
-		departureStation = Input.nextLine(scanner);
-		
+		return Input.nextLine(scanner);
+	}
+	private static String getArrivalStation() {
 		Output.title(Message.ARRIVAL_STATION_INPUT);
-		arrivalStation = Input.nextLine(scanner);
-		
-		Subway.minDistanceBetween(departureStation, arrivalStation);
+		return Input.nextLine(scanner);
+	}
+	
+	public static void showMinDistance() {
+		Subway.minDistanceBetween(getDepartureStation(), getArrivalStation());
+	}
+	
+	public static void showMinTime() {
+		Subway.minTimeBetween(getDepartureStation(), getArrivalStation());
 	}
 }
