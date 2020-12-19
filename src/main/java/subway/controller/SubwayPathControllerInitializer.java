@@ -48,6 +48,7 @@ public class SubwayPathControllerInitializer {
             stationDistanceList.add(new ArrayList<>());
         }
         addInitDefaultStationSection(stationDistanceList);
+        addInitDefaultStationSectionReverse(stationDistanceList);
     }
 
     private void addInitDefaultStationSection(List<List<Section>> stationDistanceList) {
@@ -64,6 +65,26 @@ public class SubwayPathControllerInitializer {
         stationDistanceList.get(Init.YANGJAE.getStaionNumber())
                 .add(new Section(Init.MAEBONG.getStaionNumber(), YANGJAE_MAEBONG_DISTANCE, YANGJAE_MAEBONG_TIME));
         stationDistanceList.get(Init.YANGJAE.getStaionNumber()).add(new Section(Init.YANGJAE_FOREST.getStaionNumber(),
+                YANGJAE_YANGJAE_FOREST_DISTANCE, YANGJAE_YANGJAE_FOREST_TIME));
+    }
+
+    private void addInitDefaultStationSectionReverse(List<List<Section>> stationDistanceList) {
+        stationDistanceList.get(Init.GANGNAM.getStaionNumber())
+                .add(new Section(Init.GYODAE.getStaionNumber(), GYODAE_GANGNAM_DISTANCE, GYODAE_GANGNAM_TIME));
+
+        stationDistanceList.get(Init.SOUTH_TERMINAL.getStaionNumber()).add(
+                new Section(Init.GYODAE.getStaionNumber(), GYODAE_SOUTH_TERMINAL_DISTANCE, GYODAE_SOUTH_TERMINAL_TIME));
+
+        stationDistanceList.get(Init.YEOKSAM.getStaionNumber())
+                .add(new Section(Init.GANGNAM.getStaionNumber(), GANGNAM_YEOKSAM_DISTANCE, GANGNAM_YEOKSAM_TIME));
+        stationDistanceList.get(Init.YANGJAE.getStaionNumber())
+                .add(new Section(Init.GANGNAM.getStaionNumber(), GANGNAM_YANGJAE_DISTANCE, GANGNAM_YANGJAE_TIME));
+        stationDistanceList.get(Init.YANGJAE.getStaionNumber()).add(new Section(Init.SOUTH_TERMINAL.getStaionNumber(),
+                SOUTH_TERMINAL_YANGJAE_DISTANCE, SOUTH_TERMINAL_YANGJAE_TIME));
+
+        stationDistanceList.get(Init.MAEBONG.getStaionNumber())
+                .add(new Section(Init.YANGJAE.getStaionNumber(), YANGJAE_MAEBONG_DISTANCE, YANGJAE_MAEBONG_TIME));
+        stationDistanceList.get(Init.YANGJAE_FOREST.getStaionNumber()).add(new Section(Init.YANGJAE.getStaionNumber(),
                 YANGJAE_YANGJAE_FOREST_DISTANCE, YANGJAE_YANGJAE_FOREST_TIME));
     }
 }
