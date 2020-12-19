@@ -11,6 +11,8 @@ public class SubwayController {
             if (MainAction.isFinish(inputView.receiveAction())) {
                 break;
             }
+
+            OutputView.printPathAction();
         }
     }
 }
