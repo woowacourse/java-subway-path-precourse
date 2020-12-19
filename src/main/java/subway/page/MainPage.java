@@ -15,12 +15,18 @@ public class MainPage {
     private static final String SEARCH_ROUTE = "1";
     private static final String END = "Q";
 
+    private RoutePage routePage;
+
+    public MainPage() {
+        routePage = new RoutePage();
+    }
+
     public void start() {
         OutputView.printPage(mainPageItem);
         String button = InputView.inputFunctionButton();
         while (!button.equals(END)) {
             if (button.equals(SEARCH_ROUTE)) {
-                //todo: 경로 조회
+                routePage.start();
             }
 
             OutputView.printPage(mainPageItem);
