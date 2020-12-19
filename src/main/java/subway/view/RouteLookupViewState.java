@@ -60,6 +60,7 @@ public class RouteLookupViewState implements ViewState {
         Station stationEnd = getStationEnd();
         MinimumDistanceResultDto resultDto = DistanceService
                 .getShortestPhysicalDistanceResult(stationBegin, stationEnd);
+        RouteLookupOutputView.printMinimumDistanceResult(resultDto);
         changeStateToMainView(subwayPath);
     }
 
@@ -71,6 +72,7 @@ public class RouteLookupViewState implements ViewState {
         Station stationEnd = getStationEnd();
         MinimumDistanceResultDto resultDto = DistanceService
                 .getShortestTimeDistanceResult(stationBegin, stationEnd);
+        RouteLookupOutputView.printMinimumDistanceResult(resultDto);
         changeStateToMainView(subwayPath);
     }
 

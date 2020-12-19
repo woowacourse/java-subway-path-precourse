@@ -24,10 +24,10 @@ public class InitializeSubwayPath {
 
         DistanceService.addDistance(stationKyoDae, stationGangNam, 2, 3);
         DistanceService.addDistance(stationGangNam, stationYeokSam, 2, 3);
-        DistanceService.addDistance(stationKyoDae, stationNambuStation, 2, 3);
-        DistanceService.addDistance(stationNambuStation, stationYangJe, 2, 3);
-        DistanceService.addDistance(stationYangJe, stationMeBong, 2, 3);
-        DistanceService.addDistance(stationGangNam, stationYangJe, 2, 3);
-        DistanceService.addDistance(stationYangJe, stationYangJeForest, 2, 3);
+        DistanceService.addDistance(stationKyoDae, stationNambuStation, 3, 2);
+        DistanceService.addDistance(stationNambuStation, stationYangJe, 6, 5);
+        DistanceService.addDistance(stationYangJe, stationMeBong, 1, 1);
+        DistanceService.addDistance(stationGangNam, stationYangJe, 2, 8);
+        DistanceService.addDistance(stationYangJe, stationYangJeForest, 10, 3);
     }
 }
