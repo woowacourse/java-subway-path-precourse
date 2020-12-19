@@ -19,7 +19,7 @@ public class SubwayService extends InputService {
         try {
             printSearchPathMenu();
             String menu = inputSelectMenu(scanner, SEARCH_PATH_MENU_RANGE);
-            if (!searchPathService.selectSearchPathMenu(scanner)) {
+            if (!searchPathService.selectSearchPathMenu(scanner, menu)) {
                 searchPathManagement(scanner);
             }
         } catch (IllegalArgumentException e) {
