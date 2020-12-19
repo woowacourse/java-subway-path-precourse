@@ -11,7 +11,7 @@ public class StationManager {
 
     public static void start() {
         MainView main = main();
-        if (main == MainView.FIND) {
+        if (main != MainView.QUIT) {
             function();
             start();
         }

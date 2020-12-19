@@ -15,10 +15,8 @@ public class SubwayAgency {
     }
 
     public GraphResult getResultByDistance(StationBetween stationBetween) {
-        DijkstraShortestPath<Station, DefaultWeightedEdge> pathByDistance
-                = subwayMap.getPathByDistance();
-        GraphPath<Station, DefaultWeightedEdge> path
-                = pathByDistance.getPath(stationBetween.getStart(), stationBetween.getEnd());
+        DijkstraShortestPath<Station, DefaultWeightedEdge> pathByDistance = subwayMap.getPathByDistance();
+        GraphPath<Station, DefaultWeightedEdge> path = pathByDistance.getPath(stationBetween.getStart(), stationBetween.getEnd());
         List<Station> stationList = path.getVertexList();
         int distance = (int) path.getWeight();
         int time = getTotalWeight(stationList, Weight.TIME);
