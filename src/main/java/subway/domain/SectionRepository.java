@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
+import subway.message.ErrorMessage;
 
 public class SectionRepository {
 
@@ -19,7 +19,9 @@ public class SectionRepository {
     private static void validateSectionLineNameDuplicate(String lineName)
         throws IllegalArgumentException {
         if (sections.stream().anyMatch(section -> section.getLine().getName().equals(lineName))) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(
+                ErrorMessage.SECTION_REPOSITORY_LINE_ALREADY_EXIST.toString()
+            );
         }
     }
 
@@ -28,29 +30,17 @@ public class SectionRepository {
         sections.add(section);
     }
 
-    private static Line getLineFromOptional(Optional<Line> optionalLine)
-        throws IllegalArgumentException {
-        if (optionalLine.isEmpty()) {
-            throw new IllegalArgumentException();
-        }
-        return optionalLine.get();
-    }
-
-    private static Station getStationFromOptional(Optional<Station> optionalStation)
-        throws IllegalArgumentException {
-        if (optionalStation.isEmpty()) {
-            throw new IllegalArgumentException();
-        }
-        return optionalStation.get();
-    }
-
     public static void addSectionByNames(String lineName, String[] stationNames, List<Gap> gaps)
         throws IllegalArgumentException {
-        final Line sectionLine = getLineFromOptional(LineRepository.getLineByName(lineName));
+        LineRepository.validateLineNameDuplicate(lineName);
+        final Line sectionLine = LineRepository.lines().stream()
+            .filter(line -> line.getName().equals(lineName)).findFirst().get();
         final List<Station> stations = new LinkedList<>();
-        Arrays.stream(stationNames).forEach(stationName ->
-            stations.add(getStationFromOptional(StationRepository.getStationByName(stationName)))
-        );
+        Arrays.stream(stationNames).forEach(stationName -> {
+            StationRepository.validateStationNameDuplicate(stationName);
+            stations.add(StationRepository.stations().stream()
+                .filter(station -> station.getName().equals(stationName)).findFirst().get());
+        });
         addSection(new Section(sectionLine, stations, gaps));
     }
 

@@ -1,11 +1,12 @@
 package subway.domain;
 
 import java.util.List;
+import subway.message.ErrorMessage;
 
 public class Section {
 
-    private static final int MIN_STATIONS_SIZE = 2;
-    private static final int MIN_GAPS_SIZE = 1;
+    public static final int MIN_STATIONS_SIZE = 2;
+    public static final int MIN_GAPS_SIZE = 1;
 
     private final Line line;
     private final List<Station> stations;
@@ -23,26 +24,34 @@ public class Section {
 
     private void validateStationsSize(List<Station> stations) throws IllegalArgumentException {
         if (stations.size() < MIN_STATIONS_SIZE) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(
+                ErrorMessage.SECTION_STATIONS_TOO_SMALL.toString()
+            );
         }
     }
 
     private void validateGapsSize(List<Gap> gaps) throws IllegalArgumentException {
         if (gaps.size() < MIN_GAPS_SIZE) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(
+                ErrorMessage.SECTION_GAPS_TOO_SMALL.toString()
+            );
         }
     }
 
     private void validateDifferenceBetweenStationsSizeAndGapsSize(List<Station> stations,
         List<Gap> gaps) throws IllegalArgumentException {
         if (stations.size() != gaps.size() + 1) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(
+                ErrorMessage.SECTION_GAPS_STATIONS_DIFFERENCE.toString()
+            );
         }
     }
 
     private void validateStationIndex(final int index) throws IllegalArgumentException {
         if (index < 0 || index >= stations.size()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(
+                ErrorMessage.SECTION_STATION_INDEX_OUT_OF_RANGE.toString()
+            );
         }
     }
 
@@ -54,7 +63,9 @@ public class Section {
     private void validateIndexesDifference(final int indexAhead, final int indexBehind)
         throws IllegalArgumentException {
         if (Integer.min(indexAhead, indexBehind) + 1 != Integer.max(indexAhead, indexBehind)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(
+                ErrorMessage.SECTION_STATION_INDEXES_DIFFERENCE.toString()
+            );
         }
     }
 
@@ -62,7 +73,9 @@ public class Section {
         throws IllegalArgumentException {
         if (Integer.min(indexAhead, indexBehind) < 0 ||
             Integer.max(indexAhead, indexBehind) >= stations.size()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(
+                ErrorMessage.SECTION_STATION_INDEX_OUT_OF_RANGE.toString()
+            );
         }
     }
 
