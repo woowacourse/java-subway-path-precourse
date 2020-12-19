@@ -20,6 +20,15 @@ public class LineRepository {
         return lines.removeIf(line -> Objects.equals(line.getName(), name));
     }
 
+    public static Line getLineByName(String lineName) {
+        for (Line line : lines) {
+            if (line.getName().equals(lineName)) {
+                return line;
+            }
+        }
+        throw new IllegalArgumentException();
+    }
+
     public static void deleteAll() {
         lines.clear();
     }
