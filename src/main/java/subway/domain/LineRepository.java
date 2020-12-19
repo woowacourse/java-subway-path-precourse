@@ -1,26 +1,63 @@
 package subway.domain;
 
-import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
 public class LineRepository {
-    private static final List<Line> lines = new ArrayList<>();
 
-    public static List<Line> lines() {
+    public static final String DUPLICATE_LINE_ERROR = "[ERROR] 해당 노선은 이미 등록되어 있습니다.";
+
+    public static final String NOT_FOUND_STATION_ERROR = "[ERROR] 해당 노선은 존재하지 않습니다.";
+
+    private final List<Line> lines;
+
+    public LineRepository() {
+        this.lines = new LinkedList<>();
+    }
+
+    public LineRepository(List<Line> lines) {
+        this.lines = lines;
+    }
+
+    public List<Line> lines() {
         return Collections.unmodifiableList(lines);
     }
 
-    public static void addLine(Line line) {
+    public LineRepository addLines(Line... lines) {
+        LineRepository lineRepository = new LineRepository();
+
+        for (Line line : lines) {
+            lineRepository.addLine(line);
+        }
+
+        return lineRepository;
+    }
+
+    public LineRepository addLine(Line line) {
+        if (lines.contains(line)) {
+            throw new IllegalArgumentException(DUPLICATE_LINE_ERROR);
+        }
+
         lines.add(line);
+
+        return new LineRepository(lines);
     }
 
-    public static boolean deleteLineByName(String name) {
-        return lines.removeIf(line -> Objects.equals(line.getName(), name));
+    public LineRepository deleteLineByName(String name) {
+        boolean removed = lines.removeIf(line -> Objects.equals(line.getName(), name));
+
+        if (!removed) {
+            throw new IllegalArgumentException(NOT_FOUND_STATION_ERROR);
+        }
+
+        return new LineRepository(lines);
     }
 
-    public static void deleteAll() {
+    public LineRepository deleteAll() {
         lines.clear();
+
+        return new LineRepository(lines);
     }
 }
