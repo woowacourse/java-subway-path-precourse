@@ -38,10 +38,6 @@ public class SubwayMapGraph {
     }
 
     public void addStationToGraph(Station firstStation, Station lastStation, Section section) {
-        System.out.println(firstStation.getName());
-        System.out.println(lastStation.getName());
-        System.out.println(section.getDistance());
-        System.out.println(section.getTime());
         int distance = section.getDistance();
         int time = section.getTime();
         addShortestDistanceGraph(firstStation, lastStation, distance);
@@ -60,14 +56,17 @@ public class SubwayMapGraph {
         minimumTimeGraph.setEdgeWeight(minimumTimeGraph.addEdge(firstStation, lastStation), time);
     }
 
-    public PathResponseDto findPath(Station firstStation, Station lastStation, FunctionType functionType) {
+    public PathResponseDto findShortestPath(Station firstStation, Station lastStation, FunctionType functionType) {
         if (firstStation.equals(lastStation)) {
-            throw new IllegalArgumentException();
+            throw new PathStationDuplicationException();
         }
         DijkstraShortestPath dijkstraShortestPath = getShortestPath(functionType);
         List<Station> stations = dijkstraShortestPath.getPath(firstStation, lastStation)
                 .getVertexList();
-        return calculatePath(stations);
+        if (stations.isEmpty()) {
+            throw new CannotFindPathException();
+        }
+        return calculateShortestPath(stations);
     }
 
     private DijkstraShortestPath getShortestPath(FunctionType functionType) {
@@ -77,23 +76,23 @@ public class SubwayMapGraph {
         return new DijkstraShortestPath(minimumTimeGraph);
     }
 
-    private PathResponseDto calculatePath(List<Station> stations) {
-        int distanceTotal = getEdgeWieghtTotal(stations, shortestDistanceGraph);
-        int timeTotal = getEdgeWieghtTotal(stations, minimumTimeGraph);
+    private PathResponseDto calculateShortestPath(List<Station> stations) {
+        int distanceTotal = getEdgeWeightTotal(stations, shortestDistanceGraph);
+        int timeTotal = getEdgeWeightTotal(stations, minimumTimeGraph);
         List<String> stationNames = stations.stream()
                 .map(Station::getName)
                 .collect(Collectors.toList());
         return new PathResponseDto(distanceTotal, timeTotal, stationNames);
     }
 
-    private int getEdgeWieghtTotal(List<Station> stations, WeightedMultigraph<Station,
+    private int getEdgeWeightTotal(List<Station> stations, WeightedMultigraph<Station,
             DefaultWeightedEdge> weightedMultigraph) {
         int stationCounts = stations.size();
         int edgeWeightTotal = ZERO;
         for (int i = ZERO; i < stationCounts - ONE; i++) {
-            Station first = stations.get(i);
-            Station next = stations.get(i + ONE);
-            DefaultWeightedEdge defaultWeightedEdge = weightedMultigraph.getEdge(first, next);
+            Station firstStation = stations.get(i);
+            Station nextStation = stations.get(i + ONE);
+            DefaultWeightedEdge defaultWeightedEdge = weightedMultigraph.getEdge(firstStation, nextStation);
             edgeWeightTotal += (int) weightedMultigraph.getEdgeWeight(defaultWeightedEdge);
         }
         return edgeWeightTotal;
