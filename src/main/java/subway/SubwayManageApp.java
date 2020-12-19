@@ -1,6 +1,7 @@
 package subway;
 
 import subway.view.InputView;
+import subway.view.MainSelection;
 import subway.view.OutputView;
 import subway.view.screen.MainView;
 
@@ -16,5 +17,7 @@ public class SubwayManageApp {
     public void startApp() {
         MainView mainView = new MainView(outputView);
         mainView.showOptions();
+        MainSelection mainSelection = new MainSelection(inputView.inputNextLine());
+
     }
 }

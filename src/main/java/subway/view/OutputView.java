@@ -9,7 +9,6 @@ public class OutputView {
         this.sb = sb;
     }
 
-
     public void printOptions(String[] strings) {
         sb.append(Prefix.ENTER.getPrefix());
         for (String string : strings) {
