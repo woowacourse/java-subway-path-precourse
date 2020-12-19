@@ -103,10 +103,8 @@ public class LineRepository {
 
     private static void showStatusTime(DijkstraShortestPath path, List<String> shortestPath,
                                        String startStation, String endStation) {
-        int length = findTotalLength(shortestPath);
-        OutputView.totalLength(length);
-        int time = (int) path.getPathWeight(startStation, endStation);
-        OutputView.totalTime(time);
+        OutputView.totalLength(findTotalLength(shortestPath));
+        OutputView.totalTime((int) path.getPathWeight(startStation, endStation));
         OutputView.bar();
         for (String stationName : shortestPath) {
             OutputView.status(stationName);
@@ -128,10 +126,8 @@ public class LineRepository {
     private static void showStatusLength(DijkstraShortestPath path, List<String> shortestPath,
                                          String startStation, String endStation) {
         OutputView.bar();
-        int length = (int) path.getPathWeight(startStation, endStation);
-        OutputView.totalLength(length);
-        int time = findTotalTime(shortestPath);
-        OutputView.totalTime(time);
+        OutputView.totalLength((int) path.getPathWeight(startStation, endStation));
+        OutputView.totalTime(findTotalTime(shortestPath));
         OutputView.bar();
         for (String stationName : shortestPath) {
             OutputView.status(stationName);
