@@ -21,7 +21,7 @@ public class FastestPathFinder {
             Validate.notSameStation(startStation, endStation);
         } catch (CustomException exception) {
             System.out.println(exception.getMessage());
-        }
+
     }
 
     private String askValidStation(String stationPrefix) {

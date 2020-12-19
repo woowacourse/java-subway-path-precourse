@@ -22,11 +22,11 @@ public class ShortestPathFinder {
         String endStation = askValidStation(PREFIX_END_STATION);
         try {
             Validate.notSameStation(startStation, endStation);
+            printShortestPath(startStation, endStation);
         } catch (CustomException exception) {
             System.out.println(exception.getMessage());
             run();
         }
-        printShortestPath(startStation, endStation);
     }
 
     private void printShortestPath(String startStation, String endStation) {
