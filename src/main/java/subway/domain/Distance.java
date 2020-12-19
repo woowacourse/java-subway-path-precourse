@@ -2,17 +2,17 @@ package subway.domain;
 
 public class Distance {
 
-    private final int distance;
+    private final int kilometer;
 
-    private Distance(int distance) {
-        this.distance = distance;
+    private Distance(int kilometer) {
+        this.kilometer = kilometer;
     }
 
-    public static Distance newDistance(int distance) {
-        return new Distance(distance);
+    public static Distance newDistance(int kilometer) {
+        return new Distance(kilometer);
     }
 
-    public int getDistance() {
-        return distance;
+    public int getKilometer() {
+        return kilometer;
     }
 }

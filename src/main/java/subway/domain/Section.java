@@ -15,9 +15,21 @@ public class Section {
         this.distance = distance;
     }
 
-    public static Section newSection(final Station source, final Station destination, final Time time,
-        final Distance distance){
+    public static Section newSection(final Station source, final Station destination,
+        final Time time,
+        final Distance distance) {
         return new Section(source, destination, time, distance);
     }
 
+    public boolean isSourceDestinationByName(String name) {
+        return name.equals(source.getName()) || name.equals(destination);
+    }
+
+    public Distance getDistance() {
+        return distance;
+    }
+
+    public Time getTime() {
+        return time;
+    }
 }
