@@ -4,11 +4,10 @@ import subway.service.initialization.SubwayInitialization;
 import subway.type.ExceptionType;
 import subway.type.InputType;
 import subway.view.InputView;
-import subway.view.OutputView;
 
 import java.util.Scanner;
 
-public class SubwayController {
+public class SubwayController implements OptionInterface {
     public static void runSubway(Scanner scanner) {
         initializeSubway();
         startSubway(scanner);
@@ -22,27 +21,25 @@ public class SubwayController {
     }
 
     public static void startSubway(Scanner scanner) {
+        SubwayController subwayController = new SubwayController();
+
         while (true) {
-            String mainInput = getMainInput(scanner);
+            String mainInput = InputView.scanMainInput(scanner);
             System.out.println();
 
             if (isQuitting(mainInput)) {
                 break;
             }
-            chooseOption(mainInput, scanner);
+            subwayController.chooseOption(mainInput, scanner);
         }
-    }
-
-    public static String getMainInput(Scanner scanner) {
-        OutputView.printMainScreen();
-        return InputView.scanMainInput(scanner);
     }
 
     public static boolean isQuitting(String mainInput) {
         return mainInput.equals(InputType.QUITTING.getInput());
     }
 
-    public static void chooseOption(String input, Scanner scanner) {
+    @Override
+    public void chooseOption(String input, Scanner scanner) {
         if (input.equals(InputType.ONE.getInput())) {
             PathController.startPath(scanner);
             return;

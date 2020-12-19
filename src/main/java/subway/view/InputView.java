@@ -4,10 +4,12 @@ import java.util.Scanner;
 
 public class InputView {
     public static String scanMainInput(Scanner scanner) {
+        OutputView.printMainScreen();
         return scanner.nextLine();
     }
 
     public static String scanPathInput(Scanner scanner) {
+        OutputView.printPathCriteriaScreen();
         return scanner.nextLine();
     }
 

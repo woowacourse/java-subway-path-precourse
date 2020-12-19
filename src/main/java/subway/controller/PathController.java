@@ -3,33 +3,30 @@ package subway.controller;
 import subway.type.ExceptionType;
 import subway.type.InputType;
 import subway.view.InputView;
-import subway.view.OutputView;
 
 import java.util.Scanner;
 
-public class PathController {
+public class PathController implements OptionInterface {
     public static void startPath(Scanner scanner) {
+        PathController pathController = new PathController();
+
         while (true) {
-            String pathInput = getPathInput(scanner);
+            String pathInput = InputView.scanPathInput(scanner);
             System.out.println();
 
             if (isBack(pathInput)) {
                 return;
             }
-            chooseOption(pathInput, scanner);
+            pathController.chooseOption(pathInput, scanner);
         }
-    }
-
-    public static String getPathInput(Scanner scanner) {
-        OutputView.printPathCriteriaScreen();
-        return InputView.scanPathInput(scanner);
     }
 
     public static boolean isBack(String pathInput) {
         return pathInput.equals(InputType.BACK.getInput());
     }
 
-    public static void chooseOption(String input, Scanner scanner) {
+    @Override
+    public void chooseOption(String input, Scanner scanner) {
         if (input.equals(InputType.ONE.getInput())) {
             getPathByShortestDistance(scanner);
             return;
