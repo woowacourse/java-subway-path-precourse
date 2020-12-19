@@ -1,6 +1,4 @@
-package subway.domain.path;
-
-import subway.domain.station.Station;
+package subway.domain.station;
 
 public class Path {
     private final Station nextStation;
