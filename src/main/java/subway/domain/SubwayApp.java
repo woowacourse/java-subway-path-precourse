@@ -15,20 +15,25 @@ public class SubwayApp {
     }
 
     public void run() {
-        appStart();
+        while(true){
+            if (!appStart()) {
+                break;
+            }
+        }
     }
 
-    private void appStart() {
+    private boolean appStart() {
         try {
             printMainMenu();
             MainMenu selectedMainMenu = findMainMenuByOption(inputMainMenuOption());
             if (selectedMainMenu == EXIT) {
-                return;
+                return false;
             }
             selectedMainMenu.request();
         } catch (Exception e) {
             System.out.println(e.getMessage());
             run();
         }
+        return true;
     }
 }
