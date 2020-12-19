@@ -8,7 +8,11 @@ import subway.view.PathInputView;
 public class PathManager {
     private Scanner scanner;
 
-    public void processSector() {
+    public PathManager(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+    public void processSet() {
         boolean happenedError;
         do {
             PathInputView.askPathScreen();

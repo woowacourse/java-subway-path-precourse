@@ -1,8 +1,8 @@
 package subway.controller.constants;
 
 public enum InitialThirdLineDistance {
-    ONE("교대역", "남부터미널",3),
-    TWO("남부터미널", "양재역",6),
+    ONE("교대역", "남부터미널역",3),
+    TWO("남부터미널역", "양재역",6),
     THREE("양재역", "매봉역", 1);
 
     private final String departureName;
