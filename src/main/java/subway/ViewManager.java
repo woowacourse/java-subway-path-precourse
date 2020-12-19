@@ -13,16 +13,31 @@ public class ViewManager {
 		Output.title(Message.DEPARTURE_STATION_INPUT);
 		return Input.nextLine(scanner);
 	}
+	
 	private static String getArrivalStation() {
 		Output.title(Message.ARRIVAL_STATION_INPUT);
 		return Input.nextLine(scanner);
 	}
 	
 	public static void showMinDistance() {
-		Subway.minDistanceBetween(getDepartureStation(), getArrivalStation());
+		String departureStation = getDepartureStation();
+		String arrivalStation = getArrivalStation();
+		
+		if (Validator.isSameStation(departureStation, arrivalStation)) {
+			Output.error(Message.SAME_STATION);
+			return;
+		}
+		Subway.minDistanceBetween(departureStation, arrivalStation);
 	}
 	
 	public static void showMinTime() {
+		String departureStation = getDepartureStation();
+		String arrivalStation = getArrivalStation();
+		
+		if (Validator.isSameStation(departureStation, arrivalStation)) {
+			Output.error(Message.SAME_STATION);
+			return;
+		}
 		Subway.minTimeBetween(getDepartureStation(), getArrivalStation());
 	}
 }

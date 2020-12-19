@@ -30,7 +30,9 @@ public class Subway {
 			sectionList = StationRepository.getSectionDistanceList(departureStation, arrivalStation);
 			distance = StationRepository.getSectionDistance(departureStation, arrivalStation);
 			printMinDistance(distance, sectionList);
+			return;
 		}
+		Output.error(Message.NOT_CONTAIN_STATION);
 	}
 	
 	public static void printMinDistance(double distance, List<DefaultWeightedEdge> sectionList) {

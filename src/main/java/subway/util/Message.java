@@ -39,4 +39,5 @@ public class Message {
 	 */
 	public static final String WRONG_INPUT = "잘못된 입력입니다.";
 	public static final String SAME_STATION = "출발역과 도착역이 동일합니다.";
+	public static final String NOT_CONTAIN_STATION = "존재하지 않는 역을 입력하셨습니다.";
 }
