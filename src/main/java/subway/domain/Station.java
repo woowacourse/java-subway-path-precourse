@@ -26,8 +26,14 @@ public class Station {
     }
 
     public int getNextStationDistance(Station station) {
+        System.out.println(name+"담역: " + station.getName());
+        for (Edge edge : edges) {
+            System.out.println(edge.getStationName());
+        }
         for (Edge edge : edges) {
             if (edge.isNextStation(station)) {
+                System.out.println(edge.getTime() +"/"+ edge.getDistance());
+                System.out.println(edge.getStationName());
                 return edge.getDistance();
             }
         }
@@ -37,6 +43,7 @@ public class Station {
     public int getNextStationTime(Station station) {
         for (Edge edge : edges) {
             if (edge.isNextStation(station)) {
+                System.out.println(edge.getTime() +"/"+ edge.getDistance());
                 return edge.getTime();
             }
         }

@@ -22,4 +22,8 @@ public class Edge {
     public int getTime() {
         return time;
     }
+
+    public String getStationName() {
+        return nextStation.getName();
+    }
 }
