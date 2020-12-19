@@ -17,19 +17,21 @@ public class Line {
         this.stations = new LinkedList<>(Arrays.asList(newStations));
     }
 
-    public void addDistanceList(List<Integer> distanceList) {
+    public void addDistanceList(List<Distance> distanceList) {
         for (int index = 0; index < stations.size() - 1; index++) {
             Station from = stations.get(index);
             Station to = stations.get(index + 1);
-            SearchGraph.addEdgeByDistance(from, to, distanceList.get(index));
+            int distance = distanceList.get(index).getDistance();
+            SearchGraph.addEdgeByDistance(from, to, distance);
         }
     }
 
-    public void addTakeTimeList(List<Integer> takeTime) {
+    public void addTakeTimeList(List<Time> takeTime) {
         for (int index = 0; index < stations.size() - 1; index++) {
             Station from = stations.get(index);
             Station to = stations.get(index + 1);
-            SearchGraph.addEdgeByTime(from, to, takeTime.get(index));
+            int time = takeTime.get(index).getTime();
+            SearchGraph.addEdgeByTime(from, to, time);
         }
     }
 

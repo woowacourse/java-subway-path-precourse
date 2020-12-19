@@ -1,6 +1,8 @@
 package subway.view;
 
+import subway.domain.Distance;
 import subway.domain.Station;
+import subway.domain.Time;
 
 import java.util.List;
 
@@ -9,8 +11,8 @@ public class OutputView {
     private static final String INFO_MESSAGE = "[INFO] %s";
     private static final String ERROR_MESSAGE = "[ERROR] %s";
     private static final String LINE_SEPARATOR = "---";
-    private static final String TAKEN_DISTANCE_MESSAGE = "총 거리 : %skm";
-    private static final String TAKEN_TIME_MESSAGE = "총 소요 시간 : %s분";
+    private static final String TAKEN_DISTANCE_MESSAGE = "총 거리 : %s %s";
+    private static final String TAKEN_TIME_MESSAGE = "총 소요 시간 : %s %s";
 
     private OutputView() {
     }
@@ -30,11 +32,11 @@ public class OutputView {
     }
 
     private static void printTakenDistance(int takenDistance) {
-        printInfo(String.format(TAKEN_DISTANCE_MESSAGE, takenDistance));
+        printInfo(String.format(TAKEN_DISTANCE_MESSAGE, takenDistance, Distance.unit));
     }
 
     private static void printTakenTime(int takenTime) {
-        printInfo(String.format(TAKEN_TIME_MESSAGE, takenTime));
+        printInfo(String.format(TAKEN_TIME_MESSAGE, takenTime, Time.unit));
     }
 
     public static void printMainMenu(List<String> menuNames) {

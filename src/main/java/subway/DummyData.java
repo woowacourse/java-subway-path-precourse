@@ -28,16 +28,16 @@ public class DummyData {
         stations.stream().forEach(StationRepository::addStation);
 
         Line ihoseon = new Line(lineNames.get(0), stations.get(0), stations.get(1), stations.get(2));
-        ihoseon.addDistanceList(Arrays.asList(2, 2));
-        ihoseon.addTakeTimeList(Arrays.asList(3, 3));
+        ihoseon.addDistanceList(Arrays.asList(Distance.of(2), Distance.of(2)));
+        ihoseon.addTakeTimeList(Arrays.asList(Time.of(3), Time.of(3)));
 
         Line samhoseon = new Line(lineNames.get(1), stations.get(0), stations.get(3), stations.get(4), stations.get(6));
-        samhoseon.addDistanceList(Arrays.asList(3, 6, 1));
-        samhoseon.addTakeTimeList(Arrays.asList(2, 5, 1));
+        samhoseon.addDistanceList(Arrays.asList(Distance.of(3), Distance.of(6), Distance.of(1)));
+        samhoseon.addTakeTimeList(Arrays.asList(Time.of(2), Time.of(5), Time.of(1)));
 
         Line sinboondang = new Line(lineNames.get(2), stations.get(1), stations.get(4), stations.get(5));
-        sinboondang.addDistanceList(Arrays.asList(2, 10));
-        sinboondang.addTakeTimeList(Arrays.asList(8, 3));
+        sinboondang.addDistanceList(Arrays.asList(Distance.of(2), Distance.of(10)));
+        sinboondang.addTakeTimeList(Arrays.asList(Time.of(8), Time.of(3)));
 
         LineRepository.addLine(ihoseon);
         LineRepository.addLine(samhoseon);
