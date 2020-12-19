@@ -11,11 +11,11 @@ public class InfoOutput {
     public static void printSearchResult(int distance, int time, List<Station> stations) {
         Input.printResultNotification();
         System.out.println(LINE_DIVISION);
-        System.out.println(INFO+"총 거리 : "+ distance+"km");
-        System.out.println(INFO+"총 시간 : "+ distance+"분");
+        System.out.println(INFO + "총 거리 : " + distance + "km");
+        System.out.println(INFO + "총 시간 : " + time + "분");
         System.out.println(LINE_DIVISION);
         for (Station station : stations) {
-            System.out.println(INFO+station.getName());
+            System.out.println(INFO + station.getName());
         }
     }
 }

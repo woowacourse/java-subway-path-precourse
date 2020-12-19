@@ -7,8 +7,8 @@ import org.jgrapht.graph.WeightedMultigraph;
 import java.util.List;
 
 public class Interval {
-    private static WeightedMultigraph<Station, DefaultWeightedEdge> distanceInterval = new WeightedMultigraph(DefaultWeightedEdge.class);
-    private static WeightedMultigraph<Station, DefaultWeightedEdge> timeInterval = new WeightedMultigraph(DefaultWeightedEdge.class);
+    public static WeightedMultigraph<Station, DefaultWeightedEdge> distanceInterval = new WeightedMultigraph(DefaultWeightedEdge.class);
+    public static WeightedMultigraph<Station, DefaultWeightedEdge> timeInterval = new WeightedMultigraph(DefaultWeightedEdge.class);
 
     public static void registerIntervals(List<Station> stationInLine, List<Integer> distance, List<Integer> time) {
         for (Station station : stationInLine) {
