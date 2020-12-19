@@ -36,8 +36,8 @@ public class OutputView {
     }
 
     private void printSummary(PathResult result) {
-        print(INFO_HEADER + PATH_TOTAL_DISTANCE + result.getTotalDistance() + PATH_TOTAL_DISTANCE_KM);
-        print(INFO_HEADER + PATH_TOTAL_TIME + result.getTotalTime() + PATH_TOTAL_TIME_MIN);
+        print(INFO_HEADER + PATH_TOTAL_DISTANCE + (int) result.getTotalDistance() + PATH_TOTAL_DISTANCE_KM);
+        print(INFO_HEADER + PATH_TOTAL_TIME + (int) result.getTotalTime() + PATH_TOTAL_TIME_MIN);
     }
 
     private void printFullPath(List<Station> stations) {
