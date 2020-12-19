@@ -1,13 +1,14 @@
 package subway.menu;
 
-public enum MainMenu {
-    PATH_SERVICE("1","1. 경로 조회"),
-    EXIT("Q", "Q. 종료");
+public enum PathMenu {
+    DISTANCE("1","1. 최단 거리"),
+    TIME("2", "2. 최소 시간"),
+    BACK("B","B. 돌아가기");
 
     private final String option;
     private final String message;
 
-    MainMenu(String option, String message) {
+    PathMenu(String option, String message) {
         this.option = option;
         this.message = message;
     }
