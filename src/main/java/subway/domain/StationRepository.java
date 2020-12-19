@@ -27,4 +27,14 @@ public class StationRepository {
     public static Station selectStationByName(String name) {
         return (Station) stations().stream().filter(s -> s.getName().equals(name));
     }
+
+    public static List<Station> selectStationListByNames(List<String> stationNames) {
+        List<Station> stationList = new ArrayList<>();
+        for (String stationName : stationNames) {
+            stationList.add((Station) stations.stream()
+                    .filter(s -> s.getName()
+                            .equals(stationName)));
+        }
+        return stationList;
+    }
 }
