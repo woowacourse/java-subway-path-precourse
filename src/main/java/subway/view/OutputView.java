@@ -18,7 +18,7 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void askMainOptionChoice() {
+    public static void askOptionChoice() {
         System.out.println(SELECT_OPTION);
     }
 
@@ -29,5 +29,8 @@ public class OutputView {
             System.out.println(method.getDescription());
         }
         System.out.println();
+    }
+
+    public static void askSearchMethodChoice() {
     }
 }

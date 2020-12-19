@@ -1,10 +1,11 @@
 package subway;
 
+import subway.common.SelectOption;
 import subway.path.PathController;
 import subway.view.InputView;
 import subway.view.OutputView;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SubwayPath {
@@ -17,7 +18,8 @@ public class SubwayPath {
     public boolean run() {
         try {
             OutputView.showMainOption();
-            String option = askOptionChoice();
+            List<String> optionList = getMainOptionList();
+            String option = SelectOption.askOptionChoice(inputView, optionList);
 
             if (option.equals(MainOption.PATH.getValue())) {
                 PathController pathController = new PathController(inputView);
@@ -32,9 +34,14 @@ public class SubwayPath {
         return true;
     }
 
-    private String askOptionChoice() {
-        OutputView.askMainOptionChoice();
-        List<MainOption> optionList = Arrays.asList(MainOption.values());
-        return inputView.selectOption(optionList);
+    private List<String> getMainOptionList() {
+        MainOption[] options = MainOption.values();
+        List<String> optionList = new ArrayList<>();
+
+        for (MainOption option : options) {
+            optionList.add(option.getValue());
+        }
+
+        return optionList;
     }
 }

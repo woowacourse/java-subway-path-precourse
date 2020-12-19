@@ -1,6 +1,5 @@
 package subway.view;
 
-import subway.MainOption;
 import subway.view.validation.NotExistOption;
 
 import java.util.List;
@@ -13,7 +12,7 @@ public class InputView {
         this.scanner = scanner;
     }
 
-    public String selectOption(List<MainOption> optionList) {
+    public String selectOption(List<String> optionList) {
         String option = scanner.next();
         NotExistOption.validate(option, optionList);
         return option;
