@@ -6,6 +6,7 @@ import org.jgrapht.graph.WeightedMultigraph;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 public class PathRepository {
@@ -18,7 +19,7 @@ public class PathRepository {
 
     public static void addPath(Station startStation, Station endStation, int km, int minute) {
         Edge forwardEdge = new Edge(startStation, endStation);
-        Edge reverseEdge = new Edge(startStation, endStation);
+        Edge reverseEdge = new Edge(endStation, startStation);
         Weight weight = new Weight(km, minute);
 
         addVertex(forwardEdge, reverseEdge);
@@ -80,7 +81,17 @@ public class PathRepository {
     }
 
     private static Weight getWeightByStations(Station startStation, Station endStation) {
-        Edge edge = new Edge(startStation, endStation);
+        Edge edge = selectByName(startStation.getName(), endStation.getName());
         return paths.get(edge);
+    }
+
+    public static Edge selectByName(String startStationName, String endStationName) {
+        for (Edge edge : paths.keySet()) {
+            if (Objects.equals(edge.getStartStationName(), startStationName)
+                    || Objects.equals(edge.getEndStationName(), endStationName)) {
+                return edge;
+            }
+        }
+        return null;
     }
 }
