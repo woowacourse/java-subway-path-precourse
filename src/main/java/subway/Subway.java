@@ -20,6 +20,8 @@ public class Subway {
     private static final String SHORTEST_DISTANCE_ROUTE = "1";
     private static final String SHORTEST_TIME_ROUTE = "2";
     
+    private static final String STATION_SAME_ERROR = "출발역과 도착역이 동일합니다.";
+    
     public static boolean progress = true;
 	
     public Subway(Scanner scanner) {
@@ -41,6 +43,7 @@ public class Subway {
         String selectedFunction = Input.chooseFunction();
         Station departureStation = StationRepository.getStationByName(Input.inputDepartureStation());
         Station arrivalStation = StationRepository.getStationByName(Input.inputArrivalStation());
+        validateInput(departureStation, arrivalStation);
         if (selectedFunction.equals(SHORTEST_DISTANCE_ROUTE)) {
             Output.printRoute(Route.getShortestDistanceRoute(departureStation, arrivalStation));
         }
@@ -49,6 +52,16 @@ public class Subway {
         }
     }
    
+    public void validateInput(Station departure, Station arrival) {
+        try {
+            if(departure.equals(arrival)) {
+                throw new IllegalArgumentException(STATION_SAME_ERROR);
+            }	
+        }catch(Exception error) {
+            Output.printError(error.getMessage());
+        }
+    }
+    
     public void initialization() {
         initializeStation();
         initializeLine();
