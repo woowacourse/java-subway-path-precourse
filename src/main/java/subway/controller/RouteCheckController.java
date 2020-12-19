@@ -1,5 +1,6 @@
-package subway;
+package subway.controller;
 
+import subway.DataLoader;
 import subway.domain.RouteCheckType;
 import subway.service.MinimumTimeService;
 import subway.service.ShortestDistanceService;
