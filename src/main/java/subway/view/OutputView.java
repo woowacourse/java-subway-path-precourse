@@ -9,11 +9,10 @@ public class OutputView {
     private static final String INFORMATION_TAG = "[INFO]";
     private static final String LINE_STATION_SEPARATOR = "---";
     private static final String SCREEN_MESSAGE_START = "\n## ";
-    private static final String SCREEN_MESSAGE_END = " 화면";
     private static final String ID_SEPARATOR = ". ";
 
     public static void printScreen(Menu menu) {
-        System.out.println(SCREEN_MESSAGE_START + menu + SCREEN_MESSAGE_END);
+        System.out.println(SCREEN_MESSAGE_START + menu);
         printMenus(menu);
         printItems(menu);
         System.out.println();

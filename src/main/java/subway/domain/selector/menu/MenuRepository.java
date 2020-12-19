@@ -17,7 +17,7 @@ public class MenuRepository {
         pathCriteriaMenu.addMenuItems("B", new BackWardItem("B", "돌아가기"));
         menus.put("1", pathCriteriaMenu);
 
-        Menu mainMenu = new Menu("0", "메인");
+        Menu mainMenu = new Menu("0", "메인 화면");
         mainMenu.addMenus("1", pathCriteriaMenu);
         mainMenu.addMenuItems("Q", new QuitItem("Q", "종료"));
         menus.put("0", mainMenu);

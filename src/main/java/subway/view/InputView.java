@@ -27,7 +27,7 @@ public class InputView {
 
     private static void validateMenuId(Menu menu, String id) {
         if (!menu.isIdContain(id)) {
-            throw new IllegalArgumentException("[ERROR] 올바른 메뉴를 선택해주세요.");
+            throw new IllegalArgumentException("\n[ERROR] 올바른 메뉴를 선택해주세요.");
         }
     }
 
@@ -40,6 +40,5 @@ public class InputView {
             return getStationName();
         }
     }
-
 
 }
