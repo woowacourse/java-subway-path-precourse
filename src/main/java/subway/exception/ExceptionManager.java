@@ -18,9 +18,8 @@ public class ExceptionManager {
     }
 
     public static void isStationExist(String station) {
-        boolean check = false;
         for(Station st : StationRepository.stations()) {
-            check = checkIfExist(st, station);
+            boolean check = checkIfExist(st, station);
             if(check) {
                 return;
             }

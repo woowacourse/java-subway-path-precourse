@@ -83,6 +83,7 @@ public class GraphInitializer {
         for (String path : ShortestPath) {
             System.out.println(INFO_FORMAT + path);
         }
+        System.out.print("\n");
     }
 
     public int calDistanceOrTime(List<String> shortestPath, String type) {
