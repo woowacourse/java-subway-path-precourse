@@ -5,15 +5,11 @@ import subway.utils.exception.InvalidMenuInputException;
 import subway.view.InputView;
 import subway.view.output.MainOutputView;
 
-import java.util.Scanner;
-
 public class MainController implements Controller{
     MainOutputView mainOutputView;
-    InputView inputView;
     MainMenu mainMenu;
 
-    public MainController(Scanner scanner) {
-        inputView = new InputView(scanner);
+    public MainController() {
         mainOutputView = new MainOutputView();
     }
 

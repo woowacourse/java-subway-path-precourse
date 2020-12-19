@@ -9,8 +9,8 @@ public class InputView {
     private static Scanner scanner;
     private static InputValidator inputValidator = new InputValidator();
 
-    public InputView(Scanner scanner) {
-        this.scanner = scanner;
+    public static void init(Scanner inputScanner) {
+        scanner = inputScanner;
     }
 
     public static String selectMenu() {
