@@ -23,4 +23,12 @@ public class LineRepository {
     public static void deleteAll() {
         lines.clear();
     }
+    
+    public static void addSection(Line line, Section section) {
+        line.addSection(section);
+    }
+    
+    public static Line getLineByName(String name) {
+    	return lines.stream().filter(line -> line.getName().equals(name)).findFirst().get();
+    }
 }
