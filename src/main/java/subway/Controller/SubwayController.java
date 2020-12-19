@@ -37,7 +37,9 @@ public class SubwayController {
         try {
             OutputView.path_standardView();
             String status = InputView.inputFunction(scanner, Category.ROUTE.getActionType());
-
+            if (status.equals("B")) {
+                return ;
+            }
             Station startStation = StationRepository.findByName(InputView.inputStartStation(scanner));
             Station arrivalStation = StationRepository.findByName(InputView.inputArriveStation(scanner));
             isSameStation(startStation, arrivalStation);
@@ -48,6 +50,7 @@ public class SubwayController {
             if (status.equals("2")) {
                 shortestTime(startStation, arrivalStation);
             }
+
         } catch (IllegalArgumentException ie) {
             System.out.println(ie.getMessage());
             routeLookup();
