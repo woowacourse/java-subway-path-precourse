@@ -37,14 +37,29 @@ public class SectionRepository {
     }
 
     public static List<Station> getSectionDistanceStations(Station departureStation, Station arrivalStation) {
-        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(distanceGraph);
+        try {
+            DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(distanceGraph);
 
-        return dijkstraShortestPath.getPath(departureStation, arrivalStation).getVertexList();
+            return dijkstraShortestPath.getPath(departureStation, arrivalStation).getVertexList();
+        }
+        catch (NullPointerException e) {
+            OutputView.printSectionEmptyErrorMessage();
+
+            return null;
+        }
     }
 
     public static List<Station> getSectionTimeStations(Station departureStation, Station arrivalStation) {
-        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(timeGraph);
+        try {
+            DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(timeGraph);
 
-        return dijkstraShortestPath.getPath(departureStation, arrivalStation).getVertexList();
+            return dijkstraShortestPath.getPath(departureStation, arrivalStation).getVertexList();
+        }
+        catch (NullPointerException e) {
+            OutputView.printSectionEmptyErrorMessage();
+
+            return null;
+        }
+
     }
 }

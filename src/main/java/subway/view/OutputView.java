@@ -8,6 +8,7 @@ public class OutputView {
     private static final String NEW_LINE = "\n";
     private static final String INFO = "[INFO] ";
     private static final String INFO_LINE = INFO + "---";
+    private static final String SECTION_EMPTY_ERROR_MESSAGE = "[ERROR] 연결된 구간이 없는 역입니다.";
 
     public static void printMainScene() {
         System.out.println(NEW_LINE + "## 메인 화면");
@@ -33,5 +34,9 @@ public class OutputView {
 
     private static void printStations(List<Station> stations) {
         stations.forEach(station -> System.out.println(INFO + station.getName()));
+    }
+
+    public static void printSectionEmptyErrorMessage() {
+        System.out.println(SECTION_EMPTY_ERROR_MESSAGE);
     }
 }
