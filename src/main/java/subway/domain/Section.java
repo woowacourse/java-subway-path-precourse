@@ -1,23 +1,34 @@
 package subway.domain;
 
+import org.jgrapht.graph.DefaultWeightedEdge;
+import org.jgrapht.graph.WeightedMultigraph;
+
 public class Section {
-    private final String departureStation;
-    private final String arrivalStation;
+    private final Station departureStation;
+    private final Station arrivalStation;
     private final int distance;
     private final int time;
 
-    public Section(String departureStation, String arrivalStation, int distance, int time) {
+    public Section(Station departureStation, Station arrivalStation, int distance, int time) {
         this.departureStation = departureStation;
         this.arrivalStation = arrivalStation;
         this.distance = distance;
         this.time = time;
     }
 
-    public int getDistance(String departureStation, String arrivalStation) {
+    public Station getDepartureStation() {
+        return this.departureStation;
+    }
+
+    public Station getArrivalStation() {
+        return this.arrivalStation;
+    }
+
+    public int getDistance() {
         return this.distance;
     }
 
-    public int getTime(String departureStation, String arrivalStation) {
+    public int getTime() {
         return this.time;
     }
 }
