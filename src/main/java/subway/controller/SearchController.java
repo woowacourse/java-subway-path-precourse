@@ -10,7 +10,6 @@ import subway.view.OutputView;
 
 import java.util.List;
 import java.util.Scanner;
-import java.util.concurrent.ExecutionException;
 
 public class SearchController {
     private final Scanner scanner;

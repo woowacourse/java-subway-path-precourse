@@ -7,10 +7,6 @@ public class Station {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public boolean isName(String name) {
         return this.name.equals(name);
     }
