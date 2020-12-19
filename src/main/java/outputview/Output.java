@@ -10,4 +10,10 @@ public interface Output {
     public final static String SHORTEST_LENGTH = "1. 최단 거리";
     public final static String SMALLEST_TIME = "2. 최소 시간";
     public final static String BACK = "B. 돌아가기";
+    public final static String START_STATION = "출발역을 입력하세요.";
+    public final static String END_STATION = "도착역을 입력하세요.";
+    public final static String FIND_RESULT = "조회 결과";
+    public final static String INFO = "[INFO] ";
+    public final static String CONTOUR = "---";
 }
+
