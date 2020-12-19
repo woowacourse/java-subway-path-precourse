@@ -24,7 +24,7 @@ public class SubwayMap {
                 .forEach(station -> timeGraph.addVertex(station));
     }
 
-    public static void setEdgeDistance(List<String> stations, int distance, int time) {
+    public static void setEdgeGraphs(List<String> stations, int distance, int time) {
         String firstStation = stations.get(StationRepository.FIRST_STATION_INDEX);
         String lastStation = stations.get(StationRepository.LAST_STATION_INDEX);
         distanceGraph.setEdgeWeight(distanceGraph.addEdge(firstStation, lastStation), distance);
@@ -42,7 +42,7 @@ public class SubwayMap {
         return minDistance;
     }
 
-    public static List<String> findShortestDistancePath(List<String> stations) {
+    public static List<String> findShortestDistanceOfPath(List<String> stations) {
         String firstStation = stations.get(StationRepository.FIRST_STATION_INDEX);
         String lastStation = stations.get(StationRepository.LAST_STATION_INDEX);
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(distanceGraph);
@@ -51,7 +51,7 @@ public class SubwayMap {
         return pathList;
     }
 
-    public static int findShortestDistanceTime(List<String> paths) {
+    public static int findShortestDistanceOfTime(List<String> paths) {
         int time = 0;
         for (int i = 0; i < paths.size() - 1; i++) {
             String firstStation = paths.get(i);
@@ -70,7 +70,7 @@ public class SubwayMap {
         return minTime;
     }
 
-    public static List<String> findShortestTimePath(List<String> stations) {
+    public static List<String> findShortestTimeOfPath(List<String> stations) {
         String firstStation = stations.get(StationRepository.FIRST_STATION_INDEX);
         String lastStation = stations.get(StationRepository.LAST_STATION_INDEX);
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(timeGraph);
@@ -79,7 +79,7 @@ public class SubwayMap {
         return pathList;
     }
 
-    public static int findShortestTimeDistance(List<String> paths) {
+    public static int findShortestTimeOfDistance(List<String> paths) {
         int distance = 0;
         for (int i = 0; i < paths.size() - 1; i++) {
             String firstStation = paths.get(i);

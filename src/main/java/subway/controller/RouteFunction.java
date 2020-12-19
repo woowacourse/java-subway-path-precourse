@@ -23,8 +23,8 @@ public class RouteFunction {
         try {
             List<String> inputStations = inputStation();
             int distance = SubwayMap.findShortestDistance(inputStations);
-            List<String> paths = SubwayMap.findShortestDistancePath(inputStations);
-            int time = SubwayMap.findShortestDistanceTime(paths);
+            List<String> paths = SubwayMap.findShortestDistanceOfPath(inputStations);
+            int time = SubwayMap.findShortestDistanceOfTime(paths);
             routeOutputView.printRoute(distance, time, paths);
         } catch (NullPointerException e) {
             return;
@@ -35,8 +35,8 @@ public class RouteFunction {
         try {
             List<String> inputStations = inputStation();
             int time = SubwayMap.findShortestTime(inputStations);
-            List<String> paths = SubwayMap.findShortestTimePath(inputStations);
-            int distance = SubwayMap.findShortestTimeDistance(paths);
+            List<String> paths = SubwayMap.findShortestTimeOfPath(inputStations);
+            int distance = SubwayMap.findShortestTimeOfDistance(paths);
             routeOutputView.printRoute(distance, time, paths);
         } catch (NullPointerException e) {
             System.out.println(e.getMessage());
