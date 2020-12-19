@@ -20,7 +20,7 @@ public class SubwayInitializer {
         graph.addVertex("양재시민의숲역");
         graph.addVertex("매봉역");
 //        graph.setEdgeWeight(graph.addEdge("교대역", "강남역"), );
-        
+
     }
 
 }
