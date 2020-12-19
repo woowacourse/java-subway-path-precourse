@@ -2,6 +2,7 @@ package subway.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import subway.exception.SubwayException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -16,7 +17,7 @@ class SectionFactoryTest {
 
         assertThat(SectionFactory.makeSection(from, to, 1, 1)).isInstanceOf(Section.class);
         assertThatThrownBy(() -> SectionFactory.makeSection(from, to, 0, -1))
-                .isInstanceOf(IllegalArgumentException.class)
+                .isInstanceOf(SubwayException.class)
                 .hasMessage("[ERROR] 거리 혹은 시간은 양의 정수여야 합니다.");
     }
 }
