@@ -1,4 +1,7 @@
-package subway.domain;
+package subway.repository;
+
+import subway.constant.InitialData;
+import subway.domain.Station;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,5 +25,10 @@ public class StationRepository {
 
     public static void deleteAll() {
         stations.clear();
+    }
+
+    public static void initStations() {
+        for (Station newStation : InitialData.stations)
+            addStation(newStation);
     }
 }
