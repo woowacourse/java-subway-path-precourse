@@ -38,12 +38,12 @@ public class OutputView {
         System.out.println(INFO_HEAD + message);
     }
 
-    public static void printReport(int calculateTotalPath, int calculateTotalTime) {
+    public static void printReport(int totalLength, int totalTime) {
         System.out.println();
         System.out.println(NOTICE_HEAD+"조회 결과");
         printInfo(DELIMITER_STATION);
-        printInfo(String.format("총 거리: %dkm", calculateTotalPath));
-        printInfo(String.format("총 소요 시간: %d분",calculateTotalTime));
+        printInfo(String.format("총 거리: %dkm", totalLength));
+        printInfo(String.format("총 소요 시간: %d분",totalTime));
         printInfo(DELIMITER_STATION);
     }
 
