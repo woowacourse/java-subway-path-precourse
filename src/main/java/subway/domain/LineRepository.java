@@ -31,39 +31,12 @@ public class LineRepository {
     private static final List<Line> lines = new ArrayList<>();
 
     static {
-        for (String lineName : LINES) {
-            Line line = new Line(lineName);
-            for (String stationName : LINE_STATIONS[INDEX]) {
-                line.addStation(new Station(stationName));
-            }
-            addLine(line);
-            INDEX++;
-        }
+        lineInitial();
+        lengthWeightInitial();
+        timeWeightInitial();
+    }
 
-        lengthWeight.addVertex("교대역");
-        lengthWeight.addVertex("강남역");
-        lengthWeight.addVertex("역삼역");
-        lengthWeight.addVertex("남부터미널역");
-        lengthWeight.addVertex("양재역");
-        lengthWeight.addVertex("매봉역");
-        lengthWeight.addVertex("양재시민의숲역");
-
-        lengthWeight.setEdgeWeight(lengthWeight.addEdge("교대역", "강남역"), 2);
-        lengthWeight.setEdgeWeight(lengthWeight.addEdge("강남역", "역삼역"), 2);
-        lengthWeight.setEdgeWeight(lengthWeight.addEdge("교대역", "남부터미널역"), 3);
-        lengthWeight.setEdgeWeight(lengthWeight.addEdge("남부터미널역", "양재역"), 6);
-        lengthWeight.setEdgeWeight(lengthWeight.addEdge("양재역", "매봉역"), 1);
-        lengthWeight.setEdgeWeight(lengthWeight.addEdge("강남역", "양재역"), 2);
-        lengthWeight.setEdgeWeight(lengthWeight.addEdge("양재역", "양재시민의숲역"), 10);
-
-        timeWeight.addVertex("교대역");
-        timeWeight.addVertex("강남역");
-        timeWeight.addVertex("역삼역");
-        timeWeight.addVertex("남부터미널역");
-        timeWeight.addVertex("양재역");
-        timeWeight.addVertex("매봉역");
-        timeWeight.addVertex("양재시민의숲역");
-
+    private static void timeWeightInitial() {
         timeWeight.setEdgeWeight(timeWeight.addEdge("교대역", "강남역"), 3);
         timeWeight.setEdgeWeight(timeWeight.addEdge("강남역", "역삼역"), 3);
         timeWeight.setEdgeWeight(timeWeight.addEdge("교대역", "남부터미널역"), 2);
@@ -71,6 +44,29 @@ public class LineRepository {
         timeWeight.setEdgeWeight(timeWeight.addEdge("양재역", "매봉역"), 1);
         timeWeight.setEdgeWeight(timeWeight.addEdge("강남역", "양재역"), 8);
         timeWeight.setEdgeWeight(timeWeight.addEdge("양재역", "양재시민의숲역"), 3);
+    }
+
+    private static void lengthWeightInitial() {
+        lengthWeight.setEdgeWeight(lengthWeight.addEdge("교대역", "강남역"), 2);
+        lengthWeight.setEdgeWeight(lengthWeight.addEdge("강남역", "역삼역"), 2);
+        lengthWeight.setEdgeWeight(lengthWeight.addEdge("교대역", "남부터미널역"), 3);
+        lengthWeight.setEdgeWeight(lengthWeight.addEdge("남부터미널역", "양재역"), 6);
+        lengthWeight.setEdgeWeight(lengthWeight.addEdge("양재역", "매봉역"), 1);
+        lengthWeight.setEdgeWeight(lengthWeight.addEdge("강남역", "양재역"), 2);
+        lengthWeight.setEdgeWeight(lengthWeight.addEdge("양재역", "양재시민의숲역"), 10);
+    }
+
+    private static void lineInitial() {
+        for (String lineName : LINES) {
+            Line line = new Line(lineName);
+            for (String stationName : LINE_STATIONS[INDEX]) {
+                line.addStation(new Station(stationName));
+                lengthWeight.addVertex(stationName);
+                timeWeight.addVertex(stationName);
+            }
+            addLine(line);
+            INDEX++;
+        }
     }
 
 
