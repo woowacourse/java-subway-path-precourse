@@ -6,7 +6,7 @@ import subway.domain.selector.menu.Menu;
 
 public class InputView {
 
-    private static final Scanner scanner = new Scanner(System.in);
+    public static Scanner scanner;
 
     public static Selector getSelector(Menu menu) {
         try {
@@ -30,4 +30,16 @@ public class InputView {
             throw new IllegalArgumentException("[ERROR] 올바른 메뉴를 선택해주세요.");
         }
     }
+
+    public static String getStationName() {
+        try {
+            String input = scanner.nextLine();
+            return input;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return getStationName();
+        }
+    }
+
+
 }

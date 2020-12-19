@@ -7,8 +7,4 @@ public class MinimumTimePathItem extends Selector implements Manipulable {
         this.name = name;
     }
 
-    @Override
-    public void execute() {
-
-    }
 }

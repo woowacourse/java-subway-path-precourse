@@ -1,5 +1,7 @@
 package subway.view;
 
+import java.util.List;
+import subway.domain.Station.Station;
 import subway.domain.selector.menu.Menu;
 
 public class OutputView {
@@ -28,5 +30,22 @@ public class OutputView {
             System.out.println(key + ID_SEPARATOR + menu.getItems().get(key));
         }
     }
+
+    public static void printDistance(double distance) {
+        System.out.println("\n[INFO] ---");
+        System.out.println("[INFO] 총거리: " + Math.round(distance) + "km");
+    }
+
+    public static void printTravelTime(double travelTime) {
+        System.out.println("[INFO] 총 소요 시간: " + Math.round(travelTime) + " 분");
+    }
+
+    public static void printStations(List<Station> shortestPath) {
+        System.out.println("[INFO] ---");
+        for (Station station : shortestPath) {
+            System.out.println("[INFO] " + station.getName());
+        }
+    }
+
 
 }

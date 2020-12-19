@@ -7,8 +7,4 @@ public class QuitItem extends Selector implements Manipulable {
         this.name = name;
     }
 
-    @Override
-    public void execute() {
-
-    }
 }

@@ -13,6 +13,7 @@ import subway.view.OutputView;
 public class SubwayPathFindController {
 
     private static final String MAIN_MENU_ID = "0";
+    private static final String SUBWAY_MAP_NAME = "테스트용 지하철 노선도";
     private String previousMenuId = MAIN_MENU_ID;
     private String currentMenuId = MAIN_MENU_ID;
     private boolean isRun;
@@ -69,7 +70,7 @@ public class SubwayPathFindController {
     private void executeItem(Selector selector, Menu menu) {
         try {
             Manipulable item = (Manipulable) selector;
-            item.execute();
+            item.execute(SUBWAY_MAP_NAME);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             OutputView.printScreen(menu);
