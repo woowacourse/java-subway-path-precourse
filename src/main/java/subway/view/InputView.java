@@ -18,17 +18,19 @@ public class InputView {
         return input;
     }
 
-    public static void inputSrcDest(Scanner kbd) {
+    public static String[] inputSrcDest(Scanner kbd) {
+        String[] stations = new String[2];
         try {
             System.out.println("\n## 출발역을 입력하세요.");
-            String srcStation = kbd.nextLine();
-            Errors.checkExistStation(srcStation);
+            stations[0] = kbd.nextLine();
+            Errors.checkExistStation(stations[0]);
             System.out.println("\n## 도착역을 입력하세요.");
-            String destStation = kbd.nextLine();
-            Errors.checkExistStation(destStation);
-            Errors.checkSameName(srcStation, destStation);
+            stations[1] = kbd.nextLine();
+            Errors.checkExistStation(stations[1]);
+            Errors.checkSameName(stations[0], stations[1]);
         } catch (Exception e) {
             inputSrcDest(kbd);
         }
+        return stations;
     }
 }
