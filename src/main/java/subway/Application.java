@@ -12,6 +12,6 @@ public class Application {
         final InputView inputView = new InputView(scanner);
         final SubwayController subwayController = new SubwayController();
 
-        subwayController.run();
+        subwayController.run(inputView);
     }
 }

@@ -12,12 +12,12 @@ public enum MainAction {
         this.actionName = actionName;
     }
 
-    public boolean isFinish(String inputNumber) {
-        if (FINISH.actionName.equals(inputNumber)) {
-            return true;
-        }
-        if (RESEARCH_PATH.actionName.equals(inputNumber)) {
+    public static boolean isFinish(String inputNumber) {
+        if (inputNumber.equals(RESEARCH_PATH.actionNumber)) {
             return false;
+        }
+        if (inputNumber.equals(FINISH.actionNumber)) {
+            return true;
         }
         throw new IllegalArgumentException("옳지 않은 메인 기능입니다.");
     }
