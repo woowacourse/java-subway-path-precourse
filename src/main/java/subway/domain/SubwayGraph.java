@@ -21,4 +21,15 @@ public class SubwayGraph {
             timeWeightGraph.addVertex(station);
         }
     }
+
+    public void setEdgeWeight(List<Edge> edges) {
+        for (Edge edge : edges){
+            setEdgeWeight(edge);
+        }
+    }
+
+    private void setEdgeWeight(Edge edge) {
+        distanceWeightGraph.setEdgeWeight(distanceWeightGraph.addEdge(edge.getFrom(), edge.getTo()), edge.getDistance());
+        timeWeightGraph.setEdgeWeight(distanceWeightGraph.addEdge(edge.getFrom(), edge.getTo()), edge.getTime());
+    }
 }
