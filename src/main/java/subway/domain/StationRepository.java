@@ -23,4 +23,9 @@ public class StationRepository {
     public static void deleteAll() {
         stations.clear();
     }
+
+    public static Station getStationbyName(String name) {
+        return stations.stream().filter(station -> name.equals(station.getName())).findFirst()
+                .orElse(null);
+    }
 }

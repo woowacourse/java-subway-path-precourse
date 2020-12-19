@@ -16,6 +16,12 @@ public class Line {
     public String getName() {
         return name;
     }
+    
+    public void registerFirstStation(Station station) {
+        if (stations.isEmpty()) {
+            stations.add(station);
+        }
+    }
 
     public void pushSections(Station station, int distance, int time) {
         stations.add(station);

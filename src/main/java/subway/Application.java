@@ -8,6 +8,7 @@ public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         final PrintStream printStream = new PrintStream(System.out);
+        InitialSetup.apply();
         final MainController mainController = new MainController(scanner, printStream);
         mainController.run();
     }

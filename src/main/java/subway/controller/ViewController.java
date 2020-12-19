@@ -1,8 +1,5 @@
 package subway.controller;
 
-import java.io.PrintStream;
-import java.util.Scanner;
-import java.util.Stack;
 import java.util.function.Consumer;
 import subway.Scene;
 import subway.view.View;

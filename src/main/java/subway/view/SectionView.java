@@ -3,7 +3,6 @@ package subway.view;
 import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.Scanner;
-import subway.menu.MainMenu;
 import subway.menu.SectionMenu;
 
 public class SectionView extends View {
