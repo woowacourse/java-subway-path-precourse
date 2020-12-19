@@ -4,9 +4,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import subway.exception.CannotFindLineException;
+import subway.exception.InputException;
 
 public class LineRepository {
+
     private static final List<Line> lines = new ArrayList<>();
+
+    private LineRepository() {
+    }
 
     public static List<Line> lines() {
         return Collections.unmodifiableList(lines);
@@ -16,8 +22,20 @@ public class LineRepository {
         lines.add(line);
     }
 
-    public static boolean deleteLineByName(String name) {
+    public static boolean deleteLine(String name) {
         return lines.removeIf(line -> Objects.equals(line.getName(), name));
+    }
+
+    public static Line findByName(String name) {
+        return lines.stream()
+                .filter(line -> line.getName().equals(name))
+                .findAny()
+                .orElseThrow(CannotFindLineException::new);
+    }
+
+    public static boolean exists(String name) {
+        return lines.stream()
+                .anyMatch(line -> line.getName().equals(name));
     }
 
     public static void deleteAll() {
