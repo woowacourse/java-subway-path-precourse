@@ -10,6 +10,10 @@ public class Application {
 
         InputView inputView = new InputView(scanner);
         SubwayPath subwayPath = new SubwayPath(inputView);
-        subwayPath.run();
+
+        boolean running = true;
+        while (running) {
+            running = subwayPath.run();
+        }
     }
 }
