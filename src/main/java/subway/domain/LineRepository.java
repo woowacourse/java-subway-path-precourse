@@ -1,12 +1,12 @@
 package subway.domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import subway.exception.LineNotExistedException;
+
+import java.util.*;
 
 public class LineRepository {
-    private static final List<Line> lines = new ArrayList<>();
+    private static final List<Line> lines = new ArrayList<>(
+            Arrays.asList(new Line("2호선"), new Line("3호선"), new Line("신분당선")));
 
     public static List<Line> lines() {
         return Collections.unmodifiableList(lines);
@@ -22,5 +22,9 @@ public class LineRepository {
 
     public static void deleteAll() {
         lines.clear();
+    }
+
+    public static Line getLine(String name) {
+        return lines().stream().filter(line -> Objects.equals(line.getName(), name)).findAny().orElseThrow(LineNotExistedException::new);
     }
 }

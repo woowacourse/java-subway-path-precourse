@@ -10,7 +10,8 @@ repositories {
 }
 
 dependencies {
-    implementation('org.jgrapht:jgrapht-core:1.4.0')
+    compile group: 'org.jgrapht', name: 'jgrapht-core', version: '1.4.0'
+    implementation('org.jgrapht:jgrapht-core:1.0.1')
     testImplementation('org.junit.jupiter:junit-jupiter:5.7.0')
     testImplementation('org.assertj:assertj-core:3.18.1')
     testImplementation('org.mockito:mockito-inline:3.6.0')
