@@ -8,6 +8,7 @@ public class MenuControllerValidator {
 
     public static void validateDecision(String decision, int maxDecisionValue) {
         validateNumeric(decision);
+        validateRange(decision, maxDecisionValue);
     }
 
     private static void validateNumeric(String decision) {
@@ -16,5 +17,15 @@ public class MenuControllerValidator {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrorMessage.DECISION_WRONG);
         }
+    }
+
+    private static void validateRange(String decision, int maxDecisionValue) {
+        if (outOfRange(Integer.parseInt(decision), maxDecisionValue)) {
+            throw new IllegalArgumentException(ErrorMessage.DECISION_WRONG);
+        }
+    }
+
+    private static boolean outOfRange(int decision, int maxDecisionValue) {
+        return (decision > maxDecisionValue || decision < MINIMUM_DECISION_VALUE);
     }
 }
