@@ -37,4 +37,10 @@ public class GraphService {
         List<String> shortestPath = dijkstraShortestPath.getPath(startStationName, endStationName).getVertexList();
         return shortestPath;
     }
+
+    public static List<String> getShortTimePath(String startStationName, String endStationName) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(GRAPH_TIME);
+        List<String> shortestPath = dijkstraShortestPath.getPath(startStationName, endStationName).getVertexList();
+        return shortestPath;
+    }
 }
