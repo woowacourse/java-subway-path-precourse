@@ -23,9 +23,9 @@ public class SectionRepository {
         return stationList;
     }
 
-    public static Section getSectionByFromTo(Station from, Station to) {
-        return sections.stream()
-                .filter(section -> section.)
-    }
+//    public static Section getSectionByFromTo(Station from, Station to) {
+//        return sections.stream()
+//                .filter(section -> section.)
+//    }
 
 }

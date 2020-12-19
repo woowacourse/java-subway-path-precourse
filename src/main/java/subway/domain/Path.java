@@ -9,11 +9,11 @@ public class Path {
         this.stationTo = stationTo;
     }
 
-    public Station getNextStation(Station station) {
+//    public Station getNextStation(Station station) {
+//
+//    }
 
-    }
-
-    public Section getSectionFromTo(Station fromStation, Station toStaton) {
-        SectionRepository.
-    }
+//    public Section getSectionFromTo(Station fromStation, Station toStaton) {
+//
+//    }
 }
