@@ -6,7 +6,6 @@ import subway.type.InputType;
 import subway.view.InputView;
 import subway.view.OutputView;
 
-import javax.print.DocFlavor;
 import java.util.Scanner;
 
 public class SubwayController {
@@ -29,12 +28,13 @@ public class SubwayController {
                 break;
             }
 
-            chooseOption(mainInput);
+            chooseOption(mainInput, scanner);
         }
     }
 
-    public static void chooseOption(String input) {
+    public static void chooseOption(String input, Scanner scanner) {
         if (input.equals(InputType.ONE.getInput())) {
+            PathController.startPath(scanner);
             return;
         }
         System.out.println(ExceptionType.INVALID_OPTION_CHOICE.getException());
