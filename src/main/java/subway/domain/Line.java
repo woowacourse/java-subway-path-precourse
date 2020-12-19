@@ -1,15 +1,21 @@
 package subway.domain;
 
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Line {
     private String name;
+    private List<Station> stations;
     private WeightedMultigraph<Station, DefaultWeightedEdge> distancePath;
     private WeightedMultigraph<Station, DefaultWeightedEdge> timePath;
 
     public Line(String name) {
         this.name = name;
+        this.stations = new ArrayList<>();
         this.distancePath = new WeightedMultigraph(DefaultWeightedEdge.class);
         this.timePath = new WeightedMultigraph(DefaultWeightedEdge.class);
     }
@@ -19,6 +25,7 @@ public class Line {
     }
 
     public void addStation(Station station) {
+        this.stations.add(station);
         this.distancePath.addVertex(station);
         this.timePath.addVertex(station);
     }
@@ -28,11 +35,33 @@ public class Line {
         this.timePath.setEdgeWeight(this.timePath.addEdge(start, end), time);
     }
 
-    public WeightedMultigraph<Station, DefaultWeightedEdge> getDistancePath() {
-        return distancePath;
+    public double getTotalTime(Station start, Station end) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(this.timePath);
+        return dijkstraShortestPath.getPathWeight(start, end);
     }
 
-    public WeightedMultigraph<Station, DefaultWeightedEdge> getTimePath() {
-        return timePath;
+    public double getTotalDistance(Station start, Station end) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(this.distancePath);
+        return dijkstraShortestPath.getPathWeight(start, end);
+    }
+
+    public List<String> getShortestDistancePath(Station start, Station end) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(this.distancePath);
+        return dijkstraShortestPath.getPath(start, end).getVertexList();
+    }
+
+    public List<String> getMinimumTimePath(Station start, Station end) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(this.timePath);
+        return dijkstraShortestPath.getPath(start, end).getVertexList();
+    }
+
+    public boolean hasTwoStations(Station start, Station end) {
+        boolean startStation = this.stations.stream()
+                .anyMatch(station -> station.getName().equals(start.getName()));
+
+        boolean endStation = this.stations.stream()
+                .anyMatch(station -> station.getName().equals(end.getName()));
+
+        return startStation && endStation;
     }
 }
