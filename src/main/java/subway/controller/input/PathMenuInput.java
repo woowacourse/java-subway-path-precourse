@@ -10,7 +10,7 @@ public class PathMenuInput extends InputController {
 	}
 	
 	@Override
-	protected void validateInput() {
+	protected void validateInput() throws IllegalArgumentException {
 		InputValidator.validatePathMenuInput(userInput);
 	}
 	

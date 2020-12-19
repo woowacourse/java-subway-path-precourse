@@ -28,4 +28,8 @@ public class StationRepository {
         return stations.stream().filter(station ->
             station.getName().equals(name)).findAny().orElse(null);
     }
+    
+    public static boolean findByName(String name) {
+        return stations.stream().anyMatch(station -> station.getName().equals(name));
+    }
 }
