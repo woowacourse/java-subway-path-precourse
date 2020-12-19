@@ -15,7 +15,7 @@ import java.util.List;
 public class PathService {
     private SectionService sectionService;
 
-    public PathService(){
+    public PathService() {
         this.sectionService = new SectionService();
     }
 

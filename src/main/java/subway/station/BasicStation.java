@@ -1,8 +1,5 @@
 package subway.station;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public enum BasicStation {
     GYODAE("교대역"),
     GANGNAM("강남역"),

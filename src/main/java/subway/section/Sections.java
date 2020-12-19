@@ -6,7 +6,7 @@ public class Sections {
     private List<Section> sections;
 
     public Sections(List<Section> sections) {
-        this.sections =  sections;
+        this.sections = sections;
     }
 
     public List<Section> getSections() {
