@@ -3,6 +3,22 @@
 
 # CHANGELOG
 
+
+## [4.0.0] feat(Presenter.java): add resultInfo feature
+
+Upload files:
+
+    - Presenter.java
+        : A class printing informations
+            - resultInfo() : prints path information
+
+    - SubwayPath.java
+        : dividing responsibility about Graph from SubwayController
+
+Add Presenter class and SubwayPath
+
+---
+
 ## [3.1.0] feat(SubwayController.java): add getShortestPathTime feature
 
 Update files:
