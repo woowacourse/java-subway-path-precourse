@@ -1,10 +1,12 @@
 package subway.controller;
 
+import subway.domain.SubwayMap;
 import subway.view.InputView;
 import subway.view.Options;
 import subway.view.OutputView;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.function.Consumer;
@@ -22,12 +24,14 @@ public class PathController {
 		// TODO
 		String start = InputView.inputStartStation(scanner);
 		String end = InputView.inputEndStation(scanner, start);
+		SubwayMap.getLeastDistancePath(start, end);
 	}
 
 	private static void findLeastTimeConsumed(Scanner scanner) throws IllegalArgumentException {
 		// TODO
 		String start = InputView.inputStartStation(scanner);
 		String end = InputView.inputEndStation(scanner, start);
+		List<String> shortestPath = SubwayMap.getLeastDistancePath(start, end);
 	}
 
 	private static void controlByOption(String option, Scanner scanner) throws IllegalArgumentException {
