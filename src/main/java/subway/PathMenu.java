@@ -41,7 +41,15 @@ public class PathMenu {
     private static void execute(String command, Scanner scanner) throws IllegalArgumentException {
         String startStation = getStartStation(scanner);
         String endStation = getEndStation(scanner, startStation);
+        List<String> shortestPath = PathFinder.getShortestPath(command, startStation, endStation);
+        showResults(shortestPath);
     }
+
+    private static void showResults(List<String> shortestPath) {
+        int totalDistance = PathFinder.getTotalDistance(shortestPath);
+        int totalTime = PathFinder.getTotalTime(shortestPath);
+    }
+
 
     private static String getEndStation(Scanner scanner, String startStation) {
         System.out.println("## 출발역을 입력하세요.");

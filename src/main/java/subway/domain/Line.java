@@ -18,5 +18,7 @@ public class Line {
         this.edgesAndWeights = edgesAndWeights;
     }
 
-    // 추가 기능 구현
+    public List<String[]> getEdgesAndWeights() {
+        return edgesAndWeights;
+    }
 }

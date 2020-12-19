@@ -1,6 +1,7 @@
 package subway;
 
 import subway.domain.Line;
+import subway.domain.LineRepository;
 import subway.domain.Station;
 import subway.domain.StationRepository;
 
@@ -25,10 +26,13 @@ public class Application {
     private static void initializeLineRepository() {
         Line line2 = new Line("2호선");
         initializeLine2EdgesAndWeights(line2);
+        LineRepository.addLine(line2);
         Line line3 = new Line("3호선");
         initializeLine3EdgesAndWeights(line3);
+        LineRepository.addLine(line3);
         Line sinbundangLine = new Line("신분당선");
         initializeSinbundangLineEdgesAndWeights(sinbundangLine);
+        LineRepository.addLine(sinbundangLine);
     }
 
     private static void initializeSinbundangLineEdgesAndWeights(Line sinbundangLine) {
