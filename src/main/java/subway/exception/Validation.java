@@ -1,8 +1,6 @@
 package subway.exception;
 
-import subway.model.domain.LineRepository;
 import subway.model.domain.Station;
-import subway.model.domain.Line;
 import subway.model.domain.StationRepository;
 
 import java.util.Arrays;
@@ -10,7 +8,6 @@ import java.util.List;
 
 public class Validation {
     private final String NULL_STATION = "등록되지 않은 역입니다.";
-    private final String NULL_LINE = "등록되지 않은 노선입니다.";
     private final String OPTION_RULE = "올바른 번호를 입력해 주세요.";
     private final String[] OPTION_MAIN = {"1", "Q", "q"};
     private final String[] OPTION_PATH_FINDER = {"1", "2", "B", "b"};

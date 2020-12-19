@@ -21,9 +21,9 @@ public class OutputView {
         System.out.println(outputMessages.SELECT_OPTION);
     }
 
-    public void mapView() {
-        System.out.println(outputMessages.MAP_VIEW);
-        String[] messages = outputMessages.MAP_OPTIONS;
+    public void pathFindView() {
+        System.out.println(outputMessages.PATHFIND_VIEW);
+        String[] messages = outputMessages.PATHFIND_OPTONS;
         for (String message : messages) {
             System.out.println(message);
         }

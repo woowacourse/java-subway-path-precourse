@@ -9,18 +9,18 @@ import subway.model.domain.TimeRepository;
 import java.util.List;
 
 public class PathFinder {
-    public static List<String> getShortestPathByDistance(String from, String to) {
+    public static List<String> getShortestPathByDistance(String start, String arrive){
         WeightedMultigraph<String, DefaultWeightedEdge> graph = DistanceRepository.distanceGraph();
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
-        List<String> shortestPath = dijkstraShortestPath.getPath(from, to).getVertexList();
+        List<String> shortestPath = dijkstraShortestPath.getPath(start, arrive).getVertexList();
         shortestPath = shortestPath;
         return shortestPath;
     }
 
-    public static List<String> getShortestPathByTime(String from, String to) {
+    public static List<String> getShortestPathByTime(String start, String arrive) {
         WeightedMultigraph<String, DefaultWeightedEdge> graph = TimeRepository.timeGraph();
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
-        List<String> shortestPath = dijkstraShortestPath.getPath(from, to).getVertexList();
+        List<String> shortestPath = dijkstraShortestPath.getPath(start, arrive).getVertexList();
         return shortestPath;
     }
 

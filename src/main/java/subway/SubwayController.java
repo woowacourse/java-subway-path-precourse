@@ -44,7 +44,7 @@ public class SubwayController {
     }
 
     public void startPathFind() {
-        outputView.mapView();
+        outputView.pathFindView();
         outputView.getUserOption();
         String option = inputView.userInput();
         try {
