@@ -12,4 +12,13 @@ public class InputView {
         Validate.matchWithRegex(regex, userInput);
         return userInput;
     }
+
+    public static String askStartStation(Scanner scanner) {
+        System.out.println("\n## 출발역을 입력하세요.");
+        String userInput = scanner.nextLine().trim();
+        return userInput;
+//        Validate.existStation(userInput);
+    }
+
+
 }

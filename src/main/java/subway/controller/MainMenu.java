@@ -19,8 +19,8 @@ public class MainMenu {
     public void run() {
         String userInput = askValidMenuNumber();
         if (userInput.equals("1")) {
-            PathFinder pathFinder = new PathFinder(scanner);
-            pathFinder.run();
+            PathFinderMenu pathFinderMenu = new PathFinderMenu(scanner);
+            pathFinderMenu.run();
         }
 
     }

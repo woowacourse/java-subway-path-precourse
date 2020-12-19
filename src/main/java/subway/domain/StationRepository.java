@@ -43,4 +43,12 @@ public class StationRepository {
         System.out.println(sb);
     }
 
+    public static boolean existStation(String name) {
+        for (Station station : stations) {
+            if (station.getName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

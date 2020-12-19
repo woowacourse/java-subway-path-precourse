@@ -6,20 +6,24 @@ import subway.view.OutputView;
 
 import java.util.Scanner;
 
-public class PathFinder {
+public class PathFinderMenu {
     public static final String REGEX_VALID_PATH_FINDER_MENU = "[1-2Bb]";
     private final Scanner scanner;
 
-    public PathFinder(Scanner scanner) {
+    public PathFinderMenu(Scanner scanner) {
         this.scanner = scanner;
     }
 
     public void run() {
         String userInput = askValidMenuNumber();
+        if (userInput.equals("1")) {
+            ShortestPathFinder shortestPathFinder = new ShortestPathFinder(scanner);
+            shortestPathFinder.run();
+        }
     }
 
     private String askValidMenuNumber() {
-        OutputView.pathfiner();
+        OutputView.pathfinerMenu();
         try {
             return InputView.askMenu(scanner, REGEX_VALID_PATH_FINDER_MENU);
         } catch (CustomException exception) {
