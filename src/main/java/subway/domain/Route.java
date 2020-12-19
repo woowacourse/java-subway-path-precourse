@@ -12,7 +12,6 @@ public class Route {
     private static WeightedMultigraph<Station, DefaultWeightedEdge> distanceGraph = new WeightedMultigraph(DefaultWeightedEdge.class);
     private static WeightedMultigraph<Station, DefaultWeightedEdge> timeGraph = new WeightedMultigraph(DefaultWeightedEdge.class);
     
-    
     public static void initializeDistanceGraph() {
         addVertex(distanceGraph);
         addDistanceEdges();
@@ -30,30 +29,30 @@ public class Route {
     }
     
     public static void addDistanceEdges() {
-       for (Line line : LineRepository.lines()) {
+        for (Line line : LineRepository.lines()) {
             for (Section section : line.sections()) {
-            	distanceGraph.setEdgeWeight(distanceGraph.addEdge(section.getUpStation(), section.getDownStation()), section.getDistance());
+                distanceGraph.setEdgeWeight(distanceGraph.addEdge(section.getUpStation(), section.getDownStation()), section.getDistance());
             }
         }
     }
     
     public static void addTimeEdges() {
         for (Line line : LineRepository.lines()) {
-             for (Section section : line.sections()) {
-             	timeGraph.setEdgeWeight(timeGraph.addEdge(section.getUpStation(), section.getDownStation()), section.getTime());
-             }
+            for (Section section : line.sections()) {
+                timeGraph.setEdgeWeight(timeGraph.addEdge(section.getUpStation(), section.getDownStation()), section.getTime());
+            }
          }
      }
     
     public static List<Station> getShortestDistanceRoute(Station departureStation, Station arrivalStation) {
-    	initializeDistanceGraph();
+        initializeDistanceGraph();
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(distanceGraph);
         List<Station> shortestDistancePath = dijkstraShortestPath.getPath(departureStation, arrivalStation).getVertexList();
         return shortestDistancePath;
     }
     
     public static List<Station> getShortestTimeRoute(Station departureStation, Station arrivalStation) {
-    	initializeTimeGraph();
+        initializeTimeGraph();
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(timeGraph);
         List<Station> shortestTimePath = dijkstraShortestPath.getPath(departureStation, arrivalStation).getVertexList();
         return shortestTimePath;
