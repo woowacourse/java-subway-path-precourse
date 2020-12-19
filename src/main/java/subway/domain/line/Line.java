@@ -1,5 +1,6 @@
 package subway.domain.line;
 
+import java.util.ArrayList;
 import java.util.List;
 import subway.domain.section.Section;
 import subway.domain.station.Station;
@@ -11,8 +12,8 @@ public class Line {
 
     public Line(String name, List<Station> stations, List<Section> sections) {
         this.name = name;
-        this.stations = stations;
-        this.sections = sections;
+        this.stations = new ArrayList<>(stations);
+        this.sections = new ArrayList<>(sections);
     }
 
     public String getName() {
