@@ -1,21 +1,28 @@
 package subway;
 
-import subway.view.MainView;
-import subway.view.RouteLookupView;
+import subway.view.MainViewState;
+import subway.view.RouteLookupViewState;
+import subway.view.ViewState;
 
 import java.util.Scanner;
 
 public class SubwayPath {
-    public MainView mainView;
-    public RouteLookupView routeLookupView;
+    private ViewState viewState;
 
     public SubwayPath(Scanner scanner) {
-        mainView = new MainView(scanner);
-        routeLookupView = new RouteLookupView(scanner);
+        MainViewState.initializeMainView(scanner);
+        RouteLookupViewState.initializeRouteLookupView(scanner);
+        viewState = MainViewState.getMainView();
+    }
+
+    public void setViewState(ViewState viewState) {
+        this.viewState = viewState;
     }
 
     public void run() {
-//        mainView.render();
-        routeLookupView.render();
+        boolean isContinuing = true;
+        while (isContinuing) {
+            isContinuing = viewState.render(this);
+        }
     }
 }
