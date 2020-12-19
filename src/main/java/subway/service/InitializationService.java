@@ -1,6 +1,7 @@
 package subway.service;
 
 import subway.domain.Line;
+import subway.domain.LineRepository;
 import subway.domain.Station;
 import subway.domain.StationRepository;
 
@@ -33,6 +34,7 @@ public class InitializationService {
 
         lineTwo.addPathInformation(StationRepository.findStationByName(stationNames.get(0)), StationRepository.findStationByName(stationNames.get(1)), 2, 3);
         lineTwo.addPathInformation(StationRepository.findStationByName(stationNames.get(1)), StationRepository.findStationByName(stationNames.get(2)), 2, 3);
+        LineRepository.addLine(lineTwo);
     }
 
     private static void addLineThree(String lineName) {
@@ -45,6 +47,7 @@ public class InitializationService {
         lineThree.addPathInformation(StationRepository.findStationByName(stationNames.get(0)), StationRepository.findStationByName(stationNames.get(3)), 3, 2);
         lineThree.addPathInformation(StationRepository.findStationByName(stationNames.get(3)), StationRepository.findStationByName(stationNames.get(4)), 6, 5);
         lineThree.addPathInformation(StationRepository.findStationByName(stationNames.get(4)), StationRepository.findStationByName(stationNames.get(6)), 1, 1);
+        LineRepository.addLine(lineThree);
     }
 
     private static void addLineSinbundang(String lineName) {
@@ -55,6 +58,7 @@ public class InitializationService {
 
         lineFour.addPathInformation(StationRepository.findStationByName(stationNames.get(1)), StationRepository.findStationByName(stationNames.get(4)), 2, 8);
         lineFour.addPathInformation(StationRepository.findStationByName(stationNames.get(4)), StationRepository.findStationByName(stationNames.get(5)), 10, 3);
+        LineRepository.addLine(lineFour);
     }
 }
 
