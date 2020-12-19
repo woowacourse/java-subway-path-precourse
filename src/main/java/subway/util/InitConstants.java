@@ -17,5 +17,9 @@ public class InitConstants {
         "신분당선", new ArrayList<>(Arrays.asList("강남역", "양재역", "양재시민의숲역"))
     );
 
+    public final static Map<String, List<List<String>>> PATH_LIST = Map.of(
+
+    );
+
 
 }

@@ -39,81 +39,86 @@ public class Subway {
     }
 
     private void loadInitDistanceData() {
-        distancePathRepository
-            .addNewLine(lineRepository.findByName("2호선"), InitConstants.SECTION_LIST.get("2호선"));
+        for (String line : InitConstants.LINE_LIST) {
+            distancePathRepository
+                .addNewLine(lineRepository.findByName(line), InitConstants.SECTION_LIST.get(line));
+        }
 
-        distancePathRepository
-            .addNewLine(lineRepository.findByName("3호선"), InitConstants.SECTION_LIST.get("3호선"));
-
-        distancePathRepository
-            .addNewLine(lineRepository.findByName("신분당선"), InitConstants.SECTION_LIST.get("신분당선"));
-
-        distancePathRepository.addEdgeWeight(lineRepository.findByName("2호선"),
+        distancePathRepository.addEdgeWeight(
+            lineRepository.findByName("2호선"),
             stationRepository.findByName("교대역"),
             stationRepository.findByName("강남역"), 2);
 
-        distancePathRepository.addEdgeWeight(lineRepository.findByName("2호선"),
+        distancePathRepository.addEdgeWeight(
+            lineRepository.findByName("2호선"),
             stationRepository.findByName("강남역"),
             stationRepository.findByName("역삼역"), 2);
 
-        distancePathRepository.addEdgeWeight(lineRepository.findByName("3호선"),
+        distancePathRepository.addEdgeWeight(
+            lineRepository.findByName("3호선"),
             stationRepository.findByName("교대역"),
             stationRepository.findByName("남부터미널역"), 3);
 
-        distancePathRepository.addEdgeWeight(lineRepository.findByName("3호선"),
+        distancePathRepository.addEdgeWeight(
+            lineRepository.findByName("3호선"),
             stationRepository.findByName("남부터미널역"),
             stationRepository.findByName("양재역"), 6);
 
-        distancePathRepository.addEdgeWeight(lineRepository.findByName("3호선"),
+        distancePathRepository.addEdgeWeight(
+            lineRepository.findByName("3호선"),
             stationRepository.findByName("양재역"),
             stationRepository.findByName("매봉역"), 1);
 
-        distancePathRepository.addEdgeWeight(lineRepository.findByName("신분당선"),
+        distancePathRepository.addEdgeWeight(
+            lineRepository.findByName("신분당선"),
             stationRepository.findByName("강남역"),
             stationRepository.findByName("양재역"), 2);
 
-        distancePathRepository.addEdgeWeight(lineRepository.findByName("신분당선"),
+        distancePathRepository.addEdgeWeight(
+            lineRepository.findByName("신분당선"),
             stationRepository.findByName("양재역"),
             stationRepository.findByName("양재시민의숲역"), 10);
 
     }
 
     private void loadInitTimeData() {
+        for (String line : InitConstants.LINE_LIST) {
+            timePathRepository
+                .addNewLine(lineRepository.findByName(line), InitConstants.SECTION_LIST.get(line));
+        }
 
-        timePathRepository
-            .addNewLine(lineRepository.findByName("2호선"), InitConstants.SECTION_LIST.get("2호선"));
-
-        timePathRepository
-            .addNewLine(lineRepository.findByName("3호선"), InitConstants.SECTION_LIST.get("3호선"));
-
-        timePathRepository
-            .addNewLine(lineRepository.findByName("신분당선"), InitConstants.SECTION_LIST.get("신분당선"));
-
-        timePathRepository.addEdgeWeight(lineRepository.findByName("2호선"),
+        timePathRepository.addEdgeWeight(
+            lineRepository.findByName("2호선"),
             stationRepository.findByName("교대역"),
             stationRepository.findByName("강남역"), 3);
 
-        timePathRepository.addEdgeWeight(lineRepository.findByName("2호선"),
+        timePathRepository.addEdgeWeight(
+            lineRepository.findByName("2호선"),
             stationRepository.findByName("강남역"),
             stationRepository.findByName("역삼역"), 3);
 
-        timePathRepository.addEdgeWeight(lineRepository.findByName("3호선"),
+        timePathRepository.addEdgeWeight(
+            lineRepository.findByName("3호선"),
             stationRepository.findByName("교대역"),
             stationRepository.findByName("남부터미널역"), 2);
 
-        timePathRepository.addEdgeWeight(lineRepository.findByName("3호선"),
+        timePathRepository.addEdgeWeight(
+            lineRepository.findByName("3호선"),
             stationRepository.findByName("남부터미널역"),
             stationRepository.findByName("양재역"), 5);
 
-        timePathRepository.addEdgeWeight(lineRepository.findByName("3호선"),
+        timePathRepository.addEdgeWeight(
+            lineRepository.findByName("3호선"),
             stationRepository.findByName("양재역"),
             stationRepository.findByName("매봉역"), 1);
 
-        timePathRepository.addEdgeWeight(lineRepository.findByName("신분당선"),
+        timePathRepository.addEdgeWeight(
+            lineRepository.findByName("신분당선"),
             stationRepository.findByName("강남역"),
             stationRepository.findByName("양재역"), 8);
 
-        timePathRepository.addEdgeWeight(lineRepository.findByName("신분당선"),
+        timePathRepository.addEdgeWeight(
+            lineRepository.findByName("신분당선"),
             stationRepository.findByName("양재역"),
             stationRepository.findByName("양재시민의숲역"), 3);
 

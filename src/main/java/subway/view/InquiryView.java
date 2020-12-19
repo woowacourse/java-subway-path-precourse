@@ -45,38 +45,57 @@ public class InquiryView {
     }
 
     private void showShortestDistance() {
-        String startStationName = DialogUtils.ask(scanner, Constants.INQUIRY_START_STATION_ASK);
-        String endStationName = DialogUtils.ask(scanner, Constants.INQUIRY_END_STATION_ASK);
-        MessageUtils.printAnnouncement(Constants.INQUIRY_RESULT);
-        MessageUtils.printInfoEntry(Constants.SEPARATE_STRING_INQUIRY);
-        MessageUtils
-            .printInfoEntry(Constants.INQUIRY_DISTANCE +
-                getShortestDistance(startStationName, endStationName)
-                + Constants.INQUIRY_DISTANCE_UNIT);
-        List wholePath = getStationsByDistancePath(startStationName, endStationName);
-        MessageUtils.printInfoEntry(
-            Constants.INQUIRY_TIME +
-                getTimeByDistancePath(wholePath) + Constants.INQUIRY_TIME_UNIT);
-        MessageUtils.printInfoEntry(Constants.SEPARATE_STRING_INQUIRY);
-        wholePath.stream().forEach(name -> MessageUtils.printInfoEntry((String) name));
-        MessageUtils.printBlankLine();
+        try {
+            Map<String, String> station = inputStartAndEndStation(scanner);
+            MessageUtils.printAnnouncement(Constants.INQUIRY_RESULT);
+            MessageUtils.printInfoEntry(Constants.SEPARATE_STRING_INQUIRY);
+            showDistance(getShortestDistance(station.get("start"), station.get("end")));
+            List wholePath = getStationsByDistancePath(station.get("start"), station.get("end"));
+            showTime(getTimeByDistancePath(wholePath));
+            MessageUtils.printInfoEntry(Constants.SEPARATE_STRING_INQUIRY);
+            wholePath.stream().forEach(name -> MessageUtils.printInfoEntry((String) name));
+            MessageUtils.printBlankLine();
+        } catch (Exception e) {
+            MessageUtils.printError(e.getMessage());
+        }
     }
 
     private void showMinimumTime() {
-        String startStationName = DialogUtils.ask(scanner, Constants.INQUIRY_START_STATION_ASK);
-        String endStationName = DialogUtils.ask(scanner, Constants.INQUIRY_END_STATION_ASK);
-        MessageUtils.printAnnouncement(Constants.INQUIRY_RESULT);
-        MessageUtils.printInfoEntry(Constants.SEPARATE_STRING_INQUIRY);
-        List wholePath = getStationsByTimePath(startStationName, endStationName);
+        try {
+            Map<String, String> station = inputStartAndEndStation(scanner);
+            MessageUtils.printAnnouncement(Constants.INQUIRY_RESULT);
+            MessageUtils.printInfoEntry(Constants.SEPARATE_STRING_INQUIRY);
+            List wholePath = getStationsByTimePath(station.get("start"), station.get("end"));
+            showDistance(getDistanceByTimePath(wholePath));
+            showTime(getMinimumTime(station.get("start"), station.get("end")));
+            MessageUtils.printInfoEntry(Constants.SEPARATE_STRING_INQUIRY);
+            wholePath.stream().forEach(name -> MessageUtils.printInfoEntry((String) name));
+            MessageUtils.printBlankLine();
+        } catch (Exception e) {
+            MessageUtils.printError(e.getMessage());
+        }
+    }
+
+    private void showTime(int time) {
         MessageUtils.printInfoEntry(
-            Constants.INQUIRY_DISTANCE +
-                getDistanceByTimePath(wholePath) + Constants.INQUIRY_DISTANCE_UNIT);
-        MessageUtils
-            .printInfoEntry(Constants.INQUIRY_TIME +
-                getMinimumTime(startStationName, endStationName) + Constants.INQUIRY_TIME_UNIT);
-        MessageUtils.printInfoEntry(Constants.SEPARATE_STRING_INQUIRY);
-        wholePath.stream().forEach(name -> MessageUtils.printInfoEntry((String) name));
-        MessageUtils.printBlankLine();
+            Constants.INQUIRY_TIME + time + Constants.INQUIRY_TIME_UNIT);
+
+    }
+
+    private void showDistance(int distance) {
+        MessageUtils.printInfoEntry(
+            Constants.INQUIRY_DISTANCE + distance + Constants.INQUIRY_DISTANCE_UNIT);
+    }
+
+    private Map<String, String> inputStartAndEndStation(Scanner scanner) {
+        String startStationName = getStationNameOrThrow(
+            DialogUtils.ask(scanner, Constants.INQUIRY_START_STATION_ASK));
+        String endStationName = getStationNameOrThrow(
+            DialogUtils.ask(scanner, Constants.INQUIRY_END_STATION_ASK));
+        checkDuplicateStationName(startStationName, endStationName);
+        return Map.of(
+            "start", startStationName,
+            "end", endStationName);
     }
 
     private int getShortestDistance(String startStationName, String endStationName) {
@@ -134,6 +153,21 @@ public class InquiryView {
                 subway.getStationRepository().findByName(startStationName),
                 subway.getStationRepository().findByName(endStationName));
         return stations;
+    }
+
+    private String getStationNameOrThrow(String stationName) {
+        Station station = subway.getStationRepository().findByName(stationName);
+        if (station == null) {
+            throw new RuntimeException(Constants.INVALID_STATION);
+        }
+        return station.getName();
+    }
+
+    private void checkDuplicateStationName(String startName, String endName) {
+        if (subway.getStationRepository().findByName(startName)
+            .equals(subway.getStationRepository().findByName(endName))) {
+            throw new RuntimeException(Constants.INVALID_START_TO_END_STATION);
+        }
     }
 
     private void menuSelector() {
