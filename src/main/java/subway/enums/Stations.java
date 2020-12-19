@@ -24,7 +24,7 @@ public enum Stations {
         return name;
     }
 
-    public void initializeStations() {
+    public static void initializeStations() {
         Arrays.stream(Stations.values())
                 .map(Stations::getName)
                 .map(Station::new)

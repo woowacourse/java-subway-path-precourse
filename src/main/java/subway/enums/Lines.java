@@ -20,7 +20,7 @@ public enum Lines {
         return name;
     }
 
-    public void initializeLines() {
+    public static void initializeLines() {
         Arrays.stream(Lines.values())
                 .map(Lines::getName)
                 .map(Line::new)
