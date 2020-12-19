@@ -28,7 +28,14 @@ public class StationRepository {
     }
 
     public static void addStation(Station station) {
+        validateDuplicate(station);
         stations.add(station);
+    }
+
+    private static void validateDuplicate(Station station) {
+        if (stations.stream().anyMatch(s->s.getName().equals(station.getName()))) {
+            throw new IllegalArgumentException("이미 같은 이름의 지하철 역이 등록되어 있습니다.");
+        }
     }
 
     public static boolean deleteStation(String name) {

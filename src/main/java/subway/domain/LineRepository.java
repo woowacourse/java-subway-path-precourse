@@ -7,10 +7,10 @@ import java.util.Objects;
 
 public class LineRepository {
 
-    private LineRepository(){
-    }
-
     private static final List<Line> lines = new ArrayList<>();
+
+    private LineRepository() {
+    }
 
     public static void initLineRepository() {
         lines.add(Line.newLineWithName("2호선"));
@@ -23,7 +23,14 @@ public class LineRepository {
     }
 
     public static void addLine(Line line) {
+        validateDuplicate(line);
         lines.add(line);
+    }
+
+    private static void validateDuplicate(Line line) {
+        if (lines.stream().anyMatch(l->l.getName().equals(line.getName()))) {
+            throw new IllegalArgumentException("이미 같은 이름의 지하철 노선이 등록되어 있습니다.");
+        }
     }
 
     public static boolean deleteLineByName(String name) {
