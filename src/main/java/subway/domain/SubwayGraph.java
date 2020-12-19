@@ -25,11 +25,12 @@ public class SubwayGraph {
 
     private static void setEdgeWeight(Edge edge) {
         distanceWeightGraph.setEdgeWeight(distanceWeightGraph.addEdge(edge.getFrom(), edge.getTo()), edge.getDistance());
-        timeWeightGraph.setEdgeWeight(distanceWeightGraph.addEdge(edge.getFrom(), edge.getTo()), edge.getTime());
+        timeWeightGraph.setEdgeWeight(timeWeightGraph.addEdge(edge.getFrom(), edge.getTo()), edge.getTime());
     }
 
     public static List<Station> getTimeShortestPath(Station from, Station to) {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(timeWeightGraph);
+        System.out.println(dijkstraShortestPath.getPath(from, to));
         return dijkstraShortestPath.getPath(from, to).getVertexList();
     }
 
