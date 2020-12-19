@@ -21,10 +21,10 @@ public class DataInitService {
     }
 
     private static void addStation() {
-        String[] StationNames = {GYODAE_STATION, GANGNAM_STATION, YEOKSAM_STATION,
+        String[] stationNames = {GYODAE_STATION, GANGNAM_STATION, YEOKSAM_STATION,
             SOUTH_TERMIANL_STATION, YANGJAE_STATION, YANGJAE_CITIZEN_FOREST_STATION,
             MAEBONG_STATION};
-        for (String stationName : StationNames) {
+        for (String stationName : stationNames) {
             StationService.addStation(stationName);
         }
     }
