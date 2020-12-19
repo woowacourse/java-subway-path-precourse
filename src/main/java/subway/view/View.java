@@ -2,10 +2,6 @@ package subway.view;
 
 import subway.domain.Line;
 
-import java.util.Scanner;
-
-import static subway.Application.startProgram;
-
 public class View {
     public static void showMainMenu() {
         System.out.println("\n## 메인 화면");

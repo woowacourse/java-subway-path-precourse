@@ -1,11 +1,7 @@
 package subway;
 
-import subway.domain.Constants;
-import subway.domain.Init;
-import subway.domain.Line;
-import subway.domain.LineRepository;
-import subway.view.InputView;
-import subway.view.View;
+import subway.domain.*;
+import subway.view.*;
 
 import java.util.List;
 import java.util.Scanner;
@@ -28,7 +24,7 @@ public class PathManage {
         try {
             String[] stations = InputView.inputSrcDest(kbd);
             List<String> shortestPath = Init.dijkstraDistance.getPath(stations[0], stations[1]).getVertexList();
-            getMinPath(Constants.PATH_DISTANCE, shortestPath, getMinValue(stations));
+            showMinPath(Constants.PATH_DISTANCE, shortestPath, getMinValue(stations));
             startProgram(kbd);
         } catch (Exception e) {
             startProgram(kbd);
@@ -39,14 +35,14 @@ public class PathManage {
         try {
             String[] stations = InputView.inputSrcDest(kbd);
             List<String> shortestPath = Init.dijkstraTime.getPath(stations[0], stations[1]).getVertexList();
-            getMinPath(Constants.PATH_TIME, shortestPath, getMinValue(stations));
+            showMinPath(Constants.PATH_TIME, shortestPath, getMinValue(stations));
             startProgram(kbd);
         } catch (Exception e) {
             startProgram(kbd);
         }
     }
 
-    public static void getMinPath(String name, List<String> path, int[] values) {
+    public static void showMinPath(String name, List<String> path, int[] values) {
         Line minPath = new Line(name);
         LineRepository.addLine(minPath, path);
         View.displayPath(minPath, values[0], values[1]);

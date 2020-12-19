@@ -15,10 +15,6 @@ public class LineRepository {
     public static void addLine(Line line, List<String> names) {
         for (int i = 1; i <= names.size(); i++)
             line.addStation(i, names.get(i-1));
-//        for (int i = 0; i < distances.size(); i++) {
-//            line.addDistances(i, distances.get(i));
-//            line.addTimes(i, times.get(i));
-//        }
         lines.add(line);
     }
 
