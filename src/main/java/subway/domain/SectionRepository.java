@@ -8,6 +8,9 @@ import subway.service.StationService;
 
 public class SectionRepository {
 
+    private SectionRepository(){
+    }
+
     private static final List<Section> sections = new ArrayList<>();
 
     public static void initSectionRepository() {

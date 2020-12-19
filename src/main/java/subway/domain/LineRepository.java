@@ -7,6 +7,9 @@ import java.util.Objects;
 
 public class LineRepository {
 
+    private LineRepository(){
+    }
+
     private static final List<Line> lines = new ArrayList<>();
 
     public static void initLineRepository() {

@@ -7,6 +7,9 @@ import org.jgrapht.graph.WeightedMultigraph;
 
 public class DistanceSectionRepository {
 
+    private DistanceSectionRepository(){
+    }
+
     private static final WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph(
         DefaultWeightedEdge.class);
 

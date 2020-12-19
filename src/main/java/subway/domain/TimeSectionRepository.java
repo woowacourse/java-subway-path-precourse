@@ -7,6 +7,9 @@ import org.jgrapht.graph.WeightedMultigraph;
 
 public class TimeSectionRepository {
 
+    private TimeSectionRepository(){
+    }
+
     private static final WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph(
         DefaultWeightedEdge.class);
 
