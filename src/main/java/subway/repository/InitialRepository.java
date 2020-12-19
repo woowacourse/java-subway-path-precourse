@@ -36,6 +36,8 @@ public class InitialRepository {
                 StationRepository.searchStation(stationNameFrom),
                 StationRepository.searchStation(stationNameTo),
                 distance, time);
+
+        SectionRepository.addSection(section);
         LineRepository.searchLine(line).addSection(section);
     }
 }
