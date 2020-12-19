@@ -3,6 +3,17 @@
 
 # CHANGELOG
 
+## [3.1.0] feat(SubwayController.java): add getShortestPathTime feature
+
+Update files:
+
+    - SubwayController.java
+            - getShortestPathTime() : returning the shortest time taken path
+
+Add a find the shortest time taken path feature
+
+---
+
 ## [3.0.0] feat(SubwayController.java): add getShortestPathDistance feature
 
 Update files:
