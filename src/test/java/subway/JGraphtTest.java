@@ -1,19 +1,18 @@
 package subway;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.util.List;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 import org.junit.jupiter.api.Test;
 
-public class JGraphtTest {
+import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+public class JGraphtTest {
     @Test
     public void getDijkstraShortestPath() {
-        WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph(
-                DefaultWeightedEdge.class);
+        WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
         graph.addVertex("v1");
         graph.addVertex("v2");
         graph.addVertex("v3");
