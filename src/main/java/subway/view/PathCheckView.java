@@ -7,6 +7,7 @@ public class PathCheckView extends SubwayPathManagerView {
 	private static final String FIRST_MENU_MESSAGE = "최단 거리";
 	private static final String SECOND_MENU_MESSAGE = "최소 시간";
 	private static final String BACK_MENU_MESSAGE = "돌아가기";
+	private static final String NOT_VALID_SELECT_MESSAGE = "잘못 입력하셨습니다. 다시 입력해주세요.";
 
 	public PathCheckView(Scanner scanner) {
 		print();
@@ -25,7 +26,10 @@ public class PathCheckView extends SubwayPathManagerView {
 		}
 		if (menuSelected.equals(BACK_MENU)) {
 			new MainView(scanner);
+			return;
 		}
+		printError(NOT_VALID_SELECT_MESSAGE);
+		new MainView(scanner);
 	}
 
 	@Override
