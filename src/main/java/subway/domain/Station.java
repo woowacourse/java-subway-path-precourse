@@ -11,5 +11,20 @@ public class Station {
         return name;
     }
 
-    // 추가 기능 구현
+    public boolean isName(String name) {
+        return this.name.equals(name);
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Station) {
+            return ((Station) o).name.equals(this.name);
+        }
+        return false;
+    }
 }
