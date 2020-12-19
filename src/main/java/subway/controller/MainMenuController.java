@@ -1,6 +1,5 @@
 package subway.controller;
 
-import subway.utils.MenuControllerValidator;
 import subway.view.InputView;
 import subway.view.OutputView;
 
@@ -27,7 +26,6 @@ public class MainMenuController extends MenuController {
             isRunning = false;
             return;
         }
-        MenuControllerValidator.validateDecision(decision, childControllers.size());
         runChildController(decision);
     }
 

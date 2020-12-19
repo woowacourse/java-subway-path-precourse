@@ -8,6 +8,10 @@ public class OutputView {
         printMenu(MenuMessage.MAIN_MENU);
     }
 
+    public static void printOptionMenu() {
+        printMenu(MenuMessage.OPTION_MENU);
+    }
+
     private static void printMenu(List<String> menuOptions) {
         System.out.println();
         menuOptions.forEach(System.out::println);

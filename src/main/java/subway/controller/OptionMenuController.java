@@ -1,6 +1,7 @@
 package subway.controller;
 
 import subway.view.InputView;
+import subway.view.OutputView;
 
 public class OptionMenuController extends MenuController {
 
@@ -10,6 +11,6 @@ public class OptionMenuController extends MenuController {
 
     @Override
     protected void printMenu() {
-
+        OutputView.printOptionMenu();
     }
 }
