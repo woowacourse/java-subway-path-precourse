@@ -43,4 +43,30 @@ public class Calculator {
             graph.setEdgeWeight(source.getName(), dest.getName(), path.getTime());
         }
     }
+
+    public static Result getShortestPathByDistance(Station source, Station dest) {
+        WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
+        initVertex(graph);
+        initEdgesByDistance(graph);
+
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
+        List<String> shortestPath = dijkstraShortestPath.getPath(source.getName(), dest.getName()).getVertexList();
+        return new Result(shortestPath);
+    }
+
+    private static void initEdgesByDistance(WeightedMultigraph graph) {
+        List<Station> stations = StationRepository.stations();
+        for (Station station : stations) {
+            List<Path> paths = PathRepository.findBySource(station);
+            initEdgeWeightByDistance(graph, paths);
+        }
+    }
+
+    private static void initEdgeWeightByDistance(WeightedMultigraph graph, List<Path> paths) {
+        for (Path path : paths) {
+            Station source = path.getSource();
+            Station dest = path.getDest();
+            graph.setEdgeWeight(source.getName(), dest.getName(), path.getDistance());
+        }
+    }
 }
