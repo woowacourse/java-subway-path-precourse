@@ -15,6 +15,8 @@ public class SubwayPathController {
     }
 
     public void run() {
-        mainMenu.runMainMenu();
+        while (true) {
+            mainMenu.runMenu();
+        }
     }
 }
