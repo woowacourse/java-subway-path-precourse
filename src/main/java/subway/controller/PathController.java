@@ -13,5 +13,27 @@ public class PathController {
 
     public void run() {
         OutputView.printPathScreen(SearchType.getInfos());
+        SearchType searchType = requestSearchNumber();
+        runDetailAction(searchType);
+    }
+
+    private SearchType requestSearchNumber() {
+        SearchType searchType = SearchType.BACK;
+
+        while(true) {
+            try {
+                searchType = inputView.inputSearchNumber();
+                break;
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                OutputView.printPathScreen(SearchType.getInfos());
+            }
+        }
+
+        return searchType;
+    }
+
+    private void runDetailAction(SearchType searchType) {
+        
     }
 }

@@ -1,6 +1,7 @@
 package subway.view;
 
 import subway.domain.CommandType;
+import subway.domain.SearchType;
 
 import java.util.Scanner;
 
@@ -18,6 +19,13 @@ public class InputView {
         String userMessage = inputWithTrimming();
         lineFeed();
         return CommandType.of(userMessage);
+    }
+
+    public SearchType inputSearchNumber() {
+        System.out.println(CHOICE_GUIDE_MESSAGE);
+        String userMessage = inputWithTrimming();
+        lineFeed();
+        return SearchType.of(userMessage);
     }
 
     private String inputWithTrimming() {
