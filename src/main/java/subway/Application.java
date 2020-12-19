@@ -7,16 +7,16 @@ public class Application {
 	static String select = null;
     public static void main(String[] args) {
         // TODO: 프로그램 구현    	
-    	/*while (true) {
+    	while (true) {
     		if (main_select_function()) {
     			break;
     		}
-    	}*/
-    	Path_function.initDistanceGraph();
+    	}
+    	//Path_function.shortestPathByTime("교대역", "양재역");
     }
     
     private static void print_main_menu() {
-    	System.out.println("## 메인 화면");
+    	System.out.println("\n## 메인 화면");
     	System.out.println("1. 경로 조회");
     	System.out.println("Q. 종료");
     	System.out.println("\n## 원하는 기능을 선택하세요.");
@@ -32,6 +32,7 @@ public class Application {
     	if (select.equals("Q")) {
     		return true;
     	}
+    	System.out.println("[ERROR] 잘못된 입력입니다. 다시 시도해주세요.");
     	return false;
     }
     
@@ -45,31 +46,40 @@ public class Application {
     }
     
     private static void lookup_path_function() {
-    	print_lookup_path();
-    	print_from_to();
+    	while (true) {
+    		print_lookup_path();
+    		if (print_from_to()) {
+    			break;
+    		}    			
+    	}
     }
     
     private static boolean print_from_to() {
     	System.out.println("\n## 출발역을 입력하세요.");
     	String from = scanner.next();    	
-    	System.out.println();
+    	System.out.println("\n## 도착역을 입력하세요.");
     	String to = scanner.next();
-    	return select_lookup_path_function(from, to);
-    }
-    
-    private static boolean select_lookup_path_function(String from, String to) {
+    	if (Path_function.check_isSame_from_to(from, to)) {
+    		System.out.println("[ERROR] 출발역과 도착역이 동일합니다.");
+    		return false;
+    	}
+    	return select_lookup_path_function(from, to);    	
+    }  
+        
+    private static boolean select_lookup_path_function(String from, String to) {    	
     	System.out.println("\n## 조회 결과");
     	if (select.equals("B")){
     		return true;
     	}
     	if (select.equals("1")) {
     		Path_function.shortestPathByDistance(from, to);
-    		return false;
+    		return true;
     	}
     	if (select.equals("2")) {
     		Path_function.shortestPathByTime(from, to);
-    		return false;
+    		return true;
     	}
+    	System.out.println("[ERROR] 잘못된 시도입니다. 다시 시도해 주세요.");
     	return false;
     }
 }
