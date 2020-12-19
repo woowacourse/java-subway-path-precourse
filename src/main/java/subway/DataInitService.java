@@ -16,8 +16,8 @@ public class DataInitService {
     private static final String LINE_SINBUNDANG = "신분당선";
 
     public static void init() {
-        //addStation();
-        //addLine();
+        addStation();
+        addLine();
     }
 
     private static void addStation() {
