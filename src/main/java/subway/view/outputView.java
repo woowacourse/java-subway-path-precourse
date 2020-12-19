@@ -4,7 +4,6 @@ import static subway.common.Logger.guidePrint;
 import static subway.common.Logger.infoPrint;
 
 import java.util.List;
-import subway.domain.Station;
 
 public class OutputView {
 
@@ -35,6 +34,5 @@ public class OutputView {
 		for (String stationName : totalRoute) {
 			infoPrint(stationName);
 		}
-		System.out.println();
 	}
 }
