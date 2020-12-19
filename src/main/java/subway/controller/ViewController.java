@@ -1,21 +1,21 @@
 package subway.controller;
 
-import java.util.function.Consumer;
+import java.util.function.BiConsumer;
 import subway.Scene;
 import subway.view.View;
 
 public abstract class ViewController {
-    View view;
+    protected View view;
     
     public ViewController() {
     }
     
-    abstract public Consumer<Scene> selectMenu();
+    abstract public BiConsumer<Scene, View> selectMenu();
     
     public void run (Scene scene) {
-        Consumer<Scene> action = selectMenu();
+        BiConsumer<Scene, View> action = selectMenu();
         if (action != null) {
-            action.accept(scene);
+            action.accept(scene, view);;
         }
     }
 }

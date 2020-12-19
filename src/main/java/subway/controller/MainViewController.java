@@ -2,11 +2,12 @@ package subway.controller;
 
 import java.io.PrintStream;
 import java.util.Scanner;
-import java.util.function.Consumer;
+import java.util.function.BiConsumer;
 import subway.Error;
 import subway.Scene;
 import subway.menu.MainMenu;
 import subway.view.MainView;
+import subway.view.View;
 
 public class MainViewController extends ViewController{ 
     
@@ -15,20 +16,20 @@ public class MainViewController extends ViewController{
     }
 
     @Override
-    public Consumer<Scene> selectMenu() {
+    public BiConsumer<Scene, View> selectMenu() {
         String input = view.requestMenu();
-        Consumer<Scene> result = MainMenu.getAction(input);
+        BiConsumer<Scene, View> result = MainMenu.getAction(input);
         if (result == null) {
             view.printError(Error.INVALID_MENU);
         }
         return result;
     }
     
-    public static void goSectionView(Scene scene) {
+    public static void goSectionView(Scene scene, View view) {
         scene.goView(new SectionViewController(scene.getScanner(), scene.getPrinstream()));
     }
     
-    public static void exit(Scene scene) {
+    public static void exit(Scene scene, View view) {
         scene.exit();
     }
 }

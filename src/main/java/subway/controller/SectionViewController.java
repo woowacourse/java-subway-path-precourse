@@ -2,11 +2,14 @@ package subway.controller;
 
 import java.io.PrintStream;
 import java.util.Scanner;
-import java.util.function.Consumer;
+import java.util.function.BiConsumer;
 import subway.Error;
 import subway.Scene;
+import subway.domain.Station;
+import subway.domain.StationRepository;
 import subway.menu.SectionMenu;
 import subway.view.SectionView;
+import subway.view.View;
 
 public class SectionViewController extends ViewController{
 
@@ -15,24 +18,54 @@ public class SectionViewController extends ViewController{
     }
 
     @Override
-    public Consumer<Scene> selectMenu() {
+    public BiConsumer<Scene, View> selectMenu() {
         String input = view.requestMenu();
-        Consumer<Scene> result = SectionMenu.getAction(input);
+        BiConsumer<Scene, View> result = SectionMenu.getAction(input);
         if (result == null) {
             view.printError(Error.INVALID_MENU);
         }
         return result;
     }
     
-    public static void findMinDistance(Scene scene) {
+    public static void findMinDistance(Scene scene, View view) {
+        String departureInput = view.requestDepartureStation();
+        String arrivalInput = view.requestArrivalStation();
+        Error error = isValidStations(departureInput, arrivalInput);
+        if (error != Error.OK) {
+            view.printError(error);
+            return;
+        }
+        Station departureStation = StationRepository.getStationbyName(departureInput);
+        Station arrivalStation = StationRepository.getStationbyName(arrivalInput);
         scene.back();
     }
     
-    public static void findMinTime(Scene scene) {
+    public static void findMinTime(Scene scene, View view) {
+        String departureInput = view.requestDepartureStation();
+        String arrivalInput = view.requestArrivalStation();
+        Error error = isValidStations(departureInput, arrivalInput);
+        if (error != Error.OK) {
+            view.printError(error);
+            return;
+        }
+        Station departureStation = StationRepository.getStationbyName(departureInput);
+        Station arrivalStation = StationRepository.getStationbyName(arrivalInput);
         scene.back();
     }
     
-    public static void back(Scene scene) {
+    private static Error isValidStations(String departureInput, String arrivalInput) {
+        if (departureInput.equals(arrivalInput)) {
+            return Error.SAME_STATIONS;
+        }
+        Station departureStation = StationRepository.getStationbyName(departureInput);
+        Station arrivalStation = StationRepository.getStationbyName(arrivalInput);
+        if ((departureStation == null) || (arrivalStation == null)) {
+            return Error.STATION_NOT_EXISTS;
+        }
+        return Error.OK;
+    }
+    
+    public static void back(Scene scene, View view) {
         scene.back();
     }
 }
