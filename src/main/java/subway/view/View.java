@@ -1,7 +1,6 @@
 package subway.view;
 
 import subway.domain.Line;
-import subway.domain.LineRepository;
 
 import java.util.Scanner;
 
@@ -21,14 +20,13 @@ public class View {
         System.out.println("B. 돌아가기");
     }
 
-    public static void displayPath(Scanner kbd, int distance, int time, Line line) {
-        System.out.println("## 조회 결과");
+    public static void displayPath(Line line, int time, int distance) {
+        System.out.println("\n## 조회 결과");
         System.out.println("[INFO] ---");
         System.out.println("[INFO] 총 거리: "+ distance + "km");
         System.out.println("[INFO] 총 소요 시간: "+ time + "분");
         System.out.println("[INFO] ---");
         line.displayLine();
-        startProgram(kbd);
     }
 
     public static void finishProgram() {
