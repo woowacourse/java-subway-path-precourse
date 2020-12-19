@@ -23,4 +23,13 @@ public class LineRepository {
     public static void deleteAll() {
         lines.clear();
     }
+
+    public static Line getLineByStation(Station station) {
+        for (Line line : lines) {
+            if(line.stations().contains(station)){
+                return line;
+            }
+        }
+        throw new IllegalArgumentException(Constant.STATION_NOT_EXIST_IN_LINE);
+    }
 }
