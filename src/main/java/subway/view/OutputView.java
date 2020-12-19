@@ -3,6 +3,7 @@ package subway.view;
 import static subway.view.InfoMessage.*;
 
 import java.util.List;
+import subway.domain.DistanceGraphRepository;
 import subway.domain.TimeGraphRepository;
 
 public class OutputView {
@@ -24,7 +25,7 @@ public class OutputView {
         System.out.println();
         System.out.println(RESULT_LABEL);
         System.out.println(INFO_LABEL + DIVIDER);
-        System.out.printf(TOTAL_DISTANCE, 0);
+        System.out.printf(TOTAL_DISTANCE, DistanceGraphRepository.totalDistance(chosenPath));
         System.out.printf(TOTAL_TIME, TimeGraphRepository.totalTime(chosenPath));
         System.out.println(INFO_LABEL + DIVIDER);
         chosenPath.forEach(

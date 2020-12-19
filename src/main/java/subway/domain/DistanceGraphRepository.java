@@ -1,5 +1,6 @@
 package subway.domain;
 
+import java.util.List;
 import org.jgrapht.Graph;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
@@ -32,5 +33,17 @@ public class DistanceGraphRepository {
     private static void addDistance(String firstStation, String secondStation, int distance) {
         final DefaultWeightedEdge newEdge = distanceGraph.addEdge(firstStation, secondStation);
         distanceGraph.setEdgeWeight(newEdge, distance);
+    }
+
+    public static int totalDistance(List<String> chosenPath) {
+        int totalDistance = 0;
+        for (int i = 0; i < chosenPath.size() - 1; ++i) {
+            final DefaultWeightedEdge individualEdge = distanceGraph
+                    .getEdge(chosenPath.get(i), chosenPath.get(i + 1));
+            final int edgeWeight = (int)distanceGraph.getEdgeWeight(individualEdge);
+
+            totalDistance += edgeWeight;
+        }
+        return totalDistance;
     }
 }
