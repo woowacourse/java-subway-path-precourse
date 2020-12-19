@@ -208,6 +208,8 @@ public class StationRepository {
 - Line 객체가 구간 거리, 구간 시간 정보가지도록 구현
 - 초기화 작업 
     - Manager 디렉토리 생성하여 초기화 작업하는 기능 구현 
+- Controller 생성하고 프로그램 실행 기능 구현
+- Menu 생성하여 버튼 동작 기능 구현
 - view 담당 디렉토리 생성 
     - Input, Output, Error
 
