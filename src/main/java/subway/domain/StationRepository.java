@@ -6,7 +6,15 @@ import java.util.List;
 import java.util.Objects;
 
 public class StationRepository {
+    private static final String[] STATIONS = {"교대역", "강남역", "역삼역", "남부터미널역", "양재역", "양재시민의숲역", "매봉역"};
+
     private static final List<Station> stations = new ArrayList<>();
+
+    static{
+        for(String stationName : STATIONS){
+            stations.add(new Station(stationName));
+        }
+    }
 
     public static List<Station> stations() {
         return Collections.unmodifiableList(stations);
