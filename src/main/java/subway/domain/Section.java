@@ -14,11 +14,11 @@ public class Section {
         this.time = time;
     }
 
-    public Station getUpStationName() {
+    public Station getUpStation() {
         return upStation;
     }
 
-    public Station getDownStationName() {
+    public Station getDownStation() {
         return downStation;
     }
 

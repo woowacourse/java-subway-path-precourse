@@ -1,7 +1,7 @@
 package subway.controller;
 
 import java.util.Objects;
-import subway.functionList.MainFunction;
+import subway.domain.SectionRepository;
 import subway.functionList.RouteFunction;
 import subway.message.CommonMessage;
 import subway.screen.ControlScreen;
@@ -35,6 +35,10 @@ public class RouteController {
     }
 
     public static void findShortestDistance() {
+        String startStation = UserView.scanUserInput();
+        String endStation = UserView.scanUserInput();
+
+        SectionRepository.findShortestDistance(startStation,endStation);
     }
 
     public static void findShortestTime() {
