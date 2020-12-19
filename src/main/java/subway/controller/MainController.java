@@ -15,7 +15,7 @@ public class MainController {
         searchingPathController = new SearchingPathController(scanner, menuInputManager);
         initInfo();
     }
-    //todo : 정보 초기화
+
     private void initInfo() {
         new InitialInfo();
     }

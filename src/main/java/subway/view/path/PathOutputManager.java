@@ -1,16 +1,34 @@
 package subway.view.path;
 
+import javax.sound.sampled.Line.Info;
+import org.jgrapht.GraphPath;
 import subway.common.GuideMessage;
+import subway.common.InfoMessage;
+import subway.domain.PathRepository;
 
 public class PathOutputManager {
     private static final String ENTER_DEPARTURE_STATION = "출발역을 입력하세요.";
     private static final String ENTER_ARRIVAL_STATION = "도착역을 입력하세요.";
+    private static final String DIVIDER = "---";
+    private static final String TOTAL_DISTANCE = "총 거리 : ";
+    private static final String KM = "km";
+    private static final String RESULT = "조회 결과";
 
-    public static void printDepartureStationGuide(){
+
+    public static void printDepartureStationGuide() {
         GuideMessage.print(ENTER_DEPARTURE_STATION);
     }
 
-    public static void printArrivalStationGuide(){
+    public static void printArrivalStationGuide() {
         GuideMessage.print(ENTER_ARRIVAL_STATION);
+    }
+
+    public static void printResultByShortestDistance(String[] stations, GraphPath targetPath) {
+        GuideMessage.print(RESULT);
+        InfoMessage.print(DIVIDER);
+        InfoMessage.print(TOTAL_DISTANCE + PathRepository.getShortestDistance(targetPath) + KM);
+        InfoMessage.print(DIVIDER);
+        PathRepository.getShortestPath(stations[0], stations[1]).stream()
+            .forEach(station -> InfoMessage.print(station));
     }
 }

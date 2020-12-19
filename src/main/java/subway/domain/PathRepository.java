@@ -1,5 +1,6 @@
 package subway.domain;
 
+import java.util.List;
 import org.jgrapht.GraphPath;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
@@ -42,15 +43,18 @@ public class PathRepository {
         GraphPath<String, String> path = dijkstraShortestDistance.getPath(source, sink);
         return path;
     }
-
-    public static double getShortestDistance(GraphPath<String, String> path) {
+    public static List<String> getShortestPath(String source, String sink){
+        return dijkstraShortestDistance.getPath(source, sink).getVertexList();
+    }
+    public static int getShortestDistance(GraphPath<String, String> path) {
         double weight = path.getWeight();
-        return weight;
+        return (int)weight;
     }
 
     public static GraphPath<String, String> getShortestTime(String source, String sink) {
         GraphPath<String, String> path = dijkstraShortestTime.getPath(source, sink);
         return path;
     }
+
 
 }

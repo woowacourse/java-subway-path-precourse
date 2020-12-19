@@ -10,6 +10,7 @@ import subway.view.menu.MenuInputManager;
 import subway.domain.menu.MenuKeys;
 import subway.view.menu.MenuOutputManager;
 import subway.view.path.PathInputManager;
+import subway.view.path.PathOutputManager;
 
 public class SearchingPathController {
 
@@ -44,9 +45,9 @@ public class SearchingPathController {
     private void searchShortestPath() {
         try {
             String[] stations = pathInputManager.inputStations();
-            GraphPath<String, String> targetPath = PathRepository.getShortestDistance(stations[0], stations[1]);
-            System.out.println(PathRepository.getShortestDistance(targetPath));
-            System.out.println("최단거리");
+            GraphPath<String, String> targetPath = PathRepository
+                .getShortestDistance(stations[0], stations[1]);
+            PathOutputManager.printResultByShortestDistance(stations, targetPath);
         } catch (ErrorCustomException errorCustomException) {
             ErrorMessage.print(errorCustomException);
         }
