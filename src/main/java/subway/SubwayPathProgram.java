@@ -2,7 +2,7 @@ package subway;
 
 import java.util.Scanner;
 import subway.common.CommonPrinter;
-import subway.mainscreen.MainScreenErrorChecker;
+import subway.common.CommonErrorChecker;
 import subway.mainscreen.MainScreenPrinter;
 import subway.mainscreen.MainSelectionType;
 import subway.pathfind.PathCriteriaSelector;
@@ -29,11 +29,12 @@ public class SubwayPathProgram {
             CommonPrinter.printUserSelectionMessage();
             String userSelectionInput = scanner.nextLine();
             try {
-                MainScreenErrorChecker.validateMainUserSelectionInput(userSelectionInput);
+                CommonErrorChecker.validateMenuSelectionInput(userSelectionInput,
+                    CommonErrorChecker.MAIN_SELECTION_PATTERN);
             } catch (IllegalArgumentException e) {
                 continue;
             }
-            if (userSelectionInput.equals(MainSelectionType.QUIT.getStrValue())){
+            if (userSelectionInput.equals(MainSelectionType.QUIT.getStrValue())) {
                 return MainSelectionType.QUIT;
             }
             PathCriteriaSelector.start(scanner);

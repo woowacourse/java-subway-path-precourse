@@ -1,6 +1,7 @@
 package subway.pathfind;
 
 import java.util.Scanner;
+import subway.common.CommonErrorChecker;
 import subway.common.CommonPrinter;
 
 public class PathCriteriaSelector {
@@ -21,10 +22,12 @@ public class PathCriteriaSelector {
     }
 
     private static PathCriteriaSelectionType printAndGetUserCriteriaSelectionInput(
-        Scanner scanner) {
+        Scanner scanner) throws IllegalArgumentException {
         PathCriteriaSelectionScreenPrinter.printMenu();
         CommonPrinter.printUserSelectionMessage();
         String userSelectionInput = scanner.nextLine();
+        CommonErrorChecker.validateMenuSelectionInput(userSelectionInput,
+            CommonErrorChecker.FIND_WAY_SELECTION_PATTERN);
         return getUserSelectionType(userSelectionInput);
     }
 
