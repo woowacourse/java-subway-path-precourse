@@ -3,6 +3,8 @@ package subway;
 import java.util.ArrayList;
 import java.util.List;
 import subway.domain.DistanceAndTimeBetweenStationsRepository;
+import subway.domain.Station;
+import subway.domain.StationRepository;
 
 public class Initializer {
     private static final String GYODAE_STATION = "교대역";
@@ -15,6 +17,7 @@ public class Initializer {
 
     public static void initialize() {
         mapStations();
+        StationRepository.addStation(new Station("테스트"));
     }
 
     private static void mapStations() {
