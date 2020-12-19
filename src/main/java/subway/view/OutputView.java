@@ -15,6 +15,12 @@ public class OutputView {
     private static final String QUERY_SOURCE_STATION = "## 출발역을 입력하세요.";
     private static final String QUERY_DESTINATION_STATION = "## 도착역을 입력하세요.";
 
+    private static final String TRY_AGAIN = "다시 입력해주세요.";
+    public static final String ERROR_INVALID_SELECT = "선택할 수 없는 기능입니다." + TRY_AGAIN;
+    public static final String ERROR_INVALID_STATION = "존재하지 않는 역입니다." + TRY_AGAIN;
+    public static final String ERROR_SAME_STATION = "출발역과 도착역이 동일합니다." + TRY_AGAIN;
+    public static final String ERROR_UNREACHABLE = "죄송합니다. 두 역은 연결되어 있지 않습니다.";
+
     public static void printMain() {
         System.out.println(MAIN_TITLE);
         System.out.println(MAIN_OPTION_INQUIRY);
