@@ -38,7 +38,20 @@ public class UserInterfaceView {
 
     private void mainToNextFunction(String userInput) {
         if (ONE.equals(userInput)) {
-            //routeSearch();
+            routeSearch();
         }
+    }
+
+    private void routeSearch() {
+        Output.printRouteSearchView();
+        String userInput = Input.getUserInput();
+        if (!Arrays.asList(ROUTE_SEARCH_CHOICE_LIST).contains((userInput))) {
+            Output.printChoiceErrorMessage();
+            return;
+        }
+        if (B.equals(userInput)) {
+            return;
+        }
+        // TODO - 다음함수 호출하기
     }
 }
