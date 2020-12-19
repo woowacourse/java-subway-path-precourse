@@ -8,11 +8,17 @@ public class SubwayPathProgram {
     }
 
     private static void printAndGetUserSelectionInput(Scanner scanner) {
-        MainScreenPrinter.printMainScreen();
-        getUserSelectionInput(scanner);
+        MainSelectionType type;
+        while (true) {
+            MainScreenPrinter.printMainScreen();
+            type = getUserSelectionInputType(scanner);
+            if (type == MainSelectionType.QUIT) {
+                return;
+            }
+        }
     }
 
-    private static void getUserSelectionInput(Scanner scanner) {
+    private static MainSelectionType getUserSelectionInputType(Scanner scanner) {
         while (true) {
             CommonPrinter.printUserSelectionMessage();
             String userSelectionInput = scanner.nextLine();
@@ -21,10 +27,11 @@ public class SubwayPathProgram {
 //            } catch (IllegalArgumentException e) {
 //                continue;
 //            }
-            if (userSelectionInput.equals(MainSelection.QUIT.getStrValue())){
-                return;
+            if (userSelectionInput.equals(MainSelectionType.QUIT.getStrValue())){
+                return MainSelectionType.QUIT;
             }
-            PathCriteriaSelector.start(userSelectionInput, scanner);
+            PathCriteriaSelector.start(scanner);
+            return MainSelectionType.SUCCESS;
         }
     }
 }

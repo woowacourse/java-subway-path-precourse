@@ -1,12 +1,13 @@
 package subway;
 
-public enum MainSelection {
+public enum MainSelectionType {
     FIND_PATH("1"),
-    QUIT("Q");
+    QUIT("Q"),
+    SUCCESS(null);
 
     private final String strValue;
 
-    MainSelection(String userSelection) {
+    MainSelectionType(String userSelection) {
         this.strValue = userSelection;
     }
 

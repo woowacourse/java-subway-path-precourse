@@ -1,13 +1,13 @@
 package subway;
 
-public enum PathCriteriaSelection {
+public enum PathCriteriaSelectionType {
     SHORTEST_DISTANCE("1"),
     MINIMUM_TIME("2"),
     GO_BACK("3");
 
     private final String strValue;
 
-    PathCriteriaSelection(String userSelectionInput) {
+    PathCriteriaSelectionType(String userSelectionInput) {
         this.strValue = userSelectionInput;
     }
 
