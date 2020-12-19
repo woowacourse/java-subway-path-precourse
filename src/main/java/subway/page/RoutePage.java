@@ -42,8 +42,9 @@ public class RoutePage {
                 return false;
             }
             SectionRepository.CalculateShortestDistance(startStation, finishStation);
+            return true;
         }
-        return true;
+        return false;
     }
 
     private boolean isSuccessMinimumTime(String button) {
@@ -55,8 +56,9 @@ public class RoutePage {
                 return false;
             }
             SectionRepository.CalculateMinimumTime(startStation, finishStation);
+            return true;
         }
-        return true;
+        return false;
     }
 
     private boolean validateInputEqualsStation(String startStation, String finishStation) {
