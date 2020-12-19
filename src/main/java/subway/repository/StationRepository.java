@@ -1,9 +1,10 @@
-package subway.domain;
+package subway.repository;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import subway.domain.Station;
 
 public class StationRepository {
     private static final List<Station> stations = new ArrayList<>();
@@ -22,5 +23,13 @@ public class StationRepository {
 
     public static void deleteAll() {
         stations.clear();
+    }
+
+    public static Station findByName(String name) {
+        //todo: 없을 경우 예외 처리
+        return stations.stream()
+                .filter(station -> station.equalsName(name))
+                .findFirst()
+                .orElse(null);
     }
 }
