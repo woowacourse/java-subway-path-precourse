@@ -41,7 +41,9 @@ public class RoutePage {
             if (validateInputEqualsStation(startStation, finishStation)) {
                 return false;
             }
-            SectionRepository.CalculateShortestDistance(startStation, finishStation);
+            List<String> shortestDistanceStations = SectionRepository
+                    .CalculateShortestDistance(startStation, finishStation);
+            OutputView.printShortestDistanceResult(shortestDistanceStations);
             return true;
         }
         return false;

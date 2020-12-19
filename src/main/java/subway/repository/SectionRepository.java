@@ -44,4 +44,32 @@ public class SectionRepository {
             section.getTime()));
         return ShortestDistance.getStations(startStation, finishStation);
     }
+
+    public static String findTotalDistance(List<String> shortestDistanceStations) {
+        int totalDistance = 0;
+        //todo: 최소 거리 구현
+//        for (int i = 1; i < shortestDistanceStations.size(); i++) {
+//            String stationName = shortestDistanceStations.get(i - 1);
+//            String nextStationName = shortestDistanceStations.get(i);
+//
+//            Section section = findByStationName(stationName);
+//
+//            if (section.equalsStartName(stationName)
+//                    && section.equalsNextStationName(nextStationName)) {
+//                totalDistance += section.getStreet();
+//            }
+//        }
+        return String.valueOf(totalDistance);
+    }
+
+    private static Section findByStationName(String stationName) {
+        for (Section section : sections) {
+            if (section.equalsStartName(stationName)) {
+                return section;
+            }
+        }
+        //todo: 없을 경우 예외 처리
+        return null;
+    }
+
 }

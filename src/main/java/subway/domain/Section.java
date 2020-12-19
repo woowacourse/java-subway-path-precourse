@@ -34,4 +34,12 @@ public class Section {
     public int getTime() {
         return time.getTime();
     }
+
+    public boolean equalsStartName(String name) {
+        return this.station.getName().equals(name);
+    }
+
+    public boolean equalsNextStationName(String name) {
+        return this.nextStation.getName().equals(name);
+    }
 }
