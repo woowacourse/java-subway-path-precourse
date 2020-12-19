@@ -5,7 +5,7 @@ import java.util.Arrays;
 import subway.domain.Line;
 import subway.domain.LineRepository;
 import subway.domain.Section;
-import subway.domain.SectionRespository;
+import subway.domain.SectionRepository;
 import subway.domain.Station;
 import subway.domain.StationRepository;
 
@@ -41,7 +41,7 @@ public class InitUtils {
         Section section8 = new Section(station2, station5, 10, 3);
         Section section9 = new Section(station5, null, 0, 0);
 
-        SectionRespository.addAll(Arrays.asList(
+        SectionRepository.addAll(Arrays.asList(
             section0, section1, section2, section3, section4, section5, section6, section7,
             section8, section9
         ));

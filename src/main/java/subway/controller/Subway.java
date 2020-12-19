@@ -2,7 +2,7 @@ package subway.controller;
 
 import java.util.Scanner;
 
-import subway.domain.LineRepository;
+import subway.domain.SectionRepository;
 import subway.exception.constant.MainInputEnum;
 import subway.exception.constant.TraverseInputEnum;
 import subway.exception.validation.MainInputValidation;
@@ -38,13 +38,16 @@ public class Subway {
         String function = traverseInput.input();
         if (
             function.equals(TraverseInputEnum.SHORTEST_DISTANCE.getOption())) {
-            String startStation = stationInput.input()[0];
-            String endStation = stationInput.input()[1];
-            LineRepository.getDijkstraShortestDistancePath(startStation, endStation);
+            String[] stations = stationInput.input();
+            String startStation = stations[0];
+            String endStation = stations[1];
+            SectionRepository.getShortestDistancePath(startStation, endStation);
         }
         if (function.equals(TraverseInputEnum.SHORTEST_TIME.getOption())) {
-            System.out.println("d");
-            return;
+            String[] stations = stationInput.input();
+            String startStation = stations[0];
+            String endStation = stations[1];
+            SectionRepository.getShortestTimePath(startStation, endStation);
         }
         run();
     }

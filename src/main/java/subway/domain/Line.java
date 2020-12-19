@@ -16,9 +16,10 @@ public class Line {
         return name;
     }
 
-    public void addSection(Station station, Station nextStation, int distance, int time) {
-        if (sections.stream().noneMatch(section -> section.getStation().equals(station))) {
-            sections.add(new Section(station, nextStation, distance, time));
+    public void addSection(Section section) {
+        if (sections.stream()
+            .noneMatch(exSection -> exSection.getStationName().equals(section.getStationName()))) {
+            sections.add(section);
         }
     }
 
