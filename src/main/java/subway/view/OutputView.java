@@ -3,7 +3,7 @@ package subway.view;
 public class OutputView {
     OutputMessages outputMessages;
 
-    public void OutputView() {
+    public OutputView() {
         this.outputMessages = new OutputMessages();
     }
 
