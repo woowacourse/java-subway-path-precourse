@@ -57,4 +57,22 @@ public class PathMenuService {
 			throw new IllegalArgumentException(NO_PATH);
 		}
 	}
+	
+	public static double getTotalTime(List<Station> path) {
+		double totalTime = 0;
+		for (int from = 0; from < path.size() - 1; from++) {
+			totalTime += SubwayMap.getTimeMap().getEdgeWeight(
+				SubwayMap.getTimeMap().getEdge(path.get(from), path.get(from + 1)));
+		}
+		return totalTime;
+	}
+	
+	public static double getTotalDistance(List<Station> path) {
+		double totalDistance = 0;
+		for (int from = 0; from < path.size() - 1; from++) {
+			totalDistance += SubwayMap.getDistanceMap().getEdgeWeight(
+				SubwayMap.getDistanceMap().getEdge(path.get(from), path.get(from + 1)));
+		}
+		return totalDistance;
+	}
 }

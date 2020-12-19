@@ -38,7 +38,8 @@ public class ShortestTime implements Menu {
 		PathMenuService.validateIfPathExist(pathFound);
 		
 		double totalTime = PathMenuService.getShortestTimePathWeight(from, to);
-		OutputController.printTimePath(pathFound, totalTime);
+		double totalDistance = PathMenuService.getTotalDistance(pathFound);
+		OutputController.printPathResult(pathFound, totalDistance, totalTime);
 	}
 	
 	public static Menu getInstance() {

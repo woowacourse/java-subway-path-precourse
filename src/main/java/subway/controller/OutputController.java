@@ -23,20 +23,11 @@ public class OutputController {
 		}
 	}
 	
-	public static void printDistancePath(List<Station> path, double weight) {
+	public static void printPathResult(List<Station> path, double distance, double time) {
 		System.out.println(RESULT_INTRO);
 		System.out.println(INFO_INTRO + BREAK_LINE);
-		System.out.println(INFO_INTRO + TOTAL_DISTANCE + weight + DISTANCE_UNIT);
-		System.out.println(INFO_INTRO + BREAK_LINE);
-		path.stream().forEach(station -> {
-			System.out.println(INFO_INTRO + station.getName());
-		});
-	}
-	
-	public static void printTimePath(List<Station> path, double weight) {
-		System.out.println(RESULT_INTRO);
-		System.out.println(INFO_INTRO + BREAK_LINE);
-		System.out.println(INFO_INTRO + TOTAL_TIME + weight + TIME_UNIT);
+		System.out.println(INFO_INTRO + TOTAL_DISTANCE + distance + DISTANCE_UNIT);
+		System.out.println(INFO_INTRO + TOTAL_TIME + time + TIME_UNIT);
 		System.out.println(INFO_INTRO + BREAK_LINE);
 		path.stream().forEach(station -> {
 			System.out.println(INFO_INTRO + station.getName());
