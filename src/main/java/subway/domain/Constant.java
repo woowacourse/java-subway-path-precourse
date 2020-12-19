@@ -58,4 +58,16 @@ public class Constant {
     public static List<String[]> defaultSettingList() {
         return Collections.unmodifiableList(defaultSettingList);
     }
+
+    public static final int[][] defaultTime = {
+            {3, 3},
+            {2, 5, 1},
+            {8, 3}
+    };
+
+    public static final int[][] defaultDistance = {
+            {2, 2},
+            {3, 6, 1},
+            {2, 10}
+    };
 }
