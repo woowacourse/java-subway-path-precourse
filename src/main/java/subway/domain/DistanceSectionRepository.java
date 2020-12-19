@@ -22,9 +22,9 @@ public class DistanceSectionRepository {
         return dijkstraShortestPath.getPath(source.getName(), destination.getName()).getVertexList();
     }
 
-    public static Distance getShortestDistance(Station source, Station destination){
-        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
-        return Distance.newDistance((int)dijkstraShortestPath
-            .getPathWeight(source.getName(), destination.getName()));
-    }
+//    public static Distance getShortestDistance(Station source, Station destination){
+//        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
+//        return Distance.newDistance((int)dijkstraShortestPath
+//            .getPathWeight(source.getName(), destination.getName()));
+//    }
 }
