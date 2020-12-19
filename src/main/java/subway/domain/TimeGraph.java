@@ -7,8 +7,8 @@ import org.jgrapht.graph.WeightedMultigraph;
 import java.util.Iterator;
 
 public class TimeGraph {
-    static WeightedMultigraph<Station, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
-    static DijkstraShortestPath dijkstraShortestPath;
+    public static WeightedMultigraph<Station, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
+    public static DijkstraShortestPath dijkstraShortestPath;
 
     private static void addVertex(Station station) {
         graph.addVertex(station);
@@ -31,5 +31,6 @@ public class TimeGraph {
         addVertex(to);
 
         setEdgeWeitght(from, to, section.getTime());
+        updateShortestPath();
     }
 }

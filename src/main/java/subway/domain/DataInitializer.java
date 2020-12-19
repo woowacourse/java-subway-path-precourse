@@ -2,6 +2,7 @@ package subway.domain;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 public class DataInitializer {
 
@@ -9,6 +10,7 @@ public class DataInitializer {
         initializeStations();
         initializeLines();
         initializeSections();
+        initializeTimeGraph();
     }
 
     private static void initializeStations() {
@@ -95,5 +97,12 @@ public class DataInitializer {
                 StationRepository.searchByName("양재시민의숲역")
         )), 3, 2);
         SectionRepository.addSection(section);
+    }
+
+    private static void initializeTimeGraph() {
+        List<Section> sections = SectionRepository.sections();
+        for (Section section : sections) {
+            TimeGraph.addSectionToGraph(section);
+        }
     }
 }
