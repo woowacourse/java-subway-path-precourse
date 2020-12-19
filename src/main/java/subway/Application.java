@@ -1,6 +1,7 @@
 package subway;
 
 import subway.domain.*;
+import subway.view.MainView;
 
 import java.util.Scanner;
 
@@ -8,8 +9,8 @@ public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         init();
-        RouteRepository.init();
-        RouteRepository.getRouteMinDistance("교대역", "강남역");
+        MainView mainView = new MainView(scanner);
+        mainView.startView();
     }
 
     public static void init() {
@@ -40,5 +41,7 @@ public class Application {
         Line lineNew = LineRepository.getLineByName("신분당선");
         lineNew.addStation(StationRepository.getStationByName("양재역"), 2);
         lineNew.addPath(new Path(2,8), 2);
+
+        RouteRepository.init();
     }
 }
