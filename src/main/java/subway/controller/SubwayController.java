@@ -13,35 +13,62 @@ public class SubwayController {
         initSetting();
         while (true) {
             OutputView.printMain();
-            if (MainAction.isFinish(inputView.receiveAction())) {
+            if (isValidMainAction(inputView)) {
                 break;
             }
-            makeAction(inputView);
+            doAction(inputView);
         }
     }
 
-    private void makeAction(InputView inputView) {
+    private boolean isValidMainAction(InputView inputView) {
+        try {
+            return MainAction.isFinish(inputView.receiveAction());
+        } catch (IllegalArgumentException e) {
+            OutputView.printError(e.getMessage());
+            return isValidMainAction(inputView);
+        }
+    }
+
+    private void doAction(InputView inputView) {
         while (true) {
             OutputView.printPathAction();
-            if (PathAction.isBack(inputView.receiveAction())) {
+            PathAction pathAction = makePathAction(inputView);
+            if (pathAction.equals(PathAction.BACK)) {
                 break;
             }
+            makeResult(inputView, pathAction);
+        }
+    }
 
+    private PathAction makePathAction(InputView inputView) {
+        try {
+            return PathAction.makePathAction(inputView.receiveAction());
+        } catch (IllegalArgumentException e) {
+            OutputView.printError(e.getMessage());
+            return makePathAction(inputView);
+        }
+    }
+
+    private void makeResult(InputView inputView, PathAction pathAction) {
+        try {
             Station startStation = StationRepository.findStationByName(inputView.receiveStart());
             Station finishStation = StationRepository.findStationByName(inputView.receiveFinish());
 
             checkValidStations(startStation, finishStation);
 
-            makeShortestTime(startStation, finishStation);
-            makeShortestLength(startStation, finishStation);
+            pathAction.doAction(startStation, finishStation);
+        } catch (IllegalArgumentException e) {
+            OutputView.printError(e.getMessage());
+            makeResult(inputView, pathAction);
         }
     }
 
-    public static void checkValidStations(Station startStation, Station finishStation){
-        if(startStation.equals(finishStation)){
+    private static void checkValidStations(Station startStation, Station finishStation) {
+        if (startStation.equals(finishStation)) {
             throw new IllegalArgumentException("출발역과 도착역이 같을 수 없습니다.");
         }
     }
+
     public static void makeShortestTime(Station startStation, Station finishStation) {
         ShortestTimeReport shortestTimeReport = new ShortestTimeReport(SubwayTimeRepository.subwayTime());
         shortestTimeReport.makePaths(startStation, finishStation);
@@ -53,7 +80,7 @@ public class SubwayController {
         OutputView.printStations(shortestTimeReport.makeStations().stream().map(Station::toString).collect(Collectors.toList()));
     }
 
-    private void makeShortestLength(Station startStation, Station finishStation) {
+    public static void makeShortestLength(Station startStation, Station finishStation) {
         ShortestLengthReport shortestLengthReport = new ShortestLengthReport(SubwayLengthRepository.subwayLength());
         shortestLengthReport.makePaths(startStation, finishStation);
 

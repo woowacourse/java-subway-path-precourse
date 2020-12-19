@@ -11,9 +11,6 @@ public class Line {
         return name;
     }
 
-    public boolean isSameNameThan(String comparedName) {
-        return name.equals(comparedName);
-    }
-
     // 추가 기능 구현
+
 }
