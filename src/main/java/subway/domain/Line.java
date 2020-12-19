@@ -43,8 +43,19 @@ public class Line {
     public void addStation(Station station, int order) {
         stations.addStation(station, order);
     }
+
     public void addPath(Path path, int order) {
         int limit = stations.getSize();
         paths.addPath(path, order, limit);
     }
+
+    public StationsInLine getStations() {
+        return stations;
+    }
+
+    public Paths getPaths() {
+        return paths;
+    }
+
+
 }

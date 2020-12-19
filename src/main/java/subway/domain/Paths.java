@@ -19,6 +19,10 @@ public class Paths {
         paths.add(order - 1, path);
     }
 
+    public Path getPath(int index) {
+        return paths.get(index);
+    }
+
     public int getSize() {
         return paths.size();
     }

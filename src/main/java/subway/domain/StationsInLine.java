@@ -24,6 +24,9 @@ public class StationsInLine {
         stations.add(order - 1, station);
     }
 
+    public Station getStation(int index) {
+        return stations.get(index);
+    }
     public int getSize() {
         return stations.size();
     }

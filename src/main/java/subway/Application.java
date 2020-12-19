@@ -7,6 +7,9 @@ import java.util.Scanner;
 public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
+        init();
+        RouteRepository.init();
+        RouteRepository.getRouteMinDistance("교대역", "강남역");
     }
 
     public static void init() {

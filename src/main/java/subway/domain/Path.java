@@ -20,4 +20,12 @@ public class Path {
             throw new IllegalArgumentException(ERROR_DISTANCE_TIME_NOT_POSITIVE);
         }
     }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public int getTime() {
+        return time;
+    }
 }
