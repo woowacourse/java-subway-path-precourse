@@ -13,4 +13,13 @@ public class OutputView {
     public static void printEndMessage() {
         System.out.println("종료합니다.");
     }
+
+    public static void printPathContents() {
+        System.out.println("경로 기준");
+        System.out.println("1. 최단 거리");
+        System.out.println("2. 최소 시간");
+        System.out.println("B. 돌아가기");
+
+        System.out.println("원하는 기능을 선택하세요.");
+    }
 }

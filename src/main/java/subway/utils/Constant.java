@@ -2,7 +2,9 @@ package subway.utils;
 
 public class Constant {
     public static final String CONTENTS_NUMBER_FIRST = "1";
+    public static final String CONTENTS_NUMBER_SECOND = "2";
     public static final String CONTENTS_NUMBER_QUIT = "Q";
+    public static final String CONTENTS_NUMBER_BACK = "B";
     public static final String STRING_TWO_LINE = "2호선";
     public static final String STRING_THREE_LINE = "3호선";
     public static final String STRING_SINBUNDANG_LINE = "신분당선";

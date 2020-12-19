@@ -18,6 +18,7 @@ public class MainSelectManager {
 
     private static boolean selectMenu(String inputMainSelect) {
         if (inputMainSelect.equals(CONTENTS_NUMBER_FIRST)) {
+            PathManager.pathChoice();
         }
         if (inputMainSelect.equals(CONTENTS_NUMBER_QUIT)) {
             OutputView.printEndMessage();
