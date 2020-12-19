@@ -1,5 +1,7 @@
 package subway.domain;
 
+import subway.domain.entity.Line;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
