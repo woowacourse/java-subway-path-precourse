@@ -11,7 +11,6 @@ import subway.service.TimeNavigator;
 import subway.view.MainView;
 import subway.view.RouteView;
 
-import java.sql.Time;
 import java.util.List;
 import java.util.Scanner;
 

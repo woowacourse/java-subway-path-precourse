@@ -1,6 +1,5 @@
 package subway.view;
 
-import subway.domain.Route;
 import subway.enums.info.RouteResultInfo;
 import subway.enums.info.RouteSearchInfo;
 import subway.enums.menu.RouteSearchMenu;
