@@ -25,7 +25,7 @@ public class PathCalculator {
     }
 
     public static List<String> calculateShortestDistancePath(String startStation, String endStation) {
-        List<String> distancePath = new ArrayList<>();
+        List<String> distancePath;
         try {
             DijkstraShortestPath shortestDistancePath = new DijkstraShortestPath(distanceGraph);
             distancePath = shortestDistancePath.getPath(startStation, endStation).getVertexList();
@@ -36,7 +36,7 @@ public class PathCalculator {
     }
 
     public static List<String> calculateShortestTimePath(String startStation, String endStation) {
-        List<String> timePath = new ArrayList<>();
+        List<String> timePath;
         try {
             DijkstraShortestPath shortestDistancePath = new DijkstraShortestPath(timeGraph);
             timePath = shortestDistancePath.getPath(startStation, endStation).getVertexList();
