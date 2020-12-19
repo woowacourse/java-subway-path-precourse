@@ -23,7 +23,7 @@ public class DataLoader {
     }
 
     public static DijkstraShortestPath getDijkstraShortestPathByDistance() {
-        List<Station> stations = getStationsWithEdge();
+        List<Station> stations = StationRepository.stations();
         WeightedMultigraph<Station, DefaultWeightedEdge> graph = new WeightedMultigraph<>(DefaultWeightedEdge.class);
         for (Station station : stations) {
             graph.addVertex(station);
@@ -39,7 +39,7 @@ public class DataLoader {
     }
 
     public static DijkstraShortestPath getDijkstraShortestPathByTime() {
-        List<Station> stations = getStationsWithEdge();
+        List<Station> stations = StationRepository.stations();
         WeightedMultigraph<Station, DefaultWeightedEdge> graph = new WeightedMultigraph<>(DefaultWeightedEdge.class);
         for (Station station : stations) {
             graph.addVertex(station);
