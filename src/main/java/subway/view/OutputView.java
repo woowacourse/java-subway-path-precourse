@@ -25,7 +25,7 @@ public class OutputView {
 
     public static void printResults(){
         System.out.println("## 조회 결과");
-        
+
         /*
         ## 조회 결과
 [INFO] ---
