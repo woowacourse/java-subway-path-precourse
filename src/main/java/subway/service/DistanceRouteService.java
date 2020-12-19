@@ -1,8 +1,6 @@
 package subway.service;
 
 import subway.domain.Station;
-import subway.repository.StationRepository;
-import subway.views.routeviews.RouteInputView;
 
 import java.util.Scanner;
 
@@ -20,7 +18,9 @@ public class DistanceRouteService implements RouteService {
     @Override
     public void routingService(Scanner scanner) {
         try {
-            inputStations(scanner);
+            Station startStation = inputStartStations(scanner);
+            Station endStation = inputEndStation(scanner);
+            RouteService.isSameName(startStation, endStation);
         } catch (IllegalArgumentException e) {
             goToMenu(e, scanner);
         }

@@ -1,5 +1,7 @@
 package subway.service;
 
+import subway.domain.Station;
+
 import java.util.Scanner;
 
 public class TimeRouteService implements RouteService {
@@ -15,7 +17,9 @@ public class TimeRouteService implements RouteService {
     @Override
     public void routingService(Scanner scanner) {
         try {
-            inputStations(scanner);
+            Station startStation = inputStartStations(scanner);
+            Station endStation = inputEndStation(scanner);
+            RouteService.isSameName(startStation, endStation);
         } catch (IllegalArgumentException e) {
             goToMenu(e, scanner);
         }

@@ -13,12 +13,16 @@ public interface RouteService {
 
     void routingService(Scanner scanner);
 
-    default void inputStations(Scanner scanner) {
+    default Station inputStartStations(Scanner scanner) {
         Station startStation = new Station(RouteInputView.inputStartStation(scanner));
         isExistStation(startStation);
+        return startStation;
+    }
+
+    default Station inputEndStation(Scanner scanner) {
         Station endStation = new Station(RouteInputView.inputEndStation(scanner));
         isExistStation(endStation);
-        isSameName(startStation, endStation);
+        return endStation;
     }
 
     default void goToMenu(IllegalArgumentException e, Scanner scanner) {
