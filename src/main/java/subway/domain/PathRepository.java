@@ -1,5 +1,7 @@
 package subway.domain;
 
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -13,5 +15,13 @@ public class PathRepository {
 
     public static void addPath(Path path) {
         paths().add(path);
+    }
+
+    public static void getShortestPath(){
+        Path shortestPath;
+        DijkstraShortestPath dijkstraShortestPath;
+        for(Path path : paths){
+            dijkstraShortestPath = new DijkstraShortestPath(path.getPathDistanceWeight().getPathDistance());
+        }
     }
 }
