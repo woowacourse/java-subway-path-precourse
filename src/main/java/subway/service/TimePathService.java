@@ -9,6 +9,7 @@ import java.util.List;
 
 import static subway.util.PathCalculator.calculateShortestTimePath;
 import static subway.view.InputView.*;
+import static subway.view.OutputView.printPathResult;
 
 public class TimePathService {
 
@@ -16,8 +17,9 @@ public class TimePathService {
         String startStationName = inputStartStation();
         String endStationName = inputEndStation(startStationName);
         List<String> acrossStations = calculateShortestTimePath(startStationName, endStationName);
-        int distance = calculateTotalDistance(acrossStations);
-        int time = calculateTotalTime(acrossStations);
+        int totalDistance = calculateTotalDistance(acrossStations);
+        int totalTime = calculateTotalTime(acrossStations);
+        printPathResult(acrossStations, totalDistance, totalTime);
     }
 
     public static int calculateTotalTime(List<String> acrossStations) {

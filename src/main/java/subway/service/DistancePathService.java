@@ -4,11 +4,13 @@ import subway.domain.NearbyStation;
 import subway.domain.Station;
 import subway.domain.StationRepository;
 import subway.view.InputView;
+import subway.view.OutputView;
 
 import java.util.List;
 
 import static subway.util.PathCalculator.calculateShortestDistancePath;
 import static subway.view.InputView.*;
+import static subway.view.OutputView.*;
 
 public class DistancePathService {
 
@@ -18,6 +20,7 @@ public class DistancePathService {
         List<String> acrossStations = calculateShortestDistancePath(startStationName, endStationName);
         int totalDistance = calculateTotalDistance(acrossStations);
         int totalTime = calculateTotalTime(acrossStations);
+        printPathResult(acrossStations, totalDistance, totalTime);
     }
 
     public static int calculateTotalTime(List<String> acrossStations) {
