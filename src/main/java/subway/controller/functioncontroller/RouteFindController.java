@@ -1,9 +1,14 @@
 package subway.controller.functioncontroller;
 
+import subway.domain.DistanceGraphRepository;
+import subway.domain.Station;
+import subway.domain.StationRepository;
 import subway.validator.RouteFindValidation;
 import subway.view.InputView;
+import subway.view.routefindoutput.RouteFindInformationView;
 import subway.view.routefindoutput.RouteFindOutputView;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class RouteFindController extends FunctionController {
@@ -51,10 +56,52 @@ public class RouteFindController extends FunctionController {
     }
 
     private static boolean findShortestDistance(Scanner scanner) {
+        String userInputStartStation = getUserInputStartStation(scanner);
+        if(userInputStartStation.equals(INVALID_INPUT)) {
+            return false;
+        }
+        String userInputEndStation = getUserInputEndStation(scanner, userInputStartStation);
+        if(userInputEndStation.equals(INVALID_INPUT)) {
+            return false;
+        }
+        if(!findShortestDistancePath(userInputStartStation, userInputEndStation)){
+            return false;
+        }
         return true;
     }
 
     private static boolean findShortestTime(Scanner scanner) {
+
+        return true;
+    }
+
+    private static String getUserInputStartStation(Scanner scanner) {
+        RouteFindOutputView.printStartStationInstruction();
+        String userInputStartStation = InputView.getInput(scanner);
+        if(!RouteFindValidation.checkValidStartStation(userInputStartStation)) {
+            return INVALID_INPUT;
+        }
+        return userInputStartStation;
+    }
+
+    private static String getUserInputEndStation(Scanner scanner, String userInputStartStation) {
+        RouteFindOutputView.printEndStationInstruction();
+        String userInputEndStation = InputView.getInput(scanner);
+        if(!RouteFindValidation.checkValidEndStation(userInputStartStation, userInputEndStation)) {
+            return INVALID_INPUT;
+        }
+        return userInputEndStation;
+    }
+
+    private static boolean findShortestDistancePath(String userInputStartStation, String userInputEndStation) {
+        Station source = StationRepository.getStationByName(userInputStartStation);
+        Station destination = StationRepository.getStationByName(userInputEndStation);
+        RouteFindOutputView.printPathResult();
+        List<Station> shortestPath = DistanceGraphRepository.findShortestPath(source, destination);
+        if(!RouteFindValidation.checkValidPath(shortestPath)) {
+            return false;
+        }
+        RouteFindInformationView.printRouteInformation(shortestPath);
         return true;
     }
 }
