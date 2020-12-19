@@ -12,36 +12,25 @@ public class Initializer {
     private static final String YANGJAE_STATION = "양재역";
     private static final String YANGJAE_CITIZENS_FOREST_STATION = "양재시민의숲역";
     private static final String MAEBONG_STATION = "매봉역";
-    private static final List<String> STATION_NAMES = new ArrayList<>() {
-        {
-            add(GYODAE_STATION);
-            add(GANGNAM_STATION);
-            add(YEOKSAM_STATION);
-            add(NAMBU_TERMINAL_STATION);
-            add(YANGJAE_STATION);
-            add(YANGJAE_CITIZENS_FOREST_STATION);
-            add(MAEBONG_STATION);
-        }
-    };
 
     public static void initialize() {
         mapStations();
     }
 
     private static void mapStations() {
-        DistanceAndTimeBetweenStationsRepository.addStations(GYODAE_STATION, GANGNAM_STATION,
-            2, 3);
-        DistanceAndTimeBetweenStationsRepository.addStations(GANGNAM_STATION, YEOKSAM_STATION,
-            2, 3);
-        DistanceAndTimeBetweenStationsRepository.addStations(GYODAE_STATION, NAMBU_TERMINAL_STATION,
-            3, 2);
-        DistanceAndTimeBetweenStationsRepository.addStations(NAMBU_TERMINAL_STATION, YANGJAE_STATION,
-            6, 5);
-        DistanceAndTimeBetweenStationsRepository.addStations(YANGJAE_STATION, MAEBONG_STATION,
-            1, 1);
-        DistanceAndTimeBetweenStationsRepository.addStations(GANGNAM_STATION, YANGJAE_STATION,
-            2, 8);
-        DistanceAndTimeBetweenStationsRepository.addStations(YANGJAE_STATION, YANGJAE_CITIZENS_FOREST_STATION,
-            10, 3);
+        DistanceAndTimeBetweenStationsRepository
+            .addStations(GYODAE_STATION, GANGNAM_STATION, 2, 3);
+        DistanceAndTimeBetweenStationsRepository
+            .addStations(GANGNAM_STATION, YEOKSAM_STATION, 2, 3);
+        DistanceAndTimeBetweenStationsRepository
+            .addStations(GYODAE_STATION, NAMBU_TERMINAL_STATION, 3, 2);
+        DistanceAndTimeBetweenStationsRepository
+            .addStations(NAMBU_TERMINAL_STATION, YANGJAE_STATION, 6, 5);
+        DistanceAndTimeBetweenStationsRepository
+            .addStations(YANGJAE_STATION, MAEBONG_STATION, 1, 1);
+        DistanceAndTimeBetweenStationsRepository
+            .addStations(GANGNAM_STATION, YANGJAE_STATION, 2, 8);
+        DistanceAndTimeBetweenStationsRepository
+            .addStations(YANGJAE_STATION, YANGJAE_CITIZENS_FOREST_STATION, 10, 3);
     }
 }

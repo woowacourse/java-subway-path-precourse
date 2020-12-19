@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import subway.domain.DistanceAndTimeBetweenStationsRepository;
 import subway.domain.Station;
+import subway.pathfind.validator.PathFindValidator;
 
 public class MinimumTimePathFinder {
     private static List<Station> minimumTimePath = new ArrayList<>();
@@ -16,6 +17,7 @@ public class MinimumTimePathFinder {
 
     public static void find(Station startStation, Station endStation) {
         findWay(startStation, endStation, INITIAL_TIME, INITIAL_DISTANCE, new ArrayList<>());
+        PathFindValidator.validatePathExists(minimumTimePath);
         ResultPrinter.resultPrinter(minimumTimePath, totalDistance, minimumTime);
     }
 

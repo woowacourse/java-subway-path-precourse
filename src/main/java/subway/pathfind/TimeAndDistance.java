@@ -1,8 +1,8 @@
 package subway.pathfind;
 
 public class TimeAndDistance {
-    private int time;
-    private int distance;
+    private final int time;
+    private final int distance;
 
     public TimeAndDistance(int time, int distance) {
         this.time = time;

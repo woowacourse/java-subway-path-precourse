@@ -3,14 +3,14 @@ package subway.pathfind;
 import java.util.Scanner;
 import subway.domain.Station;
 import subway.domain.StationRepository;
-import subway.pathfind.validator.Validator;
+import subway.pathfind.validator.PathFindValidator;
 
 public class PathCalculator {
 
     public static void start(Scanner scanner, PathCriteriaSelectionType criteriaType)  throws IllegalArgumentException {
         Station startStation = getInputStartStation(scanner);
         Station endStation = getInputEndStation(scanner);
-        Validator.validateNotEqualStation(startStation, endStation);
+        PathFindValidator.validateNotEqualStation(startStation, endStation);
         calculate(startStation, endStation, criteriaType);
     }
 
@@ -18,7 +18,7 @@ public class PathCalculator {
         PathCalculatorPrinter.printEndStationUserInputMessage();
         String endStationName = scanner.nextLine();
         Station foundStation = StationRepository.findByName(endStationName);
-        Validator.validateExistsStation(foundStation);
+        PathFindValidator.validateExistsStation(foundStation);
         return foundStation;
     }
 
@@ -26,7 +26,7 @@ public class PathCalculator {
         PathCalculatorPrinter.printStartStationUserInputMessage();
         String startStationName = scanner.nextLine();
         Station foundStation = StationRepository.findByName(startStationName);
-        Validator.validateExistsStation(foundStation);
+        PathFindValidator.validateExistsStation(foundStation);
         return foundStation;
     }
 

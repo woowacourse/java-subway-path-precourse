@@ -26,8 +26,7 @@ public class SubwayPathProgram {
 
     private static MainSelectionType getUserSelectionInputType(Scanner scanner) {
         while (true) {
-            CommonPrinter.printUserSelectionMessage();
-            String userSelectionInput = scanner.nextLine();
+            String userSelectionInput = printMainScreenAndGetUserSelectionInput(scanner);
             try {
                 CommonErrorChecker.validateMenuSelectionInput(userSelectionInput,
                     CommonErrorChecker.MAIN_SELECTION_PATTERN);
@@ -40,5 +39,10 @@ public class SubwayPathProgram {
             PathCriteriaSelector.start(scanner);
             return MainSelectionType.SUCCESS;
         }
+    }
+
+    private static String printMainScreenAndGetUserSelectionInput(Scanner scanner) {
+        CommonPrinter.printUserSelectionMessage();
+        return scanner.nextLine();
     }
 }
