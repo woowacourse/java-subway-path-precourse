@@ -76,6 +76,7 @@ public class InitialSetupController {
             Station source = StationRepository.getStationByName(lineStations.get(index));
             Station destination = StationRepository.getStationByName(lineStations.get(index + NEXT_INDEX));
             TimeGraphRepository.addTimeBetweenStations(source, destination, time);
+            index++;
         }
     }
 
@@ -85,6 +86,7 @@ public class InitialSetupController {
             Station source = StationRepository.getStationByName(lineStations.get(index));
             Station destination = StationRepository.getStationByName(lineStations.get(index + NEXT_INDEX));
             DistanceGraphRepository.addTimeBetweenStations(source, destination, distance);
+            index++;
         }
     }
 }
