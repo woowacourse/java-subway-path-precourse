@@ -7,9 +7,6 @@ public class TextCollection {
     public static final String SEARCH_MENU_MESSAGE = "경로 조회";
     public static final String EXIT_MENU_MESSAGE = "종료";
     public static final String SEARCH_MANAGEMENT_MESSAGE = "경로 기준";
-    public static final String MINIMUM_DISTANCE_MESSAGE = "최단 거리";
-    public static final String RETURN_MENU_MESSAGE = "돌아가기";
-    public static final String MINIMUM_TIME_MESSAGE = "최소 시간";
     public static final String SEARCH_RESULT_MESSAGE = "조회 결과";
 
     public static final String INFO_TAG = "[INFO] ";
