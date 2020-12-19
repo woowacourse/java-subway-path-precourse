@@ -8,12 +8,16 @@ import subway.view.OutputView;
 public class Machine {
     public void start(Scanner scanner) {
         OutputView.printMain();
-        int functionNumber = getInputFunctionNumber(scanner);
+        MainFunction mainFunction = getInputFunction(scanner);
     }
 
-    private int getInputFunctionNumber(Scanner scanner) {
-        String input = InputView.inputFunctionNumber(scanner);
-        int functionNumber = StringUtils.toInt(input);
-        return functionNumber;
+    private MainFunction getInputFunction(Scanner scanner) {
+        try {
+            String functionNumber = InputView.inputFunctionNumber(scanner);
+            return MainFunction.getMainFunctionByNumber(functionNumber);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return getInputFunction(scanner);
+        }
     }
 }
