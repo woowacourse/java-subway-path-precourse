@@ -15,12 +15,4 @@ public class LineRepository {
     public static void addLine(Line line) {
         lines.add(line);
     }
-
-    public static boolean deleteLineByName(String name) {
-        return lines.removeIf(line -> Objects.equals(line.getName(), name));
-    }
-
-    public static void deleteAll() {
-        lines.clear();
-    }
 }
