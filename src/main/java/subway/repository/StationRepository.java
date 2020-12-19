@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import subway.domain.Section.Distance;
-import subway.domain.Section.Section;
-import subway.domain.Section.Time;
-import subway.domain.line.Line;
 import subway.domain.station.Station;
 import subway.exception.AlreadyAddedStationException;
 

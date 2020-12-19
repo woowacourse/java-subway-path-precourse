@@ -1,4 +1,4 @@
-package subway.domain.Section;
+package subway.domain.section;
 
 public class ResultDto {
 

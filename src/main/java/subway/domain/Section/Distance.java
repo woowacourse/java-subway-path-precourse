@@ -1,4 +1,4 @@
-package subway.domain.Section;
+package subway.domain.section;
 
 import java.util.Objects;
 import subway.exception.InvalidDistanceException;

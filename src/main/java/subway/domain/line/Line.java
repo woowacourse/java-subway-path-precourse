@@ -3,7 +3,7 @@ package subway.domain.line;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
-import subway.domain.Section.Section;
+import subway.domain.section.Section;
 
 public class Line implements Comparable<Line> {
 
