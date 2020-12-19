@@ -42,13 +42,45 @@ public class SubwayMap {
         return shortestPath;
     }
 
-    public double findStationPathTravelTime(List<Station> stations) {
+    public double findStationPathTravelTime(List<Station> StationPath) {
         double time = 0;
-        for (int i = 0; i < stations.size() - 1; i++) {
+        for (int i = 0; i < StationPath.size() - 1; i++) {
             DefaultWeightedEdge edge = timeBasedSubwayMap
-                .getEdge(stations.get(i), stations.get(i + 1));
+                .getEdge(StationPath.get(i), StationPath.get(i + 1));
             time += timeBasedSubwayMap.getEdgeWeight(edge);
         }
         return time;
     }
+
+    public List<Station> findShortestPathListByTime(Station departureStation,
+        Station arrivalStation) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(
+            timeBasedSubwayMap);
+
+        List<Station> shortestPath = dijkstraShortestPath.getPath(departureStation, arrivalStation)
+            .getVertexList();
+
+        return shortestPath;
+    }
+
+    public double findShortestPathTime(Station departureStation,
+        Station arrivalStation) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(
+            timeBasedSubwayMap);
+
+        double shortestPathTime = dijkstraShortestPath.getPath(departureStation, arrivalStation)
+            .getWeight();
+        return shortestPathTime;
+    }
+
+    public double findStationPathTravelDistance(List<Station> StationPath) {
+        double distance = 0;
+        for (int i = 0; i < StationPath.size() - 1; i++) {
+            DefaultWeightedEdge edge = distanceBasedSubwayMap
+                .getEdge(StationPath.get(i), StationPath.get(i + 1));
+            distance += distanceBasedSubwayMap.getEdgeWeight(edge);
+        }
+        return distance;
+    }
+
 }
