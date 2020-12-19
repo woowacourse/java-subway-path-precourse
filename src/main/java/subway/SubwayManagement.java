@@ -63,7 +63,7 @@ public class SubwayManagement {
         String arriveStation = user.getInput();
 
         try {
-            checkContainStation(startStation, arriveStation);
+            checkFindPathInput(startStation, arriveStation);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return;
@@ -71,9 +71,12 @@ public class SubwayManagement {
         FindPath.start(select, startStation, arriveStation);
     }
 
-    private void checkContainStation(String startStation, String arriveStation) {
+    private void checkFindPathInput(String startStation, String arriveStation) {
         if (!StationRepository.isContain(startStation) || !StationRepository.isContain(arriveStation)) {
             throw new IllegalArgumentException("[ERROR] 존재하지 않는 역입니다.\n");
+        }
+        if (startStation.equals(arriveStation)) {
+            throw new IllegalArgumentException("[ERROR] 출발역과 도착역은 같을 수 없습니다.\n");
         }
     }
 }
