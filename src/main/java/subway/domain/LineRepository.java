@@ -26,11 +26,6 @@ public class LineRepository {
     }
 
     public static boolean contains(String name) {
-        for (Line line : lines) {
-            if (line.matchName(name)) {
-                return true;
-            }
-        }
-        return false;
+        return lines.contains(new Line(name));
     }
 }
