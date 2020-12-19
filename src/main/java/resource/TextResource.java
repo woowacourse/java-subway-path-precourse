@@ -32,6 +32,13 @@ public class TextResource {
     public static String HEADER_ROUTE_SHOWING = "\n## 경로 기준";
     public static String HEADER_ROUTE_RESULT = "\n## 조회결과";
 
+
+    public static String TOTAL_DISTANCE = "총 거리: ";
+    public static String TOTAL_TIME = "총 소요 시간: ";
+
+    public static String UNIT_KM = "KM";
+    public static String UNIT_MIN = "분";
+
     public static String FUNCTION_QUIT = "종료";
     public static String FUNCTION_BACK = "돌아가기";
 

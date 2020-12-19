@@ -10,6 +10,17 @@ public class RouteRepository {
         RouteResource.init();
     }
 
+    public static double getTotalDistance(String startStation, String endStation) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(RouteResource.getDistanceGraph());
+        return dijkstraShortestPath.getPath(startStation, endStation).getWeight();
+    }
+
+    public static double getTotalTime(String startStation, String endStation) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(RouteResource.getTimeGraph());
+        return dijkstraShortestPath.getPath(startStation, endStation).getWeight();
+    }
+
+
     public static List<String> getRouteMinDistance(String startStation, String endStation) {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(RouteResource.getDistanceGraph());
         List<String> shortestPath = dijkstraShortestPath.getPath(startStation, endStation).getVertexList();
