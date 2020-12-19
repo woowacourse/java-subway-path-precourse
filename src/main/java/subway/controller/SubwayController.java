@@ -3,9 +3,13 @@ package subway.controller;
 import subway.domain.Line.Line;
 import subway.domain.Line.LineRepository;
 import subway.domain.section.DistanceAndTime;
+import subway.domain.section.SectionWithDistanceRepository;
+import subway.domain.section.SectionWithTimeRepository;
+import subway.domain.section.SectionsAndDistance;
 import subway.domain.station.Station;
 import subway.domain.station.StationRepository;
 import subway.service.LineService;
+import subway.service.SectionService;
 import subway.service.StationService;
 
 import java.awt.datatransfer.ClipboardOwner;
@@ -17,14 +21,19 @@ import java.util.stream.Collectors;
 public class SubwayController {
     private LineService lineService;
     private StationService stationService;
+    SectionService sectionService;
 
-    public SubwayController(LineService lineService, StationService stationService) {
+    public SubwayController(LineService lineService, StationService stationService,
+                            SectionService sectionService) {
         this.lineService = lineService;
         this.stationService = stationService;
+        this.sectionService = sectionService;
     }
 
     public void run() {
         initialize();
+        SectionsAndDistance a =  sectionService.findShortestDistancePathByName("교대역", "양재역");
+        System.out.println(a);
     }
 
     private void initialize() {
@@ -42,9 +51,9 @@ public class SubwayController {
     }
 
     private void addLines() {
-        lineService.add(new Line("2호선", get2LineSections(),get2LineDistanceAndTime()));
-        lineService.add(new Line("3호선", get3LineSections(),get3LineDistanceAndTime()));
-        lineService.add(new Line("신분당선", getShinLineSections(),getShinLineDistanceAndTime()));
+        lineService.add("2호선", get2LineSections(),get2LineDistanceAndTime());
+        lineService.add("3호선", get3LineSections(),get3LineDistanceAndTime());
+        lineService.add("신분당선", getShinLineSections(),getShinLineDistanceAndTime());
     }
 
     private List<Station> get2LineSections() {
@@ -95,7 +104,7 @@ public class SubwayController {
 
     private List<Station> getShinLineSections() {
         String[] stations = new String[]{
-                "강냠역", "양재역", "양재시민의숲역"
+                "강남역", "양재역", "양재시민의숲역"
         };
         return Arrays.stream(stations)
                 .map(Station::new)
@@ -105,11 +114,18 @@ public class SubwayController {
     public static void main(String[] args) {
         LineRepository lineRepository = new LineRepository();
         StationRepository stationRepository = new StationRepository();
+        SectionWithTimeRepository sectionWithTimeRepository = new SectionWithTimeRepository();
+        SectionWithDistanceRepository sectionWithDistanceRepository =
+                new SectionWithDistanceRepository();
 
-        LineService lineService = new LineService(lineRepository);
+        LineService lineService = new LineService(lineRepository,
+                sectionWithDistanceRepository,
+                sectionWithTimeRepository);
         StationService stationService = new StationService(stationRepository);
 
-        SubwayController subwayController = new SubwayController(lineService, stationService);
+        SectionService sectionService = new SectionService(sectionWithDistanceRepository, sectionWithTimeRepository);
+
+        SubwayController subwayController = new SubwayController(lineService, stationService, sectionService);
         subwayController.run();
     }
 }
