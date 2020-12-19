@@ -56,11 +56,22 @@ public class SubwayPathChecker {
     }
 
     private void searchShortestDistance() {
+        Station departureStation;
+        Station arrivalStation;
         try {
-            InputView.inputDepartureStation(scanner);
+            departureStation = InputView.inputDepartureStation(scanner);
+            arrivalStation = InputView.inputArrivalStation(scanner);
+            hasStationNameDuplication(departureStation, arrivalStation);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             pathCheck();
+        }
+        
+    }
+
+    private void hasStationNameDuplication(Station departureStation, Station arrivalStation) {
+        if (departureStation.equals(arrivalStation)) {
+            throw new IllegalArgumentException("[ERROR] 출발역과 도착역이 동일합니다.");
         }
     }
 
