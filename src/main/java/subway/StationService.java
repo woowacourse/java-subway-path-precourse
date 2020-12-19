@@ -9,4 +9,10 @@ public class StationService {
         StationRepository.addStation(new Station(name));
     }
 
+    public static void stationAddConnectData(String stationName, String connectStationName,
+        int distance, int time) {
+        Station station = StationRepository.getStation(stationName);
+        Station connectStation = StationRepository.getStation(connectStationName);
+        station.addConnectData(connectStation, distance, time);
+    }
 }
