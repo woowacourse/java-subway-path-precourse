@@ -11,6 +11,7 @@
 ### 초기 설정 
 - 프로그램 시작 시 역, 노선, 구간 정보를 초기 설정 해야 한다.
 //3주차에 사용한 station, line를 사용하고 구간정보는 새로 만든다. 구간정보는 거리와 시간으로 이루어져있다
+//거리와 시간 그래프를 따로 그리기
 - 거리와 소요 시간은 양의 정수이며 단위는 km와 분을 의미한다.
 - 아래의 사전 등록 정보로 반드시 초기 설정을 한다.
 //메인 시작할때 start 함수 실행에 넣어주기
@@ -177,7 +178,7 @@ public class Station {
 ### 프로그래밍 요구사항 - StationRepository, LineRepository
 - Station과 Line의 상태를 저장할 수 있는 StationRepository, LineRepository를 제공한다.
 - 필요 시 StationRepository, LineRepository 이 외 추가로 Repository를 만들 수 있다.
-- 추가로 생성되는 객체에 대해서 XXXRepository 네이밍으로 저장 클래스를 추가한다.
+- 추가로 생성되는 객체에 대해서 XXXRepository 네이밍으로 저장 클래스를 추가한다. //이름확인
 - 객체들의 상태를 관리하기 위해서 XXXRepository 클래스를 활용해 저장 로직을 구현해야 한다.
 - 작성된 메서드는 수정할 수 없고, 필요에 따라 메서드를 자유롭게 추가할 수 있다.
  
@@ -227,7 +228,7 @@ public void getDijkstraShortestPath() {
     graph.setEdgeWeight(graph.addEdge("v1", "v2"), 2);
     graph.setEdgeWeight(graph.addEdge("v2", "v3"), 2);
     graph.setEdgeWeight(graph.addEdge("v1", "v3"), 100);
-
+//입력은 문자열로 받아 정수로 바꾸어 처리
     DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
     List<String> shortestPath = dijkstraShortestPath.getPath("v3", "v1").getVertexList();
 
