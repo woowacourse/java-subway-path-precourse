@@ -2,6 +2,7 @@ package subway.repository;
 
 import subway.constant.InitialData;
 import subway.domain.Path;
+import subway.exception.InvalidInputException;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,10 +29,10 @@ public class PathRepository {
             addPaths(paths);
     }
 
-    public static double getDistance(Path targetPath) {
+    public static double getDistance(Path targetPath) throws InvalidInputException {
         for (Path path : paths)
             if (pathMatches(path, targetPath)) return path.getDistance();
-        return 0;   // TODO: 예외처리
+        throw new InvalidInputException(InvalidInputException.ExceptionCode.NO_PATH_AVAILABLE);
     }
 
     private static boolean pathMatches(Path path, Path targetPath) {
@@ -39,9 +40,9 @@ public class PathRepository {
                 || (path.getSrcStation().equals(targetPath.getDstStation()) && path.getDstStation().equals(targetPath.getSrcStation()));
     }
 
-    public static double getTime(Path targetPath) {
+    public static double getTime(Path targetPath) throws InvalidInputException {
         for (Path path : paths)
             if (pathMatches(path, targetPath)) return path.getTime();
-        return 0;   // TODO: 예외처리
+        throw new InvalidInputException(InvalidInputException.ExceptionCode.NO_PATH_AVAILABLE);
     }
 }

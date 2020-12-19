@@ -17,7 +17,7 @@ public class PathService {
         this.pathCalculator = new PathCalculator();
     }
 
-    public PathResult searchPath(Basis basis) {
+    public PathResult searchPath(Basis basis) throws InvalidInputException {
         this.basis = basis;
         this.basis.validate();
         pathCalculator.initGraph(this.basis);
@@ -25,7 +25,7 @@ public class PathService {
         return buildPathResult(result);
     }
 
-    private PathResult buildPathResult(GraphPath result) {
+    private PathResult buildPathResult(GraphPath result) throws InvalidInputException {
         validatePathAvailable(result);
         if (basis.getBasis().equals(BasisChoice.DISTANCE.getCode()))
             return new PathResult(result.getWeight(), calcTotalTime(result), result.getVertexList());
@@ -39,7 +39,7 @@ public class PathService {
             throw new InvalidInputException(InvalidInputException.ExceptionCode.NO_PATH_AVAILABLE);
     }
 
-    private double calcTotalDistance(GraphPath result) {
+    private double calcTotalDistance(GraphPath result) throws InvalidInputException {
         List<Station> stations = result.getVertexList();
         double totalDistance = 0;
         for (int i = 0; i < stations.size() - 1; i++)
@@ -47,7 +47,7 @@ public class PathService {
         return totalDistance;
     }
 
-    private double calcTotalTime(GraphPath result) {
+    private double calcTotalTime(GraphPath result) throws InvalidInputException {
         List<Station> stations = result.getVertexList();
         double totalTime = 0;
         for (int i = 0; i < stations.size() - 1; i++)
