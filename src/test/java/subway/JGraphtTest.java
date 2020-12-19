@@ -22,17 +22,16 @@ public class JGraphtTest {
         graph.setEdgeWeight(graph.addEdge("v1", "v3"), 100);
         graph.setEdgeWeight(graph.addEdge("v1", "v4"), 10);
 
-        graph.setEdgeWeight(graph.addEdge("v3", "v4"), 95);
 
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
-        List<String> shortestPath = dijkstraShortestPath.getPath("v2", "v4").getVertexList();
-        double length = dijkstraShortestPath.getPath("v2", "v4").getWeight();
+        List<String> shortestPath = dijkstraShortestPath.getPath("v3", "v4").getVertexList();
+        double length = dijkstraShortestPath.getPathWeight("v3", "v4");
 
         for(String str : shortestPath){
             System.out.println(str);
         }
         System.out.println(length);
 
-        assertThat(shortestPath.size()).isEqualTo(3);
+        //assertThat(shortestPath.size()).isEqualTo(3);
     }
 }

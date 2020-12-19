@@ -43,7 +43,7 @@ public class InitData {
             Line line = new Line(lineName);
             line.addStationListInLine(getStationsInLine(lineName));
             line.addStationPathDistanceListInLine(getPathDistanceInLine(lineName));
-            line.addStationPathDistanceListInLine(getPathTimeInLine(lineName));
+            line.addStationPathTimeListInLine(getPathTimeInLine(lineName));
             lineList.add(line);
         }
 
