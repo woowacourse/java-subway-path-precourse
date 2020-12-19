@@ -4,7 +4,6 @@ import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 
-import java.lang.reflect.WildcardType;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,26 +34,42 @@ public class DijkstraGraphRepository {
 
     private static void secondLineSet() {
         shortDistanceGraph.setEdgeWeight(shortDistanceGraph.addEdge("교대역", "강남역"), 2);
-        //stationDistMap.put("교대역", setMap("강남역", 2));    // 추후 추가
+        stationDistMap.put("교대역", setMap("강남역", 2));
+
         shortTimeGraph.setEdgeWeight(shortTimeGraph.addEdge("교대역", "강남역"), 3);
+        stationTimeMap.put("교대역", setMap("강남역", 3));
+
         shortDistanceGraph.setEdgeWeight(shortDistanceGraph.addEdge("강남역", "역삼역"), 2);
+        stationDistMap.put("강남역", setMap("역삼역", 2));
+
         shortTimeGraph.setEdgeWeight(shortTimeGraph.addEdge("강남역", "역삼역"), 3);
+        stationTimeMap.put("강남역", setMap("역삼역", 3));
     }
 
     private static void thirdLineSet() {
         shortDistanceGraph.setEdgeWeight(shortDistanceGraph.addEdge("교대역", "남부터미널역"), 3);
+        stationDistMap.put("교대역", setMap("남부터미널역", 3));
         shortTimeGraph.setEdgeWeight(shortTimeGraph.addEdge("교대역", "남부터미널역"), 2);
+        stationTimeMap.put("교대역", setMap("남부터미널역", 2));
         shortDistanceGraph.setEdgeWeight(shortDistanceGraph.addEdge("남부터미널역", "양재역"), 6);
+        stationDistMap.put("남부터미널역", setMap("양재역", 6));
         shortTimeGraph.setEdgeWeight(shortTimeGraph.addEdge("남부터미널역", "양재역"), 5);
+        stationTimeMap.put("남부터미널역", setMap("양재역", 5));
         shortDistanceGraph.setEdgeWeight(shortDistanceGraph.addEdge("양재역", "매봉역"), 1);
+        stationDistMap.put("양재역", setMap("매봉역", 1));
         shortTimeGraph.setEdgeWeight(shortTimeGraph.addEdge("양재역", "매봉역"), 1);
+        stationTimeMap.put("양재역", setMap("매봉역", 1));
     }
 
     private static void sinbundangLineSet() {
         shortDistanceGraph.setEdgeWeight(shortDistanceGraph.addEdge("강남역", "양재역"), 2);
+        stationDistMap.put("강남역", setMap("양재역", 2));
         shortTimeGraph.setEdgeWeight(shortTimeGraph.addEdge("강남역", "양재역"), 8);
+        stationTimeMap.put("강남역", setMap("양재역", 8));
         shortDistanceGraph.setEdgeWeight(shortDistanceGraph.addEdge("양재역", "양재시민의숲역"), 10);
+        stationDistMap.put("양재역", setMap("양재시민의숲역", 10));
         shortTimeGraph.setEdgeWeight(shortTimeGraph.addEdge("양재역", "양재시민의숲역"), 3);
+        stationTimeMap.put("양재역", setMap("양재시민의숲역", 3));
     }
 
     public static int getShortestDist(String name1, String name2) throws IllegalArgumentException {
@@ -89,5 +104,13 @@ public class DijkstraGraphRepository {
         DijkstraShortestPath dijkstraShortestTimePath = new DijkstraShortestPath(shortTimeGraph);
         List<String> shortestTimePath = dijkstraShortestTimePath.getPath(name1, name2).getVertexList();
         return shortestTimePath;
+    }
+
+    public static Map<String, Map<String, Integer>> getStationDistMap() {
+        return stationDistMap;
+    }
+
+    public static Map<String, Map<String, Integer>> getStationTimeMap() {
+        return stationTimeMap;
     }
 }
