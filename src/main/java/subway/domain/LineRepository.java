@@ -35,6 +35,6 @@ public class LineRepository {
     }
 
     public static boolean contains(String name) {
-        return lines.contains(new Line(name));
+        return lines.contains(getLineByName(name));
     }
 }

@@ -34,6 +34,6 @@ public class StationRepository {
     }
 
     public static boolean contains(String name) {
-        return stations.contains(new Station(name));
+        return stations.contains(getStationByName(name));
     }
 }
