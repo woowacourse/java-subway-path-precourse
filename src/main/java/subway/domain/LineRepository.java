@@ -1,5 +1,7 @@
 package subway.domain;
 
+import subway.exception.NoSuchLineException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -28,5 +30,12 @@ public class LineRepository {
 
     public static void deleteAll() {
         lines.clear();
+    }
+
+    public static Line findLineByName(String name) {
+        return lines.stream()
+                .filter(line -> line.getName().equals(name))
+                .findFirst()
+                .orElseThrow(NoSuchLineException::new);
     }
 }

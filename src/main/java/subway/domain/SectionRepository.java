@@ -13,6 +13,4 @@ public class SectionRepository {
         distanceGraph.addVertex(station);
         timeGraph.addVertex(station);
     }
-
-
 }
