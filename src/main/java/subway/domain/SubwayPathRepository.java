@@ -15,7 +15,11 @@ public class SubwayPathRepository {
         subwayPath.addVertex(station);
     }
 
-    public static void setPathWeight(Station source, Station target, int weight){
+    public static void setPathWeightWithTwoStation(Station source, Station target, int weight){
         subwayPath.setEdgeWeight(subwayPath.addEdge(source, target), weight);
+    }
+
+    public static int getEdgeWeightWithTwoStations(Station source, Station target){
+        return (int) subwayPath.getEdgeWeight(subwayPath.getEdge(source, target));
     }
 }
