@@ -40,9 +40,6 @@ public class MainMenu {
     }
 
     public boolean doNext() {
-        if (doNext) {
-            System.out.println();
-        }
         return doNext;
     }
 }
