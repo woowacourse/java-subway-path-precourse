@@ -21,4 +21,12 @@ public class Path {
     public Station getSource() {
         return source;
     }
+
+    public Station getDest() {
+        return dest;
+    }
+
+    public Line getLine() {
+        return line;
+    }
 }

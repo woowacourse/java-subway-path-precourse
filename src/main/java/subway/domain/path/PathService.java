@@ -5,6 +5,6 @@ public class PathService {
     }
 
     public static void addPath(Path path) {
-
+        PathRepository.addPath(path);
     }
 }

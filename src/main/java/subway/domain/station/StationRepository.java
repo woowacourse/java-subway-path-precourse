@@ -12,6 +12,10 @@ public class StationRepository {
         return Collections.unmodifiableList(stations);
     }
 
+    public static void addAll(List<Station> stations) {
+        stations.forEach(StationRepository::addStation);
+    }
+
     public static void addStation(Station station) {
         stations.add(station);
     }
