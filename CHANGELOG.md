@@ -3,6 +3,29 @@
 
 # CHANGELOG
 
+## [3.0.0] feat(SubwayController.java): add getShortestPathDistance feature
+
+Update files:
+
+    - SubwayController.java
+            - getShortestPathDistance() : returning the shortest distance path
+
+Add a find the shortest distance path feature
+
+---
+
+## [2.0.0] feat(SubwayController.java): add init feature
+
+Update files:
+
+    - SubwayController.java
+        : A class controllers all main features in this project
+            - initPrimary() : Initiating all the project's needed objects
+
+Add an initiate all the project's needed objects feature
+
+---
+
 ## [1.0.0] feat(SubwayController.java): add init feature
 
 Upload files:

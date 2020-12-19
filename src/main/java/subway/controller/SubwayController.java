@@ -1,13 +1,19 @@
 package subway.controller;
 
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
+import org.jgrapht.graph.DefaultWeightedEdge;
+import org.jgrapht.graph.WeightedMultigraph;
 import subway.domain.Edge;
 import subway.domain.EdgeRepository;
 import subway.domain.Station;
 import subway.domain.StationRepository;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class SubwayController {
+    private WeightedMultigraph<String, DefaultWeightedEdge> distanceGraph;
+
     public void initPrimary() {
         Arrays.asList("교대역", "강남역", "역삼역", "남부터미널역", "양재역", "양재시민의숲역", "매봉역")
                 .forEach(name -> StationRepository.addStation(new Station(name)));
@@ -18,5 +24,20 @@ public class SubwayController {
         EdgeRepository.addEdge(new Edge("양재역", "매봉역", 1, 1));
         EdgeRepository.addEdge(new Edge("강남역", "양재역", 2, 8));
         EdgeRepository.addEdge(new Edge("양재역", "양재시민의숲역", 10, 3));
+    }
+
+    public void initDistanceGraph() {
+        this.distanceGraph = new WeightedMultigraph(DefaultWeightedEdge.class);
+        StationRepository.stations().forEach(station -> distanceGraph.addVertex(station.getName()));
+        EdgeRepository.edges().forEach(edge -> distanceGraph.setEdgeWeight(distanceGraph.addEdge(edge.getFrom(), edge.getTo()), edge.getDistance()));
+    }
+
+    private List<String> getShortestPathDistance(String from, String to) {
+        return getShortestPath(from, to, this.distanceGraph);
+    }
+
+    private List<String> getShortestPath(String from, String to, WeightedMultigraph<String, DefaultWeightedEdge> graph) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
+        return dijkstraShortestPath.getPath(from, to).getVertexList();
     }
 }
