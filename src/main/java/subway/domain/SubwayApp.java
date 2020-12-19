@@ -1,12 +1,14 @@
 package subway.domain;
 
 import subway.menu.MainMenu;
+import subway.menu.PathMenu;
 import subway.view.InputView;
 import subway.view.OutputView;
 
 import java.util.Scanner;
 
 import static subway.menu.MainMenu.*;
+import static subway.menu.PathMenu.*;
 import static subway.view.OutputView.*;
 
 public class SubwayApp {
@@ -24,9 +26,8 @@ public class SubwayApp {
                 return;
             }
             printPathMenu();
-            inputView.inputPathMenuOption();
-            String startStationName = inputView.inputStartStation();
-            inputView.inputEndStation(startStationName);
+            PathMenu findPathMenu = findPathMenuByOption(inputView.inputPathMenuOption());
+            findPathMenu.request();
         } catch (Exception e) {
             System.out.println(e.getMessage());
             run();
