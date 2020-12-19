@@ -1,5 +1,8 @@
 package subway.domain;
 
+import org.jgrapht.graph.DefaultDirectedGraph;
+import org.jgrapht.graph.DefaultWeightedEdge;
+import org.jgrapht.graph.WeightedMultigraph;
 import org.junit.jupiter.api.Test;
 import subway.InitDataList;
 
@@ -13,13 +16,19 @@ class LineTest {
     }
 
     @Test
-    public void createLineTest() throws Exception{
+    public void edgeTest() throws Exception{
         //given
         List<Line> lines = LineRepository.lines();
         //when
+        WeightedMultigraph<Station, DefaultWeightedEdge> graph
+                = new WeightedMultigraph<>(DefaultWeightedEdge.class);
+        for (Line line : lines) {
+            line.addEdge(graph, Weight.DISTANCE);
+        }
 
-        System.out.println(lines);
         //then
+
+        graph.vertexSet().forEach(System.out::println);
     }
 
 }
