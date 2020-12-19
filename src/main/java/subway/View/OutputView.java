@@ -1,5 +1,7 @@
 package subway.View;
 
+import java.util.List;
+
 public class OutputView {
     private static final String MAIN_MENU_MAIN_DISPLAY="## 메인화면";
     private static final String MAIN_MENU_PATH_SEARCH="1. 경로 조회";
@@ -10,6 +12,13 @@ public class OutputView {
     private static final String PATH_MENU_SHORT_TIME="2. 최소 시간";
     private static final String PATH_MENU_BACK="B. 돌아가기";
 
+    public void printStation(List<String> tmpSave) {
+
+        System.out.println("[INFO] ---");
+        for(String string:tmpSave) {
+            System.out.println("[INFO] "+string);
+        }
+    }
     public void setMainMenuMainDisplay(){
         System.out.println(MAIN_MENU_MAIN_DISPLAY);
         System.out.println(MAIN_MENU_PATH_SEARCH);

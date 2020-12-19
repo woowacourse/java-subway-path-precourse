@@ -24,21 +24,17 @@ public class PathController {
             return ;
         }
         if(tmpSavePathMenuChoice.equals(PATH_CONTROLLER_SHORT_TIME)) {
-
+            setPathControllerShortTime(scanner);
         }
         if(tmpSavePathMenuChoice.equals(PATH_CONTROLLER_SHORT_DISTANCE)) {
             setPathControllerShortDistance(scanner);
         }
     }
     public void setPathControllerShortDistance(Scanner scanner) {
-        //.getStationEnd(scanner);
-        //inputView.getStationStart(scanner);
-        computeShortValue.setGraph();
+        computeShortValue.setDistanceGraph(inputView.getStationStart(scanner),inputView.getStationEnd(scanner));
     }
     public void setPathControllerShortTime(Scanner scanner) {
-        inputView.getStationEnd(scanner);
-        inputView.getStationStart(scanner);
-
+        computeShortValue.setTimeGraph(inputView.getStationEnd(scanner),inputView.getStationStart(scanner));
     }
 
 }

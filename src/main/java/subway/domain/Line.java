@@ -7,6 +7,7 @@ import java.util.List;
 public class Line {
     private String name;
     private static final List<Station> stations = new ArrayList<>();
+
     private static final List<Integer> distance = new ArrayList<>();
     private static final List<Integer> time = new ArrayList<>();
     public Line() {
@@ -19,20 +20,27 @@ public class Line {
     public String getName() {
         return name;
     }
+
     public void setStations(List<String> tmpSaveStation) {
         for(int i=0;i<tmpSaveStation.size();i++){
             stations.add(new Station(tmpSaveStation.get(i)));
         }
     }
     public void setTime(List<Integer> tmpSaveTime) {
+        System.out.println(name);
         for(int i=0;i<tmpSaveTime.size();i++) {
-            time.add(tmpSaveTime.get(i));
+            this.time.add(tmpSaveTime.get(i));
         }
     }
     public void setDistance(List<Integer> tmpSaveDistance) {
+
         for(int i=0;i< tmpSaveDistance.size();i++) {
+
+            System.out.println(tmpSaveDistance.get(i));
             distance.add(tmpSaveDistance.get(i));
         }
+        System.out.println(distance.size());
+
     }
     public List<Station> getLineStation() {
         return stations;
@@ -48,6 +56,8 @@ public class Line {
 
         int startIndex=stations.indexOf(startStation);
         int endIndex=stations.indexOf(endStation);
+
+
         if(startIndex>endIndex) {
            return computeDistance(endIndex,startIndex);
         }
@@ -56,10 +66,10 @@ public class Line {
     public int computeDistance(int startIndex,int endIndex) {
         int totalDistance=0;
         for(int i=startIndex;i<endIndex-1;i++) {
-            System.out.println("ds");
-            totalDistance+=distance.get(i);
+
+            totalDistance+=this.distance.get(i);
         }
-        System.out.println("sddsss");
+
         return totalDistance;
     }
     public int getTime(Station startStation,Station endStation) {
@@ -69,15 +79,18 @@ public class Line {
         if(startIndex>endIndex) {
             return computeTime(endIndex,startIndex);
         }
+
         return computeTime(startIndex,endIndex);
     }
     public int computeTime(int startIndex,int endIndex) {
         int totaltime=0;
         for(int i=startIndex;i<endIndex-1;i++) {
-            System.out.println("ds");
+
+
             totaltime+=time.get(i);
         }
-        System.out.println("sddsss");
+
+        System.out.println(totaltime);
         return totaltime;
     }
 
