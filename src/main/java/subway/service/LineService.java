@@ -21,8 +21,9 @@ public class LineService {
     }
 
     public static void addStationAtLine(String lineName, Station station, Section section) {
-        Line line = LineRepository.findByName(lineName)
-                .orElseThrow(IllegalArgumentException::new);
+        Line line;
+        line = LineRepository.findByName(lineName)
+                .orElseThrow(CannotFindLineException::new);
         line.addStation(station, section);
     }
 }

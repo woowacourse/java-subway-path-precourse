@@ -18,6 +18,6 @@ public class StationService {
 
     public static Station findStationByName(String name) {
         return StationRepository.findByName(name)
-                .orElseThrow(IllegalArgumentException::new);
+                .orElseThrow(CannotFindStationException::new);
     }
 }
