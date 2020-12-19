@@ -1,15 +1,12 @@
 package subway.controller.path;
 
-import subway.controller.Controller;
 import subway.view.InputView;
 import subway.view.OutputView;
 
-public class QuickestPathController implements Controller {
-
-    private final InputView inputView;
+public class QuickestPathController extends PathController {
 
     public QuickestPathController(InputView inputView) {
-        this.inputView = inputView;
+        super(inputView);
     }
 
     @Override
@@ -19,9 +16,5 @@ public class QuickestPathController implements Controller {
         } catch (IllegalArgumentException e) {
             OutputView.printError(e);
         }
-    }
-
-    private String getStartingStation() {
-        return inputView.inputStartingStationName();
     }
 }
