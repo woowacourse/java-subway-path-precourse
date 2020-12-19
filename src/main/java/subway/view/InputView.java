@@ -24,4 +24,16 @@ public class InputView {
             return inputMainUserOption();
         }
     }
+
+    public static String inputPathUserOption() {
+        System.out.println(USER_OPTION_MESSAGE);
+        String userOption = scanner.nextLine().trim();
+        try {
+            InputValidator.validatePathUserOption(userOption);
+            return userOption;
+        } catch (Exception e) {
+            System.out.println(ERROR_PREFIX + e.getMessage());
+            return inputPathUserOption();
+        }
+    }
 }

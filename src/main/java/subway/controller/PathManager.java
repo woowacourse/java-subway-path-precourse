@@ -25,7 +25,7 @@ public class PathManager {
     public void run() {
         while (!userWantGoBack()) {
             OutputView.printPathManagerScreen();
-//            userOption = InputView.inputPathUserOption();
+            userOption = InputView.inputPathUserOption();
         }
     }
 
