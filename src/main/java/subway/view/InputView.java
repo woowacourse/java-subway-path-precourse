@@ -18,7 +18,7 @@ public class InputView {
     }
     
     public static String inputEndStation(Scanner scanner) {
-        System.out.println("## 도착을 입력하세요.");
+        System.out.println("## 도착역을 입력하세요.");
         String input = scanner.nextLine();
         printEmptyLine();
         return input;
