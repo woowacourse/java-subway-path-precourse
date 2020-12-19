@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class InputView {
     public static final String SELECT_MENU_MESSAGE = "\n## 원하는 기능을 선택하세요.";
     public static final String ASK_DEPARTURE_STATION_MESSAGE = "\n## 출발역을 입력하세요.";
-    public static final String ASK_ARRIVAL_STATION_MESSAGE = "\n## 도착역역을 입력하세요.";
+    public static final String ASK_ARRIVAL_STATION_MESSAGE = "\n## 도착역을 입력하세요.";
 
     public static Scanner scanner = new Scanner(System.in);
 
