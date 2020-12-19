@@ -1,9 +1,6 @@
 package subway.model;
 
-import subway.model.domain.Line;
-import subway.model.domain.LineRepository;
-import subway.model.domain.Station;
-import subway.model.domain.StationRepository;
+import subway.model.domain.*;
 
 public class SubwayInit {
     public SubwayInit() {
@@ -28,5 +25,37 @@ public class SubwayInit {
         LineRepository.addLine(second);
         LineRepository.addLine(third);
         LineRepository.addLine(sinbundang);
+
+        DistanceRepository distance = new DistanceRepository();
+        distance.addStation(snue);
+        distance.addStation(gangnam);
+        distance.addStation(yeoksam);
+        distance.addStation(nambuTerminal);
+        distance.addStation(yangjae);
+        distance.addStation(yangjaeForest);
+        distance.addStation(maebong);
+        distance.addDistance(snue, gangnam, 2);
+        distance.addDistance(gangnam, yeoksam, 2);
+        distance.addDistance(snue, nambuTerminal, 3);
+        distance.addDistance(nambuTerminal, yangjae, 6);
+        distance.addDistance(yangjae, maebong, 1);
+        distance.addDistance(gangnam, yangjae, 2);
+        distance.addDistance(yangjae, yangjaeForest, 10);
+
+        TimeRepository time = new TimeRepository();
+        time.addStation(snue);
+        time.addStation(gangnam);
+        time.addStation(yeoksam);
+        time.addStation(nambuTerminal);
+        time.addStation(yangjae);
+        time.addStation(yangjaeForest);
+        time.addStation(maebong);
+        time.addTime(snue, gangnam, 3);
+        time.addTime(gangnam, yeoksam, 3);
+        time.addTime(snue, nambuTerminal, 2);
+        time.addTime(nambuTerminal, yangjae, 5);
+        time.addTime(yangjae, maebong, 1);
+        time.addTime(gangnam, yangjae, 8);
+        time.addTime(yangjae, yangjaeForest, 3);
     }
 }
