@@ -21,6 +21,10 @@ public class StationRepository {
         stations.add(station);
     }
 
+    public static void saveAll(List<Station> stations) {
+        stations.forEach(StationRepository::save);
+    }
+
     public static void addStation(Station station) {
         stations.add(station);
     }
