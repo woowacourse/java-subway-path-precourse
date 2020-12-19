@@ -5,6 +5,7 @@ import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import subway.domain.graph.TimeGraphRepository;
 import subway.view.InputView;
 import subway.view.OutputView;
+import subway.view.message.ErrorMessage;
 
 public class QuickestPathController extends PathController {
 
@@ -14,9 +15,13 @@ public class QuickestPathController extends PathController {
 
     @Override
     protected void calculatePath(String startingStationName, String finishingStationName) {
-        DijkstraShortestPath quickestPath = TimeGraphRepository.getQuickestPath();
-        List<String> pathInformation = quickestPath.getPath(startingStationName, finishingStationName).getVertexList();
+        try {
+            DijkstraShortestPath quickestPath = TimeGraphRepository.getQuickestPath();
+            List<String> pathInformation = quickestPath.getPath(startingStationName, finishingStationName).getVertexList();
 
-        OutputView.printResult(pathInformation);
+            OutputView.printResult(pathInformation);
+        } catch (NullPointerException e) {
+            throw new IllegalArgumentException(ErrorMessage.CONNECTION_NONE);
+        }
     }
 }

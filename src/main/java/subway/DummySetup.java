@@ -18,13 +18,16 @@ public class DummySetup {
             "남부터미널역",
             "양재역",
             "양재시민의숲역",
-            "매봉역"
+            "매봉역",
+            "건대입구역",
+            "군자역"
     );
 
     private static final List<String> dummyLineNames = Arrays.asList(
             "2호선",
             "3호선",
-            "신분당선"
+            "신분당선",
+            "7호선"
     );
 
     public static void initialize() {
@@ -49,6 +52,15 @@ public class DummySetup {
         connectSecondLine();
         connectThirdLine();
         connectNewBundangLine();
+        connectWooHyungLine();
+    }
+
+    private static void connectWooHyungLine() {
+        Line wooHyungLine = LineRepository.get("7호선");
+        wooHyungLine.addStation(StationRepository.get("건대입구역"));
+        wooHyungLine.addStation(StationRepository.get("군자역"));
+
+        addDistanceAndTimeWooHyungLine();
     }
 
     private static void connectSecondLine() {
@@ -77,6 +89,11 @@ public class DummySetup {
         newBundangLine.addStation(StationRepository.get("양재시민의숲역"));
 
         addDistanceAndTimeNewBundangLine();
+    }
+
+    private  static void addDistanceAndTimeWooHyungLine() {
+        DistanceGraphRepository.addStationsWithDistance("건대입구역", "군자역", 9);
+        TimeGraphRepository.addStationsWithTime("건대입구역", "군자역", 5);
     }
 
     private static void addDistanceAndTimeSecondLine() {

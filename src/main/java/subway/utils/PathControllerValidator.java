@@ -9,7 +9,6 @@ public class PathControllerValidator {
         validateExisting(startingStation);
         validateExisting(finishingStation);
         validateDuplicate(startingStation, finishingStation);
-        validateConnected(startingStation, finishingStation);
     }
 
     private static void validateExisting(String stationName) {
@@ -26,8 +25,5 @@ public class PathControllerValidator {
 
     private static boolean namesAreSame(String startingStation, String finishingStation) {
         return startingStation.equals(finishingStation);
-    }
-
-    private static void validateConnected(String startingStation, String finishingStation) {
     }
 }

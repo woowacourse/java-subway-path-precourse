@@ -5,6 +5,7 @@ import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import subway.domain.graph.DistanceGraphRepository;
 import subway.view.InputView;
 import subway.view.OutputView;
+import subway.view.message.ErrorMessage;
 
 public class ShortestPathController extends PathController {
 
@@ -14,9 +15,13 @@ public class ShortestPathController extends PathController {
 
     @Override
     protected void calculatePath(String startingStationName, String finishingStationName) {
-        DijkstraShortestPath shortestPath = DistanceGraphRepository.getShortestPath();
-        List<String> pathInformation = shortestPath.getPath(startingStationName, finishingStationName).getVertexList();
+        try {
+            DijkstraShortestPath shortestPath = DistanceGraphRepository.getShortestPath();
+            List<String> pathInformation = shortestPath.getPath(startingStationName, finishingStationName).getVertexList();
 
-        OutputView.printResult(pathInformation);
+            OutputView.printResult(pathInformation);
+        } catch (NullPointerException e) {
+            throw new IllegalArgumentException(ErrorMessage.CONNECTION_NONE);
+        }
     }
 }
