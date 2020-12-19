@@ -23,8 +23,8 @@ public class Message {
 	public static final String QUITE = "Q. 종료";
 	
 	// path criterion
-	public static final String MIN_DISTANCE = "최단 거리";
-	public static final String MIN_TIME = "최소 시간";
+	public static final String MIN_DISTANCE = "1. 최단 거리";
+	public static final String MIN_TIME = "2. 최소 시간";
 	
 	public static final String BACK = "B. 돌아가기";
 }
