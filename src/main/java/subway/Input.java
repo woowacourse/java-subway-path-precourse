@@ -9,7 +9,8 @@ public class Input {
         scanner = sc;
     }
 
-    public static String getUserInput() {
+    public static String getUserInput(String str) {
+        Output.printInputBefore(str);
         return scanner.next();
     }
 }
