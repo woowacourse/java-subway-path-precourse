@@ -12,7 +12,7 @@ public class SectionRepository {
         return Collections.unmodifiableList(sections);
     }
 
-    public static void addSection(Section section) {
+    public static void addSetion(Section section) {
         sections.add(section);
     }
 

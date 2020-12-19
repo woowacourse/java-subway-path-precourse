@@ -23,4 +23,13 @@ public class StationRepository {
     public static void deleteAll() {
         stations.clear();
     }
+
+    public static Station findStationByName(String name) {
+        for (Station station : stations()) {
+            if (station.getName().equals(name)) {
+                return station;
+            }
+        }
+        return null;
+    }
 }
