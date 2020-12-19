@@ -23,11 +23,7 @@ public class ShortestDistanceService {
             Station arrivalStation = InputView.inputArrivalStation(scanner);
             StationRepository.validateSameStation(startStation, arrivalStation);
             List<Station> shortestPath = dijkstraShortestPath.getPath(startStation, arrivalStation).getVertexList();
-
-            for (Station station : shortestPath) {
-                System.out.println(station.getName());
-            }
-            OutputView.printResultMessage(shortestPath, getShortestDistance(shortestPath), getTotalTime(shortestPath));
+            OutputView.printResultMessage(shortestPath, getTotalDistance(shortestPath), getTotalTime(shortestPath));
         }catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -35,18 +31,16 @@ public class ShortestDistanceService {
 
 
 
-    private int getShortestDistance(List<Station> shortestPath) {
+    private int getTotalDistance(List<Station> shortestPath) {
         int shortestDistance = 0;
         for (int i = 0; i < shortestPath.size() - 1; i++) {
             Station station = shortestPath.get(i);
             shortestDistance += station.getNextStationDistance(shortestPath.get(i + 1));
         }
-        System.out.println(shortestDistance);
         return shortestDistance;
     }
 
     private int getTotalTime(List<Station> shortestPath) {
-        System.out.println(shortestPath.toString());
         int totalTime = 0;
         for (int i = 0; i < shortestPath.size() - 1; i++) {
             Station station = shortestPath.get(i);

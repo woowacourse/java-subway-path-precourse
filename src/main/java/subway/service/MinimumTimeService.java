@@ -23,14 +23,13 @@ public class MinimumTimeService {
             Station arrivalStation = InputView.inputArrivalStation(scanner);
             StationRepository.validateSameStation(startStation, arrivalStation);
             List<Station> shortestPath = dijkstraShortestPath.getPath(startStation, arrivalStation).getVertexList();
-            System.out.println(shortestPath.toString());
-            OutputView.printResultMessage(shortestPath, getShortestDistance(shortestPath), getTotalTime(shortestPath));
+            OutputView.printResultMessage(shortestPath, getTotalDistance(shortestPath), getTotalTime(shortestPath));
         }catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    private int getShortestDistance(List<Station> shortestPath) {
+    private int getTotalDistance(List<Station> shortestPath) {
         int shortestDistance = 0;
         for (int i = 0; i < shortestPath.size() - 1; i++) {
             Station station = shortestPath.get(i);
