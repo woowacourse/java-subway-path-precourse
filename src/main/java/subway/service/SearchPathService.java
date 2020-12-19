@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import static subway.domain.MenuType.*;
 
-public class SearchPathService {
+public class SearchPathService extends InputService {
 
     public boolean selectSearchPathMenu(Scanner scanner, String menu) {
         if (SEARCH_SHORTEST_PATH.isKeyEquals(menu)) {
@@ -21,6 +21,8 @@ public class SearchPathService {
 
     private boolean searchShortestPath(Scanner scanner) {
         try {
+            String startStationName = inputStartStationName(scanner);
+            String endStationName = inputEndStationName(scanner);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return false;
@@ -30,6 +32,8 @@ public class SearchPathService {
 
     private boolean searchShortestTime(Scanner scanner) {
         try {
+            String startStationName = inputStartStationName(scanner);
+            String endStationName = inputEndStationName(scanner);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return false;
