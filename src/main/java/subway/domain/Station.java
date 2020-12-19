@@ -18,11 +18,11 @@ public class Station {
         if (o == this) {
             return true;
         }
-        if (!(o instanceof Station)) {
+        if(o==null||getClass()!=o.getClass()){
             return false;
         }
-        Station c = (Station) o;
-        return c.getName().equals(((Station) o).getName());
+        Station station = (Station) o;
+        return getName().equals(station.getName());
     }
 
     @Override

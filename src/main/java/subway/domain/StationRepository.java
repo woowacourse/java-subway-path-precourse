@@ -26,6 +26,10 @@ public class StationRepository {
         stations.clear();
     }
 
+    public static List<Station> getStations(){
+        return stations;
+    }
+
     public static Station findStationByName(String name) {
         return stations.stream()
                 .filter(station -> station.getName().equals(name))
