@@ -35,6 +35,7 @@ public class MainController {
         if (isSelect(ROUTE_MENU)) {
             RouteController routeController = new RouteController(inputView);
             routeController.goToRouteMenu();
+            OutputView.println();
         }
     }
 

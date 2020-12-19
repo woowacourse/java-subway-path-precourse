@@ -24,4 +24,9 @@ public class Line {
     public void addStation(Station station) {
         stations.add(station);
     }
+    
+    public boolean isStation(String stationName) {
+        return stations.stream()
+                       .anyMatch(station -> station.isEqualName(stationName));
+    }
 }
