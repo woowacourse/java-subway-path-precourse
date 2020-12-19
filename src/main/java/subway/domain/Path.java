@@ -4,8 +4,8 @@ public class Path {
 
     private Station srcStation;
     private Station dstStation;
-    private int distance;
-    private int time;
+    private double distance;
+    private double time;
 
     public Path(Station srcStation, Station dstStation, int distance, int time) {
         this.srcStation = srcStation;
@@ -22,11 +22,11 @@ public class Path {
         return dstStation;
     }
 
-    public int getDistance() {
+    public double getDistance() {
         return distance;
     }
 
-    public int getTime() {
+    public double getTime() {
         return time;
     }
 }

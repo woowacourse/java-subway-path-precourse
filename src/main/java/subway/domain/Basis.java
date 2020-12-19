@@ -19,6 +19,14 @@ public class Basis {
         return basis;
     }
 
+    public Station getSrcStation() {
+        return srcStation;
+    }
+
+    public Station getDstStation() {
+        return dstStation;
+    }
+
     private void validateStations() {
         validateSrcAndDstDifferent();
         validateStationsExist();

@@ -1,6 +1,8 @@
 package subway.service;
 
+import org.jgrapht.GraphPath;
 import subway.domain.Basis;
+import subway.domain.PathResult;
 import subway.util.PathCalculator;
 
 public class PathService {
@@ -11,10 +13,14 @@ public class PathService {
         this.pathCalculator = new PathCalculator();
     }
 
-    public String searchPath(Basis basis) {
+    public PathResult searchPath(Basis basis) {
         basis.validate();
         pathCalculator.initGraph(basis);
-        pathCalculator.calculate();
+        GraphPath result = pathCalculator.calculate();
+        return buildPathResult(result);
+    }
+
+    private PathResult buildPathResult(GraphPath result) {
         return null;
     }
 }

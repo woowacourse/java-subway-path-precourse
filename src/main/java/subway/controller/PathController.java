@@ -1,6 +1,7 @@
 package subway.controller;
 
 import subway.domain.Basis;
+import subway.domain.PathResult;
 import subway.exception.InvalidInputException;
 import subway.service.PathService;
 import subway.view.InputView;
@@ -25,8 +26,8 @@ public class PathController extends SubwayController {
     private void run() {
         try {
             Basis basis = new Basis(getSelectedBasis(), getSrcStation(), getDstStation());
-            String result = pathService.searchPath(basis);
-            getOutputView().printInformation(result);
+            PathResult result = pathService.searchPath(basis);
+            getOutputView().printPathResult(result);
         } catch (InvalidInputException e) {
             getOutputView().printErrorMessage(e.getMessage());
         }

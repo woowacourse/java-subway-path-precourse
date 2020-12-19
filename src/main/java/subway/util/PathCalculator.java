@@ -45,4 +45,10 @@ public class PathCalculator {
         if (basis.getBasis().equals(BasisChoice.TIME.getCode()))
             graph.setEdgeWeight(graph.addEdge(path.getSrcStation(), path.getDstStation()), path.getTime());
     }
+
+
+    public GraphPath calculate() {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
+        return dijkstraShortestPath.getPath(basis.getSrcStation(), basis.getDstStation());
+    }
 }
