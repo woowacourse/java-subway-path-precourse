@@ -2,6 +2,8 @@ package subway;
 
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
+import subway.domain.Station;
+import subway.domain.StationRepository;
 
 public class GraphService {
 
@@ -15,7 +17,17 @@ public class GraphService {
             GRAPH_DISTANCE.addVertex(stationName);
             GRAPH_TIME.addVertex(stationName);
         }
-        //initDistanceGraph();
-        //initTimeGraph();
+        for (String stationName : DataInitService.stationNames) {
+            Station station = StationRepository.getStation(stationName);
+            for (ConnectData connectData : station.ConnectDataList()) {
+                GRAPH_DISTANCE.setEdgeWeight(
+                    GRAPH_DISTANCE.addEdge(stationName, connectData.getStation().getName()),
+                    connectData.getDistance());
+                GRAPH_DISTANCE.setEdgeWeight(
+                    GRAPH_TIME.addEdge(stationName, connectData.getStation().getName()),
+                    connectData.getTime());
+            }
+        }
     }
+
 }
