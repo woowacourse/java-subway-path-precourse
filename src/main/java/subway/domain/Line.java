@@ -6,7 +6,7 @@ public class Line {
     private static final String RULE_STATION_NAME = "선";
     private static final int MINIMUM_NAME_LENGTH = 3;
 
-    private String name;
+    private final String name;
 
     private Line(String name) {
         validateLastCharacter(name);
@@ -15,8 +15,12 @@ public class Line {
         this.name = name;
     }
 
+    public static Line newLineWithName(String name) {
+        return new Line(name);
+    }
+
     private void validateLastCharacter(String name) {
-        if(!name.endsWith(RULE_STATION_NAME)){
+        if (!name.endsWith(RULE_STATION_NAME)) {
             throw new IllegalArgumentException("지하철 노선 이름은 \"선\"으로 끝나야 합니다.");
         }
     }
@@ -31,10 +35,6 @@ public class Line {
         if (name.length() < MINIMUM_NAME_LENGTH) {
             throw new IllegalArgumentException("지하철 노선 이름은 2글자 이상 + \"선\"으로 이루어져야 합니다.");
         }
-    }
-
-    public static Line newLineWithName(String name) {
-        return new Line(name);
     }
 
     public String getName() {

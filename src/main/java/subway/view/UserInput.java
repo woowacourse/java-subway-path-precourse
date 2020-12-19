@@ -2,7 +2,8 @@ package subway.view;
 
 import java.util.Scanner;
 
-public class UserInput extends Display{
+public class UserInput extends Display {
+
     private static final String REQUEST_SELECT_MENU = "원하는 기능을 선택하세요.";
     private static final String REQUEST_SOURCE_NAME = "출발역을 입력하세요.";
     private static final String REQUEST_DESTINATION_NAME = "도착역을 입력하세요.";

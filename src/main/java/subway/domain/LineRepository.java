@@ -24,7 +24,7 @@ public class LineRepository {
     }
 
     private static void validateEmpty() {
-        if(lines.isEmpty()){
+        if (lines.isEmpty()) {
             throw new IllegalArgumentException("등록되어 있는 지하철 노선이 없습니다.");
         }
     }
@@ -35,7 +35,7 @@ public class LineRepository {
     }
 
     private static void validateDuplicate(Line line) {
-        if (lines.stream().anyMatch(l->l.getName().equals(line.getName()))) {
+        if (lines.stream().anyMatch(l -> l.getName().equals(line.getName()))) {
             throw new IllegalArgumentException("이미 같은 이름의 지하철 노선이 등록되어 있습니다.");
         }
     }

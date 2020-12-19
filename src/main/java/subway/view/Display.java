@@ -19,7 +19,7 @@ public class Display {
         System.out.println(ERROR_PREFIX + message);
     }
 
-    public static void printMenuSelectError(){
+    public static void printMenuSelectError() {
         System.out.println(ERROR_PREFIX + NO_SUCH_MENU);
     }
 }

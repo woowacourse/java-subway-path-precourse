@@ -7,11 +7,11 @@ import org.jgrapht.graph.WeightedMultigraph;
 
 public class TimeSectionRepository {
 
-    private TimeSectionRepository(){
-    }
-
     private static final WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph(
         DefaultWeightedEdge.class);
+
+    private TimeSectionRepository() {
+    }
 
     public static void initTimeSectionRepository() {
         SectionRepository.sections().stream().forEach(section -> {

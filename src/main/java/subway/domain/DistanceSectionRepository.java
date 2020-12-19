@@ -7,11 +7,11 @@ import org.jgrapht.graph.WeightedMultigraph;
 
 public class DistanceSectionRepository {
 
-    private DistanceSectionRepository(){
-    }
-
     private static final WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph(
         DefaultWeightedEdge.class);
+
+    private DistanceSectionRepository() {
+    }
 
     public static void initDistanceSectionRepository() {
         SectionRepository.sections().stream().forEach(section -> {
@@ -30,13 +30,13 @@ public class DistanceSectionRepository {
         try {
             return dijkstraShortestPath.getPath(source.getName(), destination.getName())
                 .getVertexList();
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("해당 역은 연결되어 있지 않습니다.");
         }
     }
 
     private static void validateDuplicate(Station source, Station destination) {
-        if (source.equals(destination)){
+        if (source.equals(destination)) {
             throw new IllegalArgumentException("출발역과 도착역이 동일합니다.");
         }
     }

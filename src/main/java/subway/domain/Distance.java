@@ -10,14 +10,14 @@ public class Distance {
         this.kilometer = kilometer;
     }
 
-    private void validatePositive(int kilometer) {
-        if(kilometer < MINIMUM_KILOMETER) {
-            throw new IllegalArgumentException("역간 거리는 1 이상의 정수여야 합니다.");
-        }
-    }
-
     public static Distance newDistance(int kilometer) {
         return new Distance(kilometer);
+    }
+
+    private void validatePositive(int kilometer) {
+        if (kilometer < MINIMUM_KILOMETER) {
+            throw new IllegalArgumentException("역간 거리는 1 이상의 정수여야 합니다.");
+        }
     }
 
     public int getKilometer() {

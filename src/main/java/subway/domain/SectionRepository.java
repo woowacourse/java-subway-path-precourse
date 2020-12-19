@@ -8,10 +8,10 @@ import subway.service.StationService;
 
 public class SectionRepository {
 
-    private SectionRepository(){
-    }
-
     private static final List<Section> sections = new ArrayList<>();
+
+    private SectionRepository() {
+    }
 
     public static void initSectionRepository() {
         addSection(Section.newSection(
@@ -70,7 +70,7 @@ public class SectionRepository {
     }
 
     private static void validateEmpty() {
-        if(sections.isEmpty()){
+        if (sections.isEmpty()) {
             throw new IllegalArgumentException("등록되어 있는 지하철 구간이 없습니다.");
         }
     }

@@ -12,7 +12,7 @@ public class StationService {
                 .filter(station -> station.getName().equals(name))
                 .findAny()
                 .get();
-        } catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             throw new IllegalArgumentException("해당 지하철 역이 존재하지 않습니다.");
         }
     }
