@@ -1,5 +1,8 @@
 package subway.domain;
 
+import subway.Exception.CanNotFindStationException;
+import subway.Exception.SameStationException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -22,5 +25,12 @@ public class StationRepository {
 
     public static void deleteAll() {
         stations.clear();
+    }
+
+    public static Station findByName(String name) {
+        return stations().stream()
+                .filter(station -> station.getName().equals(name))
+                .findAny()
+                .orElseThrow(CanNotFindStationException::new);
     }
 }
