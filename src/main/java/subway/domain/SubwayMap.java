@@ -9,6 +9,14 @@ public class SubwayMap {
 	static WeightedMultigraph<Station, DefaultWeightedEdge> pathWithTime
 		= new WeightedMultigraph(DefaultWeightedEdge.class);
 	
+	public static WeightedMultigraph<Station, DefaultWeightedEdge> getDistanceMap() {
+		return pathWithDistance;
+	}
+	
+	public static WeightedMultigraph<Station, DefaultWeightedEdge> getTimeMap() {
+		return pathWithTime;
+	}
+	
 	public static void makePathWithDistance(Station fromStation, Station toStation, int distance) {
 		pathWithDistance.addVertex(fromStation);
 		pathWithDistance.addVertex(toStation);

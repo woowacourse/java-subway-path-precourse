@@ -1,8 +1,13 @@
 package subway.view.pathview;
 
+import subway.controller.PathMenuService;
+import subway.controller.input.FromStationInput;
+import subway.controller.input.ToStationInput;
 import subway.domain.Menu;
-import subway.view.mainview.FindPath;
+import subway.domain.Station;
+import subway.domain.StationRepository;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class ShortestDistance implements Menu {
@@ -21,8 +26,14 @@ public class ShortestDistance implements Menu {
 	}
 	
 	@Override
-	public void run(Scanner scanner) {
-	
+	public void run(Scanner scanner) throws IllegalArgumentException {
+		Station from  = StationRepository.findStationByName(
+			ToStationInput.getInstance().getUserInput(scanner));
+		Station to = StationRepository.findStationByName(
+			FromStationInput.getInstance().getUserInput(scanner));
+		List<Station> pathFound = PathMenuService.findShortestDistancePath(from, to);
+		double totalDistance = PathMenuService.getShortestDistancePathWeight(from, to);
+		
 	}
 	
 	public static Menu getInstance() {
