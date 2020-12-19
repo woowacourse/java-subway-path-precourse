@@ -6,9 +6,11 @@ import subway.view.OutputView;
 
 public class Machine {
     public void start(Scanner scanner) {
-        OutputView.printMain();
-        MainFunction mainFunction = getInputFunction(scanner);
-        mainFunction.operate();
+        while (true) {
+            OutputView.printMain();
+            MainFunction mainFunction = getInputFunction(scanner);
+            mainFunction.operate();    
+        }
     }
 
     private MainFunction getInputFunction(Scanner scanner) {
