@@ -12,6 +12,10 @@ public class SubwayController {
         subwayView = new SubwayView(scanner);
     }
 
+    public void run() {
+        redirectToMainScreen();
+    }
+
     private String validateMainScreenFunction(String userInput) {
         while (!UserInputValidator.isValidMainScreenFunction(userInput)) {
             subwayView.printMessage(SubwayMessage.ERROR_SELECT_FUNCTION);
@@ -23,7 +27,7 @@ public class SubwayController {
 
     private void callMainScreenFunctionBy(String userInput) {
         if (Objects.equals(MainScreenFunction.PATH_SEARCH.getCode(), userInput)) {
-            pathSearchScreen();
+            redirectToPathSearchScreen();
             return;
         }
         if (Objects.equals(MainScreenFunction.QUIT.getCode(), userInput)) {
@@ -31,7 +35,7 @@ public class SubwayController {
         }
     }
 
-    public void run() {
+    private void redirectToMainScreen() {
         String userInput = "";
         while (!Objects.equals(MainScreenFunction.QUIT.getCode(), userInput)) {
             subwayView.printMessage(SubwayMessage.MAIN_SCREEN);
@@ -64,7 +68,7 @@ public class SubwayController {
         }
     }
 
-    private void pathSearchScreen() {
+    private void redirectToPathSearchScreen() {
         subwayView.printMessage(SubwayMessage.PATH_SEARCH_SCREEN);
         subwayView.printMessage(SubwayMessage.SELECT_FUNCTION);
         String userInput = validatePathSearchScreenFunction(subwayView.userInput());
