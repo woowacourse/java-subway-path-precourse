@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import subway.domain.LineRepository;
 import subway.domain.StationRepository;
+import subway.domain.SubwaySection;
 
 public class MainManegement {
 	private static final String MAIN_SELECT_MESSAGE = "## 메인 화면\n"
@@ -13,19 +14,19 @@ public class MainManegement {
 	private static final String ERROR_INPUT_MESSAGE = "[ERROR] 잘못된 입력값 입니다.\n";
 	private static final String END_PROGRAM_MESSAGE = "##프로그램을 종료합니다.";
 	
-	public MainManegement(Scanner scanner, StationRepository stationRepositiory, LineRepository lineRepositiory) {
+	public MainManegement(Scanner scanner, StationRepository stationRepositiory, SubwaySection subwaySection) {
 		boolean end = false;
 		while (!end) {
 			System.out.println(MAIN_SELECT_MESSAGE);
-			end = selectMain(scanner, stationRepositiory, lineRepositiory);
+			end = selectMain(scanner, stationRepositiory, subwaySection);
 		}
 	}
 	
 	public static Boolean selectMain(Scanner scanner, StationRepository stationRepositiory,
-			LineRepository lineRepositiory) {
+			SubwaySection subwaySection) {
 		String select = scanner.nextLine();
 		if (select.equals("1")) {
-			SectionSearch.sectionSearchMenu(scanner, stationRepositiory, lineRepositiory);
+			SectionSearch.sectionSearchMenu(scanner, stationRepositiory, subwaySection);
 			return false;
 		}
 		if (select.equals("Q") || select.equals("q")) {
