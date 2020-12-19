@@ -4,8 +4,8 @@ public enum MainAction {
     RESEARCH_PATH("1", "경로 조회"),
     FINISH("Q", "종료");
 
-    private String actionNumber;
-    private String actionName;
+    private final String actionNumber;
+    private final String actionName;
 
     MainAction(String actionNumber, String actionName) {
         this.actionNumber = actionNumber;

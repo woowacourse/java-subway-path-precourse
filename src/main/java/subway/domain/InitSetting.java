@@ -1,14 +1,12 @@
 package subway.domain;
 
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 public class InitSetting {
 
     public static void initSetting() {
         List<Line> lines = makeLines();
-
         List<Station> stations = makeStations();
 
         addLines(lines);
@@ -28,20 +26,18 @@ public class InitSetting {
         Station maebongStation = new Station("매봉역");
         Station yangjaeForestStation = new Station("양재시민의숲역");
 
-        List<Station> stations = Arrays.asList(gyoDaeStation, kangnamStation, yeoksamStation, nambuTerminalStation, yangjaeStation, maebongStation, yangjaeForestStation);
-        return stations;
+        return Arrays.asList(gyoDaeStation, kangnamStation, yeoksamStation, nambuTerminalStation, yangjaeStation, maebongStation, yangjaeForestStation);
     }
 
     private static List<Line> makeLines() {
         Line secondLine = new Line("2호선");
         Line thirdLine = new Line("3호선");
         Line sinLine = new Line("신분당선");
-        List<Line> lines = Arrays.asList(secondLine, thirdLine, sinLine);
-        return lines;
+        return Arrays.asList(secondLine, thirdLine, sinLine);
     }
 
     private static void addStations(List<Station> stations) {
-        for(Station station: stations){
+        for (Station station : stations) {
             StationRepository.addStation(station);
             SubwayLengthRepository.addStation(station);
             SubwayTimeRepository.addStation(station);
@@ -49,7 +45,7 @@ public class InitSetting {
     }
 
     private static void addLines(List<Line> lines) {
-        for(Line line: lines){
+        for (Line line : lines) {
             LineRepository.addLine(line);
         }
     }
