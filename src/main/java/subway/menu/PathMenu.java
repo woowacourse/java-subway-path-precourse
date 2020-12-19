@@ -59,7 +59,7 @@ public class PathMenu {
     }
 
 
-    private static String getEndStation(Scanner scanner, String startStation) {
+    private static String getEndStation(Scanner scanner, String startStation) throws IllegalArgumentException {
         System.out.println("## 도착역을 입력하세요.");
         String stationName = getStation(scanner);
         if (stationName.equals(startStation)) {
