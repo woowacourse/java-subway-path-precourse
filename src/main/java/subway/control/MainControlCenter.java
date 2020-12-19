@@ -1,10 +1,17 @@
 package subway.control;
 
+import subway.enums.menu.MainMenu;
 import subway.view.MainView;
 
 import java.util.Scanner;
 
 public class MainControlCenter {
+
+    RouteControlCenter woowahanMap;
+
+    public MainControlCenter() {
+        woowahanMap = new RouteControlCenter();
+    }
 
     public static String inputCommand(Scanner scanner) {
         String command = scanner.nextLine();
@@ -17,7 +24,14 @@ public class MainControlCenter {
         while (!view.equalsIgnoreCase("Q")) {
             showMainMenu();
             String command = inputCommand(scanner);
+            view = getViewByCommand(command, scanner);
         }
+    }
+
+    private String getViewByCommand(String command, Scanner scanner) {
+        if (command.equals(MainMenu.SEARCH_ROUTE.getCommand()))
+            return woowahanMap.startRouteControl(scanner);
+        return "";
     }
 
     private void showMainMenu() {
