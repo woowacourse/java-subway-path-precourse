@@ -43,8 +43,8 @@ public class SubwayConfig {
                                 StationRepository.findByName("역삼역"))
                         ),
                         new ArrayList<>(Arrays.asList(
-                                "교대역,강남역,2km/3분",
-                                "강남역,역삼역,2km/3분"))
+                                "교대역,강남역,2/3",
+                                "강남역,역삼역,2/3"))
                         ));
     }
 
@@ -57,9 +57,9 @@ public class SubwayConfig {
                                 StationRepository.findByName("매봉역"))
                         ),
                         new ArrayList<>(Arrays.asList(
-                                "교대역,남부터미널역,3km/2분",
-                                "남부터미널역,양재역,6km/5분",
-                                "양재역,매봉역,1km/1분")
+                                "교대역,남부터미널역,3/2",
+                                "남부터미널역,양재역,6/5",
+                                "양재역,매봉역,1/1")
                         )
                 )
         );
@@ -73,8 +73,8 @@ public class SubwayConfig {
                                 StationRepository.findByName("양재시민의숲역"))
                         ),
                         new ArrayList<>(Arrays.asList(
-                                "강남역,양재역,2km/8분",
-                                "양재역,양재시민의숲역,10km/3분")
+                                "강남역,양재역,2/8",
+                                "양재역,양재시민의숲역,10/3")
                         )
                 )
         );
