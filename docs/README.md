@@ -58,7 +58,7 @@
 - 연결된 역 사이의 시간과 거리를 저장한다.
 ```
 
-* Connections
+* ConnectionRepository
 ```
 - 모든 Connection 객체들을 일급 컬렉션 형태로 저장한다.
 ```
