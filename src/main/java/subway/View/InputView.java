@@ -16,7 +16,7 @@ public class InputView {
         System.out.println(STATION_END);
         return scanner.nextLine();
     }
-    public String getChooseFunctionMain(Scanner scanner){
+    public String getChooseFunction(Scanner scanner){
         System.out.println(CHOOSE_FUNCTION_MAIN);
         return scanner.nextLine();
     }

@@ -20,7 +20,7 @@ public class MainController {
     public void startMainMenu(Scanner scanner) {
         while(true) {
                 outputView.setPathMenuPathStandard();
-                String tmpSaveMenuChoice = inputView.getChooseFunctionMain(scanner);
+                String tmpSaveMenuChoice = inputView.getChooseFunction(scanner);
                 if (tmpSaveMenuChoice.equals(MAIN_CONTROLLER_MENU_QUIT)) {
                     break;
                 }
