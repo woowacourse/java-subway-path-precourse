@@ -41,10 +41,4 @@ public class LineRepository {
                 .findAny()
                 .orElseThrow(() -> new InvalidSequnceLineException());
     }
-
-    public static String findSelectLine(String firstStation, String lastStation) {
-        return findLine(firstStation, lastStation)
-                .get()
-                .getName();
-    }
 }
