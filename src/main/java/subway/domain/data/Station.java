@@ -2,7 +2,7 @@ package subway.domain.data;
 
 public class Station {
 
-    public enum POINT{
+    public enum POINT {
         STARTING, ENDING;
     }
 

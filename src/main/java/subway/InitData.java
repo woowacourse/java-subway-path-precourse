@@ -30,7 +30,7 @@ public class InitData {
     private static void initLine() {
         List<Line> lineList = setInitLines();
 
-        for(Line line : lineList) {
+        for (Line line : lineList) {
             LineRepository.addLine(line);
         }
     }
@@ -60,6 +60,7 @@ public class InitData {
 
         return distanceList;
     }
+
     private static List<Integer> getPathTimeInLine(String lineName) {
         int[] times = initTimeInLine(lineName);
         List<Integer> timeList = new ArrayList<>();

@@ -29,20 +29,20 @@ public class Line {
         return stationPathTime;
     }
 
-    public void addStationListInLine(List<Station> stations){
-        for(Station station : stations){
+    public void addStationListInLine(List<Station> stations) {
+        for (Station station : stations) {
             stationList.add(station);
         }
     }
 
-    public void addStationPathDistanceListInLine(List<Integer> distanceList){
-        for(int distance : distanceList){
+    public void addStationPathDistanceListInLine(List<Integer> distanceList) {
+        for (int distance : distanceList) {
             stationPathDistance.add(distance);
         }
     }
 
-    public void addStationPathTimeListInLine(List<Integer> timeList){
-        for(int time : timeList){
+    public void addStationPathTimeListInLine(List<Integer> timeList) {
+        for (int time : timeList) {
             stationPathTime.add(time);
         }
     }

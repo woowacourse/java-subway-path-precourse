@@ -17,8 +17,8 @@ public class Constant {
     public static final String EXCEPTION_HEADER = "[ERROR]";
     public static final String EXCEPTION_FORMAT = "\n" + EXCEPTION_HEADER + " %s";
     public static final String ILLEGAL_ARGUMENT_EXCEPTION_INVALID_ORDER = "선택할 수 없는 기능입니다.\n";
-    public static final String ILLEGAL_ARGUMENT_EXCEPTION_INVALID_STATION= "등록되지 않은 역입니다.\n";
-    public static final String ILLEGAL_ARGUMENT_EXCEPTION_INVALID_SAME_POINT= "출발역과 도착역이 동일합니다.\n";
+    public static final String ILLEGAL_ARGUMENT_EXCEPTION_INVALID_STATION = "등록되지 않은 역입니다.\n";
+    public static final String ILLEGAL_ARGUMENT_EXCEPTION_INVALID_SAME_POINT = "출발역과 도착역이 동일합니다.\n";
 
     public static final String RESULT_HEADER = "[INFO]";
     public static final String RESULT_DIVIDER = "---";

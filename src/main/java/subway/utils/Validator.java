@@ -45,8 +45,8 @@ public class Validator {
     public static void checkValidStation(String order) {
         List<Station> stationList = StationRepository.stations();
 
-        for(Station station : stationList){
-            if(station.getName().equals(order))
+        for (Station station : stationList) {
+            if (station.getName().equals(order))
                 return;
         }
 
@@ -54,7 +54,7 @@ public class Validator {
     }
 
     public static void checkValidStationPoint(String starting, String ending) {
-        if(starting.equals(ending))
+        if (starting.equals(ending))
             throw new IllegalArgumentException(Constant.ILLEGAL_ARGUMENT_EXCEPTION_INVALID_SAME_POINT);
     }
 }

@@ -24,7 +24,7 @@ public class SubwayPath {
     }
 
     private void run() {
-        while(true) {
+        while (true) {
             OutputView.printMainView();
             String mainOrder = selectMenu();
 
@@ -43,7 +43,7 @@ public class SubwayPath {
             String endingStation = getStationName(Station.POINT.ENDING);
             Validator.checkValidStationPoint(startingStation, endingStation);
             getResult(pathRuleOrder, startingStation, endingStation);
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             OutputView.printError(e.getMessage());
             findPath(mainOrder);
             return;
@@ -54,23 +54,23 @@ public class SubwayPath {
         PathFinder pathFinder = new PathFinder();
         List<String> pathList = new ArrayList<>();
         double pathWeight = 0;
-        if(pathRuleOrder.equals(PathRuleMenu.MINIMUM_DISTANCE.getOrder())){
+        if (pathRuleOrder.equals(PathRuleMenu.MINIMUM_DISTANCE.getOrder())) {
             pathList = pathFinder.getShortestDistanceList(startingStation, endingStation);
             pathWeight = pathFinder.getShortestDistanceWeight(startingStation, endingStation);
             OutputView.printResult(pathList, pathWeight);
         }
-        if(pathRuleOrder.equals(PathRuleMenu.MINIMUM_TIME.getOrder())){
+        if (pathRuleOrder.equals(PathRuleMenu.MINIMUM_TIME.getOrder())) {
             System.out.println("\n코드 작성 중..");
         }
 
 
     }
 
-    private String getStationName(Station.POINT point){
+    private String getStationName(Station.POINT point) {
         try {
             OutputView.printAskingStation(point);
             return InputView.getStationName(scanner);
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             OutputView.printError(e.getMessage());
             return getStationName(point);
         }

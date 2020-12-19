@@ -1,8 +1,7 @@
 package subway.menu;
 
 public enum PathRuleMenu {
-    MINIMUM_DISTANCE("1", "최단 거리"), MINIMUM_TIME("2", "최소 시간")
-    , BACK("B", "돌아가기");
+    MINIMUM_DISTANCE("1", "최단 거리"), MINIMUM_TIME("2", "최소 시간"), BACK("B", "돌아가기");
 
     final private String order;
     final private String menuMessage;

@@ -27,19 +27,19 @@ public class PathFinder {
         distanceShortestPath = new DijkstraShortestPath(distanceGraph);
     }
 
-    public List<String> getShortestTimeList(String startingStation, String endingStation){
+    public List<String> getShortestTimeList(String startingStation, String endingStation) {
         return timeShortestPath.getPath(startingStation, endingStation).getVertexList();
     }
 
-    public double getShortestTimeWeight(String startingStation, String endingStation){
+    public double getShortestTimeWeight(String startingStation, String endingStation) {
         return timeShortestPath.getPathWeight(startingStation, endingStation);
     }
 
-    public List<String> getShortestDistanceList(String startingStation, String endingStation){
+    public List<String> getShortestDistanceList(String startingStation, String endingStation) {
         return distanceShortestPath.getPath(startingStation, endingStation).getVertexList();
     }
 
-    public double getShortestDistanceWeight(String startingStation, String endingStation){
+    public double getShortestDistanceWeight(String startingStation, String endingStation) {
         return distanceShortestPath.getPathWeight(startingStation, endingStation);
     }
 

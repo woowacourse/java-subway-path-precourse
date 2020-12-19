@@ -27,7 +27,7 @@ public class JGraphtTest {
         List<String> shortestPath = dijkstraShortestPath.getPath("v3", "v4").getVertexList();
         double length = dijkstraShortestPath.getPathWeight("v3", "v4");
 
-        for(String str : shortestPath){
+        for (String str : shortestPath) {
             System.out.println(str);
         }
         System.out.println(length);

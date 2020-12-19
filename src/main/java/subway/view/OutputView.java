@@ -43,7 +43,7 @@ public class OutputView {
         printHeader();
         System.out.println(Constant.VIEW_RESULT_HEADER);
         System.out.println(Constant.RESULT_DIVIDER);
-        System.out.printf(Constant.RESULT_FORMAT, "총 거리: " + (int) weight+"Km");
+        System.out.printf(Constant.RESULT_FORMAT, "총 거리: " + (int) weight + "Km");
         System.out.println(Constant.RESULT_DIVIDER);
         for (String name : list) {
             System.out.printf(Constant.RESULT_FORMAT, name);
