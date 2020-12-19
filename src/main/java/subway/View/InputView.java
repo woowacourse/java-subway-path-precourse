@@ -9,14 +9,17 @@ public class InputView {
     private static final String STATION_END="## 도착역을 입력하세요.";
 
     public String getStationStart(Scanner scanner){
+        System.out.println();
         System.out.println(STATION_START);
         return scanner.nextLine();
     }
     public String getStationEnd(Scanner scanner){
+        System.out.println();
         System.out.println(STATION_END);
         return scanner.nextLine();
     }
     public String getChooseFunction(Scanner scanner){
+        System.out.println();
         System.out.println(CHOOSE_FUNCTION_MAIN);
         return scanner.nextLine();
     }
