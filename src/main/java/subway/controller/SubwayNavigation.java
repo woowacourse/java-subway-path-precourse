@@ -11,14 +11,13 @@ import subway.view.OutputView;;
 
 public class SubwayNavigation {
 
-    private List<Line> lines;
-    private List<Station> stations;
+    private static final String OPTION_ONE = "1";
     private String userOption = "";
     private static final String QUIT_CODE = "Q";
+    private PathManager pathManger;
 
     public SubwayNavigation() {
-        stations = DefaultStations.getDefaultStations();
-        lines = DefaultLines.getDefaultLines();
+        pathManger = new PathManager();
     }
 
     public void run() {
@@ -26,6 +25,12 @@ public class SubwayNavigation {
             OutputView.printMainScreen();
             userOption = InputView.inputMainUserOption();
             runUserOption(userOption);
+        }
+    }
+
+    private void runUserOption(String userOption) {
+        if (userOption.equals(OPTION_ONE)) {
+            pathManger.run();
         }
     }
 
