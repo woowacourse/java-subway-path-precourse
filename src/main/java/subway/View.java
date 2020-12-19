@@ -29,8 +29,7 @@ public class View {
 			showPathView();
 			return;
 		} else if (selector.equals(QUITE)) {
-//			lineManagement();
-			return;
+			Subway.exit();
 		}
 	}
 	

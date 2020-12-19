@@ -62,4 +62,9 @@ public class Subway {
 			Output.section(station);
 		}
 	}
+	
+	public static void exit() {
+		Output.print(Message.EXIT);
+		System.exit(0);
+	}
 }
