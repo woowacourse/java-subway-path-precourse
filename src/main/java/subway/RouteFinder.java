@@ -10,10 +10,9 @@ import java.util.List;
 
 public class RouteFinder {
     // 같은 노선 안에서 길 찾기
-    public static List<Station> findRouteInSameLine(String startStation, String endStation) {
+    public static List<Station> findRouteInSameLine(Line line, String startStation, String endStation) {
         Station start = StationRepository.getStationByName(startStation);
         Station end = StationRepository.getStationByName(endStation);
-        Line line = LineRepository.getLineByStation(start);
         int startPosition = line.stations().indexOf(start);
         int endPosition = line.stations().indexOf(end);
         if (startPosition > endPosition) {
