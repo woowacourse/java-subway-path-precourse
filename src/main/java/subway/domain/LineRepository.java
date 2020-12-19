@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class LineRepository {
+
     private static final List<Line> lines = new ArrayList<>();
 
     public static List<Line> lines() {
@@ -22,5 +23,18 @@ public class LineRepository {
 
     public static void deleteAll() {
         lines.clear();
+    }
+
+    public static Line getLineByName(String name){
+        for (Line line : lines) {
+            if (line.matchName(name)) {
+                return line;
+            }
+        }
+        return null;
+    }
+
+    public static boolean contains(String name) {
+        return lines.contains(getLineByName(name));
     }
 }
