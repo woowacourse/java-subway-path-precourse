@@ -12,7 +12,7 @@ import subway.exception.AlreadyExistSectionException;
 
 public class SectionRepository {
 
-    List<Section> sections = new ArrayList<>();
+    private static final List<Section> sections = new ArrayList<>();
 
     static {    //샘플 데이터
 
@@ -52,7 +52,6 @@ public class SectionRepository {
 
         Section section6 = Section.create(line3, station2, station5, Time.of(8), Distance.of(2));
         Section section7 = Section.create(line3, station5, station7, Time.of(3), Distance.of(10));
-
         repository.addSection(section1);
         repository.addSection(section2);
         repository.addSection(section3);
@@ -90,7 +89,6 @@ public class SectionRepository {
         if (sections.contains(section)) {
             throw new AlreadyExistSectionException(section);
         }
-
         sections.add(section);
     }
 

@@ -3,7 +3,7 @@ package subway.domain;
 import jdk.jfr.Description;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import subway.domain.Section.Time;
+import subway.domain.section.Time;
 
 class TimeTest {
 

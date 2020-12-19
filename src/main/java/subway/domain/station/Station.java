@@ -1,7 +1,6 @@
 package subway.domain.station;
 
 import java.util.Objects;
-import javax.naming.InvalidNameException;
 import subway.exception.InvalidStationNameException;
 
 public class Station {
