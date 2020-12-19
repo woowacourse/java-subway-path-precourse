@@ -1,6 +1,7 @@
 package subway.view;
 
 import subway.menuSelection.MainMenuSelection;
+import subway.menuSelection.PathStandardSelection;
 
 import java.util.Scanner;
 
@@ -16,5 +17,10 @@ public class InputView {
     public static MainMenuSelection getMainMenuSelection() {
         System.out.println(SHARP_PREFIX + REQUEST_SELECTION);
         return MainMenuSelection.searchByKey(scanner.nextLine());
+    }
+
+    public static PathStandardSelection getPathStandardSelection() {
+        System.out.println(SHARP_PREFIX + REQUEST_SELECTION);
+        return PathStandardSelection.searchByKey(scanner.nextLine());
     }
 }

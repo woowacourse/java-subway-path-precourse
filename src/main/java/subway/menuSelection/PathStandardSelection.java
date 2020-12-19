@@ -5,9 +5,10 @@ import subway.menuSelection.exception.NoSuchMenuException;
 
 import java.util.Arrays;
 
-public enum MainMenuSelection {
-    SEARCH("1", "경로 조회", MainController::connectToInquiryPath),
-    TERMINATE("Q", "종료", MainController::terminate);
+public enum PathStandardSelection {
+    DISTANCE("1", "경로 조회", () -> {}),   //dummy function, 업데이트 예정
+    TIME("2", "최소 시간", () -> {}),
+    BACK("B", "돌아가기", MainController::backToMainScreen);
 
     private static final String MENU_FORMAT = "%s. %s";
 
@@ -15,7 +16,7 @@ public enum MainMenuSelection {
     private String description;
     private Function mappedFunction;
 
-    MainMenuSelection(String key, String description, Function mappedFunction) {
+    PathStandardSelection(String key, String description, Function mappedFunction) {
         this.key = key;
         this.description = description;
         this.mappedFunction = mappedFunction;
@@ -29,8 +30,8 @@ public enum MainMenuSelection {
         return this.mappedFunction;
     }
 
-    public static MainMenuSelection searchByKey(String key) {
-        return Arrays.stream(MainMenuSelection.values())
+    public static PathStandardSelection searchByKey(String key) {
+        return Arrays.stream(PathStandardSelection.values())
                 .filter(menu -> menu.getKey().equals(key))
                 .findAny()
                 .orElseThrow(NoSuchMenuException::new);
