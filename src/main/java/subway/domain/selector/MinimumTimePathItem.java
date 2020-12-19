@@ -11,6 +11,10 @@ import subway.view.OutputView;
 
 public class MinimumTimePathItem extends Selector implements Manipulable {
 
+    private Station departureStation;
+    private Station arrivalStation;
+    private static SelectorValidator selectorValidator = new SelectorValidator();
+
     public MinimumTimePathItem(String id, String name) {
         this.id = id;
         this.name = name;
@@ -18,13 +22,7 @@ public class MinimumTimePathItem extends Selector implements Manipulable {
 
     @Override
     public void execute(String subwayMapName) {
-        MessageView.printDepartureInputMessage();
-        String departureStationName = InputView.getStationName();
-        Station departureStation = StationRepository.getStationByName(departureStationName);
-
-        MessageView.printArrivalInputMessage();
-        String arrivalStationName = InputView.getStationName();
-        Station arrivalStation = StationRepository.getStationByName(arrivalStationName);
+        initStations();
 
         SubwayMap subwayMap = SubwayMapRepository.subwayMaps().get(subwayMapName);
         List<Station> shortestPath = subwayMap.findShortestPathListByTime(departureStation, arrivalStation);
@@ -34,6 +32,20 @@ public class MinimumTimePathItem extends Selector implements Manipulable {
         OutputView.printDistance(totalDistance);
         OutputView.printTravelTime(shortestPathTravelTime);
         OutputView.printStations(shortestPath);
+    }
+
+    private void initStations() {
+        MessageView.printDepartureInputMessage();
+        String departureStationName = InputView.getStationName();
+        departureStation = StationRepository.getStationByName(departureStationName);
+        selectorValidator.validateContains(departureStation);
+
+        MessageView.printArrivalInputMessage();
+        String arrivalStationName = InputView.getStationName();
+        arrivalStation = StationRepository.getStationByName(arrivalStationName);
+        selectorValidator.validateContains(arrivalStation);
+
+        selectorValidator.validateEqualName(departureStationName, arrivalStationName);
     }
 
 }

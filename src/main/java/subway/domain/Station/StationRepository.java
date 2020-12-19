@@ -33,4 +33,8 @@ public class StationRepository {
         }
         return null;
     }
+
+    public static boolean isContains(Station station){
+        return stations.contains(station);
+    }
 }
