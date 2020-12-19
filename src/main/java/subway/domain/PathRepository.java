@@ -51,19 +51,30 @@ public class PathRepository {
     public void shortestLengthPath(Station startStation, Station endStation) {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(shortestLengthPath);
         List<Station> pathList = dijkstraShortestPath.getPath(startStation, endStation).getVertexList();
-        for (int i = 0; i < pathList.size(); i++) {
-            System.out.println(pathList.get(i).getName());
-        }
+        int totalTime = getTotalTime(pathList);
+        int totalLength = getTotalLength(pathList);
     }
 
     public static void shortestTimePath(Station startStation, Station endStation) {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(shortestTimePath);
         List<Station> pathList = dijkstraShortestPath.getPath(startStation, endStation).getVertexList();
-        int totalTime = 0, totalLength = 0;
+        int totalTime = getTotalTime(pathList);
+        int totalLength = getTotalLength(pathList);
+    }
+
+    private static int getTotalTime(List<Station> pathList){
+        int totalTime = 0;
         for (int i = 0; i < pathList.size() - 1; i++) {
             totalTime += shortestTimePath.getEdgeWeight(shortestTimePath.getEdge(pathList.get(i), pathList.get(i + 1)));
-            totalLength += shortestLengthPath.getEdgeWeight(shortestLengthPath.getEdge(pathList.get(i), pathList.get(i + 1)));
         }
-        System.out.println(totalTime + " " + totalLength);
+        return totalTime;
+    }
+
+    private static int getTotalLength(List<Station> pathList){
+        int totalLength = 0;
+        for(int i=0; i<pathList.size()-1; i++){
+            totalLength += shortestLengthPath.getEdgeWeight(shortestLengthPath.getEdge(pathList.get(i), pathList.get(i+1)));
+        }
+        return totalLength;
     }
 }
