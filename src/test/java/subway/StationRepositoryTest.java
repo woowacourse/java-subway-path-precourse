@@ -1,6 +1,7 @@
 package subway;
 
 import static org.assertj.core.api.Assertions.*;
+import static resource.TextResource.ERROR_NOT_EXISTENCE_STATION;
 import static resource.TextResource.ERROR_STATION_NAME_DUPLICATED;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -29,5 +30,13 @@ public class StationRepositoryTest {
         assertThatThrownBy(() -> {
             StationRepository.addStation(new Station("강남역"));
         }).isInstanceOf(IllegalArgumentException.class).hasMessage(ERROR_STATION_NAME_DUPLICATED);
+    }
+
+    @DisplayName("등록 되지 않은 역을 찾을 시 에러 출력 한다.")
+    @Test
+    public void checkTheStationRegistered() {
+        assertThatThrownBy(() -> {
+            StationRepository.getStationByName("봉천역");
+        }).isInstanceOf(IllegalArgumentException.class).hasMessage(ERROR_NOT_EXISTENCE_STATION);
     }
 }

@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import static resource.TextResource.ERROR_NOT_EXISTENCE_STATION;
 import static resource.TextResource.ERROR_STATION_NAME_DUPLICATED;
 
 public class StationRepository {
@@ -35,7 +36,7 @@ public class StationRepository {
                 return station;
             }
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException(ERROR_NOT_EXISTENCE_STATION);
     }
 
     public static Boolean hasStation(String stationName) {
