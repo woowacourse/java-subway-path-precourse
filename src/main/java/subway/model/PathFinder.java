@@ -13,6 +13,7 @@ public class PathFinder {
         WeightedMultigraph<String, DefaultWeightedEdge> graph = DistanceRepository.distanceGraph();
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
         List<String> shortestPath = dijkstraShortestPath.getPath(from, to).getVertexList();
+        shortestPath = shortestPath;
         return shortestPath;
     }
 
@@ -23,11 +24,19 @@ public class PathFinder {
         return shortestPath;
     }
 
-    public static double getTotalDistance() {
-        return 0;
+    public static int getTotalDistance(List<String> shortestPath) {
+        double totalDistance = 0;
+        for (int i=0; i<shortestPath.size()-1; i++) {
+            totalDistance += DistanceRepository.getWeight(shortestPath.get(i), shortestPath.get(i + 1));
+        }
+        return (int) totalDistance;
     }
 
-    public static double getTotalTime() {
-        return 0;
+    public static int getTotalTime(List<String> shortestPath) {
+        double totalTime = 0;
+        for (int i=0; i<shortestPath.size()-1; i++) {
+            totalTime += TimeRepository.getWeight(shortestPath.get(i), shortestPath.get(i + 1));
+        }
+        return (int) totalTime;
     }
 }
