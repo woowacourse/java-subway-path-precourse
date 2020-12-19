@@ -1,11 +1,11 @@
-package controller;
+package subway.controller;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-import view.InputView;
-import view.OutputView;
+import subway.view.InputView;
+import subway.view.OutputView;
 
 enum MainButton {
 	LOOK_UP("1"),SYSTEM_OUT("Q");

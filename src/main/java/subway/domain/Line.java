@@ -16,6 +16,7 @@ public class Line {
 	public String getName() {
 		return name;
 	}
+
 	public void addSection(String stationName) {
 		section.add(stationName);
 	}
@@ -23,9 +24,9 @@ public class Line {
 	public void addSection(int index, String stationName) {
 		section.add(index, stationName);
 	}
-	
-	public List<String> getSection(){
+
+	public List<String> getSection() {
 		return section;
 	}
-	
+
 }

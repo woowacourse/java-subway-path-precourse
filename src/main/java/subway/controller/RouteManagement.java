@@ -1,10 +1,10 @@
-package controller;
+package subway.controller;
 
 import java.util.Arrays;
 import java.util.List;
 
-import view.InputView;
-import view.OutputView;
+import subway.view.InputView;
+import subway.view.OutputView;
 
 enum RouteButton {
 	SHORTEST_DISTANCE("1"), SHORTEST_TIME("2"), BACK_TO_MAIN("B");
@@ -35,9 +35,10 @@ public class RouteManagement {
 			MainManagement.execute();
 			return;
 		} else if (input.equals(RouteButton.SHORTEST_DISTANCE.getButton())) {
-
+			OutputView.printMap();
 		} else if (input.equals(RouteButton.SHORTEST_TIME.getButton())) {
-
+			OutputView.printMap();
 		}
 	}
+
 }
