@@ -1,5 +1,6 @@
-package subway;
+package subway.menu;
 
+import subway.utils.PathFinder;
 import subway.domain.StationRepository;
 
 import java.util.ArrayList;

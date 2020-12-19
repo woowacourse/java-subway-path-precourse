@@ -1,4 +1,4 @@
-package subway;
+package subway.utils;
 
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
@@ -18,8 +18,7 @@ public class PathFinder {
         WeightedMultigraph<String, DefaultWeightedEdge> graph = createSubwayGraph(command);
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
         try {
-            List<String> shortestPath = dijkstraShortestPath.getPath(startStation, endStation).getVertexList();
-            return shortestPath;
+            return dijkstraShortestPath.getPath(startStation, endStation).getVertexList();
         } catch (Exception exception) {
             throw new IllegalArgumentException("출발역과 도착역이 연결되어 있는 경로가 없습니다.");
         }
