@@ -9,8 +9,8 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 
 public enum RouteMenu {
-    ROUTE_BY_DISTANCE("최단 거리", "1", RouteController::showRouteByDistance),
-    ROUTE_BY_TIME("최소 시간", "2", RouteController::showRouteByTime),
+    ROUTE_BY_DISTANCE("최단 거리", "1", RouteController::promptRouteByDistance),
+    ROUTE_BY_TIME("최소 시간", "2", RouteController::promptRouteByTime),
     BACK("돌아가기", "B", RouteController::back);
 
     private static final String ERROR_CATEGORY_SELECTION = "잘못 입력 하셨습니다";

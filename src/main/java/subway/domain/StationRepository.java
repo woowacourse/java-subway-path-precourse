@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class StationRepository {
+    private static final String UNABLE_TO_FIND = "해당 역이 존재하지 않습니다";
+
     private static final List<Station> stations = new ArrayList<>();
 
     public static List<Station> stations() {
@@ -34,6 +36,6 @@ public class StationRepository {
         return stations.stream()
                 .filter(station -> station.getName().equals(name))
                 .findAny()
-                .orElseThrow(() -> new TransitRouteException("해당 역이 존재하지 않습니다"));
+                .orElseThrow(() -> new TransitRouteException(UNABLE_TO_FIND));
     }
 }
