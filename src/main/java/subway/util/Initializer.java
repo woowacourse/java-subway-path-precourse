@@ -1,9 +1,6 @@
 package subway.util;
 
-import subway.domain.Line;
-import subway.domain.LineRepository;
-import subway.domain.Station;
-import subway.domain.StationRepository;
+import subway.domain.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,6 +17,7 @@ public class Initializer {
         createStation();
         createLine();
         enrollStationOnLine();
+        enrollNearbyStation();
     }
 
     private void createStation() {
@@ -44,5 +42,27 @@ public class Initializer {
         shinbundangLineStations.stream()
                 .map(StationRepository::findStationByName)
                 .forEach(shinbundangLine::addStation);
+    }
+
+    private void enrollNearbyStation() {
+        Station kyodae = StationRepository.findStationByName("교대역");
+        Station kangnam = StationRepository.findStationByName("강남역");
+        Station yeoksam = StationRepository.findStationByName("역삼역");
+        Station southterminal = StationRepository.findStationByName("남부터미널역");
+        Station yangjae = StationRepository.findStationByName("양재역");
+        Station forest = StationRepository.findStationByName("양재시민의숲역");
+        Station maebong = StationRepository.findStationByName("매봉역");
+        mappingNearbyStation(kyodae, kangnam, 2, 3);
+        mappingNearbyStation(kangnam, yeoksam, 2, 3);
+        mappingNearbyStation(kyodae, southterminal, 3, 2);
+        mappingNearbyStation(yangjae, southterminal, 6, 5);
+        mappingNearbyStation(yangjae, maebong, 1, 1);
+        mappingNearbyStation(kangnam, yangjae, 2, 8);
+        mappingNearbyStation(yangjae, forest, 10, 3);
+    }
+
+    private void mappingNearbyStation(Station kyodae, Station kangnam, int distance, int time) {
+        kyodae.addNearbyStation(new NearbyStation(kangnam, distance, time));
+        kangnam.addNearbyStation(new NearbyStation(kyodae, distance, time));
     }
 }

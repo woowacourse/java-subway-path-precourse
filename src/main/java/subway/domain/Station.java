@@ -22,6 +22,10 @@ public class Station {
         return station;
     }
 
+    public void addNearbyStation(NearbyStation nearbyStation) {
+        nearbyStations.add(nearbyStation);
+    }
+
     public String getName() {
         return name;
     }
