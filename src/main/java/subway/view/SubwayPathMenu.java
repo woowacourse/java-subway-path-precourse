@@ -1,11 +1,13 @@
 package subway.view;
 
+import subway.controller.SubwayPathController;
+
 import java.util.Arrays;
 import java.util.function.Supplier;
 
 public enum SubwayPathMenu {
-    REGISTER_STATION("1", "최단 거리", () -> SubwayPathController.getInstance().registerStation()),
-    DELETE_STATION("2", "최소 시간", () -> SubwayPathController.getInstance().deleteStation()),
+    REGISTER_STATION("1", "최단 거리", () -> SubwayPathController.getInstance().printByMinDistance()),
+    DELETE_STATION("2", "최소 시간", () -> SubwayPathController.getInstance().prinntByMinTime()),
     BACK("B", "돌아가기", () -> SubwayPathController.getInstance().back());
 
     private String key;
