@@ -4,6 +4,7 @@ import subway.domain.FunctionChoice;
 import subway.exception.InvalidInputException;
 import subway.repository.LineRepository;
 import subway.repository.StationRepository;
+import subway.service.MainService;
 import subway.view.InputView;
 import subway.view.OutputView;
 
@@ -13,12 +14,14 @@ import static subway.view.resource.Information.MAIN_INFO;
 
 public class MainController extends SubwayController {
 
+    private MainService mainService;
     private PathController pathController;
 
     private boolean isContinue = true;
 
     public MainController(Scanner scanner) {
         super(new InputView(scanner), new OutputView());
+        mainService = new MainService();
         initController();
         initData();
     }
@@ -41,7 +44,7 @@ public class MainController extends SubwayController {
     private void run() {
         try {
             String selectedFunction = getSelectedFunction();
-            FunctionChoice.validate(selectedFunction);
+            mainService.validate(selectedFunction);
             runSelectedService(selectedFunction);
         } catch (InvalidInputException e) {
             getOutputView().printErrorMessage(e.getMessage());
