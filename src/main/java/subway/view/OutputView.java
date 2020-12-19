@@ -12,6 +12,8 @@ public class OutputView {
     private static final String SEARCH_RESULT = "## 조회 결과";
     private static final String INFO_PREFIX = "[INFO] ";
     private static final String DASHED_LINE = "---";
+    private static final String TOTAL_DISTANCE = "총 거리 ";
+    private static final String TOTAL_TIME = "총 소요 시간";
 
     public static void printMainScreen() {
         System.out.println(MAIN_TITLE);
@@ -29,5 +31,9 @@ public class OutputView {
     public static void printResult(String result) {
         System.out.println(SEARCH_RESULT);
         System.out.println(INFO_PREFIX + DASHED_LINE);
+        System.out.println(INFO_PREFIX + TOTAL_DISTANCE);
+        System.out.println(INFO_PREFIX + TOTAL_TIME);
+        System.out.println(INFO_PREFIX + DASHED_LINE);
+        System.out.println();
     }
 }

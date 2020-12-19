@@ -48,7 +48,7 @@ public class MinCostCalculator {
 //        System.out.println(shortest_path);
 //        DefaultSections defaultSections = new DefaultSections();
 //        System.out.println(defaultSections.getSections());
-        String result= "";
+        String result = "";
         return result;
     }
 

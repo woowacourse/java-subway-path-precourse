@@ -3,6 +3,7 @@ package subway.domain;
 import java.util.List;
 
 public class Section {
+
     private final String departureStation;
     private final String arrivalStation;
     private final Cost cost;
@@ -14,8 +15,8 @@ public class Section {
     }
 
     @Override
-    public String toString(){
-        return this.departureStation + this.arrivalStation;
+    public String toString() {
+        return this.departureStation + this.arrivalStation + this.cost;
     }
 
     public String getDepartureStation() {

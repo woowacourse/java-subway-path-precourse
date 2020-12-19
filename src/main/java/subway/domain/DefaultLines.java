@@ -8,9 +8,9 @@ public class DefaultLines {
     private static final String LINE_TWO = "2호선";
     private static final String LINE_THREE = "3호선";
     private static final String LINE_SINBUNDANG = "신분당선";
-    private static List<Line> defaultLines = new ArrayList<Line>();
+    private static List<Line> defaultLines = new ArrayList<>();
 
-    public static void initializeDefaultLines() {
+    public DefaultLines() {
         Line lineTwo = initializeLineTwo();
         Line lineThree = initializeLineThree();
         Line lineSinbundang = initializeLineSinbundang();

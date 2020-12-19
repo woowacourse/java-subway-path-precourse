@@ -6,15 +6,17 @@ import org.jgrapht.graph.*;
 public class DefaultSubwayGraph {
 
     private static DefaultSections defaultSections;
-    private static Graph<String, DefaultEdge> graph = new SimpleGraph<>(DefaultEdge.class);
+    private static Graph<Object, DefaultWeightedEdge> graph = new SimpleGraph<Object, DefaultWeightedEdge>(
+        DefaultWeightedEdge.class);
 
     public DefaultSubwayGraph() {
         graph = createStringGraph();
         defaultSections = new DefaultSections();
     }
 
-    private static Graph<String, DefaultEdge> createStringGraph() {
-        Graph<String, DefaultEdge> graph = new SimpleGraph<>(DefaultEdge.class);
+    private static Graph<Object, DefaultWeightedEdge> createStringGraph() {
+        Graph<Object, DefaultWeightedEdge> graph = new SimpleGraph<Object, DefaultWeightedEdge>(
+            DefaultWeightedEdge.class);
         addDefaultStations();
         addDefaultEdges();
         return graph;
@@ -29,10 +31,11 @@ public class DefaultSubwayGraph {
 
     public static void addDefaultEdges() {
         DefaultSections defaultSections = new DefaultSections();
+
         for (Section section : defaultSections.getSections()) {
-            DefaultEdge e = graph
+            DefaultWeightedEdge e = graph
                 .addEdge(section.getDepartureStation(), section.getArrivalStation());
-//            graph.setEdgeWeight(e, (double)section.getCost().getDistanceCost());
+//            graph.setEdgeWeight(e, section.getCost().getDistanceCost());
         }
     }
 }

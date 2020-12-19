@@ -1,6 +1,7 @@
 package subway.domain;
 
 public class Cost {
+
     int distanceCost;
     int timeCost;
 
@@ -15,5 +16,10 @@ public class Cost {
 
     public int getTimeCost() {
         return this.timeCost;
+    }
+
+    @Override
+    public String toString() {
+        return this.timeCost + " " + this.distanceCost;
     }
 }
