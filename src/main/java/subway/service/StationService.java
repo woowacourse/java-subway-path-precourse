@@ -8,7 +8,7 @@ public class StationService {
 
     public static Station findStationByName(String name) {
         try {
-            return StationRepository.stations().stream()
+            return StationRepository.stationsWithValidate().stream()
                 .filter(station -> station.getName().equals(name))
                 .findAny()
                 .get();

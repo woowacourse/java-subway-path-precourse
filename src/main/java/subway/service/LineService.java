@@ -8,7 +8,7 @@ public class LineService {
 
     public static Line findLineByName(String name) {
         try {
-            return LineRepository.lines().stream()
+            return LineRepository.linesWithValidate().stream()
                 .filter(line -> line.getName().equals(name))
                 .findAny()
                 .get();

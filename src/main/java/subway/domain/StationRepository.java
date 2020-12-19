@@ -13,16 +13,20 @@ public class StationRepository {
     }
 
     public static void initStationRepository() {
-        addStation(Station.newStationWithName("교대역"));
-        addStation(Station.newStationWithName("강남역"));
-        addStation(Station.newStationWithName("역삼역"));
-        addStation(Station.newStationWithName("남부터미널역"));
-        addStation(Station.newStationWithName("양재역"));
-        addStation(Station.newStationWithName("양재시민의숲역"));
-        addStation(Station.newStationWithName("매봉역"));
+        addStationWithValidate(Station.newStationWithName("교대역"));
+        addStationWithValidate(Station.newStationWithName("강남역"));
+        addStationWithValidate(Station.newStationWithName("역삼역"));
+        addStationWithValidate(Station.newStationWithName("남부터미널역"));
+        addStationWithValidate(Station.newStationWithName("양재역"));
+        addStationWithValidate(Station.newStationWithName("양재시민의숲역"));
+        addStationWithValidate(Station.newStationWithName("매봉역"));
     }
 
     public static List<Station> stations() {
+        return Collections.unmodifiableList(stations);
+    }
+
+    public static List<Station> stationsWithValidate() {
         validateEmpty();
         return Collections.unmodifiableList(stations);
     }
@@ -34,6 +38,10 @@ public class StationRepository {
     }
 
     public static void addStation(Station station) {
+        stations.add(station);
+    }
+
+    public static void addStationWithValidate(Station station) {
         validateDuplicate(station);
         stations.add(station);
     }
