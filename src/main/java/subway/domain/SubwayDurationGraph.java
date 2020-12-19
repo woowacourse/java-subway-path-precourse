@@ -16,7 +16,7 @@ public class SubwayDurationGraph {
     }
 
     public static Sections getMinimumSections(Station departue, Station arrival) {
-        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(durationGraph);
+        DijkstraShortestPath<Station, Section> dijkstraShortestPath = new DijkstraShortestPath<>(durationGraph);
         return new Sections(dijkstraShortestPath.getPath(departue, arrival).getEdgeList());
     }
 }
