@@ -11,6 +11,8 @@ public class Application {
         final InputView inputView = new InputView(scanner);
         final Controller mainMenuController = new MainMenuController(inputView);
 
+        DummySetup.initialize();
+
         do {
             mainMenuController.run();
         } while(MainMenuController.isRunning);

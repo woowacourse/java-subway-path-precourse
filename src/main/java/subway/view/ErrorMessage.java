@@ -7,4 +7,6 @@ public class ErrorMessage {
     public static final String DECISION_WRONG = LABEL + "선택할 수 없는 기능입니다.";
 
     public static final String STATION_NONE = LABEL + "역이 존재하지 않습니다.";
+
+    public static final String LINE_NONE = LABEL + "노선이 존재하지 않습니다.";
 }

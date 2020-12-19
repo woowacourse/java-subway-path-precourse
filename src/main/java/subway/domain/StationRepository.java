@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import subway.view.ErrorMessage;
 
 public class StationRepository {
     private static final List<Station> stations = new ArrayList<>();
@@ -27,5 +28,12 @@ public class StationRepository {
     public static boolean checkExistence(String name) {
         return stations.stream()
                 .anyMatch(station -> station.getName().equals(name));
+    }
+
+    public static Station get(String name) {
+        return stations.stream()
+                .filter(station -> station.getName().equals(name))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.STATION_NONE));
     }
 }
