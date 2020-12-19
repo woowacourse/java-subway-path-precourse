@@ -29,6 +29,15 @@ public class StationRepository {
     	}
     	return null;
     }
+    
+    public static boolean check_station(String stationName) {
+    	for ( Station station : stations()) {
+    		if (stationName.equals(station.getName()))
+    			return true;
+    	}
+    	System.out.println("[ERROR] 존재하지 않는 역입니다.");
+    	return false;
+    }
 
     public static void deleteAll() {
         stations.clear();
