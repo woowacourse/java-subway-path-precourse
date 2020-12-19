@@ -25,11 +25,11 @@ public class LineRepository {
         return Collections.unmodifiableList(lines);
     }
 
-    public LineRepository addLines(String... lineNames) {
+    public LineRepository addLines(Line... lines) {
         LineRepository lineRepository = new LineRepository();
 
-        for (String lineName : lineNames) {
-            lineRepository.addLine(new Line(lineName, null));
+        for (Line line : lines) {
+            lineRepository.addLine(line);
         }
 
         return lineRepository;

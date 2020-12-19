@@ -46,21 +46,6 @@ public class LineRepositoryTest {
     }
 
     @Test
-    @DisplayName("여러 노선 추가 테스트")
-    public void addLines_NewLines_LinesAreAdded() {
-
-        // given
-        String[] lineNames = {"1호선", "2호선", "신분당선"};
-
-        // when
-        lineRepository = lineRepository.addLines(lineNames);
-
-        //then
-        assertThat(lineRepository.lines()).extracting(Line::getName)
-                .containsExactly("1호선", "2호선", "신분당선");
-    }
-
-    @Test
     @DisplayName("노선 삭제 테스트")
     public void deleteLine_OldLine_LineRemoved() {
 

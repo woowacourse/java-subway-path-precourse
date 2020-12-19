@@ -17,6 +17,10 @@ public class Line {
         return name;
     }
 
+    public LineDirection getLineDirection() {
+        return lineDirection;
+    }
+
     // 추가 기능 구현
     @Override
     public boolean equals(Object o) {
