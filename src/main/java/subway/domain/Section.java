@@ -14,6 +14,4 @@ public class Section {
     public void addStation(Station station) { this.station.add(station); }
 
     public Line getLine() { return line; }
-
-    public List<Station> getStation() { return this.station; }
 }

@@ -1,6 +1,5 @@
 package subway.view;
 
-import subway.domain.GraphRepository;
 import subway.exception.ExceptionManager;
 import subway.util.GraphInitializer;
 
@@ -11,8 +10,6 @@ public class FindPathView {
     public static final String PATH_MENU_DISTANCE = "1. 최단 거리";
     public static final String PATH_MENU_TIME = "2. 최소 시간";
     public static final String PATH_MENU_BACK = "B. 돌아가기";
-    public static final String PATH_ASK_START = "## 출발역을 입력하세요.";
-    public static final String PATH_ASK_DESTINATION = "## 도착역을 입력하세요.";
 
     public static void printFindPathView(Scanner scanner) {
         String command;
@@ -38,18 +35,12 @@ public class FindPathView {
 
     public static void generateCommand(String command, Scanner scanner) {
         if(command.equals("1") || command.equals("2")) {
-            GraphInitializer graphInitializer = new GraphInitializer(command, scanner);
+            new GraphInitializer(command, scanner);
             return;
         }
 
         if(command.equals("B")) {
             MainView.printMainView(scanner);
         }
-    }
-
-    public static void getStations(Scanner scanner) {
-        System.out.println(PATH_ASK_START);
-
-        System.out.println(PATH_ASK_DESTINATION);
     }
 }

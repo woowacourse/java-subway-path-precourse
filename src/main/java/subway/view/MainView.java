@@ -1,6 +1,5 @@
 package subway.view;
 
-import subway.domain.GraphRepository;
 import subway.exception.ExceptionManager;
 
 import java.util.Scanner;
@@ -37,6 +36,4 @@ public class MainView {
             FindPathView.printFindPathView(scanner);
         }
     }
-
-
 }

@@ -23,7 +23,6 @@ public class GraphInitializer {
         for (Station station : StationRepository.stations()) {
             graphRepository.addVertex(station.getName());
         }
-
         if (command.equals("1")) {
             byDistance(graphRepository);
         }
