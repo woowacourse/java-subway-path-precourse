@@ -41,9 +41,9 @@ public class PathController {
     }
 
     private void runDetailAction(SearchType searchType) {
+        if (searchType.isBack()) {
+            return;
+        }
         String startStationName = inputView.inputStationName(START);
-        String endStationName =   inputView.inputStationName(END);
-        ShortestPathDto shortestPathDto = pathService.calcShortestPath(startStationName, endStationName, searchType);
-        OutputView.printResult(shortestPathDto);
     }
 }
