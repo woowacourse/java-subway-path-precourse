@@ -1,5 +1,6 @@
 package subway.domain;
 
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 
@@ -9,10 +10,17 @@ public class SubwayGraph {
     WeightedMultigraph<Station, DefaultWeightedEdge> distanceWeightGraph;
     WeightedMultigraph<Station, DefaultWeightedEdge> timeWeightGraph;
 
-
     public SubwayGraph() {
         this.distanceWeightGraph = new WeightedMultigraph<>(DefaultWeightedEdge.class);
         this.timeWeightGraph = new WeightedMultigraph<>(DefaultWeightedEdge.class);
+    }
+
+    public WeightedMultigraph<Station, DefaultWeightedEdge> getDistanceWeightGraph() {
+        return distanceWeightGraph;
+    }
+
+    public WeightedMultigraph<Station, DefaultWeightedEdge> getTimeWeightGraph() {
+        return timeWeightGraph;
     }
 
     public void addVertices(List<Station> stations) {

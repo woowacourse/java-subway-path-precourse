@@ -1,10 +1,18 @@
 package subway;
 
-import java.util.Scanner;
+import subway.domain.EdgeRepository;
+import subway.domain.StationRepository;
+import subway.domain.SubwayGraph;
 
 public class Application {
     public static void main(String[] args) {
-        final Scanner scanner = new Scanner(System.in);
-        // TODO: 프로그램 구현
+        Settings.init();
+        SubwayGraph graph = new SubwayGraph();
+        graph.addVertices(StationRepository.stations());
+        graph.setEdgeWeight(EdgeRepository.edges());
+        DistanceShortestPath distanceShortestPath = new DistanceShortestPath(graph);
+        TimeShortestPath timeShortestPath = new TimeShortestPath(graph);
+        distanceShortestPath.getRoute();
+        MainService.view();
     }
 }

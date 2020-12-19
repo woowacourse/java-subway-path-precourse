@@ -17,7 +17,7 @@ public class Edge {
         return from;
     }
 
-    Station getTo() {
+    public Station getTo() {
         return to;
     }
 
