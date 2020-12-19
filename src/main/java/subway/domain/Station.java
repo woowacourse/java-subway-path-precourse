@@ -3,7 +3,7 @@ package subway.domain;
 import subway.domain.constants.DomainConstant;
 import subway.domain.constants.DomainErrorMessage;
 
-public class Station {
+public class Station implements Comparable<Station> {
     private String name;
 
     public Station(String name) {
@@ -13,6 +13,19 @@ public class Station {
 
     public String getName() {
         return name;
+    }
+
+    public boolean compareName(String targetName) {
+        if (name.equals(targetName)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public int compareTo(Station station) {
+        return this.name.compareTo(station.name);
     }
 
     private void checkValidName(String name) {
