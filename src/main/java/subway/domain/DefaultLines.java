@@ -47,6 +47,4 @@ public class DefaultLines {
     public static List<Line> getDefaultLines() {
         return defaultLines;
     }
-
-
 }

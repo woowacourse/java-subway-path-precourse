@@ -8,7 +8,7 @@ public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         SubwayNavigation subwayNavigation = new SubwayNavigation();
-        InputView.initialize(scanner);
+        InputView inputView = new InputView(scanner);
         subwayNavigation.run();
         scanner.close();
     }
