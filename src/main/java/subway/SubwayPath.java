@@ -1,15 +1,10 @@
 package subway;
 
-import subway.domain.data.Line;
-import subway.domain.data.LineRepository;
 import subway.domain.data.Station;
 import subway.domain.data.StationRepository;
+import subway.menu.MainMenu;
 import subway.view.InputView;
 import subway.view.OutputView;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class SubwayPath {
@@ -24,19 +19,35 @@ public class SubwayPath {
 
     private void run() {
         OutputView.printMainView();
-        String order = selectMenu();
-        selectPathRuleMenu(order);
+        String mainOrder = selectMenu();
+
+        if(mainOrder.equals(MainMenu.END.getOrder())){
+            return;
+        }
+
+        String pathRuleOrder = selectPathRuleMenu();
+        String startingStation = getStationName(Station.POINT.STARTING);
+        String endingStation = getStationName(Station.POINT.ENDING);
     }
 
-    private void selectPathRuleMenu(String order) {
+    private String getStationName(Station.POINT point){
+        try {
+            OutputView.printAskingStation(point);
+            return InputView.getStationName(scanner);
+        } catch (IllegalArgumentException e){
+            OutputView.printError(e.getMessage());
+            return getStationName(point);
+        }
+    }
+
+    private String selectPathRuleMenu() {
         try {
             OutputView.printPathRuleView();
             OutputView.printAskingFunction();
-            InputView.getPathRuleMenu(scanner);
-            return;
+            return InputView.getPathRuleMenu(scanner);
         } catch (IllegalArgumentException e) {
             OutputView.printError(e.getMessage());
-            selectPathRuleMenu(order);
+            return selectPathRuleMenu();
         }
     }
 

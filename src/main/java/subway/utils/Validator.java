@@ -1,9 +1,12 @@
 package subway.utils;
 
 import subway.Constant;
+import subway.domain.data.Station;
+import subway.domain.data.StationRepository;
 import subway.menu.MainMenu;
 import subway.menu.PathRuleMenu;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,8 +19,8 @@ public class Validator {
                 .map(m -> m.getOrder())
                 .collect(Collectors.toList());
 
-        for(String str : orderList) {
-            if(str.equalsIgnoreCase(order)){
+        for (String str : orderList) {
+            if (str.equalsIgnoreCase(order)) {
                 return;
             }
         }
@@ -30,12 +33,23 @@ public class Validator {
                 .map(m -> m.getOrder())
                 .collect(Collectors.toList());
 
-        for(String str : orderList) {
-            if(str.equalsIgnoreCase(order)){
+        for (String str : orderList) {
+            if (str.equalsIgnoreCase(order)) {
                 return;
             }
         }
 
         throw new IllegalArgumentException(Constant.ILLEGAL_ARGUMENT_EXCEPTION_INVALID_ORDER);
+    }
+
+    public static void checkValidStation(String order) {
+        List<Station> stationList = StationRepository.stations();
+
+        for(Station station : stationList){
+            if(station.getName().equals(order))
+                return;
+        }
+
+        throw new IllegalArgumentException(Constant.ILLEGAL_ARGUMENT_EXCEPTION_INVALID_STATION);
     }
 }

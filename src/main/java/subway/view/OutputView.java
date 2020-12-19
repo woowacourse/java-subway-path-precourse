@@ -1,6 +1,7 @@
 package subway.view;
 
 import subway.Constant;
+import subway.domain.data.Station;
 import subway.menu.MainMenu;
 import subway.menu.PathRuleMenu;
 
@@ -22,13 +23,15 @@ public class OutputView {
         }
     }
 
-    public static void printAskingPathRule(){
-
+    public static void printAskingStation(Station.POINT point){
+        printHeader();
+        if(point.equals(Station.POINT.STARTING)) {
+            System.out.println(Constant.VIEW_ASKING_STARTING_STATION);
+            return;
+        }
+        System.out.println(Constant.VIEW_ASKING_ENDING_STATION);
     }
 
-    public static void printAskingEndingStation(){
-
-    }
 
     public static void printError(String errorMessage){
         System.out.printf(Constant.EXCEPTION_FORMAT, errorMessage);

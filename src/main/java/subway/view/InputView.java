@@ -20,12 +20,9 @@ public class InputView {
         return inputOrder;
     }
 
-    public static void getStartingStation() {
-
+    public static String getStationName(Scanner scanner) {
+        String inputOrder = scanner.nextLine();
+        Validator.checkValidStation(inputOrder);
+        return inputOrder;
     }
-
-    public static void getEndingStation() {
-
-    }
-
 }

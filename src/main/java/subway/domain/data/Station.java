@@ -1,6 +1,11 @@
 package subway.domain.data;
 
 public class Station {
+
+    public enum POINT{
+        STARTING, ENDING;
+    }
+
     private String name;
 
     public Station(String name) {
