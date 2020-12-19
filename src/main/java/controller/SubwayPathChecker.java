@@ -1,9 +1,6 @@
 package controller;
 
-import subway.domain.Line;
-import subway.domain.LineRepository;
-import subway.domain.Station;
-import subway.domain.StationRepository;
+import subway.domain.*;
 
 public class SubwayPathChecker {
     private static final String LINE_NUMBER_TWO = "2호선";
@@ -21,6 +18,7 @@ public class SubwayPathChecker {
         registerLine();
         registerStation();
         insertStationToLine();
+        registerSection();
     }
 
     public void run() {
@@ -54,7 +52,6 @@ public class SubwayPathChecker {
             if (line.getName().equals(LINE_NEW_BOONDANG)) {
                 setLineNewBoondang(line);
             }
-
         }
     }
 
@@ -75,5 +72,17 @@ public class SubwayPathChecker {
         line.addStationOnLine(new Station(GANGNAM_STATION));
         line.addStationOnLine(new Station(YANGJAE_STATION));
         line.addStationOnLine(new Station(YANGJAE_CITIZEN_FOREST_STATION));
+    }
+
+    private void registerSection() {
+        SectionRepository.addSection(new Section(GYODAE_STATION, GANGNAM_STATION, 2, 3));
+        SectionRepository.addSection(new Section(GANGNAM_STATION, YEOKSAM_STATION, 2, 3));
+
+        SectionRepository.addSection(new Section(GYODAE_STATION, NAMBU_TERMINAL_STATION, 3, 2));
+        SectionRepository.addSection(new Section(NAMBU_TERMINAL_STATION, YANGJAE_STATION, 6, 5));
+        SectionRepository.addSection(new Section(YANGJAE_STATION, MAEBONG_STATION, 1, 1));
+
+        SectionRepository.addSection(new Section(GANGNAM_STATION, YANGJAE_STATION, 2, 8));
+        SectionRepository.addSection(new Section(YANGJAE_STATION, YANGJAE_CITIZEN_FOREST_STATION, 10, 3));
     }
 }

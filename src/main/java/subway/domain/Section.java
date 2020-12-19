@@ -6,7 +6,7 @@ public class Section {
     private final int distance;
     private final int time;
 
-    Section(String departureStation, String arrivalStation, int distance, int time) {
+    public Section(String departureStation, String arrivalStation, int distance, int time) {
         this.departureStation = departureStation;
         this.arrivalStation = arrivalStation;
         this.distance = distance;
