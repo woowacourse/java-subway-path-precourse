@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class MainController {
     private static final String QUIT = "Q";
+
     private MainController() {
     }
 
@@ -20,12 +21,12 @@ public class MainController {
         if (functionIndex.equals(Screen.PATH.getIndex())) {
             ScreenController.run(Screen.PATH, scanner);
         }
-        if (functionIndex.equals(QUIT)){
+        if (functionIndex.equals(QUIT)) {
             quitProgram(scanner);
         }
     }
 
-    private static void quitProgram(Scanner scanner){
+    private static void quitProgram(Scanner scanner) {
         scanner.close();
         System.exit(0);
     }
