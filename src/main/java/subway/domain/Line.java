@@ -1,28 +1,29 @@
 package subway.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Line {
-    private String name;
-    private int distance;
-    private int time;
+	private String name;
+	private int distance;
+	private int time;
+	private List<String> section = new ArrayList<String>();
 
-    public Line(String name, int distance, int time) {
-        this.name = name;
-        this.distance = distance;
-        this.time = time;
-    }
+	public Line(String name,int stationIndex, String stationName, int time, int distance) {
+		this.name = name;
+		addSection(stationIndex, stationName);
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public int getDistance() {
-    	return distance;
-    }
-    
-    public int getTime() {
-    	return time;
-    }
-    
-    
-   
+
+	public void addSection(int index, String stationName) {
+		section.add(index, stationName);
+	}
+	
+	public List<String> getSection(){
+		return section;
+	}
 }
