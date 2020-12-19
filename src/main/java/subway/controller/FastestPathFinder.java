@@ -31,6 +31,7 @@ public class FastestPathFinder {
         int length = DistanceRepository.getFastestPathLength(startStation, endStation);
         List<String> pathList = DistanceRepository.getFastestPath(startStation, endStation);
 
+
         StringBuilder sb = new StringBuilder();
         sb.append("\n## 조회 결과");
         sb.append("\n[INFO] ---");

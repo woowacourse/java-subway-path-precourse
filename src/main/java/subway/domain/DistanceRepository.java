@@ -60,4 +60,11 @@ public class DistanceRepository {
         return (int)dijkstraFastestPath.getPathWeight(startStation, endStation);
     }
 
+    public static int getLengthByTime(List<String> pathList) {
+        int totalTime = 0;
+        for (int i = 0; i < pathList.size() - 1; i++) {
+            totalTime += dijkstraFastestPath.getPathWeight(pathList.get(i), pathList.get(i + 1));
+        }
+        return totalTime;
+    }
 }

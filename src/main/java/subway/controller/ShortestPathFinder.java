@@ -30,13 +30,15 @@ public class ShortestPathFinder {
     }
 
     private void printShortestPath(String startStation, String endStation) {
-        int length = DistanceRepository.getShortestPathLength(startStation, endStation);
+        int shortestLenth = DistanceRepository.getShortestPathLength(startStation, endStation);
         List<String> pathList = DistanceRepository.getShortestPath(startStation, endStation);
+        int timeLength = DistanceRepository.getLengthByTime(pathList);
 
         StringBuilder sb = new StringBuilder();
         sb.append("\n## 조회 결과");
         sb.append("\n[INFO] ---");
-        sb.append("\n[INFO] 총 거리: " + length + "km");
+        sb.append("\n[INFO] 총 거리: " + shortestLenth + "km");
+        sb.append("\n[INFO] 총 소요 시간: " + timeLength + "분");
         sb.append("\n[INFO] ---");
         for (String station : pathList) {
             sb.append("\n[INFO]");
