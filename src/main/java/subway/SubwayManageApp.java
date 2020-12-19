@@ -16,8 +16,19 @@ public class SubwayManageApp {
 
     public void startApp() {
         MainView mainView = new MainView(outputView);
-        mainView.showOptions();
-        MainSelection mainSelection = new MainSelection(inputView.inputNextLine());
+        while (true) {
+            mainView.showOptions();
+            MainSelection mainSelection = new MainSelection(inputView.inputNextLine());
+            chooseOption(mainSelection);
+            if (mainSelection.isQuit()) {
+                break;
+            }
+        }
+    }
 
+    private void chooseOption(MainSelection mainSelection) {
+        if (mainSelection.isOptionOne()) {
+
+        }
     }
 }
