@@ -28,8 +28,12 @@ public class SearchController {
     }
 
     public List<Station> getShortestByDistance(Station from, Station to) {
-        SearchValidator.checkTwoStationsAreDifferent(from, to);
-        return dijkstraPathByDistance.getPath(from, to).getVertexList();
+        try {
+            SearchValidator.checkTwoStationsAreDifferent(from, to);
+            return dijkstraPathByDistance.getPath(from, to).getVertexList();
+        } catch (Exception e) {
+            throw new UnreachableStationException();
+        }
     }
 
     public void searchByTime() {
