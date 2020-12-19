@@ -3,7 +3,7 @@ package subway.controller;
 import subway.domain.entity.Section;
 import subway.domain.entity.Station;
 import subway.domain.entity.Stations;
-import subway.domain.path.SubwayMapGraph;
+import subway.domain.path.SubwayGraph;
 import subway.dto.LineDto;
 import subway.dto.PathRequestDto;
 import subway.dto.PathResponseDto;
@@ -13,7 +13,7 @@ import subway.service.StationService;
 import subway.type.FunctionType;
 
 public class PathController {
-    private static final SubwayMapGraph SUBWAY_MAP_GRAPH = SubwayMapGraph.getInstance();
+    private static final SubwayGraph SUBWAY_MAP_GRAPH = SubwayGraph.getInstance();
 
     public void addLine(LineDto lineDto, SectionDto sectionDto) {
         String upwardLastStationName = lineDto.getUpwardLastStationName();

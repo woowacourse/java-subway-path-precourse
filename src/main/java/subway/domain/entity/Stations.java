@@ -1,13 +1,13 @@
 package subway.domain.entity;
 
-import subway.domain.path.SubwayMapGraph;
+import subway.domain.path.SubwayGraph;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Stations {
-    private static final SubwayMapGraph SUBWAY_MAP_GRAPH = SubwayMapGraph.getInstance();
+    private static final SubwayGraph SUBWAY_MAP_GRAPH = SubwayGraph.getInstance();
     private static final int INDEX_ADJUSTMENT = 1;
 
     private final List<Station> stations;

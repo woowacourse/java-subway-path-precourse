@@ -1,17 +1,19 @@
 package subway;
 
 import subway.controller.PathController;
+import subway.dto.PathRequestDto;
+import subway.dto.PathResponseDto;
 import subway.type.FunctionType;
 import subway.type.ManagementType;
 import subway.view.InputView;
 import subway.view.OutputView;
 
-public class SubwayMapPathManager {
+public class SubwayPathManager {
 
     private final InputView inputView;
     private final PathController pathController;
 
-    public SubwayMapPathManager(InputView inputView, PathController pathController) {
+    public SubwayPathManager(InputView inputView, PathController pathController) {
         this.inputView = inputView;
         this.pathController = pathController;
     }
@@ -38,7 +40,13 @@ public class SubwayMapPathManager {
     }
 
     private void visualizeRouteSearchDisplay(ManagementType managementType) {
-        OutputView.printRouteSearchDisplay();
+        OutputView.printPathSearchDisplay();
         FunctionType functionType = inputView.inputFunctionType(managementType);
+        if (functionType == FunctionType.BACK) {
+            return;
+        }
+        PathRequestDto pathRequestDto = inputView.inputPathRequest();
+        PathResponseDto pathResponseDto = pathController.findShortestPath(functionType, pathRequestDto);
+        OutputView.printPathResult(pathResponseDto);
     }
 }

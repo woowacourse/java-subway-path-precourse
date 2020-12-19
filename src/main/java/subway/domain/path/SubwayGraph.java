@@ -12,29 +12,29 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class SubwayMapGraph {
+public class SubwayGraph {
     private static final int ZERO = 0;
     private static final int ONE = 1;
-    private static SubwayMapGraph subwayMapGraph;
+    private static SubwayGraph subwayGraph;
     private final WeightedMultigraph<Station, DefaultWeightedEdge> shortestDistanceGraph;
     private final WeightedMultigraph<Station, DefaultWeightedEdge> minimumTimeGraph;
 
-    private SubwayMapGraph(WeightedMultigraph<Station, DefaultWeightedEdge> shortestDistanceGraph,
-                           WeightedMultigraph<Station, DefaultWeightedEdge> minimumTimeGraph) {
+    private SubwayGraph(WeightedMultigraph<Station, DefaultWeightedEdge> shortestDistanceGraph,
+                        WeightedMultigraph<Station, DefaultWeightedEdge> minimumTimeGraph) {
         this.shortestDistanceGraph = shortestDistanceGraph;
         this.minimumTimeGraph = minimumTimeGraph;
     }
 
     public static void initiate() {
-        subwayMapGraph = new SubwayMapGraph(new WeightedMultigraph(DefaultWeightedEdge.class),
+        subwayGraph = new SubwayGraph(new WeightedMultigraph(DefaultWeightedEdge.class),
                 new WeightedMultigraph(DefaultWeightedEdge.class));
     }
 
-    public static SubwayMapGraph getInstance() {
-        if (Objects.isNull(subwayMapGraph)) {
+    public static SubwayGraph getInstance() {
+        if (Objects.isNull(subwayGraph)) {
             throw new IllegalArgumentException();
         }
-        return subwayMapGraph;
+        return subwayGraph;
     }
 
     public void addStationToGraph(Station firstStation, Station lastStation, Section section) {

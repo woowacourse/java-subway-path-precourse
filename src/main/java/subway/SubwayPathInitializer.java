@@ -9,7 +9,7 @@ import subway.dto.SectionDto;
 import java.util.Arrays;
 import java.util.List;
 
-public class SubwayMapPathInitializer {
+public class SubwayPathInitializer {
     private static final List<String> DEFAULT_STATION_NAMES =
             Arrays.asList("교대역", "강남역", "역삼역", "남부터미널역", "양재역", "양재시민의숲역", "매봉역");
     private static final List<LineDto> DEFAULT_LINE_DTOS =
@@ -32,7 +32,7 @@ public class SubwayMapPathInitializer {
                     new SectionDto(10, 3));
     private static final int ZERO_INDEX = 0;
 
-    private SubwayMapPathInitializer() {
+    private SubwayPathInitializer() {
     }
 
     public static void loadDefaultData(PathController pathController) {

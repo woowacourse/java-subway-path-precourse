@@ -1,7 +1,7 @@
 package subway;
 
 import subway.controller.PathController;
-import subway.domain.path.SubwayMapGraph;
+import subway.domain.path.SubwayGraph;
 import subway.view.InputView;
 
 import java.util.Scanner;
@@ -11,12 +11,12 @@ public class Application {
         final Scanner scanner = new Scanner(System.in);
         // TODO: 프로그램 구현
         InputView inputView = new InputView(scanner);
-        SubwayMapGraph.initiate();
+        SubwayGraph.initiate();
         PathController pathController = new PathController();
-        SubwayMapPathInitializer.loadDefaultData(pathController);
-        SubwayMapPathManager subwayMapPathManager = new SubwayMapPathManager(inputView, pathController);
-        SubwayMapGraph.initiate();
-        subwayMapPathManager.run();
+        SubwayPathInitializer.loadDefaultData(pathController);
+        SubwayPathManager subwayPathManager = new SubwayPathManager(inputView, pathController);
+        SubwayGraph.initiate();
+        subwayPathManager.run();
         scanner.close();
     }
 }
