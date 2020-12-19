@@ -36,6 +36,10 @@ public class RoutePage {
         if (button.equals(SHORTEST_DISTANCE)) {
             String startStation = InputView.inputStartStation();
             String finishStation = InputView.inputFinishStation();
+
+            if (validateInputEqualsStation(startStation, finishStation)) {
+                return false;
+            }
         }
         return true;
     }
@@ -44,7 +48,19 @@ public class RoutePage {
         if (button.equals(MINIMUM_TIME)) {
             String startStation = InputView.inputStartStation();
             String finishStation = InputView.inputFinishStation();
+
+            if (validateInputEqualsStation(startStation, finishStation)) {
+                return false;
+            }
         }
         return true;
+    }
+
+    private boolean validateInputEqualsStation(String startStation, String finishStation) {
+        if (startStation.equals(finishStation)) {
+            OutputView.printStartStationEqualsFinishStationError();
+            return true;
+        }
+        return false;
     }
 }
