@@ -3,6 +3,7 @@ package subway.view;
 import java.util.Map;
 import java.util.Scanner;
 import subway.Subway;
+import subway.domain.Station;
 import subway.model.MenuGroup.Menu;
 import subway.util.Constants;
 import subway.util.DialogUtils;
@@ -34,27 +35,50 @@ public class InquiryView {
     public void initView() {
 
         menuActionMap = Map.of(
-            "1", this::showShortestSection,
+            "1", this::showShortestDistance,
             "2", this::showMinimumTime,
             Constants.BACKWARD_INPUT_CHARACTER, this::goBackward
         );
     }
 
-    private void showShortestSection() {
-        MessageUtils.printInfo("최단거리 기능 출력");
+    private void showShortestDistance() {
         String startStationName = DialogUtils.ask(scanner, Constants.INQUIRY_START_STATION_ASK);
         MessageUtils.printInfoEntry(startStationName);
         String endStationName = DialogUtils.ask(scanner, Constants.INQUIRY_END_STATION_ASK);
         MessageUtils.printInfoEntry(endStationName);
+        MessageUtils.printAnnouncement(Constants.INQUIRY_RESULT);
+//        MessageUtils.printInfo(String.valueOf(getShortestDistance(startStationName, endStationName)));
+//        MessageUtils.printInfo(String.valueOf(getShortestTime(startStationName, endStationName)));
     }
 
     private void showMinimumTime() {
-        MessageUtils.printInfo("단시간 기능 출력");
         String startStationName = DialogUtils.ask(scanner, Constants.INQUIRY_START_STATION_ASK);
         MessageUtils.printInfoEntry(startStationName);
         String endStationName = DialogUtils.ask(scanner, Constants.INQUIRY_END_STATION_ASK);
         MessageUtils.printInfoEntry(endStationName);
+        MessageUtils.printAnnouncement(Constants.INQUIRY_RESULT);
     }
+
+    private int getShortestTime(String startStationName, String endStationName) {
+        Station startStation = subway.getStationRepository().findByName(startStationName);
+        Station endStation = subway.getStationRepository().findByName(endStationName);
+        return subway.getTimePathRepository().findValue(startStation, endStation);
+    }
+
+    private int getShortestDistance(String startStationName, String endStationName) {
+        Station startStation = subway.getStationRepository().findByName(startStationName);
+        Station endStation = subway.getStationRepository().findByName(endStationName);
+        return subway.getDistancePathRepository().findValue(startStation, endStation);
+    }
+
+    private int getStationToStationDistance() {
+        return 0;
+    }
+
+    private int getStationToStationTime() {
+        return 0;
+    }
+
 
     private void menuSelector() {
         MessageUtils.printMenu(getMenu());

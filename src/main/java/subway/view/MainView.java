@@ -31,9 +31,6 @@ public class MainView {
     }
 
     public void initView() {
-//        LineView lineView = new LineView(subway, this.scanner);
-//        StationView stationView = new StationView(subway, this.scanner);
-//        SectionView sectionView = new SectionView(subway, this.scanner);
         InquiryView inquiryView = new InquiryView(subway, this.scanner);
 
         menuActionMap = Map.of(

@@ -23,14 +23,14 @@ public class TimePathRepository {
         graph.setEdgeWeight(graph.addEdge(startStation.getName(), endStation.getName()), weight);
     }
 
-    public List getShortestPath(Station startStation, Station endStation) {
+    public List findStationToStation(Station startStation, Station endStation) {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graphs);
         return dijkstraShortestPath
             .getPath(startStation.getName(), endStation.getName())
             .getVertexList();
     }
 
-    public int getValue(Station startStation, Station endStation) {
+    public int findValue(Station startStation, Station endStation) {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graphs);
         return (int) dijkstraShortestPath
             .getPath(startStation.getName(), endStation.getName())
