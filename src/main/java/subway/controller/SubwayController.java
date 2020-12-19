@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.stream.IntStream;
 import org.jgrapht.alg.shortestpath.DijkstraManyToManyShortestPaths;
 import org.jgrapht.graph.DefaultWeightedEdge;
-import subway.domain.Line;
-import subway.domain.LineRepository;
 import subway.domain.SectionRepository;
 import subway.domain.Station;
 import subway.domain.StationRepository;
@@ -22,10 +20,9 @@ public class SubwayController {
 
     private static final String[] initialStations = {"교대역", "강남역", "역삼역", "남부터미널역", "양재역",
         "양재시민의숲역", "매봉역"};
-    private static final String[] initialLines = {"2호선", "3호선", "신분당선"};
-    private static final String LineTwo = "2호선";
-    private static final String LineThree = "3호선";
-    private static final String LineSinBunDang = "신분당선";
+    public static final String INVALID_CATEGORY_EXCEPTION_MESSAGE = "잘못된 값을 입력했습니다.";
+    public static final String NO_ROUTE_EXCEPTION_MESSAGE = "경로가 존재하지 않습니다.";
+
     private final InputView inputView;
     private static DijkstraManyToManyShortestPaths<String, org.jgrapht.graph.DefaultWeightedEdge> distanceGraphPath;
     public static DijkstraManyToManyShortestPaths<String, org.jgrapht.graph.DefaultWeightedEdge> timeGraphPath;
@@ -38,7 +35,6 @@ public class SubwayController {
         timeGraphPath = new DijkstraManyToManyShortestPaths<>(sectionRepository.getTimeGraph());
     }
 
-
     public void run() {
         initializeSubway();
         MainMenu.startManage();
@@ -48,52 +44,23 @@ public class SubwayController {
     private void initializeSubway() {
         Arrays.stream(initialStations)
             .forEach(station -> StationRepository.addStation(new Station(station)));
-        Arrays.stream(initialLines)
-            .forEach(line -> LineRepository.addLine(new Line(line)));
-        initialLineTwo();
-        initialLineThree();
-        initialLineSinBunDang();
-    }
-
-    private void initialLineSinBunDang() {
-        Line sinBunDang = LineRepository.findLine(LineSinBunDang);
-        sinBunDang.addByName("강남역");
-        sinBunDang.addByName("양재역");
-        sinBunDang.addByName("양재시민의숲역");
-    }
-
-    private void initialLineThree() {
-        Line three = LineRepository.findLine(LineThree);
-        three.addByName("교대역");
-        three.addByName("남부터미널역");
-        three.addByName("양재역");
-        three.addByName("매봉역");
-
-    }
-
-    private void initialLineTwo() {
-        Line two = LineRepository.findLine(LineTwo);
-        two.addByName("교대역");
-        two.addByName("강남역");
-        two.addByName("역삼역");
     }
 
     private void printMainCategory() {
         OutputView.chooseCategory();
         try {
-            mainExecute(inputView.inputValue());
+            excuteMainCategory(inputView.inputValue());
         } catch (SubwayException exception) {
             OutputView.showErrorMessage(exception);
             printMainCategory();
         }
     }
 
-    public void mainExecute(String inputCategory) {
+    public void excuteMainCategory(String inputCategory) {
         String category = findMainCategory(inputCategory);
         if (category.equals(MainMenu.PATH.category)) {
-            PathMenu.startManage();
             printPathCategory();
-            pathExecute(inputView.inputValue());
+            executePathCategory(inputView.inputValue());
         }
         if (category.equals(MainMenu.EXIT.category)) {
             exitMain();
@@ -104,7 +71,7 @@ public class SubwayController {
         return Arrays.stream(MainMenu.values())
             .filter(value -> value.category.equals(inputCategory.toUpperCase()))
             .findFirst()
-            .orElseThrow(() -> new SubwayException("잘못된 값을 입력했습니다."))
+            .orElseThrow(() -> new SubwayException(INVALID_CATEGORY_EXCEPTION_MESSAGE))
             .category;
     }
 
@@ -113,17 +80,27 @@ public class SubwayController {
     }
 
     private void printPathCategory() {
+        PathMenu.startManage();
         OutputView.chooseCategory();
         try {
-            pathExecute(inputView.inputValue());
+            executePathCategory(inputView.inputValue());
         } catch (SubwayException exception) {
             OutputView.showErrorMessage(exception);
             printPathCategory();
         }
     }
 
-    public void pathExecute(String inputCategory) {
+    public void executePathCategory(String inputCategory) {
         String category = findPathCategory(inputCategory);
+        try{
+            executePathCategoryImmediately(category);
+        } catch (SubwayException exception){
+            OutputView.showErrorMessage(exception);
+            printPathCategory();
+        }
+    }
+
+    private void executePathCategoryImmediately(String category) {
         if (category.equals(PathMenu.DISTANCE.category)) {
             findMinimumDistance();
             return;
@@ -132,47 +109,52 @@ public class SubwayController {
             findMinimumTime();
             return;
         }
-
+        MainMenu.startManage();
+        printMainCategory();
     }
 
     private static String findPathCategory(String inputCategory) {
         return Arrays.stream(PathMenu.values())
             .filter(value -> value.category.equals(inputCategory.toUpperCase()))
             .findFirst()
-            .orElseThrow(() -> new SubwayException("잘못된 값을 입력했습니다."))
+            .orElseThrow(() -> new SubwayException(INVALID_CATEGORY_EXCEPTION_MESSAGE))
             .category;
     }
 
     public void findMinimumDistance() {
         String startStation = inputStartStation();
         String endStation = inputEndStation();
-        ValidateUtils.isSame(startStation,endStation);
-        try{
-            List<String> shortestPath = distanceGraphPath.getPath(startStation, endStation)
-                .getVertexList();
-            calculateRoutes(shortestPath);
-        } catch (NullPointerException exception){
-            throw new SubwayException("경로가 존재하지 않습니다.");
+        ValidateUtils.isSame(startStation, endStation);
+        try {
+            List<String> shortestPath = findPath(startStation, endStation, distanceGraphPath);
+            printRoutes(shortestPath);
+        } catch (NullPointerException exception) {
+            throw new SubwayException(NO_ROUTE_EXCEPTION_MESSAGE);
         }
     }
 
     public void findMinimumTime() {
         String startStation = inputStartStation();
         String endStation = inputEndStation();
-        ValidateUtils.isSame(startStation,endStation);
-        try{
-            List<String> shortestPath = timeGraphPath.getPath(startStation, endStation).getVertexList();
-            calculateRoutes(shortestPath);
-        } catch (NullPointerException exception){
-            throw new SubwayException("경로가 존재하지 않습니다.");
+        ValidateUtils.isSame(startStation, endStation);
+        try {
+            List<String> shortestPath = findPath(startStation, endStation, timeGraphPath);
+            printRoutes(shortestPath);
+        } catch (NullPointerException exception) {
+            throw new SubwayException(NO_ROUTE_EXCEPTION_MESSAGE);
         }
     }
 
-    private void calculateRoutes(List<String> shortestPath) {
+    private List<String> findPath(String startStation, String endStation,
+        DijkstraManyToManyShortestPaths<String, DefaultWeightedEdge> distanceGraphPath) {
+        return distanceGraphPath.getPath(startStation, endStation)
+            .getVertexList();
+    }
+
+    private void printRoutes(List<String> shortestPath) {
         ArrayList<String> path = listToArray(shortestPath);
         int timeSum = calculateTime(path);
         int distanceSum = calculateDistance(path);
-        System.out.println(timeSum);
         OutputView.printResult(distanceSum, timeSum);
         shortestPath.forEach(OutputView::showInfoMessage);
     }
@@ -187,15 +169,19 @@ public class SubwayController {
     }
 
     private int calculateWithGraph(ArrayList<String> path,
-        DijkstraManyToManyShortestPaths<String, DefaultWeightedEdge> distanceGraphPath) {
-        List<Double> totalDistance = new ArrayList<>();
+        DijkstraManyToManyShortestPaths<String, DefaultWeightedEdge> GraphPath) {
+        List<Double> weights = new ArrayList<>();
         IntStream.range(0, path.size() - 1)
-            .forEach(value -> totalDistance.add(distanceGraphPath.getPath(
+            .forEach(value -> weights.add(GraphPath.getPath(
                 path.get(value),
                 path.get(value + 1)).getWeight()));
+        return calculateSum(weights);
+    }
+
+    private int calculateSum(List<Double> weights) {
         int timeSum = 0;
-        for (Double aDouble : totalDistance) {
-            timeSum += aDouble;
+        for (Double weight : weights) {
+            timeSum += weight;
         }
         return timeSum;
     }
@@ -207,19 +193,11 @@ public class SubwayController {
 
     private String inputEndStation() {
         OutputView.printEndStation();
-        String input = inputView.inputValue();
-        if (StationRepository.hasStation(input)) {
-            return input;
-        }
-        throw new SubwayException("존재하지 않는 역입니다.");
+        return inputView.inputStation();
     }
 
     private String inputStartStation() {
         OutputView.printStartStation();
-        String input = inputView.inputValue();
-        if (StationRepository.hasStation(input)) {
-            return input;
-        }
-        throw new SubwayException("존재하지 않는 역입니다.");
+        return inputView.inputStation();
     }
 }

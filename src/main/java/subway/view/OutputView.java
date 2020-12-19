@@ -55,7 +55,7 @@ public class OutputView {
     }
 
     public static void showMenuMessage(String message){
-        System.out.println(MENU_PREFIX + message);
+        System.out.println(System.lineSeparator() + MENU_PREFIX + message);
     }
 
 }

@@ -11,8 +11,11 @@ public class InputView {
         this.scanner = scanner;
     }
 
-
     public String inputValue() {
         return ValidateUtils.isNotEmpty(scanner.nextLine());
+    }
+
+    public String inputStation() {
+        return ValidateUtils.isValidStation(inputValue());
     }
 }
