@@ -1,6 +1,9 @@
 package subway.path;
 
+import org.jgrapht.GraphPath;
 import subway.common.SelectOption;
+import subway.line.Line;
+import subway.line.LineService;
 import subway.station.Station;
 import subway.station.StationService;
 import subway.station.validation.NotRegisterStation;
@@ -14,10 +17,14 @@ import java.util.List;
 public class PathController {
     private InputView inputView;
     private StationService stationService;
+    private PathService pathService;
+    private LineService lineService;
 
     public PathController(InputView inputView) {
         this.inputView = inputView;
         this.stationService = new StationService();
+        this.pathService = new PathService();
+        this.lineService = new LineService();
     }
 
     public void run() {
@@ -55,7 +62,7 @@ public class PathController {
     private boolean searchPath(String method, Station startStation, Station endStation) {
         try {
             if (method.equals(SearchMethod.DISTANCE.getValue())) {
-                searchMinimumDistance();
+                searchMinimumDistance(startStation, endStation);
             }
             if (method.equals(SearchMethod.TIME.getValue())) {
                 // TODO 최소 시간
@@ -78,7 +85,16 @@ public class PathController {
         return optionList;
     }
 
-    private void searchMinimumDistance() {
+    private void searchMinimumDistance(Station startStation, Station endStation) {
+        List<Station> stations = stationService.findAllStation();
+        List<Line> lines = lineService.findAllLine();
 
+        GraphPath path = pathService.getDijkstraShortestPath(stations, lines, startStation, endStation);
+
+        List<Station> shortestPath = pathService.getMinimumDistancePath(path);
+        int shortestDistance = Integer.parseInt(String.valueOf(Math.round(pathService.getMinimumDistance(path))));
+        int shortestTime = pathService.getPathTime(shortestPath);
+
+        OutputView.showMinimumDistancePath(shortestPath, shortestDistance, shortestTime);
     }
 }

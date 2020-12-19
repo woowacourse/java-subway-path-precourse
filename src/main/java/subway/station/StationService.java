@@ -12,4 +12,8 @@ public class StationService {
     public Station findStation(String name) {
         return StationRepository.findByName(name);
     }
+
+    public List<Station> findAllStation() {
+        return StationRepository.stations();
+    }
 }

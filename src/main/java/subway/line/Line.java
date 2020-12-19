@@ -19,4 +19,8 @@ public class Line {
     public String getName() {
         return name;
     }
+
+    public Sections getSections() {
+        return sections;
+    }
 }

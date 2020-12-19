@@ -8,4 +8,8 @@ public class LineService {
             LineRepository.addLine(line);
         }
     }
+
+    public List<Line> findAllLine() {
+        return LineRepository.lines();
+    }
 }

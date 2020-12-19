@@ -1,7 +1,5 @@
 package subway.line;
 
-import subway.line.Line;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

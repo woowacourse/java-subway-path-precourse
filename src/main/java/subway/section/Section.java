@@ -13,4 +13,20 @@ public class Section {
         this.endStation = endStation;
         this.cost = cost;
     }
+
+    public Station getStartStation() {
+        return startStation;
+    }
+
+    public Station getEndStation() {
+        return endStation;
+    }
+
+    public int getDistance() {
+        return cost.getDistance();
+    }
+
+    public int getTime() {
+        return cost.getTime();
+    }
 }

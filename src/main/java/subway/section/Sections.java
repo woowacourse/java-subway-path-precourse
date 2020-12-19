@@ -8,4 +8,8 @@ public class Sections {
     public Sections(List<Section> sections) {
         this.sections =  sections;
     }
+
+    public List<Section> getSections() {
+        return sections;
+    }
 }
