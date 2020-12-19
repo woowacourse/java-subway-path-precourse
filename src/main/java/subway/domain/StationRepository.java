@@ -14,16 +14,7 @@ public class StationRepository {
 
     public static void addStation(Station station) {
         stations.add(station);
-        DistanceGraph.addVertex(station);
-        TakeTimeGraph.addVertex(station);
-    }
-
-    public static boolean deleteStation(String name) {
-        return stations.removeIf(station -> Objects.equals(station.getName(), name));
-    }
-
-    public static void deleteAll() {
-        stations.clear();
+        SearchGraph.addVertex(station);
     }
 
     public static Station getStation(String name) {

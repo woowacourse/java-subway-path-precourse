@@ -2,79 +2,76 @@ package subway.controller;
 
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.WeightedMultigraph;
-import subway.domain.DistanceGraph;
-import subway.domain.Station;
-import subway.domain.StationRepository;
-import subway.domain.TakeTimeGraph;
+import subway.domain.*;
+import subway.domain.validator.SearchValidator;
 import subway.view.InputView;
 import subway.view.OutputView;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.ExecutionException;
 
 public class SearchController {
     private final Scanner scanner;
+    private final DijkstraShortestPath dijkstraPathByDistance;
+    private final DijkstraShortestPath dijkstraPathByTime;
 
     public SearchController(Scanner scanner) {
         this.scanner = scanner;
+        dijkstraPathByDistance = new DijkstraShortestPath(SearchGraph.getGraphByDistance());
+        dijkstraPathByTime = new DijkstraShortestPath(SearchGraph.getGraphByTime());
     }
 
     public void searchByDistance() {
         Station from = getDeparture();
         Station to = getArrival();
-        List<Station> shortest = getShortestPath(from, to, DistanceGraph.getGraph());
+        SearchValidator.checkTwoStationsAreDifferent(from, to);
+        List<Station> shortest = dijkstraPathByDistance.getPath(from, to).getVertexList();
         printResult(shortest);
     }
 
     public void searchByTime() {
         Station from = getDeparture();
         Station to = getArrival();
-        List<Station> shortest = getShortestPath(from, to, TakeTimeGraph.getGraph());
+        SearchValidator.checkTwoStationsAreDifferent(from, to);
+        List<Station> shortest = dijkstraPathByTime.getPath(from, to).getVertexList();
         printResult(shortest);
     }
 
-    private List<Station> getShortestPath(Station from, Station to, final WeightedMultigraph graph) {
-        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
-        return dijkstraShortestPath.getPath(from, to).getVertexList();
-    }
-
     private void printResult(List<Station> path) {
-        int takenDistance = getTakenDistance(path);
-        int takenTime = getTakenTime(path);
+        int takenDistance = getSumOfWeights(path, dijkstraPathByDistance);
+        int takenTime = getSumOfWeights(path, dijkstraPathByTime);
         OutputView.printSearchResult(path, takenDistance, takenTime);
     }
 
-    private int getTakenDistance(List<Station> path) {
-        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(DistanceGraph.getGraph());
-        int takenDistance = 0;
+    private int getSumOfWeights(List<Station> path, final DijkstraShortestPath dijkstraShortestPath) {
+        int sum = 0;
         for (int index = 0; index < path.size() - 1; index++) {
             Station from = path.get(index);
             Station to = path.get(index + 1);
-            takenDistance += dijkstraShortestPath.getPath(from, to).getWeight();
+            sum += dijkstraShortestPath.getPath(from, to).getWeight();
         }
-        return takenDistance;
-    }
-
-    private int getTakenTime(List<Station> path) {
-        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(TakeTimeGraph.getGraph());
-
-        int takenTime = 0;
-        for (int index = 0; index < path.size() - 1; index++) {
-            Station from = path.get(index);
-            Station to = path.get(index + 1);
-            takenTime += dijkstraShortestPath.getPath(from, to).getWeight();
-        }
-        return takenTime;
+        return sum;
     }
 
     private Station getDeparture() {
-        String name = InputView.getDepartureStation(scanner);
-        return getStationByName(name);
+        try {
+            String name = InputView.getDepartureStation(scanner);
+            return getStationByName(name);
+        } catch (Exception e) {
+            OutputView.printError(e);
+            return getDeparture();
+        }
     }
 
     private Station getArrival() {
-        String name = InputView.getDepartureStation(scanner);
-        return getStationByName(name);
+        try {
+            String name = InputView.getArrivalStation(scanner);
+            return getStationByName(name);
+        } catch (Exception e) {
+            OutputView.printError(e);
+            return getArrival();
+        }
     }
 
     private Station getStationByName(String name) {

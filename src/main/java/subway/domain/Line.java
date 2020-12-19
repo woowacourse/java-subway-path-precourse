@@ -12,8 +12,6 @@ public class Line {
         this.name = name;
     }
 
-    // TODO :: 초기 설정을 위한 생성자, Setter 리펙토링
-
     public Line(String name, Station... newStations) {
         this.name = name;
         this.stations = new LinkedList<>(Arrays.asList(newStations));
@@ -23,7 +21,7 @@ public class Line {
         for (int index = 0; index < stations.size() - 1; index++) {
             Station from = stations.get(index);
             Station to = stations.get(index + 1);
-            DistanceGraph.addEdgeByDistance(from, to, distanceList.get(index));
+            SearchGraph.addEdgeByDistance(from, to, distanceList.get(index));
         }
     }
 
@@ -31,7 +29,7 @@ public class Line {
         for (int index = 0; index < stations.size() - 1; index++) {
             Station from = stations.get(index);
             Station to = stations.get(index + 1);
-            TakeTimeGraph.addEdgeByTime(from, to, takeTime.get(index));
+            SearchGraph.addEdgeByTime(from, to, takeTime.get(index));
         }
     }
 
