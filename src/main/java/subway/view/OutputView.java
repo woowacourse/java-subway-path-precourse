@@ -7,6 +7,7 @@ import java.util.List;
 public class OutputView {
     private static final String LINE_BREAK = "\n";
     private static final String INFO_MESSAGE = "[INFO] %s";
+    private static final String ERROR_MESSAGE = "[ERROR] %s";
     private static final String LINE_SEPARATOR = "---";
     private static final String TAKEN_DISTANCE_MESSAGE = "총 거리 : %skm";
     private static final String TAKEN_TIME_MESSAGE = "총 소요 시간 : %s분";
@@ -43,8 +44,20 @@ public class OutputView {
         printLineBreak();
     }
 
+    public static void printSearchMenu(List<String> menuNames) {
+        OutputView.println("## 경로 기준");
+        menuNames.stream()
+                .forEach(OutputView::println);
+        printLineBreak();
+    }
+
     public static void printInfo(Object msg) {
         printf(INFO_MESSAGE, msg);
+        printLineBreak();
+    }
+
+    public static void printError(Exception e) {
+        printf(ERROR_MESSAGE, e.getMessage());
         printLineBreak();
     }
 
