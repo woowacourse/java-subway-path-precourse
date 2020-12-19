@@ -18,7 +18,7 @@ public class Station {
 
     // 추가 기능 구현
     public void addNodeData(String nextStation, int timeCost, int distanceCost){
-        nodeData.add(new NodeData(new Station(nextStation), timeCost, distanceCost));
+        nodeData.add(new NodeData(new Station(name), new Station(nextStation), timeCost, distanceCost));
     }
 
     public List<NodeData> getNodeData(){

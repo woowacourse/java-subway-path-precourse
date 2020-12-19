@@ -24,6 +24,20 @@ public class StationRepository {
         stations.clear();
     }
 
+    public static boolean isContain(String name) {
+        for (Station station : stations) {
+            if (station.getName().equals(name)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static int getSize() {
+        return stations.size();
+    }
+
     public static void setCost(String prevStationName, String nextStationName, int timeCost, int distanceCost) {
         for (int i = 0; i < stations.size(); i++) {
             if (stations.get(i).getName().equals(prevStationName)) {
