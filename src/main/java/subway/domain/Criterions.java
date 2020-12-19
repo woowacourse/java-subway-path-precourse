@@ -1,11 +1,9 @@
 package subway.domain;
 
-import subway.controller.MenuScanner;
-
 import java.util.Arrays;
 import java.util.List;
 
-public class Criterions extends MenuScanner {
+public class Criterions extends Menus {
 
     private static final String distanceSign = "1";
     private static final String timeSign = "2";
@@ -14,5 +12,10 @@ public class Criterions extends MenuScanner {
         .asList(new String[]{distanceSign, timeSign, backSign});
 
     public Criterions() {
+    }
+
+    @Override
+    public List<String> getSigns() {
+        return signs;
     }
 }
