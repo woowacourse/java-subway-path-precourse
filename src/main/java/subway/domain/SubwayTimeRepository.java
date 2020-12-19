@@ -16,4 +16,8 @@ public class SubwayTimeRepository {
     public static void setPathWeight(Station source, Station target, int weight){
         subwayTime.setEdgeWeight(subwayTime.addEdge(source, target), weight);
     }
+
+    public static int getEdgeWeightWithTwoStations(Station source, Station target){
+        return (int) subwayTime.getEdgeWeight(subwayTime.getEdge(source, target));
+    }
 }

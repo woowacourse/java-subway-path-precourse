@@ -15,4 +15,9 @@ public class Station {
     public boolean isSameName(String comparedName) {
         return name.equals(comparedName);
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

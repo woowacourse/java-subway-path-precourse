@@ -30,14 +30,6 @@ public class StationRepository {
                 return station;
             }
         }
-        return null;
-    }
-
-    public static String makeString() {
-        StringBuilder st = new StringBuilder();
-        for (Station station : stations()) {
-            st.append(station.getName());
-        }
-        return st.toString();
+        throw new IllegalArgumentException("옳지 않은 역 이름입니다.");
     }
 }

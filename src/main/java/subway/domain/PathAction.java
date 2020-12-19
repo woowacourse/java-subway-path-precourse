@@ -1,5 +1,7 @@
 package subway.domain;
 
+import subway.controller.SubwayController;
+
 public enum PathAction {
     SHORTEST_DISTANCE("1", "최단 거리"),
     SHORTEST_TIME("2", "최소 시간"),

@@ -29,18 +29,18 @@ public class InitSetting {
         StationRepository.addStation(maebongStation);
         StationRepository.addStation(yangjaeForestStation);
 
-        SubwayPathRepository.addStation(gyoDaeStation);
-        SubwayPathRepository.addStation(kangnamStation);
-        SubwayPathRepository.addStation(yeoksamStation);
+        SubwayLengthRepository.addStation(gyoDaeStation);
+        SubwayLengthRepository.addStation(kangnamStation);
+        SubwayLengthRepository.addStation(yeoksamStation);
 
-        SubwayPathRepository.addStation(gyoDaeStation);
-        SubwayPathRepository.addStation(nambuTerminalStation);
-        SubwayPathRepository.addStation(yangjaeStation);
-        SubwayPathRepository.addStation(maebongStation);
+        SubwayLengthRepository.addStation(gyoDaeStation);
+        SubwayLengthRepository.addStation(nambuTerminalStation);
+        SubwayLengthRepository.addStation(yangjaeStation);
+        SubwayLengthRepository.addStation(maebongStation);
 
-        SubwayPathRepository.addStation(kangnamStation);
-        SubwayPathRepository.addStation(yangjaeStation);
-        SubwayPathRepository.addStation(yangjaeForestStation);
+        SubwayLengthRepository.addStation(kangnamStation);
+        SubwayLengthRepository.addStation(yangjaeStation);
+        SubwayLengthRepository.addStation(yangjaeForestStation);
 
         SubwayTimeRepository.addStation(gyoDaeStation);
         SubwayTimeRepository.addStation(kangnamStation);
@@ -61,17 +61,17 @@ public class InitSetting {
     }
 
     private static void addInitSecondLine(Station index0, Station index1, Station index2) {
-        SubwayPathRepository.setPathWeightWithTwoStation(index0, index1, 2);
-        SubwayPathRepository.setPathWeightWithTwoStation(index1, index2, 2);
+        SubwayLengthRepository.setPathWeightWithTwoStation(index0, index1, 2);
+        SubwayLengthRepository.setPathWeightWithTwoStation(index1, index2, 2);
 
         SubwayTimeRepository.setPathWeight(index0, index1, 3);
         SubwayTimeRepository.setPathWeight(index1, index2, 3);
     }
 
     private static void addInitThirdLine(Station index0, Station index1, Station index2, Station index3) {
-        SubwayPathRepository.setPathWeightWithTwoStation(index0, index1, 3);
-        SubwayPathRepository.setPathWeightWithTwoStation(index1, index2, 6);
-        SubwayPathRepository.setPathWeightWithTwoStation(index2, index3, 1);
+        SubwayLengthRepository.setPathWeightWithTwoStation(index0, index1, 3);
+        SubwayLengthRepository.setPathWeightWithTwoStation(index1, index2, 6);
+        SubwayLengthRepository.setPathWeightWithTwoStation(index2, index3, 1);
 
         SubwayTimeRepository.setPathWeight(index0, index1, 2);
         SubwayTimeRepository.setPathWeight(index1, index2, 5);
@@ -79,8 +79,8 @@ public class InitSetting {
     }
 
     private static void addInitSinLine(Station index0, Station index1, Station index2) {
-        SubwayPathRepository.setPathWeightWithTwoStation(index0, index1, 2);
-        SubwayPathRepository.setPathWeightWithTwoStation(index1, index2, 10);
+        SubwayLengthRepository.setPathWeightWithTwoStation(index0, index1, 2);
+        SubwayLengthRepository.setPathWeightWithTwoStation(index1, index2, 10);
 
         SubwayTimeRepository.setPathWeight(index0, index1, 8);
         SubwayTimeRepository.setPathWeight(index1, index2, 3);

@@ -5,10 +5,10 @@ import org.jgrapht.graph.WeightedMultigraph;
 
 import java.util.Collections;
 
-public class SubwayPathRepository {
+public class SubwayLengthRepository {
     private static final WeightedMultigraph<Station, DefaultWeightedEdge> subwayPath = new WeightedMultigraph(DefaultWeightedEdge.class);
 
-    public static WeightedMultigraph<Station, DefaultWeightedEdge> subwayPath(){
+    public static WeightedMultigraph<Station, DefaultWeightedEdge> subwayLength(){
         return subwayPath;
     }
     public static void addStation(Station station){

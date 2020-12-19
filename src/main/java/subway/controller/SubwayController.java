@@ -1,26 +1,27 @@
 package subway.controller;
 
-import org.jgrapht.GraphPath;
-import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import subway.domain.*;
 import subway.view.InputView;
 import subway.view.OutputView;
 
-import java.util.List;
-import java.util.Objects;
+import java.util.stream.Collectors;
 
 import static subway.domain.InitSetting.initSetting;
 
 public class SubwayController {
     public void run(InputView inputView) {
         initSetting();
-
-        while(true) {
+        while (true) {
             OutputView.printMain();
             if (MainAction.isFinish(inputView.receiveAction())) {
                 break;
             }
+            makeAction(inputView);
+        }
+    }
 
+    private void makeAction(InputView inputView) {
+        while (true) {
             OutputView.printPathAction();
             if (PathAction.isBack(inputView.receiveAction())) {
                 break;
@@ -29,26 +30,28 @@ public class SubwayController {
             Station startStation = StationRepository.findStationByName(inputView.receiveStart());
             Station finishStation = StationRepository.findStationByName(inputView.receiveFinish());
 
-            DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(SubwayPathRepository.subwayPath());
-
-
-            makeShortestTimeReport(startStation, finishStation);
+            makeShortestTime(startStation, finishStation);
+            makeShortestLength(startStation, finishStation);
         }
     }
 
-    private void makeShortestTimeReport(Station startStation, Station finishStation) {
-        DijkstraShortestPath dijkstraShortestTime = new DijkstraShortestPath(SubwayTimeRepository.subwayTime());
-        GraphPath paths = dijkstraShortestTime.getPath(startStation, finishStation);
-        List<Station> stations = paths.getVertexList();
-        int totalPath = 0;
-        for(int i =0;i<stations.size()-1;i++){
-            int dfs = SubwayPathRepository.getEdgeWeightWithTwoStations(stations.get(i), stations.get(i+1));
-            totalPath+=dfs;
-        }
-        System.out.println("총 거리: "+totalPath);
-        System.out.println("총 소요 시간: "+paths.getWeight());
-        for(Station station: stations){
-            System.out.println(station.getName());
-        }
+    public static void makeShortestTime(Station startStation, Station finishStation) {
+        ShortestTimeReport shortestTimeReport = new ShortestTimeReport(SubwayTimeRepository.subwayTime());
+        shortestTimeReport.makePaths(startStation, finishStation);
+
+        int totalTime = shortestTimeReport.calculateTotalTime();
+        int totalLength = shortestTimeReport.calculateTotalLength();
+
+    }
+
+    private void makeShortestLength(Station startStation, Station finishStation) {
+        ShortestLengthReport shortestLengthReport = new ShortestLengthReport(SubwayLengthRepository.subwayLength());
+        shortestLengthReport.makePaths(startStation, finishStation);
+
+        int totalTime = shortestLengthReport.calculateTotalTime();
+        int totalLength = shortestLengthReport.calculateTotalLength();
+
+        OutputView.printReport(totalLength, totalTime);
+        OutputView.printStations(shortestLengthReport.makeStations().stream().map(Station::toString).collect(Collectors.toList()));
     }
 }
