@@ -1,5 +1,10 @@
 package subway.Controller;
 
+import subway.Category.Category;
+import subway.Exception.SameStationException;
+import subway.Service.ShortestDistanceService;
+import subway.domain.Station;
+import subway.domain.StationRepository;
 import views.InputView;
 import views.OutputView;
 
@@ -15,35 +20,59 @@ public class SubwayController {
 
     public void run() {
         while (true) {
-            OutputView.mainView();
-            String status = InputView.inputFunction(scanner);
-            if (status.equals("1")) {
-                routeLookup();
-            }
-            if (status.equals("Q")) {
-                break;
+            try {
+                OutputView.mainView();
+                String status = InputView.inputFunction(scanner);
+                Category.MAIN.isValidFunction(status, Category.MAIN.getActionType());
+
+                if (status.equals("1")) {
+                    routeLookup();
+                }
+                if (status.equals("Q")) {
+                    break;
+                }
+            } catch (IllegalArgumentException ie) {
+                System.out.println(ie.getMessage());
             }
         }
     }
 
     public void routeLookup() {
-        OutputView.path_standardView();
-        String status = InputView.inputFunction(scanner);
-        if (status.equals("1")) {
-            shortestDistance();
-        }
-        if (status.equals("2")) {
-            shortestTime();
+        try {
+            OutputView.path_standardView();
+            String status = InputView.inputFunction(scanner);
+            Category.ROUTE.isValidFunction(status, Category.ROUTE.getActionType());
+
+            Station startStation = StationRepository.findByName(InputView.inputStartStation(scanner));
+            Station arrivalStation = StationRepository.findByName(InputView.inputArriveStation(scanner));
+            isSameStation(startStation, arrivalStation);
+
+            if (status.equals("1")) {
+                shortestDistance(startStation, arrivalStation);
+            }
+            if (status.equals("2")) {
+                shortestTime(startStation, arrivalStation);
+            }
+        } catch (IllegalArgumentException ie) {
+            System.out.println(ie.getMessage());
+            routeLookup();
         }
     }
 
-    public void shortestDistance() {
-        String startStation = InputView.inputStartStation(scanner);
-        String arrivalStation = InputView.inputArriveStation(scanner);
+    public void shortestDistance(Station startStation, Station arriveStation) {
+        ShortestDistanceService shortestDistanceService = new ShortestDistanceService();
+        shortestDistanceService.lookup(startStation, arriveStation);
     }
 
-    private void shortestTime() {
-        String startStation = InputView.inputStartStation(scanner);
-        String arrivalStation = InputView.inputArriveStation(scanner);
+    private void shortestTime(Station startStation, Station arriveStation) {
+
+    }
+
+
+    public static boolean isSameStation(Station station1, Station station2) {
+        if (station1.equals(station2)) {
+            throw new SameStationException();
+        }
+        return true;
     }
 }
