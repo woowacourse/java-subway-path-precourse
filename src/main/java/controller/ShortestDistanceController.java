@@ -19,7 +19,18 @@ public class ShortestDistanceController {
         String arrivalStation = scanner.nextLine();
         System.out.println();
 
-        printSearchResult(departureStation, arrivalStation);
+        if (checkValidateInput(departureStation, arrivalStation) == true)
+            printSearchResult(departureStation, arrivalStation);
+        if (checkValidateInput(departureStation, arrivalStation) == false) run(scanner);
+
+    }
+
+    public static boolean checkValidateInput(String departureStation, String arrivalStation) {
+        if (departureStation.equals(arrivalStation)) {
+            System.out.println("[ERROR] 출발역과 도착역을 다르게 입력하세요.");
+            return false;
+        }
+        return true;
     }
 
     public static void printSearchResult(String departureStation, String arrivalStation) {
@@ -41,7 +52,7 @@ public class ShortestDistanceController {
 
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
         List<String> shortestPath = dijkstraShortestPath.getPath(departureStation, arrivalStation).getVertexList();
-        System.out.println(dijkstraShortestPath.getPathWeight(departureStation, arrivalStation));
+        int shortestDistance = (int) dijkstraShortestPath.getPathWeight(departureStation, arrivalStation);
 
         for (int i = 0; i < shortestPath.size(); i++) {
             System.out.println(shortestPath.get(i));
@@ -49,7 +60,7 @@ public class ShortestDistanceController {
         System.out.println();
 
         System.out.println("[INFO] ---\n" +
-                "[INFO] 총 거리: " + "몇키로" + "\n" +
+                "[INFO] 총 거리: " + shortestDistance + "\n" +
                 "[INFO] 총 소요 시간: " + "몇시간" + "\n" +
                 "[INFO] ---");
 
