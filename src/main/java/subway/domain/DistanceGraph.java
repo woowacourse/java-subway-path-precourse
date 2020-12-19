@@ -43,8 +43,8 @@ public class DistanceGraph {
         List<String> stationsName = graphPath.getVertexList().stream()
                 .map(Station::getName)
                 .collect(Collectors.toList());
-        double cost = graphPath.getWeight();
+        double distance = graphPath.getWeight();
 
-        return new PathDTO(stationsName, cost);
+        return new PathDTO(stationsName, 0, distance);  //0은 개발용으로 넣은 것입니다. 추후 시간을 구해서 다시 넣습니다.
     }
 }

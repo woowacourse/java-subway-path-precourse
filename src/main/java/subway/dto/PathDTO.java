@@ -4,18 +4,24 @@ import java.util.List;
 
 public class PathDTO {
     private final List<String> stations;
-    private final double cost;
+    private final double time;
+    private final double distance;
 
-    public PathDTO(List<String> stationsName, double cost) {
+    public PathDTO(List<String> stationsName, double time, double distance) {
         this.stations = stationsName;
-        this.cost = cost;
+        this.time = time;
+        this.distance = distance;
     }
 
     public List<String> getStationsNameList() {
         return this.stations;
     }
 
-    public double getCost() {
-        return cost;
+    public double getTime() {
+        return time;
+    }
+
+    public double getDistance() {
+        return this.distance;
     }
 }

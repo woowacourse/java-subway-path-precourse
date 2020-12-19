@@ -7,7 +7,7 @@ import subway.menuSelection.exception.NoSuchMenuException;
 import java.util.Arrays;
 
 public enum PathStandardSelection {
-    DISTANCE("1", "최단 경로", () -> {}),   //dummy function, 업데이트 예정
+    DISTANCE("1", "최단 경로", InquiryController::inquiryByDistance),   //dummy function, 업데이트 예정
     TIME("2", "최소 시간", InquiryController::inquiryByTime),
     BACK("B", "돌아가기", MainController::backToMainScreen);
 

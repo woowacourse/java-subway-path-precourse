@@ -43,8 +43,8 @@ public class TimeGraph {
         List<String> stationsName = graphPath.getVertexList().stream()
                 .map(Station::getName)
                 .collect(Collectors.toList());
-        double cost = graphPath.getWeight();
+        double time = graphPath.getWeight();
 
-        return new PathDTO(stationsName, cost);
+        return new PathDTO(stationsName, time, 0);  //0는 개발 과정에서 시험용으로 넣은 것입니다. 이후 거리를 구해서 다시 넣습니다.
     }
 }

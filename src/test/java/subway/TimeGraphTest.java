@@ -1,16 +1,11 @@
 package subway;
 
-import org.jgrapht.GraphPath;
-import org.jgrapht.graph.DefaultWeightedEdge;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import subway.domain.DataInitializer;
-import subway.domain.Station;
 import subway.domain.StationRepository;
 import subway.domain.TimeGraph;
 import subway.dto.PathDTO;
-
-import java.util.List;
 
 public class TimeGraphTest {
     static {
@@ -29,7 +24,7 @@ public class TimeGraphTest {
             System.out.println(name);
         }
 
-        System.out.println(pathDTO.getCost());
+        System.out.println(pathDTO.getTime());
 
     }
 }

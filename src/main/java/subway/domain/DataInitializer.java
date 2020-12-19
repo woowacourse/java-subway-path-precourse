@@ -11,6 +11,7 @@ public class DataInitializer {
         initializeLines();
         initializeSections();
         initializeTimeGraph();
+        initializeDistanceGraph();
     }
 
     private static void initializeStations() {
@@ -53,7 +54,7 @@ public class DataInitializer {
         section = new Section(new HashSet<Station>(Arrays.asList(
                 StationRepository.searchByName("교대역"),
                 StationRepository.searchByName("강남역")
-        )), 3, 2);
+        )), 2, 2);
         SectionRepository.addSection(section);
 
         section = new Section(new HashSet<Station>(Arrays.asList(
@@ -103,6 +104,13 @@ public class DataInitializer {
         List<Section> sections = SectionRepository.sections();
         for (Section section : sections) {
             TimeGraph.addSectionToGraph(section);
+        }
+    }
+
+    private static void initializeDistanceGraph() {
+        List<Section> sections = SectionRepository.sections();
+        for (Section section : sections) {
+            DistanceGraph.addSectionToGraph(section);
         }
     }
 }
