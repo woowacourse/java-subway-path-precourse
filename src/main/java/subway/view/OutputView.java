@@ -3,7 +3,6 @@ package subway.view;
 import subway.view.resource.ErrorCode;
 import subway.view.resource.Message;
 import subway.view.resource.Screen;
-import subway.view.screen.ScreenFormat;
 
 import java.util.List;
 
