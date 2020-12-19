@@ -24,10 +24,13 @@ public class StationRepository {
         stations.clear();
     }
 
-    public static Station findStationByName(String stationName) {
-        return stations.stream()
-                .filter(station -> station.getName().equals(stationName))
+    public static void findStationByName(String stationName) {
+        Station station = stations.stream()
+                .filter(s -> s.getName().equals(stationName))
                 .findAny()
-                .orElseThrow(() -> new IllegalArgumentException("\n[ERROR] 해당 역은 존재하지 않습니다."));
+                .orElse(null);
+        if (station.equals(null)) {
+            throw new IllegalArgumentException("\n[ERROR] 해당 역은 존재하지 않습니다.");
+        }
     }
 }
