@@ -18,4 +18,19 @@ public class Connection {
         return new Connection(destination, source, distance, time);
     }
 
+    public String getSource() {
+        return source;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public int getTime() {
+        return time;
+    }
 }
