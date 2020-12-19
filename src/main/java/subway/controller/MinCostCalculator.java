@@ -1,8 +1,11 @@
 package subway.controller;
 
 import java.util.List;
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import subway.domain.DefaultLines;
+import subway.domain.DefaultSections;
 import subway.domain.DefaultStations;
+import subway.domain.DefaultSubwayGraph;
 import subway.domain.Line;
 import subway.domain.Station;
 import subway.view.InputView;
@@ -13,6 +16,7 @@ public class MinCostCalculator {
     private static final String ERROR_PREFIX = "[ERROR]: ";
     private String departureStation;
     private String arrivalStation;
+    private DefaultSubwayGraph defaultSubwayGraph = new DefaultSubwayGraph();
 
     public void runToGetMinDistance() {
         getStationNames();
@@ -40,6 +44,9 @@ public class MinCostCalculator {
     }
 
     public void calculateMinDistance() {
+        List shortest_path = (List) DijkstraShortestPath
+            .findPathBetween(defaultSubwayGraph, departureStation, arrivalStation);
+        System.out.println(shortest_path);
 
     }
 

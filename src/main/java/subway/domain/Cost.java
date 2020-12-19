@@ -8,4 +8,12 @@ public class Cost {
         this.distanceCost = distanceCost;
         this.timeCost = timeCost;
     }
+
+    public int getDistanceCost() {
+        return this.distanceCost;
+    }
+
+    public int getTimeCost() {
+        return this.timeCost;
+    }
 }
