@@ -6,10 +6,10 @@ import java.util.List;
 
 public class EdgeRepository {
     private static final List<Edge> edges = new ArrayList<>();
-    public static List<Edge> lines() {
+    public static List<Edge> edges() {
         return Collections.unmodifiableList(edges);
     }
-    public static void addLine(Edge edge) {
+    public static void addEdge(Edge edge) {
         edges.add(edge);
     }
 }
