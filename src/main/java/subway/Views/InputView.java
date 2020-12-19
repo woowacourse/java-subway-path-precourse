@@ -3,6 +3,7 @@ package subway.Views;
 import java.util.Scanner;
 
 public class InputView {
+
     private final static String FUNCTIONSELECTION = "## 원하는 기능을 선택하세요.";
     private final static String STARTSTATION = "## 출발역을 입력하세요.";
     private final static String ENDSTATION = "## 도착역을 입력하세요.";
