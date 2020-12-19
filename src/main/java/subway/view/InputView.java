@@ -22,16 +22,4 @@ public class InputView {
     public String getSelectedFunctionInput() {
         return userInputString();
     }
-
-    public String getLineName() {
-        return userInputString();
-    }
-
-    public String getStationName() {
-        return userInputString();
-    }
-
-    public int getOrder() throws NumberFormatException {
-        return Integer.parseInt(scanner.nextLine()) - 1;
-    }
 }
