@@ -20,4 +20,25 @@ public class Line {
     public Boolean isStationContained(Station station) {
         return stations.isContain(station);
     }
+
+    @Override
+    public boolean equals(Object object) {
+        if (getClass() != object.getClass()) {
+            return false;
+        }
+        boolean isEqualObject = false;
+        Line line = (Line) object;
+        if (getName().equals(line.getName())) {
+            isEqualObject = true;
+        }
+        return isEqualObject;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int hashCode = 1;
+        hashCode = prime * hashCode + getName().hashCode();
+        return hashCode;
+    }
 }
