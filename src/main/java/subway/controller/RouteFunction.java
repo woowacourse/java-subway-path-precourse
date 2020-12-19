@@ -14,7 +14,6 @@ import java.util.Objects;
 public class RouteFunction {
     private RouteOutputView routeOutputView;
 
-
     public RouteFunction(RouteOutputView routeOutputView) {
         this.routeOutputView = routeOutputView;
     }
