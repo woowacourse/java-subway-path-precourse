@@ -27,14 +27,14 @@ public class OutputView {
         System.out.println("B. 돌아가기");
     }
 
-    public static SceneState printInquiryResult(List<Station> stations) {
+    public static SceneState printInquiryResult(List<Station> stations, int distance, int time) {
         if (stations == null) {
             return SceneState.MAIN_SCENE;
         }
 
         System.out.println(NEW_LINE + INFO_LINE);
-        // System.out.println(INFO + "총 거리: " + distance);
-        // System.out.println(INFO + "총 소요 시간: " + time);
+        System.out.println(INFO + "총 거리: " + distance + "km");
+        System.out.println(INFO + "총 소요 시간: " + time + "분");
         System.out.println(INFO_LINE);
 
         return printStations(stations);
