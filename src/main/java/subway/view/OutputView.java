@@ -17,11 +17,11 @@ public class OutputView {
     private static final String MINUTE = "분";
     private static final String SPACE = "";
 
-    public static void print(String string){
+    public static void print(String string) {
         System.out.println(string);
     }
 
-    public static void mainPage(){
+    public static void mainPage() {
         print(MAIN_PAGE);
     }
 

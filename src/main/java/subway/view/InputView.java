@@ -20,32 +20,32 @@ public class InputView {
     private static final String INPUT_END_STATION = "## 도착역을 입력하세요.";
 
 
-    public static void print(String string){
+    public static void print(String string) {
         System.out.println(string);
     }
 
-    public static int inputOperationNumber(Scanner scanner,int start, int end){
+    public static int inputOperationNumber(Scanner scanner, int start, int end) {
         print(INPUT_OPERATION_NUMBER);
         String tempNumber = scanner.next();
-        if(tempNumber.equals(QUIT) || tempNumber.equals(BACK)){
+        if (tempNumber.equals(QUIT) || tempNumber.equals(BACK)) {
             return QUIT_NUMBER;
         }
-        if(!tempNumber.chars().allMatch(Character::isDigit)){
+        if (!tempNumber.chars().allMatch(Character::isDigit)) {
             print(WRITE_NUMBER);
             return ERROR;
         }
         int operationNumber = Integer.parseInt(tempNumber);
-        if(operationNumber < start || operationNumber > end){
+        if (operationNumber < start || operationNumber > end) {
             print(WRITE_NUMBER);
             return ERROR;
         }
-        return 1;
+        return operationNumber;
     }
 
     public static String writeStartStation(Scanner scanner) {
         print(INPUT_START_STATION);
         String stationName = scanner.next();
-        if(!StationRepository.isExistStation(stationName)){
+        if (!StationRepository.isExistStation(stationName)) {
             print(NOT_EXIST_STATION);
             return ERROR_MESSAGE;
         }
@@ -55,11 +55,11 @@ public class InputView {
     public static String writeEndStation(Scanner scanner, String startStation) {
         print(INPUT_END_STATION);
         String stationName = scanner.next();
-        if(startStation.equals(stationName)){
+        if (startStation.equals(stationName)) {
             print(SAME_STATIONS);
             return ERROR_MESSAGE;
         }
-        if(!StationRepository.isExistStation(stationName)){
+        if (!StationRepository.isExistStation(stationName)) {
             print(NOT_EXIST_STATION);
             return ERROR_MESSAGE;
         }
