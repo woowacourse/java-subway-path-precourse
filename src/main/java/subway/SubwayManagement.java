@@ -64,11 +64,11 @@ public class SubwayManagement {
 
         try {
             checkFindPathInput(startStation, arriveStation);
+            FindPath.start(select, startStation, arriveStation);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return;
         }
-        FindPath.start(select, startStation, arriveStation);
     }
 
     private void checkFindPathInput(String startStation, String arriveStation) {
