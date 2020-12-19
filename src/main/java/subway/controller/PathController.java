@@ -1,2 +1,6 @@
-package subway.controller;public class PathController {
+package subway.controller;
+
+public class PathController {
+    private PathController() {
+    }
 }
