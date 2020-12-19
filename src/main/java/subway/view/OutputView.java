@@ -15,7 +15,7 @@ public class OutputView {
     private static final String QUERY_SOURCE_STATION = "## 출발역을 입력하세요.";
     private static final String QUERY_DESTINATION_STATION = "## 도착역을 입력하세요.";
 
-    private static final String TRY_AGAIN = "다시 입력해주세요.";
+    private static final String TRY_AGAIN = " 다시 입력해주세요.";
     public static final String ERROR_INVALID_SELECT = "선택할 수 없는 기능입니다." + TRY_AGAIN;
     public static final String ERROR_INVALID_STATION = "존재하지 않는 역입니다." + TRY_AGAIN;
     public static final String ERROR_SAME_STATION = "출발역과 도착역이 동일합니다." + TRY_AGAIN;
