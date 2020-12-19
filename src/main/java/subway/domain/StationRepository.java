@@ -23,4 +23,10 @@ public class StationRepository {
     public static void deleteAll() {
         stations.clear();
     }
+
+    public static Station findStation(String name) {
+        return stations.stream()
+                .filter(station -> station.getName().equals(name))
+                .findFirst().orElseThrow(() -> new IllegalArgumentException(("[ERROR] 존재하지 않는 역")));
+    }
 }
