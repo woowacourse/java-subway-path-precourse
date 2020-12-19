@@ -18,18 +18,20 @@ public class MainController {
     public static void runSubwayPath(Scanner scanner) {
         String selection;
         do {
-            OutputView.printMainMenu();
+            OutputView.printMenu(LineUtils.MAIN_MENU);
             selection = InputView.inputSelection(scanner);
-            executeSelection(selection);
+            executeSelection(scanner, selection);
         } while (!EXIT_SIGN.contains(selection));
     }
 
-    private static void executeSelection(String selection) {
+    // TODO 검증 나누기
+    private static void executeSelection(Scanner scanner, String selection) {
         try {
             int selectedNumber = Integer.parseInt(selection);
             if (START > selectedNumber || selectedNumber > MENU_END){
                 throw new IllegalArgumentException();
             }
+            PathController.pathSearch(scanner);
         } catch (IllegalArgumentException e) {
             if (EXIT_SIGN.contains(selection)) {
                 return;
