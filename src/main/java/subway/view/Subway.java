@@ -3,7 +3,7 @@ package subway.view;
 import java.util.List;
 import java.util.Scanner;
 
-public class MainMenu {
+public class Subway {
 
     private static final String TITLE = "## 메인 화면";
 
@@ -12,7 +12,7 @@ public class MainMenu {
 
 
     private static final String INQUIRY_DESCRIPTION = "경로 조회";
-    private static final String QUIT_DESCRIPTION = "경로 조회";
+    private static final String QUIT_DESCRIPTION = "종료";
 
     private static final List<String> SELECTIONS = List.of(INQUIRY_SELECTION, QUIT_SELECTION);
 
@@ -27,7 +27,7 @@ public class MainMenu {
 
     private final GraphMenu graphMenu;
 
-    public MainMenu(Scanner scanner) {
+    public Subway(Scanner scanner) {
         this.scanner = scanner;
         this.graphMenu = new GraphMenu(scanner);
     }
