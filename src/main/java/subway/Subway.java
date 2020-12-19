@@ -1,6 +1,7 @@
 package subway;
 
 import subway.domain.*;
+import subway.exception.GraphNotExistException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,8 +60,9 @@ public class Subway {
             GraphRepository.findGraphByName(TIME_GRAPH).makeConnection(stations.get(0), stations.get(1), Integer.parseInt(time));
             GraphRepository.findGraphByName(DISTANCE_GRAPH).makeConnection(stations.get(0), stations.get(1), Integer.parseInt(distance));
 
-        } catch (NullPointerException e) {
+        } catch (GraphNotExistException e) {
             // error
+            System.out.println(e.getMessage());
         }
     }
 
