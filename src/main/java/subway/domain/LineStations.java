@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LineStations {
-    private List<Station> stations;
+    private final List<Station> stations;
 
     public LineStations() {
         this.stations = new ArrayList<>();
@@ -12,5 +12,12 @@ public class LineStations {
 
     public void addLineStation(Station station) {
         stations.add(station);
+    }
+
+    public Boolean isContain(Station station) {
+        if (stations.contains(station)) {
+            return true;
+        }
+        return false;
     }
 }

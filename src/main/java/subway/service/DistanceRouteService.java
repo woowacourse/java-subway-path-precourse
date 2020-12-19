@@ -21,6 +21,7 @@ public class DistanceRouteService implements RouteService {
             Station startStation = inputStartStations(scanner);
             Station endStation = inputEndStation(scanner);
             RouteService.isSameName(startStation, endStation);
+            RouteService.isAvailableRoute(startStation, endStation);
         } catch (IllegalArgumentException e) {
             goToMenu(e, scanner);
         }

@@ -1,11 +1,8 @@
 package subway.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Line {
-    private String name;
-    private LineStations stations;
+    private final String name;
+    private final LineStations stations;
 
     public Line(String name) {
         this.name = name;
@@ -18,5 +15,9 @@ public class Line {
 
     public void addLineStation(Station station) {
         stations.addLineStation(station);
+    }
+
+    public Boolean isStationContained(Station station) {
+        return stations.isContain(station);
     }
 }
