@@ -6,7 +6,7 @@ import java.util.Scanner;
 import subway.domain.PathRepository;
 import subway.util.DijkstraUtils;
 
-public class MinimumDistancePathCheckView extends SubwayPathManagerView {
+public class MinimumMinutePathCheckView extends SubwayPathManagerView {
 	private static final String TOP_MENU_MESSAGE = "조회 결과";
 
 	private static final String RESULT_BORDER = "---";
@@ -23,7 +23,7 @@ public class MinimumDistancePathCheckView extends SubwayPathManagerView {
 	private static int minimumDistance;
 	private static int minimumMinute;
 
-	public MinimumDistancePathCheckView(Scanner scanner) {
+	public MinimumMinutePathCheckView(Scanner scanner) {
 		getStation(scanner);
 		calculate();
 		print();
@@ -36,7 +36,7 @@ public class MinimumDistancePathCheckView extends SubwayPathManagerView {
 	}
 
 	public void calculate() {
-		shortestPath = DijkstraUtils.getPathByMinimumDistance(startStationName, endStationName);
+		shortestPath = DijkstraUtils.getPathByMinimumMinute(startStationName, endStationName);
 		minimumDistance = PathRepository.findDistanceByStationNames(shortestPath);
 		minimumMinute = PathRepository.findMinuteByStationNames(shortestPath);
 	}
