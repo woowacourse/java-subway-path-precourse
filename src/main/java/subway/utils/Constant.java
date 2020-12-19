@@ -20,6 +20,5 @@ public class Constant {
     public static final int DEFAULT_ONE_TIME = 1;
     public static final int DISTANCE_INFO_LIST_INDEX = 1;
     public static final int TIME_INFO_LIST_INDEX = 1;
-
-
+    public static final int FOR_LOOF_INDEX_ONE = 1;
 }

@@ -4,14 +4,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static subway.utils.Constant.FOR_LOOF_INDEX_ONE;
+
 public class PathRepository {
     private static Map<String, Path> pathMap = new HashMap<>();
 
     public static void init() {
         for (Line line : LineRepository.lines()) {
             List<Station> stations = line.getStations();
-            for(int i = 1; i < stations.size(); i++) {
-                Station start = stations.get(i - 1);
+            for (int i = FOR_LOOF_INDEX_ONE; i < stations.size(); i++) {
+                Station start = stations.get(i - FOR_LOOF_INDEX_ONE);
                 Station end = stations.get(i);
                 pathMap.put(
                         String.format("%s/%s", start.getName(), end.getName()),

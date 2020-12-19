@@ -33,7 +33,7 @@ public class OutputView {
         System.out.println("조회 결과");
         System.out.println("[INFO] ---");
         System.out.println(String.format("[INFO] 총 거리 : %s Km ", sumDistance));
-        System.out.println(String.format("[INFO] 총 소요 시간 : %s 분" ,sumTime));
+        System.out.println(String.format("[INFO] 총 소요 시간 : %s 분", sumTime));
         System.out.println("[INFO] ---");
         for (String stationName : stationNames) {
             System.out.println("[INFO]  " + stationName);

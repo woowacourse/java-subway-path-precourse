@@ -44,8 +44,8 @@ public class PathManager {
         ValidateStationSameNameCheck.validateStationSameNameCheck(start, end);
         List<String> stationNames = DistanceGraph.getPath(start, end);
         List<Path> paths = new ArrayList<>();
-        for (int i = 1; i < stationNames.size(); i++) {
-            paths.add(PathRepository.getPath(stationNames.get(i -1), stationNames.get(i)));
+        for (int i = FOR_LOOF_INDEX_ONE; i < stationNames.size(); i++) {
+            paths.add(PathRepository.getPath(stationNames.get(i - FOR_LOOF_INDEX_ONE), stationNames.get(i)));
         }
         OutputView.printResult(stationNames, paths);
         System.out.println();
