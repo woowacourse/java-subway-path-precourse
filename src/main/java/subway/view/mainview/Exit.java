@@ -20,9 +20,7 @@ public class Exit implements Menu {
 	}
 	
 	@Override
-	public void run(Scanner scanner) {
-	
-	}
+	public void run(Scanner scanner) {}
 	
 	public static Menu getInstance() {
 		if (exit == null) {
