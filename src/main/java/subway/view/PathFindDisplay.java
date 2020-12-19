@@ -50,10 +50,10 @@ public class PathFindDisplay extends Display {
 
     public static void printPathFindResult(Distance distance, Time time, List<String> path) {
         printNotice(PATH_FIND_RESULT);
-        printInformation(DASH_LINE);
+        System.out.println(INFO_PREFIX + DASH_LINE);
         System.out.println(INFO_PREFIX + TOTAL_DISTANCE + distance.getKilometer() + KILO_METER);
         System.out.println(INFO_PREFIX + TOTAL_TIME + time.getMinute() + MINUTE);
-        printInformation(DASH_LINE);
-        path.stream().forEach(stationName-> printInformation(stationName));
+        System.out.println(INFO_PREFIX + DASH_LINE);
+        path.stream().forEach(stationName-> System.out.println(INFO_PREFIX + stationName));
     }
 }

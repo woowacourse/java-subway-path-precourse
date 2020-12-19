@@ -10,11 +10,15 @@ public class TimeSectionRepository {
     private static final WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph(
         DefaultWeightedEdge.class);
 
-    public static void addSection(Station source, Station destination, Time time) {
-        graph.addVertex(source.getName());
-        graph.addVertex(destination.getName());
-        graph.setEdgeWeight(graph
-            .addEdge(source.getName(), destination.getName()), time.getMinute());
+    static {
+        SectionRepository.sections().stream().forEach(section -> {
+            graph.addVertex(section.getSource().getName());
+            graph.addVertex(section.getDestination().getName());
+            graph.setEdgeWeight(graph.addEdge(
+                section.getSource().getName(),
+                section.getDestination().getName()),
+                section.getTime().getMinute());
+        });
     }
 
     public static List<String> getShortestPath(Station source, Station destination){

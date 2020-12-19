@@ -8,6 +8,16 @@ import java.util.Objects;
 public class StationRepository {
     private static final List<Station> stations = new ArrayList<>();
 
+    static {
+        stations.add(Station.newStationWithName("교대역"));
+        stations.add(Station.newStationWithName("강남역"));
+        stations.add(Station.newStationWithName("역삼역"));
+        stations.add(Station.newStationWithName("남부터미널역"));
+        stations.add(Station.newStationWithName("양재역"));
+        stations.add(Station.newStationWithName("양재시민의숲역"));
+        stations.add(Station.newStationWithName("매봉역"));
+    }
+
     public static List<Station> stations() {
         return Collections.unmodifiableList(stations);
     }

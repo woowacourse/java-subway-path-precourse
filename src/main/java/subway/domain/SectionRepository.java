@@ -1,11 +1,61 @@
 package subway.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import subway.service.StationService;
 
 public class SectionRepository {
 
     private static final List<Section> sections = new ArrayList<>();
+
+    static {
+        sections.add(Section.newSection(
+            StationService.findStationByName("교대역"),
+            StationService.findStationByName("강남역"),
+            Distance.newDistance(2),
+            Time.newTime(3)));
+
+        sections.add(Section.newSection(
+            StationService.findStationByName("강남역"),
+            StationService.findStationByName("역삼역"),
+            Distance.newDistance(2),
+            Time.newTime(3)));
+
+        sections.add(Section.newSection(
+            StationService.findStationByName("교대역"),
+            StationService.findStationByName("남부터미널역"),
+            Distance.newDistance(3),
+            Time.newTime(2)));
+
+        sections.add(Section.newSection(
+            StationService.findStationByName("남부터미널역"),
+            StationService.findStationByName("양재역"),
+            Distance.newDistance(6),
+            Time.newTime(5)));
+
+        sections.add(Section.newSection(
+            StationService.findStationByName("양재역"),
+            StationService.findStationByName("매봉역"),
+            Distance.newDistance(1),
+            Time.newTime(1)));
+
+        sections.add(Section.newSection(
+            StationService.findStationByName("강남역"),
+            StationService.findStationByName("양재역"),
+            Distance.newDistance(2),
+            Time.newTime(8)));
+
+        sections.add(Section.newSection(
+            StationService.findStationByName("양재역"),
+            StationService.findStationByName("양재시민의숲역"),
+            Distance.newDistance(10),
+            Time.newTime(3)));
+    }
+
+    public static List<Section> sections() {
+        return Collections.unmodifiableList(sections);
+    }
 
     public static void addSection(Section section) {
         sections.add(section);
@@ -28,8 +78,8 @@ public class SectionRepository {
 
     public static Time getTime(List<String> shortestPath) {
         int totalMinute = 0;
-        for (int i = 1; i < shortestPath.size(); i++){
-            totalMinute = getTimeBySection(shortestPath.get(i-1), shortestPath.get(i));
+        for (int i = 1; i < shortestPath.size(); i++) {
+            totalMinute += getTimeBySection(shortestPath.get(i - 1), shortestPath.get(i));
         }
         return Time.newTime(totalMinute);
     }

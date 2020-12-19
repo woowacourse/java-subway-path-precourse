@@ -10,16 +10,21 @@ public class DistanceSectionRepository {
     private static final WeightedMultigraph<String, DefaultWeightedEdge> graph = new WeightedMultigraph(
         DefaultWeightedEdge.class);
 
-    public static void addSection(Station source, Station destination, Distance distance) {
-        graph.addVertex(source.getName());
-        graph.addVertex(destination.getName());
-        graph.setEdgeWeight(graph
-            .addEdge(source.getName(), destination.getName()), distance.getDistance());
+    static {
+        SectionRepository.sections().stream().forEach(section -> {
+            graph.addVertex(section.getSource().getName());
+            graph.addVertex(section.getDestination().getName());
+            graph.setEdgeWeight(graph.addEdge(
+                section.getSource().getName(),
+                section.getDestination().getName()),
+                section.getDistance().getKilometer());
+        });
     }
 
-    public static List<String> getShortestPath(Station source, Station destination){
+    public static List<String> getShortestPath(Station source, Station destination) {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
-        return dijkstraShortestPath.getPath(source.getName(), destination.getName()).getVertexList();
+        return dijkstraShortestPath.getPath(source.getName(), destination.getName())
+            .getVertexList();
     }
 
 //    public static Distance getShortestDistance(Station source, Station destination){
