@@ -53,6 +53,6 @@ public class View {
 			Subway.back();
 			return;
 		}
+		Output.error(Message.WRONG_INPUT);
 	}
-		
 }
