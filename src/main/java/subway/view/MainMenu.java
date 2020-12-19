@@ -30,12 +30,13 @@ public class MainMenu {
                 .append(QUIT_APP).append(ENTER)
                 .append(ENTER)
                 .append(CHOICE_MENU);
+        System.out.println(sb);
     }
 
     private void inputMenu(String input) {
         while (true) {
             if (input.equals("1")) {
-
+                new RouteSearchMenu(scanner).startRouteSearchMenu();
             }
             if (input.equals("Q")) {
                 System.out.println();
