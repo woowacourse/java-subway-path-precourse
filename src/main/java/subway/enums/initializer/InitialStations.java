@@ -1,4 +1,4 @@
-package subway.enums;
+package subway.enums.initializer;
 
 import subway.domain.Station;
 import subway.domain.StationRepository;

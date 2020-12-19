@@ -1,4 +1,4 @@
-package subway.enums;
+package subway.enums.initializer;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,5 +1,6 @@
 package subway.view;
 
+import subway.enums.info.RouteSearchInfo;
 import subway.enums.menu.RouteSearchMenu;
 
 import java.util.Arrays;
@@ -12,5 +13,13 @@ public class RouteView {
         List<RouteSearchMenu> menu = Arrays.asList(routeMenu);
         menu.stream().map(RouteSearchMenu::getMenu).forEach(System.out::println);
         System.out.println();
+    }
+
+    public static void askInputDeparture() {
+        System.out.println(RouteSearchInfo.INPUT_DEPARTURE.getInfo());
+    }
+
+    public static void askInputArrival() {
+        System.out.println(RouteSearchInfo.INPUT_ARRIVAL.getInfo());
     }
 }

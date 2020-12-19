@@ -1,6 +1,6 @@
 package subway.domain;
 
-import subway.enums.*;
+import subway.enums.initializer.*;
 
 import java.util.List;
 

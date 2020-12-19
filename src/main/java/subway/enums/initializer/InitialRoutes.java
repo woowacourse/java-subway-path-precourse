@@ -1,4 +1,4 @@
-package subway.enums;
+package subway.enums.initializer;
 
 import subway.domain.Route;
 import subway.domain.RouteRepository;
@@ -9,8 +9,8 @@ import java.util.List;
 public enum InitialRoutes {
     ROUTE_2(InitialLines.LINE_2
             ,Arrays.asList(InitialStations.KYODAE, InitialStations.GANGNAM, InitialStations.YEOKSAM)
-            ,TimeToStation.LINE_2
-            ,DistanceToStation.LINE_2
+            , TimeToStation.LINE_2
+            , DistanceToStation.LINE_2
     ),
 
     ROUTE_3(InitialLines.LINE_3
