@@ -28,4 +28,16 @@ public class RouteValidator {
         throw new IllegalArgumentException(
             RouteMessage.ERROR_STATION_NAME.getMessage());
     }
+
+    public static void validStationsName(String startStationName, String endStationName) {
+        if (notDuplicateName(startStationName, endStationName)) {
+            return;
+        }
+        throw new IllegalArgumentException(
+            RouteMessage.ERROR_STATION_DUPLICATE_NAME.getMessage());
+    }
+
+    private static boolean notDuplicateName(String startStationName, String endStationName) {
+        return !startStationName.equals(endStationName);
+    }
 }

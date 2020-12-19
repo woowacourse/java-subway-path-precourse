@@ -62,5 +62,6 @@ public class UserView {
         String errorMessage = String
             .format(PrefixMessage.ERROR_FORMAT.getMessage(), error.getMessage());
         System.out.println(errorMessage);
+        spaceLine();
     }
 }

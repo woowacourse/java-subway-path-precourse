@@ -40,11 +40,14 @@ public class RouteController {
 
         UserView.guideMessagePrint(RouteMessage.SELECT_START_STATION);
         String startStation = RouteValidator.validStationName(UserView.scanUserInput());
+
         UserView.guideMessagePrint(RouteMessage.SELECT_END_STATION);
         String endStation = RouteValidator.validStationName(UserView.scanUserInput());
 
-        List<String> tmp = GetPath.getDijkstraShortestPath(startStation,endStation);
-        System.out.println(tmp.toString());
+        RouteValidator.validStationsName(startStation, endStation);
+
+
+        List<String> tmp = GetPath.getDijkstraShortestPath(startStation, endStation);
     }
 
     public static void findShortestTime() {
