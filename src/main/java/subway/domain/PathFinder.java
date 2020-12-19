@@ -12,7 +12,7 @@ public class PathFinder {
     private static String startStationName;
     private static String endStationName;
 
-    private static void startAndEndStationInput(Scanner scanner) {
+    private static void startAndEndStationInput(Scanner scanner) throws IllegalArgumentException {
         try {
             InputView.printStartStationInput();
             startStationName = stationNameInput(scanner);
@@ -20,7 +20,7 @@ public class PathFinder {
             endStationName = stationNameInput(scanner);
             Validator.sameStationNameCheck(startStationName, endStationName);
         } catch (IllegalArgumentException e) {
-            System.out.println("\n[ERROR]" + e.getMessage());
+            throw new IllegalArgumentException(e.getMessage());
         }
     }
 
@@ -31,8 +31,9 @@ public class PathFinder {
             List<String> path = DijkstraGraphRepository.getShortestDistPath(startStationName, endStationName);
             int totalTime = getTotalTime(path);
             OutputView.printResult(totalDist, path, totalTime);
+            PathSelectMenu.pathMenuStop();
         } catch (IllegalArgumentException e) {
-            System.out.println("\n[ERROR]" + e.getMessage());
+            System.out.println("\n[ERROR] " + e.getMessage());
         }
     }
 
@@ -42,8 +43,9 @@ public class PathFinder {
             int totalTime = DijkstraGraphRepository.getShortestTime(startStationName, endStationName);
             List<String> path = DijkstraGraphRepository.getShortestTimePath(startStationName, endStationName);
             OutputView.printResult(0, path, totalTime);
+            PathSelectMenu.pathMenuStop();
         } catch (IllegalArgumentException e) {
-            System.out.println("\n[ERROR]" + e.getMessage());
+            System.out.println("\n[ERROR] " + e.getMessage());
         }
     }
 

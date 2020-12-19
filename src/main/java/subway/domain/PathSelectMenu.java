@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class PathSelectMenu {
     private static boolean isPathMenuRunFlag = true;
 
-    private static void pathMenuStop() {
+    public static void pathMenuStop() {
         isPathMenuRunFlag = false;
     }
 
@@ -49,6 +49,7 @@ public class PathSelectMenu {
         // 2이면 최소 거리
         if (inputMsg.equals("2")) {
             PathFinder.findShortestTimePath(scanner);
+            pathMenuStop();
         }
     }
 }
