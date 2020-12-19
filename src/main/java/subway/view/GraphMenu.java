@@ -79,21 +79,40 @@ public class GraphMenu {
 
     private GraphDTO getGraphInfo(String startStationName, String endStationName, GraphType graphType) {
         List<Station> path = getPath(startStationName, endStationName, graphType);
-        int time = getWeight(startStationName, endStationName, GraphType.TIME);
-        int distance = getWeight(startStationName, endStationName, GraphType.DISTANCE);
+        int time = 0;
+        int distance = 0;
+
+        if(graphType.equals(GraphType.TIME)) {
+            time = getWeight(startStationName, endStationName, graphType);
+            distance = getPathWeight(path, GraphType.DISTANCE);
+        } else if (graphType.equals(GraphType.DISTANCE)) {
+            distance = getWeight(startStationName, endStationName, graphType);
+            time = getPathWeight(path, GraphType.TIME);
+        }
 
         return new GraphDTO(distance, time, path);
+    }
+
+    private int getPathWeight(List<Station> path, GraphType graphType) {
+        int weight = 0;
+        Graph graph = GraphRepository.findGraphByType(graphType);
+        for (int i = 1; i < path.size(); i++) {
+            Station before = path.get(i - 1);
+            Station after = path.get(i);
+            weight += graph.getEdgeWeight(before, after);
+        }
+        return weight;
     }
 
     private String resultToString(GraphDTO dto) {
 
         StringBuilder sb = new StringBuilder();
 
-        sb.append(RESULT_MESSAGE).append(INFO).append(" \n---");
+        sb.append(RESULT_MESSAGE).append("\n").append(INFO).append(" ---\n");
         sb.append(INFO).append(" ").append(TOTAL_DISTANCE).append(": ").append(dto.getDistance()).append("km\n");
 
         sb.append(INFO).append(" ").append(TOTAL_TIME).append(": ").append(dto.getTime()).append("분\n");
-        sb.append("---\n");
+        sb.append(INFO).append(" ---\n");
 
         for (Station station : dto.getPath()) {
             sb.append(INFO).append(" ").append(station.getName()).append("\n");
