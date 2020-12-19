@@ -3,10 +3,13 @@ package subway;
 import com.sun.tools.javac.Main;
 import java.util.Scanner;
 import subway.domain.RouteRepository;
+import subway.domain.Station;
+import subway.domain.StationRepository;
 import subway.menu.MainMenu;
 import subway.menu.RouteInquiryMenu;
 import subway.service.LineService;
 import subway.service.RouteService;
+import subway.service.ShortestPathRouteService;
 import subway.service.StationService;
 import subway.utils.InputUtils;
 import subway.utils.OutputUtils;
@@ -71,6 +74,8 @@ public class Application {
             return true;
         }
 
+        ShortestPathRouteService shortestPathRouteService = new ShortestPathRouteService();
+        shortestPathRouteService.getDijkstraShortestPath(startStation,endStation);
         //최단 경로 계산
         return false;
     }

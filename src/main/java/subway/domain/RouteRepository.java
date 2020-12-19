@@ -1,6 +1,7 @@
 package subway.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RouteRepository {
@@ -8,5 +9,9 @@ public class RouteRepository {
 
     public static void addRoute(Route route) {
         routes.add(route);
+    }
+
+    public static List<Route> routes() {
+        return Collections.unmodifiableList(routes);
     }
 }
