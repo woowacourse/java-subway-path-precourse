@@ -1,5 +1,7 @@
 package subway.menu;
 
+import java.util.Arrays;
+
 public enum PathMenu {
     DISTANCE("1","1. 최단 거리"),
     TIME("2", "2. 최소 시간"),
@@ -11,6 +13,12 @@ public enum PathMenu {
     PathMenu(String option, String message) {
         this.option = option;
         this.message = message;
+    }
+
+    public static PathMenu findMainMenyByOption(String option) {
+        return Arrays.stream(values())
+                .filter(value -> value.getOption().equals(option))
+                .findFirst().orElseThrow(IllegalArgumentException::new);
     }
 
     public String getOption() {

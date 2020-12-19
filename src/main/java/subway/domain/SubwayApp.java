@@ -1,10 +1,12 @@
 package subway.domain;
 
+import subway.menu.MainMenu;
 import subway.view.InputView;
 import subway.view.OutputView;
 
 import java.util.Scanner;
 
+import static subway.menu.MainMenu.*;
 import static subway.view.OutputView.*;
 
 public class SubwayApp {
@@ -17,7 +19,10 @@ public class SubwayApp {
     public void run() {
         try {
             printMainMenu();
-            inputView.inputMainMenuOption();
+            MainMenu selectedMainMenu = findMainMenyByOption(inputView.inputMainMenuOption());
+            if (selectedMainMenu == EXIT) {
+                return;
+            }
             printPathMenu();
             inputView.inputPathMenuOption();
             String startStationName = inputView.inputStartStation();
