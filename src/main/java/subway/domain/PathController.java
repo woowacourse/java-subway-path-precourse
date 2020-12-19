@@ -47,7 +47,7 @@ public class PathController {
 
 
 
-    public void findPath(Station startStation, Station endStation) {
+    public List<Station> findPath(Station startStation, Station endStation) {
         List<Station> path = new ArrayList<>();
         if (isExistCrossLine(startStation, endStation)) {
             Line crossLine = findCrossLine(startStation, endStation);
@@ -62,6 +62,7 @@ public class PathController {
                 endIndex--;
             }
         }
+        return path;
     }
 
 

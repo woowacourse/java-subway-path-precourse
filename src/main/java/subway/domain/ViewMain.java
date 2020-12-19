@@ -53,7 +53,7 @@ public class ViewMain {
                 printPath(scanner, function);
                 quitProgram(function);
             } catch (IllegalArgumentException illegalArgumentException) {
-
+                System.out.println(illegalArgumentException.getMessage());
             }
         }
 

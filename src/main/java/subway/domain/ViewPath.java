@@ -1,6 +1,9 @@
 package subway.domain;
 
+import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 public class ViewPath {
 
@@ -14,9 +17,14 @@ public class ViewPath {
     private static final String FUNCTION_MIN_DISTANCE = "1";
     private static final String FUNCTION_MIN_TIME = "2";
     private static final String FUNCTION_BACK = "B";
+    private static final String RESULT = "## 조회 결과";
+    private static final String INFO = "[INFO] ";
+    private static final String LINE = "---";
+
     private boolean goBack = false;
 
     Input input = new Input();
+    PathController controller = new PathController();
 
     public void printFirstPathScreen() {
         System.out.println(PATH_CRITERIA);
@@ -59,17 +67,35 @@ public class ViewPath {
         }
     }
 
+    public void printResult(Station startStation, Station endStation) {
+        System.out.println(RESULT);
+        System.out.println(INFO + LINE);
+        List<Station> stations = controller.findPath(startStation,endStation);
+        Iterator<Station> iterator = stations.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(INFO + iterator.next().getName());
+        }
+    }
+
+    public void printSameStationError(Station startStation, Station endStation) {
+        if (startStation.getName().equals(endStation.getName())) {
+            throw new IllegalArgumentException(ErrorMessage.isSameStation());
+        }
+    }
+
     public void printPathProgram(Scanner scanner) {
         this.goBack = false;
         while (!goBack) {
             try {
                 printFirstPathScreen();
                 String function = printFunctionScreen(scanner);
-                printInputStartStation(scanner, function);
-                printInputEndStation(scanner, function);
                 checkGoBack(function);
+                Station start = controller.findStation(printInputStartStation(scanner, function));
+                Station end = controller.findStation(printInputEndStation(scanner, function));
+                printSameStationError(start, end);
+                printResult(start, end);
             } catch (IllegalArgumentException illegalArgumentException) {
-
+                System.out.println(illegalArgumentException.getMessage());
             }
         }
     }
