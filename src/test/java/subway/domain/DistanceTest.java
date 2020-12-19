@@ -1,11 +1,9 @@
 package subway.domain;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import jdk.jfr.Description;
-import jdk.swing.interop.SwingInterOpUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import subway.domain.Section.Distance;
 
 class DistanceTest {
 
@@ -34,5 +32,14 @@ class DistanceTest {
 
     }
 
+    @Test
+    @Description("Distance toString 확인, 접두사로 km")
+    public void distanceToStringTest(){
+
+        Distance result = Distance.of(10);
+
+        System.out.println(result.toString());
+
+    }
 
 }
