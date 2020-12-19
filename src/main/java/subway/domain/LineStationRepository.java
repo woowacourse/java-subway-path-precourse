@@ -6,6 +6,7 @@ import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 
 import static subway.domain.SubwayPathFactory.creatPathFirstGraph;
+import static subway.domain.SubwayPathFactory.creatTimeFirstGraph;
 
 public class LineStationRepository {
     private static WeightedMultigraph<String, DefaultWeightedEdge> lineStation
@@ -21,6 +22,12 @@ public class LineStationRepository {
 
     public static GraphPath findShortestPath(String start, String end) {
         creatPathFirstGraph();
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(lineStation);
+        return dijkstraShortestPath.getPath(start, end);
+    }
+
+    public static GraphPath findShortestTime(String start, String end) {
+        creatTimeFirstGraph();
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(lineStation);
         return dijkstraShortestPath.getPath(start, end);
     }
