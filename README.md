@@ -205,7 +205,11 @@ public class StationRepository {
 - 구간 객체 생성
     - JGrapht 활용하여 시간, 거리 개념의 구간 정보 가짐
     - 최단거리, 최단시간 도출해내는 기능 구현
-- Line 객체가 구간 객체 가지도록 구현 
+- Line 객체가 구간 거리, 구간 시간 정보가지도록 구현
+- 초기화 작업 
+    - Manager 디렉토리 생성하여 초기화 작업하는 기능 구현 
+- view 담당 디렉토리 생성 
+    - Input, Output, Error
 
 <br>
 
