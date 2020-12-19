@@ -4,6 +4,7 @@ import subway.enums.initializer.InitialLines;
 import subway.enums.initializer.InitialRoutes;
 import subway.enums.initializer.InitialStations;
 import subway.enums.menu.MainMenu;
+import subway.service.DistanceNavigator;
 import subway.view.MainView;
 
 import java.util.Scanner;

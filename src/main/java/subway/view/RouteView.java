@@ -1,5 +1,7 @@
 package subway.view;
 
+import subway.domain.Route;
+import subway.enums.info.RouteResultInfo;
 import subway.enums.info.RouteSearchInfo;
 import subway.enums.menu.RouteSearchMenu;
 
@@ -21,5 +23,20 @@ public class RouteView {
 
     public static void askInputArrival() {
         System.out.println(RouteSearchInfo.INPUT_ARRIVAL.getInfo());
+    }
+
+    public static void printResult(int distance, int time, List<String> shortestPath) {
+        System.out.println(RouteResultInfo.TITLE.getValue());
+        System.out.println(RouteResultInfo.DELIMITER.getValue());
+        System.out.println(RouteResultInfo.TOTAL_DISTANCE.getValue()
+                + distance
+                + RouteResultInfo.KM.getValue());
+        System.out.println(RouteResultInfo.TOTAL_TIME.getValue()
+                + time + RouteResultInfo.MIN.getValue());
+        System.out.println(RouteResultInfo.DELIMITER.getValue());
+        for (String path : shortestPath) {
+            System.out.println(RouteResultInfo.INFO.getValue() +  path);
+        }
+
     }
 }

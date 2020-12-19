@@ -7,14 +7,14 @@ import java.util.List;
 public class Route {
     private InitialLines line;
     private List<InitialStations> stations;
-    private TimeToStation timeToNextStation;
-    private DistanceToStation distanceToNextStation;
+    private List<Integer> timeToNextStation;
+    private List<Integer> distanceToNextStation;
 
     public Route(InitialRoutes initialRoutes) {
         this.line = initialRoutes.getLine();
         this.stations = initialRoutes.getStations();
-        this.timeToNextStation = initialRoutes.getTimeToNextStation();
-        this.distanceToNextStation = initialRoutes.getDistanceToNextStation();
+        this.timeToNextStation = initialRoutes.getTimeToNextStation().getTimes();
+        this.distanceToNextStation = initialRoutes.getDistanceToNextStation().getDistance();
     }
 
     public InitialLines getLine() {
@@ -25,11 +25,11 @@ public class Route {
         return stations;
     }
 
-    public TimeToStation getTimeToNextStation() {
+    public List<Integer> getTimeToNextStation() {
         return timeToNextStation;
     }
 
-    public DistanceToStation getDistanceToNextStation() {
+    public List<Integer> getDistanceToNextStation() {
         return distanceToNextStation;
     }
 }

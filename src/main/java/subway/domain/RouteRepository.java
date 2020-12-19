@@ -14,4 +14,12 @@ public class RouteRepository {
     public static void addRoute(Route route) {
         routes.add(route);
     }
+
+    public static Route getRouteByLineName(String name) {
+        return routes().stream()
+                .filter(route -> route.getLine().getName().equals(name))
+                .findFirst()
+                .get();
+    }
+
 }
