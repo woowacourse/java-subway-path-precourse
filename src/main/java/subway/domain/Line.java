@@ -28,4 +28,10 @@ public class Line {
     public void addTimes(int index, int time) {
         intervalTimes.add(index, time);
     }
+
+    public void displayLine() {
+        for (String station : stationNames)
+            System.out.println("[INFO] " + station);
+        System.out.println();
+    }
 }
