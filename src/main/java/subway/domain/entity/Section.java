@@ -3,17 +3,17 @@ package subway.domain.entity;
 public class Section {
     private static final int MINIMUM_POSITIVE_INTEGER = 1;
 
-    private final int time;
     private final int distance;
+    private final int time;
 
-    public Section(int time, int distance) {
-        validateSection(time, distance);
-        this.time = time;
+    public Section(int distance, int time) {
+        validateSection(distance, time);
         this.distance = distance;
+        this.time = time;
     }
 
-    private void validateSection(int time, int distance) {
-        if (time < MINIMUM_POSITIVE_INTEGER || distance < MINIMUM_POSITIVE_INTEGER) {
+    private void validateSection(int distance, int time) {
+        if (distance < MINIMUM_POSITIVE_INTEGER || time < MINIMUM_POSITIVE_INTEGER) {
             throw new InvalidSectionDataException();
         }
     }

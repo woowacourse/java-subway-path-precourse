@@ -7,13 +7,16 @@ import subway.domain.repository.StationRepository;
 
 public class StationService {
 
-    public Stations generateStations(String upwardLastStationName, String nextStationName, Section section) {
+    private StationService() {
+    }
+
+    public static Stations generateStations(String upwardLastStationName, String nextStationName, Section section) {
         Station upwardLastStation = findStationByName(upwardLastStationName);
         Station nextStation = findStationByName(nextStationName);
         return Stations.of(upwardLastStation, nextStation, section);
     }
 
-    public Station findStationByName(String name) {
+    public static Station findStationByName(String name) {
         return StationRepository.findByName(name)
                 .orElseThrow(IllegalArgumentException::new);
     }

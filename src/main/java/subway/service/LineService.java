@@ -8,7 +8,10 @@ import subway.domain.repository.LineRepository;
 
 public class LineService {
 
-    public void addLine(String lineName, Stations stations) {
+    private LineService() {
+    }
+
+    public static void addLine(String lineName, Stations stations) {
         LineRepository.findByName(lineName)
                 .ifPresent(line -> {
                     throw new IllegalArgumentException();
@@ -17,7 +20,7 @@ public class LineService {
         LineRepository.addLine(line);
     }
 
-    public void addStationAtLine(String lineName, Station station, Section section) {
+    public static void addStationAtLine(String lineName, Station station, Section section) {
         Line line = LineRepository.findByName(lineName)
                 .orElseThrow(IllegalArgumentException::new);
         line.addStation(station, section);

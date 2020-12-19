@@ -10,28 +10,20 @@ import subway.service.StationService;
 
 public class PathController {
 
-    private final StationService stationService;
-    private final LineService lineService;
-
-    public PathController(StationService stationService, LineService lineService) {
-        this.stationService = stationService;
-        this.lineService = lineService;
-    }
-
     public void addLine(LineDto lineDto, SectionDto sectionDto) {
         String upwardLastStationName = lineDto.getUpwardLastStationName();
         String nextStationName = lineDto.getNextStationName();
         Section section = sectionDto.toEntity();
-        Stations stations = stationService.generateStations(upwardLastStationName, nextStationName, section);
+        Stations stations = StationService.generateStations(upwardLastStationName, nextStationName, section);
         String lineName = lineDto.getLineName();
-        lineService.addLine(lineName, stations);
+        LineService.addLine(lineName, stations);
     }
 
     public void addStationAtLine(LineDto lineDto, SectionDto sectionDto) {
         String stationName = lineDto.getNextStationName();
         String lineName = lineDto.getLineName();
         Section section = sectionDto.toEntity();
-        Station station = stationService.findStationByName(stationName);
-        lineService.addStationAtLine(lineName, station, section);
+        Station station = StationService.findStationByName(stationName);
+        LineService.addStationAtLine(lineName, station, section);
     }
 }

@@ -4,12 +4,12 @@ import subway.domain.entity.Section;
 
 public class SectionDto {
 
-    private final int time;
     private final int distance;
+    private final int time;
 
-    public SectionDto(int time, int distance) {
-        this.time = time;
+    public SectionDto(int distance, int time) {
         this.distance = distance;
+        this.time = time;
     }
 
     public Section toEntity() {
