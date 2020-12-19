@@ -1,14 +1,14 @@
 package subway.controller;
 
+import subway.domain.SubwayMap;
+import subway.domain.SubwayPath;
+import subway.repository.SubwayPathRepository;
 import subway.service.LineService;
 import subway.service.SubwayMapService;
 import subway.service.StationService;
 import subway.view.SubwayView;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
 public class SubwayController {
     private static final List<String> INITIAL_STATION_NAMES = Arrays.asList("교대역", "강남역", "역삼역", "남부터미널역", "양재역", "양재시민의숲역", "매봉역");
@@ -93,35 +93,13 @@ public class SubwayController {
         callPathSearchScreenFunctionBy(userInput);
     }
 
-//    private String validateDepartureStation(String userInput) {
-//        while (!UserInputValidator.isValidPathSearchScreenFunction(userInput)) {
-//            subwayView.printMessage(SubwayMessage.ERROR_SELECT_FUNCTION);
-//            subwayView.printMessage(SubwayMessage.SELECT_FUNCTION);
-//            userInput = validateMainScreenFunction(subwayView.userInput());
-//        }
-//        return userInput;
-//    }
-//
-//    private String inputDepartureStation() {
-//        subwayView.printMessage(SubwayMessage.ENTER_DEPARTURE_STATION);
-//        String userInput = validateDepartureStation(subwayView.userInput());
-//        return userInput;
-//    }
-//
-//    private String validateArrivalStation(String userInput) {
-//        while (!UserInputValidator.isValidPathSearchScreenFunction(userInput)) {
-//            subwayView.printMessage(SubwayMessage.ERROR_SELECT_FUNCTION);
-//            subwayView.printMessage(SubwayMessage.SELECT_FUNCTION);
-//            userInput = validateMainScreenFunction(subwayView.userInput());
-//        }
-//        return userInput;
-//    }
-//
-//    private String inputArrivalStation() {
-//        subwayView.printMessage(SubwayMessage.ENTER_ARRIVAL_STATION);
-//        String userInput = validateArrivalStation(subwayView.userInput());
-//        return userInput;
-//    }
+    private boolean isDuplicateStation(String departureStation, String arrivalStation) {
+        return Objects.equals(departureStation, arrivalStation);
+    }
+
+    private boolean isDisconnectedPath(List<String> path) {
+        return Objects.equals(path, Collections.emptyList());
+    }
 
     private String inputDepartureStation() {
         subwayView.printMessage(SubwayMessage.ENTER_DEPARTURE_STATION);
@@ -136,12 +114,30 @@ public class SubwayController {
     }
 
     private void searchByShortestPath() {
-        String userInput = inputDepartureStation();
-        userInput = inputArrivalStation();
+        String departureStation = inputDepartureStation();
+        String arrivalStation = inputArrivalStation();
+        if (isDuplicateStation(departureStation, arrivalStation)) {
+            subwayView.printMessage(SubwayMessage.ERROR_DUPLICATE_STATION);
+            searchByShortestPath();
+        }
+        List<String> shortestPath = SubwayMap.getShortestPath(departureStation, arrivalStation);
+        if (isDisconnectedPath(shortestPath)) {
+            subwayView.printMessage(SubwayMessage.ERROR_DISCONNECTED_PATH);
+            searchByShortestPath();
+        }
     }
 
     private void searchByMinimumTime() {
-        String userInput = inputDepartureStation();
-        userInput = inputArrivalStation();
+        String departureStation = inputDepartureStation();
+        String arrivalStation = inputArrivalStation();
+        if (isDuplicateStation(departureStation, arrivalStation)) {
+            subwayView.printMessage(SubwayMessage.ERROR_DUPLICATE_STATION);
+            searchByMinimumTime();
+        }
+        List<String> minimumTime = SubwayMap.getMinimumTime(departureStation, arrivalStation);
+        if (isDisconnectedPath(minimumTime)) {
+            subwayView.printMessage(SubwayMessage.ERROR_DISCONNECTED_PATH);
+            searchByMinimumTime();
+        }
     }
 }
