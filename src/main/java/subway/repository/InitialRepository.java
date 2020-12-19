@@ -31,12 +31,11 @@ public class InitialRepository {
         initialSection("신분당선", "양재역", "양재시민의숲역", 10, 3);
     }
 
-    public void initialSection(String line, String stationNameFrom, String stationNameTo, int distance, int time) {
+    private void initialSection(String line, String stationNameFrom, String stationNameTo, int distance, int time) {
         Section section = new Section(
                 StationRepository.searchStation(stationNameFrom),
                 StationRepository.searchStation(stationNameTo),
                 distance, time);
         LineRepository.searchLine(line).addSection(section);
-
     }
 }
