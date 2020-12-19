@@ -26,6 +26,10 @@ public class Section {
         return this.nextStation;
     }
 
+    public String getNextStationName() {
+        return this.nextStation.getName();
+    }
+
     public int getDistance() {
         return distance;
     }
