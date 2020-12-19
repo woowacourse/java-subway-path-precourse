@@ -38,6 +38,8 @@
 - 기대하는 출력 결과는 [INFO]를 붙여서 출력한다. 출력값의 형식은 예시와 동일하게 한다.
 - 메소드 길이은 공백 포함 15줄 넘지 않도록 구현
 
+
+
 ## 📝 License
 
 This project is [MIT](https://github.com/woowacourse/java-subway-path-precourse/blob/master/LICENSE.md) licensed.
