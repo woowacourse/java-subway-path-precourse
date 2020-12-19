@@ -25,6 +25,13 @@ public enum ManagementType {
                 .orElseThrow(UnsupportedFunctionException::new);
     }
 
+    public FunctionType findFunctionType(String functionLetter) {
+        return functions.stream()
+                .filter(functionType -> functionType.matches(functionLetter))
+                .findFirst()
+                .orElseThrow(UnsupportedFunctionException::new);
+    }
+
     private boolean matches(String managementLetter) {
         return Objects.equals(this.managementLetter, managementLetter);
     }
