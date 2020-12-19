@@ -1,7 +1,10 @@
 package subway.util;
 
 import subway.domain.*;
+import subway.exception.ExceptionManager;
+import subway.view.FindPathView;
 import subway.view.Input;
+import subway.view.MainView;
 
 import java.util.List;
 import java.util.Scanner;
@@ -27,12 +30,21 @@ public class GraphInitializer {
         if (command.equals("2")) {
             byTime(graphRepository);
         }
+        GraphGenerator(graphRepository, scanner);
+    }
 
+    public void GraphGenerator(GraphRepository graphRepository, Scanner scanner) {
         String[] stations = getStations(scanner);
         List<String> shortestPath = graphRepository.calPath(stations[0], stations[1]);
+        try {
+            ExceptionManager.isPathExist(shortestPath);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            FindPathView.printFindPathView(scanner);
+        }
         printResult(shortestPath);
         printShortestPath(shortestPath);
-
+        MainView.printMainView(scanner);
     }
 
     public void byDistance(GraphRepository graphRepository) {
@@ -51,6 +63,12 @@ public class GraphInitializer {
         String[] stations = new String[2];
         stations[0] = Input.getSourceStation(scanner);
         stations[1] = Input.getDestinationStation(scanner);
+        try {
+            ExceptionManager.isSameStations(stations[0], stations[1]);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            FindPathView.printFindPathView(scanner);
+        }
         return stations;
     }
 
