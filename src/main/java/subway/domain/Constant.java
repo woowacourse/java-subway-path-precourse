@@ -24,10 +24,10 @@ public class Constant {
     static final String HEAD_ERROR = "[ERROR] ";
     static final String DIVIDER = "---";
 
-    static final String ONE = "1";
-    static final String TWO = "2";
-    static final String Q = "Q";
-    static final String B = "B";
+    public static final String ONE = "1";
+    public static final String TWO = "2";
+    public static final String Q = "Q";
+    public static final String B = "B";
 
     static final String CHOOSE_FUNCTION = "원하는 기능을 선택하세요.";
     public static final String MAIN_MENU_TITLE = "메인 화면";
