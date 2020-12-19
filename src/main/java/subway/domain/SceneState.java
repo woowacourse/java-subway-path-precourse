@@ -1,5 +1,7 @@
 package subway.domain;
 
+import subway.exception.NoSuchChoiceException;
+
 import java.util.Arrays;
 
 public enum SceneState {
@@ -19,6 +21,6 @@ public enum SceneState {
         return Arrays.stream(SceneState.values())
                 .filter(sceneState -> sceneState.value.equals(input))
                 .findFirst()
-                .orElseThrow(IllegalArgumentException::new);
+                .orElseThrow(NoSuchChoiceException::new);
     }
 }
