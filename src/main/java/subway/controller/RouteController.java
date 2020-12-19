@@ -1,10 +1,8 @@
 package subway.controller;
 
 import subway.domain.LineRepository;
-import subway.domain.Station;
 import subway.domain.StationRepository;
 import subway.view.RoutePage;
-import utils.InfoUtils;
 import utils.InputUtils;
 
 import java.util.List;
@@ -54,7 +52,7 @@ public class RouteController {
 
     public void selectRoute(String departure, String arrival, String item, Scanner scanner) {
         if (SHORTEST_DISTANCE.equals(item)) {
-            selectShortDistance(departure,arrival);
+            selectShortDistance(departure, arrival);
         }
         if (MINIMUM_TIME.equals(item)) {
             selectShortTime(departure, arrival);
@@ -77,7 +75,7 @@ public class RouteController {
 
 
     public boolean isExistStation(String name, Scanner scanner) {
-        if (!StationRepository.isExistName(name)) {
+        if (StationRepository.isExistStationName(name)) {
             ROUTE_PAGE.printNullStationError();
             startRoutePage(scanner);
             return false;

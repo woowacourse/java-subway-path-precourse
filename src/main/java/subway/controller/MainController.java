@@ -1,7 +1,6 @@
 package subway.controller;
 
 import subway.Initial;
-import subway.domain.LineRepository;
 import subway.view.MainPage;
 import utils.InputUtils;
 
@@ -13,7 +12,7 @@ public class MainController {
     private static final MainPage MAIN_PAGE = new MainPage();
     private static final RouteController ROUTE_CONTROLLER = new RouteController();
 
-    public static void startProgram(Scanner scanner){
+    public static void startProgram(Scanner scanner) {
         Initial.setInitial();
         startMainPage(scanner);
     }
@@ -23,12 +22,12 @@ public class MainController {
         forkPath(InputUtils.inputString(scanner), scanner);
     }
 
-    public static void forkPath(String item, Scanner scanner){
-        if(SELECT_ROUTE.equals(item)){
+    public static void forkPath(String item, Scanner scanner) {
+        if (SELECT_ROUTE.equals(item)) {
             ROUTE_CONTROLLER.startRoutePage(scanner);
             return;
         }
-        if(QUIT.equals(item)){
+        if (QUIT.equals(item)) {
             return;
         }
         MAIN_PAGE.printWrongItemError();

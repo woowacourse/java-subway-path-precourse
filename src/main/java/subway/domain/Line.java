@@ -16,7 +16,7 @@ public class Line {
         return name;
     }
 
-    public void addStation(String stationName){
+    public void addStation(String stationName) {
         Station station = new Station(stationName);
         stations.add(station);
     }

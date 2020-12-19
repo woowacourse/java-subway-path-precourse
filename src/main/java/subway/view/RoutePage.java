@@ -37,7 +37,7 @@ public class RoutePage {
 
     public void printShortestPath(List<String> shortestPath){
         for(String one : shortestPath){
-            InfoUtils.printInfo("");
+            InfoUtils.printInfo(one);
         }
         System.out.println();
     }
