@@ -1,5 +1,7 @@
 package subway.domain;
 
+import java.util.Objects;
+
 public class Station {
     private final String name;
 
@@ -9,5 +11,22 @@ public class Station {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Station)) {
+            return false;
+        }
+        Station station = (Station) o;
+        return Objects.equals(getName(), station.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName());
     }
 }
