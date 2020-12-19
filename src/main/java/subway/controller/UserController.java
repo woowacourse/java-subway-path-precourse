@@ -9,12 +9,13 @@ public class UserController {
         InitializingManager.initialize();
         boolean runStatus = true;
         while (runStatus) {
+            Input.printMainMenu();
             runStatus = startMainMenu();
         }
     }
 
     private static boolean startMainMenu() {
-        String input = Input.newInput();
+        String input = Input.newInput().toUpperCase();
         if (ErrorOutput.isWrongMainMenuInput(input)) {
             return true;
         }

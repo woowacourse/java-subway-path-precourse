@@ -18,4 +18,11 @@ public class Input {
             System.out.println(MenuRepository.mainMenuButtons.get(i) +". "+MenuRepository.mainMenuNames.get(i));
         }
     }
+
+    public static void printSearchMenu() {
+        System.out.println(PREFIX+"경로 기준");
+        for (int i=0; i< MenuRepository.mainMenuButtons.size(); i++) {
+            System.out.println(MenuRepository.searchMenuButtons.get(i) +". "+MenuRepository.searchMenuNames.get(i));
+        }
+    }
 }

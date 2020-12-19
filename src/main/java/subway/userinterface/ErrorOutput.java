@@ -17,5 +17,10 @@ public class ErrorOutput {
         return returnStatus(status);
     }
 
+    public static boolean isWrongSearchMenuInput(String input) {
+        boolean status = MenuRepository.searchMenuButtons.stream().noneMatch(button -> button.equals(input));
+        return returnStatus(status);
+    }
+
 
 }
