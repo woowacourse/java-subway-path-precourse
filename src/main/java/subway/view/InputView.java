@@ -13,4 +13,9 @@ public class InputView {
         System.out.println(NEW_LINE + "## 원하는 기능을 선택하세요.");
         return SceneState.findSceneStateByInput(MAIN_SCENE + scanner.nextLine().toLowerCase());
     }
+
+    public static SceneState inputPathSceneChoice(Scanner scanner) {
+        System.out.println(NEW_LINE + "## 원하는 기능을 선택하세요.");
+        return SceneState.findSceneStateByInput(PATH_SCENE + scanner.nextLine().toLowerCase());
+    }
 }
