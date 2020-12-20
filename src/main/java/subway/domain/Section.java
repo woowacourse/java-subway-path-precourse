@@ -1,6 +1,7 @@
 package subway.domain;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Section {
@@ -14,6 +15,15 @@ public class Section {
         stations.add(station2);
         this.distance = distance;
         this.costTime = costTime;
+    }
+
+    public boolean isInShortestPath(List<String> shortestPath) {
+        for(int i=0; i<shortestPath.size()-1; i++) {
+            if(stations.contains(shortestPath.get(i)) && stations.contains(shortestPath.get(i+1))) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public Set<String> getStations() {

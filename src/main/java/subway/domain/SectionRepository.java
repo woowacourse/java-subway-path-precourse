@@ -6,9 +6,7 @@ import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class SectionRepository {
 
@@ -37,23 +35,15 @@ public class SectionRepository {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graphByDistance);
         GraphPath graphPath = dijkstraShortestPath.getPath(departure, destination);
 
-        List<String> path = graphPath.getVertexList();
         double shortestPathDistance = graphPath.getWeight();
-        int costTime = (int) sections.stream().filter(section -> calculateCostTime(path, section)).mapToInt(Section::getCostTime).sum();
-
-        System.out.println(shortestPathDistance + " " + costTime);
+        int costTime = calculateCostTime(graphPath.getVertexList());
     }
 
-    private static boolean calculateCostTime(List<String> path, Section section) {
-        Set<String> stations = section.getStations();
-        for(int i=0; i<path.size()-1; i++) {
-            if(stations.contains(path.get(i)) && stations.contains(path.get(i+1))) {
-                return true;
-            }
-            // if sections중 하나가 path.get(i) path.get(i+1)둘다 가지고 있음
-            // 그 section의 거리만큼 +
-        }
-        return false;
+    private static int calculateCostTime(List<String> shortestPath) {
+        return sections.stream()
+                .filter(section -> section.isInShortestPath(shortestPath))
+                .mapToInt(Section::getCostTime)
+                .sum();
     }
 
     public static void findShortestPathByCost(String departure, String destination) {
@@ -74,24 +64,5 @@ public class SectionRepository {
             graphByCost.addVertex(station2);
         }
     }
-
-//    private static void addWeight(Station departure, Station arrival, int costTime) {
-//        if (!graph.containsEdge(graph.addEdge(departure.getName(), arrival.getName()))) {
-//            graph.setEdgeWeight(graph.addEdge(departure.getName(), arrival.getName()), costTime);
-//        }
-//    }
-//
-//
-//    public static int findShortestPath(String departure, String destination) {
-//
-//        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
-//        List<String> shortestPath = dijkstraShortestPath.getPath(departure, destination).getVertexList();
-//
-//        return (int) sections.stream()
-//                .filter(section -> section.hasStation(departure, destination))
-//                .mapToInt(Section::getDistance)
-//                .sum();
-//
-//    }
 
 }
