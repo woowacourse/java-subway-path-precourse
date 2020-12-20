@@ -1,6 +1,6 @@
 package subway.screen;
 
-import subway.menu.Menu;
+import subway.Menu.Menu;
 import subway.view.InputView;
 import subway.view.OutputView;
 
@@ -24,7 +24,7 @@ public class MainScreen implements ScreenModel {
 
     @Override
     public ScreenModel getNextScreen(String input) {
-        if (input.equals( Menu.Main.ROUTE_INQUIRY.getCode())) {
+        if (input.equals(Menu.Main.ROUTE_INQUIRY.getCode())) {
             return new SelectCriteriaScreen(scanner);
         }
         return null;

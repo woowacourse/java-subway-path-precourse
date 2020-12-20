@@ -1,11 +1,4 @@
-package subway.menu;
-
-import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
-import org.jgrapht.graph.DefaultWeightedEdge;
-import org.jgrapht.graph.WeightedMultigraph;
-import subway.domain.SectionRepository;
-
-import java.util.List;
+package subway.Menu;
 
 public class Menu {
     public enum Main {

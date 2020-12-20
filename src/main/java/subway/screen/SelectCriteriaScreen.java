@@ -1,6 +1,6 @@
 package subway.screen;
 
-import subway.menu.Menu;
+import subway.Menu.Menu;
 import subway.view.InputView;
 import subway.view.OutputView;
 
@@ -8,7 +8,6 @@ import java.util.Scanner;
 
 public class SelectCriteriaScreen implements ScreenModel {
 
-    private static final String DONE = "-1";
     private final Scanner scanner;
 
     public SelectCriteriaScreen(Scanner scanner) {

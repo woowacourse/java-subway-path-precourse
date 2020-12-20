@@ -15,7 +15,7 @@ public class Application {
         initialize();
         ScreenManager.addNextMenuScreen(new MainScreen(scanner));
 
-        while(!ScreenManager.isEmpty()) {
+        while (!ScreenManager.isEmpty()) {
             ScreenModel nextScreen = ScreenManager.pop();
             ScreenManager.show(nextScreen);
         }
