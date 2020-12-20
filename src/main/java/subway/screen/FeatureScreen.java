@@ -31,7 +31,11 @@ public class FeatureScreen implements ScreenModel {
             System.out.println("[임시] 최단경로 by 거리 수행합니다.");
         }
 
-        return DONE;
+        return GO_MAIN;
     }
 
+    @Override
+    public ScreenModel getNextScreen(String input) {
+        return new MainScreen(scanner);
+    }
 }

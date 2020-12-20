@@ -15,7 +15,7 @@ public class ScreenManager {
 
     public static void show(ScreenModel screen) {
         String result = screen.showScreen();
-        if (result == ScreenModel.DONE) {
+        if (result == ScreenModel.GO_BACK) {
             return;
         }
         // todo 유효한 입력인지 검증한다.

@@ -21,7 +21,7 @@ public class SelectCriteriaScreen implements ScreenModel {
         OutputView.printCriteriaMenu();
         String input = inputView.enterFeature();
         if (input.equals(Menu.Main.QUIT)) {
-            return DONE;
+            return GO_BACK;
         }
         return input;
     }
