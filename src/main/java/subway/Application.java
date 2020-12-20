@@ -37,6 +37,14 @@ public class Application {
         SectionRepository.addSection("3호선", "양재역", 2);
         SectionRepository.addSection("신분당선", "양재역", 1);
 
+        SectionRepository.addSectinonDistanceAndCost("교대역", "강남역", 2, 3);
+        SectionRepository.addSectinonDistanceAndCost("강남역", "역삼역", 2, 3);
+        SectionRepository.addSectinonDistanceAndCost("교대역", "남부터미널역", 3, 2);
+        SectionRepository.addSectinonDistanceAndCost("남부터미널역", "양재역", 6, 5);
+        SectionRepository.addSectinonDistanceAndCost("양재역", "매봉역", 1, 1);
+        SectionRepository.addSectinonDistanceAndCost("강남역", "양재역", 2, 8);
+        SectionRepository.addSectinonDistanceAndCost("양재역", "양재시민의숲역", 10, 3);
+
 //        List<Section> sections = Arrays.asList(new Section("2호선", "강남역", 1),
 //                new Section("3호선", "남부터미널역", 1),
 //                new Section("3호선", "양재역", 2),

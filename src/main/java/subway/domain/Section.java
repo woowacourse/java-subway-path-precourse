@@ -1,47 +1,21 @@
 package subway.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Section {
 
-    private Line line;
-
-    private Station departure;
-    private Station arrival;
+    private Set<String> stations = new HashSet<>();
     private int distance;
     private int costTime;
 
-    public Section(String lineName, String departureName, String arrivalName, int distance, int costTime) {
-        Line line = LineRepository.findLine(lineName);
-        Station departure = StationRepository.findStation(departureName);
-        Station arrival = StationRepository.findStation(arrivalName);
-
-        this.line = line;
-        this.departure = departure;
-        this.arrival = arrival;
+    public Section(String station1, String station2, int distance, int costTime) {
+        stations.add(station1);
+        stations.add(station2);
         this.distance = distance;
         this.costTime = costTime;
+
     }
 
-    public boolean hasStation(String station1, String station2) {
-        if ((station1.equals(arrival.getName()) || station2.equals(arrival.getName()))
-                && (station1.equals(departure.getName()) || station2.equals(departure.getName()))) {
-            return true;
-        }
-        return false;
-    }
 
-    public int getDistance() {
-        return distance;
-    }
-
-    public Station getDeparture() {
-        return departure;
-    }
-
-    public Station getArrival() {
-        return arrival;
-    }
-
-    public int getCostTime() {
-        return costTime;
-    }
 }
