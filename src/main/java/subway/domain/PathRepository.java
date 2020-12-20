@@ -26,6 +26,10 @@ public class PathRepository {
         addEdgeWeightToDistanceGraph(startStation, endStation, km);
         addEdgeWeightToTimeGraph(startStation, endStation, minute);
 
+        // TODO: 치명적 실수-1 한 방향만 등록했다.
+        addEdgeWeightToDistanceGraph(endStation, startStation, km);
+        addEdgeWeightToTimeGraph(endStation, startStation, minute);
+
         paths.put(forwardEdge, weight);
         paths.put(reverseEdge, weight);
     }
@@ -72,6 +76,7 @@ public class PathRepository {
 
     public static int getDistanceWeight(Station startStation, Station endStation) {
         Weight weight = getWeightByStations(startStation, endStation);
+        System.out.println(startStation.getName() + " " + endStation.getName() + " " + weight.getKm());
         return weight.getKm();
     }
 
@@ -86,9 +91,10 @@ public class PathRepository {
     }
 
     public static Edge selectByName(String startStationName, String endStationName) {
+        // TODO: 치명적 실수-3 &&를 ||로 썼다.
         for (Edge edge : paths.keySet()) {
             if (Objects.equals(edge.getStartStationName(), startStationName)
-                    || Objects.equals(edge.getEndStationName(), endStationName)) {
+                    && Objects.equals(edge.getEndStationName(), endStationName)) {
                 return edge;
             }
         }

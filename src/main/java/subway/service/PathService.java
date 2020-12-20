@@ -16,7 +16,8 @@ public class PathService {
     private static final String NON_EXISTENT_STATION__ERROR = "역이 존재하지 않습니다.";
     private static final String NON_EXISTENT_PATH_ERROR = "경로가 존재하지 않습니다.";
     private static final int ZERO = 0;
-    private static final int BEFORE_STATION_MINUS_NUMBER = 0;
+    // TODO: 치명적 실수-2 ...
+    private static final int BEFORE_STATION_MINUS_NUMBER = 1;
     private static final int TOTAL_DISTANCE_INDEX = 0;
     private static final int TOTAL_TIME_INDEX = 1;
 
