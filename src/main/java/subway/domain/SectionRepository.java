@@ -4,6 +4,7 @@ import org.jgrapht.GraphPath;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
+import subway.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,8 +36,10 @@ public class SectionRepository {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graphByDistance);
         GraphPath graphPath = dijkstraShortestPath.getPath(departure, destination);
 
-        double shortestPathDistance = graphPath.getWeight();
-        int costTime = calculateCostTime(graphPath.getVertexList());
+        List<String> shortestPath = graphPath.getVertexList();
+        int shortestPathDistance = (int)graphPath.getWeight();
+        int costTime = calculateCostTime(shortestPath);
+        OutputView.printRouteResult(shortestPath, shortestPathDistance, costTime);
     }
 
     private static int calculateCostTime(List<String> shortestPath) {

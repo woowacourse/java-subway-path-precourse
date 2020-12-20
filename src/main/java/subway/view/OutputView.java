@@ -2,6 +2,8 @@ package subway.view;
 
 import subway.Menu.Menu;
 
+import java.util.List;
+
 public class OutputView {
 
     private static final String newLine = "\n";
@@ -26,4 +28,13 @@ public class OutputView {
 
     }
 
+    public static void printRouteResult(List<String> shortestPath, int shortestPathDistance, int costTime) {
+        System.out.println("## 조회 결과");
+        System.out.println("[INFO] ---");
+        System.out.println(String.format("총 거리: %dkm", shortestPathDistance));
+        System.out.println(String.format("총 소요시간: %d분", costTime));
+        System.out.println("[INFO] ---");
+        shortestPath.stream()
+                .forEach(station -> System.out.println("[INFO] " + station));
+    }
 }
