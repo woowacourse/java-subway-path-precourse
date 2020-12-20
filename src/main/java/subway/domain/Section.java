@@ -14,8 +14,17 @@ public class Section {
         stations.add(station2);
         this.distance = distance;
         this.costTime = costTime;
-
     }
 
+    public Set<String> getStations() {
+        return stations;
+    }
 
+    public int getDistance() {
+        return distance;
+    }
+
+    public int getCostTime() {
+        return costTime;
+    }
 }
