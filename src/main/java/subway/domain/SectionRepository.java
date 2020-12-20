@@ -6,7 +6,9 @@ import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class SectionRepository {
 
@@ -37,15 +39,21 @@ public class SectionRepository {
 
         List<String> path = graphPath.getVertexList();
         double shortestPathDistance = graphPath.getWeight();
-        int costTime = calculateCostTime(path);
+        int costTime = (int) sections.stream().filter(section -> calculateCostTime(path, section)).mapToInt(Section::getCostTime).sum();
+
+        System.out.println(shortestPathDistance + " " + costTime);
     }
 
-    private static int calculateCostTime(List<String> path) {
+    private static boolean calculateCostTime(List<String> path, Section section) {
+        Set<String> stations = section.getStations();
         for(int i=0; i<path.size()-1; i++) {
+            if(stations.contains(path.get(i)) && stations.contains(path.get(i+1))) {
+                return true;
+            }
             // if sections중 하나가 path.get(i) path.get(i+1)둘다 가지고 있음
             // 그 section의 거리만큼 +
         }
-        return 1;
+        return false;
     }
 
     public static void findShortestPathByCost(String departure, String destination) {

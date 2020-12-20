@@ -23,6 +23,7 @@ public class FeatureScreen implements ScreenModel {
         if (input.equals(Menu.ROUTE_CRITERIA.SHORTEST_PATH.getCode())) {
             // 최단경로 by 거리 수행
             System.out.println("[임시] 최단경로 by 거리 수행합니다.");
+            SectionRepository.findShortestPathByDistance("교대역", "양재역");
         }
 
         if (input.equals(Menu.ROUTE_CRITERIA.SHORTEST_TIME.getCode())) {
