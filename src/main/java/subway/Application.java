@@ -32,12 +32,17 @@ public class Application {
                 , new Line("신분당선").addTerminus("강남역", "양재시민의숲역"));
         lines.stream().forEach(line -> LineRepository.addLine(line));
 
-        List<Section> sections = Arrays.asList(new Section("2호선", "교대역", "강남역", 2, 3)
-                , new Section("2호선", "강남역", "역삼역", 2, 3)
-                , new Section("3호선", "교대역", "남부터미널역", 3, 2)
-                , new Section("3호선", "남부터미널역", "양재역", 6, 5)
-                , new Section("3호선", "양재역", "매봉역", 1, 1));
-        sections.stream().forEach(section -> SectionRepository.addSection(section));
+        SectionRepository.addSection("2호선", "강남역", 1);
+        SectionRepository.addSection("3호선", "남부터미널역", 1);
+        SectionRepository.addSection("3호선", "양재역", 2);
+        SectionRepository.addSection("신분당선", "양재역", 1);
+
+//        List<Section> sections = Arrays.asList(new Section("2호선", "강남역", 1),
+//                new Section("3호선", "남부터미널역", 1),
+//                new Section("3호선", "양재역", 2),
+//                new Section("신분당선", "양재역", 1)
+//
+//        sections.stream().forEach(section -> SectionRepository.addSection(section));
 
     }
 }
