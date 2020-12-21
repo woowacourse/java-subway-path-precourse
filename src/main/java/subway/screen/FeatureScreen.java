@@ -1,10 +1,12 @@
 package subway.screen;
 
-import subway.domain.SectionRepository;
-import subway.Menu.Menu;
+import subway.PathResult;
 import subway.view.InputView;
+import subway.view.OutputView;
 
 import java.util.Scanner;
+
+import static subway.domain.SectionRepository.*;
 
 public class FeatureScreen implements ScreenModel {
 
@@ -21,14 +23,10 @@ public class FeatureScreen implements ScreenModel {
         InputView inputView = new InputView(scanner);
         String departure = inputView.enterDeparture();
         String destination = inputView.enterDestination();
+        PathResult pathResult = findshortestPath(input, departure, destination);
+        OutputView.printRouteResult(pathResult);
 
-        if (input.equals(Menu.ROUTE_CRITERIA.SHORTEST_PATH.getCode())) {
-            SectionRepository.findShortestPathByDistance(departure, destination);
-        }
 
-        if (input.equals(Menu.ROUTE_CRITERIA.SHORTEST_TIME.getCode())) {
-            SectionRepository.findShortestPathByRequiredTime(departure, destination);
-        }
 
         return GO_MAIN;
     }

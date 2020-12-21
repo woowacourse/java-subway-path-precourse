@@ -23,7 +23,7 @@ public class Menu {
     }
 
     public enum ROUTE_CRITERIA {
-        SHORTEST_PATH("1", "최단 거리"),
+        SHORTEST_DISTANCE("1", "최단 거리"),
         SHORTEST_TIME("2", "최소 시간"),
         BACK("B", "돌아가기");
 
