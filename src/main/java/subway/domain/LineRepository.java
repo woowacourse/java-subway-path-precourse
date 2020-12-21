@@ -23,4 +23,10 @@ public class LineRepository {
     public static void deleteAll() {
         lines.clear();
     }
+
+    public static Line findLine(String name) {
+        return lines.stream()
+                .filter(line -> line.getName().equals(name))
+                .findFirst().orElseThrow(() -> new IllegalArgumentException("[ERROR] 존재하지 않는 노선"));
+    }
 }
