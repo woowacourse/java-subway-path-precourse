@@ -33,14 +33,24 @@ public class SectionRepository {
     }
 
     public static void findShortestPathByDistance(String departure, String destination) {
+        validateDepartureAndDestination(departure, destination);
+
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graphByDistance);
         GraphPath graphPath = dijkstraShortestPath.getPath(departure, destination);
-
         List<String> shortestPath = graphPath.getVertexList();
         int shortestPathDistance = (int)graphPath.getWeight();
         int costTime = calculateCostTime(shortestPath);
         OutputView.printRouteResult(shortestPath, shortestPathDistance, costTime);
     }
+
+    private static void validateDepartureAndDestination(String departure, String destination) {
+        StationRepository.findStation(departure);
+        StationRepository.deleteStation(destination);
+        if (departure.equals(destination)) {
+            throw  new IllegalArgumentException("[ERROR] 출발역과 도착역이 같습니다.");
+        }
+    }
+
 
     private static int calculateCostTime(List<String> shortestPath) {
         return sections.stream()
@@ -49,7 +59,7 @@ public class SectionRepository {
                 .sum();
     }
 
-    public static void findShortestPathByCost(String departure, String destination) {
+    public static void findShortestPathByCostTime(String departure, String destination) {
 
     }
 
@@ -67,5 +77,4 @@ public class SectionRepository {
             graphByCost.addVertex(station2);
         }
     }
-
 }

@@ -19,16 +19,15 @@ public class FeatureScreen implements ScreenModel {
     @Override
     public String showScreen() {
         InputView inputView = new InputView(scanner);
+        String departure = inputView.enterDeparture();
+        String destination = inputView.enterDestination();
 
         if (input.equals(Menu.ROUTE_CRITERIA.SHORTEST_PATH.getCode())) {
-            // 최단경로 by 거리 수행
-            System.out.println("[임시] 최단경로 by 거리 수행합니다.");
-            SectionRepository.findShortestPathByDistance("교대역", "양재역");
+            SectionRepository.findShortestPathByDistance(departure, destination);
         }
 
         if (input.equals(Menu.ROUTE_CRITERIA.SHORTEST_TIME.getCode())) {
-            // 최단경로 by 시간 수행
-            System.out.println("[임시] 최단경로 by 거리 수행합니다.");
+            SectionRepository.findShortestPathByCostTime(departure, destination);
         }
 
         return GO_MAIN;
