@@ -21,15 +21,15 @@ public class SectionRepository {
         line.addSection(sequence, station);
     }
 
-    public static void addSectinonDistanceAndCost(String station1, String station2, int distance, int cost) {
+    public static void addSectinonDistanceAndTime(String station1, String station2, int distance, int requiredTime) {
         addVertex(station1, station2);
-        setEdgeWeight(station1, station2, distance, cost);
-        sections.add(new Section(station1, station2, distance, cost));
+        setEdgeWeight(station1, station2, distance, requiredTime);
+        sections.add(new Section(station1, station2, distance, requiredTime));
     }
 
-    private static void setEdgeWeight(String station1, String station2, int distance, int cost) {
+    private static void setEdgeWeight(String station1, String station2, int distance, int requiredTime) {
         graphByDistance.setEdgeWeight(graphByDistance.addEdge(station1, station2), distance);
-        graphByCost.setEdgeWeight(graphByCost.addEdge(station1, station2), cost);
+        graphByCost.setEdgeWeight(graphByCost.addEdge(station1, station2), requiredTime);
     }
 
     public static void findShortestPathByDistance(String departure, String destination) {
@@ -39,8 +39,8 @@ public class SectionRepository {
         GraphPath graphPath = dijkstraShortestPath.getPath(departure, destination);
         List<String> shortestPath = graphPath.getVertexList();
         int shortestPathDistance = (int)graphPath.getWeight();
-        int costTime = calculateCostTime(shortestPath);
-        OutputView.printRouteResult(shortestPath, shortestPathDistance, costTime);
+        int requiredTime = calculateRequiredTime(shortestPath);
+        OutputView.printRouteResult(shortestPath, shortestPathDistance, requiredTime);
     }
 
     private static void validateDepartureAndDestination(String departure, String destination) {
@@ -52,14 +52,14 @@ public class SectionRepository {
     }
 
 
-    private static int calculateCostTime(List<String> shortestPath) {
+    private static int calculateRequiredTime(List<String> shortestPath) {
         return sections.stream()
                 .filter(section -> section.isInShortestPath(shortestPath))
-                .mapToInt(Section::getCostTime)
+                .mapToInt(Section::getRequiredTime)
                 .sum();
     }
 
-    public static void findShortestPathByCostTime(String departure, String destination) {
+    public static void findShortestPathByRequiredTime(String departure, String destination) {
 
     }
 

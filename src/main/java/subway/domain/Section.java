@@ -8,13 +8,13 @@ public class Section {
 
     private Set<String> stations = new HashSet<>();
     private int distance;
-    private int costTime;
+    private int requiredTime;
 
-    public Section(String station1, String station2, int distance, int costTime) {
+    public Section(String station1, String station2, int distance, int requiredTime) {
         stations.add(station1);
         stations.add(station2);
         this.distance = distance;
-        this.costTime = costTime;
+        this.requiredTime = requiredTime;
     }
 
     public boolean isInShortestPath(List<String> shortestPath) {
@@ -34,7 +34,7 @@ public class Section {
         return distance;
     }
 
-    public int getCostTime() {
-        return costTime;
+    public int getRequiredTime() {
+        return requiredTime;
     }
 }

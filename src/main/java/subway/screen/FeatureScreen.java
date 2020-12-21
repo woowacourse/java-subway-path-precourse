@@ -27,7 +27,7 @@ public class FeatureScreen implements ScreenModel {
         }
 
         if (input.equals(Menu.ROUTE_CRITERIA.SHORTEST_TIME.getCode())) {
-            SectionRepository.findShortestPathByCostTime(departure, destination);
+            SectionRepository.findShortestPathByRequiredTime(departure, destination);
         }
 
         return GO_MAIN;
