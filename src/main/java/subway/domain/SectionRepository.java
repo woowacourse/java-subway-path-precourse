@@ -60,7 +60,21 @@ public class SectionRepository {
     }
 
     public static void findShortestPathByRequiredTime(String departure, String destination) {
+        validateDepartureAndDestination(departure, destination);
 
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graphByCost);
+        GraphPath graphPath = dijkstraShortestPath.getPath(departure, destination);
+        List<String> shortestPath = graphPath.getVertexList();
+        int shortestPathRequiredTime = (int)graphPath.getWeight();
+        int distance = calculateDistance(shortestPath);
+        OutputView.printRouteResult(shortestPath, distance, shortestPathRequiredTime);
+    }
+
+    private static int calculateDistance(List<String> shortestPath) {
+        return sections.stream()
+                .filter(section -> section.isInShortestPath(shortestPath))
+                .mapToInt(Section::getDistance)
+                .sum();
     }
 
     private static void addVertex(String station1, String station2) {
