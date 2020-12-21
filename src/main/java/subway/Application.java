@@ -16,8 +16,13 @@ public class Application {
         ScreenManager.addNextMenuScreen(new MainScreen(scanner));
 
         while (!ScreenManager.isEmpty()) {
-            ScreenModel nextScreen = ScreenManager.pop();
-            ScreenManager.show(nextScreen);
+            try {
+                ScreenModel nextScreen = ScreenManager.pop();
+                ScreenManager.show(nextScreen);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+                ScreenManager.addNextMenuScreen(new MainScreen(scanner));
+            }
         }
     }
 

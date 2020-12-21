@@ -4,6 +4,7 @@ import subway.Menu.Menu;
 import subway.view.InputView;
 import subway.view.OutputView;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class MainScreen implements ScreenModel {
@@ -24,9 +25,16 @@ public class MainScreen implements ScreenModel {
 
     @Override
     public ScreenModel getNextScreen(String input) {
-        if (input.equals(Menu.Main.ROUTE_INQUIRY.getCode())) {
+        if (anyMatchToMenu(input)){
             return new SelectCriteriaScreen(scanner);
         }
-        return null;
+        throw new IllegalArgumentException("[ERROR] 잘못된 입력입니다.\n");
     }
+
+    @Override
+    public boolean anyMatchToMenu(String input) {
+        return Arrays.stream(Menu.Main.values())
+                .anyMatch(menu -> menu.getCode().equals(input));
+    }
+
 }

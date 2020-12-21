@@ -18,8 +18,6 @@ public class ScreenManager {
         if (result == ScreenModel.GO_BACK) {
             return;
         }
-        // todo 유효한 입력인지 검증한다.
-
         addNextMenuScreen(screen.getNextScreen(result));
 
     }
