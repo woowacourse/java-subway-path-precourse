@@ -6,7 +6,7 @@ import subway.views.routeviews.RouteOutputView;
 
 import java.util.Scanner;
 
-public class RouteController {
+public class RouteController implements Controller{
     private static final String GO_BACK_CODE = "B";
     private static final RouteController ROUTE_CONTROLLER = new RouteController();
 
@@ -17,7 +17,7 @@ public class RouteController {
         return ROUTE_CONTROLLER;
     }
 
-    public String mappingRouteMenu(Scanner scanner) {
+    public String mappingMenu(Scanner scanner) {
         try {
             RouteOutputView.printRouteMenu();
             String selectedOption = RouteInputView.inputRouteOption(scanner);
@@ -25,7 +25,7 @@ public class RouteController {
             return selectedOption;
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            return mappingRouteMenu(scanner);
+            return mappingMenu(scanner);
         }
     }
 

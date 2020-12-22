@@ -6,7 +6,7 @@ import subway.views.mainviews.MainOutputView;
 
 import java.util.Scanner;
 
-public class MainController {
+public class MainController implements Controller{
     private static final String END_CODE = "Q";
     private static final MainController MAIN_CONTROLLER = new MainController();
 
@@ -20,11 +20,11 @@ public class MainController {
     public void run(Scanner scanner) {
         String selectedOption;
         do {
-            selectedOption = mappingMainMenu(scanner);
+            selectedOption = mappingMenu(scanner);
         } while (!selectedOption.equals(END_CODE));
     }
 
-    private String mappingMainMenu(Scanner scanner) {
+    public String mappingMenu(Scanner scanner) {
         try {
             MainOutputView.printMainMenu();
             String selectedOption = MainInputView.inputMainOption(scanner);
@@ -32,7 +32,7 @@ public class MainController {
             return selectedOption;
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            return mappingMainMenu(scanner);
+            return mappingMenu(scanner);
         }
     }
 

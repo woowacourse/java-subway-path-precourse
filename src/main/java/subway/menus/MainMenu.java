@@ -28,7 +28,7 @@ public enum MainMenu {
             .orElseThrow(() -> new IllegalArgumentException(OutputConstant.NOT_EXIST_OPTION_ERROR))
             .routeController
             .get()
-            .mappingRouteMenu(scanner);
+            .mappingMenu(scanner);
     }
 
     @Override
