@@ -8,13 +8,13 @@ import java.util.Scanner;
 
 public class RouteController {
     private static final String GO_BACK_CODE = "B";
-    private static final RouteController routeController = new RouteController();
+    private static final RouteController ROUTE_CONTROLLER = new RouteController();
 
     private RouteController() {
     }
 
     public static RouteController getInstance() {
-        return routeController;
+        return ROUTE_CONTROLLER;
     }
 
     public String mappingRouteMenu(Scanner scanner) {

@@ -8,13 +8,13 @@ import java.util.Scanner;
 
 public class MainController {
     private static final String END_CODE = "Q";
-    private static final MainController mainController = new MainController();
+    private static final MainController MAIN_CONTROLLER = new MainController();
 
     private MainController() {
     }
 
     public static MainController getInstance() {
-        return mainController;
+        return MAIN_CONTROLLER;
     }
 
     public void run(Scanner scanner) {
