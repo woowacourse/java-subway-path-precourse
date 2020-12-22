@@ -1,7 +1,9 @@
 package subway.service;
 
 import subway.domain.Station;
+import subway.domain.TimeMap;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class TimeRouteService implements RouteService {
@@ -20,6 +22,11 @@ public class TimeRouteService implements RouteService {
             Station startStation = inputStartStations(scanner);
             Station endStation = inputEndStation(scanner);
             isSameName(startStation, endStation);
+            TimeMap timeMap = new TimeMap();
+            timeMap.addStationVertex();
+            timeMap.addWeight();
+            List<Station> stationList = timeMap.getShortestRoute(timeMap.getGraph(), startStation, endStation);
+            calculateTotalDistanceAndTime(stationList);
         } catch (IllegalArgumentException e) {
             goToMenu(e, scanner);
         }

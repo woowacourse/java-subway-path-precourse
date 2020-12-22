@@ -25,7 +25,7 @@ public class DistanceRouteService implements RouteService {
             DistanceMap distanceMap = new DistanceMap();
             distanceMap.addStationVertex();
             distanceMap.addWeight();
-            List<Station> stationList = distanceMap.getShortestDistanceRoute(distanceMap.getGraph(), startStation, endStation);
+            List<Station> stationList = distanceMap.getShortestRoute(distanceMap.getGraph(), startStation, endStation);
             calculateTotalDistanceAndTime(stationList);
         } catch (IllegalArgumentException e) {
             goToMenu(e, scanner);
