@@ -19,6 +19,9 @@ public class RouteOutputView implements OutputView {
     private static final String DISTANCE_UNIT = "km";
     private static final String TIME_UNIT = "분";
 
+    private RouteOutputView() {
+    }
+
     public static void printRouteMenu() {
         System.out.println(LINE_WRAP + ROUTE_SCREEN_MESSAGE);
         Arrays.stream(RouteMenu.values())
@@ -43,7 +46,7 @@ public class RouteOutputView implements OutputView {
         System.out.println();
     }
 
-    static void printRoute(List<Station> stationList) {
+    private static void printRoute(List<Station> stationList) {
         stationList.stream()
             .map(Station::getName)
             .forEach(stationName -> System.out.println(INFORMATION + stationName));

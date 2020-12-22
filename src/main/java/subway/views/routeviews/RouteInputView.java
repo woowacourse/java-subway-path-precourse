@@ -5,6 +5,9 @@ import subway.views.OutputView;
 import java.util.Scanner;
 
 public class RouteInputView {
+    private RouteInputView() {
+    }
+
     public static String inputRouteOption(Scanner scanner) {
         OutputView.printSelectOptionMessage();
         return scanner.nextLine();
