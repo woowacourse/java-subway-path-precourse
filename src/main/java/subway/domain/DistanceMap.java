@@ -1,20 +1,23 @@
 package subway.domain;
 
-import org.jgrapht.graph.DefaultWeightedEdge;
+import org.jgrapht.GraphPath;
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.WeightedMultigraph;
+import subway.repository.SectionRepository;
 
 import java.util.List;
+import java.util.Map;
 
-public class DistanceMap {
-    WeightedMultigraph<Station, DefaultWeightedEdge> distanceMap
-        = new WeightedMultigraph(DefaultWeightedEdge.class);
-
-    public void addStationVertex(List<Station> stations) {
-        stations.stream()
-            .forEach(station -> distanceMap.addVertex(station));
+public class DistanceMap implements SubwayGraph{
+    public void addWeight() {
+        Map<Section, RequiredResources> sections = SectionRepository.sections();
+        sections.forEach((key, value)
+            -> subwayGraph.setEdgeWeight(subwayGraph.addEdge(key.getFirstStation(), key.getSecondStation()), value.getDistance().getDistance()));
     }
 
-    public void addWeight(Section section, int distance) {
-        distanceMap.setEdgeWeight(,distance);
+    public List getShortestDistanceRoute(WeightedMultigraph graph, Station first, Station second) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
+        isConnectedMap(dijkstraShortestPath.getPath(first, second));
+        return dijkstraShortestPath.getPath(first, second).getVertexList();
     }
 }

@@ -8,4 +8,12 @@ public class RequiredResources {
         this.distance = new Distance(distance);
         this.time = new Time(time);
     }
+
+    public Distance getDistance() {
+        return distance;
+    }
+
+    public Time getTime() {
+        return time;
+    }
 }

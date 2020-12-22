@@ -1,9 +1,7 @@
 package subway.service;
 
 import subway.controller.RouteController;
-import subway.domain.Line;
 import subway.domain.Station;
-import subway.repository.LineRepository;
 import subway.repository.StationRepository;
 import subway.views.routeviews.RouteInputView;
 
