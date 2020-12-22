@@ -17,10 +17,6 @@ public class Line {
         stations.addLineStation(station);
     }
 
-    public Boolean isStationContained(Station station) {
-        return stations.isContain(station);
-    }
-
     @Override
     public boolean equals(Object object) {
         if (getClass() != object.getClass()) {

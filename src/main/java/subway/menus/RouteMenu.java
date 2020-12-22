@@ -12,9 +12,7 @@ import java.util.function.Supplier;
 public enum RouteMenu {
     SHORTEST_DISTANCE("1", "최단 거리", DistanceRouteService::getInstance),
     SHORTEST_TIME("2", "최소 시간", TimeRouteService::getInstance),
-    GO_BACK_TO_MAIN_MENU("B", "돌아가기", () -> {
-        return null;
-    });
+    GO_BACK_TO_MAIN_MENU("B", "돌아가기", () -> null);
 
     private final String option;
     private final String description;

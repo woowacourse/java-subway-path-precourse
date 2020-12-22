@@ -1,6 +1,5 @@
 package subway.domain;
 
-import org.jgrapht.GraphPath;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.WeightedMultigraph;
 import subway.repository.SectionRepository;

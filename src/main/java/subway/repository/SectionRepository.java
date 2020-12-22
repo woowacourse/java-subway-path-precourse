@@ -3,7 +3,9 @@ package subway.repository;
 import subway.domain.RequiredResources;
 import subway.domain.Section;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SectionRepository {
     private static Map<Section, RequiredResources> sections = new HashMap<>();

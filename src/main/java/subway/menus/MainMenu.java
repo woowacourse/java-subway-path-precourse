@@ -9,9 +9,7 @@ import java.util.function.Supplier;
 
 public enum MainMenu {
     ROUTE_LOOKUP("1", "경로 조회", RouteController::getInstance),
-    EXIT_PROGRAM("Q", "종료", () -> {
-        return null;
-    });
+    EXIT_PROGRAM("Q", "종료", () -> null);
 
     private final String option;
     private final String description;
