@@ -8,7 +8,7 @@ import subway.repository.StationRepository;
 import java.util.List;
 
 public interface SubwayGraph {
-    String NOT_CONNECTED_STATION_MESSAGE = "\n[ERROR] 두 역은 연결되지 않았습니다.";
+    String NOT_CONNECTED_STATION_MESSAGE = "\n[ERROR] 두 역은 연결되지 않았습니다.\n";
 
     WeightedMultigraph<Station, DefaultWeightedEdge> subwayGraph
         = new WeightedMultigraph(DefaultWeightedEdge.class);

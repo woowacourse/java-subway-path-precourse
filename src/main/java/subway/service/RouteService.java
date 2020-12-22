@@ -12,8 +12,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public interface RouteService {
-    String NOT_EXIST_STATION_ERROR = "\n[ERROR] 존재하지 않는 역입니다.";
-    String SAME_STATION_ERROR = "\n[ERROR] 같은 역은 입력할 수 없습니다.";
+    String NOT_EXIST_STATION_ERROR = "\n[ERROR] 존재하지 않는 역입니다.\n";
+    String SAME_STATION_ERROR = "\n[ERROR] 같은 역은 입력할 수 없습니다.\n";
 
     void routingService(Scanner scanner);
 
