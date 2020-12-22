@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public interface RouteService {
-    String NOT_EXIST_STATION_ERROR = "\n[ERROR} 존재하지 않는 역입니다.";
+    String NOT_EXIST_STATION_ERROR = "\n[ERROR] 존재하지 않는 역입니다.";
     String SAME_STATION_ERROR = "\n[ERROR] 같은 역은 입력할 수 없습니다.";
 
     void routingService(Scanner scanner);
@@ -32,7 +32,7 @@ public interface RouteService {
     default void goToMenu(IllegalArgumentException e, Scanner scanner) {
         System.out.println(e.getMessage());
         RouteController routeController = RouteController.getInstance();
-        routeController.mappingRouteMenu(scanner);
+        routeController.mappingMenu(scanner);
     }
 
     static void isExistStation(Station station) {
