@@ -19,8 +19,7 @@ public class TimeRouteService implements RouteService {
         try {
             Station startStation = inputStartStations(scanner);
             Station endStation = inputEndStation(scanner);
-            RouteService.isSameName(startStation, endStation);
-            RouteService.isAvailableRoute(startStation, endStation);
+            isSameName(startStation, endStation);
         } catch (IllegalArgumentException e) {
             goToMenu(e, scanner);
         }

@@ -40,15 +40,9 @@ public interface RouteService {
         }
     }
 
-    static void isSameName(Station startStation, Station endStation) {
+    default void isSameName(Station startStation, Station endStation) {
         if (startStation.getName().equals(endStation.getName())) {
             throw new IllegalArgumentException(SAME_STATION_ERROR);
-        }
-    }
-
-    static void isAvailableRoute(Station startStation, Station endStation) {
-        if (!LineRepository.isConnected(startStation, endStation)) {
-            throw new IllegalArgumentException(NOT_CONNECTED_STATIONS);
         }
     }
 }
