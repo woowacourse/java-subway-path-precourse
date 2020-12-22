@@ -24,8 +24,7 @@ public class InitialSetting {
     private static final String[] LINE_SINBUNDANG_STATIONS = {"강남역", "양재역", "양재시민의숲역"};
 
     public static void settingInitialSubways() {
-        StationRepository.deleteAll();
-        LineRepository.deleteAll();
+        deleteAllRepository();
 
         settingInitialStations();
 
@@ -34,6 +33,12 @@ public class InitialSetting {
         settingInitialLines(LINE_SINBUNDANG, LINE_SINBUNDANG_STATIONS);
 
         settingInitialSection();
+    }
+
+    private static void deleteAllRepository() {
+        StationRepository.deleteAll();
+        LineRepository.deleteAll();
+        SectionRepository.deleteAll();
     }
 
     private static void settingInitialStations() {
