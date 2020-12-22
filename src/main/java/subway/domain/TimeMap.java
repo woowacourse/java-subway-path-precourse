@@ -11,7 +11,7 @@ public class TimeMap implements SubwayGraph{
     public void addWeight() {
         Map<Section, RequiredResources> sections = SectionRepository.sections();
         sections.forEach((key, value)
-            -> subwayGraph.setEdgeWeight(subwayGraph.addEdge(key.getFirstStation(), key.getSecondStation()), value.getTime().getTime()));
+            -> subwayGraph.setEdgeWeight(subwayGraph.addEdge(key.getFirstStation(), key.getSecondStation()), value.getTimeResource().getTime()));
     }
 
     public List<Station> getShortestRoute(WeightedMultigraph graph, Station first, Station second) {

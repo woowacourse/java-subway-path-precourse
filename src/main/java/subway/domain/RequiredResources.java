@@ -9,11 +9,11 @@ public class RequiredResources {
         this.time = new Time(time);
     }
 
-    public Distance getDistance() {
+    public Distance getDistanceResource() {
         return distance;
     }
 
-    public Time getTime() {
+    public Time getTimeResource() {
         return time;
     }
 }

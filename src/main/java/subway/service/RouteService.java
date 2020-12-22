@@ -57,7 +57,7 @@ public interface RouteService {
         int totalDistance = 0;
         for (int i = 0; i < shortestRouteStationList.size()-1 ; i++) {
             Section section = new Section(shortestRouteStationList.get(i), shortestRouteStationList.get(i + 1));
-            totalDistance += SectionRepository.sections().get(section).getDistance().getDistance();
+            totalDistance += SectionRepository.sections().get(section).getDistanceResource().getDistance();
         }
         return totalDistance;
     }
@@ -66,7 +66,7 @@ public interface RouteService {
         int totalTime = 0;
         for (int i = 0; i < shortestRouteStationList.size()-1 ; i++) {
             Section section = new Section(shortestRouteStationList.get(i), shortestRouteStationList.get(i + 1));
-            totalTime += SectionRepository.sections().get(section).getTime().getTime();
+            totalTime += SectionRepository.sections().get(section).getTimeResource().getTime();
         }
         return totalTime;
     }

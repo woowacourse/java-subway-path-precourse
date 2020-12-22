@@ -11,7 +11,7 @@ public class DistanceMap implements SubwayGraph{
     public void addWeight() {
         Map<Section, RequiredResources> sections = SectionRepository.sections();
         sections.forEach((key, value)
-            -> subwayGraph.setEdgeWeight(subwayGraph.addEdge(key.getFirstStation(), key.getSecondStation()), value.getDistance().getDistance()));
+            -> subwayGraph.setEdgeWeight(subwayGraph.addEdge(key.getFirstStation(), key.getSecondStation()), value.getDistanceResource().getDistance()));
     }
 
     public List<Station> getShortestRoute(WeightedMultigraph graph, Station first, Station second) {
