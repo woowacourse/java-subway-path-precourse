@@ -1,11 +1,15 @@
 package subway.domain;
 
+import subway.exception.TransitRouteException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 public class StationRepository {
+    private static final String UNABLE_TO_FIND = "해당 역이 존재하지 않습니다";
+
     private static final List<Station> stations = new ArrayList<>();
 
     public static List<Station> stations() {
@@ -22,5 +26,16 @@ public class StationRepository {
 
     public static void deleteAll() {
         stations.clear();
+    }
+
+    public static List<Station> getStations() {
+        return stations;
+    }
+
+    public static Station findStationByName(String name) {
+        return stations.stream()
+                .filter(station -> station.getName().equals(name))
+                .findAny()
+                .orElseThrow(() -> new TransitRouteException(UNABLE_TO_FIND));
     }
 }
