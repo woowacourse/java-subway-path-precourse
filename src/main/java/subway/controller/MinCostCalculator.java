@@ -51,7 +51,7 @@ public class MinCostCalculator {
     }
 
     public List<String> getShortestTimePath() {
-        return defaultSubwayGraph.getDijkstraDistanceShortestPath(departureStation, arrivalStation);
+        return defaultSubwayGraph.getDijkstraTimeShortestPath(departureStation, arrivalStation);
     }
 
     public Cost getPathCost(List<String> paths) {
