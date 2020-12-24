@@ -59,7 +59,6 @@ public class DefaultSections {
                 return section.getCost();
             }
         }
-        System.out.println("wtf?");
         throw new IllegalArgumentException();
     }
 }

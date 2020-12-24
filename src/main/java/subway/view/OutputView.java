@@ -19,6 +19,7 @@ public class OutputView {
     private static final String TOTAL_TIME = "총 소요 시간: ";
     private static final String MINUTE = "분";
     private static final String KM = "km";
+    private static final String ERROR_PREFIX = "[ERROR]: ";
 
 
     public static void printMainScreen() {
@@ -44,5 +45,9 @@ public class OutputView {
             System.out.println(INFO_PREFIX + station);
         }
         System.out.println();
+    }
+
+    public static void printUnconnectedError() {
+        System.out.println(ERROR_PREFIX + "연결되어 있지 않은 역입니다");
     }
 }

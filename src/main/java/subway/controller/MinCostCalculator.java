@@ -16,17 +16,27 @@ public class MinCostCalculator {
     private DefaultSubwayGraph defaultSubwayGraph = new DefaultSubwayGraph();
 
     public void runToGetMinDistance() {
-        getStationNames();
-        List<String> shortestDistancePath = getShortestDistancePath();
-        Cost cost = getPathCost(shortestDistancePath);
-        printResult(shortestDistancePath, cost);
+        try {
+            getStationNames();
+            List<String> shortestDistancePath = getShortestDistancePath();
+            Cost cost = getPathCost(shortestDistancePath);
+            printResult(shortestDistancePath, cost);
+        } catch (Exception e) {
+            OutputView.printUnconnectedError();
+            runToGetMinDistance();
+        }
     }
 
     public void runToGetMinTime() {
-        getStationNames();
-        List<String> shortestTimePath = getShortestTimePath();
-        Cost cost = getPathCost(shortestTimePath);
-        printResult(shortestTimePath, cost);
+        try {
+            getStationNames();
+            List<String> shortestTimePath = getShortestTimePath();
+            Cost cost = getPathCost(shortestTimePath);
+            printResult(shortestTimePath, cost);
+        } catch (Exception e) {
+            OutputView.printUnconnectedError();
+            runToGetMinTime();
+        }
     }
 
     private void printResult(List<String> shortestPath, Cost cost) {
