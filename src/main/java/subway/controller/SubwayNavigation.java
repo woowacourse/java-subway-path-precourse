@@ -6,8 +6,8 @@ import subway.view.OutputView;;
 public class SubwayNavigation {
 
     private static final String OPTION_ONE = "1";
-    private String userOption = "";
     private static final String QUIT_CODE = "Q";
+    private String userOption = "";
     private PathManager pathManger;
 
     public SubwayNavigation() {

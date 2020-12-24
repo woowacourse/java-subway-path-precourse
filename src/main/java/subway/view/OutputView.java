@@ -14,8 +14,11 @@ public class OutputView {
     private static final String SEARCH_RESULT = "## 조회 결과";
     private static final String INFO_PREFIX = "[INFO] ";
     private static final String DASHED_LINE = "---";
-    private static final String TOTAL_DISTANCE = "총 거리 ";
-    private static final String TOTAL_TIME = "총 소요 시간";
+    private static final String TOTAL_DISTANCE = "총 거리: ";
+    private static final String TOTAL_TIME = "총 소요 시간: ";
+    private static final String MINUTE = "분";
+    private static final String KM = "km";
+
 
     public static void printMainScreen() {
         System.out.println(MAIN_TITLE);
@@ -30,11 +33,11 @@ public class OutputView {
         System.out.println(PATH_OPTION_BACK);
     }
 
-    public static void printResult(List<String> stations) {
+    public static void printResult(List<String> stations, int minTime, int minDistance) {
         System.out.println(SEARCH_RESULT);
         System.out.println(INFO_PREFIX + DASHED_LINE);
-        System.out.println(INFO_PREFIX + TOTAL_DISTANCE);
-        System.out.println(INFO_PREFIX + TOTAL_TIME);
+        System.out.println(INFO_PREFIX + TOTAL_DISTANCE + minDistance + KM);
+        System.out.println(INFO_PREFIX + TOTAL_TIME + minTime + MINUTE);
         System.out.println(INFO_PREFIX + DASHED_LINE);
         for (String station : stations) {
             System.out.println(INFO_PREFIX + station);

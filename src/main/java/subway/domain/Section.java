@@ -30,4 +30,9 @@ public class Section {
     public Cost getCost() {
         return this.cost;
     }
+
+    public boolean isSameSection(String departureStation, String arrivalStation) {
+        return (this.departureStation.equals(departureStation) && this.arrivalStation
+            .equals(arrivalStation));
+    }
 }

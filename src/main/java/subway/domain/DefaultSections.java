@@ -52,4 +52,15 @@ public class DefaultSections {
     public static List<Section> getSections() {
         return sections;
     }
+
+    public static Cost getSectionCost(String departureStation, String arrivalStation) {
+        for (Section section : sections) {
+            if (section.isSameSection(departureStation, arrivalStation)) {
+                System.out.println(departureStation + " " + arrivalStation);
+                return section.getCost();
+            }
+        }
+        System.out.println("wtf?");
+        throw new IllegalArgumentException();
+    }
 }
