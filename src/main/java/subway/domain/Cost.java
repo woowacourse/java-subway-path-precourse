@@ -22,4 +22,12 @@ public class Cost {
     public String toString() {
         return this.timeCost + " " + this.distanceCost;
     }
+
+    public void addTimeCost(int timeCost) {
+        this.timeCost += timeCost;
+    }
+
+    public void addDistanceCost(int distanceCost) {
+        this.distanceCost += distanceCost;
+    }
 }

@@ -1,6 +1,7 @@
 package subway.view;
 
 import java.util.List;
+import subway.domain.Cost;
 
 public class OutputView {
 
@@ -33,11 +34,11 @@ public class OutputView {
         System.out.println(PATH_OPTION_BACK);
     }
 
-    public static void printResult(List<String> stations, int minTime, int minDistance) {
+    public static void printResult(List<String> stations, Cost cost) {
         System.out.println(SEARCH_RESULT);
         System.out.println(INFO_PREFIX + DASHED_LINE);
-        System.out.println(INFO_PREFIX + TOTAL_DISTANCE + minDistance + KM);
-        System.out.println(INFO_PREFIX + TOTAL_TIME + minTime + MINUTE);
+        System.out.println(INFO_PREFIX + TOTAL_DISTANCE + cost.getDistanceCost() + KM);
+        System.out.println(INFO_PREFIX + TOTAL_TIME + cost.getTimeCost() + MINUTE);
         System.out.println(INFO_PREFIX + DASHED_LINE);
         for (String station : stations) {
             System.out.println(INFO_PREFIX + station);

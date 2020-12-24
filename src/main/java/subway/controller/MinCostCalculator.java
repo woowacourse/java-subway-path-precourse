@@ -18,21 +18,19 @@ public class MinCostCalculator {
     public void runToGetMinDistance() {
         getStationNames();
         List<String> shortestDistancePath = getShortestDistancePath();
-        int minTime = getPathTime(shortestDistancePath);
-        int minDistance = getPathDistance(shortestTimePath);
-        printResult(shortestDistancePath, minTime, minDistance);
+        Cost cost = getPathCost(shortestDistancePath);
+        printResult(shortestDistancePath, cost);
     }
 
     public void runToGetMinTime() {
         getStationNames();
         List<String> shortestTimePath = getShortestTimePath();
-        int minTime = getPathTime(shortestTimePath);
-        int minDistance = getPathDistance(shortestTimePath);
-        printResult(shortestTimePath, minTime, minDistance);
+        Cost cost = getPathCost(shortestTimePath);
+        printResult(shortestTimePath, cost);
     }
 
-    private void printResult(List<String> shortestPath, int minTime, int minDistance) {
-        OutputView.printResult(shortestPath, minTime, minDistance);
+    private void printResult(List<String> shortestPath, Cost cost) {
+        OutputView.printResult(shortestPath, cost);
     }
 
     private void getStationNames() {
@@ -56,17 +54,15 @@ public class MinCostCalculator {
         return defaultSubwayGraph.getDijkstraDistanceShortestPath(departureStation, arrivalStation);
     }
 
-    public int getPathTime(List<String> paths) {
-        int timeSum = 0;
+    public Cost getPathCost(List<String> paths) {
+        Cost cost = new Cost(0, 0);
         for (int i = 0; i < paths.size()-1 ; i++) {
             String departureStation = paths.get(i);
             String arrivalStation = paths.get(i+1);
-            timeSum += getSectionCost(departureStation, arrivalStation).getTimeCost();
+            cost.addTimeCost(getSectionCost(departureStation, arrivalStation).getTimeCost());
+            cost.addDistanceCost(getSectionCost(departureStation, arrivalStation).getDistanceCost());
         }
-        return timeSum;
-    }
-
-    private int getPathDistance(List<String> shortestTimePath) {
+        return cost;
     }
 
     private Cost getSectionCost(String departureStation, String arrivalStation) {
