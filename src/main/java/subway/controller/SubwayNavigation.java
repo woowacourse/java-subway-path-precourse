@@ -18,7 +18,6 @@ public class SubwayNavigation {
         while (!userWantQuit()) {
             OutputView.printMainScreen();
             userOption = InputView.inputMainUserOption();
-            System.out.println(userOption);
             runUserOption(userOption);
         }
     }
