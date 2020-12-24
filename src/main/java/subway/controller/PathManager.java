@@ -19,7 +19,6 @@ public class PathManager {
     public void run() {
         initializeUserOption();
         while (!userWantGoBack()) {
-            System.out.println("Path manger");
             OutputView.printPathManagerScreen();
             userOption = InputView.inputPathUserOption();
             runUserOption(userOption);

@@ -35,11 +35,11 @@ public class DefaultSections {
 
     public static void initLineThreeSections() {
         sections.add(
-            new Section(DefaultStations.GYODAE, DefaultStations.NAMBUBUS, new Cost(SIX, FIVE)));
+            new Section(DefaultStations.GYODAE, DefaultStations.NAMBUBUS, new Cost(THREE, TWO)));
         sections.add(
-            new Section(DefaultStations.NAMBUBUS, DefaultStations.YANGJAE, new Cost(ONE, ONE)));
+            new Section(DefaultStations.NAMBUBUS, DefaultStations.YANGJAE, new Cost(SIX, FIVE)));
         sections.add(
-            new Section(DefaultStations.YANGJAE, DefaultStations.MAEBONG, new Cost(TWO, THREE)));
+            new Section(DefaultStations.YANGJAE, DefaultStations.MAEBONG, new Cost(ONE, ONE)));
     }
 
     public static void initLineTwoSections() {

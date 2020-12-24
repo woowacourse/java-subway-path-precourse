@@ -67,10 +67,8 @@ public class MinCostCalculator {
     public Cost getPathCost(List<String> paths) {
         Cost cost = new Cost(0, 0);
         for (int i = 0; i < paths.size()-1 ; i++) {
-            String departureStation = paths.get(i);
-            String arrivalStation = paths.get(i+1);
-            cost.addTimeCost(getSectionCost(departureStation, arrivalStation).getTimeCost());
-            cost.addDistanceCost(getSectionCost(departureStation, arrivalStation).getDistanceCost());
+            cost.addTimeCost(getSectionCost(paths.get(i), paths.get(i+1)).getTimeCost());
+            cost.addDistanceCost(getSectionCost(paths.get(i), paths.get(i+1)).getDistanceCost());
         }
         return cost;
     }
