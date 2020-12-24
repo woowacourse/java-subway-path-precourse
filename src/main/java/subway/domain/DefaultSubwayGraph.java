@@ -1,41 +1,49 @@
 package subway.domain;
 
+import java.util.List;
 import org.jgrapht.Graph;
-import org.jgrapht.graph.*;
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
+import org.jgrapht.graph.DefaultWeightedEdge;
+import org.jgrapht.graph.WeightedMultigraph;
 
 public class DefaultSubwayGraph {
 
+    private static DefaultStations defaultStations;
     private static DefaultSections defaultSections;
-    private static Graph<Object, DefaultWeightedEdge> graph = new SimpleGraph<Object, DefaultWeightedEdge>(
-        DefaultWeightedEdge.class);
+    private static WeightedMultigraph<String, DefaultWeightedEdge> graph;
 
     public DefaultSubwayGraph() {
-        graph = createStringGraph();
+        defaultStations = new DefaultStations();
         defaultSections = new DefaultSections();
+        graph = createStringGraph();
     }
 
-    private static Graph<Object, DefaultWeightedEdge> createStringGraph() {
-        Graph<Object, DefaultWeightedEdge> graph = new SimpleGraph<Object, DefaultWeightedEdge>(
+    private static WeightedMultigraph<String, DefaultWeightedEdge> createStringGraph() {
+        graph = new WeightedMultigraph(
             DefaultWeightedEdge.class);
         addDefaultStations();
-        addDefaultEdges();
+        addDefaultDistanceEdges();
         return graph;
     }
 
     public static void addDefaultStations() {
-        DefaultStations defaultStations = new DefaultStations();
         for (String stationName : defaultStations.getDefaultNames()) {
             graph.addVertex(stationName);
         }
     }
 
-    public static void addDefaultEdges() {
-        DefaultSections defaultSections = new DefaultSections();
-
+    public static void addDefaultDistanceEdges() {
         for (Section section : defaultSections.getSections()) {
-            DefaultWeightedEdge e = graph
-                .addEdge(section.getDepartureStation(), section.getArrivalStation());
-//            graph.setEdgeWeight(e, section.getCost().getDistanceCost());
+            graph.setEdgeWeight(
+                graph.addEdge(section.getDepartureStation(), section.getArrivalStation()),
+                section.getCost().distanceCost);
         }
+    }
+
+    public List<String> getDijkstraDistanceShortestPath(String departureStation, String arrivalStation) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(graph);
+        List<String> shortestPath = dijkstraShortestPath.getPath(departureStation, arrivalStation)
+            .getVertexList();
+        return shortestPath;
     }
 }

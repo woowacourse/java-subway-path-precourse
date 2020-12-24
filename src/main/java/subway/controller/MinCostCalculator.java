@@ -1,5 +1,6 @@
 package subway.controller;
 
+import java.util.List;
 import subway.domain.DefaultSubwayGraph;
 import subway.view.InputView;
 import subway.view.OutputView;
@@ -14,17 +15,17 @@ public class MinCostCalculator {
 
     public void runToGetMinDistance() {
         getStationNames();
-        String result = calculateMinDistance();
+        List<String> result = calculateMinDistance();
         printResult(result);
     }
 
     public void runToGetMinTime() {
         getStationNames();
-        String result = calculateMinTime();
+        List<String> result = calculateMinTime();
         printResult(result);
     }
 
-    private void printResult(String result) {
+    private void printResult(List<String> result) {
         OutputView.printResult(result);
     }
 
@@ -41,13 +42,11 @@ public class MinCostCalculator {
         }
     }
 
-    public String calculateMinDistance() {
-        String result = "";
-        return result;
+    public List<String> calculateMinDistance() {
+        return defaultSubwayGraph.getDijkstraDistanceShortestPath(departureStation, arrivalStation);
     }
 
-    public String calculateMinTime() {
-        String result = "";
-        return result;
+    public List<String> calculateMinTime() {
+        return defaultSubwayGraph.getDijkstraDistanceShortestPath(departureStation, arrivalStation);
     }
 }

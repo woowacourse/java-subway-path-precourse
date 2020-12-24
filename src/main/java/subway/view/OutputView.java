@@ -1,5 +1,7 @@
 package subway.view;
 
+import java.util.List;
+
 public class OutputView {
 
     private static final String MAIN_TITLE = "## 메인 화면";
@@ -28,12 +30,15 @@ public class OutputView {
         System.out.println(PATH_OPTION_BACK);
     }
 
-    public static void printResult(String result) {
+    public static void printResult(List<String> stations) {
         System.out.println(SEARCH_RESULT);
         System.out.println(INFO_PREFIX + DASHED_LINE);
         System.out.println(INFO_PREFIX + TOTAL_DISTANCE);
         System.out.println(INFO_PREFIX + TOTAL_TIME);
         System.out.println(INFO_PREFIX + DASHED_LINE);
+        for (String station : stations) {
+            System.out.println(INFO_PREFIX + station);
+        }
         System.out.println();
     }
 }
