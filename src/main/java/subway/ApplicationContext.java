@@ -1,20 +1,17 @@
 package subway;
 
-import subway.domain.Station;
 import subway.view.InputView;
 import subway.vo.FunctionType;
 import subway.vo.ManagementType;
 
-import java.util.*;
-
 public class ApplicationContext {
 
-    private ShortestDistance shortestDistance;
+    private DistanceController shortestDistance;
     private MinimumTime minimumTime;
     private InputView inputView = InputView.getInstance();
 
-    public ApplicationContext(ShortestDistance shortestDistance,
-                                MinimumTime minimumTime) {
+    public ApplicationContext(DistanceController shortestDistance,
+                              MinimumTime minimumTime) {
         this.shortestDistance = shortestDistance;
         this.minimumTime = minimumTime;
     }
