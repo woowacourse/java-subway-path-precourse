@@ -67,8 +67,8 @@ public class TimeController {
         time[startNumber] = 0;
         initParent();
         doDijkstra(startNumber);
-//        OutputView.printTotalDistanceAndTime(distance[endNumber], time[endNumber]);
-//        OutputView.printRouteList(convertedMapper, parent, endNumber);
+        OutputView.printTotalDistanceAndTime(distance[endNumber], time[endNumber]);
+        OutputView.printRouteList(convertedMapper, parent, endNumber);
     }
 
     private void initParent() {
