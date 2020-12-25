@@ -3,6 +3,7 @@ package subway;
 import subway.domain.Edge;
 import subway.domain.Station;
 import subway.view.InputView;
+import subway.view.OutputView;
 
 import java.util.*;
 
@@ -33,7 +34,6 @@ public class ShortestDistance {
                 throw new IllegalArgumentException("[ERROR] 등록되지 않은 역입니다.");
             }
             selectEndStation(startStation);
-//            OutputView.printStationEnrolled();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             calculateShortestDistance();
@@ -63,12 +63,8 @@ public class ShortestDistance {
         initTime(startNumber);
         initParent();
         doDijkstra(startNumber);
-        System.out.println("\n## 조회 결과");
-        System.out.println("[INFO] ---");
-        System.out.println("[INFO] 총 거리: " + distance[endNumber] + "km");
-        System.out.println("[INFO] 총 시간: " + time[endNumber] + "분");
-        System.out.println("[INFO] ---");
-        findShortestPath(endNumber);
+        OutputView.printTotalDistanceAndTime(distance[endNumber], time[endNumber]);
+        OutputView.printRouteList(convertedMapper, parent, endNumber);
     }
 
     private void initDistance(int start){
@@ -115,14 +111,5 @@ public class ShortestDistance {
                 }
             }
         }
-    }
-
-    public void findShortestPath(int index) {
-        if( index == parent[index] ){
-            System.out.println(convertedMapper.get(index));
-            return;
-        }
-        findShortestPath( parent[index] );
-        System.out.println(convertedMapper.get(index));
     }
 }
