@@ -15,7 +15,7 @@ public class ApplicationInitializer {
         ArrayList<Edge>[] subwayNetwork = new ArrayList[stationMapper.size() + 1];;
         initSubWayNetWork(subwayNetwork, stationMapper);
         DistanceController shortestDistance = new DistanceController(stationMapper, subwayNetwork);
-        MinimumTime minimumTime = new MinimumTime(stationMapper, subwayNetwork);
+        TimeController minimumTime = new TimeController(stationMapper, subwayNetwork);
         return new ApplicationContext(shortestDistance, minimumTime);
     }
 

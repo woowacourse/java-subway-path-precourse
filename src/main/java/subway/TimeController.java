@@ -7,7 +7,7 @@ import subway.view.OutputView;
 
 import java.util.*;
 
-public class DistanceController {
+public class TimeController {
 
     private ArrayList<Edge>[] subwayNetwork;
     private Map<Station, Integer> stationMapper;
@@ -18,7 +18,7 @@ public class DistanceController {
     private static final int INFINITY = Integer.MAX_VALUE;
     private Map<Integer, Station> convertedMapper = new HashMap<>();
 
-    public DistanceController(Map<Station, Integer> stationMapper,
+    public TimeController(Map<Station, Integer> stationMapper,
                               ArrayList<Edge>[] subwayNetwork) {
         this.subwayNetwork = subwayNetwork;
         this.stationMapper = stationMapper;
@@ -27,7 +27,7 @@ public class DistanceController {
         }
     }
 
-    public void calculateShortestDistance() {
+    public void calculateShortestTime() {
         try {
             Station startStation = new Station(inputView.inputStartStationToShortestDistance());
             if (!stationMapper.containsKey(startStation)) {
@@ -36,7 +36,7 @@ public class DistanceController {
             selectEndStation(startStation);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            calculateShortestDistance();
+            calculateShortestTime();
         }
     }
 
@@ -49,14 +49,14 @@ public class DistanceController {
             if (startStation.equals(endStation)) {
                 throw new IllegalArgumentException("[ERROR] 출발역과 도착역이 같습니다.");
             }
-            calculateDistance(startStation, endStation);
+            calculateTime(startStation, endStation);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             selectEndStation(startStation);
         }
     }
 
-    private void calculateDistance(Station startStation, Station endStation) {
+    private void calculateTime(Station startStation, Station endStation) {
         int startNumber = stationMapper.get(startStation);
         int endNumber = stationMapper.get(endStation);
         distance = new int[stationMapper.size()+1];
@@ -67,8 +67,8 @@ public class DistanceController {
         time[startNumber] = 0;
         initParent();
         doDijkstra(startNumber);
-        OutputView.printTotalDistanceAndTime(distance[endNumber], time[endNumber]);
-        OutputView.printRouteList(convertedMapper, parent, endNumber);
+//        OutputView.printTotalDistanceAndTime(distance[endNumber], time[endNumber]);
+//        OutputView.printRouteList(convertedMapper, parent, endNumber);
     }
 
     private void initParent() {
@@ -82,15 +82,15 @@ public class DistanceController {
         PriorityQueue<Edge> priorityQueue = new PriorityQueue<>(new Comparator<Edge>() {
             @Override
             public int compare(Edge o1, Edge o2) {
-                return o1.getDistance() - o2.getDistance();
+                return o1.getTime() - o2.getTime();
             }
         });
         priorityQueue.add(new Edge(start, 0, 0));
         while(!priorityQueue.isEmpty()){
             Edge temp = priorityQueue.poll();
             int currentStation = temp.getEndStation();
-            int currentDistance = temp.getDistance();
-            if (distance[currentStation] < currentDistance) continue;
+            int currentTime = temp.getTime();
+            if (time[currentStation] < currentTime) continue;
             compareDistance(temp, priorityQueue);
         }
     }
@@ -100,7 +100,7 @@ public class DistanceController {
         int currentDistance = temp.getDistance();
         int currentTime = temp.getTime();
         for(Edge n : subwayNetwork[currentStation]){
-            if(distance[n.getEndStation()] > currentDistance + n.getDistance()){
+            if(time[n.getEndStation()] > currentTime + n.getTime()){
                 parent[n.getEndStation()] = currentStation;
                 distance[n.getEndStation()] = currentDistance + n.getDistance();
                 time[n.getEndStation()] = currentTime + n.getTime();

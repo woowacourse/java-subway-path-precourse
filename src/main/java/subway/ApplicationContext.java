@@ -6,14 +6,14 @@ import subway.vo.ManagementType;
 
 public class ApplicationContext {
 
-    private DistanceController shortestDistance;
-    private MinimumTime minimumTime;
+    private DistanceController distanceController;
+    private TimeController timeController;
     private InputView inputView = InputView.getInstance();
 
     public ApplicationContext(DistanceController shortestDistance,
-                              MinimumTime minimumTime) {
-        this.shortestDistance = shortestDistance;
-        this.minimumTime = minimumTime;
+                              TimeController minimumTime) {
+        this.distanceController = shortestDistance;
+        this.timeController = minimumTime;
     }
 
     public void run() {
@@ -52,10 +52,10 @@ public class ApplicationContext {
             return;
         }
         if (functionType == FunctionType.SHORTEST_DISTANCE) {
-            shortestDistance.calculateShortestDistance();
+            distanceController.calculateShortestDistance();
         }
         if (functionType == FunctionType.MINIMUM_TIME) {
-
+            timeController.calculateShortestTime();
         }
     }
 }
