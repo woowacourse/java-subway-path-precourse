@@ -4,11 +4,7 @@ import subway.domain.Edge;
 import subway.domain.Station;
 import subway.view.InputView;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class ShortestDistance {
 
@@ -16,6 +12,7 @@ public class ShortestDistance {
     private Map<Station, Integer> stationMapper;
     private int[] parent;
     private int[] distance;
+    private int[] time;
     private InputView inputView = InputView.getInstance();
     private static final int INFINITY = Integer.MAX_VALUE;
     private Map<Integer, Station> convertedMapper = new HashMap<>();
@@ -53,7 +50,6 @@ public class ShortestDistance {
                 throw new IllegalArgumentException("[ERROR] 출발역과 도착역이 같습니다.");
             }
             calculateDistance(startStation, endStation);
-//            OutputView.printStationEnrolled();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             selectEndStation(startStation);
@@ -64,16 +60,28 @@ public class ShortestDistance {
         int startNumber = stationMapper.get(startStation);
         int endNumber = stationMapper.get(endStation);
         initDistance(startNumber);
+        initTime(startNumber);
         initParent();
-        soDijkstra(startNumber);
+        doDijkstra(startNumber);
+        System.out.println("\n## 조회 결과");
+        System.out.println("[INFO] ---");
+        System.out.println("[INFO] 총 거리: " + distance[endNumber] + "km");
+        System.out.println("[INFO] 총 시간: " + time[endNumber] + "분");
+        System.out.println("[INFO] ---");
         findShortestPath(endNumber);
-
     }
 
     private void initDistance(int start){
         distance = new int[stationMapper.size()+1];
         for( int i=1; i<=stationMapper.size(); i++ ){
             if( i != start ) distance[i] = INFINITY;
+        }
+    }
+
+    private void initTime(int start){
+        time = new int[stationMapper.size()+1];
+        for( int i=1; i<=stationMapper.size(); i++ ){
+            if( i != start ) time[i] = INFINITY;
         }
     }
 
@@ -84,21 +92,26 @@ public class ShortestDistance {
         }
     }
 
-    private void soDijkstra(int start){
-        initDistance(start);
-        initParent();
-        PriorityQueue<Edge> priorityQueue = new PriorityQueue<>();
+    private void doDijkstra(int start){
+        PriorityQueue<Edge> priorityQueue = new PriorityQueue<>(new Comparator<Edge>() {
+            @Override
+            public int compare(Edge o1, Edge o2) {
+                return o1.getDistance() - o2.getDistance();
+            }
+        });
         priorityQueue.add(new Edge(start, 0, 0));
         while(!priorityQueue.isEmpty()){
             Edge temp = priorityQueue.poll();
             int currentStation = temp.getEndStation();
             int currentDistance = temp.getDistance();
+            int currentTime = temp.getTime();
             if (distance[currentStation] < currentDistance) continue;
             for( Edge n : subwayNetwork[currentStation] ){
                 if( distance[n.getEndStation()] > currentDistance + n.getDistance() ){
                     parent[n.getEndStation()] = currentStation;
                     distance[n.getEndStation()] = currentDistance + n.getDistance();
-                    priorityQueue.add(new Edge(n.getEndStation(), distance[n.getEndStation()], 0));
+                    time[n.getEndStation()] = currentTime + n.getTime();
+                    priorityQueue.add(new Edge(n.getEndStation(), distance[n.getEndStation()], time[n.getEndStation()]));
                 }
             }
         }
@@ -106,13 +119,10 @@ public class ShortestDistance {
 
     public void findShortestPath(int index) {
         if( index == parent[index] ){
+            System.out.println(convertedMapper.get(index));
             return;
         }
         findShortestPath( parent[index] );
         System.out.println(convertedMapper.get(index));
-//        if( check ){
-//            bw.write( index + " " );
-//            check = false;
-//        }
     }
 }

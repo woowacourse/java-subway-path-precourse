@@ -9,20 +9,6 @@ import java.util.Map;
 
 public class ApplicationInitializer {
 
-//    public static class Edge {
-//        private int endStation;
-//        private int distance;
-//        private int time;
-//        //        Set<Line> includedLine = new HashSet<>();
-//        public Edge(int endStation, int distance, int time) {
-//            if (distance <= 0) { throw new IllegalArgumentException("[ERROR] 거리는 양의 정수입니다.");}
-//            if (time <= 0) { throw new IllegalArgumentException("[ERROR] 시간은 양의 정수입니다.");}
-//            this.endStation = endStation;
-//            this.distance = distance;
-//            this.time = time;
-//        }
-//    }
-
     public static ApplicationContext injectDependencies() {
         Map<Station, Integer> stationMapper = new HashMap<>();
         initStation(stationMapper);
@@ -32,12 +18,6 @@ public class ApplicationInitializer {
         MinimumTime minimumTime = new MinimumTime(stationMapper, subwayNetwork);
         return new ApplicationContext(shortestDistance, minimumTime);
     }
-
-    // 구현
-//    public ApplicationInitializer() {
-//        initStation();
-//        initSubWayNetWork();
-//    }
 
     private static void initStation(Map<Station, Integer> stationMapper) {
         stationMapper.put(new Station("교대역"), 1);
@@ -68,7 +48,19 @@ public class ApplicationInitializer {
                 new Edge(stationMapper.get(new Station("양재역")), 2, 8));
         subwayNetwork[stationMapper.get(new Station("양재역"))].add(
                 new Edge(stationMapper.get(new Station("양재시민의숲역")), 10, 3));
+        subwayNetwork[stationMapper.get(new Station("강남역"))].add(
+                new Edge(stationMapper.get(new Station("교대역")), 2, 3));
+        subwayNetwork[stationMapper.get(new Station("역삼역"))].add(
+                new Edge(stationMapper.get(new Station("강남역")), 2, 3));
+        subwayNetwork[stationMapper.get(new Station("남부터미널역"))].add(
+                new Edge(stationMapper.get(new Station("교대역")), 3, 2));
         subwayNetwork[stationMapper.get(new Station("양재역"))].add(
-                new Edge(stationMapper.get(new Station("매봉역")), 1, 1));
+                new Edge(stationMapper.get(new Station("남부터미널역")), 6, 5));
+        subwayNetwork[stationMapper.get(new Station("매봉역"))].add(
+                new Edge(stationMapper.get(new Station("양재역")), 1, 1));
+        subwayNetwork[stationMapper.get(new Station("양재역"))].add(
+                new Edge(stationMapper.get(new Station("강남역")), 2, 8));
+        subwayNetwork[stationMapper.get(new Station("양재시민의숲역"))].add(
+                new Edge(stationMapper.get(new Station("양재역")), 10, 3));
     }
 }

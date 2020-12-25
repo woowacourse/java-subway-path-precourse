@@ -5,8 +5,8 @@ public class Edge {
     private int distance;
     private int time;
     public Edge(int endStation, int distance, int time) {
-        if (distance <= 0) { throw new IllegalArgumentException("[ERROR] 거리는 양의 정수입니다.");}
-        if (time <= 0) { throw new IllegalArgumentException("[ERROR] 시간은 양의 정수입니다.");}
+        if (distance < 0) { throw new IllegalArgumentException("[ERROR] 거리는 양의 정수입니다.");}
+        if (time < 0) { throw new IllegalArgumentException("[ERROR] 시간은 양의 정수입니다.");}
         this.endStation = endStation;
         this.distance = distance;
         this.time = time;
@@ -17,10 +17,11 @@ public class Edge {
     }
 
     public int getDistance() {
-        return endStation;
+        return distance;
     }
 
     public int getTime() {
-        return endStation;
+        return time;
     }
+
 }
