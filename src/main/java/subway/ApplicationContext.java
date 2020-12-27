@@ -55,7 +55,7 @@ public class ApplicationContext {
             distanceController.execute();
         }
         if (functionType == FunctionType.MINIMUM_TIME) {
-//            timeController.calculateShortestTime();
+            timeController.execute();
         }
     }
 }
