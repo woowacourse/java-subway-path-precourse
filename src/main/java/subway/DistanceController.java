@@ -49,7 +49,8 @@ public class DistanceController {
         }
     }
 
-    private void calculateShortestDistance(Station startStation, Station endStation) {
+    private void calculateShortestDistance(Station startStation, Station endStation)
+                                                        throws IllegalArgumentException {
         List<Station> shortestPath = getShortestDistancePath(startStation, endStation);
         int distance = getTotalDistanceWhenShortestDistancePath(shortestPath);
         int time = getTotalTimeWhenShortestDistancePath(shortestPath);
@@ -59,6 +60,9 @@ public class DistanceController {
 
     private List<Station> getShortestDistancePath(Station start, Station end) {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(distanceGraph);
+        if (dijkstraShortestPath.getPath(start, end) == null) {
+            throw new IllegalArgumentException("[ERROR] 출발역과 도착역이 이어져 있지 않습니다.");
+        }
         return dijkstraShortestPath.getPath(start, end).getVertexList();
     }
 

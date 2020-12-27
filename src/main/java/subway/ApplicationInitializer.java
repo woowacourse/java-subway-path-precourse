@@ -27,6 +27,7 @@ public class ApplicationInitializer {
         distanceGraph.addVertex(new Station("양재역"));
         distanceGraph.addVertex(new Station("양재시민의숲역"));
         distanceGraph.addVertex(new Station("매봉역"));
+        distanceGraph.addVertex(new Station("서울역"));
 
         timeGraph.addVertex(new Station("교대역"));
         timeGraph.addVertex(new Station("강남역"));
@@ -35,6 +36,7 @@ public class ApplicationInitializer {
         timeGraph.addVertex(new Station("양재역"));
         timeGraph.addVertex(new Station("양재시민의숲역"));
         timeGraph.addVertex(new Station("매봉역"));
+        timeGraph.addVertex(new Station("서울역"));
     }
 
     public static void initSection(WeightedMultigraph<Station, DefaultWeightedEdge> distanceGraph,
