@@ -1,4 +1,4 @@
-package subway;
+package subway.manager;
 
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
@@ -9,13 +9,13 @@ import subway.view.OutputView;
 
 import java.util.*;
 
-public class DistanceController {
+public class TimeRouteManager {
     private WeightedMultigraph<Station, DefaultWeightedEdge> distanceGraph;
     private WeightedMultigraph<Station, DefaultWeightedEdge> timeGraph;
     private InputView inputView = InputView.getInstance();
 
-    public DistanceController(WeightedMultigraph<Station, DefaultWeightedEdge> distanceGraph,
-                                    WeightedMultigraph<Station, DefaultWeightedEdge> timeGraph) {
+    public TimeRouteManager(WeightedMultigraph<Station, DefaultWeightedEdge> distanceGraph,
+                            WeightedMultigraph<Station, DefaultWeightedEdge> timeGraph) {
         this.distanceGraph = distanceGraph;
         this.timeGraph = timeGraph;
     }
@@ -49,38 +49,34 @@ public class DistanceController {
         }
     }
 
-    private void calculateShortestDistance(Station startStation, Station endStation)
-                                                        throws IllegalArgumentException {
-        List<Station> shortestPath = getShortestDistancePath(startStation, endStation);
-        int distance = getTotalDistanceWhenShortestDistancePath(shortestPath);
-        int time = getTotalTimeWhenShortestDistancePath(shortestPath);
+    private void calculateShortestDistance(Station startStation, Station endStation) {
+        List<Station> shortestPath = getShortestTimePath(startStation, endStation);
+        int distance = getTotalDistanceWhenShortestTimePath(shortestPath);
+        int time = getTotalTimeWhenShortestTimePath(shortestPath);
         OutputView.printTotalDistanceAndTime(distance, time);
         OutputView.printRouteList(shortestPath);
     }
 
-    private List<Station> getShortestDistancePath(Station start, Station end) {
-        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(distanceGraph);
-        if (dijkstraShortestPath.getPath(start, end) == null) {
-            throw new IllegalArgumentException("[ERROR] 출발역과 도착역이 이어져 있지 않습니다.");
-        }
-        return dijkstraShortestPath.getPath(start, end).getVertexList();
+    public List<Station> getShortestTimePath(Station startStation, Station endStation) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(timeGraph);
+        return dijkstraShortestPath.getPath(startStation, endStation).getVertexList();
     }
 
-    private int getTotalDistanceWhenShortestDistancePath(List<Station> shortestDistancePath) {
+    public int getTotalDistanceWhenShortestTimePath(List<Station> shortestTimePath) {
         int totalDistance = 0;
-        for (int i=0; i<shortestDistancePath.size() - 1; i++) {
-            Station startStation = shortestDistancePath.get(i);
-            Station endStation = shortestDistancePath.get(i + 1);
+        for (int i=0; i<shortestTimePath.size() - 1; i++) {
+            Station startStation = shortestTimePath.get(i);
+            Station endStation = shortestTimePath.get(i + 1);
             totalDistance += (int) distanceGraph.getEdgeWeight(distanceGraph.getEdge(startStation, endStation));
         }
         return totalDistance;
     }
 
-    private int getTotalTimeWhenShortestDistancePath(List<Station> shortestDistancePath) {
+    public int getTotalTimeWhenShortestTimePath(List<Station> shortestTimePath) {
         int totalTime = 0;
-        for (int i=0; i<shortestDistancePath.size() - 1; i++) {
-            Station startStation = shortestDistancePath.get(i);
-            Station endStation = shortestDistancePath.get(i + 1);
+        for (int i=0; i<shortestTimePath.size() - 1; i++) {
+            Station startStation = shortestTimePath.get(i);
+            Station endStation = shortestTimePath.get(i + 1);
             totalTime += (int) timeGraph.getEdgeWeight(timeGraph.getEdge(startStation, endStation));
         }
         return totalTime;

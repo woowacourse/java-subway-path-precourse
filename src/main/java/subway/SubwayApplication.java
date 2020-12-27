@@ -1,17 +1,19 @@
 package subway;
 
+import subway.manager.DistanceRouteManager;
+import subway.manager.TimeRouteManager;
 import subway.view.InputView;
 import subway.vo.FunctionType;
 import subway.vo.ManagementType;
 
-public class ApplicationContext {
+public class SubwayApplication {
 
-    private DistanceController distanceController;
-    private TimeController timeController;
+    private DistanceRouteManager distanceController;
+    private TimeRouteManager timeController;
     private InputView inputView = InputView.getInstance();
 
-    public ApplicationContext(DistanceController shortestDistance,
-                              TimeController minimumTime) {
+    public SubwayApplication(DistanceRouteManager shortestDistance,
+                             TimeRouteManager minimumTime) {
         this.distanceController = shortestDistance;
         this.timeController = minimumTime;
     }

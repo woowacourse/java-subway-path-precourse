@@ -3,19 +3,21 @@ package subway;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 import subway.domain.Station;
+import subway.manager.DistanceRouteManager;
+import subway.manager.TimeRouteManager;
 
 public class ApplicationInitializer {
 
-    public static ApplicationContext injectDependencies() {
+    public static SubwayApplication injectDependencies() {
         WeightedMultigraph<Station, DefaultWeightedEdge> distanceGraph
                 = new WeightedMultigraph(DefaultWeightedEdge.class);
         WeightedMultigraph<Station, DefaultWeightedEdge> timeGraph
                 = new WeightedMultigraph(DefaultWeightedEdge.class);
         initStation(distanceGraph, timeGraph);
         initSection(distanceGraph, timeGraph);
-        DistanceController shortestDistance = new DistanceController(distanceGraph, timeGraph);
-        TimeController minimumTime = new TimeController(distanceGraph, timeGraph);
-        return new ApplicationContext(shortestDistance, minimumTime);
+        DistanceRouteManager shortestDistance = new DistanceRouteManager(distanceGraph, timeGraph);
+        TimeRouteManager minimumTime = new TimeRouteManager(distanceGraph, timeGraph);
+        return new SubwayApplication(shortestDistance, minimumTime);
     }
 
     private static void initStation(WeightedMultigraph<Station, DefaultWeightedEdge> distanceGraph,
