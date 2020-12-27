@@ -2,6 +2,7 @@ package subway.view;
 
 import subway.domain.Station;
 
+import java.util.List;
 import java.util.Map;
 
 public class OutputView {
@@ -14,14 +15,11 @@ public class OutputView {
         System.out.println("[INFO] ---");
     }
 
-    public static void printRouteList(Map<Integer, Station> convertedMapper,
-                                            int[] parent, int index) {
-        if( index == parent[index] ){
-            System.out.println(convertedMapper.get(index));
-            return;
+    public static void printRouteList(List<Station> shortestPath) {
+        for (Station station : shortestPath) {
+            System.out.println(station);
         }
-        printRouteList(convertedMapper, parent, parent[index]);
-        System.out.println(convertedMapper.get(index));
+
     }
 
 }

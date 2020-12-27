@@ -52,10 +52,10 @@ public class ApplicationContext {
             return;
         }
         if (functionType == FunctionType.SHORTEST_DISTANCE) {
-            distanceController.calculateShortestDistance();
+            distanceController.execute();
         }
         if (functionType == FunctionType.MINIMUM_TIME) {
-            timeController.calculateShortestTime();
+//            timeController.calculateShortestTime();
         }
     }
 }

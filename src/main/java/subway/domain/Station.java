@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Station {
     private String name;
-    private List<Line> includedLine = new ArrayList<>();
+//    private List<Line> includedLine = new ArrayList<>();
 
     public Station(String name) {
         this.name = name;
