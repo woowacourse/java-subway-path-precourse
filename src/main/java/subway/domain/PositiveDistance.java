@@ -1,5 +1,7 @@
 package subway.domain;
 
+import subway.Constants;
+
 public class PositiveDistance {
     private static final int POSITIVE_DISTANCE_LIMIT = 1;
 
@@ -7,7 +9,7 @@ public class PositiveDistance {
 
     public PositiveDistance(int distance) {
         if (distance < POSITIVE_DISTANCE_LIMIT) {
-            throw new IllegalArgumentException("[ERROR] 거리는 양수입니다.");
+            throw new IllegalArgumentException(Constants.ERROR_DISTANCE_ONLY_POSITIVE);
         }
         this.distance = distance;
     }

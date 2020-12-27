@@ -1,5 +1,7 @@
 package subway.domain;
 
+import subway.Constants;
+
 public class PositiveTime {
     private static final int POSITIVE_TIME_LIMIT = 1;
 
@@ -7,7 +9,7 @@ public class PositiveTime {
 
     public PositiveTime(int time) {
         if (time < POSITIVE_TIME_LIMIT) {
-            throw new IllegalArgumentException("[ERROR] 시간은 양수입니다.");
+            throw new IllegalArgumentException(Constants.ERROR_TIME_ONLY_POSITIVE);
         }
         this.time = time;
     }

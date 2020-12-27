@@ -3,6 +3,7 @@ package subway.manager;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
+import subway.Constants;
 import subway.domain.Station;
 import subway.view.InputView;
 import subway.view.OutputView;
@@ -24,7 +25,7 @@ public class TimeRouteManager {
         try {
             Station startStation = new Station(inputView.inputStartStationToShortestDistance());
             if (!distanceGraph.containsVertex(startStation)) {
-                throw new IllegalArgumentException("[ERROR] 등록되지 않은 역입니다.");
+                throw new IllegalArgumentException(Constants.ERROR_NOT_ENROLLMENT_STATION);
             }
             selectEndStation(startStation);
         } catch (IllegalArgumentException e) {
@@ -37,10 +38,10 @@ public class TimeRouteManager {
         try {
             Station endStation = new Station(inputView.inputEndStationToShortestDistance());
             if (!distanceGraph.containsVertex(endStation)) {
-                throw new IllegalArgumentException("[ERROR] 등록되지 않은 역입니다.");
+                throw new IllegalArgumentException(Constants.ERROR_NOT_ENROLLMENT_STATION);
             }
             if (startStation.equals(endStation)) {
-                throw new IllegalArgumentException("[ERROR] 출발역과 도착역이 같습니다.");
+                throw new IllegalArgumentException(Constants.ERROR_START_END_NOT_EQUAL);
             }
             calculateShortestDistance(startStation, endStation);
         } catch (IllegalArgumentException e) {
