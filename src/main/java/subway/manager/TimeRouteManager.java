@@ -39,7 +39,7 @@ public class TimeRouteManager {
             if (!distanceGraph.containsVertex(endStation)) {
                 throw new IllegalArgumentException("[ERROR] 등록되지 않은 역입니다.");
             }
-            if (startStation.equals(endStation)) { // 위임
+            if (startStation.equals(endStation)) {
                 throw new IllegalArgumentException("[ERROR] 출발역과 도착역이 같습니다.");
             }
             calculateShortestDistance(startStation, endStation);

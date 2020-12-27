@@ -2,6 +2,8 @@ package subway;
 
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
+import subway.domain.PositiveDistance;
+import subway.domain.PositiveTime;
 import subway.domain.Station;
 import subway.manager.DistanceRouteManager;
 import subway.manager.TimeRouteManager;
@@ -43,20 +45,34 @@ public class ApplicationInitializer {
 
     public static void initSection(WeightedMultigraph<Station, DefaultWeightedEdge> distanceGraph,
                                 WeightedMultigraph<Station, DefaultWeightedEdge> timeGraph) {
-        distanceGraph.setEdgeWeight(distanceGraph.addEdge(new Station("교대역"), new Station("강남역")), 2);
-        distanceGraph.setEdgeWeight(distanceGraph.addEdge(new Station("강남역"), new Station("역삼역")), 2);
-        distanceGraph.setEdgeWeight(distanceGraph.addEdge(new Station("교대역"), new Station("남부터미널역")), 3);
-        distanceGraph.setEdgeWeight(distanceGraph.addEdge(new Station("남부터미널역"), new Station("양재역")), 6);
-        distanceGraph.setEdgeWeight(distanceGraph.addEdge(new Station("양재역"), new Station("매봉역")), 1);
-        distanceGraph.setEdgeWeight(distanceGraph.addEdge(new Station("강남역"), new Station("양재역")), 2);
-        distanceGraph.setEdgeWeight(distanceGraph.addEdge(new Station("양재역"), new Station("양재시민의숲역")), 10);
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(new Station("교대역"),
+                            new Station("강남역")), new PositiveDistance(2).getDistance());
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(new Station("강남역"),
+                            new Station("역삼역")), new PositiveDistance(2).getDistance());
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(new Station("교대역"),
+                            new Station("남부터미널역")), new PositiveDistance(3).getDistance());
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(new Station("남부터미널역"),
+                            new Station("양재역")), new PositiveDistance(6).getDistance());
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(new Station("양재역"),
+                            new Station("매봉역")), new PositiveDistance(1).getDistance());
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(new Station("강남역"),
+                            new Station("양재역")), new PositiveDistance(2).getDistance());
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(new Station("양재역"),
+                            new Station("양재시민의숲역")), new PositiveDistance(10).getDistance());
 
-        timeGraph.setEdgeWeight(timeGraph.addEdge(new Station("교대역"), new Station("강남역")), 3);
-        timeGraph.setEdgeWeight(timeGraph.addEdge(new Station("강남역"), new Station("역삼역")), 3);
-        timeGraph.setEdgeWeight(timeGraph.addEdge(new Station("교대역"), new Station("남부터미널역")), 2);
-        timeGraph.setEdgeWeight(timeGraph.addEdge(new Station("남부터미널역"), new Station("양재역")), 5);
-        timeGraph.setEdgeWeight(timeGraph.addEdge(new Station("양재역"), new Station("매봉역")), 1);
-        timeGraph.setEdgeWeight(timeGraph.addEdge(new Station("강남역"), new Station("양재역")), 8);
-        timeGraph.setEdgeWeight(timeGraph.addEdge(new Station("양재역"), new Station("양재시민의숲역")), 3);
+        timeGraph.setEdgeWeight(timeGraph.addEdge(new Station("교대역"),
+                            new Station("강남역")), new PositiveTime(3).getTime());
+        timeGraph.setEdgeWeight(timeGraph.addEdge(new Station("강남역"),
+                            new Station("역삼역")), new PositiveTime(3).getTime());
+        timeGraph.setEdgeWeight(timeGraph.addEdge(new Station("교대역"),
+                            new Station("남부터미널역")), new PositiveTime(2).getTime());
+        timeGraph.setEdgeWeight(timeGraph.addEdge(new Station("남부터미널역"),
+                            new Station("양재역")), new PositiveTime(5).getTime());
+        timeGraph.setEdgeWeight(timeGraph.addEdge(new Station("양재역"),
+                            new Station("매봉역")), new PositiveTime(1).getTime());
+        timeGraph.setEdgeWeight(timeGraph.addEdge(new Station("강남역"),
+                            new Station("양재역")), new PositiveTime(8).getTime());
+        timeGraph.setEdgeWeight(timeGraph.addEdge(new Station("양재역"),
+                            new Station("양재시민의숲역")), new PositiveTime(3).getTime());
     }
 }
