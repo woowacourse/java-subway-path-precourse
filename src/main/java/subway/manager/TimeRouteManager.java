@@ -60,6 +60,9 @@ public class TimeRouteManager {
 
     public List<Station> getShortestTimePath(Station startStation, Station endStation) {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(timeGraph);
+        if (dijkstraShortestPath.getPath(startStation, endStation) == null) {
+            throw new IllegalArgumentException(Constants.ERROR_START_END_NOT_LINKED);
+        }
         return dijkstraShortestPath.getPath(startStation, endStation).getVertexList();
     }
 
