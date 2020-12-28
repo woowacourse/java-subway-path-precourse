@@ -3,6 +3,8 @@ package subway.domain;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 public class PositiveDistanceTest {
 
     @Test
