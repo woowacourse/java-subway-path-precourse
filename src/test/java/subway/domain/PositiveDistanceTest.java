@@ -20,23 +20,13 @@ public class PositiveDistanceTest {
 
     @Test
     public void given_0_then_false() {
-        boolean isPositiveDistance = true;
-        try {
-            PositiveDistance positiveDistance = new PositiveDistance(0);
-        } catch (IllegalArgumentException e) {
-            isPositiveDistance = false;
-        }
-        Assertions.assertFalse(isPositiveDistance);
+        assertThatThrownBy(() -> new PositiveTime(0))
+                .isExactlyInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     public void given_minus_1_then_false() {
-        boolean isPositiveDistance = true;
-        try {
-            PositiveDistance positiveDistance = new PositiveDistance(-1);
-        } catch (IllegalArgumentException e) {
-            isPositiveDistance = false;
-        }
-        Assertions.assertFalse(isPositiveDistance);
+        assertThatThrownBy(() -> new PositiveTime(-1))
+                .isExactlyInstanceOf(IllegalArgumentException.class);
     }
 }
