@@ -25,15 +25,25 @@ public class SubwayService {
         return subwayService;
     }
 
+    public void displayShortestPathInfo(List<String> shortestPath) {
+        int distanceSum = 0;
+        int timeSum = 0;
+        for (int i = 0; i < shortestPath.size() - 1; i++) {
+            Section section = SectionRepository.searchSection(shortestPath.get(i), shortestPath.get(i+1));
+            distanceSum += section.getDistance();
+            timeSum += section.getTime();
+        }
+        OutputView.printShortestPathInfo(distanceSum, timeSum);
+        OutputView.printStations(shortestPath);
+    }
+
     public boolean searchShortestTimePath() {
         OutputView.printQuestion(TextCollection.REGISTER_SOURCE_STATION_MESSAGE);
         Station sourceStation = new Station(InputView.inputValue());
         OutputView.printQuestion(TextCollection.REGISTER_TARGET_STATION_MESSAGE);
         Station targetStation = new Station(InputView.inputValue());
-
         List<String> shortestPath = getShortestTimePath(sourceStation, targetStation);
-        OutputView.printStations(shortestPath);
-
+        displayShortestPathInfo(shortestPath);
         return true;
     }
 
@@ -43,17 +53,7 @@ public class SubwayService {
         OutputView.printQuestion(TextCollection.REGISTER_TARGET_STATION_MESSAGE);
         Station targetStation = new Station(InputView.inputValue());
         List<String> shortestPath = getShortestDistancePath(sourceStation, targetStation);
-        int distanceSum = 0;
-        int timeSum = 0;
-        for (int i = 0; i < shortestPath.size() - 1; i++) {
-            Station tmpSourceStation = StationRepository.searchStation(shortestPath.get(i));
-            Station tmpTargetStation = StationRepository.searchStation(shortestPath.get(i - 1));
-            Section section = SectionRepository.searchSection(tmpSourceStation, tmpTargetStation);
-            distanceSum += section.getDistance();
-            timeSum += section.getTime();
-        }
-        OutputView.printShortestPathInfo(distanceSum, timeSum);
-        OutputView.printStations(shortestPath);
+        displayShortestPathInfo(shortestPath);
         return true;
     }
 
