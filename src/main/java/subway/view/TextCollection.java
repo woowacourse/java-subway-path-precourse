@@ -23,6 +23,6 @@ public class TextCollection {
     public static final String NOT_EXIST_LINE_MESSAGE = "존재하지 않는 노선입니다.";
     public static final String NOT_EXIST_SECTION_MESSAGE = "존재하지 않는 구간입니다.";
 
-    public static final String TOTAL_DISTANCE_MESSAGE = "총 거리";
-    public static final String TOTAL_TIME_MESSAGE = "총 시간";
+    public static final String TOTAL_DISTANCE_MESSAGE = "총 거리: %dkm";
+    public static final String TOTAL_TIME_MESSAGE = "총 시간: %d분";
 }
