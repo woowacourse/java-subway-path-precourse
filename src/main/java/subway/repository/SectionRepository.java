@@ -20,9 +20,9 @@ public class SectionRepository {
         sections.add(section);
     }
 
-    public static Section searchSection(Station sourceStation, Station targetStation) {
+    public static Section searchSection(String sourceStationName, String targetStationName) {
         return sections.stream()
-                .filter(section -> section.matches(sourceStation, targetStation))
+                .filter(section -> section.matches(sourceStationName, targetStationName))
                 .findFirst()
                 .orElseThrow(() -> new SubwayException(TextCollection.NOT_EXIST_SECTION_MESSAGE));
     }
