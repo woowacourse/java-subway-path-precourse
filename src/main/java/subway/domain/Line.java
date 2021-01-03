@@ -18,10 +18,10 @@ public class Line {
     }
 
     public void addSection(Section section) {
-        if (StationRepository.stations().contains(section.getSourceStationName())
-                && StationRepository.stations().contains(section.getTargetStationName())) {
-            sections.add(section);
-        }
+        Station sourceStation = new Station(section.getSourceStationName());
+        Station targetStation = new Station(section.getTargetStationName());
+
+        sections.add(section);
     }
 
     public List<Section> getSections() {
