@@ -13,9 +13,9 @@ public class Section {
         this.time = time;
     }
 
-    public boolean matches(Station sourceStation, Station targetStation) {
-        if (sourceStation == sourceStation
-                && targetStation == targetStation)
+    public boolean matches(String sourceStationName, String targetStationName) {
+        if (sourceStation.matches(sourceStationName)
+                && targetStation.matches(targetStationName))
             return true;
         return false;
     }
