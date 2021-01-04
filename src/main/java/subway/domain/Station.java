@@ -11,5 +11,9 @@ public class Station {
         return name;
     }
 
-    // 추가 기능 구현
+    public boolean matches(String name) {
+        if (this.name.equals(name))
+            return true;
+        return false;
+    }
 }
