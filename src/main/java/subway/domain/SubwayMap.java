@@ -1,5 +1,6 @@
 package subway.domain;
 
+import org.jgrapht.GraphPath;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
@@ -41,23 +42,33 @@ public class SubwayMap {
 		}
 	}
 
-	public static List<String> getLeastDistancePath(String start, String end) {
+	public static GraphPath<String, String> getLeastDistancePath(String start, String end) {
 		DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(subwayMapDistance);
-		return dijkstraShortestPath.getPath(start, end).getVertexList();
+		return dijkstraShortestPath.getPath(start, end);
 	}
 
-	public static List<String> getLeastTimePath(String start, String end) {
+	public static GraphPath<String, String> getLeastTimePath(String start, String end) {
 		DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(subwayMapTime);
-		return dijkstraShortestPath.getPath(start, end).getVertexList();
+		return dijkstraShortestPath.getPath(start, end);
 	}
 
-	public static String getDistanceSum(String start, String end) {
-		DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(subwayMapDistance);
-		return String.valueOf(Math.round(dijkstraShortestPath.getPath(start, end).getWeight()));
+	public static int getDistanceSumOfLeastTimePath(GraphPath<String, String> shortestPath) {
+		List<String> Vertices = shortestPath.getVertexList();
+		int DistanceSum = 0;
+		for (int i = 0; i < Vertices.size() - 1; i++) {
+			DefaultWeightedEdge thisEdge = subwayMapDistance.getEdge(Vertices.get(i), Vertices.get(i+1));
+			DistanceSum += subwayMapDistance.getEdgeWeight(thisEdge);
+		}
+		return DistanceSum;
 	}
 
-	public static String getTimeSum(String start, String end) {
-		DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(subwayMapTime);
-		return String.valueOf(Math.round(dijkstraShortestPath.getPath(start, end).getWeight()));
+	public static int getTimeSumOfLeastDistancePath(GraphPath<String, String> shortestPath) {
+		List<String> Vertices = shortestPath.getVertexList();
+		int TimeSum = 0;
+		for (int i = 0; i < Vertices.size() - 1; i++) {
+			DefaultWeightedEdge thisEdge = subwayMapTime.getEdge(Vertices.get(i), Vertices.get(i+1));
+			TimeSum += subwayMapTime.getEdgeWeight(thisEdge);
+		}
+		return TimeSum;
 	}
 }

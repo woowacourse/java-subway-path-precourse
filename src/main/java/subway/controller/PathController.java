@@ -1,5 +1,6 @@
 package subway.controller;
 
+import org.jgrapht.GraphPath;
 import subway.domain.SubwayMap;
 import subway.view.InputView;
 import subway.view.Options;
@@ -25,16 +26,16 @@ public class PathController {
 		// TODO
 		String start = InputView.inputStartStation(scanner);
 		String end = InputView.inputEndStation(scanner, start);
-		List<String> shortestPath = SubwayMap.getLeastDistancePath(start, end);
-		OutputView.printPathInformation(shortestPath, start, end);
+		GraphPath<String, String> shortestPath = SubwayMap.getLeastDistancePath(start, end);
+		OutputView.printPathInformationForLeastDistance(shortestPath);
 	}
 
 	public static void findLeastTimeConsumed(Scanner scanner) throws IllegalArgumentException {
 		// TODO
 		String start = InputView.inputStartStation(scanner);
 		String end = InputView.inputEndStation(scanner, start);
-		List<String> shortestPath = SubwayMap.getLeastTimePath(start, end);
-		OutputView.printPathInformation(shortestPath, start, end);
+		GraphPath<String, String> shortestPath = SubwayMap.getLeastTimePath(start, end);
+		OutputView.printPathInformationForLeastTime(shortestPath);
 	}
 
 	private static void controlByOption(String option, Scanner scanner) throws IllegalArgumentException {

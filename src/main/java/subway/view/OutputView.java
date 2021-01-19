@@ -1,5 +1,6 @@
 package subway.view;
 
+import org.jgrapht.GraphPath;
 import subway.domain.SubwayMap;
 
 import java.util.Arrays;
@@ -23,12 +24,23 @@ public class OutputView {
 		System.out.println();
 	}
 
-	public static void printPathInformation(List<String> shortestPath, String start, String end) {
+	public static void printPathInformationForLeastDistance(GraphPath<String, String> shortestPath) {
 		System.out.println(GeneralMessages.DIVISION_LINE.getMessage());
-		System.out.printf((PathMessages.TOTAL_DISTANCE.getMessage()) + "%n", SubwayMap.getDistanceSum(start, end));
-		System.out.printf((PathMessages.TOTAL_TIME.getMessage()) + "%n", SubwayMap.getTimeSum(start, end));
+		System.out.printf(PathMessages.TOTAL_DISTANCE.getMessage() + "%n", Integer.parseInt(String.valueOf(Math.round(shortestPath.getWeight()))));
+		System.out.printf(PathMessages.TOTAL_TIME.getMessage() + "%n", SubwayMap.getTimeSumOfLeastDistancePath(shortestPath));
 		System.out.println(GeneralMessages.DIVISION_LINE.getMessage());
-		for (String station : shortestPath) {
+		for (String station : shortestPath.getVertexList()) {
+			System.out.println(GeneralMessages.INFO.getMessage() + station);
+		}
+		System.out.println();
+	}
+
+	public static void printPathInformationForLeastTime(GraphPath<String, String> shortestPath) {
+		System.out.println(GeneralMessages.DIVISION_LINE.getMessage());
+		System.out.printf(PathMessages.TOTAL_DISTANCE.getMessage() + "%n", SubwayMap.getDistanceSumOfLeastTimePath(shortestPath));
+		System.out.printf(PathMessages.TOTAL_TIME.getMessage() + "%n", Integer.parseInt(String.valueOf(Math.round(shortestPath.getWeight()))));
+		System.out.println(GeneralMessages.DIVISION_LINE.getMessage());
+		for (String station : shortestPath.getVertexList()) {
 			System.out.println(GeneralMessages.INFO.getMessage() + station);
 		}
 		System.out.println();
