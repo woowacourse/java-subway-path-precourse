@@ -6,6 +6,7 @@ import java.util.Scanner;
 import subway.Controller.Run.Init;
 import subway.Controller.Run.InputController;
 import subway.Controller.Run.OutputController;
+import subway.Utils.Constants;
 import subway.domain.Path.ShortestPath;
 import subway.domain.Station;
 
@@ -26,21 +27,20 @@ public class StationsController {
 		if (!go) {
 			return;
 		}
-		System.out.println("asd");
 		OutputController.getOutput(path);
 		start();
 	}
 
 	private void mainInput() {
 		String input = InputController.getMainInput(scanner);
-		if (input.equals("Q")) {
+		if (input.equals(Constants.MAIN_INPUT_QUIT)) {
 			System.exit(0);
 		}
 	}
 
 	private boolean pathInput() {
 		String input = InputController.getStandardInput(scanner);
-		if (input.equals("B")) {
+		if (input.equals(Constants.MAIN_STANDARD_QUIT)) {
 			start();
 			return false;
 		}
@@ -59,10 +59,10 @@ public class StationsController {
 
 	public List<Station> getPath(String input, String start, String finish) {
 		List<Station> path = null;
-		if (input.equals("1")) {
+		if (input.equals(Constants.MAIN_STANDARD_DISTANCE)) {
 			path = new ShortestPath(start, finish).getDistancePath();
 		}
-		if (input.equals("2")) {
+		if (input.equals(Constants.MAIN_STANDARD_TIME)) {
 			path = new ShortestPath(start, finish).getTimePath();
 		}
 		return path;

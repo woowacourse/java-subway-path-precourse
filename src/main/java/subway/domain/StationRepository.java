@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import subway.Utils.Constants;
+
 public class StationRepository {
 	private static final List<Station> stations = new ArrayList<>();
 
@@ -30,6 +32,6 @@ public class StationRepository {
 				return station;
 			}
 		}
-		throw new IllegalArgumentException("[ERROR] 해당 이름을 찾을 수 없음.");
+		throw new IllegalArgumentException(Constants.ERROR_NAME_NOT_FOUNDED);
 	}
 }

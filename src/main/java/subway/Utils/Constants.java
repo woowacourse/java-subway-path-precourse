@@ -29,6 +29,8 @@ public class Constants {
 	public static final String ERROR_SAME_NAME = ERROR + "출발역과 도착역이 동일합니다.";
 	public static final String ERROR_WRONG_MAIN_INPUT = ERROR + "1 혹은 Q를 입력하시오.\n";
 	public static final String ERROR_WRONG_STANDARD_INPUT = ERROR + "1,2 혹은 B를 입력하시오.";
+	public static final String ERROR_NOT_CONNECTED = ERROR + "두 노선은 연결되어있지 않습니다.";
+	public static final String ERROR_NAME_NOT_FOUNDED = ERROR + "해당 이름을 찾을 수 없습니다.";
 
 	public static final String MAIN_INPUT_START = "1";
 	public static final String MAIN_INPUT_QUIT = "Q";

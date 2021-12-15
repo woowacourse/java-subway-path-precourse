@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 
+import subway.Utils.Constants;
 import subway.Utils.Validator.PathValidator;
 import subway.domain.Station;
 import subway.domain.StationRepository;
@@ -22,7 +23,7 @@ public class ShortestPath {
 	public List<Station> getDistancePath() {
 		makeDistancePath();
 		if (path.isEmpty()) {
-			throw new IllegalArgumentException("[ERROR] 두 노선은 연결되어있지 않습니다.");
+			throw new IllegalArgumentException(Constants.ERROR_NOT_CONNECTED);
 		}
 		return path;
 	}
@@ -30,7 +31,7 @@ public class ShortestPath {
 	public List<Station> getTimePath() {
 		makeTimePath();
 		if (path.isEmpty()) {
-			throw new IllegalArgumentException("[ERROR] 두 노선은 연결되어있지 않습니다.");
+			throw new IllegalArgumentException(Constants.ERROR_NOT_CONNECTED);
 		}
 		return path;
 	}
