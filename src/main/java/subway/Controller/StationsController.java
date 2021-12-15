@@ -26,6 +26,7 @@ public class StationsController {
 		if (!go) {
 			return;
 		}
+		System.out.println("asd");
 		OutputController.getOutput(path);
 		start();
 	}
@@ -51,8 +52,7 @@ public class StationsController {
 			path = getPath(input, start, finish);
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
-			pathInput();
-			return false;
+			return pathInput();
 		}
 		return true;
 	}
