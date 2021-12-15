@@ -5,13 +5,13 @@ import java.util.Scanner;
 
 import subway.Utils.Constants;
 import subway.View.OutputView;
-import subway.domain.Path.DistanceConnectionRepository;
 import subway.domain.Line;
 import subway.domain.LineRepository;
+import subway.domain.Path.DistanceConnectionRepository;
 import subway.domain.Path.ShortestPath;
+import subway.domain.Path.TimeConnectionRepository;
 import subway.domain.Station;
 import subway.domain.StationRepository;
-import subway.domain.Path.TimeConnectionRepository;
 
 public class StationsController {
 	private final Scanner scanner;

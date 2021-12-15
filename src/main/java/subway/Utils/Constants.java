@@ -26,15 +26,15 @@ public class Constants {
 	};
 
 	public static final String ERROR = "\n[ERROR] ";
-	public static final String ERROR_SAME_NAME = ERROR + "출발역과 도착역이 동일합니다.";
-	public static final String ERROR_WRONG_MAIN_INPUT = ERROR + "1 혹은 Q를 입력하시오.";
-	public static final String ERROR_WRONG_STANDARD_INPUT = ERROR + "1,2 혹은 B를 입력하시오.";
+	public static final String ERROR_SAME_NAME = ERROR + "출발역과 도착역이 동일합니다.\n";
+	public static final String ERROR_WRONG_MAIN_INPUT = ERROR + "1 혹은 Q를 입력하시오.\n";
+	public static final String ERROR_WRONG_STANDARD_INPUT = ERROR + "1,2 혹은 B를 입력하시오.\n";
 
 	public static final String MAIN_INPUT_START = "1";
 	public static final String MAIN_INPUT_QUIT = "Q";
 
 	public static final String MAIN_STANDARD_DISTANCE = "1";
 	public static final String MAIN_STANDARD_TIME = "2";
-	public static final String MAIN_STANDARD_QUIT = "Q";
+	public static final String MAIN_STANDARD_QUIT = "B";
 
 }
