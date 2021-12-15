@@ -54,7 +54,7 @@ public class InputController {
 			return input;
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
-			return getMainInput(scanner);
+			return getStandardInput(scanner);
 		}
 	}
 }
