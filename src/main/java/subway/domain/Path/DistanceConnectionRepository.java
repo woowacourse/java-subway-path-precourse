@@ -34,11 +34,9 @@ public class DistanceConnectionRepository {
 	}
 
 	public static int findDistance(Station station1, Station station2) {
-		// System.out.println("full Stations: " + station1.getName() + station2.getName());
 		for (Object[] connection : Constants.DISTANCES) {
 			ArrayList stations = new ArrayList(Arrays.asList(connection));
 			if (stations.contains(station1.getName()) && stations.contains(station2.getName())) {
-				// System.out.println("Stations: " + stations);
 				return (int)connection[2];
 			}
 		}

@@ -1,4 +1,4 @@
-package subway.Controller;
+package subway.Controller.Run;
 
 import java.util.Scanner;
 
