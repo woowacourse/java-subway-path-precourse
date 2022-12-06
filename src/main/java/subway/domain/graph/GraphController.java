@@ -16,7 +16,7 @@ public class GraphController {
 
     public void run() {
         OutputView.printPathPage();
-        String input = ExceptionHandler.repeatForValidInput(InputView::readMainCommand);
+        String input = ExceptionHandler.repeatForValidInput(InputView::readDetailCommand);
         executePathCommand(input);
     }
 
