@@ -2,16 +2,28 @@ package subway.domain.graph;
 
 import subway.domain.station.Station;
 import subway.domain.station.StationRepository;
+import subway.domain.util.MessageFactory;
 
+import static subway.domain.util.ErrorCode.*;
 import static subway.domain.util.SetupConstant.*;
 
 public class GraphService {
+    private final MessageFactory messageFactory = new MessageFactory();
+
     private static final Graph distanceGraph = new Graph();
     private static final Graph timeGraph = new Graph();
 
-    public void setUp() {
+    void setUp() {
         setUpDistanceGraph();
         setUpTimeGraph();
+    }
+
+
+    String findShortestDistance(String departStationName, String arriveStationName) {
+        Station departStation = findPresentStation(departStationName);
+        Station arriveStation = findPresentStation(arriveStationName);
+        validateStationNames(departStation, arriveStation);
+        return "";
     }
 
     private void setUpDistanceGraph() {
@@ -46,8 +58,18 @@ public class GraphService {
         timeGraph.updateGraph(station1, station2, pathWeight);
     }
 
-    public String findShortestDistance(String departStation, String arriveStation) {
-        return "";
+    private void validateStationNames(Station departStation, Station arriveStation) {
+        if (departStation == arriveStation) {
+            throw new IllegalArgumentException(messageFactory.makeErrorMessage(DUPLICATE_STATION_NAME));
+        }
+    }
+
+    private Station findPresentStation(String stationName) {
+        Station station = StationRepository.findByName(stationName);
+        if (station == null) {
+            throw new IllegalArgumentException(messageFactory.makeErrorMessage(STATION_NOT_FOUND));
+        }
+        return station;
     }
 
 }
