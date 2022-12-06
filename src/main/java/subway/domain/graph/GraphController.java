@@ -22,9 +22,16 @@ public class GraphController {
 
     private void executePathCommand(String input) {
         GraphCommand command = convertToCommand(input);
-        if (command == SHORTEST_DISTANCE) ;
+        if (command == SHORTEST_DISTANCE) findShortestDistance();
         if (command == SHORTEST_TIME) ;
         if (command == BACK) return;
+    }
+
+    private void findShortestDistance() {
+        String departStation = ExceptionHandler.repeatForValidInput(InputView::readDepartStationName);
+        String arriveStation = ExceptionHandler.repeatForValidInput(InputView::readArriveStationName);
+        String result = graphService.findShortestDistance(departStation, arriveStation);
+        OutputView.print(result);
     }
 
 }

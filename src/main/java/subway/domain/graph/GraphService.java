@@ -77,4 +77,8 @@ public class GraphService {
         return TimeGraphRepository.findByLine(line);
     }
 
+    public String findShortestDistance(String departStation, String arriveStation) {
+        return "";
+    }
+
 }

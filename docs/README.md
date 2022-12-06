@@ -309,8 +309,9 @@ This project is [MIT](https://github.com/woowacourse/java-subway-path-precourse/
     - [x] `Exception` : 1, 2, B가 아니면 예외 처리
     
 - 1-1 (최단거리) 선택시
-  - [ ] `InputView` : 출발역 입력받기
-  - [ ] `InputView` : 도착역 입력받기
+  - [x] `InputView` : 출발역 입력받기
+  - [x] `InputView` : 도착역 입력받기
+    - [x] `Exception` : 역 이름이 유효하지 않으면 예외 처리
     - [ ] `Exception` : 출발역과 도착역이 동일하면 예외 처리
     - [ ] `Exception` : 출발역과 도착역이 연결되어있지 않으면 예외 처리
   - [ ] 최단 거리 계산하기
