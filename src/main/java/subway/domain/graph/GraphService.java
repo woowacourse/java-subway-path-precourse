@@ -1,9 +1,9 @@
 package subway.domain.graph;
 
-import org.jgrapht.GraphPath;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
+
 import subway.domain.station.Station;
 import subway.domain.station.StationRepository;
 import subway.domain.util.MessageFactory;
@@ -17,67 +17,50 @@ import static subway.domain.util.SetupConstant.*;
 public class GraphService {
     private final MessageFactory messageFactory = new MessageFactory();
 
-    private final WeightedMultigraph<String, DefaultWeightedEdge> distanceGraph = new WeightedMultigraph(DefaultWeightedEdge.class);
-    private final WeightedMultigraph<String, DefaultWeightedEdge> timeGraph = new WeightedMultigraph(DefaultWeightedEdge.class);
+    private WeightedMultigraph<String, DefaultWeightedEdge> distanceGraph = new WeightedMultigraph(DefaultWeightedEdge.class);
+    private WeightedMultigraph<String, DefaultWeightedEdge> timeGraph = new WeightedMultigraph(DefaultWeightedEdge.class);
 
     void setUp() {
-        setUpStationsToDistanceGraph();
-        setUpStationsToTimeGraph();
+        List<String> stationNames = List.of(STATION_GYODAE, STATION_GANGNAM, STATION_YEOKSAM, STATION_NAMBU_TERMINAL, STATION_YANGJAE, STATION_YANGJAE_CITIZENS_FOREST, STATION_MAEBONG);
+        for (String name : stationNames) {
+            distanceGraph.addVertex(name);
+            timeGraph.addVertex(name);
+        }
         setUpDistances();
         setUpTimes();
     }
 
-    String computeShortestDistanceResult(DijkstraShortestPath path, Station station1, Station station2) {
-        List<Station> stations = path.getPath(station1, station2).getVertexList();
+    String computeShortestDistanceResult(DijkstraShortestPath path, String station1, String station2) {
+        List<String> stations = path.getPath(station1, station2).getVertexList();
         double totalPathWeight = path.getPathWeight(station1, station2);
         return buildShortestDistanceInfo(stations, totalPathWeight, 0);
     }
 
-    private String buildShortestDistanceInfo(List<Station> stations, double totalDistance, int totalTime) {
+    private String buildShortestDistanceInfo(List<String> stationNames, double totalDistance, int totalTime) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(messageFactory.makeInfoMessage(LINE));
         stringBuilder.append(messageFactory.makeDistanceInfo(String.valueOf(totalDistance)));
         stringBuilder.append(messageFactory.makeDistanceInfo(String.valueOf(totalTime)));
-        for (Station station : stations) {
-            stringBuilder.append(messageFactory.makeInfo(station.getName()));
+        for (String stationName : stationNames) {
+            stringBuilder.append(messageFactory.makeInfo(stationName));
         }
         return stringBuilder.toString();
     }
 
     String findShortestDistancePath(String departStationName, String arriveStationName) {
-        Station departStation = findPresentStation(departStationName);
-        Station arriveStation = findPresentStation(arriveStationName);
-        validateStationNames(departStation, arriveStation);
+        validatePresentStation(departStationName);
+        validatePresentStation(arriveStationName);
+        validateStationNames(departStationName, arriveStationName);
 
         DijkstraShortestPath shortestDistancePath = new DijkstraShortestPath(distanceGraph);
         validateShortestPath(shortestDistancePath);
-        return computeShortestDistanceResult(shortestDistancePath, departStation, arriveStation);
+        return computeShortestDistanceResult(shortestDistancePath, departStationName, arriveStationName);
     }
 
     private void validateShortestPath(DijkstraShortestPath path) {
         if (path == null) {
             throw new IllegalArgumentException(messageFactory.makeErrorMessage(STATION_NOT_CONNECTED));
         }
-    }
-
-    private void setUpStationsToDistanceGraph() {
-        distanceGraph.addVertex(STATION_GYODAE);
-        distanceGraph.addVertex(STATION_GANGNAM);
-        distanceGraph.addVertex(STATION_YEOKSAM);
-        distanceGraph.addVertex(STATION_NAMBU_TERMINAL);
-        distanceGraph.addVertex(STATION_YANGJAE);
-        distanceGraph.addVertex(STATION_YANGJAE_CITIZENS_FOREST);
-        distanceGraph.addVertex(STATION_MAEBONG);
-    }
-
-    private void setUpStationsToTimeGraph() {
-        timeGraph.addVertex(STATION_GYODAE);
-        timeGraph.addVertex(STATION_GANGNAM);
-        timeGraph.addVertex(STATION_YEOKSAM);
-        timeGraph.addVertex(STATION_NAMBU_TERMINAL);
-        timeGraph.addVertex(STATION_YANGJAE);
-        timeGraph.addVertex(STATION_YANGJAE_CITIZENS_FOREST);
-        timeGraph.addVertex(STATION_MAEBONG);
     }
 
     private void setUpDistances() {
@@ -100,18 +83,17 @@ public class GraphService {
         timeGraph.setEdgeWeight(timeGraph.addEdge(STATION_YANGJAE, STATION_YANGJAE_CITIZENS_FOREST), TIME_YANGJAE_TO_YANGJAE_CITIZEN_FOREST);
     }
 
-    private void validateStationNames(Station departStation, Station arriveStation) {
+    private void validateStationNames(String departStation, String arriveStation) {
         if (departStation == arriveStation) {
             throw new IllegalArgumentException(messageFactory.makeErrorMessage(DUPLICATE_STATION_NAME));
         }
     }
 
-    private Station findPresentStation(String stationName) {
+    private void validatePresentStation(String stationName) {
         Station station = StationRepository.findByName(stationName);
         if (station == null) {
             throw new IllegalArgumentException(messageFactory.makeErrorMessage(STATION_NOT_FOUND));
         }
-        return station;
     }
 
 }
