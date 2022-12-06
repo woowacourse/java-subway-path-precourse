@@ -1,5 +1,6 @@
 package subway.domain.global;
 
+import subway.domain.graph.GraphController;
 import subway.domain.line.LineRepository;
 import subway.domain.station.StationRepository;
 import subway.domain.util.ExceptionHandler;
@@ -10,10 +11,12 @@ import static subway.domain.global.SystemCommand.*;
 
 public class SystemController {
     private boolean systemContinue = true;
+    private final GraphController graphController = new GraphController();
 
     public SystemController() {
         StationRepository.setUp();
         LineRepository.setUp();
+        graphController.setUp();
     }
 
     public void run() {

@@ -14,4 +14,22 @@ public class SetupConstant {
     public static final String LINE_2 = "2호선";
     public static final String LINE_3 = "3호선";
     public static final String LINE_SINBUNDANG = "신분당선";
+
+    // 소요 거리 사전 설정
+    public static final int DIST_GYODAE_TO_GANGNAM = 2;
+    public static final int DIST_GANGNAM_TO_YEOKSAM = 2;
+    public static final int DIST_GYODAE_TO_NAMBU_TERMINAL = 3;
+    public static final int DIST_NAMBU_TERMINAL_TO_YANGJAE = 6;
+    public static final int DIST_YANGJAE_TO_MAEBONG = 1;
+    public static final int DIST_GANGNAM_TO_YANGJAE = 2;
+    public static final int DIST_YANGJAE_TO_YANGJAE_CITIZEN_FOREST = 10;
+
+    // 소요 시간 사전 설정
+    public static final int TIME_GYODAE_TO_GANGNAM = 3;
+    public static final int TIME_GANGNAM_TO_YEOKSAM = 3;
+    public static final int TIME_GYODAE_TO_NAMBU_TERMINAL = 2;
+    public static final int TIME_NAMBU_TERMINAL_TO_YANGJAE = 5;
+    public static final int TIME_YANGJAE_TO_MAEBONG = 1;
+    public static final int TIME_GANGNAM_TO_YANGJAE = 8;
+    public static final int TIME_YANGJAE_TO_YANGJAE_CITIZEN_FOREST = 3;
 }
