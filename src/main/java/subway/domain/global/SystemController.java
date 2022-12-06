@@ -2,6 +2,7 @@ package subway.domain.global;
 
 import subway.domain.graph.GraphController;
 import subway.domain.line.LineRepository;
+import subway.domain.section.LineSectionController;
 import subway.domain.station.StationRepository;
 import subway.domain.util.ExceptionHandler;
 import subway.view.InputView;
@@ -12,10 +13,12 @@ import static subway.domain.global.SystemCommand.*;
 public class SystemController {
     private boolean systemContinue = true;
     private final GraphController graphController = new GraphController();
+    private final LineSectionController lineSectionController = new LineSectionController();
 
     public SystemController() {
         StationRepository.setUp();
         LineRepository.setUp();
+        lineSectionController.setUp();
         graphController.setUp();
     }
 

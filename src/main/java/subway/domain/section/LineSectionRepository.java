@@ -6,12 +6,15 @@ import subway.domain.station.Station;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 public class LineSectionRepository {
     private static final List<LineSection> lineSections = new ArrayList<>();
 
     private LineSectionRepository() {
+    }
+
+    public static void addLineSection(LineSection lineSection) {
+        lineSections.add(lineSection);
     }
 
     public static LineSection findByLine(Line line) {
