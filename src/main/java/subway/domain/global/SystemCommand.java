@@ -3,6 +3,7 @@ package subway.domain.global;
 import java.util.Arrays;
 
 public enum SystemCommand {
+    FIND_PATH("1"),
     QUIT("Q");
 
     private final String button;

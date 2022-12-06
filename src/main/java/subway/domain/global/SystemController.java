@@ -23,8 +23,8 @@ public class SystemController {
         while (systemContinue) {
             try {
                 OutputView.printMainPage();
-//                String input = ExceptionHandler.repeatForValidInput(InputView::readMainCommand);
-//                executeMainCommand(input);
+                String input = ExceptionHandler.repeatForValidInput(InputView::readMainCommand);
+                executeMainCommand(input);
             } catch (IllegalArgumentException e) {
                 OutputView.print(e.getMessage());
             }
@@ -34,7 +34,7 @@ public class SystemController {
     private void executeMainCommand(String input) {
         SystemCommand command = convertToCommand(input);
 
-//        if (command == STATION_MANAGEMENT) stationController.run();
+        if (command == FIND_PATH) graphController.run();
         if (command == QUIT) systemContinue = false;
     }
 

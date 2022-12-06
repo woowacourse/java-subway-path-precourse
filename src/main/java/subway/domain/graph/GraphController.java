@@ -6,4 +6,7 @@ public class GraphController {
     public void setUp() {
         graphService.setUp();
     }
+
+    public void run() {
+    }
 }
