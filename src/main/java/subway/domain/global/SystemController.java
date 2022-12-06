@@ -22,7 +22,7 @@ public class SystemController {
     public void run() {
         while (systemContinue) {
             try {
-//                OutputView.printMainPage();
+                OutputView.printMainPage();
 //                String input = ExceptionHandler.repeatForValidInput(InputView::readMainCommand);
 //                executeMainCommand(input);
             } catch (IllegalArgumentException e) {
