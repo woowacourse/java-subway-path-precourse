@@ -27,13 +27,13 @@ public class GraphService {
         setUpTimes();
     }
 
-    String computeShortestDistanceResult(GraphPath<Station, DefaultWeightedEdge> path) {
-        List<Station> stations = path.getVertexList();
-        int totalPathWeight = (int) path.getWeight();
+    String computeShortestDistanceResult(DijkstraShortestPath path, Station station1, Station station2) {
+        List<Station> stations = path.getPath(station1, station2).getVertexList();
+        double totalPathWeight = path.getPathWeight(station1, station2);
         return buildShortestDistanceInfo(stations, totalPathWeight, 0);
     }
 
-    private String buildShortestDistanceInfo(List<Station> stations, int totalDistance, int totalTime) {
+    private String buildShortestDistanceInfo(List<Station> stations, double totalDistance, int totalTime) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(messageFactory.makeInfoMessage(LINE));
         stringBuilder.append(messageFactory.makeDistanceInfo(String.valueOf(totalDistance)));
@@ -50,12 +50,11 @@ public class GraphService {
         validateStationNames(departStation, arriveStation);
 
         DijkstraShortestPath shortestDistancePath = new DijkstraShortestPath(distanceGraph);
-        GraphPath<Station, DefaultWeightedEdge> path = shortestDistancePath.getPath(departStation, arriveStation);
-        validateShortestPath(path);
-        return computeShortestDistanceResult(path);
+        validateShortestPath(shortestDistancePath);
+        return computeShortestDistanceResult(shortestDistancePath, departStation, arriveStation);
     }
 
-    private void validateShortestPath(GraphPath<Station, DefaultWeightedEdge> path) {
+    private void validateShortestPath(DijkstraShortestPath path) {
         if (path == null) {
             throw new IllegalArgumentException(messageFactory.makeErrorMessage(STATION_NOT_CONNECTED));
         }
