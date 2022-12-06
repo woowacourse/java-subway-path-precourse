@@ -14,6 +14,7 @@ public class OutputView {
     }
 
     public static void printPathPage() {
+        System.out.println();
         System.out.println(PATH_PAGE_INFO);
     }
 
