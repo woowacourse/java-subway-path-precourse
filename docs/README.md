@@ -304,8 +304,9 @@ This project is [MIT](https://github.com/woowacourse/java-subway-path-precourse/
   - [x] `Exception` : 1, Q가 아니면 예외 처리
 
 - 1 선택시
-  - [ ] `InputView` : 원하는 기능 선택받기
-    - [ ] `Exception` : 1, 2, B가 아니면 예외 처리
+  - [x] `OutputView` : 경로 화면 출력
+  - [x] `InputView` : 원하는 기능 선택받기
+    - [x] `Exception` : 1, 2, B가 아니면 예외 처리
     
 - 1-1 (최단거리) 선택시
   - [ ] `InputView` : 출발역 입력받기

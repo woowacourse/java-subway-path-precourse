@@ -1,4 +1,4 @@
-package subway.domain.graph;
+package subway.domain.graph.distance;
 
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;

@@ -1,4 +1,4 @@
-package subway.domain.graph;
+package subway.domain.graph.time;
 
 import org.jgrapht.Graph;
 import org.jgrapht.graph.DefaultWeightedEdge;

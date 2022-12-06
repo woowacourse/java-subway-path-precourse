@@ -1,5 +1,9 @@
 package subway.domain.graph;
 
+import subway.domain.graph.distance.DistanceGraph;
+import subway.domain.graph.distance.DistanceGraphRepository;
+import subway.domain.graph.time.TimeGraph;
+import subway.domain.graph.time.TimeGraphRepository;
 import subway.domain.line.Line;
 import subway.domain.line.LineRepository;
 import subway.domain.station.Station;

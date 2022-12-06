@@ -16,4 +16,13 @@ public class InputView {
         return input;
     }
 
+    public static String readDetailCommand() {
+        System.out.println();
+        System.out.println(COMMAND_MESSAGE);
+
+        String input = Console.readLine();
+        inputValidator.validateDetailCommand(input);
+        return input;
+    }
+
 }

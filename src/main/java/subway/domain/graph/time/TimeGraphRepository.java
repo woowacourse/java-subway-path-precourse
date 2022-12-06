@@ -1,4 +1,4 @@
-package subway.domain.graph;
+package subway.domain.graph.time;
 
 import subway.domain.line.Line;
 

@@ -1,4 +1,4 @@
-package subway.domain.graph;
+package subway.domain.graph.distance;
 
 import subway.domain.line.Line;
 

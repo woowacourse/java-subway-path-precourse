@@ -19,6 +19,8 @@ public class SystemController {
         graphController.setUp();
     }
 
+    // 프로그램 전체 진행 중, 유효하지 않은 입력값은 즉시 재입력을 받지만
+    // 이외의 예측 가능한 오류 발생시 오류메시지 출력 후 메인 페이지로 복귀
     public void run() {
         while (systemContinue) {
             try {
