@@ -292,7 +292,7 @@ This project is [MIT](https://github.com/woowacourse/java-subway-path-precourse/
 ## 🎈 구현할 기능 목록
 
 ### 초기 설정
-
+- [x] 역, 노선 초기 설정
 - [ ] 구간 초기 설정
   - [ ] 2호선: 교대역 - ( 2km / 3분 ) - 강남역 - ( 2km / 3분 ) - 역삼역
   - [ ] 3호선: 교대역 - ( 3km / 2분 ) - 남부터미널역 - ( 6km / 5분 ) - 양재역 - ( 1km / 1분 ) - 매봉역
