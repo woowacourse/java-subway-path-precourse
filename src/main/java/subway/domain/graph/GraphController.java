@@ -30,7 +30,7 @@ public class GraphController {
     private void findShortestDistance() {
         String departStation = ExceptionHandler.repeatForValidInput(InputView::readDepartStationName);
         String arriveStation = ExceptionHandler.repeatForValidInput(InputView::readArriveStationName);
-        String result = graphService.findShortestDistance(departStation, arriveStation);
+        String result = graphService.findShortestDistancePath(departStation, arriveStation);
         OutputView.print(result);
     }
 
