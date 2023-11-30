@@ -5,7 +5,7 @@ import org.jgrapht.GraphPath;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.WeightedMultigraph;
 import subway.domain.Line;
-import subway.domain.LineRepository;
+import subway.domain.repository.LineRepository;
 import subway.domain.Station;
 import subway.domain.UnitPath;
 
