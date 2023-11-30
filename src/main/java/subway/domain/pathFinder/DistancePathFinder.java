@@ -4,8 +4,8 @@ import subway.domain.repository.LineRepository;
 import subway.domain.UnitPath;
 
 public class DistancePathFinder extends StationPathFinder{
-    public DistancePathFinder(LineRepository lineRepository) {
-        super(lineRepository);
+    public DistancePathFinder() {
+        super();
     }
 
     @Override

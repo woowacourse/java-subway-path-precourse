@@ -4,8 +4,8 @@ import subway.domain.repository.LineRepository;
 import subway.domain.UnitPath;
 
 public class TimePathFinder extends StationPathFinder{
-    public TimePathFinder(LineRepository lineRepository) {
-        super(lineRepository);
+    public TimePathFinder() {
+        super();
     }
 
     @Override

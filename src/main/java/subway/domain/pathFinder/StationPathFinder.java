@@ -12,9 +12,9 @@ import subway.domain.UnitPath;
 public abstract class StationPathFinder {
 
     private final DijkstraShortestPath<Station, Integer> dijkstraShortestPath;
-    public StationPathFinder(LineRepository lineRepository){
+    public StationPathFinder(){
         WeightedMultigraph<Station, Integer> graph = new WeightedMultigraph<>(Integer.class);
-        lineRepository.lines().stream()
+        LineRepository.lines().stream()
                 .map(Line::getPaths)
                 .flatMap(Set::stream)
                 .forEach(path -> addPathToGraph(graph, path));
