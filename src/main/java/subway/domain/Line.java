@@ -1,6 +1,8 @@
 package subway.domain;
 
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -25,5 +27,9 @@ public class Line {
         return paths.stream()
                 .filter(path -> path.isPathOf(start, end))
                 .findFirst();
+    }
+
+    public Set<UnitPath> getPaths() {
+        return Collections.unmodifiableSet(paths);
     }
 }

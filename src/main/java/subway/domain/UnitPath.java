@@ -1,29 +1,45 @@
 package subway.domain;
 
-import java.util.HashSet;
 import java.util.Set;
 
 public class UnitPath {
-    private final Set<Station> stations;
+    private final Station start;
+    private final Station end;
 
     //todo 아래 두 값 래핑
     private final int time;
     private final int distance;
 
-    public UnitPath(Station source, Station target, int time, int distance) {
-        this.stations = new HashSet<>();
-        stations.add(source);
-        stations.add(target);
+    public UnitPath(Station start, Station end, int time, int distance) {
+        this.start = start;
+        this.end = end;
         this.time = time;
         this.distance = distance;
     }
 
-    public boolean isPathOf(Station source, Station target) {
-        if(source == target){
-            //todo
-            throw new IllegalArgumentException("출발 끝 같음");
+    public boolean isPathOf(Station start, Station end) {
+        if (this.start.equals(start) && this.end.equals(end)) {
+            return true;
         }
+        if (this.start.equals(end) && this.end.equals(start)) {
+            return true;
+        }
+        return false;
+    }
 
-        return this.stations.contains(source) && this.stations.contains(target);
+    public Station getEnd() {
+        return end;
+    }
+
+    public Station getStart() {
+        return start;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public int getTime() {
+        return time;
     }
 }
