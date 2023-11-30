@@ -14,7 +14,7 @@ public class PathRepository {
 
     public static int getTotalTime(List<Station> totalPath){
         int time = 0;
-        for (int i = 0; i < totalPath.size() - 2; i++) {
+        for (int i = 0; i < totalPath.size() - 1; i++) {
             int finalI = i;
             UnitPath unitPath =
                     paths.stream()
@@ -28,7 +28,7 @@ public class PathRepository {
 
     public static int getTotalDistance(List<Station> totalPath){
         int distance = 0;
-        for (int i = 0; i < totalPath.size() - 2; i++) {
+        for (int i = 0; i < totalPath.size() - 1; i++) {
             int finalI = i;
             UnitPath unitPath = paths.stream()
                     .filter(path -> path.isPathOf(totalPath.get(finalI), totalPath.get(finalI + 1)))
