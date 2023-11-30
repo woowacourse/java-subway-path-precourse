@@ -10,6 +10,7 @@ public class RepositoryConfig {
     public static void initRepository(){
         initStationRepository();
         initLineRepository();
+        initPathRepository();
     }
 
     private static void initStationRepository(){
