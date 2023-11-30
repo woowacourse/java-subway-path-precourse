@@ -35,7 +35,6 @@ public class StationRepository {
         return stations.stream()
                 .filter(station -> station.isName(name))
                 .findFirst()
-                .orElseThrow(IllegalArgumentException::new);
-        //todo 예외 메시지
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 역 이름입니다."));
     }
 }

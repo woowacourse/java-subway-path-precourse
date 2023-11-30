@@ -23,21 +23,22 @@ public class Application {
     }
 
     public static void run(Scanner scanner){
-        String input = scanner.nextLine();
         while(true) {
             view.printMenuView();
+            String input = scanner.nextLine();
             if (input.equals("Q")) {
                 return;
             }
             if (input.equals("1")) {
-                handler.runOrRetry(() -> _findPath(scanner));
+                handler.runOrRetry(() -> findPath(scanner));
                 continue;
             }
             throw new IllegalArgumentException("잘못된 메뉴 입력입니다.");
         }
     }
 
-    private static void _findPath(Scanner scanner) {
+    private static void findPath(Scanner scanner) {
+        view.printPathMenu();
         String input = scanner.nextLine();
         if (input.equals("B")) {
             return;
@@ -52,9 +53,10 @@ public class Application {
     }
 
     private static void _findPath(Scanner scanner, String input) {
+        view.guideStartStation();
         Station start = getStation(scanner);
+        view.guideEndStation();
         Station end = getStation(scanner);
-
         PathResult result = null;
         if(input.equals("1")){
             result = subwayService.findShortestPath(start, end);

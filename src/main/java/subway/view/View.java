@@ -18,7 +18,16 @@ public class View {
         printChooseMenu();
     }
 
-    public void printChooseMenu(){
+    public void printPathMenu(){
+        printer.printMessage("## 경로 기준");
+        printer.printMessage("1. 최단 거리");
+        printer.printMessage("2. 최소 시간");
+        printer.printMessage("B. 돌아가기");
+        printer.printMessage("");
+        printChooseMenu();
+    }
+
+    private void printChooseMenu(){
         printer.printMessage("## 원하는 기능을 선택하세요.");
 
     }
@@ -48,5 +57,13 @@ public class View {
 
     private void printStations(List<Station> stations){
         stations.forEach(station -> printInfo(station.getName()));
+    }
+
+    public void guideStartStation() {
+        printer.printMessage("## 출발역을 입력하세요.");
+    }
+
+    public void guideEndStation() {
+        printer.printMessage("## 도착역을 입력하세요.");
     }
 }
