@@ -1,5 +1,6 @@
 package subway.domain.repository;
 
+import java.util.Set;
 import subway.domain.Line;
 import subway.domain.Station;
 import subway.domain.UnitPath;
@@ -51,5 +52,13 @@ public class RepositoryConfig {
         Station start = StationRepository.getStationByName(startName);
         Station end = StationRepository.getStationByName(endName);
         return new UnitPath(start, end, time, distance);
+    }
+
+    private static void initPathRepository(){
+        LineRepository.lines().stream()
+                .map(Line::getPaths)
+                .flatMap(Set::stream)
+                .forEach(PathRepository::addPath);
+
     }
 }
