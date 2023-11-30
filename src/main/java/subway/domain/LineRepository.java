@@ -5,6 +5,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+/*
+ * Repository 는 어떻게 사용해야 하나
+ * 필요한 정보 : 각 역 사이의 거리/시간 정보
+ */
 public class LineRepository {
     private static final List<Line> lines = new ArrayList<>();
 
