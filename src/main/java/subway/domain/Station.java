@@ -1,15 +1,29 @@
 package subway.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Station {
     private String name;
+    private List<ConnectStationNode> connectStationNodes = new ArrayList<>();
 
-    public Station(String name) {
+    private Station(String name) {
         this.name = name;
+    }
+
+    public static Station create(String name){
+        return new Station(name);
+    }
+
+    public void addConnectStations(final ConnectStationNode connectStationNode){
+        connectStationNodes.add(connectStationNode);
     }
 
     public String getName() {
         return name;
     }
 
-    // 추가 기능 구현
+    public boolean isEqualName(String name){
+        return name.equals(this.name);
+    }
 }
