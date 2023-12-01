@@ -7,7 +7,8 @@ public enum StationName implements EnumUtil<String, String>{
     SOUTH_TERMINAL("남부터미널역"),
     MAEBONG("매봉역"),
     YANGJAE("양재역"),
-    YANGJAE_CITIZEN_FOREST("양재시민의숲역");
+    YANGJAE_CITIZEN_FOREST("양재시민의숲역"),
+    STATION_SUFFIX("역");
 
     private String stationName;
 

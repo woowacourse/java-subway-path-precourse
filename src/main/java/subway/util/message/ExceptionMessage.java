@@ -10,7 +10,8 @@ public enum ExceptionMessage implements EnumUtil<String, String> {
     , RANGE_MESSAGE("%d 보다 큰 값을 입력해 주세요.")
     , UNIT_MESSAGE("%d원 단위로 입력해 주세요.")
     , DUPLICATE_MESSAGE("%s을(를) 중복으로 입력할 수 없습니다.")
-    , NO_RESOURCE_MESSAGE("%s(이)가 존재하지 않습니다.");
+    , NO_RESOURCE_MESSAGE("%s(이)가 존재하지 않습니다.")
+    , SAME_AS("출발역과 도착역이 동일합니다.");
     private static final String ERROR_TAG = "[ERROR] ";
     private final String message;
 
