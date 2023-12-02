@@ -25,7 +25,7 @@ public class StationRepository {
 
     public void initStation(){
         for (StationName stationName : StationName.values()) {
-            Station station = Station.create(stationName.getKey());
+            Station station = Station.create(stationName.getValue());
             addStation(station);
         }
     }
@@ -51,7 +51,7 @@ public class StationRepository {
         return stations.stream()
                 .filter(station -> station.isEqualName(name))
                 .findFirst()
-                .orElseThrow(() -> new NoResourceException(String.format(NO_RESOURCE_MESSAGE.getValue(), "해당 역")));
+                .orElseThrow(() -> new NoResourceException(String.format(NO_RESOURCE_MESSAGE.getValue(), name)));
     }
 
     public void initConnectInfo(String start, String end, int distance, int time){

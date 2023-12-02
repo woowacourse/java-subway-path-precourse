@@ -11,11 +11,11 @@ import static subway.util.constants.TimeInfo.*;
 
 public class SubwayRepository {
 
-    static String[] twoLineStations = {GYODAE.getKey(), GANGNAM.getKey(), YEOKSAM.getKey()};
-    static String[] threeLineStations = {GYODAE.getKey(), SOUTH_TERMINAL.getKey(),
-            StationName.YANGJAE.getKey(), StationName.MAEBONG.getKey()};
-    static String[] shinBundangLineStations = {GANGNAM.getKey(), StationName.YANGJAE.getKey(),
-            StationName.YANGJAE_CITIZEN_FOREST.getKey()};
+    static String[] twoLineStations = {GYODAE.getValue(), GANGNAM.getValue(), YEOKSAM.getValue()};
+    static String[] threeLineStations = {GYODAE.getValue(), SOUTH_TERMINAL.getValue(),
+            StationName.YANGJAE.getValue(), StationName.MAEBONG.getValue()};
+    static String[] shinBundangLineStations = {GANGNAM.getValue(), StationName.YANGJAE.getValue(),
+            StationName.YANGJAE_CITIZEN_FOREST.getValue()};
     private static final SubwayRepository subwayRepository = new SubwayRepository();
     private static final LineRepository lineRepository = LineRepository.getInstance();
     private static final StationRepository stationRepository = StationRepository.getInstance();
@@ -35,31 +35,31 @@ public class SubwayRepository {
 
     private void initStationsSpecificLine(){
         for(LineName lineName : LineName.values()){
-            Line line = lineRepository.findByName(lineName.getKey());
+            Line line = lineRepository.findByName(lineName.getValue());
             addStationsInLine(line);
         }
     }
 
     private void initConnectInfo(){
-        stationRepository.initConnectInfo(GYODAE.getKey(), GANGNAM.getKey(), GYODAE_GANGNAM_DISTANCE.getValue(), GYODAE_GANGNAM_TIME.getValue());
-        stationRepository.initConnectInfo(GANGNAM.getKey(), YEOKSAM.getKey(), GANGNAM_YEOKSAM_DISTANCE.getValue(), GANGNAM_YEOKSAM_TIME.getValue());
-        stationRepository.initConnectInfo(GYODAE.getKey(), SOUTH_TERMINAL.getKey(), GYODAE_SOUTH_TERMINAL_DISTANCE.getValue(), GYODAE_SOUTH_TERMINAL_TIME.getValue());
-        stationRepository.initConnectInfo(SOUTH_TERMINAL.getKey(), YANGJAE.getKey(), SOUTH_TERMINAL_YANGJAE_DISTANCE.getValue(), SOUTH_TERMINAL_YANGJAE_TIME.getValue());
-        stationRepository.initConnectInfo(YANGJAE.getKey(), MAEBONG.getKey(), YANGJAE_MAEBONG_DISTANCE.getValue(), YANGJAE_MAEBONG_TIME.getValue());
-        stationRepository.initConnectInfo(GANGNAM.getKey(), YANGJAE.getKey(), GANGNAM_YANGJAE_DISTANCE.getValue(), GANGNAM_YANGJAE_TIME.getValue());
-        stationRepository.initConnectInfo(YANGJAE.getKey(), YANGJAE_CITIZEN_FOREST.getKey(), YANGJAE_YANGJAE_CITIZEN_FORESET_DISTANCE.getValue(), YANGJAE_YANGJAE_CITIZEN_FORESET_TIME.getValue());
+        stationRepository.initConnectInfo(GYODAE.getValue(), GANGNAM.getValue(), GYODAE_GANGNAM_DISTANCE.getValue(), GYODAE_GANGNAM_TIME.getValue());
+        stationRepository.initConnectInfo(GANGNAM.getValue(), YEOKSAM.getValue(), GANGNAM_YEOKSAM_DISTANCE.getValue(), GANGNAM_YEOKSAM_TIME.getValue());
+        stationRepository.initConnectInfo(GYODAE.getValue(), SOUTH_TERMINAL.getValue(), GYODAE_SOUTH_TERMINAL_DISTANCE.getValue(), GYODAE_SOUTH_TERMINAL_TIME.getValue());
+        stationRepository.initConnectInfo(SOUTH_TERMINAL.getValue(), YANGJAE.getValue(), SOUTH_TERMINAL_YANGJAE_DISTANCE.getValue(), SOUTH_TERMINAL_YANGJAE_TIME.getValue());
+        stationRepository.initConnectInfo(YANGJAE.getValue(), MAEBONG.getValue(), YANGJAE_MAEBONG_DISTANCE.getValue(), YANGJAE_MAEBONG_TIME.getValue());
+        stationRepository.initConnectInfo(GANGNAM.getValue(), YANGJAE.getValue(), GANGNAM_YANGJAE_DISTANCE.getValue(), GANGNAM_YANGJAE_TIME.getValue());
+        stationRepository.initConnectInfo(YANGJAE.getValue(), YANGJAE_CITIZEN_FOREST.getValue(), YANGJAE_YANGJAE_CITIZEN_FORESET_DISTANCE.getValue(), YANGJAE_YANGJAE_CITIZEN_FORESET_TIME.getValue());
     }
 
     private void addStationsInLine(final Line line){
-        if(line.isEqualName(LineName.LINE_2.getKey())){
+        if(line.isEqualName(LineName.LINE_2.getValue())){
             initStationsInLine(line, twoLineStations);
         }
 
-        if(line.isEqualName(LineName.LINE_3.getKey())){
+        if(line.isEqualName(LineName.LINE_3.getValue())){
             initStationsInLine(line, threeLineStations);
         }
 
-        if(line.isEqualName(LineName.SHIN_BUNDANG.getKey())){
+        if(line.isEqualName(LineName.SHIN_BUNDANG.getValue())){
             initStationsInLine(line, shinBundangLineStations);
         }
     }

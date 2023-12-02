@@ -15,14 +15,13 @@ import static subway.util.message.ExceptionMessage.NO_RESOURCE_MESSAGE;
 
 public class LineRepository {
     private static final LineRepository lineRepository = new LineRepository();
-    private static final StationRepository stationRepository = StationRepository.getInstance();
     private LineRepository(){
 
     }
 
     public void initLine(){
         for (LineName lineName : LineName.values()) {
-            Line line = Line.create(lineName.getKey());
+            Line line = Line.create(lineName.getValue());
             addLine(line);
         }
     }

@@ -1,7 +1,6 @@
 package subway.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Station {
     private String name;
@@ -25,5 +24,13 @@ public class Station {
 
     public boolean isEqualName(String name){
         return name.equals(this.name);
+    }
+
+    public List<ConnectStationNode> getConnectStationNodes() {
+        return Collections.unmodifiableList(connectStationNodes);
+    }
+
+    public String toString(){
+        return name;
     }
 }

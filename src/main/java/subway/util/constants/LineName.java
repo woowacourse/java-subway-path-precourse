@@ -13,11 +13,11 @@ public enum LineName implements EnumUtil<String, String>{
 
     @Override
     public String getKey() {
-        return lineName;
+        return name();
     }
 
     @Override
     public String getValue() {
-        return name();
+        return lineName;
     }
 }
