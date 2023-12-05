@@ -8,7 +8,7 @@ import subway.domain.StationInfo;
 import subway.exception.ErrorInputException;
 
 public class StartStationValidation {
-    public static void isBlank(String input) {
+    public void isBlank(String input) {
         if (input == null || input.trim().isEmpty()) {
             throw new ErrorInputException(START_STATION_CANNOT_BE_NULL_OR_EMPTY);
         }
