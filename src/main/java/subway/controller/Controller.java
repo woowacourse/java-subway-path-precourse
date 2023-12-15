@@ -1,6 +1,7 @@
 package subway.controller;
 
 import subway.domain.StationRepository;
+import subway.service.SubwayInitalizeService;
 import subway.service.SubwayPathRecommendationService;
 import subway.view.View;
 
@@ -8,14 +9,17 @@ import java.util.Scanner;
 
 public class Controller {
     private final Scanner scanner;
-    private final SubwayPathRecommendationService service;
+    private final SubwayInitalizeService initalizeService;
+    private final SubwayPathRecommendationService recommendService;
 
-    public Controller(Scanner scanner, SubwayPathRecommendationService service) {
+    public Controller(Scanner scanner, SubwayInitalizeService initalizeService, SubwayPathRecommendationService recommendService) {
         this.scanner = scanner;
-        this.service = service;
+        this.initalizeService = initalizeService;
+        this.recommendService = recommendService;
     }
 
     public void run() {
+        initalizeService.setSubway();
         String functionCode = askFunction();
         String pathStandardCode = askStandard();
 
@@ -23,7 +27,7 @@ public class Controller {
         String endStation = askEndStation();
         validateDifferentStation(startStation, endStation);
 
-        service.recommend(pathStandardCode, startStation, endStation);
+        recommendService.recommend(pathStandardCode, startStation, endStation);
     }
 
     private String askFunction() {
@@ -40,7 +44,7 @@ public class Controller {
         View.printStartStationMessage();
 
         String startStation = scanner.next();
-        //validationStation(startStation);
+        validationStation(startStation);
 
         return startStation;
     }
@@ -49,7 +53,7 @@ public class Controller {
         View.printEndStationMessage();
 
         String endStation = scanner.next();
-        //validationStation(endStation);
+        validationStation(endStation);
 
         return endStation;
     }

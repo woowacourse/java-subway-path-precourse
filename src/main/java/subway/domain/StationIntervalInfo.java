@@ -21,13 +21,13 @@ public class StationIntervalInfo {
     }
 
     public  void setStationDistances() {
-        Station gyodae = new Station("교대역");
-        Station gangnam = new Station("강남역");
-        Station yeoksam = new Station("역삼역");
-        Station nambuTerminal = new Station("남부터미널역");
-        Station yangjae = new Station("양재역");
-        Station yangjaeCitizenForest = new Station("양재시민의숲역");
-        Station maebong = new Station("매봉역");
+        Station gyodae = StationRepository.findByName("교대역");
+        Station gangnam = StationRepository.findByName("강남역");
+        Station yeoksam = StationRepository.findByName("역삼역");
+        Station nambuTerminal = StationRepository.findByName("남부터미널역");
+        Station yangjae = StationRepository.findByName("양재역");
+        Station yangjaeCitizenForest = StationRepository.findByName("양재시민의숲역");
+        Station maebong = StationRepository.findByName("매봉역");
 
         List<Station> stations = List.of(gyodae, gangnam, yeoksam, nambuTerminal, yangjae, yangjaeCitizenForest, maebong);
 
