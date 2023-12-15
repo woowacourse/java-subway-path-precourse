@@ -1,5 +1,7 @@
 package subway.config;
 
+import org.jgrapht.graph.DefaultWeightedEdge;
+import org.jgrapht.graph.WeightedMultigraph;
 import subway.domain.Line;
 import subway.domain.LineRepository;
 import subway.domain.Station;
@@ -9,7 +11,9 @@ import java.util.List;
 
 public class AppConfig {
 
-    public void setStation() {
+    public void setStationDistances() {
+        WeightedMultigraph<Station, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
+
         Station gyodae = new Station("교대역");
         Station gangnam = new Station("강남역");
         Station yeoksam = new Station("역삼역");
@@ -21,6 +25,20 @@ public class AppConfig {
         List<Station> stations = List.of(gyodae, gangnam, yeoksam, nambuTerminal, yangjae, yangjaeCitizenForest, maebong);
 
         stations.stream().forEach(station -> StationRepository.addStation(station));
+        stations.stream().forEach(station -> graph.addVertex(station));
+
+        //2호선 구간 정보
+        graph.setEdgeWeight(graph.addEdge(gyodae, gangnam), 2);
+        graph.setEdgeWeight(graph.addEdge(gangnam, yeoksam), 2);
+
+        //3호선 구간 정보
+        graph.setEdgeWeight(graph.addEdge(gyodae, nambuTerminal), 3);
+        graph.setEdgeWeight(graph.addEdge(nambuTerminal, yangjae), 6);
+        graph.setEdgeWeight(graph.addEdge(yangjae, maebong), 1);
+
+        //신분당선 구간 정보
+        graph.setEdgeWeight(graph.addEdge(gangnam, yangjae), 2);
+        graph.setEdgeWeight(graph.addEdge(yangjae, yangjaeCitizenForest), 10);
     }
 
     public void setLine() {
