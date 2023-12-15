@@ -16,13 +16,18 @@ public class Controller {
 
     public void run() {
         View.printMenu();
+        String functionCode = scanner.next();
 
-        String code = scanner.next();
+        View.printPathStandard();
+        String pathStandardCode = scanner.next();
 
-        switch (code) {
-            case "1":
-                service.recommend();
-                break;
-        }
+
+        View.printStartStationMessage();
+        String startStation = scanner.next();
+
+        View.printEndStationMessage();
+        String endStation = scanner.next();
+
+        service.recommend(pathStandardCode);
     }
 }

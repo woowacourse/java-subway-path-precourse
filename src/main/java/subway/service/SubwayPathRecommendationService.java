@@ -1,7 +1,15 @@
 package subway.service;
 
+import subway.config.AppConfig;
+
 public class SubwayPathRecommendationService {
-    public void recommend() {
+    private final AppConfig appConfig;
+
+    public SubwayPathRecommendationService(AppConfig appConfig) {
+        this.appConfig = appConfig;
+    }
+
+    public void recommend(String standardCode) {
 
     }
 }
