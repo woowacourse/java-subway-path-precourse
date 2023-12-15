@@ -1,23 +1,15 @@
 package subway.service;
 
-import subway.config.AppConfig;
+import subway.domain.Station;
+import subway.domain.StationIntervalInfo;
+import subway.domain.StationRepository;
 
 public class SubwayPathRecommendationService {
-    private final AppConfig appConfig;
 
-    public SubwayPathRecommendationService(AppConfig appConfig) {
-        this.appConfig = appConfig;
-    }
+    public void recommend(String standardCode, String start, String end) {
+        StationIntervalInfo stationIntervalInfo = new StationIntervalInfo(standardCode);
 
-    public void setStationsBy(String standardCode) {
-        switch (standardCode) {
-            case "1":
-                appConfig.setStationDistances();
-                break;
-        }
-    }
-
-    public void recommend(String standardCode) {
-
+        Station startStation = StationRepository.findByName(start);
+        Station endStation = StationRepository.findByName(end);
     }
 }

@@ -24,6 +24,10 @@ public class StationRepository {
         return stations.stream().filter(station -> station.isSameName(name)).count() > 0;
     }
 
+    public static Station findByName(String name) {
+        return stations().stream().filter(station -> station.isSameName(name)).findFirst().orElseThrow();
+    }
+
     public static void deleteAll() {
         stations.clear();
     }

@@ -1,19 +1,24 @@
-package subway.config;
+package subway.domain;
 
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
-import subway.domain.Line;
-import subway.domain.LineRepository;
-import subway.domain.Station;
-import subway.domain.StationRepository;
 
 import java.util.List;
 
-public class AppConfig {
+public class StationIntervalInfo {
+    private WeightedMultigraph<Station, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
 
-    public void setStationDistances() {
-        WeightedMultigraph<Station, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
-
+    public StationIntervalInfo(String standardCode) {
+        setStationsBy(standardCode);
+    }
+    private void setStationsBy(String standardCode) {
+        switch (standardCode) {
+            case "1":
+                setStationDistances();
+                break;
+        }
+    }
+    public  void setStationDistances() {
         Station gyodae = new Station("교대역");
         Station gangnam = new Station("강남역");
         Station yeoksam = new Station("역삼역");

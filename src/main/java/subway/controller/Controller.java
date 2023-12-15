@@ -18,13 +18,12 @@ public class Controller {
     public void run() {
         String functionCode = askFunction();
         String pathStandardCode = askStandard();
-        service.setStationsBy(pathStandardCode);
 
         String startStation = askStartStation();
         String endStation = askEndStation();
         validateDifferentStation(startStation, endStation);
 
-        service.recommend(pathStandardCode);
+        service.recommend(pathStandardCode, startStation, endStation);
     }
 
     private String askFunction() {
