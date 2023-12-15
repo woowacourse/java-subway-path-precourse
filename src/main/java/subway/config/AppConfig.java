@@ -1,5 +1,7 @@
 package subway.config;
 
+import subway.domain.Line;
+import subway.domain.LineRepository;
 import subway.domain.Station;
 import subway.domain.StationRepository;
 
@@ -19,5 +21,15 @@ public class AppConfig {
         List<Station> stations = List.of(gyodae, gangnam, yeoksam, nambuTerminal, yangjae, yangjaeCitizenForest, maebong);
 
         stations.stream().forEach(station -> StationRepository.addStation(station));
+    }
+
+    public void setLine() {
+        Line two = new Line("2호선");
+        Line three = new Line("3호선");
+        Line sinbundang = new Line("신분당선");
+
+        List<Line> lines = List.of(two, three, sinbundang);
+
+        lines.stream().forEach(line -> LineRepository.addLine(line));
     }
 }
