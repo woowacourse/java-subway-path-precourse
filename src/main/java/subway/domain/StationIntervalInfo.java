@@ -8,19 +8,14 @@ import java.util.List;
 
 public class StationIntervalInfo {
     private WeightedMultigraph<Station, DefaultWeightedEdge> distanceGraph = new WeightedMultigraph<>(DefaultWeightedEdge.class);
+    private WeightedMultigraph<Station, DefaultWeightedEdge> timeGraph = new WeightedMultigraph<>(DefaultWeightedEdge.class);
 
-    public StationIntervalInfo(String standardCode) {
-        setStationsBy(standardCode);
-    }
-    private void setStationsBy(String standardCode) {
-        switch (standardCode) {
-            case "1":
-                setStationDistances();
-                break;
-        }
+    public StationIntervalInfo() {
+        setDistanceGraph();
+        setTimeGraph();
     }
 
-    public  void setStationDistances() {
+    public  void setDistanceGraph() {
         Station gyodae = StationRepository.findByName("교대역");
         Station gangnam = StationRepository.findByName("강남역");
         Station yeoksam = StationRepository.findByName("역삼역");
@@ -46,6 +41,34 @@ public class StationIntervalInfo {
         //신분당선 구간 정보
         distanceGraph.setEdgeWeight(distanceGraph.addEdge(gangnam, yangjae), 2);
         distanceGraph.setEdgeWeight(distanceGraph.addEdge(yangjae, yangjaeCitizenForest), 10);
+    }
+
+    public  void setTimeGraph() {
+        Station gyodae = StationRepository.findByName("교대역");
+        Station gangnam = StationRepository.findByName("강남역");
+        Station yeoksam = StationRepository.findByName("역삼역");
+        Station nambuTerminal = StationRepository.findByName("남부터미널역");
+        Station yangjae = StationRepository.findByName("양재역");
+        Station yangjaeCitizenForest = StationRepository.findByName("양재시민의숲역");
+        Station maebong = StationRepository.findByName("매봉역");
+
+        List<Station> stations = List.of(gyodae, gangnam, yeoksam, nambuTerminal, yangjae, yangjaeCitizenForest, maebong);
+
+        stations.stream().forEach(station -> StationRepository.addStation(station));
+        stations.stream().forEach(station -> distanceGraph.addVertex(station));
+
+        //2호선 구간 정보
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(gyodae, gangnam), 3);
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(gangnam, yeoksam), 3);
+
+        //3호선 구간 정보
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(gyodae, nambuTerminal), 2);
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(nambuTerminal, yangjae), 5);
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(yangjae, maebong), 1);
+
+        //신분당선 구간 정보
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(gangnam, yangjae), 8);
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(yangjae, yangjaeCitizenForest), 3);
     }
 
     public SubwayPathRecommendationResult getShortestPath(Station start, Station end) {
