@@ -15,19 +15,35 @@ public class Controller {
     }
 
     public void run() {
-        View.printMenu();
-        String functionCode = scanner.next();
+        String functionCode = askFunction();
 
-        View.printPathStandard();
-        String pathStandardCode = scanner.next();
+        String pathStandardCode = askStandard();
 
+        String startStation = askStartStation();
 
-        View.printStartStationMessage();
-        String startStation = scanner.next();
-
-        View.printEndStationMessage();
-        String endStation = scanner.next();
+        String endStation = askEndStation();
 
         service.recommend(pathStandardCode);
     }
+
+    private String askFunction() {
+        View.printMenu();
+        return scanner.next();
+    }
+
+    private String askStandard() {
+        View.printPathStandard();
+        return scanner.next();
+    }
+
+    private String askStartStation() {
+        View.printStartStationMessage();
+        return scanner.next();
+    }
+
+    private String askEndStation() {
+        View.printEndStationMessage();
+        return scanner.next();
+    }
+
 }
