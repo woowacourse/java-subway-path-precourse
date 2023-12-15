@@ -40,7 +40,7 @@ public class Controller {
         View.printStartStationMessage();
 
         String startStation = scanner.next();
-        validationStation(startStation);
+        //validationStation(startStation);
 
         return startStation;
     }
@@ -49,7 +49,7 @@ public class Controller {
         View.printEndStationMessage();
 
         String endStation = scanner.next();
-        validationStation(endStation);
+        //validationStation(endStation);
 
         return endStation;
     }

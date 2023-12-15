@@ -1,12 +1,13 @@
 package subway.domain;
 
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 
 import java.util.List;
 
 public class StationIntervalInfo {
-    private WeightedMultigraph<Station, DefaultWeightedEdge> graph = new WeightedMultigraph(DefaultWeightedEdge.class);
+    private WeightedMultigraph<Station, DefaultWeightedEdge> distanceGraph = new WeightedMultigraph<>(DefaultWeightedEdge.class);
 
     public StationIntervalInfo(String standardCode) {
         setStationsBy(standardCode);
@@ -18,6 +19,7 @@ public class StationIntervalInfo {
                 break;
         }
     }
+
     public  void setStationDistances() {
         Station gyodae = new Station("교대역");
         Station gangnam = new Station("강남역");
@@ -30,20 +32,28 @@ public class StationIntervalInfo {
         List<Station> stations = List.of(gyodae, gangnam, yeoksam, nambuTerminal, yangjae, yangjaeCitizenForest, maebong);
 
         stations.stream().forEach(station -> StationRepository.addStation(station));
-        stations.stream().forEach(station -> graph.addVertex(station));
+        stations.stream().forEach(station -> distanceGraph.addVertex(station));
 
         //2호선 구간 정보
-        graph.setEdgeWeight(graph.addEdge(gyodae, gangnam), 2);
-        graph.setEdgeWeight(graph.addEdge(gangnam, yeoksam), 2);
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(gyodae, gangnam), 2);
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(gangnam, yeoksam), 2);
 
         //3호선 구간 정보
-        graph.setEdgeWeight(graph.addEdge(gyodae, nambuTerminal), 3);
-        graph.setEdgeWeight(graph.addEdge(nambuTerminal, yangjae), 6);
-        graph.setEdgeWeight(graph.addEdge(yangjae, maebong), 1);
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(gyodae, nambuTerminal), 3);
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(nambuTerminal, yangjae), 6);
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(yangjae, maebong), 1);
 
         //신분당선 구간 정보
-        graph.setEdgeWeight(graph.addEdge(gangnam, yangjae), 2);
-        graph.setEdgeWeight(graph.addEdge(yangjae, yangjaeCitizenForest), 10);
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(gangnam, yangjae), 2);
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(yangjae, yangjaeCitizenForest), 10);
+    }
+
+    public SubwayPathRecommendationResult getShortestPath(Station start, Station end) {
+        DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(distanceGraph);
+        double totalDistance = dijkstraShortestPath.getPath(start, end).getWeight();
+        List<Station> vertexList = dijkstraShortestPath.getPath(start, end).getVertexList();
+
+        return new SubwayPathRecommendationResult((int) totalDistance, 0, vertexList);
     }
 
     public void setLine() {

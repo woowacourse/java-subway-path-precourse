@@ -3,6 +3,7 @@ package subway.service;
 import subway.domain.Station;
 import subway.domain.StationIntervalInfo;
 import subway.domain.StationRepository;
+import subway.domain.SubwayPathRecommendationResult;
 
 public class SubwayPathRecommendationService {
 
@@ -11,5 +12,7 @@ public class SubwayPathRecommendationService {
 
         Station startStation = StationRepository.findByName(start);
         Station endStation = StationRepository.findByName(end);
+
+        SubwayPathRecommendationResult shortestPath = stationIntervalInfo.getShortestPath(startStation, endStation);
     }
 }
