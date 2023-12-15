@@ -17,12 +17,12 @@ public class Controller {
 
     public void run() {
         String functionCode = askFunction();
-
         String pathStandardCode = askStandard();
+        service.setStationsBy(pathStandardCode);
 
         String startStation = askStartStation();
-
         String endStation = askEndStation();
+        validateDifferentStation(startStation, endStation);
 
         service.recommend(pathStandardCode);
     }
@@ -58,6 +58,12 @@ public class Controller {
     private void validationStation(String stationName) {
         if (!StationRepository.existByName(stationName)) {
             throw new IllegalArgumentException("[ERROR] 존재하지 않는 지하철역입니다.");
+        }
+    }
+
+    private void validateDifferentStation(String startStation, String endStation) {
+        if (startStation.equals(endStation)) {
+            throw new IllegalArgumentException("[ERROR] 출발역과 도착역이 동일합니다.");
         }
     }
 
