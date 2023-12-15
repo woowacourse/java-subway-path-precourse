@@ -20,6 +20,10 @@ public class StationRepository {
         return stations.removeIf(station -> Objects.equals(station.getName(), name));
     }
 
+    public static boolean existByName(String name) {
+        return stations.stream().filter(station -> station.isSameName(name)).count() > 0;
+    }
+
     public static void deleteAll() {
         stations.clear();
     }

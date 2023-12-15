@@ -1,5 +1,6 @@
 package subway.controller;
 
+import subway.domain.StationRepository;
 import subway.service.SubwayPathRecommendationService;
 import subway.view.View;
 
@@ -38,12 +39,26 @@ public class Controller {
 
     private String askStartStation() {
         View.printStartStationMessage();
-        return scanner.next();
+
+        String startStation = scanner.next();
+        validationStation(startStation);
+
+        return startStation;
     }
 
     private String askEndStation() {
         View.printEndStationMessage();
-        return scanner.next();
+
+        String endStation = scanner.next();
+        validationStation(endStation);
+
+        return endStation;
+    }
+
+    private void validationStation(String stationName) {
+        if (!StationRepository.existByName(stationName)) {
+            throw new IllegalArgumentException("[ERROR] 존재하지 않는 지하철역입니다.");
+        }
     }
 
 }
