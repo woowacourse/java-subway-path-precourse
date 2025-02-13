@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <station>
+        <name>교대역</name>
+    </station>
+    <station>
+        <name>강남역</name>
+    </station>
+    <station>
+        <name>역삼역</name>
+    </station>
+    <station>
+        <name>남부터미널역</name>
+    </station>
+    <station>
+        <name>양재역</name>
+    </station>
+    <station>
+        <name>양재시민의숲역</name>
+    </station>
+    <station>
+        <name>매봉역</name>
+    </station>
+</root>

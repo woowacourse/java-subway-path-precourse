@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <line>
+        <name>2호선</name>
+    </line>
+    <line>
+        <name>3호선</name>
+    </line>
+    <line>
+        <name>신분당선</name>
+    </line>
+</root>
